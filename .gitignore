@@ -1,0 +1,22 @@
+# Local / scrape junk
+hts-cache/
+cookies.txt
+hts-log.txt
+*.bak
+*.bak.*
+_preview-*.png
+_*-debug.png
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Env / secrets
+.env
+.env.*
+!.env.example
+
+# Dependencies (if any later)
+node_modules/

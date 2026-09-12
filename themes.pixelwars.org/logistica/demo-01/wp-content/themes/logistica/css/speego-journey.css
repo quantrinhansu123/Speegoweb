@@ -1,0 +1,482 @@
+/* ==========================================================================
+   SPEEGO — 8-STEP LOGISTICS JOURNEY (scroll storytelling)
+   Spec: speego-logistics-journey-process.md
+   ========================================================================== */
+
+.speego-journey-section {
+  --navy-950: #071A2F;
+  --navy-900: #0B1F36;
+  --orange-500: #FF5A1F;
+  --orange-600: #F4511E;
+  --text-primary: #071A2F;
+  --text-secondary: #637385;
+  --surface: #FFFFFF;
+  --surface-soft: #F8FAFC;
+  --border: #E3EAF0;
+  --route-inactive: #DCE5EC;
+  --success: #16A36A;
+  --success-bg: #EAF8F1;
+
+  background: var(--surface-soft);
+  padding: 120px 0 140px;
+  position: relative;
+  overflow: hidden;
+}
+
+.speego-journey-section::before {
+  content: "SOURCE  ·  INSPECT  ·  SHIP  ·  DELIVER";
+  position: absolute;
+  top: 18%;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: clamp(28px, 5vw, 64px);
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  color: var(--navy-950);
+  opacity: 0.045;
+  white-space: nowrap;
+  pointer-events: none;
+  user-select: none;
+}
+
+.speego-journey-section .speego-section-header {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.speego-journey-section .speego-section-tag {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--orange-500);
+}
+
+.speego-journey-section .speego-section-title {
+  font-size: clamp(32px, 4.2vw, 48px);
+  line-height: 1.08;
+  font-weight: 800;
+  letter-spacing: -0.035em;
+  color: var(--navy-950);
+  max-width: 720px;
+  margin: 18px auto 0;
+}
+
+.speego-journey-section .speego-section-subtitle {
+  font-size: 17px;
+  line-height: 1.7;
+  color: #657587;
+  max-width: 680px;
+  margin: 22px auto 0;
+}
+
+/* ---- Journey shell ---- */
+.speego-journey {
+  position: relative;
+  max-width: 1240px;
+  margin: 80px auto 0;
+  padding: 40px 20px 20px;
+}
+
+.speego-journey-route {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+  overflow: visible;
+}
+
+.speego-journey-route path {
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.speego-journey-route .route-base {
+  stroke: var(--route-inactive);
+  stroke-width: 3;
+  stroke-dasharray: 5 8;
+}
+
+.speego-journey-route .route-progress {
+  stroke: var(--orange-500);
+  stroke-width: 3;
+  stroke-dasharray: 5 8;
+  transition: stroke-dashoffset 0.05s linear;
+}
+
+.speego-journey-mover {
+  position: absolute;
+  z-index: 4;
+  width: 34px;
+  height: 34px;
+  margin-left: -17px;
+  margin-top: -17px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--navy-950);
+  border-radius: 10px;
+  color: #fff;
+  box-shadow: 0 8px 20px rgba(7, 26, 47, 0.18);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.speego-journey-mover.is-visible {
+  opacity: 1;
+}
+
+.speego-journey-mover i {
+  font-size: 14px;
+}
+
+/* ---- Steps ---- */
+.speego-journey-steps {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.speego-journey-step {
+  position: relative;
+  min-height: 340px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 40px;
+  opacity: 0.38;
+  transform: translateY(28px);
+  transition:
+    opacity 0.55s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.speego-journey-step.is-active,
+.speego-journey-step.is-completed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.speego-journey-step.is-odd .speego-journey-card-wrap {
+  grid-column: 1;
+  justify-self: start;
+}
+
+.speego-journey-step.is-even .speego-journey-card-wrap {
+  grid-column: 2;
+  justify-self: end;
+}
+
+.speego-journey-step.is-odd .speego-journey-visual {
+  grid-column: 2;
+  justify-self: end;
+}
+
+.speego-journey-step.is-even .speego-journey-visual {
+  grid-column: 1;
+  justify-self: start;
+}
+
+.speego-journey-card-wrap {
+  position: relative;
+  width: min(100%, 430px);
+}
+
+.speego-journey-card {
+  width: 100%;
+  padding: 30px;
+  background: rgba(255, 255, 255, 0.94);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  box-shadow: 0 18px 50px rgba(7, 26, 47, 0.07);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.speego-journey-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 24px 60px rgba(7, 26, 47, 0.11);
+}
+
+.speego-journey-step-label {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  color: var(--orange-500);
+  margin-bottom: 14px;
+}
+
+.speego-journey-icon {
+  width: 48px;
+  height: 48px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  background: #FFF1EA;
+  color: var(--orange-500);
+  margin-bottom: 16px;
+}
+
+.speego-journey-icon i {
+  font-size: 20px;
+}
+
+.speego-journey-card h3 {
+  font-family: 'Outfit', sans-serif;
+  font-size: 25px;
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -0.025em;
+  color: var(--text-primary);
+  margin: 0 0 12px;
+}
+
+.speego-journey-card p {
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  margin: 0 0 18px;
+}
+
+.speego-journey-points {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.speego-journey-points li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #263B50;
+  margin-bottom: 10px;
+}
+
+.speego-journey-points li i {
+  color: var(--success);
+  margin-top: 2px;
+  flex-shrink: 0;
+}
+
+.speego-journey-delivered {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 16px;
+  background: var(--success-bg);
+  color: #16845B;
+  padding: 7px 12px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+/* Checkpoint node */
+.speego-journey-node {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 3;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #fff;
+  border: 3px solid #C8D3DE;
+  box-shadow: 0 0 0 0 transparent;
+  transition: background 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease, width 0.35s ease, height 0.35s ease;
+}
+
+.speego-journey-step.is-active .speego-journey-node {
+  background: var(--orange-500);
+  border-color: var(--orange-500);
+  box-shadow: 0 0 0 7px rgba(255, 90, 31, 0.12);
+}
+
+.speego-journey-step.is-completed .speego-journey-node {
+  background: var(--navy-950);
+  border-color: var(--navy-950);
+}
+
+.speego-journey-step.is-destination .speego-journey-node {
+  width: 56px;
+  height: 56px;
+  background: var(--orange-500);
+  border-color: var(--orange-500);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 22px;
+  box-shadow: 0 0 0 10px rgba(255, 90, 31, 0.12);
+}
+
+.speego-journey-step.is-destination.is-completed .speego-journey-node,
+.speego-journey-step.is-destination.is-active .speego-journey-node {
+  background: var(--orange-500);
+  border-color: var(--orange-500);
+}
+
+.speego-journey-visual {
+  width: min(100%, 440px);
+  display: none;
+}
+
+.speego-journey-step.has-image .speego-journey-visual {
+  display: block;
+}
+
+.speego-journey-visual img {
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
+  border-radius: 18px;
+  box-shadow: 0 20px 50px rgba(7, 26, 47, 0.12);
+  display: block;
+}
+
+/* ---- CTA ---- */
+.speego-journey-cta {
+  margin-top: 100px;
+  text-align: center;
+  padding: 0 20px;
+  position: relative;
+  z-index: 2;
+}
+
+.speego-journey-cta h3 {
+  font-family: 'Outfit', sans-serif;
+  font-size: clamp(28px, 3.5vw, 36px);
+  font-weight: 800;
+  color: var(--navy-950);
+  margin: 0 0 28px;
+  letter-spacing: -0.03em;
+}
+
+.speego-journey-cta-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  justify-content: center;
+}
+
+.speego-journey-cta .speego-btn-primary {
+  background: var(--orange-500);
+  border-color: var(--orange-500);
+}
+
+.speego-journey-cta .speego-btn-primary:hover {
+  background: var(--orange-600);
+  border-color: var(--orange-600);
+}
+
+.speego-journey-cta .speego-btn-outline {
+  background: transparent;
+  color: var(--navy-950);
+  border: 1.5px solid var(--border);
+}
+
+.speego-journey-cta .speego-btn-outline:hover {
+  border-color: var(--navy-950);
+  color: var(--navy-950);
+}
+
+/* ---- Mobile: vertical timeline ---- */
+@media screen and (max-width: 900px) {
+  .speego-journey-section {
+    padding: 90px 0 100px;
+  }
+
+  .speego-journey-section .speego-section-title {
+    font-size: 36px;
+  }
+
+  .speego-journey {
+    margin-top: 48px;
+    padding: 10px 16px 10px 18px;
+  }
+
+  .speego-journey-route,
+  .speego-journey-mover {
+    display: none;
+  }
+
+  .speego-journey-steps {
+    gap: 0;
+    padding-left: 18px;
+    border-left: 3px solid var(--route-inactive);
+    margin-left: 8px;
+  }
+
+  .speego-journey-step {
+    display: block;
+    min-height: 0;
+    padding: 0 0 36px 32px;
+    opacity: 1;
+    transform: none;
+  }
+
+  .speego-journey-node {
+    left: -29px;
+    top: 28px;
+    transform: none;
+  }
+
+  .speego-journey-step.is-destination .speego-journey-node {
+    left: -47px;
+    top: 12px;
+  }
+
+  .speego-journey-card-wrap,
+  .speego-journey-visual {
+    width: 100%;
+    justify-self: stretch !important;
+    grid-column: auto !important;
+  }
+
+  .speego-journey-card h3 {
+    font-size: 21px;
+  }
+
+  .speego-journey-visual {
+    margin-top: 16px;
+  }
+
+  .speego-journey-visual img {
+    height: 200px;
+  }
+
+  .speego-journey-cta {
+    margin-top: 48px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .speego-journey-step,
+  .speego-journey-card,
+  .speego-journey-node,
+  .speego-journey-route .route-progress,
+  .speego-journey-mover {
+    transition: none !important;
+  }
+
+  .speego-journey-step {
+    opacity: 1;
+    transform: none;
+  }
+}
