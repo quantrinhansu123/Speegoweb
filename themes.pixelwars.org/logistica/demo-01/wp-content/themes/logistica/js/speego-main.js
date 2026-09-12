@@ -1534,18 +1534,29 @@
       }
     });
 
-    // Crossfade backgrounds
+    // Crossfade backgrounds (do not early-return the whole filler)
     var bgA = document.getElementById('process-hero-bg-a');
     var bgB = document.getElementById('process-hero-bg-b');
     if (bgA && bgB) {
-      var currentSrc = (bgA.classList.contains('is-active') ? bgA : bgB).getAttribute('src');
-      if (currentSrc === stepData.image) return;
+      function normSrc(src) {
+        if (!src) return '';
+        try {
+          return new URL(src, window.location.href).pathname.replace(/\\/g, '/');
+        } catch (err) {
+          return String(src).split('?')[0];
+        }
+      }
+
+      var activeBg = bgA.classList.contains('is-active') ? bgA : bgB;
+      var currentSrc = normSrc(activeBg.getAttribute('src') || activeBg.src);
+      var nextSrc = normSrc(stepData.image);
+      if (currentSrc === nextSrc) return;
 
       var incoming = processBgToggle ? bgA : bgB;
       var outgoing = processBgToggle ? bgB : bgA;
       processBgToggle = !processBgToggle;
 
-      if (incoming.getAttribute('src') !== stepData.image) {
+      if (normSrc(incoming.getAttribute('src') || incoming.src) !== nextSrc) {
         incoming.setAttribute('src', stepData.image);
       }
       incoming.setAttribute('alt', '');
@@ -1587,8 +1598,9 @@
   }
 
   function goToProcessStep(stepNum, animate, options) {
+    options = options || {};
     if (!stepNum || stepNum < 1 || stepNum > PROCESS_STEP_COUNT) return;
-    if (stepNum === currentActiveStep) return;
+    if (stepNum === currentActiveStep && !options.force) return;
     renderStepDetail(stepNum, animate, options);
   }
 

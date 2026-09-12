@@ -2,6 +2,31 @@
    SpeeGo — Process Hero Overlay (pinned scroll journey)
    ========================================================================== */
 
+/*
+  Theme sets html/body { overflow-x: hidden } which makes overflow-y compute to
+  auto and breaks position:sticky. Use clip so horizontal spill is still clipped
+  without killing the pinned 8-step journey.
+*/
+html,
+body {
+  overflow-x: clip !important;
+}
+
+#page.site,
+.site,
+.site-content,
+.site-main,
+#main,
+#primary,
+.content-area,
+.layout-full {
+  overflow: visible !important;
+  transform: none !important;
+  filter: none !important;
+  perspective: none !important;
+  contain: none !important;
+}
+
 /* Tall track: sticky panel pins until all 8 steps are scrolled through */
 .process-journey {
   --process-steps: 8;
@@ -12,11 +37,7 @@
   min-height: calc(var(--process-steps) * 100vh);
   min-height: calc(var(--process-steps) * 100svh);
   overflow: visible;
-}
-
-#page.site,
-.site {
-  overflow: visible !important;
+  z-index: 1;
 }
 
 .process-hero {
