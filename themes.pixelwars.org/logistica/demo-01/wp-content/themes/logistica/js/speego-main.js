@@ -144,12 +144,12 @@
       srv_learn_more: 'View details',
       srv_feat1_title: 'Safe',
       srv_feat1_desc: 'Cargo always protected',
-      srv_feat2_title: 'On time',
-      srv_feat2_desc: 'Schedule commitment',
+      srv_feat2_title: 'On schedule',
+      srv_feat2_desc: 'Clear timeline commitment',
       srv_feat3_title: 'Cost optimized',
-      srv_feat3_desc: 'Competitive advantage',
+      srv_feat3_desc: 'Efficient shipping solutions',
       srv_feat4_title: 'Long-term partnership',
-      srv_feat4_desc: 'For your business growth',
+      srv_feat4_desc: 'Sustainable growth partner',
 
       // 8-Step Process Tabs
       process_tag: 'STANDARDIZED PROCESS',
@@ -229,6 +229,7 @@
       form_tag: 'Start Your Journey',
       form_title: 'Request a Free Consultation & Quote',
       form_subtitle: 'Tell us your cargo requirements. Our logistics engineers will respond within 2 business hours.',
+      form_video_caption: 'SpeeGo Logistics — from sourcing to global delivery',
       form_name_lbl: 'Full Name *',
       form_phone_lbl: 'Phone / Zalo / WhatsApp *',
       form_email_lbl: 'Business Email *',
@@ -247,7 +248,8 @@
       testi_tag: 'Testimonials',
       testi_title: 'What Global Business Leaders Say',
       news_tag: 'Market Intelligence',
-      news_title: 'Latest Logistics & Trade Insights'
+      news_title: 'Latest Logistics & Trade Insights',
+      news_view_all: 'View All'
     },
 
     vi: {
@@ -384,12 +386,12 @@
       srv_learn_more: 'Xem chi tiết',
       srv_feat1_title: 'An toàn',
       srv_feat1_desc: 'Hàng hóa luôn được bảo vệ',
-      srv_feat2_title: 'Đúng thời gian',
-      srv_feat2_desc: 'Cam kết tiến độ',
+      srv_feat2_title: 'Đúng tiến độ',
+      srv_feat2_desc: 'Cam kết lịch trình rõ ràng',
       srv_feat3_title: 'Tối ưu chi phí',
-      srv_feat3_desc: 'Gia tăng lợi thế',
-      srv_feat4_title: 'Đồng hành lâu dài',
-      srv_feat4_desc: 'Vì sự phát triển của doanh nghiệp',
+      srv_feat3_desc: 'Giải pháp vận chuyển hiệu quả',
+      srv_feat4_title: 'Đồng hành dài hạn',
+      srv_feat4_desc: 'Đối tác tăng trưởng bền vững',
 
       // 8-Step Process Tabs
       process_tag: 'QUY TRÌNH CHUẨN HÓA',
@@ -469,6 +471,7 @@
       form_tag: 'Đăng ký tư vấn',
       form_title: 'Form Tư Vấn Dịch Vụ & Nhận Báo Giá',
       form_subtitle: 'Gửi yêu cầu của bạn để chuyên viên SpeeGo liên hệ phản hồi phương án tối ưu trong vòng 2 giờ.',
+      form_video_caption: 'SpeeGo Logistics — từ nguồn hàng đến giao toàn cầu',
       form_name_lbl: 'Họ và tên *',
       form_phone_lbl: 'SĐT / Zalo / WhatsApp *',
       form_email_lbl: 'Email doanh nghiệp *',
@@ -487,7 +490,8 @@
       testi_tag: 'Đánh giá khách hàng',
       testi_title: 'Khách Hàng Quốc Tế Nói Về SpeeGo',
       news_tag: 'Bản tin thị trường',
-      news_title: 'Tin Tức Chuỗi Cung Ứng & Vận Tải Biển Mới Nhất'
+      news_title: 'Tin Tức Chuỗi Cung Ứng & Vận Tải Biển Mới Nhất',
+      news_view_all: 'Xem tất cả'
     },
 
     es: {
@@ -625,11 +629,11 @@
       srv_feat1_title: 'Seguro',
       srv_feat1_desc: 'Mercancía siempre protegida',
       srv_feat2_title: 'A tiempo',
-      srv_feat2_desc: 'Compromiso de plazo',
+      srv_feat2_desc: 'Compromiso de calendario claro',
       srv_feat3_title: 'Costo optimizado',
-      srv_feat3_desc: 'Mayor competitividad',
+      srv_feat3_desc: 'Soluciones de envío eficientes',
       srv_feat4_title: 'Alianza a largo plazo',
-      srv_feat4_desc: 'Por el crecimiento de su empresa',
+      srv_feat4_desc: 'Socio de crecimiento sostenible',
 
       // 8-Step Process Tabs
       process_tag: 'PROCESO ESTANDARIZADO',
@@ -709,6 +713,7 @@
       form_tag: 'Solicitar Cotización',
       form_title: 'Formulario de Consulta y Cotización',
       form_subtitle: 'Indíquenos los detalles de su carga. Responderemos con una propuesta personalizada en menos de 2 horas.',
+      form_video_caption: 'SpeeGo Logistics — del sourcing a la entrega global',
       form_name_lbl: 'Nombre y Apellido *',
       form_phone_lbl: 'Teléfono / WhatsApp *',
       form_email_lbl: 'Correo Electrónico *',
@@ -727,7 +732,8 @@
       testi_tag: 'Testimonios',
       testi_title: 'Opiniones de Nuestros Clientes Internacionales',
       news_tag: 'Inteligencia de Mercado',
-      news_title: 'Últimas Noticias y Tendencias de Transporte Marítimo'
+      news_title: 'Últimas Noticias y Tendencias de Transporte Marítimo',
+      news_view_all: 'Ver todo'
     }
   };
 
@@ -2039,6 +2045,87 @@
   }
 
   // =========================================================================
+  // 8b. WHY SPEEGO — scroll: layers zoom toward camera (tiến gần màn hình)
+  // =========================================================================
+  function initWhyCinematic() {
+    var section = document.querySelector('[data-why-cinematic]');
+    var track = section && section.querySelector('[data-why-track]');
+    if (!section || !track) return;
+
+    var port = section.querySelector('[data-why-layer="port"]');
+    var ship = section.querySelector('[data-why-layer="ship"]');
+    var plane = section.querySelector('[data-why-layer="plane"]');
+    var truck = section.querySelector('[data-why-layer="truck"]');
+    var cards = section.querySelectorAll('[data-why-card]');
+    var reduced = prefersReducedMotion();
+
+    function clamp(n, a, b) {
+      return Math.max(a, Math.min(b, n));
+    }
+
+    function lerp(a, b, t) {
+      return a + (b - a) * t;
+    }
+
+    function easeOutCubic(t) {
+      return 1 - Math.pow(1 - t, 3);
+    }
+
+    function getProgress() {
+      var rect = track.getBoundingClientRect();
+      var range = track.offsetHeight - window.innerHeight;
+      if (range <= 0) return 1;
+      return clamp(-rect.top / range, 0, 1);
+    }
+
+    function setLayer(el, xPct, yPx, scale, opacity) {
+      if (!el) return;
+      el.style.transform =
+        'translate3d(' + xPct.toFixed(2) + '%, ' + yPx.toFixed(1) + 'px, 0) scale(' + scale.toFixed(3) + ')';
+      el.style.opacity = String(clamp(opacity, 0, 1).toFixed(3));
+    }
+
+    function paint() {
+      var raw = reduced ? 1 : getProgress();
+      var p = easeOutCubic(raw);
+
+      // Far → near: scale nhỏ → lớn, cảm giác tiến vào màn hình
+      setLayer(port, 0, lerp(48, 0, p), lerp(0.52, 1.18, p), lerp(0.35, 1, Math.min(1, p * 1.5)));
+      setLayer(ship, lerp(-22, -2, p), lerp(56, 4, p), lerp(0.38, 1.32, p), lerp(0.2, 1, Math.min(1, p * 1.7)));
+      setLayer(plane, lerp(10, -2, p), lerp(70, -28, p), lerp(0.32, 1.58, p), lerp(0.15, 1, Math.min(1, p * 1.9)));
+      setLayer(truck, lerp(18, 0, p), lerp(64, 2, p), lerp(0.28, 1.72, p), lerp(0.1, 1, Math.min(1, p * 2.1)));
+
+      // Cards: trượt vào khi scene đã tiến gần
+      cards.forEach(function (card, i) {
+        var local = clamp((raw - 0.12 - i * 0.06) / 0.35, 0, 1);
+        var e = easeOutCubic(local);
+        var side = card.closest('.speego-why-col--left') ? -1 : 1;
+        var baseX = 0;
+        if (card.parentElement && card.parentElement.children[1] === card) {
+          baseX = side < 0 ? 12 : -8;
+        }
+        card.style.opacity = String(lerp(0.25, 1, e).toFixed(3));
+        card.style.transform =
+          'translate3d(' + (baseX + side * lerp(28, 0, e)).toFixed(1) + 'px, ' + lerp(18, 0, e).toFixed(1) + 'px, 0)';
+      });
+    }
+
+    var ticking = false;
+    function onScroll() {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(function () {
+        paint();
+        ticking = false;
+      });
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll, { passive: true });
+    paint();
+  }
+
+  // =========================================================================
   // 9. INITIALIZATION ON DOM READY
   // =========================================================================
   document.addEventListener('DOMContentLoaded', function () {
@@ -2073,6 +2160,7 @@
     initHeroSliderNav();
     initHeroConsole();
     initProcessTabs();
+    initWhyCinematic();
     initConsultationForm();
     initHeroStatCounters();
     initTrustPartnerMarquee();
