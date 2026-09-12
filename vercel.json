@@ -1,10 +1,11 @@
 {
   "cleanUrls": true,
   "trailingSlash": false,
-  "rewrites": [
+  "redirects": [
     {
       "source": "/",
-      "destination": "/themes.pixelwars.org/logistica/demo-01/index.html"
+      "destination": "/themes.pixelwars.org/logistica/demo-01/",
+      "permanent": false
     }
   ]
 }
