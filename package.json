@@ -4,6 +4,7 @@
   "description": "Logistica cloned website local runner",
   "scripts": {
     "start": "python -m http.server 8000",
-    "serve": "npx serve -l 8000"
+    "serve": "npx serve -l 8000",
+    "build": "node prepare-vercel.js"
   }
 }

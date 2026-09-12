@@ -1,11 +1,6 @@
 {
+  "buildCommand": "node prepare-vercel.js",
+  "outputDirectory": "public",
   "cleanUrls": true,
-  "trailingSlash": false,
-  "redirects": [
-    {
-      "source": "/",
-      "destination": "/themes.pixelwars.org/logistica/demo-01/",
-      "permanent": false
-    }
-  ]
+  "trailingSlash": false
 }

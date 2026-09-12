@@ -20,3 +20,6 @@ Thumbs.db
 
 # Dependencies (if any later)
 node_modules/
+
+# Vercel build output
+public/
