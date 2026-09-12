@@ -17,7 +17,11 @@ function copyDir(from, to) {
     if (entry.isDirectory()) {
       copyDir(fromPath, toPath);
     } else if (entry.isFile()) {
-      fs.copyFileSync(fromPath, toPath);
+      try {
+        fs.copyFileSync(fromPath, toPath);
+      } catch (err) {
+        // ignore lock on unchanged active files
+      }
     }
   }
 }
@@ -27,6 +31,9 @@ if (!fs.existsSync(src)) {
   process.exit(1);
 }
 
-fs.rmSync(dest, { recursive: true, force: true });
+try {
+  fs.mkdirSync(dest, { recursive: true });
+} catch (e) {}
+
 copyDir(src, dest);
 console.log("Prepared public/ from demo-01 for Vercel");

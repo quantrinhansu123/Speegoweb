@@ -42,7 +42,7 @@
 	<link rel='stylesheet' id='logistica-style-css' href='wp-content/themes/logistica/styleb54d.css?ver=6.8.8' type='text/css' media='all' />
 
 	<!-- SpeeGo Custom Design System & Interactive Components -->
-	<link rel='stylesheet' id='speego-custom-css' href='wp-content/themes/logistica/css/speego-custom.css?v=why24' type='text/css' media='all' />
+	<link rel='stylesheet' id='speego-custom-css' href='wp-content/themes/logistica/css/speego-custom.css?v=header49' type='text/css' media='all' />
 	<link rel='stylesheet' id='speego-process-tabs-css' href='wp-content/themes/logistica/css/speego-process-tabs.css' type='text/css' media='all' />
 
 	<style>
@@ -55,56 +55,64 @@
 	<div id="page" class="hfeed site">
 
 		<!-- =================================================================
-		     HEADER & MULTI-LANGUAGE NAVIGATION (Image 2: 80px, Light theme)
+		     HEADER & MULTI-LANGUAGE NAVIGATION (Exact Design Spec)
 		     ================================================================= -->
-		<header id="masthead" class="site-header" role="banner">
-			<div class="header-wrap">
-				<div class="header-wrap-inner">
-					
-					<!-- Brand Logo (SpeeGo Logistics Dark) -->
-					<div class="site-branding">
+		<header id="masthead" class="site-header speego-site-header" role="banner">
+			<!-- Top Bar: Hotline, Email & Language Switcher -->
+			<div class="speego-header-topbar">
+				<div class="speego-header-topbar-inner">
+					<div class="speego-header-contact" aria-label="SpeeGo contact details">
+						<a class="speego-header-contact-item" href="tel:+842462918618">
+							<svg class="speego-header-contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.12.9.33 1.78.62 2.64a2 2 0 0 1-.45 2.11L8.01 9.74a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.86.29 1.74.5 2.64.62A2 2 0 0 1 22 16.92z"/></svg>
+							<span class="speego-header-contact-val">(024) 6291 8618</span>
+						</a>
+						<span class="speego-header-contact-sep" aria-hidden="true">|</span>
+						<a class="speego-header-contact-item speego-header-contact-email" href="mailto:info@speegologistic.com">
+							<svg class="speego-header-contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+							<span class="speego-header-contact-val">info@speegologistic.com</span>
+						</a>
+					</div>
+
+					<div class="speego-header-langs" aria-label="Language selector">
+						<button type="button" class="speego-lang-pill" data-lang="en" aria-label="English">EN</button>
+						<button type="button" class="speego-lang-pill active" data-lang="vi" aria-label="Tiếng Việt">VI</button>
+						<button type="button" class="speego-lang-pill" data-lang="es" aria-label="Español">ES</button>
+					</div>
+				</div>
+			</div>
+
+			<!-- Main Navigation Bar -->
+			<div class="speego-header-navbar">
+				<div class="speego-header-navbar-inner">
+					<!-- Brand Logo -->
+					<div class="site-branding speego-branding">
 						<a href="index.html" class="speego-brand-logo" rel="home">
 							<img src="wp-content/themes/logistica/images/logo-speego.png" alt="SpeeGo Logistics" class="speego-logo-img">
 						</a>
 					</div>
 
 					<!-- Navigation Menu -->
-					<nav id="site-navigation" class="main-navigation site-navigation" role="navigation">
-						<div class="menu-wrap">
-							<div class="nav-menu">
-								<ul id="menu-main-menu">
-									<li class="menu-item current-menu-item"><a href="index.html" data-i18n="nav_home">Home</a></li>
-									<li class="menu-item"><a href="#about-speego" data-i18n="nav_about">About Us</a></li>
-									<li class="menu-item"><a href="#services-speego" data-i18n="nav_services">Services</a></li>
-									<li class="menu-item"><a href="#process-speego" data-i18n="nav_process">Our Process</a></li>
-									<li class="menu-item"><a href="#why-speego" data-i18n="nav_why">Why SpeeGo</a></li>
-									<li class="menu-item"><a href="#partners-speego" data-i18n="nav_partners">Đối tác</a></li>
-									<li class="menu-item"><a href="#news-speego" data-i18n="nav_news">News</a></li>
-									<li class="menu-item"><a href="contact/index.html" data-i18n="nav_contact">Contact</a></li>
-								</ul>
-							</div>
-
-							<!-- Language Switcher Dropdown (EN / VI / ES) -->
-							<div class="speego-lang-selector">
-								<button type="button" class="speego-lang-btn" id="speego-lang-toggle" aria-label="Change Language">
-									<i class="fas fa-globe"></i>
-									<span id="speego-current-lang-text">EN</span>
-									<i class="fas fa-chevron-down" style="font-size: 10px; margin-left: 2px;"></i>
-								</button>
-								<div class="speego-lang-dropdown" id="speego-lang-dropdown">
-									<div class="speego-lang-option active" data-lang="en">🇬🇧 EN (English)</div>
-									<div class="speego-lang-option" data-lang="vi">🇻🇳 VI (Tiếng Việt)</div>
-									<div class="speego-lang-option" data-lang="es">🇪🇸 ES (Español)</div>
-								</div>
-							</div>
-
-							<!-- CTA Get a Quote Button in Nav (Image 2: Height 48px, Radius 12px, #FF6A00) -->
-							<a href="contact/index.html" class="speego-header-btn-quote">
-								<span data-i18n="hero_btn_quote">Get a Quote</span> <i class="fas fa-arrow-right" style="font-size: 13px;"></i>
-							</a>
-
-						</div>
+					<nav id="site-navigation" class="speego-main-navigation" role="navigation">
+						<ul class="speego-nav-menu" id="menu-main-menu">
+							<li class="speego-nav-item active"><a href="index.html" class="speego-nav-link" data-i18n="nav_home">Trang chủ</a></li>
+							<li class="speego-nav-item"><a href="#about-speego" class="speego-nav-link" data-i18n="nav_about">Về SpeeGo</a></li>
+							<li class="speego-nav-item"><a href="#services-speego" class="speego-nav-link" data-i18n="nav_services">Dịch vụ</a></li>
+							<li class="speego-nav-item"><a href="#process-speego" class="speego-nav-link" data-i18n="nav_process">Quy trình 8 bước</a></li>
+							<li class="speego-nav-item"><a href="#why-speego" class="speego-nav-link" data-i18n="nav_why">Vì sao chọn SpeeGo</a></li>
+							<li class="speego-nav-item"><a href="#news-speego" class="speego-nav-link" data-i18n="nav_news">Tin tức</a></li>
+						</ul>
 					</nav>
+
+					<!-- Header CTA Button (Dark Navy Pill with Arrow) -->
+					<div class="speego-header-cta-wrap">
+						<a href="#consultation-form" class="speego-header-quote-btn">
+							<span data-i18n="nav_quote_btn">Nhận báo giá</span>
+							<svg class="speego-header-quote-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+								<line x1="5" y1="12" x2="19" y2="12"></line>
+								<polyline points="12 5 19 12 12 19"></polyline>
+							</svg>
+						</a>
+					</div>
 				</div>
 			</div>
 		</header>
@@ -209,13 +217,13 @@
 					<div class="speego-hero-console" id="speego-hero-console">
 						<div class="speego-console-nav">
 							<button type="button" class="speego-console-tab active" data-target="console-intro">
-								<i class="fas fa-info-circle"></i> <span data-i18n="tab_intro">Introduction</span>
+								<span data-i18n="tab_intro">GIỚI THIỆU</span>
 							</button>
 							<button type="button" class="speego-console-tab" data-target="console-form">
-								<i class="fas fa-edit"></i> <span data-i18n="tab_form">Consultation</span>
+								<span data-i18n="tab_form">FORM NHẬP</span>
 							</button>
 							<button type="button" class="speego-console-tab" data-target="console-tracking">
-								<i class="fas fa-search-location"></i> <span data-i18n="tab_tracking">Tracking</span>
+								<span data-i18n="tab_tracking">TRACKING</span>
 							</button>
 						</div>
 
@@ -330,7 +338,7 @@
 			</div>
 		</section>
 
-		<!-- =================================================================
+				<!-- =================================================================
 		     ABOUT SPEEGO SECTION — layout: team + orange shape | copy
 		     ================================================================= -->
 		<section class="speego-about-section" id="about-speego">
@@ -346,104 +354,132 @@
 
 				<div class="speego-about-text">
 					<span class="speego-about-accent" aria-hidden="true"></span>
-					<h2 class="speego-about-heading" data-i18n="about_title">ABOUT US</h2>
+					<h2 class="speego-about-heading" data-i18n="about_title">VỀ CHÚNG TÔI</h2>
 					<p class="speego-about-desc" data-i18n="about_desc1">
 						<strong class="speego-brand-name">SpeeGo</strong> <strong class="speego-brand-logistics">Logistics</strong> tiên phong trong sản xuất đa lĩnh vực và cung ứng dịch vụ logistics toàn cầu, mang sứ mệnh kết nối chuỗi giá trị sản xuất – vận chuyển – phân phối, giúp doanh nghiệp mở rộng thị trường kinh doanh
 					</p>
-					<a href="about/index.html" class="speego-about-cta">
-						<span data-i18n="about_btn">Learn more</span> <i class="fas fa-arrow-right"></i>
+					<a href="#services-speego" class="speego-about-cta">
+						<span data-i18n="about_btn">Tìm hiểu thêm</span>
 					</a>
 				</div>
 			</div>
 		</section>
 
-		<!-- =================================================================
+						<!-- =================================================================
 		     SPEEGO 4 CORE SERVICES — design layout
 		     ================================================================= -->
 		<section class="speego-services-section" id="services-speego">
-			<div class="speego-services-bg-map" aria-hidden="true"></div>
-			<p class="speego-services-slogan" data-i18n="services_slogan">Your Cargo Our Commitment</p>
-
 			<div class="speego-services-inner">
 				<div class="speego-services-header">
-					<span class="speego-services-tag" data-i18n="services_tag">Our Capabilities</span>
-					<h2 class="speego-services-title" data-i18n="services_title">
-						<span class="speego-accent-num">4</span> Core Services of SpeeGo
-					</h2>
+					<h2 class="speego-services-title" data-i18n="services_title">Dịch vụ trọng tâm của SpeeGo Logistics</h2>
 					<p class="speego-services-subtitle" data-i18n="services_subtitle">
-						Comprehensive supply chain solutions tailored for import-export and e-commerce businesses.
+						Giải pháp chuỗi cung ứng toàn diện được thiết kế riêng cho các doanh nghiệp xuất nhập khẩu và e-commerce.
 					</p>
 				</div>
 
 				<div class="speego-services-grid">
+					<!-- Card 1: Sourcing & QC -->
 					<article class="speego-service-card">
 						<div class="speego-service-thumb">
-							<img src="wp-content/themes/logistica/images/015-speego-logistics-services-1.jpg" alt="Sourcing &amp; QC" loading="lazy"
-								onerror="this.src='wp-content/uploads/sites/2/2023/08/earth-surrounded-by-cardboard-boxes-cargo-container-ship-flying-plan-car-van-truck-1.jpg'">
-							<span class="speego-service-num">01</span>
-							<span class="speego-service-icon" aria-hidden="true"><i class="fas fa-search"></i></span>
-						</div>
+							<img src="wp-content/themes/logistica/images/015-speego-logistics-services-1.jpg" alt="Sourcing &amp; QC" loading="lazy">
+							</div>
 						<div class="speego-service-body">
+							<div class="speego-service-icon-box" aria-hidden="true">
+								<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">
+									<circle cx="11" cy="11" r="8"></circle>
+									<line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+								</svg>
+							</div>
 							<h3 class="speego-service-title" data-i18n="srv1_title">Sourcing &amp; QC</h3>
 							<p class="speego-service-text" data-i18n="srv1_desc">
-								Support in finding reputable suppliers, evaluating capabilities, and inspecting product quality before shipment to reduce supply chain risk.
+								Hỗ trợ tìm kiếm nhà cung cấp uy tín, đánh giá năng lực và kiểm tra chất lượng sản phẩm trước khi xuất hàng, giúp giảm rủi ro trong chuỗi cung ứng.
 							</p>
-							<a href="contact/index.html?service=sourcing" class="speego-service-link">
-								<span data-i18n="srv_learn_more">Learn More</span> <i class="fas fa-arrow-right"></i>
+							<a href="#consultation-form" class="speego-service-link">
+								<span data-i18n="srv_learn_more">Xem dịch vụ</span>
+								<svg class="speego-service-link-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+									<polyline points="9 18 15 12 9 6"></polyline>
+								</svg>
 							</a>
 						</div>
 					</article>
 
+					<!-- Card 2: Logistics -->
 					<article class="speego-service-card">
 						<div class="speego-service-thumb">
-							<img src="wp-content/themes/logistica/images/011-speego-logistics-services-2.jpg" alt="International Logistics" loading="lazy"
-								onerror="this.src='wp-content/uploads/sites/2/2023/08/aerial-view-cargo-ship-with-cargo-container-sea.jpg'">
-							<span class="speego-service-num">02</span>
-							<span class="speego-service-icon" aria-hidden="true"><i class="fas fa-ship"></i></span>
-						</div>
+							<img src="wp-content/themes/logistica/images/011-speego-logistics-services-2.jpg" alt="Logistics" loading="lazy">
+							</div>
 						<div class="speego-service-body">
-							<h3 class="speego-service-title" data-i18n="srv2_title">International Logistics</h3>
+							<div class="speego-service-icon-box" aria-hidden="true">
+								<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">
+									<path d="M17 1l4 4-4 4"></path>
+									<path d="M3 11V9a4 4 0 0 1 4-4h14"></path>
+									<path d="M7 23l-4-4 4-4"></path>
+									<path d="M21 13v2a4 4 0 0 1-4 4H3"></path>
+								</svg>
+							</div>
+							<h3 class="speego-service-title" data-i18n="srv2_title">Logistics</h3>
 							<p class="speego-service-text" data-i18n="srv2_desc">
-								International ocean and air freight solutions with flexible schedules, optimized costs, and transparent tracking.
+								Cung cấp giải pháp vận chuyển quốc tế bằng đường biển, đường hàng không với lịch trình linh hoạt, chi phí tối ưu và theo dõi minh bạch.
 							</p>
-							<a href="contact/index.html?service=logistics" class="speego-service-link">
-								<span data-i18n="srv_learn_more">Learn More</span> <i class="fas fa-arrow-right"></i>
+							<a href="#consultation-form" class="speego-service-link">
+								<span data-i18n="srv_learn_more">Xem dịch vụ</span>
+								<svg class="speego-service-link-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+									<polyline points="9 18 15 12 9 6"></polyline>
+								</svg>
 							</a>
 						</div>
 					</article>
 
+					<!-- Card 3: Fulfillment -->
 					<article class="speego-service-card">
 						<div class="speego-service-thumb">
-							<img src="wp-content/themes/logistica/images/013-speego-logistics-services-3.jpg" alt="Modern Fulfillment" loading="lazy"
-								onerror="this.src='wp-content/uploads/sites/2/2023/08/large-containers-with-cargo-delivered-by-cargo-train-railway-station.jpg'">
-							<span class="speego-service-num">03</span>
-							<span class="speego-service-icon" aria-hidden="true"><i class="fas fa-box-open"></i></span>
-						</div>
+							<img src="wp-content/themes/logistica/images/013-speego-logistics-services-3.jpg" alt="Fulfillment" loading="lazy">
+							</div>
 						<div class="speego-service-body">
-							<h3 class="speego-service-title" data-i18n="srv3_title">Modern Fulfillment</h3>
+							<div class="speego-service-icon-box" aria-hidden="true">
+								<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">
+									<path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+									<polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+									<line x1="12" y1="22.08" x2="12" y2="12"></line>
+								</svg>
+							</div>
+							<h3 class="speego-service-title" data-i18n="srv3_title">Fulfillment</h3>
 							<p class="speego-service-text" data-i18n="srv3_desc">
-								Warehousing, order processing, packing, and fast delivery to optimize operations and improve the customer experience.
+								Quản lý lưu kho, xử lý đơn hàng, đóng gói và giao hàng nhanh chóng, giúp doanh nghiệp tối ưu vận hành và nâng cao trải nghiệm khách hàng.
 							</p>
-							<a href="contact/index.html?service=fulfillment" class="speego-service-link">
-								<span data-i18n="srv_learn_more">Learn More</span> <i class="fas fa-arrow-right"></i>
+							<a href="#consultation-form" class="speego-service-link">
+								<span data-i18n="srv_learn_more">Xem dịch vụ</span>
+								<svg class="speego-service-link-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+									<polyline points="9 18 15 12 9 6"></polyline>
+								</svg>
 							</a>
 						</div>
 					</article>
 
+					<!-- Card 4: Xuất nhập khẩu -->
 					<article class="speego-service-card">
 						<div class="speego-service-thumb">
-							<img src="wp-content/themes/logistica/images/017-speego-logistics-services-4.jpg" alt="Import &amp; Export Customs" loading="lazy"
-								onerror="this.src='wp-content/uploads/sites/2/2023/08/cargo-ship-carrying-containers-export-import-is-shown-global-world-service-freight.jpg'">
-							<span class="speego-service-num">04</span>
-							<span class="speego-service-icon" aria-hidden="true"><i class="fas fa-file-alt"></i></span>
-						</div>
+							<img src="wp-content/themes/logistica/images/017-speego-logistics-services-4.jpg" alt="Xuất nhập khẩu" loading="lazy">
+							</div>
 						<div class="speego-service-body">
-							<h3 class="speego-service-title" data-i18n="srv4_title">Import &amp; Export Customs</h3>
+							<div class="speego-service-icon-box" aria-hidden="true">
+								<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">
+									<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+									<polyline points="14 2 14 8 20 8"></polyline>
+									<line x1="16" y1="13" x2="8" y2="13"></line>
+									<line x1="16" y1="17" x2="8" y2="17"></line>
+									<line x1="10" y1="9" x2="8" y2="9"></line>
+								</svg>
+							</div>
+							<h3 class="speego-service-title" data-i18n="srv4_title">Xuất nhập khẩu</h3>
 							<p class="speego-service-text" data-i18n="srv4_desc">
-								Advisory on procedures, documentation, customs declarations, and import-export workflows for compliant, smooth cargo movement.
+								Hỗ trợ tư vấn thủ tục, chứng từ, khai báo hải quan và các quy trình xuất nhập khẩu, giúp hàng hóa lưu thông thuận lợi và tuân thủ quy định.
 							</p>
-							<a href="contact/index.html?service=customs" class="speego-service-link">
-								<span data-i18n="srv_learn_more">Learn More</span> <i class="fas fa-arrow-right"></i>
+							<a href="#consultation-form" class="speego-service-link">
+								<span data-i18n="srv_learn_more">Xem dịch vụ</span>
+								<svg class="speego-service-link-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+									<polyline points="9 18 15 12 9 6"></polyline>
+								</svg>
 							</a>
 						</div>
 					</article>
@@ -458,7 +494,7 @@
 			<div class="speego-trust-section__inner">
 				<header class="speego-trust-section__header">
 					<span class="speego-trust-section__accent" aria-hidden="true"></span>
-					<h2 class="speego-trust-section__title" data-i18n="trust_section_title">SpeeGo Commitments</h2>
+					<h2 class="speego-trust-section__title" data-i18n="trust_section_title">Cam kết của SpeeGo Logistics</h2>
 					<p class="speego-trust-section__subtitle" data-i18n="trust_section_subtitle">Safety, schedule, cost clarity, and long-term partnership — built into every shipment.</p>
 				</header>
 
@@ -606,7 +642,7 @@ FURTHER</div>
 				<!-- =================================================================
 		     WHY CHOOSE SPEEGO — mỗi ảnh = 1 nội dung
 		     ================================================================= -->
-		<section class="speego-why-section" id="why-speego" data-why-cinematic>
+		<section class="speego-why-section" id="why-speego">
 			<div class="speego-why-inner">
 				<header class="speego-why-header">
 					<span class="speego-why-accent" aria-hidden="true"></span>
@@ -616,7 +652,45 @@ FURTHER</div>
 					</p>
 				</header>
 
-				<div class="speego-why-pairs">
+				<div class="speego-why-container">
+					<div class="speego-why-banner">
+						<img class="speego-why-banner-video" src="wp-content/themes/logistica/images/why-speego-video.webp" alt="Máy bay và xe tải SpeeGo Logistics đang vận hành" decoding="async">
+					</div>
+					<div class="speego-why-grid">
+						<article class="speego-why-cell">
+							<span class="speego-why-cell-icon" aria-hidden="true"><svg viewBox="0 0 24 14"><path d="M2 2l5 5-5 5M10 2l5 5-5 5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+							<h3 class="speego-why-cell-title" data-i18n="why1_title">Chuỗi cung ứng đa lĩnh vực</h3>
+							<p class="speego-why-cell-desc" data-i18n="why1_desc">Đáp ứng nhu cầu sản xuất và vận chuyển quốc tế cho doanh nghiệp.</p>
+						</article>
+						<article class="speego-why-cell">
+							<span class="speego-why-cell-icon" aria-hidden="true"><svg viewBox="0 0 24 14"><path d="M2 2l5 5-5 5M10 2l5 5-5 5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+							<h3 class="speego-why-cell-title" data-i18n="why2_title">Mạng lưới nhà máy rộng khắp TQ, VN</h3>
+							<p class="speego-why-cell-desc" data-i18n="why2_desc">Kết nối đối tác, nhà máy và xưởng sản xuất tại Trung Quốc và Việt Nam.</p>
+						</article>
+						<article class="speego-why-cell">
+							<span class="speego-why-cell-icon" aria-hidden="true"><svg viewBox="0 0 24 14"><path d="M2 2l5 5-5 5M10 2l5 5-5 5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+							<h3 class="speego-why-cell-title" data-i18n="why3_title">Đa dạng phương thức vận chuyển</h3>
+							<p class="speego-why-cell-desc" data-i18n="why3_desc">Linh hoạt vận chuyển đường biển và đường hàng không.</p>
+						</article>
+						<article class="speego-why-cell">
+							<span class="speego-why-cell-icon" aria-hidden="true"><svg viewBox="0 0 24 14"><path d="M2 2l5 5-5 5M10 2l5 5-5 5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+							<h3 class="speego-why-cell-title" data-i18n="why4_title">Cam kết không chi phí ẩn</h3>
+							<p class="speego-why-cell-desc" data-i18n="why4_desc">Báo giá chi tiết, minh bạch cho từng hạng mục.</p>
+						</article>
+						<article class="speego-why-cell">
+							<span class="speego-why-cell-icon" aria-hidden="true"><svg viewBox="0 0 24 14"><path d="M2 2l5 5-5 5M10 2l5 5-5 5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+							<h3 class="speego-why-cell-title" data-i18n="why5_title">Đội ngũ hỗ trợ nhanh chóng</h3>
+							<p class="speego-why-cell-desc" data-i18n="why5_desc">Chuyên viên giàu kinh nghiệm luôn sẵn sàng đồng hành.</p>
+						</article>
+						<article class="speego-why-cell">
+							<span class="speego-why-cell-icon" aria-hidden="true"><svg viewBox="0 0 24 14"><path d="M2 2l5 5-5 5M10 2l5 5-5 5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+							<h3 class="speego-why-cell-title" data-i18n="why6_title">Tracking bằng hệ thống OMS</h3>
+							<p class="speego-why-cell-desc" data-i18n="why6_desc">Theo dõi tình trạng lô hàng nhanh chóng, thuận tiện và chính xác.</p>
+						</article>
+					</div>
+				</div>
+
+				<div class="speego-why-pairs" aria-hidden="true">
 					<article class="speego-why-pair" data-why-pair data-asset="plane">
 						<figure class="speego-why-pair__visual">
 							<img src="wp-content/themes/logistica/images/lydochon1.png?v=plane3" alt="" decoding="async" loading="lazy">
@@ -697,6 +771,69 @@ FURTHER</div>
 		     ================================================================= -->
 		<section class="speego-section-alt speego-partners-section" id="partners-speego">
 			<div class="speego-partners-map" aria-hidden="true"></div>
+			<div class="speego-partners-layout">
+				<div class="speego-partners-split">
+					<div class="speego-partners-intro">
+						<span class="speego-partners-kicker">STRATEGIC ALLIANCES</span>
+						<h2>Tuyến vận chuyển<br>toàn cầu đáng tin cậy</h2>
+						<p>SpeeGo Logistics kết nối doanh nghiệp với mạng lưới hãng bay, đối tác vận tải và nhà máy tại Trung Quốc, Việt Nam.</p>
+						<div class="speego-partners-intro__line" aria-hidden="true"></div>
+						<span class="speego-partners-intro__note">Kết nối trực tiếp · Theo dõi minh bạch · Đồng hành trọn chuỗi</span>
+					</div>
+					<div class="speego-partners-panels">
+						<section class="speego-partners-panel">
+							<h3>Đối tác vận chuyển</h3>
+							<div class="speego-partners-panel__logos">
+								<img src="wp-content/themes/logistica/images/logos-partners/025-Vietnam_Airlines_logo.svg_.png" alt="Vietnam Airlines Cargo" loading="lazy">
+								<img src="wp-content/themes/logistica/images/logos-partners/029-Press-Release-image-Cathay-Cargo-Logo-scaled.png" alt="Cathay Cargo" loading="lazy">
+								<img src="wp-content/themes/logistica/images/logos-partners/028-Singapore-Airlines-Cargo-Logo-scaled.png" alt="Singapore Airlines Cargo" loading="lazy">
+								<img src="wp-content/themes/logistica/images/logos-partners/026-Air_Canada_Cargo_logo.svg_.png" alt="Air Canada Cargo" loading="lazy">
+								<img src="wp-content/themes/logistica/images/logos-partners/024-American-Airlines-Cargo_0.png" alt="American Airlines Cargo" loading="lazy">
+								<img src="wp-content/themes/logistica/images/logos-partners/031-Logo_di_Air_China_Cargo.png" alt="Air China Cargo" loading="lazy">
+							</div>
+						</section>
+						<section class="speego-partners-panel speego-partners-panel--factories">
+							<h3>Nhà máy</h3>
+							<div class="speego-factory-grid">
+								<div><strong>Trung Quốc</strong><span>Mạng lưới nhà máy đa ngành, hỗ trợ MOQ linh hoạt.</span></div>
+								<div><strong>Việt Nam</strong><span>Đối tác sản xuất và kiểm định chất lượng tận nơi.</span></div>
+							</div>
+						</section>
+					</div>
+				</div>
+				<header class="speego-section-header speego-partners-header">
+					<h2 class="speego-partners-title">Tuyến vận chuyển quốc tế</h2>
+					<p class="speego-section-subtitle">Kết nối linh hoạt từ Trung Quốc và Việt Nam đến các thị trường trọng điểm.</p>
+				</header>
+				<div class="speego-route-grid">
+					<article class="speego-route-card">
+						<h3 class="speego-route-card__title"><svg viewBox="0 0 24 14" aria-hidden="true"><path d="M2 2l5 5-5 5M10 2l5 5-5 5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Tuyến Trung Quốc</h3>
+						<ul class="speego-route-list">
+							<li class="speego-route-row"><span class="speego-route-row__marker">›</span><span>Trung Quốc → Mỹ</span><small>FCL · LCL · Air</small></li>
+							<li class="speego-route-row"><span class="speego-route-row__marker">›</span><span>Trung Quốc → Canada</span><small>FCL · LCL</small></li>
+							<li class="speego-route-row"><span class="speego-route-row__marker">›</span><span>Trung Quốc → Úc</span><small>FCL · LCL</small></li>
+							<li class="speego-route-row"><span class="speego-route-row__marker">›</span><span>Trung Quốc → thị trường khác</span><small>theo yêu cầu</small></li>
+						</ul>
+					</article>
+					<article class="speego-route-card">
+						<h3 class="speego-route-card__title"><svg viewBox="0 0 24 14" aria-hidden="true"><path d="M2 2l5 5-5 5M10 2l5 5-5 5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Tuyến Việt Nam</h3>
+						<ul class="speego-route-list">
+							<li class="speego-route-row"><span class="speego-route-row__marker">›</span><span>Việt Nam → Mỹ</span><small>FCL · LCL · Air</small></li>
+							<li class="speego-route-row"><span class="speego-route-row__marker">›</span><span>Việt Nam → Canada</span><small>FCL · LCL</small></li>
+							<li class="speego-route-row"><span class="speego-route-row__marker">›</span><span>Việt Nam → Úc</span><small>FCL · LCL</small></li>
+							<li class="speego-route-row"><span class="speego-route-row__marker">›</span><span>Fulfillment tại Texas, Mỹ</span><small>kho &amp; giao nội địa</small></li>
+						</ul>
+					</article>
+				</div>
+				<div class="speego-route-logo-grid" aria-label="Đối tác vận chuyển">
+					<div class="speego-route-logo-card"><img src="wp-content/themes/logistica/images/logos-partners/025-Vietnam_Airlines_logo.svg_.png" alt="Vietnam Airlines Cargo" loading="lazy"></div>
+					<div class="speego-route-logo-card"><img src="wp-content/themes/logistica/images/logos-partners/029-Press-Release-image-Cathay-Cargo-Logo-scaled.png" alt="Cathay Cargo" loading="lazy"></div>
+					<div class="speego-route-logo-card"><img src="wp-content/themes/logistica/images/logos-partners/028-Singapore-Airlines-Cargo-Logo-scaled.png" alt="Singapore Airlines Cargo" loading="lazy"></div>
+					<div class="speego-route-logo-card"><img src="wp-content/themes/logistica/images/logos-partners/026-Air_Canada_Cargo_logo.svg_.png" alt="Air Canada Cargo" loading="lazy"></div>
+					<div class="speego-route-logo-card"><img src="wp-content/themes/logistica/images/logos-partners/024-American-Airlines-Cargo_0.png" alt="American Airlines Cargo" loading="lazy"></div>
+					<div class="speego-route-logo-card"><img src="wp-content/themes/logistica/images/logos-partners/031-Logo_di_Air_China_Cargo.png" alt="Air China Cargo" loading="lazy"></div>
+				</div>
+			</div>
 			<div class="speego-section-header speego-partners-header">
 				<span class="speego-section-tag" data-i18n="partner_tag">Mạng Lưới Đối Tác</span>
 				<h2 class="speego-partners-title">
@@ -782,10 +919,10 @@ FURTHER</div>
 						<img src="wp-content/uploads/sites/2/2023/08/loaded-container-cargo-ship-is-seen-front-as-it-speeds-ocean-generative-ai.jpg" alt="Ocean freight trends" loading="lazy">
 					</div>
 					<div class="speego-service-body">
-						<span style="font-size: 12px; color: var(--speego-accent); font-weight: 700; text-transform: uppercase;">Freight Market</span>
-						<h3 class="speego-service-title" style="font-size: 18px; margin-top: 6px;">Trans-Pacific Ocean Rates Outlook &amp; Peak Season Prep</h3>
-						<p class="speego-service-text">Key strategies for importers to secure vessel capacity and avoid port demurrage during peak Q3/Q4 shipping cycles.</p>
-						<a href="news/index.html" class="speego-service-link">Read Analysis <i class="fas fa-arrow-right"></i></a>
+						<span style="font-size: 12px; color: var(--speego-accent); font-weight: 700; text-transform: uppercase;" data-i18n="news1_cat">Freight Market</span>
+						<h3 class="speego-service-title" style="font-size: 18px; margin-top: 6px;" data-i18n="news1_title">Trans-Pacific Ocean Rates Outlook &amp; Peak Season Prep</h3>
+						<p class="speego-service-text" data-i18n="news1_desc">Key strategies for importers to secure vessel capacity and avoid port demurrage during peak Q3/Q4 shipping cycles.</p>
+						<a href="news/index.html" class="speego-service-link"><span data-i18n="news_read">Read Analysis</span> <i class="fas fa-arrow-right"></i></a>
 					</div>
 				</div>
 
@@ -794,10 +931,10 @@ FURTHER</div>
 						<img src="wp-content/uploads/sites/2/2023/08/global-logistic-airplane-parcel-box-concept-air-delivery-shipping-generative-ai.jpg" alt="Air Cargo" loading="lazy">
 					</div>
 					<div class="speego-service-body">
-						<span style="font-size: 12px; color: var(--speego-accent); font-weight: 700; text-transform: uppercase;">Air Freight</span>
-						<h3 class="speego-service-title" style="font-size: 18px; margin-top: 6px;">Fast-Track Cosmetics &amp; E-Commerce Clearance in the US</h3>
-						<p class="speego-service-text">Understanding FDA prior notice, Section 321 exemptions, and expedited air customs declarations for rapid stock turn.</p>
-						<a href="news/index.html" class="speego-service-link">Read Analysis <i class="fas fa-arrow-right"></i></a>
+						<span style="font-size: 12px; color: var(--speego-accent); font-weight: 700; text-transform: uppercase;" data-i18n="news2_cat">Air Freight</span>
+						<h3 class="speego-service-title" style="font-size: 18px; margin-top: 6px;" data-i18n="news2_title">Fast-Track Cosmetics &amp; E-Commerce Clearance in the US</h3>
+						<p class="speego-service-text" data-i18n="news2_desc">Understanding FDA prior notice, Section 321 exemptions, and expedited air customs declarations for rapid stock turn.</p>
+						<a href="news/index.html" class="speego-service-link"><span data-i18n="news_read">Read Analysis</span> <i class="fas fa-arrow-right"></i></a>
 					</div>
 				</div>
 
@@ -848,22 +985,23 @@ FURTHER</div>
 
 			<div class="speego-consult-stage">
 				<div class="speego-consult-video-frame">
-					<video
-						id="speego-consult-video"
-						class="speego-consult-video"
-						autoplay
-						muted
-						loop
-						playsinline
-						preload="auto"
-						poster="wp-content/themes/logistica/images/anh-nen.png"
-					>
+					<video class="speego-consult-video" autoplay muted loop playsinline preload="metadata" poster="wp-content/themes/logistica/images/anh-nen.png" aria-hidden="true">
 						<source src="wp-content/themes/logistica/images/consult-video.mp4" type="video/mp4">
 					</video>
 					<div class="speego-consult-video-shade" aria-hidden="true"></div>
 				</div>
+				<div class="speego-consult-copy">
+					<span>FORM TƯ VẤN</span>
+					<h2>Gửi thông tin lô hàng,<br>nhận báo giá chi<br>tiết từng hạng mục.</h2>
+					<p>Chuyên viên SpeeGo phản hồi trong giờ làm việc, kèm phương án vận chuyển và mốc thời gian dự kiến.</p>
+					<a href="tel:0983887065"><i class="fas fa-phone-alt" aria-hidden="true"></i> 0983 887 065</a>
+				</div>
 
 				<div class="speego-form-container speego-form-container--featured speego-form-container--overlay">
+					<div class="speego-form-heading">
+						<h3>Đăng ký tư vấn miễn phí</h3>
+						<p>Thông tin của bạn chỉ dùng để liên hệ tư vấn.</p>
+					</div>
 					<div class="speego-form-invite" aria-hidden="true">
 						<span class="speego-form-invite__dot"></span>
 						<span data-i18n="form_invite">Điền ngay · phản hồi trong 2 giờ</span>
@@ -1071,6 +1209,6 @@ FURTHER</div>
 	<script src="wp-includes/js/jquery/jquery.minf43b.js?ver=3.7.1"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-	<script src="wp-content/themes/logistica/js/speego-main.js?v=process-i18n1"></script>
+	<script src="wp-content/themes/logistica/js/speego-main.js?v=header-scroll15"></script>
 </body>
 </html>
