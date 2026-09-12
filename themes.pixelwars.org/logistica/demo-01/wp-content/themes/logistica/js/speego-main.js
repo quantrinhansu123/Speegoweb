@@ -157,6 +157,9 @@
       process_tag: 'STANDARDIZED PROCESS',
       process_title: '8-Step Operating Process',
       process_subtitle: 'Transparent at every stage — from idea to goods arriving at your warehouse.',
+      process_step_label: 'STEP',
+      process_micro_brand: 'CONNECT BUSINESSES\nWITH THE WORLD',
+      process_side_copy: 'FASTER\nSAFER\nSMARTER\nTOGETHER\nFURTHER',
       step_btn1: 'Intake',
       step_btn2: 'Consult',
       step_btn3: 'Sourcing',
@@ -402,6 +405,9 @@
       process_tag: 'QUY TRÌNH CHUẨN HÓA',
       process_title: 'Quy Trình Vận Hành 8 Bước',
       process_subtitle: 'Minh bạch từng giai đoạn, đồng hành cùng quý doanh nghiệp từ ý tưởng đến khi hàng hóa vào tận kho.',
+      process_step_label: 'BƯỚC',
+      process_micro_brand: 'KẾT NỐI DOANH NGHIỆP\nVỚI THẾ GIỚI',
+      process_side_copy: 'NHANH HƠN\nAN TOÀN HƠN\nTHÔNG MINH HƠN\nCÙNG NHAU\nVƯƠN XA',
       step_btn1: 'Tiếp nhận',
       step_btn2: 'Tư vấn',
       step_btn3: 'Tìm nguồn',
@@ -647,6 +653,9 @@
       process_tag: 'PROCESO ESTANDARIZADO',
       process_title: 'Proceso Operativo de 8 Pasos',
       process_subtitle: 'Transparencia en cada etapa, acompañando a su empresa desde la idea hasta que la mercancía llega al almacén.',
+      process_step_label: 'PASO',
+      process_micro_brand: 'CONECTAMOS EMPRESAS\nCON EL MUNDO',
+      process_side_copy: 'MÁS RÁPIDO\nMÁS SEGURO\nMÁS INTELIGENTE\nJUNTOS\nMÁS LEJOS',
       step_btn1: 'Recepción',
       step_btn2: 'Consulta',
       step_btn3: 'Sourcing',
@@ -1227,7 +1236,7 @@
 
     // Re-render active process step detail with current language
     if (typeof renderStepDetail === 'function') {
-      renderStepDetail(currentActiveStep, false);
+      renderStepDetail(currentActiveStep, false, { force: true, skipProgress: true });
     }
 
     // Re-render active hero text slide with current language
@@ -1517,10 +1526,16 @@
     if (!numEl || !line1 || !line2 || !desc) return;
 
     const pad = String(stepData.step).padStart(2, '0');
+    var pack = i18nData[currentLang] || i18nData.en;
+    var stepWord = (pack && pack.process_step_label) || 'STEP';
     numEl.textContent = pad;
     line1.textContent = langData.line1;
     line2.textContent = langData.line2;
     desc.textContent = langData.desc;
+    var stepLabelEl = document.getElementById('process-step-label');
+    if (stepLabelEl) {
+      stepLabelEl.textContent = stepWord;
+    }
     if (nextLabel) {
       nextLabel.textContent = langData.next || (currentLang === 'vi' ? 'Khám phá bước tiếp theo' : 'Explore the next step');
     }
@@ -1528,7 +1543,7 @@
       activeTitle.textContent = langData.title;
     }
     if (counter) {
-      counter.innerHTML = 'BƯỚC <strong>' + pad + '</strong> / 08';
+      counter.innerHTML = stepWord + ' <strong>' + pad + '</strong> / 08';
     }
 
     if (section) {
@@ -1555,7 +1570,7 @@
       if (stepObj) {
         var tipData = stepObj[currentLang] || stepObj.en;
         btn.setAttribute('data-label', tipData.title);
-        btn.setAttribute('aria-label', 'Bước ' + stepId + ': ' + tipData.title);
+        btn.setAttribute('aria-label', stepWord + ' ' + stepId + ': ' + tipData.title);
         if (tip) tip.textContent = tipData.title;
       }
     });

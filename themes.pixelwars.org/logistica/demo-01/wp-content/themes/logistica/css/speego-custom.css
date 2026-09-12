@@ -18,7 +18,7 @@
   --speego-font: 'Inter', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
 
-/* Global typography: Inter sitewide (hero "Tá»« TÃ¬m Nguá»n HÃ ng" + all pages) */
+/* Global typography: Inter sitewide (hero "TÃ¡Â»Â« TÃÂ¬m NguÃ¡Â»Ân HÃÂ ng" + all pages) */
 html,
 body,
 .site,
@@ -874,7 +874,7 @@ h1, h2, h3, h4, h5, h6,
 }
 
 /* ==========================================
-   HERO RIGHT COLUMN â Intro / Form / Tracking
+   HERO RIGHT COLUMN Ã¢ÂÂ Intro / Form / Tracking
    ========================================== */
 .speego-hero-right {
   flex: 0 1 520px;
@@ -1186,7 +1186,7 @@ h1, h2, h3, h4, h5, h6,
 }
 
 /* ==========================================================================
-   UPS TRACKING MODAL â SpeeGo logo chrome (navy + orange)
+   UPS TRACKING MODAL Ã¢ÂÂ SpeeGo logo chrome (navy + orange)
    ========================================================================== */
 body.speego-track-modal-open {
   overflow: hidden;
@@ -1197,9 +1197,9 @@ body.speego-track-modal-open {
   inset: 0;
   z-index: 10050;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 24px;
+  align-items: stretch;
+  justify-content: stretch;
+  padding: 0;
 }
 
 .speego-track-modal[hidden] {
@@ -1223,15 +1223,13 @@ body.speego-track-modal-open {
   z-index: 1;
   display: flex;
   flex-direction: column;
-  width: min(920px, 100%);
-  height: min(860px, calc(100vh - 48px));
-  border-radius: 18px;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  border-radius: 0;
   overflow: hidden;
   background: #ffffff;
-  box-shadow:
-    0 0 0 1px rgba(242, 100, 25, 0.35),
-    0 0 0 4px rgba(4, 36, 61, 0.35),
-    0 28px 80px rgba(4, 36, 61, 0.45);
+  box-shadow: none;
   animation: speegoTrackModalIn 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
@@ -1658,12 +1656,14 @@ body.speego-track-modal-open {
 
 @media (max-width: 768px) {
   .speego-track-modal {
-    padding: 12px;
+    padding: 0;
   }
 
   .speego-track-modal__dialog {
-    height: calc(100vh - 24px);
-    border-radius: 14px;
+    width: 100%;
+    height: 100%;
+    height: 100dvh;
+    border-radius: 0;
   }
 
   .speego-track-modal__chrome {
@@ -1887,7 +1887,7 @@ body.speego-track-modal-open {
 }
 
 /* ==========================================
-   4 CORE SERVICES â DESIGN LAYOUT
+   4 CORE SERVICES Ã¢ÂÂ DESIGN LAYOUT
    ========================================== */
 .speego-services-section {
   position: relative;
@@ -2106,7 +2106,7 @@ body.speego-track-modal-open {
 }
 
 /* ==========================================
-   TRUST COMMITMENTS — hạng mục riêng
+   TRUST COMMITMENTS â háº¡ng má»¥c riÃªng
    ========================================== */
 .speego-trust-section {
   position: relative;
@@ -2175,7 +2175,7 @@ body.speego-track-modal-open {
   box-sizing: border-box;
 }
 
-/* Top accent only — not a full orange border */
+/* Top accent only â not a full orange border */
 .speego-trust-bar::before {
   content: "";
   position: absolute;
@@ -2489,7 +2489,7 @@ body.speego-track-modal-open {
 }
 
 /* ==========================================
-   WHY CHOOSE SPEEGO — ảnh nguyên thể, chữ logo
+   WHY CHOOSE SPEEGO â áº£nh nguyÃªn thá», chá»¯ logo
    ========================================== */
 .speego-why-section {
   position: relative;
@@ -2578,7 +2578,7 @@ body.speego-track-modal-open {
   order: 1;
 }
 
-/* Plane rows — vật thể x2 */
+/* Plane rows â váº­t thá» x2 */
 .speego-why-pair[data-asset="plane"],
 .speego-why-pair[data-asset="plane-network"],
 .speego-why-pair[data-asset="plane-cost"] {
@@ -2622,7 +2622,7 @@ body.speego-track-modal-open {
   transform-origin: center right;
 }
 
-/* Tàu — x2 */
+/* TÃ u â x2 */
 .speego-why-pair[data-asset="ship"] .speego-why-pair__visual {
   justify-content: flex-end;
 }
@@ -2635,7 +2635,7 @@ body.speego-track-modal-open {
   will-change: transform;
 }
 
-/* Ảnh nguyên thể — không khung */
+/* áº¢nh nguyÃªn thá» â khÃ´ng khung */
 .speego-why-pair__visual {
   margin: 0;
   position: relative;
@@ -2663,7 +2663,7 @@ body.speego-track-modal-open {
   transform-origin: center center;
 }
 
-/* Chữ + số trái + máy bay scroll */
+/* Chá»¯ + sá» trÃ¡i + mÃ¡y bay scroll */
 .speego-why-pair__card {
   display: flex;
   align-items: stretch;
@@ -2899,7 +2899,7 @@ body.speego-track-modal-open {
 }
 
 /* ==========================================
-   CONSULTATION — FULL-BLEED VIDEO + COMPACT INVITE FORM
+   CONSULTATION â FULL-BLEED VIDEO + COMPACT INVITE FORM
    ========================================== */
 .speego-consult-section {
   padding: 72px 0 0 !important;
@@ -3081,7 +3081,7 @@ body.speego-track-modal-open {
       0 18px 40px rgba(4, 36, 61, 0.28);
   }
   50% {
-    /* Glow only — keep form glued to bottom so logo stays covered */
+    /* Glow only â keep form glued to bottom so logo stays covered */
     transform: translateY(0);
     box-shadow:
       0 0 0 1px rgba(242, 100, 25, 0.35),
@@ -3294,7 +3294,7 @@ body.speego-track-modal-open {
   font-weight: 900 !important;
   letter-spacing: -0.035em !important;
   line-height: 1.05 !important;
-  color: var(--speego-primary) !important; /* cùng màu Why titles / logo navy */
+  color: var(--speego-primary) !important; /* cÃ¹ng mÃ u Why titles / logo navy */
   margin: 12px 0 20px;
   overflow: hidden;
   white-space: nowrap;
@@ -3322,7 +3322,7 @@ body.speego-track-modal-open {
   display: inline-block;
   flex-shrink: 0;
   white-space: nowrap;
-  color: var(--speego-primary); /* cùng màu Why titles / logo navy */
+  color: var(--speego-primary); /* cÃ¹ng mÃ u Why titles / logo navy */
   font: inherit;
 }
 
@@ -3435,7 +3435,7 @@ body.speego-track-modal-open {
   }
 }
 
-/* Direct Logo Presentation (HoÃ n toÃ n khÃ´ng cÃ³ khung, chá» láº¥y tháº³ng logo) */
+/* Direct Logo Presentation (HoÃÂ n toÃÂ n khÃÂ´ng cÃÂ³ khung, chÃ¡Â»Â lÃ¡ÂºÂ¥y thÃ¡ÂºÂ³ng logo) */
 .speego-partner-card,
 .speego-partner-item {
   background: transparent !important;
@@ -3464,7 +3464,7 @@ body.speego-track-modal-open {
   border: none !important;
 }
 
-/* Logo Image - To, rÃµ nÃ©t, kÃ­ch thÆ°á»c lá»n, mÃ u sáº¯c trung thá»±c */
+/* Logo Image - To, rÃÂµ nÃÂ©t, kÃÂ­ch thÃÂ°Ã¡Â»Âc lÃ¡Â»Ân, mÃÂ u sÃ¡ÂºÂ¯c trung thÃ¡Â»Â±c */
 .speego-partner-logo-img {
   height: 75px;
   max-height: 85px;
@@ -3554,7 +3554,7 @@ body.speego-track-modal-open {
   font-size: 28px;
   line-height: 1;
   letter-spacing: 0.08em;
-  color: #E85A00; /* cam đậm */
+  color: #E85A00; /* cam Äáº­m */
   -webkit-text-stroke: 0.4px #C44A00;
 }
 
@@ -3761,21 +3761,24 @@ body.speego-track-modal-open {
    IMAGE 2 SPECIFICATION: SPEEGO HERO SECTION, STATS & TRUST BAR
    ========================================================================== */
 
-/* Main Hero Section Container â full viewport */
+/* Main Hero Section Container — luôn full màn hình khi mở */
 .speego-hero-section {
   position: relative;
   width: 100%;
+  height: 100vh;
+  height: 100dvh;
   min-height: 100vh;
-  min-height: 100svh;
+  min-height: 100dvh;
   display: flex;
   flex-direction: row;
   align-items: center;
   overflow: hidden;
   background: #FFFFFF;
   padding-top: 80px; /* Offset for 80px header */
+  box-sizing: border-box;
 }
 
-/* Background video â zoomed, full-bleed */
+/* Background video Ã¢ÂÂ zoomed, full-bleed */
 .speego-hero-bg-media {
   position: absolute;
   inset: 0;
@@ -3788,7 +3791,7 @@ body.speego-track-modal-open {
   position: absolute;
   top: 50%;
   left: 50%;
-  /* Near-natural framing â only slight cover crop */
+  /* Near-natural framing Ã¢ÂÂ only slight cover crop */
   width: 100%;
   height: 100%;
   min-width: 100%;
@@ -3811,7 +3814,7 @@ body.speego-track-modal-open {
   pointer-events: none;
 }
 
-/* Soft black blur band at bottom â raised higher to hide watermark/logo */
+/* Soft black blur band at bottom Ã¢ÂÂ raised higher to hide watermark/logo */
 .speego-hero-video-bottom-mask {
   position: absolute;
   left: 0;
@@ -3852,7 +3855,7 @@ body.speego-track-modal-open {
   filter: blur(10px);
 }
 
-/* Linear Gradient Overlay â keep left text readable */
+/* Linear Gradient Overlay Ã¢ÂÂ keep left text readable */
 .speego-hero-gradient-overlay {
   position: absolute;
   top: 0;
@@ -3864,7 +3867,7 @@ body.speego-track-modal-open {
   background: linear-gradient(90deg, rgba(255, 255, 255, 0.92) 0%, rgba(255, 255, 255, 0.68) 42%, rgba(255, 255, 255, 0.15) 68%, rgba(255, 255, 255, 0) 100%);
 }
 
-/* Hero Content Wrapper â 2 columns: copy | console */
+/* Hero Content Wrapper Ã¢ÂÂ 2 columns: copy | console */
 .speego-hero-container {
   position: relative;
   z-index: 5;
@@ -3909,7 +3912,7 @@ body.speego-track-modal-open {
   border-radius: 2px;
 }
 
-/* H1 - Heading: Inter / Bold â sized for 2-col hero with console */
+/* H1 - Heading: Inter / Bold Ã¢ÂÂ sized for 2-col hero with console */
 .speego-hero-heading {
   font-family: 'Inter', sans-serif;
   font-weight: 800;
@@ -3920,12 +3923,12 @@ body.speego-track-modal-open {
   letter-spacing: -0.025em;
 }
 
-/* "Äáº¿n" â logo blue */
+/* "ÃÂÃ¡ÂºÂ¿n" Ã¢ÂÂ logo blue */
 .speego-highlight-navy {
   color: var(--speego-primary-light) !important;
 }
 
-/* Orange highlight â logo orange, keep on one line */
+/* Orange highlight Ã¢ÂÂ logo orange, keep on one line */
 .speego-highlight-orange {
   color: var(--speego-accent) !important;
   white-space: nowrap;
@@ -4020,7 +4023,7 @@ body.speego-track-modal-open {
   color: #FF6A00;
 }
 
-/* Stats Row: Gap between items: 48px â always one horizontal row */
+/* Stats Row: Gap between items: 48px Ã¢ÂÂ always one horizontal row */
 .speego-hero-stats-row {
   display: flex;
   align-items: center;
@@ -4260,7 +4263,7 @@ body.speego-track-modal-open {
   transform: scale(1.04);
 }
 
-/* Interactive Console Section Container â removed from page; keep inert for safety */
+/* Interactive Console Section Container Ã¢ÂÂ removed from page; keep inert for safety */
 .speego-quick-tools-section {
   display: none;
 }
@@ -4426,7 +4429,7 @@ body.speego-track-modal-open {
 }
 
 /* ==========================================
-   NEWS — View All CTA
+   NEWS â View All CTA
    ========================================== */
 .speego-news-cta {
   display: flex;
@@ -4441,7 +4444,7 @@ body.speego-track-modal-open {
 }
 
 /* ==========================================
-   FOOTER — offices full detail
+   FOOTER â offices full detail
    ========================================== */
 .speego-site-footer {
   background: #041a2d;
@@ -4637,7 +4640,7 @@ body.speego-track-modal-open {
 }
 
 /* ==========================================
-   SECTION TITLES — letter reveal (QI-style)
+   SECTION TITLES â letter reveal (QI-style)
    ========================================== */
 .speego-section-title,
 .speego-services-title,
