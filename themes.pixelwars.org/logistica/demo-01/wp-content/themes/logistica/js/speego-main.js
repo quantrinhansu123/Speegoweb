@@ -2047,82 +2047,232 @@
   // =========================================================================
   // 8b. WHY SPEEGO — scroll: layers zoom toward camera (tiến gần màn hình)
   // =========================================================================
+  // =========================================================================
+  // 8b. WHY SPEEGO — AUTONOMOUS CINEMATIC MOTION (TRIGGERED ONCE BY SCROLL)
+  // =========================================================================
   function initWhyCinematic() {
     var section = document.querySelector('[data-why-cinematic]');
-    var track = section && section.querySelector('[data-why-track]');
-    if (!section || !track) return;
+    if (!section) return;
 
-    var port = section.querySelector('[data-why-layer="port"]');
-    var ship = section.querySelector('[data-why-layer="ship"]');
     var plane = section.querySelector('[data-why-layer="plane"]');
     var truck = section.querySelector('[data-why-layer="truck"]');
-    var cards = section.querySelectorAll('[data-why-card]');
+    var ship = section.querySelector('[data-why-layer="ship"]');
+    var port = section.querySelector('[data-why-layer="port"]');
+    var leftCards = section.querySelectorAll('.speego-why-col--left [data-why-card]');
+    var rightCards = section.querySelectorAll('.speego-why-col--right [data-why-card]');
+    var header = section.querySelector('.speego-why-header');
+
     var reduced = prefersReducedMotion();
-
-    function clamp(n, a, b) {
-      return Math.max(a, Math.min(b, n));
+    if (reduced) {
+      if (plane) { plane.style.opacity = '1'; plane.style.transform = 'none'; plane.style.filter = ''; }
+      if (truck) { truck.style.opacity = '1'; truck.style.transform = 'none'; truck.style.filter = ''; }
+      if (ship) { ship.style.opacity = '1'; ship.style.transform = 'none'; ship.style.filter = ''; }
+      if (port) { port.style.opacity = '1'; port.style.transform = 'none'; port.style.filter = ''; }
+      if (header) { header.style.opacity = '1'; header.style.transform = 'none'; }
+      leftCards.forEach(function (c) { c.style.opacity = '1'; c.style.visibility = 'visible'; c.style.transform = 'none'; c.style.filter = ''; });
+      rightCards.forEach(function (c) { c.style.opacity = '1'; c.style.visibility = 'visible'; c.style.transform = 'none'; c.style.filter = ''; });
+      return;
     }
 
-    function lerp(a, b, t) {
-      return a + (b - a) * t;
+    var isMobile = window.innerWidth <= 768;
+    var cardDistX = isMobile ? 30 : 80;
+
+    // Ordered 6 reason cards
+    var allReasons = [
+      { el: leftCards[0], side: -1, time: 2.0 },
+      { el: leftCards[1], side: -1, time: 2.5 },
+      { el: leftCards[2], side: -1, time: 3.0 },
+      { el: rightCards[0], side: 1, time: 3.5 },
+      { el: rightCards[1], side: 1, time: 4.0 },
+      { el: rightCards[2], side: 1, time: 4.5 }
+    ];
+
+    // Initial state: máy bay & xe nhỏ ở sâu trong cảnh, tất cả các box lý do ẩn hoàn toàn
+    if (typeof gsap !== 'undefined') {
+      if (plane) {
+        gsap.set(plane, { scale: 0.3, opacity: 0.3, filter: 'blur(5px)' });
+      }
+      if (truck) {
+        gsap.set(truck, { scale: 0.4, opacity: 0.3, filter: 'blur(5px)' });
+      }
+      if (ship) {
+        gsap.set(ship, { scale: 0.5, opacity: 0.3, filter: 'blur(4px)' });
+      }
+      if (port) {
+        gsap.set(port, { scale: 0.7, opacity: 0.4, filter: 'blur(3px)' });
+      }
+      leftCards.forEach(function (c) {
+        gsap.set(c, { opacity: 0, x: -cardDistX, scale: 0.9, filter: 'blur(4px)', visibility: 'visible' });
+      });
+      rightCards.forEach(function (c) {
+        gsap.set(c, { opacity: 0, x: cardDistX, scale: 0.9, filter: 'blur(4px)', visibility: 'visible' });
+      });
+    } else {
+      if (plane) { plane.style.transform = 'scale(0.3)'; plane.style.opacity = '0.3'; plane.style.filter = 'blur(5px)'; }
+      if (truck) { truck.style.transform = 'scale(0.4)'; truck.style.opacity = '0.3'; truck.style.filter = 'blur(5px)'; }
+      if (ship) { ship.style.transform = 'scale(0.5)'; ship.style.opacity = '0.3'; ship.style.filter = 'blur(4px)'; }
+      if (port) { port.style.transform = 'scale(0.7)'; port.style.opacity = '0.4'; port.style.filter = 'blur(3px)'; }
+      leftCards.forEach(function (c) { c.style.opacity = '0'; c.style.transform = 'translateX(-' + cardDistX + 'px) scale(0.9)'; c.style.filter = 'blur(4px)'; });
+      rightCards.forEach(function (c) { c.style.opacity = '0'; c.style.transform = 'translateX(' + cardDistX + 'px) scale(0.9)'; c.style.filter = 'blur(4px)'; });
     }
 
-    function easeOutCubic(t) {
-      return 1 - Math.pow(1 - t, 3);
-    }
+    var hasPlayed = false;
 
-    function getProgress() {
-      var rect = track.getBoundingClientRect();
-      var range = track.offsetHeight - window.innerHeight;
-      if (range <= 0) return 1;
-      return clamp(-rect.top / range, 0, 1);
-    }
+    function playAnimation() {
+      if (hasPlayed) return;
+      hasPlayed = true;
 
-    function setLayer(el, xPct, yPx, scale, opacity) {
-      if (!el) return;
-      el.style.transform =
-        'translate3d(' + xPct.toFixed(2) + '%, ' + yPx.toFixed(1) + 'px, 0) scale(' + scale.toFixed(3) + ')';
-      el.style.opacity = String(clamp(opacity, 0, 1).toFixed(3));
-    }
+      if (typeof gsap !== 'undefined') {
+        var tl = gsap.timeline({
+          onComplete: function () {
+            // Dọn dẹp filter sau khi hoàn thành để text và hình ảnh sắc nét tuyệt đối
+            if (plane) gsap.set(plane, { clearProps: 'filter' });
+            if (truck) gsap.set(truck, { clearProps: 'filter' });
+            if (ship) gsap.set(ship, { clearProps: 'filter' });
+            if (port) gsap.set(port, { clearProps: 'filter' });
+            leftCards.forEach(function (c) { gsap.set(c, { clearProps: 'filter' }); });
+            rightCards.forEach(function (c) { gsap.set(c, { clearProps: 'filter' }); });
+          }
+        });
 
-    function paint() {
-      var raw = reduced ? 1 : getProgress();
-      var p = easeOutCubic(raw);
-
-      // Far → near: scale nhỏ → lớn, cảm giác tiến vào màn hình
-      setLayer(port, 0, lerp(48, 0, p), lerp(0.52, 1.18, p), lerp(0.35, 1, Math.min(1, p * 1.5)));
-      setLayer(ship, lerp(-22, -2, p), lerp(56, 4, p), lerp(0.38, 1.32, p), lerp(0.2, 1, Math.min(1, p * 1.7)));
-      setLayer(plane, lerp(10, -2, p), lerp(70, -28, p), lerp(0.32, 1.58, p), lerp(0.15, 1, Math.min(1, p * 1.9)));
-      setLayer(truck, lerp(18, 0, p), lerp(64, 2, p), lerp(0.28, 1.72, p), lerp(0.1, 1, Math.min(1, p * 2.1)));
-
-      // Cards: trượt vào khi scene đã tiến gần
-      cards.forEach(function (card, i) {
-        var local = clamp((raw - 0.12 - i * 0.06) / 0.35, 0, 1);
-        var e = easeOutCubic(local);
-        var side = card.closest('.speego-why-col--left') ? -1 : 1;
-        var baseX = 0;
-        if (card.parentElement && card.parentElement.children[1] === card) {
-          baseX = side < 0 ? 12 : -8;
+        // 0.0s – 3.0s: Máy bay từ sâu trong cảnh bay dần ra gần người xem
+        if (plane) {
+          tl.to(plane, {
+            scale: 1,
+            opacity: 1,
+            filter: 'blur(0px)',
+            duration: 3.0,
+            ease: 'power2.out'
+          }, 0.0);
         }
-        card.style.opacity = String(lerp(0.25, 1, e).toFixed(3));
-        card.style.transform =
-          'translate3d(' + (baseX + side * lerp(28, 0, e)).toFixed(1) + 'px, ' + lerp(18, 0, e).toFixed(1) + 'px, 0)';
-      });
+
+        // Tàu & cảng biển trong hậu cảnh
+        if (ship) {
+          tl.to(ship, {
+            scale: 1,
+            opacity: 1,
+            filter: 'blur(0px)',
+            duration: 2.8,
+            ease: 'power2.out'
+          }, 0.0);
+        }
+        if (port) {
+          tl.to(port, {
+            scale: 1,
+            opacity: 1,
+            filter: 'blur(0px)',
+            duration: 2.5,
+            ease: 'power2.out'
+          }, 0.0);
+        }
+
+        // 0.2s – 3.2s: Xe/container từ xa tiến dần ra gần
+        if (truck) {
+          tl.to(truck, {
+            scale: 1,
+            opacity: 1,
+            filter: 'blur(0px)',
+            duration: 3.0,
+            ease: 'power2.out'
+          }, 0.2);
+        }
+
+        // 2.0s -> 4.5s: Các lý do lần lượt xuất hiện từng cái một
+        allReasons.forEach(function (r) {
+          if (!r.el) return;
+          tl.to(r.el, {
+            opacity: 1,
+            scale: 1,
+            x: 0,
+            filter: 'blur(0px)',
+            duration: 0.7,
+            ease: 'power3.out'
+          }, r.time);
+        });
+      } else {
+        // Fallback Animation using CSS transitions
+        if (plane) {
+          plane.style.transition = 'transform 3.0s cubic-bezier(0.16, 1, 0.3, 1), opacity 3.0s ease, filter 3.0s ease';
+          plane.style.transform = 'scale(1)';
+          plane.style.opacity = '1';
+          plane.style.filter = '';
+        }
+        if (truck) {
+          setTimeout(function () {
+            truck.style.transition = 'transform 3.0s cubic-bezier(0.16, 1, 0.3, 1), opacity 3.0s ease, filter 3.0s ease';
+            truck.style.transform = 'scale(1)';
+            truck.style.opacity = '1';
+            truck.style.filter = '';
+          }, 200);
+        }
+        if (ship) {
+          ship.style.transition = 'transform 2.8s ease-out, opacity 2.8s ease, filter 2.8s ease';
+          ship.style.transform = 'scale(1)';
+          ship.style.opacity = '1';
+          ship.style.filter = '';
+        }
+        if (port) {
+          port.style.transition = 'transform 2.5s ease-out, opacity 2.5s ease, filter 2.5s ease';
+          port.style.transform = 'scale(1)';
+          port.style.opacity = '1';
+          port.style.filter = '';
+        }
+
+        allReasons.forEach(function (r) {
+          if (!r.el) return;
+          setTimeout(function () {
+            r.el.style.transition = 'all 0.7s cubic-bezier(0.16, 1, 0.3, 1)';
+            r.el.style.opacity = '1';
+            r.el.style.transform = 'translateX(0) scale(1)';
+            r.el.style.filter = '';
+          }, r.time * 1000);
+        });
+      }
     }
 
-    var ticking = false;
-    function onScroll() {
-      if (ticking) return;
-      ticking = true;
-      requestAnimationFrame(function () {
-        paint();
-        ticking = false;
-      });
+    // ScrollTrigger chỉ dùng để trigger kích hoạt một lần duy nhất khi chạm top 75%
+    if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+      try {
+        gsap.registerPlugin(ScrollTrigger);
+
+        ScrollTrigger.create({
+          trigger: section,
+          start: 'top 75%',
+          once: true,
+          onEnter: function () {
+            playAnimation();
+          }
+        });
+      } catch (e) {
+        setupFallbackObserver();
+      }
+    } else {
+      setupFallbackObserver();
     }
 
-    window.addEventListener('scroll', onScroll, { passive: true });
-    window.addEventListener('resize', onScroll, { passive: true });
-    paint();
+    function setupFallbackObserver() {
+      if ('IntersectionObserver' in window) {
+        var observer = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              playAnimation();
+              observer.disconnect();
+            }
+          });
+        }, { threshold: 0.2 });
+        observer.observe(section);
+      } else {
+        var checkScroll = function () {
+          var rect = section.getBoundingClientRect();
+          if (rect.top <= window.innerHeight * 0.75) {
+            playAnimation();
+            window.removeEventListener('scroll', checkScroll);
+          }
+        };
+        window.addEventListener('scroll', checkScroll, { passive: true });
+        checkScroll();
+      }
+    }
   }
 
   // =========================================================================
