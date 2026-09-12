@@ -142,6 +142,8 @@
       srv4_title: 'Import & Export Customs',
       srv4_desc: 'Advisory on procedures, documentation, customs declarations, and import-export workflows for compliant, smooth cargo movement.',
       srv_learn_more: 'View details',
+      trust_section_title: 'SpeeGo Commitments',
+      trust_section_subtitle: 'Safety, schedule, cost clarity, and long-term partnership — built into every shipment.',
       srv_feat1_title: 'Safe',
       srv_feat1_desc: 'Cargo always protected',
       srv_feat2_title: 'On schedule',
@@ -238,6 +240,7 @@
       form_route_lbl: 'Trade Lane / Route *',
       form_msg_lbl: 'Cargo Details / Requirements *',
       form_submit_btn: 'Send Consultation Request',
+      form_invite: 'Fill now · reply within 2 hours',
       form_name_ph: 'Your full name',
       form_msg_ph: 'Product type, volume, destination...',
 
@@ -384,6 +387,8 @@
       srv4_title: 'Xuất Nhập Khẩu & Hải Quan',
       srv4_desc: 'Hỗ trợ tư vấn thủ tục, chứng từ, khai báo hải quan và các quy trình xuất nhập khẩu, giúp hàng hóa lưu thông thuận lợi và tuân thủ quy định.',
       srv_learn_more: 'Xem chi tiết',
+      trust_section_title: 'Cam kết SpeeGo',
+      trust_section_subtitle: 'An toàn, đúng tiến độ, chi phí rõ ràng và đồng hành dài hạn — trong mọi lô hàng.',
       srv_feat1_title: 'An toàn',
       srv_feat1_desc: 'Hàng hóa luôn được bảo vệ',
       srv_feat2_title: 'Đúng tiến độ',
@@ -480,6 +485,7 @@
       form_route_lbl: 'Tuyến vận chuyển quan tâm *',
       form_msg_lbl: 'Chi tiết hàng & yêu cầu *',
       form_submit_btn: 'Gửi Yêu Cầu Tư Vấn Ngay',
+      form_invite: 'Điền ngay · phản hồi trong 2 giờ',
       form_name_ph: 'Họ và tên của bạn',
       form_msg_ph: 'Loại hàng, khối lượng, điểm đến...',
 
@@ -626,6 +632,8 @@
       srv4_title: 'Importación y Aduanas',
       srv4_desc: 'Asesoría en trámites, documentación, declaraciones aduaneras y procesos de importación/exportación para un flujo de mercancía ágil y conforme a la normativa.',
       srv_learn_more: 'Ver detalles',
+      trust_section_title: 'Compromisos SpeeGo',
+      trust_section_subtitle: 'Seguridad, puntualidad, costos claros y alianza a largo plazo — en cada envío.',
       srv_feat1_title: 'Seguro',
       srv_feat1_desc: 'Mercancía siempre protegida',
       srv_feat2_title: 'A tiempo',
@@ -722,6 +730,7 @@
       form_route_lbl: 'Ruta de Transporte *',
       form_msg_lbl: 'Detalles de Mercancía *',
       form_submit_btn: 'Enviar Solicitud',
+      form_invite: 'Completa ahora · respuesta en 2 horas',
       form_name_ph: 'Su nombre completo',
       form_msg_ph: 'Tipo de producto, volumen, destino...',
 
@@ -1198,7 +1207,13 @@
     document.querySelectorAll('[data-i18n]').forEach(el => {
       const key = el.getAttribute('data-i18n');
       if (i18nData[lang] && i18nData[lang][key]) {
-        el.innerHTML = i18nData[lang][key];
+        const val = i18nData[lang][key];
+        // Plain strings: use textContent (keeps "&" intact for titles/marquee)
+        if (String(val).indexOf('<') === -1) {
+          el.textContent = val;
+        } else {
+          el.innerHTML = val;
+        }
       }
     });
 
@@ -1218,6 +1233,11 @@
     // Re-render active hero text slide with current language
     if (typeof setHeroSlide === 'function') {
       setHeroSlide(currentHeroSlide);
+    }
+
+    // Rebuild letter-reveal titles after i18n HTML replace
+    if (typeof refreshSectionTitleReveal === 'function') {
+      refreshSectionTitleReveal();
     }
   }
 
@@ -2045,234 +2065,482 @@
   }
 
   // =========================================================================
-  // 8b. WHY SPEEGO — scroll: layers zoom toward camera (tiến gần màn hình)
-  // =========================================================================
-  // =========================================================================
-  // 8b. WHY SPEEGO — AUTONOMOUS CINEMATIC MOTION (TRIGGERED ONCE BY SCROLL)
+  // 8b. WHY SPEEGO — plane x2 + chữ hiệu ứng theo scroll
   // =========================================================================
   function initWhyCinematic() {
     var section = document.querySelector('[data-why-cinematic]');
     if (!section) return;
 
-    var plane = section.querySelector('[data-why-layer="plane"]');
-    var truck = section.querySelector('[data-why-layer="truck"]');
-    var ship = section.querySelector('[data-why-layer="ship"]');
-    var port = section.querySelector('[data-why-layer="port"]');
-    var leftCards = section.querySelectorAll('.speego-why-col--left [data-why-card]');
-    var rightCards = section.querySelectorAll('.speego-why-col--right [data-why-card]');
-    var header = section.querySelector('.speego-why-header');
+    var pairs = section.querySelectorAll('[data-why-pair]');
+    if (!pairs.length) return;
 
-    var reduced = prefersReducedMotion();
-    if (reduced) {
-      if (plane) { plane.style.opacity = '1'; plane.style.transform = 'none'; plane.style.filter = ''; }
-      if (truck) { truck.style.opacity = '1'; truck.style.transform = 'none'; truck.style.filter = ''; }
-      if (ship) { ship.style.opacity = '1'; ship.style.transform = 'none'; ship.style.filter = ''; }
-      if (port) { port.style.opacity = '1'; port.style.transform = 'none'; port.style.filter = ''; }
-      if (header) { header.style.opacity = '1'; header.style.transform = 'none'; }
-      leftCards.forEach(function (c) { c.style.opacity = '1'; c.style.visibility = 'visible'; c.style.transform = 'none'; c.style.filter = ''; });
-      rightCards.forEach(function (c) { c.style.opacity = '1'; c.style.visibility = 'visible'; c.style.transform = 'none'; c.style.filter = ''; });
+    if (prefersReducedMotion()) {
+      pairs.forEach(function (pair) { pair.classList.add('is-in'); });
       return;
     }
 
-    var isMobile = window.innerWidth <= 768;
-    var cardDistX = isMobile ? 30 : 80;
+    function animatePairOnce(pair) {
+      if (pair.classList.contains('is-in')) return;
+      pair.classList.add('is-in');
 
-    // Ordered 6 reason cards
-    var allReasons = [
-      { el: leftCards[0], side: -1, time: 2.0 },
-      { el: leftCards[1], side: -1, time: 2.5 },
-      { el: leftCards[2], side: -1, time: 3.0 },
-      { el: rightCards[0], side: 1, time: 3.5 },
-      { el: rightCards[1], side: 1, time: 4.0 },
-      { el: rightCards[2], side: 1, time: 4.5 }
-    ];
+      var title = pair.querySelector('.speego-why-pair__card h3');
+      var desc = pair.querySelector('.speego-why-pair__card p');
+      var num = pair.querySelector('.speego-why-pair__num');
+      var planeIcon = pair.querySelector('.speego-why-pair__plane');
+      var img = pair.querySelector('.speego-why-pair__visual img');
+      var asset = pair.getAttribute('data-asset');
+      var isPlane = asset === 'plane';
+      var isShip = asset === 'ship';
 
-    // Initial state: máy bay & xe nhỏ ở sâu trong cảnh, tất cả các box lý do ẩn hoàn toàn
-    if (typeof gsap !== 'undefined') {
-      if (plane) {
-        gsap.set(plane, { scale: 0.3, opacity: 0.3, filter: 'blur(5px)' });
+      if (typeof gsap === 'undefined') return;
+
+      if (num) {
+        gsap.fromTo(
+          num,
+          { opacity: 0, x: -20, scale: 0.85 },
+          { opacity: 1, x: 0, scale: 1, duration: 0.75, ease: 'power3.out' }
+        );
       }
-      if (truck) {
-        gsap.set(truck, { scale: 0.4, opacity: 0.3, filter: 'blur(5px)' });
+      if (planeIcon) {
+        gsap.fromTo(
+          planeIcon,
+          { opacity: 0, y: -12 },
+          { opacity: 1, y: 0, duration: 0.7, ease: 'power2.out', delay: 0.12 }
+        );
       }
-      if (ship) {
-        gsap.set(ship, { scale: 0.5, opacity: 0.3, filter: 'blur(4px)' });
+
+      if (title) {
+        gsap.fromTo(
+          title,
+          { opacity: 0, x: -48, y: 18 },
+          { opacity: 1, x: 0, y: 0, duration: 0.85, ease: 'power3.out', delay: 0.05 }
+        );
       }
-      if (port) {
-        gsap.set(port, { scale: 0.7, opacity: 0.4, filter: 'blur(3px)' });
+      if (desc) {
+        gsap.fromTo(
+          desc,
+          { opacity: 0, x: -36, y: 24 },
+          { opacity: 1, x: 0, y: 0, duration: 0.9, ease: 'power3.out', delay: 0.22 }
+        );
       }
-      leftCards.forEach(function (c) {
-        gsap.set(c, { opacity: 0, x: -cardDistX, scale: 0.9, filter: 'blur(4px)', visibility: 'visible' });
-      });
-      rightCards.forEach(function (c) {
-        gsap.set(c, { opacity: 0, x: cardDistX, scale: 0.9, filter: 'blur(4px)', visibility: 'visible' });
-      });
-    } else {
-      if (plane) { plane.style.transform = 'scale(0.3)'; plane.style.opacity = '0.3'; plane.style.filter = 'blur(5px)'; }
-      if (truck) { truck.style.transform = 'scale(0.4)'; truck.style.opacity = '0.3'; truck.style.filter = 'blur(5px)'; }
-      if (ship) { ship.style.transform = 'scale(0.5)'; ship.style.opacity = '0.3'; ship.style.filter = 'blur(4px)'; }
-      if (port) { port.style.transform = 'scale(0.7)'; port.style.opacity = '0.4'; port.style.filter = 'blur(3px)'; }
-      leftCards.forEach(function (c) { c.style.opacity = '0'; c.style.transform = 'translateX(-' + cardDistX + 'px) scale(0.9)'; c.style.filter = 'blur(4px)'; });
-      rightCards.forEach(function (c) { c.style.opacity = '0'; c.style.transform = 'translateX(' + cardDistX + 'px) scale(0.9)'; c.style.filter = 'blur(4px)'; });
-    }
-
-    var hasPlayed = false;
-
-    function playAnimation() {
-      if (hasPlayed) return;
-      hasPlayed = true;
-
-      if (typeof gsap !== 'undefined') {
-        var tl = gsap.timeline({
-          onComplete: function () {
-            // Dọn dẹp filter sau khi hoàn thành để text và hình ảnh sắc nét tuyệt đối
-            if (plane) gsap.set(plane, { clearProps: 'filter' });
-            if (truck) gsap.set(truck, { clearProps: 'filter' });
-            if (ship) gsap.set(ship, { clearProps: 'filter' });
-            if (port) gsap.set(port, { clearProps: 'filter' });
-            leftCards.forEach(function (c) { gsap.set(c, { clearProps: 'filter' }); });
-            rightCards.forEach(function (c) { gsap.set(c, { clearProps: 'filter' }); });
+      if (img) {
+        gsap.fromTo(
+          img,
+          {
+            opacity: 0.35,
+            scale: isPlane ? 1.35 : isShip ? 0.78 : 0.82,
+            x: isPlane ? 80 : isShip ? 56 : 40,
+            y: isPlane ? 30 : 20
+          },
+          {
+            opacity: 1,
+            scale: isPlane ? 1 : isShip ? 1 : 1,
+            x: isShip ? 20 : 0,
+            y: 0,
+            duration: isPlane ? 1.25 : 1.0,
+            ease: 'power2.out',
+            delay: 0.08
           }
-        });
-
-        // 0.0s – 3.0s: Máy bay từ sâu trong cảnh bay dần ra gần người xem
-        if (plane) {
-          tl.to(plane, {
-            scale: 1,
-            opacity: 1,
-            filter: 'blur(0px)',
-            duration: 3.0,
-            ease: 'power2.out'
-          }, 0.0);
-        }
-
-        // Tàu & cảng biển trong hậu cảnh
-        if (ship) {
-          tl.to(ship, {
-            scale: 1,
-            opacity: 1,
-            filter: 'blur(0px)',
-            duration: 2.8,
-            ease: 'power2.out'
-          }, 0.0);
-        }
-        if (port) {
-          tl.to(port, {
-            scale: 1,
-            opacity: 1,
-            filter: 'blur(0px)',
-            duration: 2.5,
-            ease: 'power2.out'
-          }, 0.0);
-        }
-
-        // 0.2s – 3.2s: Xe/container từ xa tiến dần ra gần
-        if (truck) {
-          tl.to(truck, {
-            scale: 1,
-            opacity: 1,
-            filter: 'blur(0px)',
-            duration: 3.0,
-            ease: 'power2.out'
-          }, 0.2);
-        }
-
-        // 2.0s -> 4.5s: Các lý do lần lượt xuất hiện từng cái một
-        allReasons.forEach(function (r) {
-          if (!r.el) return;
-          tl.to(r.el, {
-            opacity: 1,
-            scale: 1,
-            x: 0,
-            filter: 'blur(0px)',
-            duration: 0.7,
-            ease: 'power3.out'
-          }, r.time);
-        });
-      } else {
-        // Fallback Animation using CSS transitions
-        if (plane) {
-          plane.style.transition = 'transform 3.0s cubic-bezier(0.16, 1, 0.3, 1), opacity 3.0s ease, filter 3.0s ease';
-          plane.style.transform = 'scale(1)';
-          plane.style.opacity = '1';
-          plane.style.filter = '';
-        }
-        if (truck) {
-          setTimeout(function () {
-            truck.style.transition = 'transform 3.0s cubic-bezier(0.16, 1, 0.3, 1), opacity 3.0s ease, filter 3.0s ease';
-            truck.style.transform = 'scale(1)';
-            truck.style.opacity = '1';
-            truck.style.filter = '';
-          }, 200);
-        }
-        if (ship) {
-          ship.style.transition = 'transform 2.8s ease-out, opacity 2.8s ease, filter 2.8s ease';
-          ship.style.transform = 'scale(1)';
-          ship.style.opacity = '1';
-          ship.style.filter = '';
-        }
-        if (port) {
-          port.style.transition = 'transform 2.5s ease-out, opacity 2.5s ease, filter 2.5s ease';
-          port.style.transform = 'scale(1)';
-          port.style.opacity = '1';
-          port.style.filter = '';
-        }
-
-        allReasons.forEach(function (r) {
-          if (!r.el) return;
-          setTimeout(function () {
-            r.el.style.transition = 'all 0.7s cubic-bezier(0.16, 1, 0.3, 1)';
-            r.el.style.opacity = '1';
-            r.el.style.transform = 'translateX(0) scale(1)';
-            r.el.style.filter = '';
-          }, r.time * 1000);
-        });
+        );
       }
     }
 
-    // ScrollTrigger chỉ dùng để trigger kích hoạt một lần duy nhất khi chạm top 75%
     if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
       try {
         gsap.registerPlugin(ScrollTrigger);
 
-        ScrollTrigger.create({
-          trigger: section,
-          start: 'top 75%',
-          once: true,
-          onEnter: function () {
-            playAnimation();
-          }
-        });
-      } catch (e) {
-        setupFallbackObserver();
-      }
-    } else {
-      setupFallbackObserver();
-    }
+        pairs.forEach(function (pair) {
+          var title = pair.querySelector('.speego-why-pair__card h3');
+          var desc = pair.querySelector('.speego-why-pair__card p');
+          var num = pair.querySelector('.speego-why-pair__num');
+          var planeIcon = pair.querySelector('.speego-why-pair__plane');
+          var rail = pair.querySelector('.speego-why-pair__rail');
+          var img = pair.querySelector('.speego-why-pair__visual img');
+          var asset = pair.getAttribute('data-asset');
+          var isPlane = asset === 'plane';
+          var isShip = asset === 'ship';
 
-    function setupFallbackObserver() {
-      if ('IntersectionObserver' in window) {
-        var observer = new IntersectionObserver(function (entries) {
-          entries.forEach(function (entry) {
-            if (entry.isIntersecting) {
-              playAnimation();
-              observer.disconnect();
+          // Continuous scroll-linked motion while pair is in view
+          if (title) {
+            gsap.fromTo(
+              title,
+              { y: 40, opacity: 0.15 },
+              {
+                y: -18,
+                opacity: 1,
+                ease: 'none',
+                scrollTrigger: {
+                  trigger: pair,
+                  start: 'top 90%',
+                  end: 'bottom 35%',
+                  scrub: 0.65
+                }
+              }
+            );
+          }
+          if (desc) {
+            gsap.fromTo(
+              desc,
+              { y: 56, opacity: 0.1 },
+              {
+                y: -10,
+                opacity: 1,
+                ease: 'none',
+                scrollTrigger: {
+                  trigger: pair,
+                  start: 'top 88%',
+                  end: 'bottom 30%',
+                  scrub: 0.75
+                }
+              }
+            );
+          }
+          if (num) {
+            gsap.fromTo(
+              num,
+              { y: 24, opacity: 0.25 },
+              {
+                y: -8,
+                opacity: 1,
+                ease: 'none',
+                scrollTrigger: {
+                  trigger: pair,
+                  start: 'top 90%',
+                  end: 'bottom 40%',
+                  scrub: 0.6
+                }
+              }
+            );
+          }
+          if (planeIcon && rail) {
+            gsap.fromTo(
+              planeIcon,
+              { y: 0, x: -4, rotation: -55, opacity: 0.35 },
+              {
+                y: function () {
+                  return Math.max(0, rail.offsetHeight - 34);
+                },
+                x: 6,
+                rotation: -35,
+                opacity: 1,
+                ease: 'none',
+                scrollTrigger: {
+                  trigger: pair,
+                  start: 'top 85%',
+                  end: 'bottom 35%',
+                  scrub: 0.55,
+                  invalidateOnRefresh: true
+                }
+              }
+            );
+          }
+          if (img) {
+            gsap.fromTo(
+              img,
+              {
+                scale: isPlane ? 1.08 : isShip ? 0.82 : 0.92,
+                x: isPlane ? 36 : isShip ? 48 : 28,
+                y: isPlane ? 16 : 12
+              },
+              {
+                scale: isPlane ? 1 : isShip ? 1 : 1,
+                x: isShip ? 20 : 0,
+                y: 0,
+                ease: 'none',
+                scrollTrigger: {
+                  trigger: pair,
+                  start: 'top 95%',
+                  end: 'bottom 25%',
+                  scrub: 0.7
+                }
+              }
+            );
+          }
+
+          ScrollTrigger.create({
+            trigger: pair,
+            start: 'top 82%',
+            once: true,
+            onEnter: function () {
+              pair.classList.add('is-in');
             }
           });
-        }, { threshold: 0.2 });
-        observer.observe(section);
-      } else {
-        var checkScroll = function () {
-          var rect = section.getBoundingClientRect();
-          if (rect.top <= window.innerHeight * 0.75) {
-            playAnimation();
-            window.removeEventListener('scroll', checkScroll);
-          }
-        };
-        window.addEventListener('scroll', checkScroll, { passive: true });
-        checkScroll();
+        });
+        return;
+      } catch (e) {
+        /* fallback */
       }
     }
+
+    if (!('IntersectionObserver' in window)) {
+      pairs.forEach(function (pair) { pair.classList.add('is-in'); });
+      return;
+    }
+
+    var io = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          if (!entry.isIntersecting) return;
+          animatePairOnce(entry.target);
+          io.unobserve(entry.target);
+        });
+      },
+      { threshold: 0.2, rootMargin: '0px 0px -6% 0px' }
+    );
+    pairs.forEach(function (pair) { io.observe(pair); });
+  }
+
+  // =========================================================================
+  // 8c. SECTION TITLES — letter-by-letter reveal (giống QI animated text)
+  // =========================================================================
+  var titleRevealObserver = null;
+  var titleRevealPending = [];
+
+  function escapeHtmlPlain(str) {
+    return String(str)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;');
+  }
+
+  function unwrapTitleChars(el) {
+    el.querySelectorAll('.speego-title-char').forEach(function (c) {
+      c.replaceWith(document.createTextNode(c.textContent === '\u00A0' ? ' ' : c.textContent));
+    });
+    el.normalize();
+  }
+
+  function wrapTitleChars(el) {
+    if (!el) return;
+    el.classList.remove('is-title-in');
+    el.removeAttribute('data-title-played');
+    if (el.querySelector('.speego-title-char')) {
+      unwrapTitleChars(el);
+    }
+
+    var index = 0;
+    function walk(node) {
+      if (node.nodeType === 3) {
+        var text = node.nodeValue;
+        if (!text) return;
+        var frag = document.createDocumentFragment();
+        for (var i = 0; i < text.length; i++) {
+          var ch = text.charAt(i);
+          if (ch === ' ') {
+            // Real space = wrap between words (nbsp was blocking breaks)
+            frag.appendChild(document.createTextNode(' '));
+            index++;
+            continue;
+          }
+          var span = document.createElement('span');
+          span.className = 'speego-title-char';
+          span.style.setProperty('--i', String(index++));
+          span.textContent = ch;
+          frag.appendChild(span);
+        }
+        node.parentNode.replaceChild(frag, node);
+      } else if (node.nodeType === 1 && node.tagName === 'BR') {
+        // Keep intentional line breaks intact
+        return;
+      } else if (node.nodeType === 1 && !node.classList.contains('speego-title-char')) {
+        Array.prototype.slice.call(node.childNodes).forEach(walk);
+      }
+    }
+
+    walk(el);
+  }
+
+  function playTitleReveal(el) {
+    if (!el || el.getAttribute('data-title-played') === '1') return;
+    el.setAttribute('data-title-played', '1');
+    el.classList.remove('is-title-in');
+    void el.offsetWidth;
+    requestAnimationFrame(function () {
+      el.classList.add('is-title-in');
+    });
+  }
+
+  function isTitleNearViewport(el) {
+    var rect = el.getBoundingClientRect();
+    var vh = window.innerHeight || document.documentElement.clientHeight || 0;
+    // Trigger when title enters lower 90% of viewport
+    return rect.top < vh * 0.9 && rect.bottom > 40;
+  }
+
+  function observeTitle(el) {
+    if (!el) return;
+    if (prefersReducedMotion()) {
+      el.classList.add('is-title-in');
+      el.setAttribute('data-title-played', '1');
+      return;
+    }
+
+    if (isTitleNearViewport(el)) {
+      playTitleReveal(el);
+      return;
+    }
+
+    titleRevealPending.push(el);
+
+    if (!('IntersectionObserver' in window)) {
+      return;
+    }
+
+    if (!titleRevealObserver) {
+      titleRevealObserver = new IntersectionObserver(
+        function (entries) {
+          entries.forEach(function (entry) {
+            if (!entry.isIntersecting) return;
+            playTitleReveal(entry.target);
+            titleRevealObserver.unobserve(entry.target);
+          });
+        },
+        { threshold: [0, 0.08, 0.2], rootMargin: '0px 0px -4% 0px' }
+      );
+    }
+    titleRevealObserver.observe(el);
+  }
+
+  function checkPendingTitles() {
+    if (!titleRevealPending.length) return;
+    titleRevealPending = titleRevealPending.filter(function (el) {
+      if (!el.isConnected || el.getAttribute('data-title-played') === '1') return false;
+      if (isTitleNearViewport(el)) {
+        playTitleReveal(el);
+        if (titleRevealObserver) {
+          try { titleRevealObserver.unobserve(el); } catch (e) {}
+        }
+        return false;
+      }
+      return true;
+    });
+  }
+
+  function refreshSectionTitleReveal() {
+    titleRevealPending = [];
+    if (titleRevealObserver) {
+      titleRevealObserver.disconnect();
+      titleRevealObserver = null;
+    }
+
+    var titles = document.querySelectorAll(
+      '.speego-section-title, .speego-services-title, .speego-why-title, .speego-about-heading'
+    );
+    titles.forEach(function (el) {
+      // Ensure plain-text i18n titles with "&" wrap cleanly
+      if (el.getAttribute('data-i18n') && !el.querySelector('.speego-accent-num')) {
+        var key = el.getAttribute('data-i18n');
+        var langPack = i18nData[currentLang] || i18nData.en;
+        if (langPack && langPack[key] && langPack[key].indexOf('<') === -1) {
+          el.innerHTML = escapeHtmlPlain(langPack[key]);
+        }
+      }
+      wrapTitleChars(el);
+      observeTitle(el);
+    });
+  }
+
+  function initSectionTitleReveal() {
+    refreshSectionTitleReveal();
+    window.addEventListener('scroll', checkPendingTitles, { passive: true });
+    window.addEventListener('resize', checkPendingTitles, { passive: true });
+  }
+
+  // =========================================================================
+  // 8d. TRUST BAR — staggered entrance
+  // =========================================================================
+  function initTrustBarReveal() {
+    var bar = document.querySelector('.speego-trust-bar');
+    if (!bar) return;
+    if (prefersReducedMotion()) {
+      bar.classList.add('is-in');
+      return;
+    }
+    if (!('IntersectionObserver' in window)) {
+      bar.classList.add('is-in');
+      return;
+    }
+    var io = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            bar.classList.add('is-in');
+            io.unobserve(bar);
+          }
+        });
+      },
+      { threshold: 0.3, rootMargin: '0px 0px -10% 0px' }
+    );
+    io.observe(bar);
+  }
+
+  // =========================================================================
+  // 8e. FOOTER FLAGS — staggered entrance
+  // =========================================================================
+  function initFooterFlagsReveal() {
+    var flags = document.querySelector('.speego-footer-flags');
+    if (!flags) return;
+    if (prefersReducedMotion()) {
+      flags.classList.add('is-in');
+      return;
+    }
+    if (!('IntersectionObserver' in window)) {
+      flags.classList.add('is-in');
+      return;
+    }
+    var io = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            flags.classList.add('is-in');
+            io.unobserve(flags);
+          }
+        });
+      },
+      { threshold: 0.25 }
+    );
+    io.observe(flags);
+  }
+
+  // =========================================================================
+  // 8.5 CONSULTATION VIDEO AUTOPLAY
+  // =========================================================================
+  function initConsultVideo() {
+    var video = document.getElementById('speego-consult-video');
+    if (!video) return;
+
+    video.muted = true;
+    video.playsInline = true;
+    video.setAttribute('muted', '');
+    video.setAttribute('playsinline', '');
+
+    function tryPlay() {
+      var p = video.play();
+      if (p && typeof p.catch === 'function') {
+        p.catch(function () {
+          // Autoplay blocked until user gesture / visibility
+        });
+      }
+    }
+
+    tryPlay();
+
+    if ('IntersectionObserver' in window) {
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            tryPlay();
+          } else {
+            video.pause();
+          }
+        });
+      }, { threshold: 0.25 });
+      io.observe(video);
+    }
+
+    document.addEventListener('visibilitychange', function () {
+      if (!document.hidden) tryPlay();
+    });
   }
 
   // =========================================================================
@@ -2311,8 +2579,15 @@
     initHeroConsole();
     initProcessTabs();
     initWhyCinematic();
+    initTrustBarReveal();
+    initFooterFlagsReveal();
     initConsultationForm();
+    initConsultVideo();
     initHeroStatCounters();
     initTrustPartnerMarquee();
+    // Titles after i18n + layout settle
+    requestAnimationFrame(function () {
+      initSectionTitleReveal();
+    });
   });
 })();

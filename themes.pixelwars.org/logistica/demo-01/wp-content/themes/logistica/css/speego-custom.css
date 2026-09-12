@@ -18,7 +18,7 @@
   --speego-font: 'Inter', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
 
-/* Global typography: Inter sitewide (hero "Từ Tìm Nguồn Hàng" + all pages) */
+/* Global typography: Inter sitewide (hero "Tá»« TÃ¬m Nguá»n HÃ ng" + all pages) */
 html,
 body,
 .site,
@@ -874,7 +874,7 @@ h1, h2, h3, h4, h5, h6,
 }
 
 /* ==========================================
-   HERO RIGHT COLUMN — Intro / Form / Tracking
+   HERO RIGHT COLUMN â Intro / Form / Tracking
    ========================================== */
 .speego-hero-right {
   flex: 0 1 520px;
@@ -1186,7 +1186,7 @@ h1, h2, h3, h4, h5, h6,
 }
 
 /* ==========================================================================
-   UPS TRACKING MODAL — SpeeGo logo chrome (navy + orange)
+   UPS TRACKING MODAL â SpeeGo logo chrome (navy + orange)
    ========================================================================== */
 body.speego-track-modal-open {
   overflow: hidden;
@@ -1760,10 +1760,11 @@ body.speego-track-modal-open {
 
 .speego-section-title {
   font-family: 'Inter', sans-serif;
-  font-size: clamp(28px, 4vw, 42px);
+  font-size: clamp(36px, 5.2vw, 64px);
   font-weight: 800;
   color: var(--speego-primary);
-  line-height: 1.25;
+  line-height: 1.12;
+  letter-spacing: -0.025em;
   margin-bottom: 16px;
 }
 
@@ -1829,13 +1830,13 @@ body.speego-track-modal-open {
 
 .speego-about-heading {
   font-family: 'Inter', sans-serif;
-  font-size: clamp(40px, 5vw, 56px);
+  font-size: clamp(44px, 6vw, 68px);
   font-weight: 900;
-  letter-spacing: 0.03em;
+  letter-spacing: -0.02em;
   text-transform: uppercase;
   color: #002855;
   margin: 0 0 26px 0;
-  line-height: 1.1;
+  line-height: 1.08;
 }
 
 .speego-about-desc {
@@ -1886,7 +1887,7 @@ body.speego-track-modal-open {
 }
 
 /* ==========================================
-   4 CORE SERVICES — DESIGN LAYOUT
+   4 CORE SERVICES â DESIGN LAYOUT
    ========================================== */
 .speego-services-section {
   position: relative;
@@ -1959,12 +1960,12 @@ body.speego-track-modal-open {
 
 .speego-services-title {
   font-family: 'Inter', sans-serif;
-  font-size: 40px;
+  font-size: clamp(36px, 5.2vw, 64px);
   font-weight: 800;
-  line-height: 1.2;
+  line-height: 1.12;
   color: #0B2742;
   margin: 0 0 14px 0;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.025em;
 }
 
 .speego-services-title .speego-accent-num {
@@ -2105,20 +2106,66 @@ body.speego-track-modal-open {
 }
 
 /* ==========================================
-   FLOATING TRUST BAR — WHY SPEEGO
+   TRUST COMMITMENTS — hạng mục riêng
    ========================================== */
+.speego-trust-section {
+  position: relative;
+  padding: 72px 24px 80px;
+  background:
+    radial-gradient(ellipse 70% 55% at 50% 0%, rgba(255, 106, 0, 0.06) 0%, transparent 60%),
+    linear-gradient(180deg, #f4f8fc 0%, #eef4fa 100%);
+}
+
+.speego-trust-section__inner {
+  max-width: 1240px;
+  margin: 0 auto;
+}
+
+.speego-trust-section__header {
+  text-align: center;
+  margin-bottom: 36px;
+}
+
+.speego-trust-section__accent {
+  display: block;
+  width: 56px;
+  height: 5px;
+  margin: 0 auto 16px;
+  background: #E85A00;
+  border-radius: 3px;
+}
+
+.speego-trust-section__title {
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(28px, 3.5vw, 42px);
+  font-weight: 900;
+  color: var(--speego-primary);
+  margin: 0 0 10px 0;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+}
+
+.speego-trust-section__subtitle {
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  color: #64748B;
+  max-width: 560px;
+  margin: 0 auto;
+}
+
 .speego-trust-bar {
   position: relative;
   z-index: 10;
   width: 100%;
   max-width: 1240px;
-  margin: 40px auto -28px;
-  min-height: 112px;
+  margin: 0 auto;
+  min-height: 168px;
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 0;
   align-items: center;
-  padding: 28px 32px;
+  padding: 36px 28px;
   background: #FFFFFF;
   border: 1px solid rgba(15, 39, 68, 0.08);
   border-radius: 16px;
@@ -2150,10 +2197,25 @@ body.speego-track-modal-open {
   position: relative;
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 16px;
   min-width: 0;
-  padding: 4px 18px;
-  transition: transform 250ms cubic-bezier(0.2, 0.8, 0.2, 1);
+  padding: 4px 16px;
+  opacity: 1;
+  transform: none;
+  transition:
+    opacity 0.55s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.55s cubic-bezier(0.22, 1, 0.36, 1),
+    color 250ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.speego-trust-bar__item:nth-child(1) { --trust-i: 0; }
+.speego-trust-bar__item:nth-child(2) { --trust-i: 1; }
+.speego-trust-bar__item:nth-child(3) { --trust-i: 2; }
+.speego-trust-bar__item:nth-child(4) { --trust-i: 3; }
+
+.speego-trust-bar.is-in .speego-trust-bar__item {
+  opacity: 1;
+  transform: translate3d(0, 0, 0) scale(1);
 }
 
 .speego-trust-bar__item:first-child {
@@ -2171,26 +2233,46 @@ body.speego-track-modal-open {
   top: 50%;
   transform: translateY(-50%);
   width: 1px;
-  height: 48px;
+  height: 88px;
   background: rgba(15, 39, 68, 0.10);
   pointer-events: none;
 }
 
 .speego-trust-bar__icon {
   flex-shrink: 0;
-  width: 44px;
-  height: 44px;
-  border-radius: 12px;
+  width: 104px;
+  height: 104px;
+  border-radius: 24px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  background: rgba(255, 90, 31, 0.08);
-  color: #FF5A1F;
-  font-size: 21px;
+  background: rgba(255, 90, 31, 0.12);
+  color: #E85A00;
+  font-size: 48px;
   line-height: 1;
+  box-shadow: 0 10px 24px rgba(232, 90, 0, 0.16);
+  animation: speegoTrustIconFloat 3.6s ease-in-out infinite;
   transition:
-    background 250ms cubic-bezier(0.2, 0.8, 0.2, 1),
-    color 250ms cubic-bezier(0.2, 0.8, 0.2, 1);
+    background 280ms cubic-bezier(0.2, 0.8, 0.2, 1),
+    color 280ms cubic-bezier(0.2, 0.8, 0.2, 1),
+    transform 280ms cubic-bezier(0.2, 0.8, 0.2, 1),
+    box-shadow 280ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.speego-trust-bar__icon svg {
+  width: 0.92em;
+  height: 0.92em;
+  display: block;
+}
+
+.speego-trust-bar__item:nth-child(2) .speego-trust-bar__icon {
+  animation-delay: 0.35s;
+}
+.speego-trust-bar__item:nth-child(3) .speego-trust-bar__icon {
+  animation-delay: 0.7s;
+}
+.speego-trust-bar__item:nth-child(4) .speego-trust-bar__icon {
+  animation-delay: 1.05s;
 }
 
 .speego-trust-bar__copy {
@@ -2204,9 +2286,9 @@ body.speego-track-modal-open {
   display: block;
   margin: 0;
   font-family: 'Inter', 'Manrope', ui-sans-serif, system-ui, sans-serif;
-  font-size: 15px;
+  font-size: 17px;
   font-weight: 700;
-  line-height: 20px;
+  line-height: 1.3;
   color: #102A43;
   transition: color 250ms cubic-bezier(0.2, 0.8, 0.2, 1);
 }
@@ -2217,21 +2299,48 @@ body.speego-track-modal-open {
   font-family: 'Inter', 'Manrope', ui-sans-serif, system-ui, sans-serif;
   font-size: 13px;
   font-weight: 400;
-  line-height: 18px;
+  line-height: 1.4;
   color: #6B7C8F;
 }
 
-.speego-trust-bar__item:hover {
-  transform: translateY(-2px);
+.speego-trust-bar.is-in .speego-trust-bar__item:hover {
+  transform: translate3d(0, -4px, 0) scale(1);
 }
 
 .speego-trust-bar__item:hover .speego-trust-bar__icon {
-  background: #FF5A1F;
+  background: #E85A00;
   color: #FFFFFF;
+  transform: scale(1.12) rotate(-4deg);
+  box-shadow:
+    0 16px 32px rgba(232, 90, 0, 0.35),
+    0 0 0 8px rgba(232, 90, 0, 0.12);
+  animation: none;
 }
 
 .speego-trust-bar__item:hover .speego-trust-bar__title {
-  color: #FF5A1F;
+  color: #E85A00;
+}
+
+@keyframes speegoTrustIconFloat {
+  0%, 100% {
+    transform: translateY(0);
+    box-shadow: 0 10px 24px rgba(232, 90, 0, 0.16);
+  }
+  50% {
+    transform: translateY(-7px);
+    box-shadow: 0 18px 32px rgba(232, 90, 0, 0.28);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .speego-trust-bar__item {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .speego-trust-bar__icon {
+    animation: none;
+  }
 }
 
 /* legacy aliases (if referenced elsewhere) */
@@ -2380,222 +2489,360 @@ body.speego-track-modal-open {
 }
 
 /* ==========================================
-   WHY CHOOSE SPEEGO — scroll approach (zoom toward camera)
+   WHY CHOOSE SPEEGO — ảnh nguyên thể, chữ logo
    ========================================== */
 .speego-why-section {
   position: relative;
-  padding: 80px 24px 64px;
+  padding: 88px 20px 96px;
   overflow: clip;
   background:
-    radial-gradient(ellipse 70% 60% at 72% 55%, rgba(160, 205, 245, 0.55) 0%, transparent 68%),
-    radial-gradient(ellipse 55% 50% at 22% 45%, rgba(190, 220, 245, 0.5) 0%, transparent 62%),
-    linear-gradient(180deg, #e8f1f9 0%, #dceaf6 42%, #eef5fb 100%);
+    radial-gradient(ellipse 70% 60% at 72% 55%, rgba(160, 205, 245, 0.45) 0%, transparent 68%),
+    radial-gradient(ellipse 55% 50% at 22% 45%, rgba(190, 220, 245, 0.4) 0%, transparent 62%),
+    linear-gradient(180deg, #eef5fb 0%, #e4eef8 42%, #f4f8fc 100%);
 }
 
 .speego-why-inner {
-  max-width: 1280px;
+  max-width: 1360px;
   margin: 0 auto;
 }
 
 .speego-why-header {
   text-align: center;
-  margin-bottom: 32px;
+  margin-bottom: 56px;
   position: relative;
   z-index: 2;
-  will-change: transform, opacity;
 }
 
 .speego-why-accent {
   display: block;
-  width: 56px;
-  height: 5px;
-  margin: 0 auto 18px;
-  background: #FF6A00;
+  width: 64px;
+  height: 6px;
+  margin: 0 auto 20px;
+  background: var(--speego-accent);
   border-radius: 3px;
 }
 
 .speego-why-title {
   font-family: 'Inter', sans-serif;
-  font-size: clamp(26px, 3.2vw, 40px);
+  font-size: clamp(40px, 6vw, 72px);
   font-weight: 900;
-  letter-spacing: 0.02em;
+  letter-spacing: -0.02em;
   text-transform: uppercase;
-  color: #002855;
-  margin: 0 0 12px 0;
-  line-height: 1.2;
+  color: var(--speego-primary);
+  margin: 0 0 16px 0;
+  line-height: 1.05;
 }
 
 .speego-why-subtitle {
   font-family: 'Inter', sans-serif;
-  font-size: 15px;
+  font-size: clamp(16px, 1.5vw, 20px);
   line-height: 1.65;
-  color: #475569;
-  max-width: 560px;
+  color: var(--speego-accent);
+  font-weight: 600;
+  max-width: 640px;
   margin: 0 auto;
 }
 
-.speego-why-track {
-  position: relative;
-  width: 100%;
-}
-
-.speego-why-pin {
-  position: relative;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  overflow: visible;
-}
-
-.speego-why-stage {
-  display: grid;
-  grid-template-columns: minmax(220px, 1fr) minmax(340px, 1.35fr) minmax(220px, 1fr);
-  gap: 18px 16px;
-  align-items: center;
-  width: 100%;
-}
-
-.speego-why-col {
+.speego-why-pairs {
   display: flex;
   flex-direction: column;
-  gap: 14px;
-  z-index: 3;
+  gap: 72px;
 }
 
-.speego-why-col--left .speego-why-card:nth-child(2) {
-  margin-right: -12px;
+.speego-why-pair {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.1fr);
+  gap: 32px 40px;
+  align-items: center;
+  opacity: 0;
+  transform: translate3d(0, 36px, 0);
+  transition:
+    opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-.speego-why-col--right .speego-why-card:nth-child(2) {
-  margin-left: -8px;
+.speego-why-pair.is-in {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
 }
 
-.speego-why-visual {
-  position: relative;
-  height: min(58vh, 520px);
-  min-height: 360px;
-  z-index: 1;
+.speego-why-pair--flip {
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.1fr);
+}
+
+.speego-why-pair--flip .speego-why-pair__visual {
+  order: 2;
+}
+
+.speego-why-pair--flip .speego-why-pair__card {
+  order: 1;
+}
+
+/* Plane rows — vật thể x2 */
+.speego-why-pair[data-asset="plane"],
+.speego-why-pair[data-asset="plane-network"],
+.speego-why-pair[data-asset="plane-cost"] {
+  min-height: 0;
+  align-items: center;
+}
+
+.speego-why-pair[data-asset="plane"] {
+  grid-template-columns: minmax(0, 1.45fr) minmax(0, 0.9fr);
+}
+
+.speego-why-pair[data-asset="plane"] .speego-why-pair__visual {
+  order: 2;
   overflow: visible;
-  perspective: 1400px;
-  transform-style: preserve-3d;
+  min-height: 0;
+  justify-content: flex-end;
 }
 
-.speego-why-layer {
-  position: absolute;
-  display: block;
-  height: auto;
-  max-width: none;
-  pointer-events: none;
-  will-change: transform, opacity, filter;
-  transform-origin: center center;
-  backface-visibility: hidden;
-}
-
-.speego-why-layer--port {
-  z-index: 1;
-  width: 100%;
-  left: 0;
-  bottom: 0;
-  transform-origin: 50% 80%;
-  filter: drop-shadow(0 16px 28px rgba(11, 39, 66, 0.14));
-}
-
-.speego-why-layer--ship {
+.speego-why-pair[data-asset="plane"] .speego-why-pair__card {
+  order: 1;
   z-index: 2;
-  width: 78%;
-  left: -8%;
-  bottom: 4%;
-  transform-origin: 35% 60%;
-  filter: drop-shadow(0 18px 30px rgba(11, 39, 66, 0.22));
 }
 
-.speego-why-layer--plane {
-  z-index: 3;
-  width: 88%;
-  left: 6%;
-  top: 0;
-  transform-origin: 55% 45%;
-  filter: drop-shadow(0 22px 32px rgba(11, 39, 66, 0.28)) contrast(1.05);
+.speego-why-pair[data-asset="plane"] .speego-why-pair__visual img,
+.speego-why-pair[data-asset="plane-network"] .speego-why-pair__visual img,
+.speego-why-pair[data-asset="plane-cost"] .speego-why-pair__visual img {
+  width: 100%;
+  max-width: 800px;
+  max-height: 560px;
+  transform: scale(1);
+  transform-origin: center center;
+  will-change: transform;
 }
 
-.speego-why-layer--truck {
-  z-index: 4;
-  width: 72%;
-  right: -6%;
-  left: auto;
-  bottom: -2%;
-  transform-origin: 65% 65%;
-  filter: drop-shadow(0 20px 28px rgba(11, 39, 66, 0.24));
+.speego-why-pair[data-asset="plane-cost"] .speego-why-pair__visual {
+  justify-content: flex-end;
 }
 
-.speego-why-card {
-  background: #ffffff;
-  border-radius: 18px;
-  border: 1px solid #e2e8f0;
-  box-shadow: 0 12px 32px rgba(15, 39, 66, 0.12);
-  padding: 18px 18px 16px;
-  transition: box-shadow 0.3s ease;
-  will-change: transform, opacity, filter;
+.speego-why-pair[data-asset="plane-cost"] .speego-why-pair__visual img {
+  transform: translateX(12px) scale(1);
+  transform-origin: center right;
 }
 
-.speego-why-card:hover {
-  box-shadow: 0 18px 40px rgba(15, 39, 66, 0.16);
+/* Tàu — x2 */
+.speego-why-pair[data-asset="ship"] .speego-why-pair__visual {
+  justify-content: flex-end;
 }
 
-.speego-why-card h3 {
-  font-family: 'Inter', sans-serif;
-  font-size: 15px;
-  font-weight: 800;
-  color: #0B2742;
-  margin: 0 0 8px 0;
-  line-height: 1.35;
+.speego-why-pair[data-asset="ship"] .speego-why-pair__visual img {
+  max-width: 880px;
+  max-height: 640px;
+  transform: translateX(20px) scale(1);
+  transform-origin: center right;
+  will-change: transform;
 }
 
-.speego-why-card p {
-  font-family: 'Inter', sans-serif;
-  font-size: 13px;
-  line-height: 1.55;
-  color: #556980;
+/* Ảnh nguyên thể — không khung */
+.speego-why-pair__visual {
   margin: 0;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 0;
+  background: transparent;
+  border-radius: 0;
+  overflow: visible;
+  box-shadow: none;
+  border: none;
+}
+
+.speego-why-pair__visual img {
+  display: block;
+  width: 100%;
+  max-width: 840px;
+  height: auto;
+  max-height: 600px;
+  object-fit: contain;
+  object-position: center;
+  filter: drop-shadow(0 18px 32px rgba(4, 36, 61, 0.16));
+  transform: none;
+  transform-origin: center center;
+}
+
+/* Chữ + số trái + máy bay scroll */
+.speego-why-pair__card {
+  display: flex;
+  align-items: stretch;
+  gap: 20px 28px;
+  background: transparent;
+  border-radius: 0;
+  border: none;
+  box-shadow: none;
+  padding: 12px 8px;
+}
+
+.speego-why-pair__index {
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 72px;
+  padding-top: 4px;
+  align-self: stretch;
+}
+
+.speego-why-pair__num {
+  display: block;
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(40px, 4.8vw, 58px);
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  color: var(--speego-accent);
+  margin: 0;
+  opacity: 0.95;
+}
+
+.speego-why-pair__rail {
+  position: relative;
+  display: block;
+  width: 2px;
+  flex: 1 1 auto;
+  min-height: 88px;
+  margin-top: 14px;
+  background: linear-gradient(
+    180deg,
+    rgba(242, 101, 34, 0.55) 0%,
+    rgba(4, 36, 61, 0.18) 100%
+  );
+  border-radius: 2px;
+}
+
+.speego-why-pair__plane {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  width: 34px;
+  height: 34px;
+  margin-left: -17px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--speego-primary);
+  font-size: 18px;
+  transform: translate3d(0, 0, 0) rotate(-45deg);
+  will-change: transform;
+  filter: drop-shadow(0 4px 10px rgba(4, 36, 61, 0.2));
+}
+
+.speego-why-pair__plane i {
+  line-height: 1;
+}
+
+.speego-why-pair__copy {
+  flex: 1 1 auto;
+  min-width: min(100%, 16rem);
+}
+
+.speego-why-pair__card h3 {
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(34px, 4vw, 50px);
+  font-weight: 900;
+  color: var(--speego-primary);
+  margin: 0 0 20px 0;
+  line-height: 1.18;
+  max-width: 14em;
+  text-wrap: balance;
+  will-change: transform, opacity;
+}
+
+.speego-why-pair__card p {
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(20px, 2.25vw, 28px);
+  line-height: 1.6;
+  color: var(--speego-accent);
+  font-weight: 600;
+  margin: 0;
+  max-width: 22em;
+  will-change: transform, opacity;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .speego-why-card,
-  .speego-why-layer,
-  .speego-why-header {
-    transform: none !important;
-    opacity: 1 !important;
-    visibility: visible !important;
-    filter: none !important;
+  .speego-why-pair {
+    opacity: 1;
+    transform: none;
+    transition: none;
   }
 }
 
-@media screen and (max-width: 1024px) {
-  .speego-why-stage {
-    grid-template-columns: 1fr 1fr;
-    gap: 14px;
+@media screen and (max-width: 900px) {
+  .speego-why-pairs {
+    gap: 48px;
   }
-  .speego-why-visual {
-    grid-column: 1 / -1;
+  .speego-why-pair,
+  .speego-why-pair--flip,
+  .speego-why-pair[data-asset="plane"] {
+    grid-template-columns: 1fr;
+    gap: 18px;
+    min-height: 0;
+  }
+  .speego-why-pair--flip .speego-why-pair__visual,
+  .speego-why-pair--flip .speego-why-pair__card,
+  .speego-why-pair[data-asset="plane"] .speego-why-pair__visual,
+  .speego-why-pair[data-asset="plane"] .speego-why-pair__card {
+    order: unset;
+  }
+  .speego-why-pair__visual,
+  .speego-why-pair[data-asset="plane"] .speego-why-pair__visual {
     order: -1;
-    height: 320px;
-    min-height: 280px;
-    margin-bottom: 8px;
+    min-height: 0;
   }
-  .speego-why-col--left .speego-why-card:nth-child(2),
-  .speego-why-col--right .speego-why-card:nth-child(2) {
+  .speego-why-pair__visual img {
+    width: 100%;
+    max-width: 680px;
+    max-height: 440px;
+    transform: none;
+  }
+  .speego-why-pair[data-asset="plane"] .speego-why-pair__visual img,
+  .speego-why-pair[data-asset="plane-network"] .speego-why-pair__visual img,
+  .speego-why-pair[data-asset="plane-cost"] .speego-why-pair__visual img {
+    width: 100%;
+    max-width: 640px;
+    max-height: 420px;
     margin-left: 0;
-    margin-right: 0;
+    transform: scale(1);
+  }
+  .speego-why-pair[data-asset="ship"] .speego-why-pair__visual img {
+    max-width: 720px;
+    max-height: 480px;
+    transform: translateX(8px) scale(1);
   }
 }
 
 @media screen and (max-width: 768px) {
-  .speego-why-stage {
-    grid-template-columns: 1fr;
+  .speego-why-section {
+    padding: 56px 16px 48px;
   }
-  .speego-why-visual {
-    height: 260px;
-    min-height: 240px;
+  .speego-why-title {
+    font-size: clamp(32px, 9vw, 44px);
+  }
+  .speego-why-pair__card h3 {
+    font-size: clamp(32px, 8vw, 40px);
+  }
+  .speego-why-pair__card {
+    gap: 14px 16px;
+  }
+  .speego-why-pair__index {
+    width: 52px;
+  }
+  .speego-why-pair__num {
+    font-size: clamp(32px, 8vw, 40px);
+  }
+  .speego-why-pair__rail {
+    min-height: 64px;
+  }
+  .speego-why-pair__plane {
+    width: 28px;
+    height: 28px;
+    margin-left: -14px;
+    font-size: 15px;
+  }
+  .speego-why-pair__card p {
+    font-size: clamp(18px, 4.5vw, 22px);
   }
 }
 
@@ -2652,79 +2899,101 @@ body.speego-track-modal-open {
 }
 
 /* ==========================================
-   CONSULTATION — VIDEO LEFT + FEATURED FORM RIGHT
+   CONSULTATION — FULL-BLEED VIDEO + COMPACT INVITE FORM
    ========================================== */
 .speego-consult-section {
-  background:
-    radial-gradient(ellipse at 15% 20%, rgba(242, 100, 25, 0.08) 0%, transparent 45%),
-    radial-gradient(ellipse at 90% 80%, rgba(4, 36, 61, 0.06) 0%, transparent 40%),
-    #f5f8fa;
+  padding: 72px 0 0 !important;
+  overflow: visible;
+  background: #041a2d;
 }
 
-.speego-consult-split {
+.speego-consult-section > .speego-section-header {
   max-width: 1240px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: 1.05fr 1fr;
-  gap: 36px;
-  align-items: stretch;
+  margin: 0 auto 24px;
   padding: 0 24px;
   box-sizing: border-box;
+  overflow: visible;
 }
 
-.speego-consult-media {
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-  min-width: 0;
+.speego-consult-section .speego-section-tag {
+  color: #ff8a3d;
+}
+
+.speego-consult-section .speego-section-title,
+.speego-consult-section .speego-section-subtitle {
+  color: #ffffff;
+}
+
+.speego-consult-section .speego-section-title .speego-title-char {
+  color: #ffffff;
+}
+
+.speego-consult-section .speego-section-subtitle {
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.speego-consult-stage {
+  position: relative;
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 .speego-consult-video-frame {
   position: relative;
-  flex: 1;
-  min-height: 420px;
-  border-radius: 18px;
+  width: 100%;
+  min-height: min(78vh, 820px);
+  height: min(78vh, 820px);
+  border-radius: 0;
   overflow: hidden;
   background: #04243d;
-  border: 1px solid rgba(4, 36, 61, 0.12);
-  box-shadow:
-    0 18px 40px rgba(4, 36, 61, 0.14),
-    inset 0 0 0 1px rgba(255, 255, 255, 0.04);
+  border: 0;
+  box-shadow: none;
 }
 
-.speego-consult-video-frame::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  pointer-events: none;
-  box-shadow: inset 0 0 0 2px rgba(242, 100, 25, 0.22);
-  border-radius: inherit;
-}
-
-.speego-consult-video-frame iframe {
+.speego-consult-video {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
-  border: 0;
+  object-fit: cover;
+  object-position: center;
   display: block;
+  border: 0;
+  /* Keep pixels sharp: GPU layer, no soft scaling */
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  filter: contrast(1.06) saturate(1.08);
 }
 
-.speego-consult-media-caption {
-  margin: 0;
-  font-family: Inter, sans-serif;
-  font-size: 14px;
-  font-weight: 600;
-  color: #64748b;
-  letter-spacing: 0.01em;
+.speego-consult-video-shade {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background:
+    linear-gradient(
+      90deg,
+      rgba(4, 26, 45, 0.18) 0%,
+      transparent 40%,
+      rgba(4, 26, 45, 0.28) 100%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(4, 26, 45, 0.1) 0%,
+      transparent 35%,
+      rgba(4, 26, 45, 0.38) 100%
+    );
 }
 
 .speego-form-container {
   max-width: none;
   margin: 0;
   background: #ffffff;
-  border-radius: 18px;
+  border-radius: 16px;
   padding: 36px 34px;
   box-shadow: 0 20px 50px rgba(4, 36, 61, 0.1);
   border: 1px solid #e2e8f0;
@@ -2732,55 +3001,118 @@ body.speego-track-modal-open {
 
 .speego-form-container--featured {
   position: relative;
-  border: 1px solid rgba(242, 100, 25, 0.28);
+  border: 1px solid rgba(242, 100, 25, 0.35);
+}
+
+.speego-form-container--overlay {
+  position: absolute;
+  right: max(28px, calc((100vw - 1400px) / 2 - 28px));
+  bottom: 0;
+  z-index: 3;
+  width: min(390px, calc(100% - 40px));
+  max-height: calc(100% - 24px);
+  overflow: auto;
+  padding: 18px 16px 16px;
+  background: rgba(255, 255, 255, 0.97);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: 18px 18px 0 0;
+  border-bottom: 0;
+  animation: speegoFormInvite 2.8s ease-in-out infinite;
+}
+
+.speego-form-container--overlay:focus-within {
+  animation: none;
+  transform: translateY(0);
   box-shadow:
-    0 0 0 1px rgba(242, 100, 25, 0.12),
-    0 0 0 6px rgba(242, 100, 25, 0.06),
-    0 28px 60px rgba(4, 36, 61, 0.16),
-    0 12px 28px rgba(242, 100, 25, 0.12);
-  animation: speegoFormGlow 3.2s ease-in-out infinite;
+    0 0 0 1px rgba(242, 100, 25, 0.35),
+    0 0 0 10px rgba(242, 100, 25, 0.1),
+    0 28px 56px rgba(4, 36, 61, 0.32);
+}
+
+.speego-form-container--overlay:focus-within .speego-form-invite,
+.speego-form-container--overlay:focus-within .speego-form-submit-btn {
+  animation: none;
+}
+
+.speego-form-invite {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0 0 12px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: rgba(242, 100, 25, 0.1);
+  color: #d8520e;
+  font-family: Inter, sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  animation: speegoInvitePulse 1.8s ease-in-out infinite;
+}
+
+.speego-form-invite__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #f26419;
+  box-shadow: 0 0 0 0 rgba(242, 100, 25, 0.55);
+  animation: speegoInviteDot 1.6s ease-out infinite;
 }
 
 .speego-form-container--featured::before {
   content: '';
   position: absolute;
   top: 0;
-  left: 24px;
-  right: 24px;
-  height: 4px;
+  left: 16px;
+  right: 16px;
+  height: 3px;
   border-radius: 0 0 8px 8px;
-  background: linear-gradient(90deg, #f26419 0%, #ff8a3d 50%, #04243d 100%);
+  background: linear-gradient(90deg, #f26419 0%, #ff8a3d 55%, #04243d 100%);
   pointer-events: none;
 }
 
-@keyframes speegoFormGlow {
+@keyframes speegoFormInvite {
   0%, 100% {
+    transform: translateY(0);
     box-shadow:
-      0 0 0 1px rgba(242, 100, 25, 0.12),
-      0 0 0 6px rgba(242, 100, 25, 0.05),
-      0 28px 60px rgba(4, 36, 61, 0.16),
-      0 12px 28px rgba(242, 100, 25, 0.1);
+      0 0 0 1px rgba(242, 100, 25, 0.16),
+      0 0 0 8px rgba(242, 100, 25, 0.05),
+      0 18px 40px rgba(4, 36, 61, 0.28);
   }
   50% {
+    /* Glow only — keep form glued to bottom so logo stays covered */
+    transform: translateY(0);
     box-shadow:
-      0 0 0 1px rgba(242, 100, 25, 0.28),
-      0 0 0 10px rgba(242, 100, 25, 0.1),
-      0 32px 70px rgba(4, 36, 61, 0.18),
-      0 16px 36px rgba(242, 100, 25, 0.18);
+      0 0 0 1px rgba(242, 100, 25, 0.35),
+      0 0 0 12px rgba(242, 100, 25, 0.1),
+      0 22px 48px rgba(4, 36, 61, 0.34);
   }
 }
 
+@keyframes speegoInvitePulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.03); }
+}
+
+@keyframes speegoInviteDot {
+  0% { box-shadow: 0 0 0 0 rgba(242, 100, 25, 0.55); }
+  70% { box-shadow: 0 0 0 10px rgba(242, 100, 25, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(242, 100, 25, 0); }
+}
+
 .speego-form-secure-note {
-  font-size: 12px;
+  font-size: 10px;
   color: #94a3b8;
   text-align: center;
-  margin-top: 12px;
+  margin-top: 8px;
+  line-height: 1.4;
 }
 
 .speego-form-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 18px;
+  gap: 10px;
 }
 
 .speego-form-full {
@@ -2789,10 +3121,10 @@ body.speego-track-modal-open {
 
 .speego-form-group label {
   display: block;
-  font-size: 12px;
+  font-size: 10px;
   font-weight: 700;
   color: var(--speego-primary);
-  margin-bottom: 8px;
+  margin-bottom: 5px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -2804,11 +3136,11 @@ body.speego-track-modal-open {
 .speego-form-select,
 .speego-form-textarea {
   width: 100%;
-  padding: 12px 14px;
+  padding: 9px 11px;
   background: #f8fafc;
   border: 1px solid #cbd5e1;
   border-radius: 8px;
-  font-size: 14px;
+  font-size: 12.5px;
   color: #1e293b;
   outline: none;
   transition: var(--speego-transition);
@@ -2823,28 +3155,49 @@ body.speego-track-modal-open {
   box-shadow: 0 0 0 3px rgba(242, 100, 25, 0.15);
 }
 
+.speego-form-textarea {
+  min-height: 58px;
+  resize: vertical;
+}
+
 .speego-form-submit-btn {
   width: 100%;
-  padding: 16px;
+  padding: 12px;
   background: var(--speego-accent);
   color: #ffffff;
   border: none;
   border-radius: 10px;
   font-family: 'Inter', sans-serif;
-  font-size: 16px;
+  font-size: 13.5px;
   font-weight: 800;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
+  gap: 8px;
   transition: var(--speego-transition);
+  animation: speegoCtaPulse 2.4s ease-in-out infinite;
 }
 
 .speego-form-submit-btn:hover {
   background: var(--speego-accent-hover);
   transform: translateY(-2px);
   box-shadow: 0 10px 25px rgba(242, 100, 25, 0.35);
+  animation: none;
+}
+
+@keyframes speegoCtaPulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(242, 100, 25, 0.35); }
+  50% { box-shadow: 0 0 0 8px rgba(242, 100, 25, 0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .speego-form-container--overlay,
+  .speego-form-invite,
+  .speego-form-invite__dot,
+  .speego-form-submit-btn {
+    animation: none !important;
+  }
 }
 
 .speego-toast {
@@ -2920,14 +3273,101 @@ body.speego-track-modal-open {
   z-index: 1;
 }
 
-.speego-partners-header .speego-section-title {
-  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.8);
+.speego-partners-header {
+  max-width: 100% !important;
+  width: 100%;
+  padding: 0;
+  box-sizing: border-box;
+  margin-bottom: 28px;
+  overflow: hidden;
+}
+
+.speego-partners-header .speego-section-tag,
+.speego-partners-header .speego-section-subtitle {
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+
+.speego-partners-title {
+  font-family: 'Inter', sans-serif !important;
+  font-size: clamp(36px, 6.5vw, 80px) !important;
+  font-weight: 900 !important;
+  letter-spacing: -0.035em !important;
+  line-height: 1.05 !important;
+  color: var(--speego-primary) !important; /* cùng màu Why titles / logo navy */
+  margin: 12px 0 20px;
+  overflow: hidden;
+  white-space: nowrap;
+  width: 100%;
+}
+
+.speego-partners-marquee {
+  display: block;
+  width: 100%;
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 4%, #000 96%, transparent 100%);
+  mask-image: linear-gradient(90deg, transparent 0%, #000 4%, #000 96%, transparent 100%);
+}
+
+.speego-partners-marquee__track {
+  display: inline-flex;
+  align-items: center;
+  gap: clamp(48px, 8vw, 96px);
+  width: max-content;
+  animation: speegoPartnersTitleMarquee 32s linear infinite;
+  will-change: transform;
+}
+
+.speego-partners-marquee__item {
+  display: inline-block;
+  flex-shrink: 0;
+  white-space: nowrap;
+  color: var(--speego-primary); /* cùng màu Why titles / logo navy */
+  font: inherit;
+}
+
+@keyframes speegoPartnersTitleMarquee {
+  from { transform: translate3d(0, 0, 0); }
+  to { transform: translate3d(-50%, 0, 0); }
 }
 
 .speego-partners-header .speego-section-subtitle {
   max-width: 720px;
   margin-left: auto;
   margin-right: auto;
+}
+
+@media (max-width: 768px) {
+  .speego-partners-title {
+    font-size: clamp(26px, 7.5vw, 40px) !important;
+  }
+  .speego-partners-marquee__track {
+    animation-duration: 24s;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .speego-partners-marquee__track {
+    animation: none;
+    transform: none;
+  }
+  .speego-partners-marquee {
+    -webkit-mask-image: none;
+    mask-image: none;
+    overflow: visible;
+    text-align: center;
+  }
+  .speego-partners-marquee__track {
+    display: block;
+    width: 100%;
+  }
+  .speego-partners-marquee__item {
+    white-space: normal;
+    display: block;
+  }
+  .speego-partners-marquee__item[aria-hidden="true"] {
+    display: none;
+  }
 }
 
 .speego-marquee-wrapper {
@@ -2995,7 +3435,7 @@ body.speego-track-modal-open {
   }
 }
 
-/* Direct Logo Presentation (Hoàn toàn không có khung, chỉ lấy thẳng logo) */
+/* Direct Logo Presentation (HoÃ n toÃ n khÃ´ng cÃ³ khung, chá» láº¥y tháº³ng logo) */
 .speego-partner-card,
 .speego-partner-item {
   background: transparent !important;
@@ -3024,7 +3464,7 @@ body.speego-track-modal-open {
   border: none !important;
 }
 
-/* Logo Image - To, rõ nét, kích thước lớn, màu sắc trung thực */
+/* Logo Image - To, rÃµ nÃ©t, kÃ­ch thÆ°á»c lá»n, mÃ u sáº¯c trung thá»±c */
 .speego-partner-logo-img {
   height: 75px;
   max-height: 85px;
@@ -3106,6 +3546,18 @@ body.speego-track-modal-open {
   flex-direction: column;
 }
 
+.speego-testi-stars {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin: 0 0 18px 0;
+  font-size: 28px;
+  line-height: 1;
+  letter-spacing: 0.08em;
+  color: #E85A00; /* cam đậm */
+  -webkit-text-stroke: 0.4px #C44A00;
+}
+
 .speego-testi-quote {
   font-size: 15px;
   line-height: 1.7;
@@ -3122,16 +3574,23 @@ body.speego-track-modal-open {
 }
 
 .speego-testi-avatar {
+  flex: 0 0 48px;
   width: 48px;
   height: 48px;
+  min-width: 48px;
+  min-height: 48px;
+  aspect-ratio: 1 / 1;
   border-radius: 50%;
   background: var(--speego-primary);
   color: #ffffff;
   display: flex;
   align-items: center;
   justify-content: center;
+  align-self: center;
   font-weight: 800;
   font-size: 16px;
+  line-height: 1;
+  overflow: hidden;
 }
 
 .speego-testi-name {
@@ -3180,7 +3639,7 @@ body.speego-track-modal-open {
     display: none;
   }
   .speego-services-title {
-    font-size: 32px;
+    font-size: clamp(30px, 7vw, 40px);
   }
   .speego-features-grid {
     grid-template-columns: repeat(2, 1fr);
@@ -3213,9 +3672,15 @@ body.speego-track-modal-open {
   .speego-trust-bar {
     grid-template-columns: 1fr;
     padding: 22px 18px;
-    margin: 28px auto -20px;
+    margin: 0 auto;
     min-height: 0;
     row-gap: 16px;
+  }
+  .speego-trust-bar__icon {
+    width: 84px;
+    height: 84px;
+    font-size: 40px;
+    border-radius: 20px;
   }
   .speego-trust-bar__item {
     padding: 4px 8px;
@@ -3255,18 +3720,31 @@ body.speego-track-modal-open {
   .speego-process-tabs {
     grid-template-columns: repeat(2, 1fr);
   }
-  .speego-consult-split {
-    grid-template-columns: 1fr;
-    gap: 24px;
-    padding: 0 16px;
+  .speego-consult-section > .speego-section-header {
+    padding: 0 16px 20px;
+  }
+  .speego-consult-stage {
+    padding: 0;
   }
   .speego-consult-video-frame {
-    min-height: 260px;
-    aspect-ratio: 16 / 9;
+    min-height: 70vh;
+    height: 70vh;
+    max-height: none;
+  }
+  .speego-form-container--overlay {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: auto;
+    max-height: 68%;
+    padding: 14px 12px 14px;
+    border-radius: 16px 16px 0 0;
+    animation: speegoFormInvite 2.8s ease-in-out infinite;
   }
   .speego-form-container,
   .speego-form-container--featured {
-    padding: 28px 20px;
+    padding: 16px 14px 14px;
   }
   .speego-form-grid {
     grid-template-columns: 1fr;
@@ -3283,7 +3761,7 @@ body.speego-track-modal-open {
    IMAGE 2 SPECIFICATION: SPEEGO HERO SECTION, STATS & TRUST BAR
    ========================================================================== */
 
-/* Main Hero Section Container — full viewport */
+/* Main Hero Section Container â full viewport */
 .speego-hero-section {
   position: relative;
   width: 100%;
@@ -3297,7 +3775,7 @@ body.speego-track-modal-open {
   padding-top: 80px; /* Offset for 80px header */
 }
 
-/* Background video — zoomed, full-bleed */
+/* Background video â zoomed, full-bleed */
 .speego-hero-bg-media {
   position: absolute;
   inset: 0;
@@ -3310,7 +3788,7 @@ body.speego-track-modal-open {
   position: absolute;
   top: 50%;
   left: 50%;
-  /* Near-natural framing — only slight cover crop */
+  /* Near-natural framing â only slight cover crop */
   width: 100%;
   height: 100%;
   min-width: 100%;
@@ -3333,7 +3811,7 @@ body.speego-track-modal-open {
   pointer-events: none;
 }
 
-/* Soft black blur band at bottom — raised higher to hide watermark/logo */
+/* Soft black blur band at bottom â raised higher to hide watermark/logo */
 .speego-hero-video-bottom-mask {
   position: absolute;
   left: 0;
@@ -3374,7 +3852,7 @@ body.speego-track-modal-open {
   filter: blur(10px);
 }
 
-/* Linear Gradient Overlay — keep left text readable */
+/* Linear Gradient Overlay â keep left text readable */
 .speego-hero-gradient-overlay {
   position: absolute;
   top: 0;
@@ -3386,7 +3864,7 @@ body.speego-track-modal-open {
   background: linear-gradient(90deg, rgba(255, 255, 255, 0.92) 0%, rgba(255, 255, 255, 0.68) 42%, rgba(255, 255, 255, 0.15) 68%, rgba(255, 255, 255, 0) 100%);
 }
 
-/* Hero Content Wrapper — 2 columns: copy | console */
+/* Hero Content Wrapper â 2 columns: copy | console */
 .speego-hero-container {
   position: relative;
   z-index: 5;
@@ -3431,7 +3909,7 @@ body.speego-track-modal-open {
   border-radius: 2px;
 }
 
-/* H1 - Heading: Inter / Bold — sized for 2-col hero with console */
+/* H1 - Heading: Inter / Bold â sized for 2-col hero with console */
 .speego-hero-heading {
   font-family: 'Inter', sans-serif;
   font-weight: 800;
@@ -3442,12 +3920,12 @@ body.speego-track-modal-open {
   letter-spacing: -0.025em;
 }
 
-/* "Đến" — logo blue */
+/* "Äáº¿n" â logo blue */
 .speego-highlight-navy {
   color: var(--speego-primary-light) !important;
 }
 
-/* Orange highlight — logo orange, keep on one line */
+/* Orange highlight â logo orange, keep on one line */
 .speego-highlight-orange {
   color: var(--speego-accent) !important;
   white-space: nowrap;
@@ -3542,7 +4020,7 @@ body.speego-track-modal-open {
   color: #FF6A00;
 }
 
-/* Stats Row: Gap between items: 48px — always one horizontal row */
+/* Stats Row: Gap between items: 48px â always one horizontal row */
 .speego-hero-stats-row {
   display: flex;
   align-items: center;
@@ -3782,7 +4260,7 @@ body.speego-track-modal-open {
   transform: scale(1.04);
 }
 
-/* Interactive Console Section Container — removed from page; keep inert for safety */
+/* Interactive Console Section Container â removed from page; keep inert for safety */
 .speego-quick-tools-section {
   display: none;
 }
@@ -3948,7 +4426,7 @@ body.speego-track-modal-open {
 }
 
 /* ==========================================
-   NEWS � View All CTA
+   NEWS — View All CTA
    ========================================== */
 .speego-news-cta {
   display: flex;
@@ -3963,7 +4441,7 @@ body.speego-track-modal-open {
 }
 
 /* ==========================================
-   FOOTER � offices full detail
+   FOOTER — offices full detail
    ========================================== */
 .speego-site-footer {
   background: #041a2d;
@@ -3997,27 +4475,61 @@ body.speego-track-modal-open {
   margin: 0;
 }
 
-.speego-footer-social {
+.speego-footer-flags {
   display: flex;
-  gap: 12px;
-  margin-top: 20px;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 22px;
 }
 
-.speego-footer-social a {
-  width: 36px;
-  height: 36px;
+.speego-footer-flag {
+  --flag-i: 0;
+  width: 56px;
+  height: 56px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.1);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #fff;
-  text-decoration: none;
-  transition: background 0.2s ease;
+  overflow: hidden;
+  flex-shrink: 0;
+  display: block;
+  border: 2px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.28);
+  opacity: 0;
+  transform: translate3d(0, 16px, 0) scale(0.85);
+  transition:
+    opacity 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.2s ease;
+  transition-delay: calc(var(--flag-i) * 120ms);
 }
 
-.speego-footer-social a:hover {
-  background: rgba(242, 100, 25, 0.85);
+.speego-footer-flag:nth-child(1) { --flag-i: 0; }
+.speego-footer-flag:nth-child(2) { --flag-i: 1; }
+.speego-footer-flag:nth-child(3) { --flag-i: 2; }
+.speego-footer-flag:nth-child(4) { --flag-i: 3; }
+.speego-footer-flag:nth-child(5) { --flag-i: 4; }
+
+.speego-footer-flags.is-in .speego-footer-flag {
+  opacity: 1;
+  transform: translate3d(0, 0, 0) scale(1);
+}
+
+.speego-footer-flag img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.speego-footer-flag:hover {
+  border-color: rgba(255, 106, 0, 0.9);
+  transform: translate3d(0, -3px, 0) scale(1.06);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .speego-footer-flag {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
 }
 
 .speego-footer-heading {
@@ -4121,5 +4633,50 @@ body.speego-track-modal-open {
   }
   .speego-partners-section {
     padding: 56px 20px 48px !important;
+  }
+}
+
+/* ==========================================
+   SECTION TITLES — letter reveal (QI-style)
+   ========================================== */
+.speego-section-title,
+.speego-services-title,
+.speego-why-title,
+.speego-about-heading {
+  overflow: visible;
+}
+
+.speego-title-char {
+  display: inline-block;
+  opacity: 0;
+  transform: translate3d(0.6em, 0.12em, 0);
+  will-change: transform, opacity;
+}
+
+.speego-title-char.is-space {
+  width: 0.32em;
+}
+
+@keyframes speegoTitleCharIn {
+  from {
+    opacity: 0;
+    transform: translate3d(0.6em, 0.12em, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.is-title-in .speego-title-char {
+  animation: speegoTitleCharIn 0.52s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation-delay: calc(var(--i, 0) * 30ms);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .speego-title-char {
+    opacity: 1 !important;
+    transform: none !important;
+    animation: none !important;
   }
 }
