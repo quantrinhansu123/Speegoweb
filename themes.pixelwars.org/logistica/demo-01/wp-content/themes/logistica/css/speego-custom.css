@@ -5130,6 +5130,11 @@ body.speego-track-modal-open {
   width: 0.3em;
 }
 
+.speego-title-word {
+  display: inline-block;
+  white-space: nowrap;
+}
+
 @keyframes speegoTitleCharIn {
   0% {
     opacity: 0;

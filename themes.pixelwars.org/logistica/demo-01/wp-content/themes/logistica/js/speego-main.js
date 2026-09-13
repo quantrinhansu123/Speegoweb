@@ -3076,6 +3076,9 @@ stat_delivery: 'Entrega a Tiempo',
     el.querySelectorAll('.speego-title-char').forEach(function (c) {
       c.replaceWith(document.createTextNode(c.textContent === '\u00A0' ? ' ' : c.textContent));
     });
+    el.querySelectorAll('.speego-title-word').forEach(function (word) {
+      word.replaceWith.apply(word, Array.prototype.slice.call(word.childNodes));
+    });
     el.normalize();
   }
 
@@ -3093,20 +3096,24 @@ stat_delivery: 'Entrega a Tiempo',
         var text = node.nodeValue;
         if (!text) return;
         var frag = document.createDocumentFragment();
-        for (var i = 0; i < text.length; i++) {
-          var ch = text.charAt(i);
-          if (ch === ' ') {
-            // Real space = wrap between words (nbsp was blocking breaks)
-            frag.appendChild(document.createTextNode(' '));
-            index++;
-            continue;
+        text.split(/(\s+)/).forEach(function (part) {
+          if (!part) return;
+          if (/^\s+$/.test(part)) {
+            frag.appendChild(document.createTextNode(part));
+            index += part.length;
+            return;
           }
-          var span = document.createElement('span');
-          span.className = 'speego-title-char';
-          span.style.setProperty('--i', String(index++));
-          span.textContent = ch;
-          frag.appendChild(span);
-        }
+          var word = document.createElement('span');
+          word.className = 'speego-title-word';
+          for (var i = 0; i < part.length; i++) {
+            var span = document.createElement('span');
+            span.className = 'speego-title-char';
+            span.style.setProperty('--i', String(index++));
+            span.textContent = part.charAt(i);
+            word.appendChild(span);
+          }
+          frag.appendChild(word);
+        });
         node.parentNode.replaceChild(frag, node);
       } else if (node.nodeType === 1 && node.tagName === 'BR') {
         // Keep intentional line breaks intact
