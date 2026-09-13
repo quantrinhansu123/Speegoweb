@@ -8276,3 +8276,16 @@ body.home .speego-route-card,
 body.home .speego-route-row {
   border-radius: 0;
 }
+
+@media (min-width: 1100px) {
+  html[lang="vi"] #news-speego .speego-section-header,
+  html[lang="vi"] #news-speego .speego-section-title {
+    max-width: 1200px;
+  }
+
+  html[lang="vi"] #news-speego .speego-section-title {
+    white-space: normal;
+    text-align: center;
+    text-wrap: balance;
+  }
+}
