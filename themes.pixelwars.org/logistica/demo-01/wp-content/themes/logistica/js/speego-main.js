@@ -142,7 +142,7 @@
       srv4_title: 'Import & Export Customs',
       srv4_desc: 'Advisory on procedures, documentation, customs declarations, and import-export workflows for compliant, smooth cargo movement.',
       srv_learn_more: 'Xem dịch vụ',
-      trust_section_title: 'SpeeGo Logistics Commitments',
+      trust_section_title: 'SpeeGo Logistics Core Services',
       trust_section_subtitle: 'Safety, schedule, cost clarity, and long-term partnership — built into every shipment.',
       srv_feat1_title: 'Safe',
       srv_feat1_desc: 'Cargo always protected',
@@ -337,7 +337,7 @@
       srv4_title: 'Import & Export Customs',
       srv4_desc: 'Advisory on procedures, documentation, customs declarations, and import-export workflows for compliant, smooth cargo movement.',
       srv_learn_more: 'Xem dịch vụ',
-      trust_section_title: 'SpeeGo Logistics Commitments',
+      trust_section_title: 'SpeeGo Logistics Core Services',
       trust_section_subtitle: 'Safety, schedule, cost clarity, and long-term partnership — built into every shipment.',
       srv_feat1_title: 'Safe',
       srv_feat1_desc: 'Cargo always protected',
@@ -427,6 +427,9 @@
 
       // Consultation Form
       form_tag_top: 'CONSULTATION FORM',
+      form_tag: 'Consultation',
+      form_title: 'Consultation & Quote Request',
+      form_subtitle: 'Send your request and a SpeeGo Logistics specialist will respond with an optimal plan within two hours.',
       form_headline: 'Submit cargo details,<br>receive itemized<br>transparent quote.',
       form_lead: 'SpeeGo logistics specialists respond within business hours with tailored routes and schedules. 100% zero hidden costs.',
       form_card_title: 'Request Free Consultation',
@@ -1851,6 +1854,74 @@ stat_delivery: 'Entrega a Tiempo',
     } catch (e) {}
   }
 
+  // A few legacy labels predate the data-i18n markup. Keep them reversible
+  // until their templates are moved into the shared dictionary.
+  const staticEnglishText = {
+    'Xem dịch vụ': 'View service',
+    'TIÊU CHUẨN & CAM KẾT': 'STANDARDS & COMMITMENT',
+    'SpeeGo Logistics kết nối doanh nghiệp với mạng lưới hãng bay, đối tác vận tải và nhà máy tại Trung Quốc, Việt Nam.': 'SpeeGo Logistics connects businesses with airline, freight, and factory partners across China and Vietnam.',
+    'Kết nối trực tiếp · Theo dõi minh bạch · Đồng hành trọn chuỗi': 'Direct connection · Transparent tracking · End-to-end support',
+    'Đối tác vận chuyển': 'Shipping partners',
+    'Nhà máy': 'Factories',
+    'Trung Quốc': 'China',
+    'Mạng lưới nhà máy đa ngành, hỗ trợ MOQ linh hoạt.': 'Multi-industry factory network with flexible MOQs.',
+    'Việt Nam': 'Vietnam',
+    'Đối tác sản xuất và kiểm định chất lượng tận nơi.': 'On-site production and quality-inspection partners.',
+    'Gửi yêu cầu để chuyên viên SpeeGo Logistics phân tích và liên hệ phản hồi phương án tối ưu trong vòng 2 giờ.': 'Send your request and a SpeeGo Logistics specialist will respond with an optimal plan within two hours.',
+    'FORM TƯ VẤN': 'CONSULTATION FORM',
+    'Chuyên viên SpeeGo phản hồi trong giờ làm việc, kèm phương án vận chuyển và mốc thời gian dự kiến.': 'SpeeGo specialists respond during business hours with a shipping plan and estimated timeline.',
+    'Đăng ký tư vấn miễn phí': 'Request a free consultation',
+    'Thông tin của bạn chỉ dùng để liên hệ tư vấn.': 'Your information is used only for consultation.',
+    'Điền ngay · phản hồi trong 2 giờ': 'Submit now · response within two hours',
+    'Tên công ty / Thương hiệu': 'Company / Brand name',
+    'Sourcing & QC (Tìm xưởng & Kiểm định)': 'Sourcing & QC (Factory sourcing & inspection)',
+    'Logistics quốc tế (Đường biển / Hàng không)': 'International logistics (Ocean / Air freight)',
+    'Fulfillment kho bãi & Đóng gói giao hàng': 'Fulfillment, warehousing & order packing',
+    'Thủ tục hải quan & Xuất nhập khẩu': 'Customs procedures & import/export',
+    'Trọn gói toàn chuỗi cung ứng': 'End-to-end supply chain service',
+    'Tuyến vận chuyển quan tâm *': 'Shipping route of interest *',
+    'Việt Nam ➔ Hoa Kỳ (US)': 'Vietnam ➔ United States (US)',
+    'Trung Quốc ➔ Hoa Kỳ (US)': 'China ➔ United States (US)',
+    'Việt Nam / Trung Quốc ➔ Canada': 'Vietnam / China ➔ Canada',
+    'Việt Nam / Trung Quốc ➔ Úc (Australia)': 'Vietnam / China ➔ Australia',
+    'Tuyến vận chuyển khác': 'Other shipping route',
+    'Đơn vị sản xuất và cung cấp dịch vụ logistics toàn cầu. Chuyên tuyến Trung Quốc và Việt Nam đi Mỹ, Canada, Úc. Tối ưu chi phí, minh bạch hành trình.': 'Global manufacturing and logistics provider specializing in routes from China and Vietnam to the US, Canada, and Australia. Optimized costs and transparent tracking.',
+    'Dịch Vụ Chính': 'Core services',
+    'Logistics Quốc Tế': 'International logistics',
+    'Fulfillment & Kho Bãi': 'Fulfillment & warehousing',
+    'Thủ Tục Hải Quan': 'Customs procedures',
+    'Vận Chuyển Hàng Không': 'Air freight',
+    'Liên Kết Nhanh': 'Quick links',
+    'Về SpeeGo': 'About SpeeGo',
+    'Quy Trình 8 Bước': '8-step process',
+    'Vì Sao Chọn SpeeGo': 'Why choose SpeeGo',
+    'Tin Tức & Thị Trường': 'News & market insights',
+    'Liên Hệ Trực Tiếp': 'Contact us',
+    'Văn Phòng Đại Diện': 'Representative offices',
+    'Hà Nội': 'Hanoi',
+    'Leadvisors Tower, 643 Phạm Văn Đồng, Phường Nghĩa Đô, Hà Nội': 'Leadvisors Tower, 643 Pham Van Dong Street, Nghia Do Ward, Hanoi',
+    'Mã ZIP:': 'ZIP code:',
+    'Hồ Chí Minh': 'Ho Chi Minh City',
+    'Văn phòng:': 'Office:',
+    'Kho hàng:': 'Warehouse:',
+    'Hoa Kỳ': 'United States',
+    'Khu công nghiệp Shengzhifu, Zhongluotan, quận Bạch Vân, Quảng Châu': 'Shengzhifu Industrial Park, Zhongluotan, Baiyun District, Guangzhou'
+  };
+
+  function translateLegacyStaticText(lang) {
+    document.querySelectorAll('body *').forEach(function (el) {
+      if (el.children.length) return;
+      const text = el.textContent.trim();
+      if (!text) return;
+      if (lang === 'en' && staticEnglishText[text]) {
+        if (!el.dataset.speegoOriginalText) el.dataset.speegoOriginalText = text;
+        el.textContent = staticEnglishText[text];
+      } else if (lang !== 'en' && el.dataset.speegoOriginalText) {
+        el.textContent = el.dataset.speegoOriginalText;
+      }
+    });
+  }
+
   function applyLanguage(lang, options) {
     const opts = options || {};
     if (!i18nData[lang]) lang = 'en';
@@ -1899,6 +1970,8 @@ stat_delivery: 'Entrega a Tiempo',
         el.setAttribute('placeholder', i18nData[lang][key]);
       }
     });
+
+    translateLegacyStaticText(lang);
 
     // The market-news cards contain nested editorial markup, so update their
     // category, headline, summary and CTA as one scoped group.
@@ -3120,7 +3193,7 @@ stat_delivery: 'Entrega a Tiempo',
     }
 
     var titles = document.querySelectorAll(
-      '.speego-section-title, .speego-services-title, .speego-why-title, .speego-about-heading'
+      '.speego-section-title, .speego-services-title, .speego-why-title, .speego-about-heading, .speego-trust-section__title, .speego-partners-title, .speego-consult-card-title, .speego-hero-heading, .process-tabs-title, .speego-testimonial-title, .speego-news-title'
     );
     titles.forEach(function (el) {
       // Ensure plain-text i18n titles with "&" wrap cleanly

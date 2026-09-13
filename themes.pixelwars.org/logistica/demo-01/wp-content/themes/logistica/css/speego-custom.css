@@ -2352,26 +2352,17 @@ body.speego-track-modal-open {
 
 .speego-trust-section__header {
   text-align: center;
-  margin-bottom: 32px;
-}
-
-.speego-trust-section__accent {
-  display: block;
-  width: 44px;
-  height: 4px;
-  margin: 0 auto 12px;
-  background: #FF6A00;
-  border-radius: 2px;
+  margin-bottom: 40px;
 }
 
 .speego-trust-section__title {
   font-family: 'Inter', sans-serif;
-  font-size: clamp(26px, 3.2vw, 36px);
+  font-size: clamp(28px, 3.4vw, 38px);
   font-weight: 800;
-  color: #0F2744;
-  margin: 0 0 10px 0;
-  letter-spacing: -0.015em;
   line-height: 1.25;
+  color: #0F2744;
+  margin: 0 0 12px 0;
+  letter-spacing: -0.015em;
 }
 
 .speego-trust-section__subtitle {
@@ -2379,10 +2370,9 @@ body.speego-track-modal-open {
   font-size: 15px;
   line-height: 1.5;
   color: #64748B;
-  max-width: 960px;
+  max-width: 900px;
   margin: 0 auto;
   text-align: center;
-  white-space: nowrap;
 }
 
 .speego-trust-bar {
@@ -2439,23 +2429,28 @@ body.speego-track-modal-open {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  background: rgba(255, 90, 31, 0.12);
-  color: #E85A00;
-  font-size: 48px;
-  line-height: 1;
-  box-shadow: 0 10px 24px rgba(232, 90, 0, 0.16);
-  animation: speegoTrustIconFloat 3.6s ease-in-out infinite;
+  background: linear-gradient(145deg, #FFFFFF 0%, #FFF5ED 100%);
+  border: 1.5px solid rgba(255, 122, 0, 0.18);
+  box-shadow:
+    0 12px 28px -4px rgba(232, 90, 0, 0.14),
+    0 4px 10px rgba(0, 0, 0, 0.03),
+    inset 0 2px 0 rgba(255, 255, 255, 0.95),
+    inset 0 -2px 0 rgba(255, 122, 0, 0.08);
+  animation: speegoTrustIconFloat 3.8s ease-in-out infinite;
   transition:
-    background 280ms cubic-bezier(0.2, 0.8, 0.2, 1),
-    color 280ms cubic-bezier(0.2, 0.8, 0.2, 1),
-    transform 280ms cubic-bezier(0.2, 0.8, 0.2, 1),
-    box-shadow 280ms cubic-bezier(0.2, 0.8, 0.2, 1);
+    background 300ms cubic-bezier(0.2, 0.8, 0.2, 1),
+    border-color 300ms cubic-bezier(0.2, 0.8, 0.2, 1),
+    transform 300ms cubic-bezier(0.2, 0.8, 0.2, 1),
+    box-shadow 300ms cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
-.speego-trust-bar__icon svg {
-  width: 0.92em;
-  height: 0.92em;
+.speego-trust-bar__icon svg,
+.speego-trust-bar__icon .speego-3d-icon {
+  width: 64px;
+  height: 64px;
   display: block;
+  filter: drop-shadow(0 6px 12px rgba(217, 65, 0, 0.16));
+  transition: transform 300ms cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
 .speego-trust-bar__item:nth-child(2) .speego-trust-bar__icon {
@@ -2501,13 +2496,18 @@ body.speego-track-modal-open {
 }
 
 .speego-trust-bar__item:hover .speego-trust-bar__icon {
-  background: #E85A00;
-  color: #FFFFFF;
-  transform: scale(1.12) rotate(-4deg);
+  background: linear-gradient(145deg, #FFFFFF 0%, #FFEFE2 100%);
+  border-color: rgba(255, 106, 0, 0.45);
+  transform: translateY(-6px) scale(1.06);
   box-shadow:
-    0 16px 32px rgba(232, 90, 0, 0.35),
-    0 0 0 8px rgba(232, 90, 0, 0.12);
+    0 18px 36px rgba(232, 90, 0, 0.22),
+    0 0 0 6px rgba(255, 106, 0, 0.12),
+    inset 0 2px 0 rgba(255, 255, 255, 1);
   animation: none;
+}
+
+.speego-trust-bar__item:hover .speego-trust-bar__icon svg {
+  transform: scale(1.08) rotate(-2deg);
 }
 
 .speego-trust-bar__item:hover .speego-trust-bar__title {
@@ -2686,7 +2686,9 @@ body.speego-track-modal-open {
    ========================================== */
 .speego-why-section {
   position: relative;
-  padding: 88px 20px 96px;
+  padding: 80px 0 90px;
+  width: 100%;
+  box-sizing: border-box;
   overflow: clip;
   background:
     radial-gradient(ellipse 70% 60% at 72% 55%, rgba(160, 205, 245, 0.45) 0%, transparent 68%),
@@ -2695,13 +2697,17 @@ body.speego-track-modal-open {
 }
 
 .speego-why-inner {
-  max-width: 1360px;
-  margin: 0 auto;
+  max-width: 100% !important;
+  width: 100% !important;
+  padding: 0 !important;
+  margin: 0 !important;
 }
 
 .speego-why-header {
   text-align: center;
-  margin-bottom: 56px;
+  max-width: 1200px;
+  margin: 0 auto 48px;
+  padding: 0 20px;
   position: relative;
   z-index: 2;
 }
@@ -2738,10 +2744,16 @@ body.speego-track-modal-open {
 
 .speego-why-container {
   display: grid;
-  grid-template-columns: 360px 1fr;
+  grid-template-columns: minmax(380px, 480px) 1fr;
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 0 !important;
   background: #FFFFFF;
-  border: 1px solid #E2E8F0;
-  border-radius: 16px;
+  border-top: 1px solid #E2E8F0;
+  border-bottom: 1px solid #E2E8F0;
+  border-left: none !important;
+  border-right: none !important;
+  border-radius: 0 !important;
   overflow: hidden;
   box-shadow: 0 10px 30px rgba(15, 39, 68, 0.05);
 }
@@ -3104,19 +3116,55 @@ body.speego-track-modal-open {
   }
 }
 
+/* Consultation: two clear desktop columns, with the form as its own surface. */
+@media (min-width: 1024px) {
+  .speego-consult-stage {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(520px, 1fr);
+  }
+
+  .speego-consult-video-frame {
+    min-height: min(78vh, 820px);
+    height: auto;
+  }
+
+  .speego-form-container--overlay {
+    position: static;
+    width: auto !important;
+    min-height: min(78vh, 820px);
+    margin: 0;
+    padding: 48px;
+    transform: none;
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  .speego-form-container--overlay:focus-within {
+    transform: none;
+    box-shadow: none;
+  }
+
+  .speego-form-container--featured::before {
+    display: none;
+  }
+}
+
 /* Reference layout: motion visual at left, six concise benefits at right. */
 #why-speego .speego-why-pairs {
   display: none !important;
 }
 
 #why-speego .speego-why-container {
-  max-width: 1280px;
+  max-width: 100% !important;
+  width: 100% !important;
 }
 
 /* Keep the complete video-and-benefits block optically centred on desktop. */
 @media screen and (min-width: 1025px) {
   #why-speego .speego-why-container {
-    max-width: 1280px;
+    max-width: 100% !important;
+    width: 100% !important;
     margin-left: auto;
     margin-right: auto;
   }
@@ -5055,35 +5103,50 @@ body.speego-track-modal-open {
 .speego-section-title,
 .speego-services-title,
 .speego-why-title,
-.speego-about-heading {
+.speego-about-heading,
+.speego-about-title,
+.speego-trust-section__title,
+.speego-partners-title,
+.speego-testimonial-title,
+.speego-news-title,
+.speego-consult-title,
+.speego-consult-card-title,
+.speego-hero-heading,
+.process-tabs-title {
   overflow: visible;
+  letter-spacing: -0.025em;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
 }
 
 .speego-title-char {
   display: inline-block;
   opacity: 0;
-  transform: translate3d(0.6em, 0.12em, 0);
+  transform: translate3d(0.42em, 0.1em, 0);
   will-change: transform, opacity;
 }
 
 .speego-title-char.is-space {
-  width: 0.32em;
+  width: 0.3em;
 }
 
 @keyframes speegoTitleCharIn {
-  from {
+  0% {
     opacity: 0;
-    transform: translate3d(0.6em, 0.12em, 0);
+    transform: translate3d(0.42em, 0.1em, 0) scale(0.96);
   }
-  to {
+  70% {
+    opacity: 0.95;
+  }
+  100% {
     opacity: 1;
-    transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0) scale(1);
   }
 }
 
 .is-title-in .speego-title-char {
-  animation: speegoTitleCharIn 0.52s cubic-bezier(0.22, 1, 0.36, 1) both;
-  animation-delay: calc(var(--i, 0) * 30ms);
+  animation: speegoTitleCharIn 0.48s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation-delay: calc(var(--i, 0) * 22ms);
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -7038,6 +7101,10 @@ body.home .speego-route-logo-grid::before {
   white-space: nowrap;
 }
 
+html[lang="en"] body.home .speego-route-logo-grid::before {
+  content: 'INTERNATIONAL SHIPPING PARTNERS';
+}
+
 body.home .speego-route-logo-card {
   min-height: 78px;
   border-color: rgba(151, 189, 229, 0.58);
@@ -8029,6 +8096,16 @@ body.home .speego-route-logo-card:hover {
   margin: 0 auto 28px !important;
 }
 
+@media (min-width: 1100px) {
+  #news-speego .speego-section-header {
+    max-width: 1400px;
+  }
+
+  #news-speego .speego-section-title {
+    white-space: nowrap;
+  }
+}
+
 #news-speego {
   padding-top: 40px !important;
 }
@@ -8066,4 +8143,136 @@ body.home .speego-route-logo-card:hover {
     height: 190px;
     min-height: 190px;
   }
+}
+
+
+/* ========================================================
+   FORCE 100% EDGE-TO-EDGE FULL WIDTH FOR #why-speego
+   ======================================================== */
+#why-speego,
+.speego-why-section {
+  position: relative !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  padding: 80px 0 90px !important;
+  margin: 0 !important;
+  overflow: clip !important;
+  box-sizing: border-box !important;
+}
+
+#why-speego .speego-why-inner,
+.speego-why-section .speego-why-inner {
+  width: 100% !important;
+  max-width: 100% !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+#why-speego .speego-why-container,
+.speego-why-container {
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 0 !important;
+  display: grid !important;
+  grid-template-columns: minmax(380px, 480px) 1fr !important;
+  border-radius: 0 !important;
+  border-left: none !important;
+  border-right: none !important;
+  border-top: 1px solid #E2E8F0 !important;
+  border-bottom: 1px solid #E2E8F0 !important;
+  box-shadow: 0 10px 30px rgba(15, 39, 68, 0.05) !important;
+  background: #FFFFFF !important;
+}
+
+#why-speego .speego-why-grid,
+.speego-why-grid {
+  width: 100% !important;
+  display: grid !important;
+  grid-template-columns: 1fr 1fr !important;
+  background-color: #E2E8F0 !important;
+  gap: 1px !important;
+  border-left: 1px solid #E2E8F0 !important;
+}
+
+#why-speego .speego-why-cell,
+.speego-why-cell {
+  background: #FFFFFF !important;
+  padding: 40px 48px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: flex-start !important;
+  min-height: 180px !important;
+}
+
+@media screen and (max-width: 1024px) {
+  #why-speego .speego-why-container,
+  .speego-why-container {
+    grid-template-columns: 320px 1fr !important;
+  }
+  #why-speego .speego-why-cell,
+  .speego-why-cell {
+    padding: 30px 24px !important;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  #why-speego .speego-why-container,
+  .speego-why-container {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  #why-speego .speego-why-grid,
+  .speego-why-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* Final consultation layout override. */
+@media (min-width: 1024px) {
+  .speego-consult-stage {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) minmax(520px, 1fr) !important;
+  }
+
+  .speego-consult-video-frame {
+    min-height: min(78vh, 820px) !important;
+    height: auto !important;
+  }
+
+  .speego-form-container--overlay {
+    position: static !important;
+    width: auto !important;
+    min-height: min(78vh, 820px) !important;
+    margin: 0 !important;
+    padding: 48px !important;
+    transform: none !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+  }
+
+  .speego-form-container--overlay:focus-within {
+    transform: none !important;
+    box-shadow: none !important;
+  }
+
+  .speego-form-container--featured::before {
+    display: none !important;
+  }
+}
+
+/* Route tables: square corners and no partner-caption badge. */
+body.home .speego-route-logo-grid::before {
+  display: none;
+}
+
+body.home .speego-route-logo-grid {
+  display: none !important;
+}
+
+body.home .speego-route-card,
+body.home .speego-route-row {
+  border-radius: 0;
 }
