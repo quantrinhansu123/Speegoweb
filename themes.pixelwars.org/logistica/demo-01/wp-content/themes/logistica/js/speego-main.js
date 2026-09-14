@@ -2741,55 +2741,6 @@ stat_delivery: 'Entrega a Tiempo',
   }
 
   // =========================================================================
-  // 7. HERO STATS COUNT-UP ANIMATION
-  // =========================================================================
-  function animateStatCount(el, duration) {
-    const target = parseInt(el.getAttribute('data-count'), 10);
-    const suffix = el.getAttribute('data-suffix') || '';
-    if (isNaN(target)) return;
-
-    const startTime = performance.now();
-
-    function tick(now) {
-      const progress = Math.min((now - startTime) / duration, 1);
-      // Ease-out cubic for a natural finish
-      const eased = 1 - Math.pow(1 - progress, 3);
-      const value = Math.round(eased * target);
-      el.textContent = value + suffix;
-      if (progress < 1) {
-        requestAnimationFrame(tick);
-      } else {
-        el.textContent = target + suffix;
-      }
-    }
-
-    requestAnimationFrame(tick);
-  }
-
-  function initHeroStatCounters() {
-    const stats = document.querySelectorAll('.speego-hero-stat-num[data-count]');
-    if (!stats.length) return;
-
-    const row = document.querySelector('.speego-hero-stats-row');
-    if (!row) return;
-
-    const observer = new IntersectionObserver(
-      function (entries) {
-        entries.forEach(function (entry) {
-          if (!entry.isIntersecting) return;
-          stats.forEach(function (el) {
-            animateStatCount(el, 1600);
-          });
-          observer.disconnect();
-        });
-      },
-      { threshold: 0.35 }
-    );
-
-    observer.observe(row);
-  }
-
-  // =========================================================================
   // 8. TRUST BAR — LOAD & SCROLL LOGOS FROM logos-partners FOLDER
   // =========================================================================
   // Source: wp-content/themes/logistica/images/logos-partners/
@@ -3332,7 +3283,6 @@ stat_delivery: 'Entrega a Tiempo',
     var sectionIds = [
       'home',
       'trusted-brands',
-      'about-speego',
       'services-speego',
       'trust-speego',
       'process-speego',
@@ -3471,7 +3421,6 @@ stat_delivery: 'Entrega a Tiempo',
     initTrustBarReveal();
     initFooterFlagsReveal();
     initConsultationForm();
-    initHeroStatCounters();
     initTrustPartnerMarquee();
     // Titles after i18n + layout settle
     requestAnimationFrame(function () {
