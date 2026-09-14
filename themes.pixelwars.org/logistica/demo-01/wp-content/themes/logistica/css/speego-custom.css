@@ -18,7 +18,41 @@
   --speego-font: 'Inter', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
 
-/* Global typography: Inter sitewide (hero "TÃ¡Â»Â« TÃÂ¬m NguÃ¡Â»Ân HÃÂ ng" + all pages) */
+/* Global resets for full-width layout without side or bottom margins */
+html,
+body {
+  margin: 0 !important;
+  padding: 0 !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  overflow-x: clip !important;
+  box-sizing: border-box;
+}
+
+#page,
+.site,
+.site-content,
+.site-main,
+#main,
+#primary,
+.content-area {
+  margin: 0 !important;
+  padding: 0 !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.site-footer,
+.speego-site-footer {
+  margin: 0 !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+/* Global typography: Inter sitewide (hero "TÃ¡Â»Â« TÃƒÂ¬m NguÃ¡Â»Â“n HÃƒÂ ng" + all pages) */
 html,
 body,
 .site,
@@ -2216,18 +2250,21 @@ body.speego-track-modal-open {
 }
 
 .speego-services-header {
-  text-align: center;
-  margin-bottom: 40px;
+  text-align: left;
+  max-width: 100%;
+  margin-bottom: 36px;
 }
 
 .speego-services-title {
   font-family: 'Inter', sans-serif;
-  font-size: clamp(28px, 3.4vw, 38px);
+  font-size: clamp(26px, 3.2vw, 36px);
   font-weight: 800;
   line-height: 1.25;
   color: #0F2744;
-  margin: 0 0 12px 0;
-  letter-spacing: -0.015em;
+  margin: 0;
+  letter-spacing: -0.025em;
+  text-align: left;
+  white-space: nowrap;
 }
 
 .speego-services-title .speego-accent-num {
@@ -2237,12 +2274,13 @@ body.speego-track-modal-open {
 
 .speego-services-subtitle {
   font-family: 'Inter', sans-serif;
-  font-size: 15px;
+  font-size: 14.5px;
   line-height: 1.5;
   color: #64748B;
-  max-width: 900px;
-  margin: 0 auto;
-  text-align: center;
+  max-width: 100%;
+  margin: 0;
+  text-align: left;
+  white-space: nowrap;
 }
 
 .speego-services-grid {
@@ -2426,55 +2464,36 @@ body.speego-track-modal-open {
    ========================================== */
 .speego-trust-section {
   position: relative;
-  padding: 52px 24px 60px;
-  background: #F8FAFC;
+  width: 100%;
+  padding: 0 0 60px 0;
+  margin: 0;
+  background: transparent;
 }
 
 .speego-trust-section__inner {
-  max-width: 1320px;
-  margin: 0 auto;
-}
-
-.speego-trust-section__header {
-  text-align: center;
-  margin-bottom: 40px;
-}
-
-.speego-trust-section__title {
-  font-family: 'Inter', sans-serif;
-  font-size: clamp(28px, 3.4vw, 38px);
-  font-weight: 800;
-  line-height: 1.25;
-  color: #0F2744;
-  margin: 0 0 12px 0;
-  letter-spacing: -0.015em;
-}
-
-.speego-trust-section__subtitle {
-  font-family: 'Inter', sans-serif;
-  font-size: 15px;
-  line-height: 1.5;
-  color: #64748B;
-  max-width: 900px;
-  margin: 0 auto;
-  text-align: center;
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
 }
 
 .speego-trust-bar {
   position: relative;
   z-index: 10;
   width: 100%;
-  max-width: 1320px;
-  margin: 0 auto;
+  max-width: 100%;
+  margin: 0;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 0;
   align-items: center;
-  padding: 28px 20px;
+  padding: 24px clamp(20px, 4vw, 80px);
   background: #FFFFFF;
-  border: 1px solid #E2E8F0;
-  border-top: 3.5px solid #FF6A00;
-  border-radius: 16px;
+  border-top: 3.5px solid #0F2744;
+  border-bottom: 1px solid #E2E8F0;
+  border-left: none;
+  border-right: none;
+  border-radius: 0;
   box-shadow: 0 8px 30px rgba(15, 39, 68, 0.05);
   box-sizing: border-box;
 }
@@ -2508,19 +2527,19 @@ body.speego-track-modal-open {
 
 .speego-trust-bar__icon {
   flex-shrink: 0;
-  width: 104px;
-  height: 104px;
-  border-radius: 24px;
+  width: 96px;
+  height: 96px;
+  border-radius: 22px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(145deg, #FFFFFF 0%, #FFF5ED 100%);
-  border: 1.5px solid rgba(255, 122, 0, 0.18);
+  background: linear-gradient(145deg, #FFFFFF 0%, #F1F5F9 100%);
+  border: 1.5px solid rgba(15, 39, 68, 0.12);
   box-shadow:
-    0 12px 28px -4px rgba(232, 90, 0, 0.14),
-    0 4px 10px rgba(0, 0, 0, 0.03),
+    0 10px 24px -4px rgba(15, 39, 68, 0.08),
+    0 3px 8px rgba(0, 0, 0, 0.02),
     inset 0 2px 0 rgba(255, 255, 255, 0.95),
-    inset 0 -2px 0 rgba(255, 122, 0, 0.08);
+    inset 0 -2px 0 rgba(15, 39, 68, 0.04);
   animation: speegoTrustIconFloat 3.8s ease-in-out infinite;
   transition:
     background 300ms cubic-bezier(0.2, 0.8, 0.2, 1),
@@ -2531,10 +2550,10 @@ body.speego-track-modal-open {
 
 .speego-trust-bar__icon svg,
 .speego-trust-bar__icon .speego-3d-icon {
-  width: 64px;
-  height: 64px;
+  width: 60px;
+  height: 60px;
   display: block;
-  filter: drop-shadow(0 6px 12px rgba(217, 65, 0, 0.16));
+  filter: drop-shadow(0 6px 12px rgba(15, 39, 68, 0.15));
   transition: transform 300ms cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
@@ -2581,32 +2600,32 @@ body.speego-track-modal-open {
 }
 
 .speego-trust-bar__item:hover .speego-trust-bar__icon {
-  background: linear-gradient(145deg, #FFFFFF 0%, #FFEFE2 100%);
-  border-color: rgba(255, 106, 0, 0.45);
-  transform: translateY(-6px) scale(1.06);
+  background: linear-gradient(145deg, #FFFFFF 0%, #E2E8F0 100%);
+  border-color: rgba(15, 39, 68, 0.35);
+  transform: translateY(-5px) scale(1.05);
   box-shadow:
-    0 18px 36px rgba(232, 90, 0, 0.22),
-    0 0 0 6px rgba(255, 106, 0, 0.12),
+    0 16px 32px rgba(15, 39, 68, 0.14),
+    0 0 0 5px rgba(15, 39, 68, 0.06),
     inset 0 2px 0 rgba(255, 255, 255, 1);
   animation: none;
 }
 
 .speego-trust-bar__item:hover .speego-trust-bar__icon svg {
-  transform: scale(1.08) rotate(-2deg);
+  transform: scale(1.06) rotate(-2deg);
 }
 
 .speego-trust-bar__item:hover .speego-trust-bar__title {
-  color: #E85A00;
+  color: #0F2744;
 }
 
 @keyframes speegoTrustIconFloat {
   0%, 100% {
     transform: translateY(0);
-    box-shadow: 0 10px 24px rgba(232, 90, 0, 0.16);
+    box-shadow: 0 8px 20px rgba(15, 39, 68, 0.08);
   }
   50% {
-    transform: translateY(-7px);
-    box-shadow: 0 18px 32px rgba(232, 90, 0, 0.28);
+    transform: translateY(-6px);
+    box-shadow: 0 14px 28px rgba(15, 39, 68, 0.14);
   }
 }
 
@@ -2767,11 +2786,12 @@ body.speego-track-modal-open {
 }
 
 /* ==========================================
-   WHY CHOOSE SPEEGO â áº£nh nguyÃªn thá», chá»¯ logo
+/* ==========================================
+   WHY CHOOSE SPEEGO
    ========================================== */
 .speego-why-section {
   position: relative;
-  padding: 80px 0 90px;
+  padding: 80px 24px 90px !important;
   width: 100%;
   box-sizing: border-box;
   overflow: clip;
@@ -2782,65 +2802,72 @@ body.speego-track-modal-open {
 }
 
 .speego-why-inner {
-  max-width: 100% !important;
+  max-width: 1320px !important;
   width: 100% !important;
   padding: 0 !important;
-  margin: 0 !important;
+  margin: 0 auto !important;
 }
 
 .speego-why-header {
-  text-align: center;
-  max-width: 1200px;
-  margin: 0 auto 48px;
-  padding: 0 20px;
+  text-align: left !important;
+  max-width: 100% !important;
+  margin: 0 0 36px 0 !important;
+  padding: 0 !important;
   position: relative;
   z-index: 2;
 }
 
 .speego-why-accent {
-  display: block;
-  width: 64px;
-  height: 6px;
-  margin: 0 auto 20px;
-  background: var(--speego-accent);
-  border-radius: 3px;
+  display: none !important;
 }
 
 .speego-why-title {
-  font-family: 'Inter', sans-serif;
-  font-size: clamp(24px, 3.2vw, 36px);
-  font-weight: 800;
-  letter-spacing: -0.015em;
+  font-family: 'Inter', sans-serif !important;
+  font-size: clamp(26px, 3.2vw, 36px) !important;
+  font-weight: 800 !important;
+  letter-spacing: -0.025em !important;
   text-transform: uppercase;
-  color: var(--speego-primary, #0F2744);
-  margin: 0 0 12px 0;
-  line-height: 1.25;
+  color: var(--speego-primary, #0F2744) !important;
+  margin: 0 !important;
+  line-height: 1.25 !important;
+  text-align: left !important;
+  white-space: nowrap !important;
+}
+
+.speego-why-title::after {
+  content: '';
+  display: block;
+  width: 64px;
+  height: 3px;
+  margin-top: 16px;
+  margin-bottom: 16px;
+  background: var(--speego-accent);
+  border-radius: 2px;
 }
 
 .speego-why-subtitle {
-  font-family: 'Inter', sans-serif;
-  font-size: clamp(14px, 1.1vw, 16px);
-  line-height: 1.5;
-  color: #64748B;
-  font-weight: 500;
-  max-width: 900px;
-  margin: 0 auto;
+  font-family: 'Inter', sans-serif !important;
+  font-size: 14.5px !important;
+  line-height: 1.5 !important;
+  color: #64748B !important;
+  font-weight: 400 !important;
+  max-width: 100% !important;
+  margin: 0 !important;
+  text-align: left !important;
+  white-space: nowrap !important;
 }
 
 .speego-why-container {
-  display: grid;
-  grid-template-columns: minmax(380px, 480px) 1fr;
+  display: grid !important;
+  grid-template-columns: minmax(380px, 480px) 1fr !important;
   width: 100% !important;
-  max-width: 100% !important;
-  margin: 0 !important;
-  background: #FFFFFF;
-  border-top: 1px solid #E2E8F0;
-  border-bottom: 1px solid #E2E8F0;
-  border-left: none !important;
-  border-right: none !important;
-  border-radius: 0 !important;
-  overflow: hidden;
-  box-shadow: 0 10px 30px rgba(15, 39, 68, 0.05);
+  max-width: 1320px !important;
+  margin: 0 auto !important;
+  background: #FFFFFF !important;
+  border: 1px solid #E2E8F0 !important;
+  border-radius: 16px !important;
+  overflow: hidden !important;
+  box-shadow: 0 10px 30px rgba(15, 39, 68, 0.05) !important;
 }
 
 /* Left Column: Visual Banner / Image Placeholder (Phần xanh để trống để ảnh) */
@@ -3019,58 +3046,45 @@ body.speego-track-modal-open {
 }
 
 /* ==========================================
-   CONSULTATION â FULL-BLEED VIDEO + COMPACT INVITE FORM
+   CONSULTATION — FULL-WIDTH 2-COLUMN (VIDEO LEFT, FORM RIGHT)
    ========================================== */
 .speego-consult-section {
-  padding: 72px 0 0 !important;
-  overflow: visible;
-  background: #041a2d;
+  padding: 0 !important;
+  margin: 0 !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  background: #ffffff !important;
+  position: relative;
+  overflow: hidden;
 }
 
 .speego-consult-section > .speego-section-header {
-  max-width: 1240px;
-  margin: 0 auto 24px;
-  padding: 0 24px;
-  box-sizing: border-box;
-  overflow: visible;
-}
-
-.speego-consult-section .speego-section-tag {
-  color: #ff8a3d;
-}
-
-.speego-consult-section .speego-section-title,
-.speego-consult-section .speego-section-subtitle {
-  color: #ffffff;
-}
-
-.speego-consult-section .speego-section-title .speego-title-char {
-  color: #ffffff;
-}
-
-.speego-consult-section .speego-section-subtitle {
-  color: rgba(255, 255, 255, 0.72);
+  display: none !important;
 }
 
 .speego-consult-stage {
-  position: relative;
-  width: 100%;
-  max-width: none;
-  margin: 0;
-  padding: 0;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
   box-sizing: border-box;
+  border-radius: 0 !important;
+  overflow: hidden;
+  background: #ffffff;
+  border: none !important;
+  box-shadow: none !important;
+  align-items: stretch;
 }
 
 .speego-consult-video-frame {
   position: relative;
   width: 100%;
-  min-height: min(78vh, 820px);
-  height: min(78vh, 820px);
-  border-radius: 0;
+  height: 100%;
+  min-height: 600px;
+  background: #041a2d;
   overflow: hidden;
-  background: #04243d;
-  border: 0;
-  box-shadow: none;
 }
 
 .speego-consult-video {
@@ -3082,355 +3096,96 @@ body.speego-track-modal-open {
   object-position: center;
   display: block;
   border: 0;
-  /* Keep pixels sharp: GPU layer, no soft scaling */
   transform: translateZ(0);
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
-  filter: contrast(1.06) saturate(1.08);
 }
 
-.speego-consult-bg-image {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-  display: block;
-  filter: contrast(1.06) saturate(1.08);
-}
-
-/* Consultation reference layout: blue video backdrop, copy at left and form at right. */
-.speego-consult-section {
-  padding: 0 !important;
-  background: #004cb8;
-}
-
-.speego-consult-section > .speego-section-header {
-  display: none;
-}
-
-.speego-consult-video-shade {
-  background: linear-gradient(90deg, rgba(2, 24, 71, .78) 0%, rgba(0, 57, 150, .54) 47%, rgba(0, 64, 192, .28) 100%) !important;
-}
-
+.speego-consult-video-shade,
 .speego-consult-copy {
-  position: absolute;
-  z-index: 2;
-  top: 50%;
-  left: max(28px, calc((100vw - 1400px) / 2));
-  width: min(460px, calc(52% - 48px));
-  transform: translateY(-50%);
-  color: #fff;
-}
-
-.speego-consult-copy > span {
-  color: #35ccff;
-  font-size: 13px;
-  font-weight: 800;
-  letter-spacing: .14em;
-}
-
-.speego-consult-copy h2 {
-  margin: 18px 0;
-  color: #fff;
-  font-family: 'Inter', sans-serif;
-  font-size: clamp(32px, 3.6vw, 56px);
-  font-weight: 800;
-  line-height: 1.08;
-  letter-spacing: -.045em;
-}
-
-.speego-consult-copy p {
-  margin: 0;
-  color: rgba(255,255,255,.82);
-  font-size: 16px;
-  line-height: 1.6;
-}
-
-.speego-consult-copy a {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  margin-top: 30px;
-  padding: 14px 22px;
-  border-radius: 999px;
-  background: #fff;
-  color: #07345e;
-  font-size: 16px;
-  font-weight: 800;
-}
-
-.speego-form-container--overlay {
-  width: min(520px, calc(100% - 56px));
-}
-
-.speego-form-invite { display: none; }
-.speego-form-heading { margin: 4px 0 18px; }
-.speego-form-heading h3 { margin: 0 0 5px; color: #0f2744; font-size: 22px; font-weight: 800; }
-.speego-form-heading p { margin: 0; color: #74839a; font-size: 13px; }
-.speego-form-group:has(#speego-form-company),
-.speego-form-group:has(#speego-form-route) { display: none; }
-
-/* Larger desktop form while preserving the compact three-line consultation heading. */
-@media (min-width: 1024px) {
-  .speego-form-container--overlay {
-    width: min(720px, calc(58% - 56px));
-    padding: 28px 26px 24px;
-  }
-
-  .speego-consult-copy h2 {
-    font-size: clamp(34px, 3.05vw, 48px);
-    max-width: 460px;
-  }
-}
-
-@media (max-width: 767px) {
-  .speego-consult-video-frame { min-height: 760px; height: auto; }
-  .speego-consult-copy { top: 48px; left: 24px; width: calc(100% - 48px); transform: none; }
-  .speego-consult-copy h2 { font-size: 34px; }
-  .speego-form-container--overlay { top: auto; right: 20px; bottom: 24px; width: calc(100% - 40px); max-height: 54%; transform: none; }
-  .speego-form-container--overlay:focus-within { transform: none; }
-}
-
-/* The consultation panel remains wide on tablet and mobile as well. */
-@media (max-width: 1023px) {
-  .speego-form-container--overlay {
-    right: 16px;
-    width: min(680px, calc(100% - 32px));
-  }
-}
-
-@media (min-width: 768px) {
-  body.home .speego-partners-header {
-    max-width: none !important;
-  }
-
-  body.home .speego-partners-title {
-    font-size: clamp(34px, 4.2vw, 60px) !important;
-    white-space: nowrap;
-  }
-
-  body.home .speego-partners-header .speego-section-subtitle { white-space: nowrap; }
-}
-
-/* Consultation: two clear desktop columns, with the form as its own surface. */
-@media (min-width: 1024px) {
-  .speego-consult-stage {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(520px, 1fr);
-  }
-
-  .speego-consult-video-frame {
-    min-height: min(78vh, 820px);
-    height: auto;
-  }
-
-  .speego-form-container--overlay {
-    position: static;
-    width: auto !important;
-    min-height: min(78vh, 820px);
-    margin: 0;
-    padding: 48px;
-    transform: none;
-    border: 0;
-    border-radius: 0;
-    box-shadow: none;
-  }
-
-  .speego-form-container--overlay:focus-within {
-    transform: none;
-    box-shadow: none;
-  }
-
-  .speego-form-container--featured::before {
-    display: none;
-  }
-}
-
-/* Reference layout: motion visual at left, six concise benefits at right. */
-#why-speego .speego-why-pairs {
   display: none !important;
 }
 
-#why-speego .speego-why-container {
-  max-width: 100% !important;
-  width: 100% !important;
-}
-
-/* Keep the complete video-and-benefits block optically centred on desktop. */
-@media screen and (min-width: 1025px) {
-  #why-speego .speego-why-container {
-    max-width: 100% !important;
-    width: 100% !important;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  #why-speego .speego-why-grid {
-    min-width: 0;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-}
-
-#why-speego .speego-why-banner::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  background: linear-gradient(135deg, rgba(0, 63, 178, .38), rgba(0, 178, 255, .16));
-}
-
-#why-speego .speego-why-cell {
-  min-height: 172px;
-}
-
-.speego-consult-video-shade {
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  pointer-events: none;
-  background:
-    linear-gradient(
-      90deg,
-      rgba(4, 26, 45, 0.18) 0%,
-      transparent 40%,
-      rgba(4, 26, 45, 0.28) 100%
-    ),
-    linear-gradient(
-      180deg,
-      rgba(4, 26, 45, 0.1) 0%,
-      transparent 35%,
-      rgba(4, 26, 45, 0.38) 100%
-    );
-}
-
-.speego-form-container {
-  max-width: none;
-  margin: 0;
-  background: #ffffff;
-  border-radius: 16px;
-  padding: 36px 34px;
-  box-shadow: 0 20px 50px rgba(4, 36, 61, 0.1);
-  border: 1px solid #e2e8f0;
-}
-
-.speego-form-container--featured {
-  position: relative;
-  border: 1px solid rgba(242, 100, 25, 0.35);
-}
-
+.speego-form-container,
+.speego-form-container--featured,
 .speego-form-container--overlay {
-  position: absolute;
-  right: max(28px, calc((100vw - 1400px) / 2 - 28px));
-  top: 50%;
-  bottom: auto;
-  z-index: 3;
-  width: min(390px, calc(100% - 40px));
-  max-height: calc(100% - 24px);
-  overflow: auto;
-  padding: 18px 16px 16px;
-  background: rgba(255, 255, 255, 0.97);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border-radius: 18px;
-  border-bottom: 1px solid rgba(242, 100, 25, 0.35);
-  animation: none;
-  transform: translateY(-50%);
-}
-
-.speego-form-container--overlay:focus-within {
-  animation: none;
-  transform: translateY(-50%);
-  box-shadow:
-    0 0 0 1px rgba(242, 100, 25, 0.35),
-    0 0 0 10px rgba(242, 100, 25, 0.1),
-    0 28px 56px rgba(4, 36, 61, 0.32);
-}
-
-.speego-form-container--overlay:focus-within .speego-form-invite,
-.speego-form-container--overlay:focus-within .speego-form-submit-btn {
-  animation: none;
-}
-
-.speego-form-invite {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  margin: 0 0 12px;
-  padding: 6px 12px;
-  border-radius: 999px;
-  background: rgba(242, 100, 25, 0.1);
-  color: #d8520e;
-  font-family: Inter, sans-serif;
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.02em;
-  animation: speegoInvitePulse 1.8s ease-in-out infinite;
-}
-
-.speego-form-invite__dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: #f26419;
-  box-shadow: 0 0 0 0 rgba(242, 100, 25, 0.55);
-  animation: speegoInviteDot 1.6s ease-out infinite;
+  position: relative !important;
+  inset: auto !important;
+  top: auto !important;
+  right: auto !important;
+  bottom: auto !important;
+  left: auto !important;
+  transform: none !important;
+  width: 100% !important;
+  max-width: none !important;
+  height: 100% !important;
+  min-height: 100% !important;
+  max-height: none !important;
+  margin: 0 !important;
+  padding: 24px 36px 32px !important;
+  box-sizing: border-box !important;
+  background: #ffffff !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  border: none !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: flex-start !important;
+  align-items: center !important;
+  overflow: visible !important;
+  animation: none !important;
 }
 
 .speego-form-container--featured::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 16px;
-  right: 16px;
-  height: 3px;
-  border-radius: 0 0 8px 8px;
-  background: linear-gradient(90deg, #f26419 0%, #ff8a3d 55%, #04243d 100%);
-  pointer-events: none;
+  display: none !important;
 }
 
-@keyframes speegoFormInvite {
-  0%, 100% {
-    transform: translateY(0);
-    box-shadow:
-      0 0 0 1px rgba(242, 100, 25, 0.16),
-      0 0 0 8px rgba(242, 100, 25, 0.05),
-      0 18px 40px rgba(4, 36, 61, 0.28);
-  }
-  50% {
-    /* Glow only â keep form glued to bottom so logo stays covered */
-    transform: translateY(0);
-    box-shadow:
-      0 0 0 1px rgba(242, 100, 25, 0.35),
-      0 0 0 12px rgba(242, 100, 25, 0.1),
-      0 22px 48px rgba(4, 36, 61, 0.34);
-  }
+.speego-form-container--overlay:focus-within {
+  transform: none !important;
+  box-shadow: none !important;
 }
 
-@keyframes speegoInvitePulse {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.03); }
+.speego-form-invite {
+  display: none !important;
 }
 
-@keyframes speegoInviteDot {
-  0% { box-shadow: 0 0 0 0 rgba(242, 100, 25, 0.55); }
-  70% { box-shadow: 0 0 0 10px rgba(242, 100, 25, 0); }
-  100% { box-shadow: 0 0 0 0 rgba(242, 100, 25, 0); }
+.speego-form-heading,
+#speego-consultation-form {
+  width: 100%;
+  max-width: 580px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.speego-form-secure-note {
-  font-size: 10px;
-  color: #94a3b8;
-  text-align: center;
-  margin-top: 8px;
+.speego-form-heading {
+  margin: 0 0 16px !important;
+  padding: 0 !important;
+}
+
+.speego-form-heading h3 {
+  margin: 0 0 4px !important;
+  padding: 0 !important;
+  color: var(--speego-primary);
+  font-family: 'Inter', sans-serif;
+  font-size: 24px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.speego-form-heading p {
+  margin: 0 !important;
+  padding: 0 !important;
+  color: #64748b;
+  font-size: 14px;
   line-height: 1.4;
 }
 
 .speego-form-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 10px;
+  gap: 14px 16px;
 }
 
 .speego-form-full {
@@ -3439,10 +3194,10 @@ body.speego-track-modal-open {
 
 .speego-form-group label {
   display: block;
-  font-size: 10px;
+  font-size: 11.5px;
   font-weight: 700;
   color: var(--speego-primary);
-  margin-bottom: 5px;
+  margin-bottom: 6px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -3454,15 +3209,21 @@ body.speego-track-modal-open {
 .speego-form-select,
 .speego-form-textarea {
   width: 100%;
-  padding: 9px 11px;
+  padding: 11px 14px;
   background: #f8fafc;
-  border: 1px solid #cbd5e1;
-  border-radius: 8px;
-  font-size: 12.5px;
+  border: 1.5px solid #cbd5e1;
+  border-radius: 9px;
+  font-family: 'Inter', sans-serif;
+  font-size: 13.5px;
   color: #1e293b;
   outline: none;
   transition: var(--speego-transition);
   box-sizing: border-box;
+}
+
+.speego-form-input,
+.speego-form-select {
+  height: 46px;
 }
 
 .speego-form-input:focus,
@@ -3474,19 +3235,20 @@ body.speego-track-modal-open {
 }
 
 .speego-form-textarea {
-  min-height: 58px;
+  min-height: 75px;
   resize: vertical;
 }
 
 .speego-form-submit-btn {
   width: 100%;
-  padding: 12px;
+  height: 48px;
+  padding: 12px 20px;
   background: var(--speego-accent);
   color: #ffffff;
   border: none;
   border-radius: 10px;
   font-family: 'Inter', sans-serif;
-  font-size: 13.5px;
+  font-size: 14.5px;
   font-weight: 800;
   cursor: pointer;
   display: flex;
@@ -3494,19 +3256,48 @@ body.speego-track-modal-open {
   justify-content: center;
   gap: 8px;
   transition: var(--speego-transition);
-  animation: speegoCtaPulse 2.4s ease-in-out infinite;
 }
 
 .speego-form-submit-btn:hover {
   background: var(--speego-accent-hover);
   transform: translateY(-2px);
-  box-shadow: 0 10px 25px rgba(242, 100, 25, 0.35);
-  animation: none;
+  box-shadow: 0 8px 20px rgba(242, 100, 25, 0.35);
 }
 
-@keyframes speegoCtaPulse {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(242, 100, 25, 0.35); }
-  50% { box-shadow: 0 0 0 8px rgba(242, 100, 25, 0); }
+.speego-form-secure-note {
+  font-size: 11.5px;
+  color: #94a3b8;
+  text-align: center;
+  margin-top: 10px;
+  line-height: 1.4;
+}
+
+@media (max-width: 991px) {
+  .speego-consult-stage {
+    grid-template-columns: 1fr;
+    margin: 0 16px;
+  }
+
+  .speego-consult-video-frame {
+    min-height: 300px;
+    height: 300px;
+  }
+
+  .speego-form-container,
+  .speego-form-container--featured,
+  .speego-form-container--overlay {
+    padding: 30px 22px !important;
+  }
+}
+
+@media (max-width: 600px) {
+  .speego-form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .speego-form-full {
+    grid-column: span 1;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -3949,8 +3740,9 @@ body.speego-track-modal-open {
   .speego-trust-bar {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     padding: 24px 20px;
-    margin-bottom: -24px;
+    margin: 0;
     row-gap: 20px;
+    border-radius: 0;
   }
   .speego-trust-bar__item:nth-child(3)::before,
   .speego-trust-bar__item:nth-child(odd)::before {
@@ -3996,9 +3788,10 @@ body.speego-track-modal-open {
   .speego-trust-bar {
     grid-template-columns: 1fr;
     padding: 22px 18px;
-    margin: 0 auto;
+    margin: 0;
     min-height: 0;
     row-gap: 16px;
+    border-radius: 0;
   }
   .speego-trust-bar__icon {
     width: 84px;
@@ -5051,63 +4844,6 @@ body.speego-track-modal-open {
   margin: 0;
 }
 
-.speego-footer-flags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 14px;
-  margin-top: 22px;
-}
-
-.speego-footer-flag {
-  --flag-i: 0;
-  width: 56px;
-  height: 56px;
-  border-radius: 50%;
-  overflow: hidden;
-  flex-shrink: 0;
-  display: block;
-  border: 2px solid rgba(255, 255, 255, 0.18);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.28);
-  opacity: 0;
-  transform: translate3d(0, 16px, 0) scale(0.85);
-  transition:
-    opacity 0.5s cubic-bezier(0.22, 1, 0.36, 1),
-    transform 0.5s cubic-bezier(0.22, 1, 0.36, 1),
-    border-color 0.2s ease;
-  transition-delay: calc(var(--flag-i) * 120ms);
-}
-
-.speego-footer-flag:nth-child(1) { --flag-i: 0; }
-.speego-footer-flag:nth-child(2) { --flag-i: 1; }
-.speego-footer-flag:nth-child(3) { --flag-i: 2; }
-.speego-footer-flag:nth-child(4) { --flag-i: 3; }
-.speego-footer-flag:nth-child(5) { --flag-i: 4; }
-
-.speego-footer-flags.is-in .speego-footer-flag {
-  opacity: 1;
-  transform: translate3d(0, 0, 0) scale(1);
-}
-
-.speego-footer-flag img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-
-.speego-footer-flag:hover {
-  border-color: rgba(255, 106, 0, 0.9);
-  transform: translate3d(0, -3px, 0) scale(1.06);
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .speego-footer-flag {
-    opacity: 1;
-    transform: none;
-    transition: none;
-  }
-}
-
 .speego-footer-heading {
   color: #fff;
   font-size: 16px;
@@ -5227,7 +4963,8 @@ body.speego-track-modal-open {
 .speego-consult-title,
 .speego-consult-card-title,
 .speego-hero-heading,
-.process-tabs-title {
+.process-tabs-title,
+.speego-workflow-heading {
   overflow: visible;
   letter-spacing: -0.025em;
   text-rendering: optimizeLegibility;
@@ -5699,13 +5436,22 @@ body.home .site-header .menu-toggle {
   display: none !important;
 }
 
+#services-speego .speego-services-header {
+  text-align: left !important;
+  max-width: 100% !important;
+  margin: 0 0 36px 0 !important;
+}
+
 #services-speego .speego-services-title {
   font-family: 'Inter', sans-serif !important;
   font-size: clamp(26px, 3.2vw, 36px) !important;
   font-weight: 800 !important;
   line-height: 1.25 !important;
+  letter-spacing: -0.025em !important;
   color: #0F2744 !important;
-  margin: 0 0 10px 0 !important;
+  margin: 0 !important;
+  text-align: left !important;
+  white-space: nowrap !important;
 }
 
 #services-speego .speego-services-subtitle {
@@ -5713,9 +5459,10 @@ body.home .site-header .menu-toggle {
   font-size: 14.5px !important;
   line-height: 1.5 !important;
   color: #64748B !important;
-  max-width: 900px !important;
-  margin: 0 auto !important;
-  text-align: center !important;
+  max-width: 100% !important;
+  margin: 0 !important;
+  text-align: left !important;
+  white-space: nowrap !important;
 }
 
 #services-speego .speego-services-grid {
@@ -7025,7 +6772,8 @@ body.home .speego-partners-title {
 /* Homepage section headings — left-aligned with a shared accent rule. */
 body.home .speego-section-header,
 body.home .speego-services-header,
-body.home .speego-why-header {
+body.home .speego-why-header,
+body.home .speego-news-header {
   text-align: left !important;
   align-items: flex-start;
 }
@@ -7035,7 +6783,9 @@ body.home .speego-trust-section__title,
 body.home .speego-why-title,
 body.home .speego-partners-title,
 body.home .speego-section-title,
-body.home .process-tabs-title {
+body.home .process-tabs-title,
+body.home .speego-workflow-heading,
+body.home .speego-news-title {
   text-align: left !important;
 }
 
@@ -7044,12 +6794,15 @@ body.home .speego-trust-section__title::after,
 body.home .speego-why-title::after,
 body.home .speego-partners-title::after,
 body.home .speego-section-title::after,
-body.home .process-tabs-title::after {
+body.home .process-tabs-title::after,
+body.home .speego-workflow-heading::after,
+body.home .speego-news-title::after {
   content: '';
   display: block;
   width: 64px;
   height: 3px;
   margin-top: 16px;
+  margin-bottom: 16px;
   background: var(--speego-accent);
   border-radius: 2px;
 }
@@ -7265,29 +7018,49 @@ body.home .speego-route-logo-card:hover {
   padding: 60px 24px 72px !important;
 }
 
+.speego-testimonial-inner {
+  max-width: 1320px;
+  margin: 0 auto;
+  width: 100%;
+}
+
 .speego-testimonial-header {
-  text-align: center;
-  max-width: 960px;
-  margin: 0 auto 36px !important;
+  text-align: left !important;
+  max-width: 100% !important;
+  margin: 0 0 36px 0 !important;
 }
 
 .speego-testimonial-title {
   font-family: 'Inter', sans-serif !important;
-  font-size: clamp(24px, 2.8vw, 34px) !important;
+  font-size: clamp(26px, 3.2vw, 36px) !important;
   font-weight: 800 !important;
   line-height: 1.25 !important;
-  letter-spacing: -0.015em !important;
+  letter-spacing: -0.025em !important;
   color: #0F2744 !important;
   margin: 0 !important;
+  text-align: left !important;
   text-transform: none !important;
+  white-space: nowrap !important;
+}
+
+.speego-testimonial-title::after {
+  content: '';
+  display: block;
+  width: 64px;
+  height: 3px;
+  margin-top: 16px;
+  margin-bottom: 16px;
+  background: var(--speego-accent);
+  border-radius: 2px;
 }
 
 .speego-testimonial-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 24px;
-  max-width: 1240px;
+  max-width: 1320px;
   margin: 0 auto;
+  width: 100%;
 }
 
 .speego-testimonial-card {
@@ -7398,323 +7171,7 @@ body.home .speego-route-logo-card:hover {
   }
 }
 
-/* ==========================================================================
-   CONSULTATION FORM SECTION — Video Background + Two-Column Layout
-   ========================================================================== */
-.speego-consult-section {
-  position: relative;
-  overflow: hidden;
-  padding: 88px 24px;
-  min-height: 560px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: #04243D;
-}
 
-.speego-consult-video-bg {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 1;
-  pointer-events: none;
-}
-
-.speego-consult-video {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-  display: block;
-}
-
-.speego-consult-video-overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(135deg, rgba(4, 36, 61, 0.88) 0%, rgba(13, 59, 102, 0.82) 50%, rgba(0, 82, 204, 0.78) 100%);
-  z-index: 2;
-}
-
-.speego-consult-container {
-  position: relative;
-  z-index: 3;
-  max-width: 1240px;
-  width: 100%;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: 1.05fr 1fr;
-  gap: 48px;
-  align-items: center;
-}
-
-/* Left Column */
-.speego-consult-info {
-  color: #FFFFFF;
-}
-
-.speego-consult-tag {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  margin-bottom: 18px;
-}
-
-.speego-consult-tag-arrows {
-  display: block;
-  flex-shrink: 0;
-}
-
-.speego-consult-tag-text {
-  font-family: 'Inter', sans-serif;
-  font-size: 13px;
-  font-weight: 800;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: #38BDF8;
-}
-
-.speego-consult-headline {
-  font-family: 'Inter', sans-serif !important;
-  font-size: clamp(28px, 3.2vw, 42px) !important;
-  font-weight: 800 !important;
-  line-height: 1.18 !important;
-  letter-spacing: -0.02em !important;
-  color: #FFFFFF !important;
-  margin: 0 0 18px 0 !important;
-  text-transform: none !important;
-}
-
-.speego-consult-lead {
-  font-family: 'Inter', sans-serif !important;
-  font-size: 15px !important;
-  font-weight: 400 !important;
-  line-height: 1.65 !important;
-  color: rgba(255, 255, 255, 0.88) !important;
-  margin: 0 0 28px 0 !important;
-  max-width: 480px;
-}
-
-.speego-consult-cta-wrap {
-  display: flex;
-  align-items: center;
-}
-
-.speego-consult-phone-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  padding: 12px 26px;
-  border-radius: 999px;
-  background: #FFFFFF;
-  color: #04243D !important;
-  font-family: 'Inter', sans-serif;
-  font-size: 15px;
-  font-weight: 800;
-  text-decoration: none !important;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.22);
-  transition: transform 0.25s ease, background 0.25s ease, box-shadow 0.25s ease;
-}
-
-.speego-consult-phone-btn:hover {
-  transform: translateY(-2px);
-  background: #F8FAFC;
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
-}
-
-.speego-consult-phone-icon {
-  display: inline-block;
-  flex-shrink: 0;
-  stroke: #04243D;
-}
-
-/* Right Column — Card */
-.speego-consult-card {
-  background: #FFFFFF;
-  border-radius: 20px;
-  padding: 34px 30px;
-  box-shadow: 0 24px 60px rgba(4, 36, 61, 0.28);
-  width: 100%;
-  max-width: 540px;
-  margin-left: auto;
-  box-sizing: border-box;
-}
-
-.speego-consult-card-header {
-  margin-bottom: 20px;
-}
-
-.speego-consult-card-title {
-  font-family: 'Inter', sans-serif !important;
-  font-size: 20px !important;
-  font-weight: 800 !important;
-  color: #04243D !important;
-  margin: 0 0 5px 0 !important;
-  line-height: 1.25 !important;
-}
-
-.speego-consult-card-sub {
-  font-family: 'Inter', sans-serif !important;
-  font-size: 13px !important;
-  color: #64748B !important;
-  margin: 0 !important;
-  line-height: 1.4 !important;
-}
-
-.speego-consult-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 14px;
-  margin-bottom: 18px;
-}
-
-.speego-consult-field {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-
-.speego-consult-field--full {
-  grid-column: span 2;
-}
-
-.speego-consult-label {
-  font-family: 'Inter', sans-serif !important;
-  font-size: 11px !important;
-  font-weight: 800 !important;
-  letter-spacing: 0.05em !important;
-  text-transform: uppercase !important;
-  color: #475569 !important;
-  margin: 0 !important;
-}
-
-.speego-consult-input,
-.speego-consult-select,
-.speego-consult-textarea {
-  font-family: 'Inter', sans-serif !important;
-  font-size: 13.5px !important;
-  color: #0F172A !important;
-  background: #FFFFFF !important;
-  border: 1px solid #CBD5E1 !important;
-  border-radius: 8px !important;
-  padding: 10px 14px !important;
-  width: 100% !important;
-  transition: border-color 0.2s ease, box-shadow 0.2s ease;
-  outline: none !important;
-  box-sizing: border-box !important;
-}
-
-.speego-consult-input:focus,
-.speego-consult-select:focus,
-.speego-consult-textarea:focus {
-  border-color: #0052CC !important;
-  box-shadow: 0 0 0 3px rgba(0, 82, 204, 0.15) !important;
-}
-
-.speego-consult-input::placeholder,
-.speego-consult-textarea::placeholder {
-  color: #94A3B8 !important;
-  font-size: 13px !important;
-}
-
-.speego-consult-select-wrap {
-  position: relative;
-  width: 100%;
-}
-
-.speego-consult-select-wrap
-
-.speego-consult-select {
-  appearance: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  padding-right: 32px !important;
-  cursor: pointer;
-}
-
-.speego-consult-select-chevron {
-  position: absolute;
-  right: 12px;
-  top: 50%;
-  transform: translateY(-50%);
-  pointer-events: none;
-}
-
-.speego-consult-textarea {
-  resize: vertical;
-  min-height: 76px !important;
-  line-height: 1.45 !important;
-}
-
-.speego-consult-btn-wrap {
-  width: 100%;
-}
-
-.speego-consult-submit-btn {
-  width: 100%;
-  height: 48px;
-  border-radius: 999px;
-  background: #0052CC !important;
-  color: #FFFFFF !important;
-  border: none !important;
-  font-family: 'Inter', sans-serif !important;
-  font-size: 15px !important;
-  font-weight: 700 !important;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  cursor: pointer;
-  transition: background 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
-  box-shadow: 0 6px 18px rgba(0, 82, 204, 0.35);
-}
-
-.speego-consult-submit-btn:hover {
-  background: #0040A8 !important;
-  transform: translateY(-1px);
-  box-shadow: 0 8px 24px rgba(0, 82, 204, 0.45);
-}
-
-.speego-consult-btn-arrow {
-  transition: transform 0.2s ease;
-}
-
-.speego-consult-submit-btn:hover .speego-consult-btn-arrow {
-  transform: translateX(4px);
-}
-
-.speego-consult-footnote {
-  font-family: 'Inter', sans-serif !important;
-  font-size: 11.5px !important;
-  color: #94A3B8 !important;
-  margin: 12px 0 0 0 !important;
-  text-align: left;
-  line-height: 1.4 !important;
-}
-
-@media (max-width: 991px) {
-  .speego-consult-section {
-    padding: 64px 20px !important;
-  }
-  .speego-consult-container {
-    grid-template-columns: 1fr;
-    gap: 36px;
-  }
-  .speego-consult-card {
-    max-width: 100%;
-    margin-left: 0;
-    padding: 28px 20px;
-  }
-}
-
-@media (max-width: 580px) {
-  .speego-consult-grid {
-    grid-template-columns: 1fr;
-  }
-  .speego-consult-field--full {
-    grid-column: span 1;
-  }
-}
 
 
 /* ==========================================================================
@@ -8664,41 +8121,44 @@ body.home .speego-partners-layout .speego-trust-logo-img {
 
 
 /* ========================================================
-   FORCE 100% EDGE-TO-EDGE FULL WIDTH FOR #why-speego
+   #why-speego Container & Alignment
    ======================================================== */
 #why-speego,
 .speego-why-section {
   position: relative !important;
   width: 100% !important;
-  max-width: 100% !important;
-  padding: 80px 0 90px !important;
-  margin: 0 !important;
-  overflow: clip !important;
+  padding: 80px 24px 90px !important;
   box-sizing: border-box !important;
 }
 
 #why-speego .speego-why-inner,
 .speego-why-section .speego-why-inner {
   width: 100% !important;
-  max-width: 100% !important;
+  max-width: 1320px !important;
   padding: 0 !important;
-  margin: 0 !important;
+  margin: 0 auto !important;
+}
+
+#why-speego .speego-why-header,
+.speego-why-header {
+  text-align: left !important;
+  max-width: 100% !important;
+  margin: 0 0 36px 0 !important;
+  padding: 0 !important;
 }
 
 #why-speego .speego-why-container,
 .speego-why-container {
   width: 100% !important;
-  max-width: 100% !important;
-  margin: 0 !important;
+  max-width: 1320px !important;
+  margin: 0 auto !important;
   display: grid !important;
   grid-template-columns: minmax(380px, 480px) 1fr !important;
-  border-radius: 0 !important;
-  border-left: none !important;
-  border-right: none !important;
-  border-top: 1px solid #E2E8F0 !important;
-  border-bottom: 1px solid #E2E8F0 !important;
+  border-radius: 16px !important;
+  border: 1px solid #E2E8F0 !important;
   box-shadow: 0 10px 30px rgba(15, 39, 68, 0.05) !important;
   background: #FFFFFF !important;
+  overflow: hidden !important;
 }
 
 #why-speego .speego-why-grid,
@@ -8794,17 +8254,50 @@ body.home .speego-route-row {
   border-radius: 0;
 }
 
-@media (min-width: 1100px) {
-  html[lang="vi"] #news-speego .speego-section-header,
-  html[lang="vi"] #news-speego .speego-section-title {
-    max-width: 1200px;
-  }
+.speego-news-section,
+#news-speego {
+  position: relative !important;
+  background: #F8FAFC !important;
+  padding: 80px 24px 90px !important;
+}
 
-  html[lang="vi"] #news-speego .speego-section-title {
-    white-space: normal;
-    text-align: center;
-    text-wrap: balance;
-  }
+.speego-news-inner,
+#news-speego .speego-news-inner {
+  max-width: 1320px !important;
+  margin: 0 auto !important;
+  width: 100% !important;
+}
+
+.speego-news-header,
+#news-speego .speego-news-header {
+  text-align: left !important;
+  max-width: 100% !important;
+  margin: 0 0 36px 0 !important;
+}
+
+.speego-news-title,
+#news-speego .speego-news-title {
+  font-family: 'Inter', sans-serif !important;
+  font-size: clamp(26px, 3.2vw, 36px) !important;
+  font-weight: 800 !important;
+  line-height: 1.25 !important;
+  letter-spacing: -0.025em !important;
+  color: #0F2744 !important;
+  margin: 0 !important;
+  text-align: left !important;
+  white-space: nowrap !important;
+}
+
+.speego-news-title::after,
+#news-speego .speego-news-title::after {
+  content: '';
+  display: block;
+  width: 64px;
+  height: 3px;
+  margin-top: 16px;
+  margin-bottom: 16px;
+  background: var(--speego-accent);
+  border-radius: 2px;
 }
 
 @media (min-width: 768px) {
@@ -8822,5 +8315,233 @@ body.home .speego-route-row {
   body.home #partners-speego .speego-section-subtitle {
     max-width: none !important;
     white-space: nowrap !important;
+  }
+}
+
+/* ==========================================================================
+   8-STEP STANDARDIZED WORKFLOW PROCESS (REFERENCE DESIGN)
+   ========================================================================== */
+.speego-workflow-section {
+  position: relative;
+  background: #FFFFFF;
+  padding: 80px 24px 90px;
+  overflow: hidden;
+}
+
+.speego-workflow-container {
+  max-width: 1320px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.speego-workflow-header {
+  text-align: left;
+  max-width: 100%;
+  margin: 0 0 36px 0;
+}
+
+.speego-workflow-heading {
+  font-family: 'Inter', sans-serif !important;
+  font-size: clamp(26px, 3.2vw, 36px) !important;
+  font-weight: 800 !important;
+  line-height: 1.25 !important;
+  letter-spacing: -0.025em !important;
+  color: #0F2744 !important;
+  margin: 0 !important;
+  text-align: left !important;
+  white-space: nowrap;
+}
+
+.speego-workflow-subheading {
+  font-family: 'Inter', sans-serif !important;
+  font-size: 14.5px !important;
+  font-weight: 400 !important;
+  line-height: 1.5 !important;
+  color: #64748B !important;
+  margin: 0 !important;
+  text-align: left !important;
+  max-width: 100%;
+  white-space: nowrap;
+}
+
+.speego-workflow-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 64px;
+  margin-top: 36px;
+}
+
+.speego-workflow-row {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 36px 32px;
+  align-items: flex-start;
+}
+
+/* Horizontal connecting line behind icons */
+.speego-workflow-track {
+  position: absolute;
+  top: 35px;
+  left: 36px;
+  right: calc(25% - 36px);
+  height: 2px;
+  background: #E2E8F0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.speego-workflow-step {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.speego-workflow-step:hover {
+  transform: translateY(-4px);
+}
+
+.speego-workflow-icon-wrap {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 72px;
+  height: 72px;
+  margin-bottom: 24px;
+  background: #FFFFFF;
+  border-radius: 50%;
+}
+
+.speego-workflow-icon {
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #0F2744;
+  transition: transform 0.25s ease;
+}
+
+.speego-workflow-step:hover .speego-workflow-icon {
+  transform: scale(1.06);
+}
+
+.speego-workflow-icon svg {
+  width: 54px;
+  height: 54px;
+  display: block;
+}
+
+/* Step Number Badge */
+.speego-workflow-badge {
+  position: absolute;
+  top: -2px;
+  right: -2px;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: #0F2744;
+  color: #FFFFFF;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 12px;
+  font-weight: 800;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 6px rgba(15, 39, 68, 0.28);
+  border: 2px solid #FFFFFF;
+  letter-spacing: -0.5px;
+}
+
+/* Titles and descriptions */
+.speego-workflow-title {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 19px;
+  font-weight: 700;
+  line-height: 1.35;
+  color: #0F2744;
+  margin: 0 0 10px 0;
+  letter-spacing: -0.015em;
+}
+
+.speego-workflow-desc {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 14.5px;
+  font-weight: 400;
+  line-height: 1.6;
+  color: #64748B;
+  margin: 0;
+}
+
+/* Responsive Media Queries */
+@media (max-width: 1200px) {
+  .speego-workflow-subheading,
+  .speego-services-subtitle,
+  .speego-why-subtitle,
+  #services-speego .speego-services-subtitle {
+    white-space: normal !important;
+  }
+}
+
+@media (max-width: 1024px) {
+  .speego-workflow-heading,
+  .speego-services-title,
+  .speego-testimonial-title,
+  .speego-why-title,
+  .speego-news-title,
+  #news-speego .speego-news-title,
+  #services-speego .speego-services-title {
+    white-space: normal !important;
+  }
+
+  .speego-workflow-row {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 48px 32px;
+  }
+
+  .speego-workflow-track {
+    display: none;
+  }
+
+  .speego-workflow-wrap {
+    gap: 48px;
+  }
+}
+
+@media (max-width: 640px) {
+  .speego-workflow-section {
+    padding: 60px 20px 70px;
+  }
+
+  .speego-workflow-heading {
+    font-size: 28px;
+  }
+
+  .speego-workflow-subheading {
+    font-size: 15px;
+  }
+
+  .speego-workflow-row {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+
+  .speego-workflow-wrap {
+    gap: 36px;
+    margin-top: 36px;
+  }
+
+  .speego-workflow-title {
+    font-size: 18px;
+  }
+
+  .speego-workflow-desc {
+    font-size: 14px;
   }
 }

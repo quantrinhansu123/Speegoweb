@@ -349,12 +349,28 @@
       srv_feat4_desc: 'Sustainable growth partner',
 
       // 8-Step Process Tabs
-      process_tag: 'STANDARDIZED PROCESS',
-      process_title: '8-Step Operating Process',
-      process_subtitle: 'Transparent at every stage — from idea to goods arriving at your warehouse.',
+      process_tag: 'STANDARDIZED WORKFLOW',
+      process_title: '8-Step Standardized Operating Workflow',
+      process_subtitle: 'End-to-end transparency and optimization from requirement intake to final delivery.',
       process_step_label: 'STEP',
       process_micro_brand: 'CONNECT BUSINESSES\nWITH THE WORLD',
       process_side_copy: 'FASTER\nSAFER\nSMARTER\nTOGETHER\nFURTHER',
+      step1_title: 'Requirement intake',
+      step1_desc: 'Capture your request, evaluate feasibility, and provide preliminary guidance based on cargo category.',
+      step2_title: 'Solution consulting',
+      step2_desc: 'In-depth proposals optimized for cost, smart routing, and guaranteed transit timelines.',
+      step3_title: 'Sourcing & factories',
+      step3_desc: 'Connect verified factory networks, inspect manufacturing capacity, and negotiate best prices & MOQ.',
+      step4_title: 'Production supervision',
+      step4_desc: 'Monitor factory manufacturing milestones closely to ensure on-time completion and export readiness.',
+      step5_title: 'Quality inspection (QC)',
+      step5_desc: 'Perform rigorous on-site quality audits and international-standard packaging before factory release.',
+      step6_title: 'Customs & compliance',
+      step6_desc: 'Complete export/import documentation, CO/CQ certificates, and expedite legal customs clearance.',
+      step7_title: 'International freight',
+      step7_desc: 'Multimodal shipping (ocean, air, inland) with 24/7 transparent live shipment tracking.',
+      step8_title: 'Payment & completion',
+      step8_desc: 'Cargo handover, delivery confirmation, complete document release, and dedicated long-term partnership.',
       step_btn1: 'Intake',
       step_btn2: 'Consult',
       step_btn3: 'Sourcing',
@@ -630,6 +646,22 @@
       process_step_label: 'BƯỚC',
       process_micro_brand: 'KẾT NỐI DOANH NGHIỆP\nVỚI THẾ GIỚI',
       process_side_copy: 'NHANH HƠN\nAN TOÀN HƠN\nTHÔNG MINH HƠN\nCÙNG NHAU\nVƯƠN XA',
+      step1_title: 'Tiếp nhận thông tin',
+      step1_desc: 'Tiếp nhận yêu cầu, phân tích tính khả thi và tư vấn sơ bộ lộ trình theo từng chủng loại hàng hóa.',
+      step2_title: 'Tư vấn giải pháp',
+      step2_desc: 'Đề xuất phương án vận chuyển tối ưu chi phí, lựa chọn tuyến đường thông minh và thời gian cam kết.',
+      step3_title: 'Tìm nguồn hàng & Nhà máy',
+      step3_desc: 'Kết nối mạng lưới xưởng sản xuất uy tín, kiểm tra hồ sơ năng lực và đàm phán giá cũng như MOQ tốt nhất.',
+      step4_title: 'Giám sát sản xuất',
+      step4_desc: 'Theo dõi tiến độ sản xuất tại nhà máy, giám sát chặt chẽ tiến độ để đảm bảo xuất hàng đúng lịch trình.',
+      step5_title: 'Kiểm tra chất lượng (QC)',
+      step5_desc: 'Kiểm định chất lượng chi tiết từng lô hàng, đóng gói theo tiêu chuẩn quốc tế trước khi xuất xưởng.',
+      step6_title: 'Chứng từ thuế quan',
+      step6_desc: 'Hoàn thiện thủ tục hải quan, chứng nhận CO/CQ và xử lý thuế quan thông quan nhanh chóng, hợp pháp.',
+      step7_title: 'Vận chuyển quốc tế',
+      step7_desc: 'Vận chuyển đa phương thức biển - hàng không - nội địa với hệ thống theo dõi hành trình minh bạch.',
+      step8_title: 'Thanh toán & Hoàn tất',
+      step8_desc: 'Nghiệm thu lô hàng, bàn giao bộ chứng từ gốc đầy đủ và đồng hành hỗ trợ sau bán hàng dài hạn.',
       step_btn1: 'Tiếp nhận',
       step_btn2: 'Tư vấn',
       step_btn3: 'Tìm nguồn',
@@ -1287,12 +1319,28 @@ stat_delivery: 'Entrega a Tiempo',
       srv_feat4_desc: 'Socio de crecimiento sostenible',
 
       // 8-Step Process Tabs
-      process_tag: 'PROCESO ESTANDARIZADO',
+      process_tag: 'FLUJO ESTANDARIZADO',
       process_title: 'Proceso Operativo de 8 Pasos',
-      process_subtitle: 'Transparencia en cada etapa, acompañando a su empresa desde la idea hasta que la mercancía llega al almacén.',
+      process_subtitle: 'Estandarización de la cadena de suministro desde la recepción, aprovisionamiento hasta el flete internacional.',
       process_step_label: 'PASO',
       process_micro_brand: 'CONECTAMOS EMPRESAS\nCON EL MUNDO',
       process_side_copy: 'MÁS RÁPIDO\nMÁS SEGURO\nMÁS INTELIGENTE\nJUNTOS\nMÁS LEJOS',
+      step1_title: 'Recepción de información',
+      step1_desc: 'Recibimos su solicitud, evaluamos la viabilidad y brindamos asesoría preliminar por tipo de carga.',
+      step2_title: 'Consultoría de solución',
+      step2_desc: 'Propuestas detalladas optimizadas en costo, rutas eficientes y tiempos de entrega garantizados.',
+      step3_title: 'Sourcing y fábricas',
+      step3_desc: 'Conexión con fábricas certificadas, verificación de capacidad y negociación de mejores precios y MOQ.',
+      step4_title: 'Supervisión de producción',
+      step4_desc: 'Seguimiento continuo del proceso productivo para garantizar la entrega conforme al cronograma.',
+      step5_title: 'Control de calidad (QC)',
+      step5_desc: 'Auditoría rigurosa de calidad en sitio y empaque bajo estándares internacionales antes de despacho.',
+      step6_title: 'Documentos aduaneros',
+      step6_desc: 'Gestión completa de documentos de exportación/importación, certificados CO/CQ y despacho aduanero ágil.',
+      step7_title: 'Flete internacional',
+      step7_desc: 'Transporte multimodal (marítimo, aéreo, terrestre) con seguimiento transparente 24/7.',
+      step8_title: 'Pago y entrega final',
+      step8_desc: 'Entrega de carga conforme, liberación de documentación original y acompañamiento continuo.',
       step_btn1: 'Recepción',
       step_btn2: 'Consulta',
       step_btn3: 'Sourcing',
@@ -3164,7 +3212,7 @@ stat_delivery: 'Entrega a Tiempo',
     }
 
     var titles = document.querySelectorAll(
-      '.speego-section-title, .speego-services-title, .speego-why-title, .speego-about-heading, .speego-trust-section__title, .speego-partners-title, .speego-consult-card-title, .speego-hero-heading, .process-tabs-title, .speego-testimonial-title, .speego-news-title'
+      '.speego-section-title, .speego-services-title, .speego-why-title, .speego-about-heading, .speego-trust-section__title, .speego-partners-title, .speego-consult-card-title, .speego-hero-heading, .process-tabs-title, .speego-testimonial-title, .speego-news-title, .speego-workflow-heading'
     );
     titles.forEach(function (el) {
       // Ensure plain-text i18n titles with "&" wrap cleanly
@@ -3212,34 +3260,6 @@ stat_delivery: 'Entrega a Tiempo',
       { threshold: 0.3, rootMargin: '0px 0px -10% 0px' }
     );
     io.observe(bar);
-  }
-
-  // =========================================================================
-  // 8e. FOOTER FLAGS — staggered entrance
-  // =========================================================================
-  function initFooterFlagsReveal() {
-    var flags = document.querySelector('.speego-footer-flags');
-    if (!flags) return;
-    if (prefersReducedMotion()) {
-      flags.classList.add('is-in');
-      return;
-    }
-    if (!('IntersectionObserver' in window)) {
-      flags.classList.add('is-in');
-      return;
-    }
-    var io = new IntersectionObserver(
-      function (entries) {
-        entries.forEach(function (entry) {
-          if (entry.isIntersecting) {
-            flags.classList.add('is-in');
-            io.unobserve(flags);
-          }
-        });
-      },
-      { threshold: 0.25 }
-    );
-    io.observe(flags);
   }
 
   // =========================================================================
@@ -3487,11 +3507,9 @@ stat_delivery: 'Entrega a Tiempo',
     initHeroSliderNav();
     initHeroConsole();
     initStickyHeaderAndScrollSpy();
-    placeConsultationBeforeNews();
     initProcessTabs();
     initWhyCinematic();
     initTrustBarReveal();
-    initFooterFlagsReveal();
     initConsultationForm();
     initTrustPartnerMarquee();
     // Titles after i18n + layout settle
