@@ -58,7 +58,7 @@
 		     HEADER & MULTI-LANGUAGE NAVIGATION (Exact Design Spec)
 		     ================================================================= -->
 		<header id="masthead" class="site-header speego-site-header" role="banner">
-			<!-- Top Bar: Hotline, Email & Language Switcher -->
+			<!-- Top Bar: Hotline & Email -->
 			<div class="speego-header-topbar">
 				<div class="speego-header-topbar-inner">
 					<div class="speego-header-contact" aria-label="SpeeGo contact details">
@@ -72,11 +72,12 @@
 							<span class="speego-header-contact-val">info@speegologistic.com</span>
 						</a>
 					</div>
-
-					<div class="speego-header-langs" aria-label="Language selector">
-						<button type="button" class="speego-lang-pill" data-lang="en" aria-label="English">EN</button>
-						<button type="button" class="speego-lang-pill active" data-lang="vi" aria-label="Tiếng Việt">VI</button>
-						<button type="button" class="speego-lang-pill" data-lang="es" aria-label="Español">ES</button>
+					<div class="speego-policy-menu speego-topbar-policy">
+						<button type="button" class="speego-policy-toggle" aria-expanded="false" aria-controls="speego-policy-dropdown">Chính sách</button>
+						<ul id="speego-policy-dropdown" class="speego-policy-dropdown" aria-label="Chính sách">
+							<li><a href="privacy-policy">Chính sách bảo mật</a></li>
+							<li><a href="terms-and-conditions">Điều khoản &amp; Điều kiện</a></li>
+						</ul>
 					</div>
 				</div>
 			</div>
@@ -104,8 +105,35 @@
 						</ul>
 					</nav>
 
-					<!-- Header CTA Button (Dark Navy Pill with Arrow) -->
+					<!-- Header CTA & Language Switcher -->
 					<div class="speego-header-cta-wrap">
+						<!-- Language Dropdown (3 Languages: VN / EN / ES, Default: VN) -->
+						<div class="speego-lang-selector">
+							<button type="button" class="speego-lang-btn" id="speego-lang-toggle" aria-expanded="false" aria-haspopup="listbox" aria-label="Chọn ngôn ngữ">
+								<span class="speego-lang-flag-current" id="speego-current-lang-flag" aria-hidden="true">
+									<img src="wp-content/themes/logistica/images/flags/vn.png" alt="VN" class="speego-lang-flag" width="18" height="13">
+								</span>
+								<span class="speego-current-lang-text" id="speego-current-lang-text">VN</span>
+								<svg class="speego-lang-chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+									<polyline points="6 9 12 15 18 9"></polyline>
+								</svg>
+							</button>
+							<div class="speego-lang-dropdown" id="speego-lang-dropdown" role="listbox" aria-label="Danh sách ngôn ngữ">
+								<button type="button" class="speego-lang-option active" data-lang="vi" role="option" aria-selected="true">
+									<img src="wp-content/themes/logistica/images/flags/vn.png" alt="VN" class="speego-lang-flag" width="18" height="13">
+									<span>VN</span>
+								</button>
+								<button type="button" class="speego-lang-option" data-lang="en" role="option" aria-selected="false">
+									<img src="wp-content/themes/logistica/images/flags/us.png" alt="US" class="speego-lang-flag" width="18" height="13">
+									<span>EN</span>
+								</button>
+								<button type="button" class="speego-lang-option" data-lang="es" role="option" aria-selected="false">
+									<svg class="speego-lang-flag" viewBox="0 0 3 2" width="18" height="13" aria-hidden="true" style="border-radius:2px;box-shadow:0 1px 2px rgba(0,0,0,0.15);"><rect width="3" height="2" fill="#c60b1e"/><rect y="0.5" width="3" height="1" fill="#ffc400"/></svg>
+									<span>ES</span>
+								</button>
+							</div>
+						</div>
+
 						<a href="#consultation-form" class="speego-header-quote-btn">
 							<span data-i18n="nav_quote_btn">Nhận báo giá</span>
 							<svg class="speego-header-quote-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">

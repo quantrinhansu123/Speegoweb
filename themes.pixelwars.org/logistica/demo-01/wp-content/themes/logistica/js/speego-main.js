@@ -1821,14 +1821,14 @@ stat_delivery: 'Entrega a Tiempo',
     }
   }
 
-  let currentLang = getLangFromQuery() || safeStorage.getItem('speego_lang') || 'en';
-  if (!i18nData[currentLang]) currentLang = 'en';
+  let currentLang = getLangFromQuery() || safeStorage.getItem('speego_lang') || 'vi';
+  if (!i18nData[currentLang]) currentLang = 'vi';
 
   // =========================================================================
   // 3. I18N ENGINE + HREFLANG / CANONICAL SYNC
   // =========================================================================
   function syncSeoLocale(lang) {
-    const meta = LOCALE_META[lang] || LOCALE_META.en;
+    const meta = LOCALE_META[lang] || LOCALE_META.vi || LOCALE_META.en;
     if (typeof document === 'undefined') return;
 
     document.documentElement.lang = meta.htmlLang;
@@ -1845,7 +1845,7 @@ stat_delivery: 'Entrega a Tiempo',
   function syncLangQueryParam(lang) {
     try {
       const url = new URL(window.location.href);
-      if (lang === 'en') {
+      if (lang === 'vi') {
         url.searchParams.delete('lang');
       } else {
         url.searchParams.set('lang', lang);
@@ -1924,7 +1924,7 @@ stat_delivery: 'Entrega a Tiempo',
 
   function applyLanguage(lang, options) {
     const opts = options || {};
-    if (!i18nData[lang]) lang = 'en';
+    if (!i18nData[lang]) lang = 'vi';
     currentLang = lang;
     safeStorage.setItem('speego_lang', lang);
     syncSeoLocale(lang);
@@ -1935,17 +1935,30 @@ stat_delivery: 'Entrega a Tiempo',
     // Update active label in button
     const activeLabelEl = document.getElementById('speego-current-lang-text');
     if (activeLabelEl) {
-      const labels = { en: 'English', vi: 'Tiếng Việt', es: 'Español' };
-      activeLabelEl.textContent = labels[lang] || 'English';
+      const labels = { vi: 'VN', en: 'EN', es: 'ES' };
+      activeLabelEl.textContent = labels[lang] || 'VN';
     }
 
-    // Update dropdown active classes
-        // Update dropdown and pill active classes
+    // Update active flag in button
+    const activeFlagEl = document.getElementById('speego-current-lang-flag');
+    if (activeFlagEl) {
+      if (lang === 'vi') {
+        activeFlagEl.innerHTML = '<img src="wp-content/themes/logistica/images/flags/vn.png" alt="VN" class="speego-lang-flag" width="18" height="13">';
+      } else if (lang === 'en') {
+        activeFlagEl.innerHTML = '<img src="wp-content/themes/logistica/images/flags/us.png" alt="US" class="speego-lang-flag" width="18" height="13">';
+      } else if (lang === 'es') {
+        activeFlagEl.innerHTML = '<svg class="speego-lang-flag" viewBox="0 0 3 2" width="18" height="13" aria-hidden="true" style="border-radius:2px;box-shadow:0 1px 2px rgba(0,0,0,0.15);"><rect width="3" height="2" fill="#c60b1e"/><rect y="0.5" width="3" height="1" fill="#ffc400"/></svg>';
+      }
+    }
+
+    // Update dropdown and pill active classes
     document.querySelectorAll('.speego-lang-pill, .speego-lang-option').forEach(opt => {
       if (opt.getAttribute('data-lang') === lang) {
         opt.classList.add('active');
+        opt.setAttribute('aria-selected', 'true');
       } else {
         opt.classList.remove('active');
+        opt.setAttribute('aria-selected', 'false');
       }
     });
 
@@ -3414,6 +3427,23 @@ stat_delivery: 'Entrega a Tiempo',
   }
 
   document.addEventListener('DOMContentLoaded', function () {
+	const policyMenu = document.querySelector('.speego-policy-menu');
+	const policyToggle = document.querySelector('.speego-policy-toggle');
+
+	if (policyMenu && policyToggle) {
+	  policyToggle.addEventListener('click', function () {
+		var open = policyMenu.classList.toggle('is-open');
+		policyToggle.setAttribute('aria-expanded', String(open));
+	  });
+
+	  document.addEventListener('click', function (event) {
+		if (!policyMenu.contains(event.target)) {
+		  policyMenu.classList.remove('is-open');
+		  policyToggle.setAttribute('aria-expanded', 'false');
+		}
+	  });
+	}
+
     // Language dropdown toggle
     const langBtn = document.getElementById('speego-lang-toggle');
     const langDropdown = document.getElementById('speego-lang-dropdown');
@@ -3421,7 +3451,8 @@ stat_delivery: 'Entrega a Tiempo',
     if (langBtn && langDropdown) {
       langBtn.addEventListener('click', function (e) {
         e.stopPropagation();
-        langDropdown.classList.toggle('active');
+        const open = langDropdown.classList.toggle('active');
+        langBtn.setAttribute('aria-expanded', String(open));
       });
     }
 
@@ -3437,6 +3468,7 @@ stat_delivery: 'Entrega a Tiempo',
         }
         if (langDropdown) {
           langDropdown.classList.remove('active');
+          if (langBtn) langBtn.setAttribute('aria-expanded', 'false');
         }
       });
     });
@@ -3444,6 +3476,7 @@ stat_delivery: 'Entrega a Tiempo',
     if (langDropdown) {
       document.addEventListener('click', function () {
         langDropdown.classList.remove('active');
+        if (langBtn) langBtn.setAttribute('aria-expanded', 'false');
       });
     }
 
