@@ -73,10 +73,10 @@
 						</a>
 					</div>
 					<div class="speego-policy-menu speego-topbar-policy">
-						<button type="button" class="speego-policy-toggle" aria-expanded="false" aria-controls="speego-policy-dropdown">Chính sách</button>
+						<button type="button" class="speego-policy-toggle" aria-expanded="false" aria-controls="speego-policy-dropdown" data-i18n="policy_label">Chính sách</button>
 						<ul id="speego-policy-dropdown" class="speego-policy-dropdown" aria-label="Chính sách">
-							<li><a href="privacy-policy">Chính sách bảo mật</a></li>
-							<li><a href="terms-and-conditions">Điều khoản &amp; Điều kiện</a></li>
+							<li><a href="privacy-policy" data-i18n="policy_privacy">Chính sách bảo mật</a></li>
+							<li><a href="terms-and-conditions" data-i18n="policy_terms">Điều khoản &amp; Điều kiện</a></li>
 						</ul>
 					</div>
 				</div>
@@ -95,13 +95,13 @@
 					<!-- Navigation Menu -->
 					<nav id="site-navigation" class="speego-main-navigation" role="navigation">
 						<ul class="speego-nav-menu" id="menu-main-menu">
-							<li class="speego-nav-item"><a href="#services-speego" class="speego-nav-link">Dịch vụ</a></li>
-							<li class="speego-nav-item"><a href="#process-speego" class="speego-nav-link">Quy trình</a></li>
-							<li class="speego-nav-item"><a href="#consultation-form" class="speego-nav-link">Tư vấn</a></li>
-							<li class="speego-nav-item"><a href="#partners-speego" class="speego-nav-link">Đối tác</a></li>
-							<li class="speego-nav-item"><a href="#testimonials-speego" class="speego-nav-link">Đánh giá</a></li>
-							<li class="speego-nav-item"><a href="#why-speego" class="speego-nav-link">Vì sao chọn SpeeGo</a></li>
-							<li class="speego-nav-item"><a href="#news-speego" class="speego-nav-link">Tin tức</a></li>
+							<li class="speego-nav-item"><a href="#services-speego" class="speego-nav-link" data-i18n="nav_services">Dịch vụ</a></li>
+							<li class="speego-nav-item"><a href="#process-speego" class="speego-nav-link" data-i18n="nav_process">Quy trình</a></li>
+							<li class="speego-nav-item"><a href="#consultation-form" class="speego-nav-link" data-i18n="nav_contact">Tư vấn</a></li>
+							<li class="speego-nav-item"><a href="#partners-speego" class="speego-nav-link" data-i18n="nav_partners">Đối tác</a></li>
+							<li class="speego-nav-item"><a href="#testimonials-speego" class="speego-nav-link" data-i18n="nav_testimonials">Đánh giá</a></li>
+							<li class="speego-nav-item"><a href="#why-speego" class="speego-nav-link" data-i18n="nav_why">Vì sao chọn SpeeGo</a></li>
+							<li class="speego-nav-item"><a href="#news-speego" class="speego-nav-link" data-i18n="nav_news">Tin tức</a></li>
 						</ul>
 					</nav>
 
@@ -836,8 +836,8 @@
 
 				<div class="speego-form-container speego-form-container--featured speego-form-container--overlay">
 					<div class="speego-form-heading">
-						<h3>Đăng ký tư vấn miễn phí</h3>
-						<p>Thông tin của bạn chỉ dùng để liên hệ tư vấn.</p>
+						<h3 data-i18n="form_consult_title">Đăng ký tư vấn miễn phí</h3>
+						<p data-i18n="form_consult_note">Thông tin của bạn chỉ dùng để liên hệ tư vấn.</p>
 					</div>
 					<div class="speego-form-invite" aria-hidden="true">
 						<span class="speego-form-invite__dot"></span>
@@ -868,22 +868,22 @@
 							<div class="speego-form-group">
 								<label data-i18n="form_service_lbl">Dịch vụ cần tư vấn *</label>
 								<select id="speego-form-service" class="speego-form-select">
-									<option value="Sourcing & QC">Sourcing &amp; QC (Tìm xưởng &amp; Kiểm định)</option>
-									<option value="International Logistics">Logistics quốc tế (Đường biển / Hàng không)</option>
-									<option value="Fulfillment">Fulfillment kho bãi &amp; Đóng gói giao hàng</option>
-									<option value="Customs">Thủ tục hải quan &amp; Xuất nhập khẩu</option>
-									<option value="All-in-One Package">Trọn gói toàn chuỗi cung ứng</option>
+									<option value="Sourcing & QC" data-i18n="form_service_sourcing">Sourcing &amp; QC (Tìm xưởng &amp; Kiểm định)</option>
+									<option value="International Logistics" data-i18n="form_service_logistics">Logistics quốc tế (Đường biển / Hàng không)</option>
+									<option value="Fulfillment" data-i18n="form_service_fulfillment">Fulfillment kho bãi &amp; Đóng gói giao hàng</option>
+									<option value="Customs" data-i18n="form_service_customs">Thủ tục hải quan &amp; Xuất nhập khẩu</option>
+									<option value="All-in-One Package" data-i18n="form_service_all_in_one">Trọn gói toàn chuỗi cung ứng</option>
 								</select>
 							</div>
 
 							<div class="speego-form-group">
 								<label data-i18n="form_route_lbl">Tuyến vận chuyển quan tâm *</label>
 								<select id="speego-form-route" class="speego-form-select">
-									<option value="Vietnam to USA">Việt Nam ➔ Hoa Kỳ (US)</option>
-									<option value="China to USA">Trung Quốc ➔ Hoa Kỳ (US)</option>
-									<option value="Vietnam/China to Canada">Việt Nam / Trung Quốc ➔ Canada</option>
-									<option value="Vietnam/China to Australia">Việt Nam / Trung Quốc ➔ Úc (Australia)</option>
-									<option value="Other">Tuyến vận chuyển khác</option>
+									<option value="Vietnam to USA" data-i18n="form_route_vn_us">Việt Nam ➔ Hoa Kỳ (US)</option>
+									<option value="China to USA" data-i18n="form_route_cn_us">Trung Quốc ➔ Hoa Kỳ (US)</option>
+									<option value="Vietnam/China to Canada" data-i18n="form_route_vn_cn_ca">Việt Nam / Trung Quốc ➔ Canada</option>
+									<option value="Vietnam/China to Australia" data-i18n="form_route_vn_cn_au">Việt Nam / Trung Quốc ➔ Úc (Australia)</option>
+									<option value="Other" data-i18n="form_route_other">Tuyến vận chuyển khác</option>
 								</select>
 							</div>
 
@@ -914,17 +914,17 @@
 			<div class="speego-partners-map" aria-hidden="true"></div>
 			<div class="speego-partners-layout">
 				<header class="speego-section-header speego-partners-header">
-					<h2 class="speego-section-title speego-partners-title">Đối tác vận chuyển &amp; nhà máy</h2>
-					<p class="speego-section-subtitle">Kết nối trực tiếp với mạng lưới logistics và sản xuất uy tín tại Việt Nam, Trung Quốc cùng các thị trường quốc tế.</p>
+					<h2 class="speego-section-title speego-partners-title" data-i18n="partners_title">Đối tác vận chuyển &amp; nhà máy</h2>
+					<p class="speego-section-subtitle" data-i18n="partners_subtitle">Kết nối trực tiếp với mạng lưới logistics và sản xuất uy tín tại Việt Nam, Trung Quốc cùng các thị trường quốc tế.</p>
 				</header>
 				<div class="speego-partners-copy-grid">
 					<article>
-						<h3>Đối tác vận chuyển</h3>
-						<p>Đồng hành cùng các hãng bay, hãng tàu và đơn vị logistics quốc tế để đảm bảo lịch trình rõ ràng, theo dõi minh bạch và tối ưu chi phí cho từng lô hàng.</p>
+						<h3 data-i18n="partners_shipping_title">Đối tác vận chuyển</h3>
+						<p data-i18n="partners_shipping_desc">Đồng hành cùng các hãng bay, hãng tàu và đơn vị logistics quốc tế để đảm bảo lịch trình rõ ràng, theo dõi minh bạch và tối ưu chi phí cho từng lô hàng.</p>
 					</article>
 					<article>
-						<h3>Đối tác nhà máy</h3>
-						<p>Mạng lưới nhà máy tại Trung Quốc và Việt Nam hỗ trợ tìm nguồn, đàm phán MOQ, giám sát sản xuất và kiểm định chất lượng ngay tại xưởng.</p>
+						<h3 data-i18n="partners_factory_title">Đối tác nhà máy</h3>
+						<p data-i18n="partners_factory_desc">Mạng lưới nhà máy tại Trung Quốc và Việt Nam hỗ trợ tìm nguồn, đàm phán MOQ, giám sát sản xuất và kiểm định chất lượng ngay tại xưởng.</p>
 					</article>
 				</div>
 				<div class="speego-trust-logos-frame" aria-label="Đối tác vận chuyển">
@@ -1107,7 +1107,7 @@
 				<div class="speego-news-cta">
 					<a href="news/index.html" class="speego-btn speego-btn-primary speego-news-view-all">
 						<span data-i18n="news_view_all">View All</span>
-						<i class="fas fa-arrow-right" aria-hidden="true"></i>
+						<i class="fas fa-arrow-right speego-news-view-all-arrow" style="font-size: 14px;" aria-hidden="true"></i>
 					</a>
 				</div>
 			</div>
@@ -1194,6 +1194,15 @@
 	</div>
 
 	<!-- SpeeGo Tracking Modal — journey timeline -->
+	<div id="speego-cookie-consent" class="speego-cookie-consent" role="dialog" aria-labelledby="speego-cookie-title" aria-describedby="speego-cookie-copy" hidden>
+		<p id="speego-cookie-title" class="speego-cookie-consent__title" data-i18n="cookie_title">Tùy chọn cookie</p>
+		<p id="speego-cookie-copy" class="speego-cookie-consent__copy" data-i18n="cookie_copy">Chúng tôi sử dụng cookie để cải thiện trải nghiệm và phân tích lưu lượng truy cập. Bạn có thể chọn danh mục cookie được cho phép.</p>
+		<div class="speego-cookie-consent__actions">
+			<button type="button" class="speego-cookie-consent__button speego-cookie-consent__button--secondary" data-cookie-choice="reject" data-i18n="cookie_reject">Từ chối tất cả</button>
+			<button type="button" class="speego-cookie-consent__button" data-cookie-choice="accept" data-i18n="cookie_accept">Chấp nhận tất cả</button>
+		</div>
+	</div>
+
 	<div id="speego-track-modal" class="speego-track-modal" hidden aria-hidden="true">
 		<div class="speego-track-modal__backdrop" data-track-modal-close></div>
 		<div class="speego-track-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="speego-track-modal-title">

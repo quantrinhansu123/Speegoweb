@@ -24,9 +24,9 @@
 
       // Hero (Spec from Image 2)
       hero_subheading: 'GLOBAL LOGISTICS PARTNER',
-      hero_title_row1: 'From Sourcing',
-      hero_title_row2_to: 'to',
-      hero_title_row2_highlight: 'Global Delivery',
+      hero_title_row1: 'From sourcing',
+      hero_title_row2_to: 'To',
+      hero_title_row2_highlight: 'Global delivery',
       hero_desc_main: 'We help businesses source, inspect, ship and fulfil with confidence — faster, safer and more cost-effective.',
       hero_btn_quote: 'Get a Quote',
       hero_btn_call: '(+84) 906 828 898',
@@ -39,8 +39,8 @@
 
       // Hero legacy compat
       hero_badge: 'GLOBAL LOGISTICS PARTNER',
-      hero_title_prefix: 'From Sourcing to',
-      hero_title_highlight: 'Global Delivery',
+      hero_title_prefix: 'From sourcing to',
+      hero_title_highlight: 'Global delivery',
       hero_desc: 'We help businesses source, inspect, ship and fulfil with confidence — faster, safer and more cost-effective.',
       hero_cta_call: '(+84) 906 828 898',
       hero_cta_form: 'Request Consultation',
@@ -121,7 +121,7 @@
 
       // About
       about_tag: 'About SpeeGo Logistics',
-      about_title: 'ABOUT US',
+      about_title: 'About us',
       about_desc1: '<strong class="speego-brand-name">SpeeGo</strong> <strong class="speego-brand-logistics">Logistics</strong> pioneers multi-industry manufacturing and global logistics services, connecting production – shipping – distribution so businesses can expand into new markets.',
       about_desc2: 'From verified supplier matching and MOQ price negotiation to stringent on-site QC inspection, customs clearance, and omnichannel fulfillment, we empower businesses to scale globally with transparency and zero hidden costs.',
       about_btn: 'Learn more',
@@ -129,7 +129,7 @@
 
       // 4 Services
       services_tag: 'NĂNG LỰC CỐT LÕI',
-      services_title: 'SpeeGo Logistics Core Services',
+      services_title: 'SpeeGo Logistics core services',
       services_subtitle: 'Comprehensive supply chain solutions tailored for import-export and e-commerce businesses.',
       services_slogan: 'Your Cargo Our Commitment',
 
@@ -155,7 +155,7 @@
 
       // 8-Step Process Tabs
       process_tag: 'STANDARDIZED PROCESS',
-      process_title: '8-Step Operating Process',
+      process_title: '8-step operating process',
       process_subtitle: 'Transparent at every stage — from idea to goods arriving at your warehouse.',
       process_step_label: 'STEP',
       process_micro_brand: 'CONNECT BUSINESSES\nWITH THE WORLD',
@@ -215,7 +215,7 @@
 
       // Why Choose SpeeGo (6 Pillars)
       why_tag: 'Why Choose SpeeGo',
-      why_title: 'WHY CHOOSE SPEEGO LOGISTICS',
+      why_title: 'Why choose SpeeGo Logistics',
       why_subtitle: 'Transparent value, synchronized infrastructure, and a dedicated expert team.',
       why1_title: 'Multi-industry supply chain',
       why1_desc: 'Meeting every manufacturing and international shipping need. Strongest in cosmetics, nail accessories, furniture, and more.',
@@ -234,8 +234,8 @@
 
       // Hero legacy compat
       hero_badge: 'GLOBAL LOGISTICS PARTNER',
-      hero_title_prefix: 'From Sourcing to',
-      hero_title_highlight: 'Global Delivery',
+      hero_title_prefix: 'From sourcing to',
+      hero_title_highlight: 'Global delivery',
       hero_desc: 'We help businesses source, inspect, ship and fulfil with confidence — faster, safer and more cost-effective.',
       hero_cta_call: '(+84) 906 828 898',
       hero_cta_form: 'Request Consultation',
@@ -316,7 +316,7 @@
 
       // About
       about_tag: 'About SpeeGo Logistics',
-      about_title: 'ABOUT US',
+      about_title: 'About us',
       about_desc1: '<strong class="speego-brand-name">SpeeGo</strong> <strong class="speego-brand-logistics">Logistics</strong> pioneers multi-industry manufacturing and global logistics services, connecting production – shipping – distribution so businesses can expand into new markets.',
       about_desc2: 'From verified supplier matching and MOQ price negotiation to stringent on-site QC inspection, customs clearance, and omnichannel fulfillment, we empower businesses to scale globally with transparency and zero hidden costs.',
       about_btn: 'Learn more',
@@ -324,7 +324,7 @@
 
       // 4 Services
       services_tag: 'NĂNG LỰC CỐT LÕI',
-      services_title: 'SpeeGo Logistics Core Services',
+      services_title: 'SpeeGo Logistics core services',
       services_subtitle: 'Comprehensive supply chain solutions tailored for import-export and e-commerce businesses.',
       services_slogan: 'Your Cargo Our Commitment',
 
@@ -350,7 +350,7 @@
 
       // 8-Step Process Tabs
       process_tag: 'STANDARDIZED WORKFLOW',
-      process_title: '8-Step Standardized Operating Workflow',
+      process_title: '8-step standardized operating workflow',
       process_subtitle: 'End-to-end transparency and optimization from requirement intake to final delivery.',
       process_step_label: 'STEP',
       process_micro_brand: 'CONNECT BUSINESSES\nWITH THE WORLD',
@@ -426,7 +426,7 @@
 
       // Why Choose SpeeGo (6 Pillars)
       why_tag: 'Why Choose SpeeGo',
-      why_title: 'WHY CHOOSE SPEEGO LOGISTICS',
+      why_title: 'Why choose SpeeGo Logistics',
       why_subtitle: 'Transparent value, synchronized infrastructure, and a dedicated expert team.',
       why1_title: 'Multi-industry supply chain',
       why1_desc: 'Meeting every manufacturing and international shipping need. Strongest in cosmetics, nail accessories, furniture, and more.',
@@ -485,9 +485,9 @@
       partner_vn_fulfillment: 'Fulfillment in Texas, USA',
       partner_vn_fulfillment_meta: 'Storage & local delivery',
       testi_tag: 'Testimonials',
-      testi_title: 'What Global Business Leaders Say',
+      testi_title: 'What global business leaders say',
       news_tag: 'Market Intelligence',
-      news_title: 'Latest Logistics & Trade Insights',
+      news_title: 'Latest logistics & trade insights',
       news_view_all: 'View All',
       news1_cat: 'Freight Market', news1_title: 'Trans-Pacific Ocean Rates Outlook & Peak Season Prep', news1_desc: 'Key strategies for importers to secure vessel capacity and avoid port demurrage during peak Q3/Q4 shipping cycles.',
       news2_cat: 'Air Freight', news2_title: 'Fast-Track Cosmetics & E-Commerce Clearance in the US', news2_desc: 'Understanding FDA prior notice, Section 321 exemptions, and expedited air customs declarations for rapid stock turn.',
@@ -510,9 +510,9 @@
 
       // Hero (Spec from Image 2)
       hero_subheading: 'ĐỐI TÁC LOGISTICS TOÀN CẦU',
-      hero_title_row1: 'Từ Tìm Nguồn Hàng',
+      hero_title_row1: 'Từ tìm nguồn hàng',
       hero_title_row2_to: 'Đến',
-      hero_title_row2_highlight: 'Giao Hàng Toàn Cầu',
+      hero_title_row2_highlight: 'Giao hàng toàn cầu',
       hero_desc_main: 'Chúng tôi giúp doanh nghiệp tìm nguồn cung, kiểm định chất lượng, vận chuyển và hoàn tất đơn hàng với sự an tâm tuyệt đối — nhanh hơn, an toàn hơn và tối ưu chi phí hơn.',
       hero_btn_quote: 'Nhận Báo Giá',
       hero_btn_call: '(+84) 906 828 898',
@@ -525,8 +525,8 @@
 
       // Hero legacy compat
       hero_badge: 'ĐỐI TÁC LOGISTICS TOÀN CẦU',
-      hero_title_prefix: 'Từ Tìm Nguồn Hàng Đến',
-      hero_title_highlight: 'Giao Hàng Toàn Cầu',
+      hero_title_prefix: 'Từ tìm nguồn hàng đến',
+      hero_title_highlight: 'Giao hàng toàn cầu',
       hero_desc: 'Dịch vụ tìm nguồn hàng, đàm phán nhà máy, kiểm định chất lượng QC, vận chuyển quốc tế và fulfillment trọn gói kết nối Việt Nam & Trung Quốc đi Mỹ, Úc, Canada.',
       hero_cta_call: '(+84) 906 828 898',
       hero_cta_form: 'Nhận tư vấn miễn phí',
@@ -607,7 +607,7 @@
 
       // About
       about_tag: 'Về SpeeGo Logistics',
-      about_title: 'VỀ CHÚNG TÔI',
+      about_title: 'Về chúng tôi',
       about_desc1: '<strong class="speego-brand-name">SpeeGo</strong> <strong class="speego-brand-logistics">Logistics</strong> tiên phong trong sản xuất đa lĩnh vực và cung ứng dịch vụ logistics toàn cầu, mang sứ mệnh kết nối chuỗi giá trị sản xuất – vận chuyển – phân phối, giúp doanh nghiệp mở rộng thị trường kinh doanh',
       about_desc2: 'Từ việc thẩm định nhà xưởng uy tín, hỗ trợ deal giá và MOQ tốt nhất đến kiểm tra chất lượng tại chỗ (QC), hoàn tất chứng từ hải quan và fulfillment kho bãi, chúng tôi giúp doanh nghiệp tối ưu chi phí và tăng trưởng bền vững.',
       about_btn: 'Tìm hiểu thêm',
@@ -615,7 +615,7 @@
 
             // 4 Services
       services_tag: 'NĂNG LỰC CỐT LÕI',
-      services_title: '<span class="speego-accent-num">4</span> Dịch Vụ Trọng Tâm Của SpeeGo',
+      services_title: '<span class="speego-accent-num">4</span> Dịch vụ trọng tâm của SpeeGo',
       services_subtitle: 'Giải pháp chuỗi cung ứng toàn diện được thiết kế riêng cho các doanh nghiệp xuất nhập khẩu và e-commerce.',
       services_slogan: 'Your Cargo Our Commitment',
 
@@ -641,7 +641,7 @@
 
       // 8-Step Process Tabs
       process_tag: 'QUY TRÌNH CHUẨN HÓA',
-      process_title: 'Quy Trình Vận Hành 8 Bước',
+      process_title: 'Quy trình vận hành 8 bước',
       process_subtitle: 'Minh bạch từng giai đoạn, đồng hành cùng quý doanh nghiệp từ ý tưởng đến khi hàng hóa vào tận kho.',
       process_step_label: 'BƯỚC',
       process_micro_brand: 'KẾT NỐI DOANH NGHIỆP\nVỚI THẾ GIỚI',
@@ -717,7 +717,7 @@
 
       // Why Choose SpeeGo (6 Pillars)
       why_tag: 'Lợi thế vượt trội',
-      why_title: 'TẠI SAO NÊN CHỌN SPEEGO LOGISTICS',
+      why_title: 'Tại sao nên chọn SpeeGo Logistics',
       why_subtitle: 'Cam kết giá trị minh bạch, hạ tầng đồng bộ và đội ngũ chuyên gia tận tâm',
       why1_title: 'Chuỗi cung ứng đa lĩnh vực',
       why1_desc: 'Đáp ứng mọi nhu cầu sản xuất và vận chuyển quốc tế cho doanh nghiệp của bạn. Nổi bật nhất trong sản xuất mỹ phẩm, phụ kiện nails, nội thất...',
@@ -736,8 +736,8 @@
 
       // Hero legacy compat
       hero_badge: 'ĐỐI TÁC LOGISTICS TOÀN CẦU',
-      hero_title_prefix: 'Từ Tìm Nguồn Hàng Đến',
-      hero_title_highlight: 'Giao Hàng Toàn Cầu',
+      hero_title_prefix: 'Từ tìm nguồn hàng đến',
+      hero_title_highlight: 'Giao hàng toàn cầu',
       hero_desc: 'Dịch vụ tìm nguồn hàng, đàm phán nhà máy, kiểm định chất lượng QC, vận chuyển quốc tế và fulfillment trọn gói kết nối Việt Nam & Trung Quốc đi Mỹ, Úc, Canada.',
       hero_cta_call: '(+84) 906 828 898',
       hero_cta_form: 'Nhận tư vấn miễn phí',
@@ -818,7 +818,7 @@
 
       // About
       about_tag: 'Về SpeeGo Logistics',
-      about_title: 'VỀ CHÚNG TÔI',
+      about_title: 'Về chúng tôi',
       about_desc1: '<strong class="speego-brand-name">SpeeGo</strong> <strong class="speego-brand-logistics">Logistics</strong> tiên phong trong sản xuất đa lĩnh vực và cung ứng dịch vụ logistics toàn cầu, mang sứ mệnh kết nối chuỗi giá trị sản xuất – vận chuyển – phân phối, giúp doanh nghiệp mở rộng thị trường kinh doanh',
       about_desc2: 'Từ việc thẩm định nhà xưởng uy tín, hỗ trợ deal giá và MOQ tốt nhất đến kiểm tra chất lượng tại chỗ (QC), hoàn tất chứng từ hải quan và fulfillment kho bãi, chúng tôi giúp doanh nghiệp tối ưu chi phí và tăng trưởng bền vững.',
       about_btn: 'Tìm hiểu thêm',
@@ -826,7 +826,7 @@
 
             // 4 Services
       services_tag: 'NĂNG LỰC CỐT LÕI',
-      services_title: '<span class="speego-accent-num">4</span> Dịch Vụ Trọng Tâm Của SpeeGo',
+      services_title: '<span class="speego-accent-num">4</span> Dịch vụ trọng tâm của SpeeGo',
       services_subtitle: 'Giải pháp chuỗi cung ứng toàn diện được thiết kế riêng cho các doanh nghiệp xuất nhập khẩu và e-commerce.',
       services_slogan: 'Your Cargo Our Commitment',
 
@@ -852,7 +852,7 @@
 
       // 8-Step Process Tabs
       process_tag: 'QUY TRÌNH CHUẨN HÓA',
-      process_title: 'Quy Trình Vận Hành 8 Bước',
+      process_title: 'Quy trình vận hành 8 bước',
       process_subtitle: 'Minh bạch từng giai đoạn, đồng hành cùng quý doanh nghiệp từ ý tưởng đến khi hàng hóa vào tận kho.',
       process_step_label: 'BƯỚC',
       process_micro_brand: 'KẾT NỐI DOANH NGHIỆP\nVỚI THẾ GIỚI',
@@ -912,7 +912,7 @@
 
       // Why Choose SpeeGo (6 Pillars)
       why_tag: 'Lợi thế vượt trội',
-      why_title: 'TẠI SAO NÊN CHỌN SPEEGO LOGISTICS',
+      why_title: 'Tại sao nên chọn SpeeGo Logistics',
       why_subtitle: 'Cam kết giá trị minh bạch, hạ tầng đồng bộ và đội ngũ chuyên gia tận tâm',
       why1_title: 'Chuỗi cung ứng đa lĩnh vực',
       why1_desc: 'Đáp ứng mọi nhu cầu sản xuất và vận chuyển quốc tế cho doanh nghiệp của bạn. Nổi bật nhất trong sản xuất mỹ phẩm, phụ kiện nails, nội thất...',
@@ -969,9 +969,9 @@
       partner_vn_fulfillment: 'Fulfillment tại Texas, Mỹ',
       partner_vn_fulfillment_meta: 'kho & giao nội địa',
       testi_tag: 'Đánh giá khách hàng',
-      testi_title: 'Khách Hàng Quốc Tế Nói Về SpeeGo Logistics',
+      testi_title: 'Khách hàng quốc tế nói về SpeeGo Logistics',
       news_tag: 'Bản tin thị trường',
-      news_title: 'Tin Tức Chuỗi Cung Ứng & Vận Tải Biển Mới Nhất',
+      news_title: 'Tin tức chuỗi cung ứng<br>&amp; vận tải biển mới nhất',
       news_view_all: 'Xem tất cả',
       news1_cat: 'Thị trường vận tải', news1_title: 'Cước vận tải xuyên Thái Bình Dương và kế hoạch mùa cao điểm', news1_desc: 'Chiến lược giúp doanh nghiệp chủ động chỗ tàu, tối ưu chi phí và hạn chế lưu container trong mùa cao điểm.',
       news2_cat: 'Hàng không', news2_title: 'Thông quan nhanh mỹ phẩm và hàng e-commerce tại Mỹ', news2_desc: 'Các lưu ý về FDA, miễn trừ Section 321 và quy trình khai báo hàng không nhanh chóng.',
@@ -994,9 +994,9 @@
 
       // Hero (Spec from Image 2)
       hero_subheading: 'SOCIO LOGÍSTICO GLOBAL',
-      hero_title_row1: 'Desde el Abastecimiento',
+      hero_title_row1: 'Desde el abastecimiento',
       hero_title_row2_to: 'hasta la',
-      hero_title_row2_highlight: 'Entrega Global',
+      hero_title_row2_highlight: 'Entrega global',
       hero_desc_main: 'Ayudamos a las empresas a abastecerse, inspeccionar, enviar y cumplir con confianza — más rápido, más seguro y más rentable.',
       hero_btn_quote: 'Solicitar Cotización',
       hero_btn_call: '(+84) 906 828 898',
@@ -1009,8 +1009,8 @@
 
       // Hero legacy compat
       hero_badge: 'SOCIO LOGÍSTICO GLOBAL',
-      hero_title_prefix: 'Desde el Abastecimiento hasta la',
-      hero_title_highlight: 'Entrega Global',
+      hero_title_prefix: 'Desde el abastecimiento hasta la',
+      hero_title_highlight: 'Entrega global',
       hero_desc: 'Abastecimiento integral, negociación con fábricas, control de calidad QC, flete internacional y fulfillment moderno conectando Vietnam y China con EE.UU., Canadá y Australia.',
       hero_cta_call: '(+84) 906 828 898',
       hero_cta_form: 'Solicitar Asesoría',
@@ -1091,7 +1091,7 @@
 
       // About
       about_tag: 'Acerca de SpeeGo',
-      about_title: 'SOBRE NOSOTROS',
+      about_title: 'Sobre nosotros',
       about_desc1: '<strong class="speego-brand-name">SpeeGo</strong> <strong class="speego-brand-logistics">Logistics</strong> es pionera en fabricación multiindustria y logística global, conectando producción – transporte – distribución para que las empresas expandan sus mercados.',
       about_desc2: 'Desde la auditoría de fábricas y negociación de MOQ hasta inspecciones QC en sitio, gestión aduanal y fulfillment omnicanal, impulsamos el crecimiento de su negocio sin costos ocultos.',
       about_btn: 'Saber más',
@@ -1099,7 +1099,7 @@
 
       // 4 Services
       services_tag: 'Capacidades',
-      services_title: '<span class="speego-accent-num">4</span> Servicios Clave de SpeeGo',
+      services_title: '<span class="speego-accent-num">4</span> Servicios clave de SpeeGo',
       services_subtitle: 'Soluciones de cadena de suministro diseñadas para empresas de importación/exportación y e-commerce.',
       services_slogan: 'Your Cargo Our Commitment',
 
@@ -1125,7 +1125,7 @@
 
       // 8-Step Process Tabs
       process_tag: 'PROCESO ESTANDARIZADO',
-      process_title: 'Proceso Operativo de 8 Pasos',
+      process_title: 'Proceso operativo de 8 pasos',
       process_subtitle: 'Transparencia en cada etapa, acompañando a su empresa desde la idea hasta que la mercancía llega al almacén.',
       process_step_label: 'PASO',
       process_micro_brand: 'CONECTAMOS EMPRESAS\nCON EL MUNDO',
@@ -1185,7 +1185,7 @@
 
       // Why Choose SpeeGo (6 Pillars)
       why_tag: 'Ventajas Competitivas',
-      why_title: 'POR QUÉ ELEGIR SPEEGO LOGISTICS',
+      why_title: 'Por qué elegir SpeeGo Logistics',
       why_subtitle: 'Valor transparente, infraestructura sincronizada y un equipo experto dedicado.',
       why1_title: 'Cadena de suministro multirubro',
       why1_desc: 'Cubrimos producción y envío internacional. Especialistas en cosméticos, uñas, mobiliario y más.',
@@ -1204,8 +1204,8 @@ stat_delivery: 'Entrega a Tiempo',
 
       // Hero legacy compat
       hero_badge: 'SOCIO LOGÍSTICO GLOBAL',
-      hero_title_prefix: 'Desde el Abastecimiento hasta la',
-      hero_title_highlight: 'Entrega Global',
+      hero_title_prefix: 'Desde el abastecimiento hasta la',
+      hero_title_highlight: 'Entrega global',
       hero_desc: 'Abastecimiento integral, negociación con fábricas, control de calidad QC, flete internacional y fulfillment moderno conectando Vietnam y China con EE.UU., Canadá y Australia.',
       hero_cta_call: '(+84) 906 828 898',
       hero_cta_form: 'Solicitar Asesoría',
@@ -1286,7 +1286,7 @@ stat_delivery: 'Entrega a Tiempo',
 
       // About
       about_tag: 'Acerca de SpeeGo',
-      about_title: 'SOBRE NOSOTROS',
+      about_title: 'Sobre nosotros',
       about_desc1: '<strong class="speego-brand-name">SpeeGo</strong> <strong class="speego-brand-logistics">Logistics</strong> es pionera en fabricación multiindustria y logística global, conectando producción – transporte – distribución para que las empresas expandan sus mercados.',
       about_desc2: 'Desde la auditoría de fábricas y negociación de MOQ hasta inspecciones QC en sitio, gestión aduanal y fulfillment omnicanal, impulsamos el crecimiento de su negocio sin costos ocultos.',
       about_btn: 'Saber más',
@@ -1294,7 +1294,7 @@ stat_delivery: 'Entrega a Tiempo',
 
       // 4 Services
       services_tag: 'Capacidades',
-      services_title: '<span class="speego-accent-num">4</span> Servicios Clave de SpeeGo',
+      services_title: '<span class="speego-accent-num">4</span> Servicios clave de SpeeGo',
       services_subtitle: 'Soluciones de cadena de suministro diseñadas para empresas de importación/exportación y e-commerce.',
       services_slogan: 'Your Cargo Our Commitment',
 
@@ -1320,7 +1320,7 @@ stat_delivery: 'Entrega a Tiempo',
 
       // 8-Step Process Tabs
       process_tag: 'FLUJO ESTANDARIZADO',
-      process_title: 'Proceso Operativo de 8 Pasos',
+      process_title: 'Proceso operativo de 8 pasos',
       process_subtitle: 'Estandarización de la cadena de suministro desde la recepción, aprovisionamiento hasta el flete internacional.',
       process_step_label: 'PASO',
       process_micro_brand: 'CONECTAMOS EMPRESAS\nCON EL MUNDO',
@@ -1396,7 +1396,7 @@ stat_delivery: 'Entrega a Tiempo',
 
       // Why Choose SpeeGo (6 Pillars)
       why_tag: 'Ventajas Competitivas',
-      why_title: 'POR QUÉ ELEGIR SPEEGO LOGISTICS',
+      why_title: 'Por qué elegir SpeeGo Logistics',
       why_subtitle: 'Valor transparente, infraestructura sincronizada y un equipo experto dedicado.',
       why1_title: 'Cadena de suministro multirubro',
       why1_desc: 'Cubrimos producción y envío internacional. Especialistas en cosméticos, uñas, mobiliario y más.',
@@ -1453,9 +1453,9 @@ stat_delivery: 'Entrega a Tiempo',
       partner_vn_fulfillment: 'Fulfillment en Texas, EE. UU.',
       partner_vn_fulfillment_meta: 'Almacén y entrega local',
       testi_tag: 'Testimonios',
-      testi_title: 'Opiniones de Nuestros Clientes Internacionales',
+      testi_title: 'Opiniones de nuestros clientes internacionales',
       news_tag: 'Inteligencia de Mercado',
-      news_title: 'Últimas Noticias y Tendencias de Transporte Marítimo',
+      news_title: 'Últimas noticias y tendencias de<br>transporte marítimo',
       news_view_all: 'Ver todo',
       news1_cat: 'Mercado de fletes', news1_title: 'Tarifas transpacíficas y preparación de temporada alta', news1_desc: 'Estrategias para asegurar capacidad y evitar demoras portuarias.',
       news2_cat: 'Carga aérea', news2_title: 'Despacho rápido de cosméticos y e-commerce en EE. UU.', news2_desc: 'Aspectos clave de FDA y despacho aduanero acelerado.',
@@ -1825,9 +1825,78 @@ stat_delivery: 'Entrega a Tiempo',
 
   // Keep the service section concise in every language. The section markup
   // intentionally has no eyebrow label and no numeric prefix.
-  i18nData.en.services_title = 'SpeeGo Logistics Core Services';
+  i18nData.en.services_title = 'SpeeGo Logistics core services';
   i18nData.vi.services_title = 'Dịch vụ trọng tâm của SpeeGo Logistics';
   i18nData.es.services_title = 'Servicios principales de SpeeGo Logistics';
+
+  Object.assign(i18nData.en, {
+    nav_testimonials: 'Reviews',
+    policy_label: 'Policy',
+    policy_privacy: 'Privacy Policy',
+    policy_terms: 'Terms & Conditions',
+    form_consult_title: 'Request a free consultation',
+    form_consult_note: 'Your information is used only for consultation.',
+    form_service_sourcing: 'Sourcing & QC (Factory sourcing & inspection)',
+    form_service_logistics: 'International logistics (Ocean / Air freight)',
+    form_service_fulfillment: 'Fulfillment, warehousing & order packing',
+    form_service_customs: 'Customs procedures & import/export',
+    form_service_all_in_one: 'End-to-end supply chain service',
+    form_route_vn_us: 'Vietnam → United States (US)',
+    form_route_cn_us: 'China → United States (US)',
+    form_route_vn_cn_ca: 'Vietnam / China → Canada',
+    form_route_vn_cn_au: 'Vietnam / China → Australia',
+    form_route_other: 'Other shipping route',
+    partners_title: 'Shipping & factory partners',
+    partners_subtitle: 'Direct connections to trusted logistics and manufacturing networks in Vietnam, China, and international markets.',
+    partners_shipping_title: 'Shipping partners',
+    partners_shipping_desc: 'Working with airlines, shipping lines, and international logistics providers for clear schedules, transparent tracking, and optimized costs for every shipment.',
+    partners_factory_title: 'Factory partners',
+    partners_factory_desc: 'Our factory network in China and Vietnam supports sourcing, MOQ negotiation, production monitoring, and on-site quality inspection.',
+    cookie_title: 'Cookie preferences',
+    cookie_copy: 'We use cookies to improve your experience and analyze site traffic. You can choose which cookie categories to allow.',
+    cookie_reject: 'Reject all',
+    cookie_accept: 'Accept all'
+  });
+
+  Object.assign(i18nData.es, {
+    nav_testimonials: 'Opiniones',
+    policy_label: 'Políticas',
+    policy_privacy: 'Política de privacidad',
+    policy_terms: 'Términos y condiciones',
+    form_consult_title: 'Solicita una consulta gratuita',
+    form_consult_note: 'Tu información se utiliza únicamente para fines de asesoría.',
+    form_invite: 'Completa el formulario · respuesta en 2 horas',
+    form_name_lbl: 'Nombre completo *',
+    form_phone_lbl: 'Teléfono / Zalo / WhatsApp *',
+    form_email_lbl: 'Correo electrónico corporativo *',
+    form_company_lbl: 'Nombre de empresa / Marca',
+    form_service_lbl: 'Servicio de interés *',
+    form_route_lbl: 'Ruta de envío de interés *',
+    form_msg_lbl: 'Detalles de la consulta *',
+    form_submit_btn: 'Enviar solicitud de consulta',
+    form_footnote: 'Tu información está cifrada y se sincroniza de forma segura con el sistema de gestión de SpeeGo.',
+    form_msg_ph: 'Describe el producto, volumen estimado (CBM / KG), destino y fecha deseada...',
+    form_service_sourcing: 'Sourcing y QC (búsqueda e inspección de fábrica)',
+    form_service_logistics: 'Logística internacional (marítima / aérea)',
+    form_service_fulfillment: 'Fulfillment, almacén y preparación de pedidos',
+    form_service_customs: 'Aduanas e importación / exportación',
+    form_service_all_in_one: 'Servicio integral de cadena de suministro',
+    form_route_vn_us: 'Vietnam → Estados Unidos (EE. UU.)',
+    form_route_cn_us: 'China → Estados Unidos (EE. UU.)',
+    form_route_vn_cn_ca: 'Vietnam / China → Canadá',
+    form_route_vn_cn_au: 'Vietnam / China → Australia',
+    form_route_other: 'Otra ruta de envío',
+    partners_title: 'Socios de transporte y fábricas',
+    partners_subtitle: 'Conexiones directas con redes logísticas y de producción de confianza en Vietnam, China y mercados internacionales.',
+    partners_shipping_title: 'Socios de transporte',
+    partners_shipping_desc: 'Colaboramos con aerolíneas, navieras y proveedores logísticos internacionales para ofrecer itinerarios claros, seguimiento transparente y costos optimizados en cada envío.',
+    partners_factory_title: 'Socios de fábrica',
+    partners_factory_desc: 'Nuestra red de fábricas en China y Vietnam apoya la búsqueda de proveedores, negociación de MOQ, seguimiento de producción e inspección de calidad en sitio.',
+    cookie_title: 'Preferencias de cookies',
+    cookie_copy: 'Usamos cookies para mejorar tu experiencia y analizar el tráfico del sitio. Puedes elegir las categorías de cookies que deseas permitir.',
+    cookie_reject: 'Rechazar todo',
+    cookie_accept: 'Aceptar todo'
+  });
 
   // Safe storage helper
   const safeStorage = {
@@ -2013,6 +2082,7 @@ stat_delivery: 'Entrega a Tiempo',
     // Translate all [data-i18n]
     document.querySelectorAll('[data-i18n]').forEach(el => {
       const key = el.getAttribute('data-i18n');
+      if (!el.dataset.speegoI18nOriginal) el.dataset.speegoI18nOriginal = el.textContent;
       if (i18nData[lang] && i18nData[lang][key]) {
         const val = i18nData[lang][key];
         // Plain strings: use textContent (keeps "&" intact for titles/marquee)
@@ -2021,6 +2091,8 @@ stat_delivery: 'Entrega a Tiempo',
         } else {
           el.innerHTML = val;
         }
+      } else if (lang === 'vi') {
+        el.textContent = el.dataset.speegoI18nOriginal;
       }
     });
 
@@ -3447,6 +3519,17 @@ stat_delivery: 'Entrega a Tiempo',
   }
 
   document.addEventListener('DOMContentLoaded', function () {
+    const cookieConsent = document.getElementById('speego-cookie-consent');
+    if (cookieConsent && !safeStorage.getItem('speego_cookie_consent')) {
+      cookieConsent.hidden = false;
+      cookieConsent.querySelectorAll('[data-cookie-choice]').forEach(function (button) {
+        button.addEventListener('click', function () {
+          safeStorage.setItem('speego_cookie_consent', button.dataset.cookieChoice);
+          cookieConsent.hidden = true;
+        });
+      });
+    }
+
 	const policyMenu = document.querySelector('.speego-policy-menu');
 	const policyToggle = document.querySelector('.speego-policy-toggle');
 
