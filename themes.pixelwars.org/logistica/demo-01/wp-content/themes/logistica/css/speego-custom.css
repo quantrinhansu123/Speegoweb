@@ -3116,6 +3116,19 @@ body.speego-track-modal-open {
   }
 }
 
+@media (min-width: 768px) {
+  body.home .speego-partners-header {
+    max-width: none !important;
+  }
+
+  body.home .speego-partners-title {
+    font-size: clamp(34px, 4.2vw, 60px) !important;
+    white-space: nowrap;
+  }
+
+  body.home .speego-partners-header .speego-section-subtitle { white-space: nowrap; }
+}
+
 /* Consultation: two clear desktop columns, with the form as its own surface. */
 @media (min-width: 1024px) {
   .speego-consult-stage {
@@ -8174,6 +8187,241 @@ body.home .speego-route-logo-card:hover {
   }
 }
 
+/* Dedicated transport and factory partner section. */
+body.home .speego-partners-section {
+  padding: 96px 24px !important;
+}
+
+body.home .speego-partners-layout {
+  width: min(100%, 1240px);
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+body.home .speego-partners-header {
+  display: block;
+  max-width: 760px !important;
+  margin: 0 0 36px !important;
+  overflow: visible;
+}
+
+body.home .speego-partners-title {
+  width: auto;
+  margin: 0 0 20px;
+  white-space: normal;
+  font-size: clamp(38px, 4.2vw, 60px) !important;
+}
+
+body.home .speego-partners-title::after {
+  content: '';
+  display: block;
+  width: 80px;
+  height: 3px;
+  margin-top: 18px;
+  background: #ff6a00;
+}
+
+body.home .speego-partners-header .speego-section-subtitle {
+  max-width: 760px;
+  margin: 0;
+  padding: 0;
+  text-align: left;
+}
+
+.speego-partners-copy-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 48px;
+  margin-bottom: 36px;
+}
+
+.speego-partners-copy-grid article {
+  border-left: 3px solid #ff6a00;
+  padding-left: 22px;
+}
+
+.speego-partners-copy-grid h3 {
+  margin: 0 0 10px;
+  color: var(--speego-primary);
+  font-size: 22px;
+  font-weight: 800;
+}
+
+.speego-partners-copy-grid p {
+  margin: 0;
+  color: #526783;
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+body.home .speego-partners-layout .speego-trust-logos-frame {
+  position: relative;
+  z-index: 1;
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  padding: 12px 0;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+body.home .speego-partners-layout .speego-trust-marquee {
+  -webkit-mask-image: none;
+  mask-image: none;
+}
+
+body.home .speego-partners-layout .speego-trust-marquee-track {
+  gap: 76px;
+  padding: 0;
+}
+
+body.home .speego-partners-layout .speego-trust-logo-item {
+  height: 92px;
+  padding: 0 14px;
+}
+
+body.home .speego-partners-layout .speego-trust-logo-img {
+  height: 78px;
+  max-height: 84px;
+  max-width: 280px;
+}
+
+@media (max-width: 767px) {
+  body.home .speego-partners-section {
+    padding: 64px 20px !important;
+  }
+
+  .speego-partners-copy-grid {
+    grid-template-columns: 1fr;
+    gap: 26px;
+  }
+
+  body.home .speego-partners-layout .speego-trust-logo-item {
+    height: 58px;
+  }
+
+  body.home .speego-partners-layout .speego-trust-logo-img {
+    height: 48px;
+    max-height: 52px;
+    max-width: 180px;
+  }
+}
+
+/* Mobile homepage navigation. */
+.speego-menu-toggle {
+  display: none;
+}
+
+@media (max-width: 991px) {
+  .speego-header-navbar-inner {
+    position: relative;
+    gap: 12px;
+  }
+
+  .speego-menu-toggle {
+    width: 40px;
+    height: 40px;
+    display: inline-flex;
+    flex: 0 0 40px;
+    align-items: center;
+    justify-content: center;
+    order: 3;
+    padding: 0;
+    border: 1px solid #dbe4eb;
+    border-radius: 9px;
+    background: #fff;
+    color: var(--speego-primary);
+    cursor: pointer;
+  }
+
+  .speego-menu-toggle:focus-visible {
+    outline: 3px solid rgba(255, 106, 0, 0.45);
+    outline-offset: 2px;
+  }
+
+  .speego-menu-toggle-icon,
+  .speego-menu-toggle-icon::before,
+  .speego-menu-toggle-icon::after {
+    display: block;
+    width: 18px;
+    height: 2px;
+    border-radius: 2px;
+    background: currentColor;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+  }
+
+  .speego-menu-toggle-icon {
+    position: relative;
+  }
+
+  .speego-menu-toggle-icon::before,
+  .speego-menu-toggle-icon::after {
+    position: absolute;
+    left: 0;
+    content: '';
+  }
+
+  .speego-menu-toggle-icon::before { top: -6px; }
+  .speego-menu-toggle-icon::after { top: 6px; }
+
+  .site-header.is-menu-open .speego-menu-toggle-icon { background: transparent; }
+  .site-header.is-menu-open .speego-menu-toggle-icon::before { transform: translateY(6px) rotate(45deg); }
+  .site-header.is-menu-open .speego-menu-toggle-icon::after { transform: translateY(-6px) rotate(-45deg); }
+
+  .speego-main-navigation {
+    position: absolute !important;
+    top: 100%;
+    right: 0;
+    left: 0;
+    z-index: 1001;
+    display: none !important;
+    padding: 8px 16px 20px;
+    background: #fff;
+    border-top: 1px solid #eef2f5;
+    box-shadow: 0 16px 30px rgba(4, 36, 61, 0.12);
+  }
+
+  .site-header.is-menu-open .speego-main-navigation {
+    display: block !important;
+  }
+
+  .speego-nav-menu {
+    flex-direction: column;
+    align-items: stretch !important;
+    gap: 0 !important;
+  }
+
+  .speego-nav-item {
+    border-bottom: 1px solid #edf1f4;
+  }
+
+  .speego-nav-link {
+    min-height: 44px;
+    display: flex !important;
+    align-items: center;
+    padding: 12px 0 !important;
+    font-size: 15px !important;
+  }
+
+  .speego-header-cta-wrap {
+    margin-left: auto;
+  }
+}
+
+@media (max-width: 560px) {
+  .speego-branding .speego-logo-img {
+    height: 30px !important;
+  }
+
+  .speego-header-quote-btn {
+    height: 38px !important;
+    padding: 0 12px !important;
+    font-size: 12px !important;
+  }
+}
+
 #news-speego {
   padding-top: 40px !important;
 }
@@ -8355,5 +8603,23 @@ body.home .speego-route-row {
     white-space: normal;
     text-align: center;
     text-wrap: balance;
+  }
+}
+
+@media (min-width: 768px) {
+  body.home #partners-speego .speego-partners-header {
+    width: 100% !important;
+    max-width: none !important;
+  }
+
+  body.home #partners-speego .speego-partners-title {
+    width: 100% !important;
+    font-size: clamp(34px, 4.2vw, 60px) !important;
+    white-space: nowrap !important;
+  }
+
+  body.home #partners-speego .speego-section-subtitle {
+    max-width: none !important;
+    white-space: nowrap !important;
   }
 }

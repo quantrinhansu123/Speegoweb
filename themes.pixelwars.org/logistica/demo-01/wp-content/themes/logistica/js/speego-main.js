@@ -3273,8 +3273,7 @@ stat_delivery: 'Entrega a Tiempo',
   // =========================================================================
   // 8.6 SCROLL EXPLORE COMPANION
   // Keep the existing floating control useful beyond the hero: it advances
-  // to the next homepage section instead of always jumping back to the
-  // trusted-brands anchor.
+  // to the next homepage section.
   // =========================================================================
   function initScrollExploreCompanion() {
     var scrollIndicator = document.querySelector('.speego-hero-scroll-indicator');
@@ -3282,7 +3281,6 @@ stat_delivery: 'Entrega a Tiempo',
 
     var sectionIds = [
       'home',
-      'trusted-brands',
       'services-speego',
       'trust-speego',
       'process-speego',
@@ -3334,7 +3332,9 @@ stat_delivery: 'Entrega a Tiempo',
   // =========================================================================
   function initStickyHeaderAndScrollSpy() {
     var header = document.getElementById('masthead');
+    var menuToggle = document.querySelector('.speego-menu-toggle');
     var navItems = Array.prototype.slice.call(document.querySelectorAll('.speego-nav-item'));
+    var navLinks = Array.prototype.slice.call(document.querySelectorAll('.speego-nav-link[href^="#"]'));
     var targets = navItems.map(function (item) {
       var link = item.querySelector('.speego-nav-link');
       var href = link ? link.getAttribute('href') : '';
@@ -3342,6 +3342,46 @@ stat_delivery: 'Entrega a Tiempo',
         item: item,
         section: href && href.charAt(0) === '#' ? document.querySelector(href) : null
       };
+    });
+
+    function getHeaderOffset() {
+      if (!header) return 0;
+      var position = window.getComputedStyle(header).position;
+      return position === 'fixed' || position === 'sticky'
+        ? header.getBoundingClientRect().height
+        : 0;
+    }
+
+    function closeMobileMenu() {
+      if (!header) return;
+      header.classList.remove('is-menu-open');
+      if (menuToggle) menuToggle.setAttribute('aria-expanded', 'false');
+    }
+
+    if (menuToggle && header) {
+      menuToggle.addEventListener('click', function () {
+        var open = header.classList.toggle('is-menu-open');
+        menuToggle.setAttribute('aria-expanded', String(open));
+      });
+    }
+
+    navLinks.forEach(function (link) {
+      link.addEventListener('click', function (event) {
+        var href = link.getAttribute('href');
+        var section = href && document.querySelector(href);
+        if (!section) return;
+
+        event.preventDefault();
+        closeMobileMenu();
+        requestAnimationFrame(function () {
+          var top = section.getBoundingClientRect().top + window.pageYOffset - getHeaderOffset() - 12;
+          window.scrollTo({
+            top: Math.max(0, top),
+            behavior: prefersReducedMotion() ? 'auto' : 'smooth'
+          });
+          window.history.pushState(null, '', href);
+        });
+      });
     });
 
     function refreshHeader() {
@@ -3355,7 +3395,6 @@ stat_delivery: 'Entrega a Tiempo',
         if (target.section && target.section.getBoundingClientRect().top <= offset) current = target.item;
       });
 
-      if (!current && navItems.length) current = navItems[0];
       navItems.forEach(function (item) {
         item.classList.toggle('active', item === current);
       });
