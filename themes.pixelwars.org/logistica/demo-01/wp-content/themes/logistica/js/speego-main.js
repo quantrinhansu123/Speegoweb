@@ -720,7 +720,7 @@
       why_title: 'Tại sao nên chọn SpeeGo Logistics',
       why_subtitle: 'Cam kết giá trị minh bạch, hạ tầng đồng bộ và đội ngũ chuyên gia tận tâm',
       why1_title: 'Chuỗi cung ứng đa lĩnh vực',
-      why1_desc: 'Đáp ứng mọi nhu cầu sản xuất và vận chuyển quốc tế cho doanh nghiệp của bạn. Nổi bật nhất trong sản xuất mỹ phẩm, phụ kiện nails, nội thất...',
+      why1_desc: 'Đáp ứng mọi nhu cầu sản xuất và vận chuyển quốc tế cho doanh nghiệp của bạn. Nổi bật nhất trong sản xuất mỹ phẩm, phụ kiện nails, nội thất và nhiều ngành khác.',
       why2_title: 'Mạng lưới nhà máy rộng khắp TQ, VN',
       why2_desc: 'Hệ thống đối tác, nhà máy, xưởng sản xuất trên toàn Trung Quốc và Việt Nam, hỗ trợ deal giá và MOQ phù hợp với nhu cầu doanh nghiệp.',
       why3_title: 'Đa dạng phương thức vận chuyển',
@@ -915,7 +915,7 @@
       why_title: 'Tại sao nên chọn SpeeGo Logistics',
       why_subtitle: 'Cam kết giá trị minh bạch, hạ tầng đồng bộ và đội ngũ chuyên gia tận tâm',
       why1_title: 'Chuỗi cung ứng đa lĩnh vực',
-      why1_desc: 'Đáp ứng mọi nhu cầu sản xuất và vận chuyển quốc tế cho doanh nghiệp của bạn. Nổi bật nhất trong sản xuất mỹ phẩm, phụ kiện nails, nội thất...',
+      why1_desc: 'Đáp ứng mọi nhu cầu sản xuất và vận chuyển quốc tế cho doanh nghiệp của bạn. Nổi bật nhất trong sản xuất mỹ phẩm, phụ kiện nails, nội thất và nhiều ngành khác.',
       why2_title: 'Mạng lưới nhà máy rộng khắp TQ, VN',
       why2_desc: 'Hệ thống đối tác, nhà máy, xưởng sản xuất trên toàn Trung Quốc và Việt Nam, hỗ trợ deal giá và MOQ phù hợp với nhu cầu doanh nghiệp.',
       why3_title: 'Đa dạng phương thức vận chuyển',
@@ -2118,7 +2118,7 @@ stat_delivery: 'Entrega a Tiempo',
       if (category && dictionary['news' + number + '_cat']) category.textContent = dictionary['news' + number + '_cat'];
       if (headline && dictionary['news' + number + '_title']) headline.textContent = dictionary['news' + number + '_title'];
       if (summary && dictionary['news' + number + '_desc']) summary.textContent = dictionary['news' + number + '_desc'];
-      if (link && dictionary.news_read) link.innerHTML = '<span>' + dictionary.news_read + '</span> <i class="fas fa-arrow-right" aria-hidden="true"></i>';
+      if (link && dictionary.news_read) link.innerHTML = '<span>' + dictionary.news_read + '</span><svg class="speego-service-link-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"></polyline></svg>';
     });
 
     // Re-render active process step detail with current language
