@@ -3284,7 +3284,7 @@ stat_delivery: 'Entrega a Tiempo',
     }
 
     var titles = document.querySelectorAll(
-      '.speego-section-title, .speego-services-title, .speego-why-title, .speego-about-heading, .speego-trust-section__title, .speego-partners-title, .speego-consult-card-title, .speego-hero-heading, .process-tabs-title, .speego-testimonial-title, .speego-news-title, .speego-workflow-heading'
+      '.speego-about-heading, .speego-trust-section__title, .speego-consult-card-title, .process-tabs-title'
     );
     titles.forEach(function (el) {
       // Ensure plain-text i18n titles with "&" wrap cleanly
