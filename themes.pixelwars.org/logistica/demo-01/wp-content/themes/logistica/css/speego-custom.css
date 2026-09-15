@@ -1277,8 +1277,22 @@ h1, h2, h3, h4, h5, h6,
   transition: transform 0.2s ease;
 }
 
-.speego-intro-link:hover {
+.speego-intro-link-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: rgba(255, 106, 0, 0.12);
+  color: #FF6A00;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.speego-intro-link:hover .speego-intro-link-icon {
   transform: translateX(3px);
+  background: #FF6A00;
+  color: #FFFFFF;
 }
 
 .speego-hero-console {
@@ -1335,7 +1349,7 @@ h1, h2, h3, h4, h5, h6,
 
 .speego-console-body {
   padding: 18px 18px 18px;
-  max-height: min(520px, 62vh);
+  max-height: min(640px, 78vh);
   overflow-y: auto;
 }
 

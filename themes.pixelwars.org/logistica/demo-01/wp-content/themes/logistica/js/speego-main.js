@@ -58,7 +58,7 @@
       intro_b2: 'Ocean FCL/LCL & air freight with live OMS tracking',
       intro_b3: 'Customs clearance & destination fulfillment',
       intro_b4: 'Transparent quotes — zero hidden surcharges',
-      intro_cta: 'Learn more about SpeeGo',
+      intro_cta: 'Learn more',
 
       quote_origin_lbl: 'Origin Port / Country',
       quote_dest_lbl: 'Destination Country',
@@ -253,7 +253,7 @@
       intro_b2: 'Ocean FCL/LCL & air freight with live OMS tracking',
       intro_b3: 'Customs clearance & destination fulfillment',
       intro_b4: 'Transparent quotes — zero hidden surcharges',
-      intro_cta: 'Learn more about SpeeGo',
+      intro_cta: 'Learn more',
 
       quote_origin_lbl: 'Origin Port / Country',
       quote_dest_lbl: 'Destination Country',
@@ -544,7 +544,7 @@
       intro_b2: 'FCL/LCL đường biển & hàng không kèm OMS realtime',
       intro_b3: 'Hải quan & fulfillment tại điểm đến',
       intro_b4: 'Báo giá minh bạch — không phụ phí ẩn',
-      intro_cta: 'Tìm hiểu thêm về SpeeGo',
+      intro_cta: 'Tìm hiểu thêm',
 
       quote_origin_lbl: 'Cảng / Điểm xuất phát',
       quote_dest_lbl: 'Quốc gia đến',
@@ -755,7 +755,7 @@
       intro_b2: 'FCL/LCL đường biển & hàng không kèm OMS realtime',
       intro_b3: 'Hải quan & fulfillment tại điểm đến',
       intro_b4: 'Báo giá minh bạch — không phụ phí ẩn',
-      intro_cta: 'Tìm hiểu thêm về SpeeGo',
+      intro_cta: 'Tìm hiểu thêm',
 
       quote_origin_lbl: 'Cảng / Điểm xuất phát',
       quote_dest_lbl: 'Quốc gia đến',
@@ -1028,7 +1028,7 @@
       intro_b2: 'FCL/LCL marítimo y aéreo con rastreo OMS en vivo',
       intro_b3: 'Aduanas y fulfillment en destino',
       intro_b4: 'Cotizaciones transparentes — sin recargos ocultos',
-      intro_cta: 'Conozca más sobre SpeeGo',
+      intro_cta: 'Conozca más',
 
       quote_origin_lbl: 'Puerto de Origen',
       quote_dest_lbl: 'País de Destino',
@@ -1223,7 +1223,7 @@ stat_delivery: 'Entrega a Tiempo',
       intro_b2: 'FCL/LCL marítimo y aéreo con rastreo OMS en vivo',
       intro_b3: 'Aduanas y fulfillment en destino',
       intro_b4: 'Cotizaciones transparentes — sin recargos ocultos',
-      intro_cta: 'Conozca más sobre SpeeGo',
+      intro_cta: 'Conozca más',
 
       quote_origin_lbl: 'Puerto de Origen',
       quote_dest_lbl: 'País de Destino',
