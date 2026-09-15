@@ -2547,44 +2547,25 @@ body.speego-track-modal-open {
 
 .speego-trust-bar__icon {
   flex-shrink: 0;
-  width: 96px;
-  height: 96px;
-  border-radius: 22px;
+  width: 84px;
+  height: 84px;
+  border-radius: 50%;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(145deg, #FFFFFF 0%, #F1F5F9 100%);
-  border: 1.5px solid rgba(15, 39, 68, 0.12);
-  box-shadow:
-    0 10px 24px -4px rgba(15, 39, 68, 0.08),
-    0 3px 8px rgba(0, 0, 0, 0.02),
-    inset 0 2px 0 rgba(255, 255, 255, 0.95),
-    inset 0 -2px 0 rgba(15, 39, 68, 0.04);
-  animation: speegoTrustIconFloat 3.8s ease-in-out infinite;
+  background: #0F2744;
+  box-shadow: 0 8px 20px rgba(15, 39, 68, 0.25);
   transition:
     background 300ms cubic-bezier(0.2, 0.8, 0.2, 1),
-    border-color 300ms cubic-bezier(0.2, 0.8, 0.2, 1),
     transform 300ms cubic-bezier(0.2, 0.8, 0.2, 1),
     box-shadow 300ms cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
-.speego-trust-bar__icon svg,
-.speego-trust-bar__icon .speego-3d-icon {
-  width: 60px;
-  height: 60px;
+.speego-trust-bar__icon svg {
+  width: 56px;
+  height: 56px;
   display: block;
-  filter: drop-shadow(0 6px 12px rgba(15, 39, 68, 0.15));
   transition: transform 300ms cubic-bezier(0.2, 0.8, 0.2, 1);
-}
-
-.speego-trust-bar__item:nth-child(2) .speego-trust-bar__icon {
-  animation-delay: 0.35s;
-}
-.speego-trust-bar__item:nth-child(3) .speego-trust-bar__icon {
-  animation-delay: 0.7s;
-}
-.speego-trust-bar__item:nth-child(4) .speego-trust-bar__icon {
-  animation-delay: 1.05s;
 }
 
 .speego-trust-bar__copy {
@@ -2620,18 +2601,13 @@ body.speego-track-modal-open {
 }
 
 .speego-trust-bar__item:hover .speego-trust-bar__icon {
-  background: linear-gradient(145deg, #FFFFFF 0%, #E2E8F0 100%);
-  border-color: rgba(15, 39, 68, 0.35);
+  background: #14345C;
   transform: translateY(-5px) scale(1.05);
-  box-shadow:
-    0 16px 32px rgba(15, 39, 68, 0.14),
-    0 0 0 5px rgba(15, 39, 68, 0.06),
-    inset 0 2px 0 rgba(255, 255, 255, 1);
-  animation: none;
+  box-shadow: 0 14px 28px rgba(15, 39, 68, 0.35);
 }
 
 .speego-trust-bar__item:hover .speego-trust-bar__icon svg {
-  transform: scale(1.06) rotate(-2deg);
+  transform: scale(1.06);
 }
 
 .speego-trust-bar__item:hover .speego-trust-bar__title {
@@ -3772,7 +3748,7 @@ body.speego-track-modal-open {
     width: 84px;
     height: 84px;
     font-size: 40px;
-    border-radius: 20px;
+    border-radius: 50%;
   }
   .speego-trust-bar__item {
     padding: 4px 8px;
@@ -8667,18 +8643,10 @@ body.home #news-speego .speego-news-title {
   font-size: 60px !important;
 }
 
-body.home #consultation-form .speego-form-heading p {
-  font-size: 24px !important;
-}
-
 @media (max-width: 767px) {
   body.home #consultation-form .speego-form-heading h3,
   body.home #news-speego .speego-news-title {
     font-size: 38px !important;
-  }
-
-  body.home #consultation-form .speego-form-heading p {
-    font-size: 20px !important;
   }
 }
 
@@ -8757,16 +8725,19 @@ body.home .speego-services-subtitle,
 body.home .speego-trust-section__subtitle,
 body.home .speego-why-subtitle,
 body.home .speego-workflow-subheading,
-body.home #consultation-form .speego-form-heading p,
 body.home #services-speego .speego-services-subtitle,
 .speego-section-subtitle,
 .speego-services-subtitle,
 .speego-trust-section__subtitle,
 .speego-why-subtitle,
 .speego-workflow-subheading,
-#consultation-form .speego-form-heading p,
 #services-speego .speego-services-subtitle {
   font-size: 18px !important;
+}
+
+body.home #consultation-form .speego-form-heading p,
+#consultation-form .speego-form-heading p {
+  font-size: 16px !important;
 }
 
 /* Uniform section rhythm: same vertical padding on every content section,
