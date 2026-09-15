@@ -2377,12 +2377,12 @@ body.speego-track-modal-open {
   width: 44px;
   height: 44px;
   background: #FFFFFF;
-  border: 1.5px solid #E2E8F0;
+  border: 1.5px solid #0F172A;
   border-radius: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 6px 16px rgba(10, 37, 64, 0.08);
+  box-shadow: 0 4px 14px rgba(15, 23, 42, 0.08);
   margin-top: -22px;
   margin-bottom: 14px;
   position: relative;
@@ -2392,8 +2392,14 @@ body.speego-track-modal-open {
 
 .speego-service-card:hover .speego-service-icon-box {
   transform: translateY(-2px);
-  border-color: #0056B3;
-  box-shadow: 0 8px 20px rgba(0, 86, 179, 0.16);
+  border-color: #0F172A;
+  background: #0F172A;
+  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.16);
+}
+
+.speego-service-card:hover .speego-service-icon-box svg {
+  stroke: #FFFFFF;
+  color: #FFFFFF;
 }
 
 /* Card Body */
@@ -2427,7 +2433,7 @@ body.speego-track-modal-open {
   font-family: 'Inter', sans-serif;
   font-size: 14px;
   font-weight: 700;
-  color: #0052CC !important;
+  color: #0F172A !important;
   text-decoration: none !important;
   display: inline-flex;
   align-items: center;
@@ -5570,12 +5576,12 @@ body.home .site-header .menu-toggle {
   width: 42px;
   height: 42px;
   background: #FFFFFF;
-  border: 1.5px solid #0052CC;
+  border: 1.5px solid #0F172A;
   border-radius: 11px;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 4px 14px rgba(0, 82, 204, 0.2);
+  box-shadow: 0 4px 14px rgba(15, 23, 42, 0.1);
   z-index: 4;
   transition: transform 0.25s ease, background 0.25s ease, border-color 0.25s ease;
 }
@@ -5583,15 +5589,15 @@ body.home .site-header .menu-toggle {
 #services-speego .speego-service-icon-box svg {
   width: 20px;
   height: 20px;
-  color: #0052CC;
-  stroke: #0052CC;
-  transition: stroke 0.25s ease;
+  color: #0F172A;
+  stroke: #0F172A;
+  transition: stroke 0.25s ease, color 0.25s ease;
 }
 
 #services-speego .speego-service-card:hover .speego-service-icon-box {
   transform: translateY(-2px);
-  background: #0052CC;
-  border-color: #0052CC;
+  background: #0F172A;
+  border-color: #0F172A;
 }
 
 #services-speego .speego-service-card:hover .speego-service-icon-box svg {
@@ -5635,7 +5641,7 @@ body.home .site-header .menu-toggle {
   font-family: 'Inter', sans-serif !important;
   font-size: 13.5px !important;
   font-weight: 700 !important;
-  color: #0052CC !important;
+  color: #0F172A !important;
   text-decoration: none !important;
   display: inline-flex !important;
   align-items: center !important;
@@ -8754,7 +8760,6 @@ body.home #consultation-form .speego-form-heading p {
 
 @media (min-width: 768px) {
   html[lang="vi"] body.home #news-speego .speego-news-title {
-    max-width: 1050px;
     white-space: normal !important;
   }
 
@@ -8795,4 +8800,113 @@ html[lang="es"] body.home .speego-news-title,
 html[lang="es"] body.home .speego-workflow-heading,
 html[lang="es"] body.home #consultation-form .speego-form-heading h3 {
   text-transform: none !important;
+}
+
+/* Uniform section-title divider: thin light-gray line, full title width. */
+body.home .speego-section-title::after,
+body.home .speego-services-title::after,
+body.home .speego-trust-section__title::after,
+body.home .speego-why-title::after,
+body.home .speego-partners-title::after,
+body.home .process-tabs-title::after,
+body.home .speego-workflow-heading::after,
+body.home .speego-testimonial-title::after,
+body.home .speego-news-title::after,
+.speego-section-title::after,
+.speego-services-title::after,
+.speego-trust-section__title::after,
+.speego-why-title::after,
+.speego-partners-title::after,
+.process-tabs-title::after,
+.speego-workflow-heading::after,
+.speego-testimonial-title::after,
+.speego-news-title::after {
+  width: 100% !important;
+  height: 1px !important;
+  background: #E2E8F0 !important;
+  border-radius: 0 !important;
+}
+
+/* Uniform section-subtitle size across all sections. */
+body.home .speego-section-subtitle,
+body.home .speego-services-subtitle,
+body.home .speego-trust-section__subtitle,
+body.home .speego-why-subtitle,
+body.home .speego-workflow-subheading,
+body.home #consultation-form .speego-form-heading p,
+body.home #services-speego .speego-services-subtitle,
+.speego-section-subtitle,
+.speego-services-subtitle,
+.speego-trust-section__subtitle,
+.speego-why-subtitle,
+.speego-workflow-subheading,
+#consultation-form .speego-form-heading p,
+#services-speego .speego-services-subtitle {
+  font-size: 18px !important;
+}
+
+/* Uniform section rhythm: same vertical padding on every content section,
+   and the same gap between each section's header and its content. */
+body.home .speego-services-section,
+body.home .speego-workflow-section,
+body.home .speego-partners-section,
+body.home .speego-testimonial-section,
+body.home .speego-why-section,
+body.home .speego-news-section,
+.speego-services-section,
+.speego-workflow-section,
+.speego-partners-section,
+.speego-testimonial-section,
+.speego-why-section,
+.speego-news-section,
+#services-speego,
+#process-speego,
+#partners-speego,
+#testimonials-speego,
+#why-speego,
+#news-speego {
+  padding: 110px 24px !important;
+}
+
+body.home .speego-services-header,
+body.home .speego-workflow-header,
+body.home .speego-partners-header,
+body.home .speego-testimonial-header,
+body.home .speego-why-header,
+body.home .speego-news-header,
+.speego-services-header,
+.speego-workflow-header,
+.speego-partners-header,
+.speego-testimonial-header,
+.speego-why-header,
+.speego-news-header,
+#services-speego .speego-services-header,
+#why-speego .speego-why-header,
+#news-speego .speego-news-header {
+  margin-bottom: 48px !important;
+}
+
+/* Uniform body-content text size across sections. */
+body.home .speego-about-desc,
+body.home .speego-service-text,
+body.home .speego-why-cell-desc,
+body.home .speego-workflow-desc,
+body.home .speego-step-desc,
+body.home .speego-news-card-desc,
+body.home .speego-testi-quote,
+body.home .speego-trust-bar__desc,
+body.home .speego-intro-lead,
+body.home .speego-intro-list,
+.speego-about-desc,
+.speego-service-text,
+.speego-why-cell-desc,
+.speego-workflow-desc,
+.speego-step-desc,
+.speego-news-card-desc,
+.speego-testi-quote,
+.speego-trust-bar__desc,
+.speego-intro-lead,
+.speego-intro-list,
+#services-speego .speego-service-text {
+  font-size: 16px !important;
 }
