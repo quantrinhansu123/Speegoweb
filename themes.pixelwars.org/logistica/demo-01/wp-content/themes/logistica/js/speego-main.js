@@ -3510,6 +3510,33 @@ stat_delivery: 'Entrega a Tiempo',
     refreshHeader();
   }
 
+  function initTestimonialCarousel() {
+    var grid = document.querySelector('#testimonials-speego .speego-testimonial-grid');
+    var dots = Array.prototype.slice.call(
+      document.querySelectorAll('#testimonials-speego .speego-testimonial-dot')
+    );
+    if (!grid || !dots.length) return;
+
+    function syncDots() {
+      var card = grid.querySelector('.speego-testimonial-card');
+      var gap = parseFloat(window.getComputedStyle(grid).columnGap) || 0;
+      var step = card ? card.getBoundingClientRect().width + gap : grid.clientWidth;
+      var active = step ? Math.round(grid.scrollLeft / step) : 0;
+      active = Math.max(0, Math.min(dots.length - 1, active));
+
+      dots.forEach(function (dot, index) {
+        var isActive = index === active;
+        dot.classList.toggle('is-active', isActive);
+        if (isActive) dot.setAttribute('aria-current', 'true');
+        else dot.removeAttribute('aria-current');
+      });
+    }
+
+    grid.addEventListener('scroll', syncDots, { passive: true });
+    window.addEventListener('resize', syncDots);
+    syncDots();
+  }
+
   function placeConsultationBeforeNews() {
     var consultation = document.getElementById('consultation-form');
     var news = document.getElementById('news-speego');
@@ -3594,6 +3621,7 @@ stat_delivery: 'Entrega a Tiempo',
     initWhyCinematic();
     initTrustBarReveal();
     initConsultationForm();
+    initTestimonialCarousel();
     initTrustPartnerMarquee();
     // Titles after i18n + layout settle
     requestAnimationFrame(function () {
