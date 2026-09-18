@@ -3545,6 +3545,18 @@ stat_delivery: 'Entrega a Tiempo',
     }
   }
 
+  function syncMobileHeroBannerHeight() {
+    var section = document.querySelector('.speego-hero-section');
+    var leftContent = document.querySelector('.speego-hero-left-content');
+    if (!section || !leftContent) return;
+    if (window.innerWidth > 767) {
+      section.style.removeProperty('--speego-hero-banner-h');
+      return;
+    }
+    var height = leftContent.getBoundingClientRect().bottom - section.getBoundingClientRect().top;
+    section.style.setProperty('--speego-hero-banner-h', Math.round(height) + 'px');
+  }
+
   document.addEventListener('DOMContentLoaded', function () {
     const cookieConsent = document.getElementById('speego-cookie-consent');
     if (cookieConsent && !safeStorage.getItem('speego_cookie_consent')) {
@@ -3595,6 +3607,7 @@ stat_delivery: 'Entrega a Tiempo',
         const targetLang = this.getAttribute('data-lang');
         if (targetLang) {
           applyLanguage(targetLang);
+          syncMobileHeroBannerHeight();
         }
         if (langDropdown) {
           langDropdown.classList.remove('active');
@@ -3628,5 +3641,9 @@ stat_delivery: 'Entrega a Tiempo',
       initSectionTitleReveal();
     });
     initScrollExploreCompanion();
+
+    syncMobileHeroBannerHeight();
+    window.addEventListener('resize', syncMobileHeroBannerHeight);
+    window.addEventListener('load', syncMobileHeroBannerHeight);
   });
 })();
