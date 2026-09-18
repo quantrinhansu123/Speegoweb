@@ -9040,14 +9040,14 @@ body.home .site-header.is-scrolled .speego-header-topbar {
   }
 
   body.home .speego-trust-bar__icon {
-    width: 60px !important;
-    height: 60px !important;
+    width: 44px !important;
+    height: 44px !important;
     transition: transform 200ms ease;
   }
 
   body.home .speego-trust-bar__icon svg {
-    width: 42px !important;
-    height: 42px !important;
+    width: 32px !important;
+    height: 32px !important;
   }
 
   body.home .speego-trust-bar__copy {
@@ -9169,18 +9169,18 @@ body.home .site-header.is-scrolled .speego-header-topbar {
   }
 }
 
-/* Keep the four service cards scannable in two columns on phones. */
+/* Keep the four service cards readable in one column on phones. */
 @media (max-width: 640px) {
   body.home #services-speego .speego-services-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    grid-template-columns: 1fr !important;
     gap: 12px !important;
   }
 
   body.home #services-speego .speego-service-thumb,
   body.home #services-speego .speego-service-thumb img {
-    height: 96px !important;
-    min-height: 96px !important;
-    max-height: 96px !important;
+    height: 120px !important;
+    min-height: 120px !important;
+    max-height: 120px !important;
   }
 
   body.home #services-speego .speego-service-body {
@@ -9628,6 +9628,68 @@ body.home .site-header .speego-header-topbar {
   body.home .site-header .speego-header-topbar-inner {
     padding-left: 12px !important;
     padding-right: 12px !important;
+  }
+}
+
+/* Shared mobile typography baseline from the partner directory section. */
+@media (max-width: 767px) {
+  body.home .speego-section-title,
+  body.home .speego-services-title,
+  body.home .speego-workflow-heading,
+  body.home .speego-partners-title,
+  body.home .speego-testimonial-title,
+  body.home .speego-why-title,
+  body.home .speego-news-title,
+  body.home .speego-about-heading,
+  body.home .speego-consult-card-title {
+    font-family: 'Inter', sans-serif !important;
+    font-size: 30px !important;
+    font-weight: 900 !important;
+    line-height: 1.2 !important;
+  }
+
+  body.home .speego-section-subtitle,
+  body.home .speego-services-subtitle,
+  body.home .speego-workflow-subheading,
+  body.home .speego-partners-header .speego-section-subtitle,
+  body.home .speego-why-subtitle {
+    font-family: 'Inter', sans-serif !important;
+    font-size: 18px !important;
+    font-weight: 400 !important;
+    line-height: 1.55 !important;
+  }
+
+  body.home .speego-about-desc,
+  body.home .speego-service-text,
+  body.home #services-speego .speego-service-text,
+  body.home .speego-why-cell-desc,
+  body.home #why-speego .speego-why-cell-desc,
+  body.home .speego-workflow-desc,
+  body.home #process-speego .speego-workflow-desc,
+  body.home .speego-step-desc,
+  body.home .speego-news-card-desc,
+  body.home .speego-testi-quote,
+  body.home #testimonials-speego .speego-testi-quote,
+  body.home .speego-trust-bar__desc,
+  body.home .speego-intro-lead,
+  body.home .speego-intro-list {
+    font-family: 'Inter', sans-serif !important;
+    font-size: 16px !important;
+    line-height: 1.7 !important;
+  }
+
+  body.home .speego-service-title,
+  body.home #services-speego .speego-service-title,
+  body.home .speego-why-cell-title,
+  body.home #why-speego .speego-why-cell-title,
+  body.home .speego-workflow-title,
+  body.home #process-speego .speego-workflow-title,
+  body.home .speego-step-title,
+  body.home .speego-trust-bar__title {
+    font-family: 'Inter', sans-serif !important;
+    font-size: 18px !important;
+    font-weight: 800 !important;
+    line-height: 1.35 !important;
   }
 }
 
