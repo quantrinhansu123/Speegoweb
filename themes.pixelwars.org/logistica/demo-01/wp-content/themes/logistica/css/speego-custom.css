@@ -9447,7 +9447,7 @@ body.home .site-header.is-scrolled .speego-header-topbar {
   }
 }
 
-/* Restore the contact email as a second mobile topbar line. */
+/* Show only the phone and email icons in the mobile topbar. */
 @media (max-width: 767px) {
 body.home .site-header .speego-header-topbar {
     height: 46px !important;
@@ -9467,9 +9467,9 @@ body.home .site-header .speego-header-topbar {
   }
 
   body.home .site-header .speego-header-contact {
-    flex-direction: column !important;
-    align-items: flex-start !important;
-    gap: 1px !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    gap: 12px !important;
     line-height: 1.1 !important;
   }
 
@@ -9481,8 +9481,12 @@ body.home .site-header .speego-header-topbar {
   }
 
   body.home .site-header .speego-header-contact-icon {
-    width: 11px !important;
-    height: 11px !important;
+    width: 15px !important;
+    height: 15px !important;
+  }
+
+  body.home .site-header .speego-header-contact-val {
+    display: none !important;
   }
 
   body.home .site-header .speego-header-contact-email {
