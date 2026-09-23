@@ -9807,3 +9807,278 @@ body.home .site-header .speego-header-topbar {
     overflow: visible !important;
   }
 }
+
+/* Tracking entry and demo journey */
+.speego-track-field-label {
+  display: block;
+  color: #334155;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.speego-track-demo-hint {
+  margin: 10px 0 0;
+  color: #64748b;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.speego-track-fab { display: none; }
+
+.speego-track-search-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 11050;
+  display: grid;
+  place-items: center;
+  padding: 16px;
+}
+
+.speego-track-search-modal[hidden],
+.speego-track-search-modal__error[hidden],
+.speego-track-search-modal__ups-link[hidden] { display: none !important; }
+.speego-track-modal__ups-btn[hidden] { display: none !important; }
+
+.speego-track-search-modal__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(4, 36, 61, .78);
+  backdrop-filter: blur(8px);
+}
+
+.speego-track-search-modal__dialog {
+  position: relative;
+  width: min(440px, 100%);
+  max-height: calc(100dvh - 32px);
+  overflow-y: auto;
+  border-radius: 24px;
+  background: #fff;
+  box-shadow: 0 24px 70px rgba(4, 36, 61, .3);
+  animation: speegoTrackModalIn .3s cubic-bezier(.16, 1, .3, 1);
+}
+
+.speego-track-search-modal__art {
+  position: relative;
+  display: flex;
+  align-items: end;
+  justify-content: center;
+  height: 180px;
+  padding: 12px 22px 0;
+  overflow: hidden;
+  background: radial-gradient(circle at 50% 110%, #244f73 0%, #0d3b66 47%, #04243d 100%);
+}
+
+.speego-track-search-modal__art img {
+  display: block;
+  width: min(100%, 340px);
+  max-height: 168px;
+  object-fit: contain;
+  object-position: center bottom;
+}
+
+.speego-track-search-modal__close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 1;
+  width: 36px;
+  height: 36px;
+  border: 1px solid rgba(255, 255, 255, .45);
+  border-radius: 50%;
+  background: rgba(4, 36, 61, .75);
+  color: #fff;
+  font: 26px/1 Inter, sans-serif;
+  cursor: pointer;
+}
+.speego-track-search-modal__close span { display: block; transform: translateY(-2px); }
+
+.speego-track-search-modal__content { padding: 22px 24px 24px; }
+.speego-track-search-modal__eyebrow {
+  color: #ef6419;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: .14em;
+}
+.speego-track-search-modal__content h2 {
+  margin: 5px 0 8px;
+  color: #04243d;
+  font: 800 25px/1.2 Inter, sans-serif;
+}
+.speego-track-search-modal__intro {
+  margin: 0 0 18px;
+  color: #53657a;
+  font-size: 13px;
+  line-height: 1.5;
+}
+.speego-track-search-modal__field-label {
+  display: block;
+  margin: 14px 0 7px;
+  color: #30465c;
+  font-size: 12px;
+  font-weight: 800;
+}
+.speego-track-search-modal__carrier {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 54px;
+  padding: 7px 13px;
+  border: 1px solid #dbe5ee;
+  border-radius: 12px;
+  background: #f7fafc;
+  color: #04243d;
+}
+.speego-track-search-modal__carrier img { width: 32px; height: 37px; object-fit: contain; }
+.speego-track-search-modal__carrier strong { font-size: 16px; }
+.speego-track-search-modal__carrier-check {
+  display: grid;
+  place-items: center;
+  width: 22px;
+  height: 22px;
+  margin-left: auto;
+  border-radius: 50%;
+  background: #e7f8ef;
+  color: #16884a;
+  font-size: 11px;
+}
+.speego-track-search-modal__input {
+  width: 100%;
+  height: 52px;
+  padding: 0 14px;
+  border: 1px solid #dbe5ee;
+  border-radius: 12px;
+  outline: none;
+  background: #fff;
+  color: #04243d;
+  font: 600 15px Inter, sans-serif;
+}
+.speego-track-search-modal__input:focus {
+  border-color: #f26419;
+  box-shadow: 0 0 0 3px rgba(242, 100, 25, .14);
+}
+.speego-track-search-modal__error {
+  margin: 10px 0 0;
+  color: #b33a12;
+  font-size: 12px;
+  line-height: 1.5;
+}
+.speego-track-search-modal__ups-link {
+  display: inline-block;
+  margin: 8px 0 0;
+  color: #0d3b66;
+  font-size: 13px;
+  font-weight: 800;
+  text-decoration: underline;
+}
+.speego-track-search-modal__submit {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  height: 52px;
+  margin-top: 16px;
+  border: 0;
+  border-radius: 12px;
+  background: linear-gradient(110deg, #f26419, #ff7d2c);
+  box-shadow: 0 9px 20px rgba(242, 100, 25, .2);
+  color: #fff;
+  font: 800 14px Inter, sans-serif;
+  cursor: pointer;
+}
+.speego-track-search-modal__submit:hover { filter: brightness(1.05); }
+.speego-track-search-modal__hint {
+  margin: 12px 0 0;
+  color: #6b7d90;
+  font-size: 11px;
+  line-height: 1.45;
+  text-align: center;
+}
+
+.speego-track-summary__demo-note {
+  margin: 0 0 14px;
+  padding: 9px 11px;
+  border: 1px solid rgba(255, 255, 255, .25);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, .1);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.4;
+}
+.speego-track-step__icon svg { width: 20px; height: 20px; display: block; }
+.speego-track-route__title svg { width: 18px; height: 18px; flex: 0 0 18px; color: #f26419; }
+.speego-track-modal__close span { font: 27px/1 Inter, sans-serif; transform: translateY(-2px); }
+.speego-track-summary__badge::before {
+  content: '';
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #ff853e;
+  box-shadow: 0 0 0 5px rgba(255, 133, 62, .18);
+  animation: speegoTrackPulse 1.8s ease-in-out infinite;
+}
+.speego-track-step--current .speego-track-step__card {
+  animation: speegoCurrentCardGlow 2.2s ease-in-out infinite;
+}
+@keyframes speegoCurrentCardGlow {
+  0%, 100% { box-shadow: 0 8px 18px rgba(242, 100, 25, .10); }
+  50% { box-shadow: 0 9px 25px rgba(242, 100, 25, .28); }
+}
+
+@media (max-width: 767px) {
+  .speego-console-tab--tracking { display: none !important; }
+  #console-tracking { display: none !important; }
+  .speego-track-fab {
+    position: fixed;
+    right: 16px;
+    bottom: calc(22px + env(safe-area-inset-bottom));
+    z-index: 1200;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+    width: 64px;
+    height: 64px;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #f26419, #ff8a3d);
+    box-shadow: 0 8px 24px rgba(4, 36, 61, .25);
+    color: #fff;
+    cursor: pointer;
+  }
+  .speego-track-fab::before {
+    content: '';
+    position: absolute;
+    inset: -7px;
+    border: 2px solid rgba(242, 100, 25, .7);
+    border-radius: 50%;
+    animation: speegoTrackFabPulse 2.3s ease-out infinite;
+  }
+  .speego-track-fab svg { width: 25px; height: 25px; }
+  .speego-track-fab__label { font: 800 10px Inter, sans-serif; }
+  body:has(#speego-cookie-consent:not([hidden])) .speego-track-fab {
+    bottom: calc(220px + env(safe-area-inset-bottom));
+  }
+  body.speego-track-modal-open .speego-track-fab { display: none; }
+  .speego-track-search-modal__dialog { width: min(440px, 100%); }
+  .speego-track-modal__chrome { gap: 8px; }
+  .speego-track-modal__brand { gap: 9px; }
+  .speego-track-modal__title { font-size: 12px; }
+  .speego-track-modal__code { font-size: 11px; }
+  .speego-track-step__head { flex-wrap: wrap; gap: 4px; }
+  .speego-track-step__time { white-space: normal; }
+}
+
+@keyframes speegoTrackFabPulse {
+  0% { opacity: .9; transform: scale(.87); }
+  70%, 100% { opacity: 0; transform: scale(1.24); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .speego-track-fab::before,
+  .speego-track-summary__badge::before,
+  .speego-track-step--current .speego-track-step__icon,
+  .speego-track-step--current .speego-track-step__card { animation: none !important; }
+}

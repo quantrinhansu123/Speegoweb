@@ -270,7 +270,7 @@
 							<button type="button" class="speego-console-tab" data-target="console-form">
 								<span data-i18n="tab_form">FORM NHẬP</span>
 							</button>
-							<button type="button" class="speego-console-tab" data-target="console-tracking">
+							<button type="button" class="speego-console-tab speego-console-tab--tracking" data-target="console-tracking">
 								<span data-i18n="tab_tracking">TRACKING</span>
 							</button>
 						</div>
@@ -344,11 +344,13 @@
 
 							<div class="speego-console-pane" id="console-tracking">
 								<div class="speego-track-wrapper">
-									<input type="text" id="speego-track-input" class="speego-track-input" placeholder="Enter Container, B/L, or OMS Tracking Number (e.g. SPG-8921)" data-i18n-ph="track_placeholder">
+									<label class="speego-track-field-label" for="speego-track-input" data-i18n="track_code_label">Mã tracking UPS</label>
+									<input type="text" id="speego-track-input" class="speego-track-input" placeholder="DEMO-UPS" maxlength="40" autocomplete="off">
 									<button type="button" id="speego-track-btn" class="speego-btn speego-btn-primary" style="white-space: nowrap;">
-										<i class="fas fa-search"></i> <span data-i18n="track_btn">Track Now</span>
+										<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 5 5"/></svg> <span data-i18n="track_btn">Track Now</span>
 									</button>
 								</div>
+								<p class="speego-track-demo-hint" data-i18n="track_demo_hint">Nhập DEMO-UPS để xem hành trình minh họa. Mã thật được mở trên UPS.</p>
 								<div id="speego-track-result" class="speego-track-result"></div>
 							</div>
 						</div>
@@ -1073,13 +1075,45 @@
 
 	</div>
 
-	<!-- SpeeGo Tracking Modal — journey timeline -->
+	<!-- Mobile tracking entry, separate from the hero tabs -->
 	<div id="speego-cookie-consent" class="speego-cookie-consent" role="dialog" aria-labelledby="speego-cookie-title" aria-describedby="speego-cookie-copy" hidden>
 		<p id="speego-cookie-title" class="speego-cookie-consent__title" data-i18n="cookie_title">Tùy chọn cookie</p>
 		<p id="speego-cookie-copy" class="speego-cookie-consent__copy" data-i18n="cookie_copy">Chúng tôi sử dụng cookie để cải thiện trải nghiệm và phân tích lưu lượng truy cập. Bạn có thể chọn danh mục cookie được cho phép.</p>
 		<div class="speego-cookie-consent__actions">
 			<button type="button" class="speego-cookie-consent__button speego-cookie-consent__button--secondary" data-cookie-choice="reject" data-i18n="cookie_reject">Từ chối tất cả</button>
 			<button type="button" class="speego-cookie-consent__button" data-cookie-choice="accept" data-i18n="cookie_accept">Chấp nhận tất cả</button>
+		</div>
+	</div>
+	<button type="button" id="speego-track-fab" class="speego-track-fab" aria-controls="speego-track-search-modal" aria-haspopup="dialog" aria-label="Tra cứu vận đơn" title="Tra cứu vận đơn">
+		<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 5 5"/><path d="M8 10.8h5.6M10.8 8v5.6"/></svg>
+		<span class="speego-track-fab__label" data-i18n="track_fab_label">Tra cứu</span>
+	</button>
+
+	<div id="speego-track-search-modal" class="speego-track-search-modal" hidden aria-hidden="true">
+		<div class="speego-track-search-modal__backdrop" data-track-search-close></div>
+		<div class="speego-track-search-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="speego-track-search-title">
+			<div class="speego-track-search-modal__art">
+				<button type="button" class="speego-track-search-modal__close" data-track-search-close aria-label="Đóng"><span aria-hidden="true">×</span></button>
+				<img src="wp-content/themes/logistica/images/007-speego-logistics-team-1.png" alt="Đội ngũ SpeeGo Logistics" width="650" height="365">
+			</div>
+			<div class="speego-track-search-modal__content">
+				<span class="speego-track-search-modal__eyebrow" data-i18n="track_search_eyebrow">THEO DÕI VẬN ĐƠN</span>
+				<h2 id="speego-track-search-title" data-i18n="track_search_title">Tra cứu hành trình đơn hàng</h2>
+				<p class="speego-track-search-modal__intro" data-i18n="track_search_intro">Nhập mã để xem hành trình minh họa hoặc kiểm tra mã thật trên UPS.</p>
+				<form id="speego-track-search-form" novalidate>
+					<p id="speego-track-carrier-label" class="speego-track-search-modal__field-label" data-i18n="track_carrier_label">Đơn vị vận chuyển</p>
+					<div id="speego-track-carrier" class="speego-track-search-modal__carrier" role="group" aria-labelledby="speego-track-carrier-label">
+						<img src="images/logos-partners/022-UPS_Logo_Shield_2017.svg-1.png" alt="" width="34" height="40">
+						<strong>UPS</strong><span class="speego-track-search-modal__carrier-check" aria-hidden="true">✓</span>
+					</div>
+					<label class="speego-track-search-modal__field-label" for="speego-track-mobile-input" data-i18n="track_code_label">Mã tracking UPS</label>
+					<input id="speego-track-mobile-input" class="speego-track-search-modal__input" type="text" placeholder="DEMO-UPS" maxlength="40" autocomplete="off" required>
+					<p id="speego-track-mobile-error" class="speego-track-search-modal__error" role="status" aria-live="polite" hidden></p>
+					<a id="speego-track-mobile-ups-link" class="speego-track-search-modal__ups-link" target="_blank" rel="noopener noreferrer" hidden data-i18n="track_open_ups">Tra cứu trên UPS ↗</a>
+					<button type="submit" class="speego-track-search-modal__submit"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 5 5"/></svg><span data-i18n="track_btn">Tra cứu ngay</span></button>
+				</form>
+				<p class="speego-track-search-modal__hint" data-i18n="track_demo_hint">Nhập DEMO-UPS để xem hành trình minh họa. Mã thật được mở trên UPS.</p>
+			</div>
 		</div>
 	</div>
 
@@ -1090,17 +1124,17 @@
 				<div class="speego-track-modal__brand">
 					<img src="wp-content/themes/logistica/images/logo-speego-light.png" alt="SpeeGo Logistics" class="speego-track-modal__logo" width="148" height="40">
 					<div class="speego-track-modal__meta">
-						<p id="speego-track-modal-title" class="speego-track-modal__title" data-i18n="track_modal_title">Shipment Tracking</p>
+						<p id="speego-track-modal-title" class="speego-track-modal__title" data-i18n="track_demo_title">Hành trình minh họa</p>
 						<p class="speego-track-modal__code" id="speego-track-modal-code"></p>
 					</div>
 				</div>
 				<div class="speego-track-modal__actions">
 					<a id="speego-track-open-ups" class="speego-track-modal__ups-btn" href="https://www.ups.com/track?loc=vi_VN&amp;requester=ST" target="_blank" rel="noopener noreferrer">
-						<span data-i18n="track_modal_open_ups">Open UPS</span>
+						<span data-i18n="track_modal_open_ups">Mở trên UPS</span>
 						<i class="fas fa-external-link-alt" aria-hidden="true"></i>
 					</a>
 					<button type="button" class="speego-track-modal__close" data-track-modal-close aria-label="Close">
-						<i class="fas fa-times" aria-hidden="true"></i>
+						<span aria-hidden="true">×</span>
 					</button>
 				</div>
 			</header>
@@ -1114,7 +1148,7 @@
 			</div>
 
 			<footer class="speego-track-modal__footer">
-				<span class="speego-track-modal__powered" data-i18n="track_modal_powered">SpeeGo OMS Journey · Linked with UPS</span>
+				<span class="speego-track-modal__powered" data-i18n="track_demo_disclaimer">Hành trình minh họa · không phải dữ liệu UPS thực tế</span>
 			</footer>
 		</div>
 	</div>

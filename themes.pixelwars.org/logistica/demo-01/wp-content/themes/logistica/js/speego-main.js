@@ -21,6 +21,16 @@
       nav_news: 'News',
       nav_contact: 'Contact',
       nav_quote_btn: 'Get Quote',
+      track_fab_label: 'Track',
+      track_search_eyebrow: 'TRACK YOUR SHIPMENT',
+      track_search_title: 'Find your shipment',
+      track_search_intro: 'Enter the sample code to preview the journey, or check a real UPS number on UPS.',
+      track_carrier_label: 'Shipping carrier',
+      track_code_label: 'UPS tracking number',
+      track_demo_hint: 'Enter DEMO-UPS for a sample journey. Real numbers open on UPS.',
+      track_demo_disclaimer: 'Sample journey only · not live UPS data',
+      track_demo_title: 'Sample shipment journey',
+      track_open_ups: 'Check on UPS ↗',
       nav_sourcing: 'Sourcing',
       nav_routes: 'Shipping Routes',
       nav_fulfillment: 'Fulfillment',
@@ -512,6 +522,16 @@
       nav_news: 'Tin tức',
       nav_contact: 'Liên hệ',
       nav_quote_btn: 'Nhận báo giá',
+      track_fab_label: 'Tra cứu',
+      track_search_eyebrow: 'THEO DÕI VẬN ĐƠN',
+      track_search_title: 'Tra cứu hành trình đơn hàng',
+      track_search_intro: 'Nhập mã mẫu để xem hành trình minh họa, hoặc kiểm tra mã thật trên UPS.',
+      track_carrier_label: 'Đơn vị vận chuyển',
+      track_code_label: 'Mã tracking UPS',
+      track_demo_hint: 'Nhập DEMO-UPS để xem hành trình minh họa. Mã thật được mở trên UPS.',
+      track_demo_disclaimer: 'Hành trình minh họa · không phải dữ liệu UPS thực tế',
+      track_demo_title: 'Hành trình minh họa',
+      track_open_ups: 'Tra cứu trên UPS ↗',
       nav_sourcing: 'Sourcing',
       nav_routes: 'Tuyến vận chuyển',
       nav_fulfillment: 'Fulfillment',
@@ -1001,6 +1021,16 @@
       nav_news: 'Noticias',
       nav_contact: 'Contacto',
       nav_quote_btn: 'Cotizar',
+      track_fab_label: 'Rastrear',
+      track_search_eyebrow: 'SEGUIMIENTO DEL ENVÍO',
+      track_search_title: 'Encuentra tu envío',
+      track_search_intro: 'Introduce el código de muestra o consulta un número real en UPS.',
+      track_carrier_label: 'Transportista',
+      track_code_label: 'Número de seguimiento UPS',
+      track_demo_hint: 'Escribe DEMO-UPS para ver el recorrido de muestra. Los números reales se consultan en UPS.',
+      track_demo_disclaimer: 'Recorrido de muestra · no son datos en vivo de UPS',
+      track_demo_title: 'Recorrido de muestra',
+      track_open_ups: 'Consultar en UPS ↗',
       nav_sourcing: 'Abastecimiento',
       nav_routes: 'Rutas de envío',
       nav_fulfillment: 'Fulfillment',
@@ -2181,18 +2211,60 @@ stat_delivery: 'Entrega a Tiempo',
     const trackModalCode = document.getElementById('speego-track-modal-code');
     const trackOpenUps = document.getElementById('speego-track-open-ups');
     const trackLoader = document.getElementById('speego-track-modal-loader');
+    const trackFab = document.getElementById('speego-track-fab');
+    const trackSearchModal = document.getElementById('speego-track-search-modal');
+    const trackSearchForm = document.getElementById('speego-track-search-form');
+    const trackMobileInput = document.getElementById('speego-track-mobile-input');
+    const trackMobileError = document.getElementById('speego-track-mobile-error');
+    const trackMobileUpsLink = document.getElementById('speego-track-mobile-ups-link');
+    let trackRenderTimer;
+    let trackReturnFocus;
 
     var TRACK_EVENT_META = [
-      { key: 1, icon: 'fa-file-invoice' },
-      { key: 2, icon: 'fa-box' },
-      { key: 3, icon: 'fa-warehouse' },
-      { key: 4, icon: 'fa-stamp' },
-      { key: 5, icon: 'fa-ship' },
-      { key: 6, icon: 'fa-globe-asia' },
-      { key: 7, icon: 'fa-anchor' },
-      { key: 8, icon: 'fa-truck' },
-      { key: 9, icon: 'fa-check-circle' }
+      { icon: '<path d="M5 2h14M5 22h14M7 2v4c0 2 2 4 5 6-3 2-5 4-5 6v4M17 2v4c0 2-2 4-5 6 3 2 5 4 5 6v4M9 8h6M9 16h6"/>' },
+      { icon: '<path d="M3 7 12 3l9 4-9 4-9-4ZM3 7v10l9 4 9-4V7M12 11v10"/>' },
+      { icon: '<rect x="5" y="4" width="14" height="18" rx="2"/><path d="M9 4V2h6v2M9 14l2 2 4-4"/>' },
+      { icon: '<path d="M3 5h11v11H3zM14 9h4l3 4v3h-7"/><circle cx="7" cy="17" r="2"/><circle cx="18" cy="17" r="2"/>' },
+      { icon: '<circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/>' }
     ];
+    const TRACK_DEMO = {
+      vi: {
+        events: [
+          ['Chờ xác nhận', 'Hệ thống đã tiếp nhận yêu cầu vận chuyển.', 'Điểm gửi'],
+          ['Đóng gói', 'Hàng được kiểm tra, đóng gói và dán nhãn.', 'Kho SpeeGo'],
+          ['Bàn giao UPS', 'Kiện hàng được bàn giao cho đơn vị vận chuyển.', 'Trạm tiếp nhận UPS'],
+          ['Đang vận chuyển', 'Kiện hàng đang di chuyển tới điểm đến.', 'Mạng lưới UPS'],
+          ['Đã giao hàng', 'Hoàn tất giao hàng và xác nhận người nhận.', 'Điểm nhận']
+        ],
+        sample: 'DỮ LIỆU DEMO · Mốc thời gian và trạng thái chỉ để minh họa',
+        noLive: 'Chưa kết nối dữ liệu UPS. Mã thật cần được tra cứu trực tiếp trên UPS.',
+        empty: 'Vui lòng nhập mã tracking UPS hoặc DEMO-UPS.'
+      },
+      en: {
+        events: [
+          ['Awaiting confirmation', 'The shipping request has been received.', 'Origin'],
+          ['Packing', 'Goods are checked, packed, and labelled.', 'SpeeGo warehouse'],
+          ['Handed to UPS', 'The parcel has been handed to the carrier.', 'UPS intake hub'],
+          ['In transit', 'The parcel is moving toward its destination.', 'UPS network'],
+          ['Delivered', 'Delivery and recipient confirmation are complete.', 'Destination']
+        ],
+        sample: 'DEMO DATA · Milestones and status are illustrative only',
+        noLive: 'Live UPS data is not connected. Check real numbers directly on UPS.',
+        empty: 'Enter a UPS tracking number or DEMO-UPS.'
+      },
+      es: {
+        events: [
+          ['Pendiente de confirmación', 'Se ha recibido la solicitud de envío.', 'Origen'],
+          ['Empaquetado', 'La mercancía se revisa, empaqueta y etiqueta.', 'Almacén SpeeGo'],
+          ['Entregado a UPS', 'El paquete se ha entregado al transportista.', 'Centro UPS'],
+          ['En tránsito', 'El paquete se dirige a su destino.', 'Red UPS'],
+          ['Entregado', 'Entrega y recepción confirmadas.', 'Destino']
+        ],
+        sample: 'DATOS DE MUESTRA · Hitos y estado ilustrativos',
+        noLive: 'No hay datos UPS en vivo. Consulta los números reales directamente en UPS.',
+        empty: 'Introduce un número UPS o DEMO-UPS.'
+      }
+    };
 
     function buildUpsTrackUrl(code) {
       var params = new URLSearchParams();
@@ -2202,74 +2274,45 @@ stat_delivery: 'Entrega a Tiempo',
       return 'https://www.ups.com/track?' + params.toString();
     }
 
-    function hashTrackCode(code) {
-      var h = 0;
-      for (var i = 0; i < code.length; i++) {
-        h = ((h << 5) - h) + code.charCodeAt(i);
-        h |= 0;
-      }
-      return Math.abs(h);
-    }
-
-    function formatTrackDate(date, lang) {
-      try {
-        return date.toLocaleString(
-          lang === 'vi' ? 'vi-VN' : lang === 'es' ? 'es-ES' : 'en-US',
-          { day: '2-digit', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit' }
-        );
-      } catch (err) {
-        return date.toISOString().slice(0, 16).replace('T', ' ');
-      }
-    }
-
-    function buildTrackJourney(code, lang) {
+    function buildTrackJourney(lang) {
       var t = i18nData[lang] || i18nData.en;
-      var seed = hashTrackCode(code);
-      // Current milestone: 5–7 so mid-journey feels active
-      var currentIdx = 4 + (seed % 3);
-      var dayOffsets = [18, 16, 14, 12, 9, 5, 2, -1, -3];
-      var now = new Date();
+      var copy = TRACK_DEMO[lang] || TRACK_DEMO.en;
+      var currentIdx = 3;
 
       var events = TRACK_EVENT_META.map(function (meta, idx) {
-        var d = new Date(now);
-        d.setDate(d.getDate() - dayOffsets[idx]);
-        d.setHours(8 + ((seed + idx * 3) % 10), (seed + idx * 17) % 60, 0, 0);
         var state = idx < currentIdx ? 'done' : idx === currentIdx ? 'current' : 'upcoming';
         return {
           icon: meta.icon,
-          title: t['track_ev' + meta.key + '_title'],
-          location: t['track_ev' + meta.key + '_loc'],
-          detail: t['track_ev' + meta.key + '_detail'],
-          time: state === 'upcoming' ? '—' : formatTrackDate(d, lang),
+          title: copy.events[idx][0],
+          detail: copy.events[idx][1],
+          location: copy.events[idx][2],
+          time: String(idx + 1).padStart(2, '0') + ' / 05',
           state: state
         };
       });
 
-      var eta = new Date(now);
-      eta.setDate(eta.getDate() + (3 + (seed % 4)));
-
       return {
-        status: t.track_status_transit,
+        status: copy.events[currentIdx][0],
         origin: t.track_origin,
         destination: t.track_dest,
-        eta: formatTrackDate(eta, lang),
-        carrier: t.track_carrier,
+        carrier: 'UPS',
         progress: Math.round(((currentIdx + 1) / events.length) * 100),
         currentIdx: currentIdx,
         events: events
       };
     }
 
-    function renderTrackJourney(code) {
+    function renderTrackJourney() {
       if (!trackJourney) return;
       var t = i18nData[currentLang] || i18nData.en;
-      var data = buildTrackJourney(code, currentLang);
+      var copy = TRACK_DEMO[currentLang] || TRACK_DEMO.en;
+      var data = buildTrackJourney(currentLang);
 
       var eventsHtml = data.events.map(function (ev, idx) {
         return (
           '<li class="speego-track-step speego-track-step--' + ev.state + '">' +
             '<div class="speego-track-step__rail" aria-hidden="true">' +
-              '<span class="speego-track-step__icon"><i class="fas ' + ev.icon + '"></i></span>' +
+              '<span class="speego-track-step__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + ev.icon + '</svg></span>' +
               (idx < data.events.length - 1 ? '<span class="speego-track-step__line"></span>' : '') +
             '</div>' +
             '<div class="speego-track-step__card">' +
@@ -2286,8 +2329,9 @@ stat_delivery: 'Entrega a Tiempo',
 
       trackJourney.innerHTML =
         '<div class="speego-track-summary">' +
+          '<p class="speego-track-summary__demo-note">' + copy.sample + '</p>' +
           '<div class="speego-track-summary__status">' +
-            '<span class="speego-track-summary__badge"><i class="fas fa-shipping-fast" aria-hidden="true"></i> ' + data.status + '</span>' +
+            '<span class="speego-track-summary__badge">' + data.status + '</span>' +
             '<span class="speego-track-summary__progress-label">' + data.progress + '%</span>' +
           '</div>' +
           '<div class="speego-track-summary__bar" role="progressbar" aria-valuenow="' + data.progress + '" aria-valuemin="0" aria-valuemax="100">' +
@@ -2296,12 +2340,11 @@ stat_delivery: 'Entrega a Tiempo',
           '<div class="speego-track-summary__grid">' +
             '<div><span>' + t.track_label_origin + '</span><strong>' + data.origin + '</strong></div>' +
             '<div><span>' + t.track_label_dest + '</span><strong>' + data.destination + '</strong></div>' +
-            '<div><span>' + t.track_label_eta + '</span><strong>' + data.eta + '</strong></div>' +
             '<div><span>' + t.track_label_carrier + '</span><strong>' + data.carrier + '</strong></div>' +
           '</div>' +
         '</div>' +
         '<div class="speego-track-route">' +
-          '<h3 class="speego-track-route__title"><i class="fas fa-route" aria-hidden="true"></i> ' + t.track_label_route + '</h3>' +
+          '<h3 class="speego-track-route__title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="5" cy="18" r="2"/><circle cx="19" cy="6" r="2"/><path d="M7 18h5a5 5 0 0 0 5-5v-5"/></svg>' + t.track_label_route + '</h3>' +
           '<ol class="speego-track-timeline">' + eventsHtml + '</ol>' +
         '</div>';
 
@@ -2310,6 +2353,7 @@ stat_delivery: 'Entrega a Tiempo',
 
     function closeTrackModal() {
       if (!trackModal) return;
+      window.clearTimeout(trackRenderTimer);
       trackModal.hidden = true;
       trackModal.setAttribute('aria-hidden', 'true');
       document.body.classList.remove('speego-track-modal-open');
@@ -2317,19 +2361,17 @@ stat_delivery: 'Entrega a Tiempo',
         trackJourney.hidden = true;
         trackJourney.innerHTML = '';
       }
+      if (trackReturnFocus) trackReturnFocus.focus();
     }
 
     function openTrackModal(code) {
       if (!trackModal) return;
-      var url = buildUpsTrackUrl(code);
       var t = i18nData[currentLang] || i18nData.en;
 
       if (trackModalCode) {
         trackModalCode.textContent = (t.track_modal_code_label || 'Tracking No.') + ': ' + code;
       }
-      if (trackOpenUps) {
-        trackOpenUps.href = url;
-      }
+      if (trackOpenUps) trackOpenUps.hidden = true;
       if (trackJourney) {
         trackJourney.hidden = true;
         trackJourney.innerHTML = '';
@@ -2341,49 +2383,104 @@ stat_delivery: 'Entrega a Tiempo',
       trackModal.hidden = false;
       trackModal.setAttribute('aria-hidden', 'false');
       document.body.classList.add('speego-track-modal-open');
+      const closeButton = trackModal.querySelector('.speego-track-modal__close');
+      if (closeButton) closeButton.focus();
 
-      if (trackResult) {
-        trackResult.style.display = 'block';
-        trackResult.innerHTML =
-          '<div style="display:flex;align-items:flex-start;gap:12px;">' +
-          '<i class="fas fa-route" style="color:#f26419;font-size:18px;margin-top:2px;"></i>' +
-          '<div><strong>' + code + '</strong><br>' +
-          '<span style="opacity:.9;font-size:13px;">' + (t.track_searching || '') + '</span></div></div>';
-      }
-
-      window.setTimeout(function () {
+      window.clearTimeout(trackRenderTimer);
+      trackRenderTimer = window.setTimeout(function () {
+        if (trackModal.hidden) return;
         if (trackLoader) trackLoader.hidden = true;
-        renderTrackJourney(code);
-        if (trackResult) {
-          trackResult.innerHTML =
-            '<div style="display:flex;align-items:flex-start;gap:12px;">' +
-            '<i class="fas fa-check-circle" style="color:#16a34a;font-size:18px;margin-top:2px;"></i>' +
-            '<div><strong>' + code + '</strong><br>' +
-            '<span style="opacity:.9;font-size:13px;">' + (t.track_success || '') + '</span></div></div>';
-        }
-      }, 700);
+        renderTrackJourney();
+      }, 350);
     }
 
-    function submitTrackLookup() {
-      if (!trackInput) return;
-      var query = trackInput.value.trim();
-      if (!query) {
-        trackInput.focus();
+    function closeSearchModal(restoreFocus) {
+      if (!trackSearchModal) return;
+      trackSearchModal.hidden = true;
+      trackSearchModal.setAttribute('aria-hidden', 'true');
+      if (!trackModal || trackModal.hidden) document.body.classList.remove('speego-track-modal-open');
+      if (restoreFocus !== false && trackFab) trackFab.focus();
+    }
+
+    function openSearchModal() {
+      if (!trackSearchModal) return;
+      trackReturnFocus = trackFab;
+      trackSearchModal.hidden = false;
+      trackSearchModal.setAttribute('aria-hidden', 'false');
+      document.body.classList.add('speego-track-modal-open');
+      if (trackMobileError) trackMobileError.hidden = true;
+      if (trackMobileUpsLink) trackMobileUpsLink.hidden = true;
+      if (trackMobileInput) trackMobileInput.focus();
+    }
+
+    function showTrackMessage(message, code, mobile) {
+      if (mobile) {
+        if (trackMobileError) {
+          trackMobileError.textContent = message;
+          trackMobileError.hidden = false;
+        }
+        if (trackMobileUpsLink) {
+          trackMobileUpsLink.hidden = !code;
+          if (code) trackMobileUpsLink.href = buildUpsTrackUrl(code);
+        }
+      } else if (trackResult) {
+        trackResult.replaceChildren(document.createTextNode(message));
+        if (code) {
+          const link = document.createElement('a');
+          link.href = buildUpsTrackUrl(code);
+          link.target = '_blank';
+          link.rel = 'noopener noreferrer';
+          link.textContent = ' ' + (i18nData[currentLang].track_open_ups || 'Open UPS ↗');
+          trackResult.appendChild(link);
+        }
+        trackResult.style.display = 'block';
+      }
+    }
+
+    function submitTrackLookup(input, mobile) {
+      if (!input) return;
+      const code = input.value.trim();
+      const copy = TRACK_DEMO[currentLang] || TRACK_DEMO.en;
+      if (!code) {
+        showTrackMessage(copy.empty, '', mobile);
+        input.focus();
         return;
       }
-      openTrackModal(query);
+      if (code.toUpperCase() !== 'DEMO-UPS') {
+        showTrackMessage(copy.noLive, code, mobile);
+        return;
+      }
+      if (trackResult) trackResult.style.display = 'none';
+      if (trackMobileError) trackMobileError.hidden = true;
+      if (trackMobileUpsLink) trackMobileUpsLink.hidden = true;
+      trackReturnFocus = mobile ? trackFab : trackInput;
+      if (mobile) closeSearchModal(false);
+      openTrackModal('DEMO-UPS');
     }
 
     if (trackBtn && trackInput) {
       trackBtn.addEventListener('click', function (e) {
         e.preventDefault();
-        submitTrackLookup();
+        submitTrackLookup(trackInput, false);
       });
       trackInput.addEventListener('keydown', function (e) {
         if (e.key === 'Enter') {
           e.preventDefault();
-          submitTrackLookup();
+          submitTrackLookup(trackInput, false);
         }
+      });
+    }
+
+    if (trackFab) trackFab.addEventListener('click', openSearchModal);
+    if (trackSearchForm) {
+      trackSearchForm.addEventListener('submit', function (e) {
+        e.preventDefault();
+        submitTrackLookup(trackMobileInput, true);
+      });
+    }
+    if (trackSearchModal) {
+      trackSearchModal.querySelectorAll('[data-track-search-close]').forEach(function (el) {
+        el.addEventListener('click', function () { closeSearchModal(true); });
       });
     }
 
@@ -2391,12 +2488,29 @@ stat_delivery: 'Entrega a Tiempo',
       trackModal.querySelectorAll('[data-track-modal-close]').forEach(function (el) {
         el.addEventListener('click', closeTrackModal);
       });
-      document.addEventListener('keydown', function (e) {
-        if (e.key === 'Escape' && trackModal && !trackModal.hidden) {
-          closeTrackModal();
-        }
-      });
     }
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') {
+        if (trackModal && !trackModal.hidden) closeTrackModal();
+        else if (trackSearchModal && !trackSearchModal.hidden) closeSearchModal(true);
+      }
+      if (e.key !== 'Tab') return;
+      const activeDialog = trackModal && !trackModal.hidden ? trackModal :
+        trackSearchModal && !trackSearchModal.hidden ? trackSearchModal : null;
+      if (!activeDialog) return;
+      const controls = Array.from(activeDialog.querySelectorAll('button, input, a[href]'))
+        .filter(el => !el.disabled && !el.hidden && el.getClientRects().length);
+      if (!controls.length) return;
+      const first = controls[0];
+      const last = controls[controls.length - 1];
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
+    });
   }
 
   // =========================================================================
