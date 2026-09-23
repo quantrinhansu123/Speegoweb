@@ -1,0 +1,450 @@
+<script>
+  // Tự động chuyển hướng sang khung ứng dụng đầy đủ nếu mở trực tiếp từ File Explorer
+  if (typeof window !== 'undefined' && !document.getElementById('app-main')) {
+    window.location.replace('../../index.html#/tuyen-van-chuyen');
+  }
+</script>
+
+<div class="page-container page-shipping-routes"
+     data-page="tuyen-van-chuyen"
+     data-nav="shipping-routes"
+     data-breadcrumb='[{"label":"Trang chủ","href":"#/sourcing"},{"label":"Tuyến vận chuyển từ Trung Quốc","href":"#/tuyen-van-chuyen"}]'>
+
+  <!-- 1. HERO SECTION (2 COLUMNS) -->
+  <section class="page-hero-2col">
+    <div class="container">
+      <div class="hero-2col-grid">
+        <!-- Cột trái: Tiêu đề & giới thiệu -->
+        <div class="hero-2col-left">
+          <div class="hero-tag-bar">INTERNATIONAL FREIGHT</div>
+          <h1 class="hero-h1-clean" id="routeHeroTitle">
+            Dịch vụ vận chuyển từ<br>
+            <span id="routeOriginName">Trung Quốc</span><br>
+            <span class="text-orange">đến Mỹ, Canada &amp; Úc</span>
+          </h1>
+          <p class="hero-desc-clean" id="routeHeroDesc">
+            Hỗ trợ vận chuyển hàng nguyên container (FCL), hàng lẻ (LCL) từ <span id="routeOriginDescName">Trung Quốc</span> đến Mỹ, Canada và Úc, đáp ứng linh hoạt nhu cầu của doanh nghiệp ở mọi quy mô.
+          </p>
+          <div class="hero-actions-row">
+            <a href="#contact-form" class="btn-orange">
+              Trao đổi nhu cầu ↗
+            </a>
+            <a href="tel:+84906828898" class="hero-phone-label">
+              (+84) 906 828 898
+            </a>
+          </div>
+        </div>
+
+        <!-- Cột phải: Ảnh nhà xưởng kho bãi SpeeGo -->
+        <div class="hero-2col-right">
+          <div class="hero-img-card-wrap">
+            <img src="assets/warehouse_hero.jpg" alt="Kết nối hàng hóa. Mở rộng thị trường." onerror="this.onerror=null; this.src='assets/port_sunset_hero.jpg';">
+            <div class="hero-img-caption-bar">
+              <div class="hero-caption-brand">SPEEGO LOGISTICS</div>
+              <div class="hero-caption-sub">Kết nối hàng hóa. Mở rộng thị trường.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. ORIGIN SWITCHER TABS (TRUNG QUỐC ⟷ VIỆT NAM) -->
+  <div class="route-tabs-container">
+    <div class="container">
+      <div class="route-tab-pills">
+        <button type="button" class="route-tab-btn active" id="tabOriginChina" onclick="switchRouteOrigin('china')">
+          Xuất phát từ Trung Quốc
+        </button>
+        <button type="button" class="route-tab-btn" id="tabOriginVietnam" onclick="switchRouteOrigin('vietnam')">
+          Xuất phát từ Việt Nam
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. CÁC TUYẾN VẬN CHUYỂN (4 DESTINATION CARDS) -->
+  <section class="route-dest-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">CÁC TUYẾN VẬN CHUYỂN</span>
+        <h2 class="section-title">Điểm đến của doanh nghiệp bạn.</h2>
+      </div>
+
+      <div class="dest-cards-grid">
+        <!-- Card US -->
+        <a href="#contact-form" class="dest-card-item">
+          <div class="dest-card-header">
+            <span>US</span>
+            <span class="dest-arrow">↗</span>
+          </div>
+          <div class="dest-card-title" id="destRouteUS">Trung Quốc ➔ Mỹ</div>
+        </a>
+
+        <!-- Card CA -->
+        <a href="#contact-form" class="dest-card-item">
+          <div class="dest-card-header">
+            <span>CA</span>
+            <span class="dest-arrow">↗</span>
+          </div>
+          <div class="dest-card-title" id="destRouteCA">Trung Quốc ➔ Canada</div>
+        </a>
+
+        <!-- Card AU -->
+        <a href="#contact-form" class="dest-card-item">
+          <div class="dest-card-header">
+            <span>AU</span>
+            <span class="dest-arrow">↗</span>
+          </div>
+          <div class="dest-card-title" id="destRouteAU">Trung Quốc ➔ Úc</div>
+        </a>
+
+        <!-- Card GLOBAL -->
+        <a href="#contact-form" class="dest-card-item">
+          <div class="dest-card-header">
+            <span>GLOBAL</span>
+            <span class="dest-arrow">↗</span>
+          </div>
+          <div class="dest-card-title" id="destRouteGlobal">Trung Quốc ➔ Nước khác</div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. QUY TRÌNH 8 BƯỚC (NỀN XANH NAVY #04243D) -->
+  <section class="process-8steps-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag" style="color: var(--speego-accent);">QUY TRÌNH 8 BƯỚC</span>
+        <h2 class="section-title" style="color: #FFFFFF;">
+          Từng bước rõ ràng.<br>
+          Toàn trình kết nối.
+        </h2>
+      </div>
+
+      <div class="process-8steps-grid">
+        <!-- Bước 01 -->
+        <div class="step-8-item">
+          <div class="step-8-num">01</div>
+          <div class="step-8-title">Tiếp nhận yêu cầu</div>
+          <div class="step-8-desc">Ghi nhận thông tin hàng hóa, điểm đi và điểm đến.</div>
+        </div>
+
+        <!-- Bước 02 -->
+        <div class="step-8-item">
+          <div class="step-8-num">02</div>
+          <div class="step-8-title">Tư vấn giải pháp</div>
+          <div class="step-8-desc">Lựa chọn phương án phù hợp với chi phí và tiến độ.</div>
+        </div>
+
+        <!-- Bước 03 -->
+        <div class="step-8-item">
+          <div class="step-8-num">03</div>
+          <div class="step-8-title">Kết nối nguồn hàng</div>
+          <div class="step-8-desc">Hỗ trợ nhà máy và nguồn hàng khi có nhu cầu.</div>
+        </div>
+
+        <!-- Bước 04 -->
+        <div class="step-8-item">
+          <div class="step-8-num">04</div>
+          <div class="step-8-title">Theo dõi sản xuất</div>
+          <div class="step-8-desc">Cập nhật tiến độ theo kế hoạch của khách hàng.</div>
+        </div>
+
+        <!-- Bước 05 -->
+        <div class="step-8-item">
+          <div class="step-8-num">05</div>
+          <div class="step-8-title">Kiểm tra chất lượng</div>
+          <div class="step-8-desc">Kiểm tra trước khi đóng gói và xuất xưởng.</div>
+        </div>
+
+        <!-- Bước 06 -->
+        <div class="step-8-item">
+          <div class="step-8-num">06</div>
+          <div class="step-8-title">Chuẩn bị chứng từ</div>
+          <div class="step-8-desc">Hoàn thiện hồ sơ và hỗ trợ thủ tục hải quan.</div>
+        </div>
+
+        <!-- Bước 07 -->
+        <div class="step-8-item">
+          <div class="step-8-num">07</div>
+          <div class="step-8-title">Vận chuyển quốc tế</div>
+          <div class="step-8-desc">Vận chuyển theo phương thức đã thống nhất.</div>
+        </div>
+
+        <!-- Bước 08 -->
+        <div class="step-8-item">
+          <div class="step-8-num">08</div>
+          <div class="step-8-title">Hoàn tất &amp; bàn giao</div>
+          <div class="step-8-desc">Hoàn tất giao dịch và bàn giao chứng từ liên quan.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. GIẢI PHÁP VẬN CHUYỂN (3 PHƯƠNG THỨC) -->
+  <section class="shipping-methods-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">GIẢI PHÁP VẬN CHUYỂN</span>
+        <h2 class="section-title">Linh hoạt phương thức vận chuyển.</h2>
+      </div>
+
+      <div class="methods-3col-grid">
+        <!-- Phương thức 01 -->
+        <div class="method-col-item">
+          <div class="method-col-num">01</div>
+          <div class="method-col-title">Vận chuyển đường biển</div>
+        </div>
+
+        <!-- Phương thức 02 -->
+        <div class="method-col-item">
+          <div class="method-col-num">02</div>
+          <div class="method-col-title">Vận chuyển đường hàng không</div>
+        </div>
+
+        <!-- Phương thức 03 -->
+        <div class="method-col-item">
+          <div class="method-col-num">03</div>
+          <div class="method-col-title">Vận chuyển đường bộ</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. VÌ SAO CHỌN SPEEGO (5 CARDS NỀN XÁM NHẠT) -->
+  <section class="ie-why-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">VÌ SAO CHỌN SPEEGO</span>
+        <h2 class="section-title">Đồng hành trên hành trình quốc tế.</h2>
+      </div>
+
+      <div class="ie-why-grid">
+        <!-- Card 01 -->
+        <div class="ie-service-card">
+          <div class="ie-badge-box">01</div>
+          <h3 class="ie-card-h3">Thời gian vận chuyển</h3>
+          <p class="ie-card-body">Tham khảo từ 7 ngày với đường hàng không và 30 ngày với đường biển. Lịch cụ thể được xác nhận theo tuyến và từng lô hàng.</p>
+        </div>
+
+        <!-- Card 02 -->
+        <div class="ie-service-card">
+          <div class="ie-badge-box">02</div>
+          <h3 class="ie-card-h3">Hỗ trợ chi phí tối đa cho khách hàng</h3>
+          <p class="ie-card-body">Tư vấn phương án vận chuyển và báo giá theo nhu cầu thực tế của khách hàng.</p>
+        </div>
+
+        <!-- Card 03 -->
+        <div class="ie-service-card">
+          <div class="ie-badge-box">03</div>
+          <h3 class="ie-card-h3">Đa dạng phương thức</h3>
+          <p class="ie-card-body">Lựa chọn phương thức phù hợp với loại hàng, ngân sách và yêu cầu giao nhận.</p>
+        </div>
+
+        <!-- Card 04 -->
+        <div class="ie-service-card">
+          <div class="ie-badge-box">04</div>
+          <h3 class="ie-card-h3">Fulfillment tại Mỹ</h3>
+          <p class="ie-card-body">Kết nối lưu kho và xử lý đơn hàng để hỗ trợ hoạt động bán hàng tại thị trường Mỹ.</p>
+        </div>
+
+        <!-- Card 05 -->
+        <div class="ie-service-card">
+          <div class="ie-badge-box">05</div>
+          <h3 class="ie-card-h3">Hiện diện tại Mỹ</h3>
+          <p class="ie-card-body">Có công ty và pháp nhân tại Mỹ để khách hàng yên tâm phối hợp.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. BẢNG GIÁ VẬN CHUYỂN -->
+  <section class="route-rate-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">CHI PHÍ MINH BẠCH</span>
+        <h2 class="section-title">Bảng giá vận chuyển</h2>
+        <p class="ff-section-sub">Hiện chưa có mức giá cố định được công bố tại đây. Liên hệ SpeeGo để nhận báo giá theo lô hàng.</p>
+      </div>
+
+      <div class="rate-table-card">
+        <!-- Dòng 1: Đường hàng không -->
+        <div class="rate-table-row">
+          <div class="rate-col-name">Đường hàng không</div>
+          <div class="rate-col-desc">Theo trọng lượng tính cước và điểm đến</div>
+          <a href="#contact-form" class="rate-col-action">Nhận báo giá ↗</a>
+        </div>
+
+        <!-- Dòng 2: Đường biển · FCL -->
+        <div class="rate-table-row">
+          <div class="rate-col-name">Đường biển · FCL</div>
+          <div class="rate-col-desc">Theo loại container, cảng đi và cảng đến</div>
+          <a href="#contact-form" class="rate-col-action">Nhận báo giá ↗</a>
+        </div>
+
+        <!-- Dòng 3: Đường biển · LCL -->
+        <div class="rate-table-row">
+          <div class="rate-col-name">Đường biển · LCL</div>
+          <div class="rate-col-desc">Theo thể tích, loại hàng và tuyến vận chuyển</div>
+          <a href="#contact-form" class="rate-col-action">Nhận báo giá ↗</a>
+        </div>
+      </div>
+
+      <p class="rate-table-footnote">Liên hệ để nhận báo giá chi tiết cho lô hàng và yêu cầu dịch vụ cụ thể.</p>
+    </div>
+  </section>
+
+  <!-- 8. CÂU HỎI THƯỜNG GẶP (FAQ ACCORDION) -->
+  <section class="ff-faq-section" style="background: #FFFFFF;">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">THÔNG TIN HỮU ÍCH</span>
+        <h2 class="section-title">Câu hỏi thường gặp</h2>
+      </div>
+
+      <div class="ff-faq-list">
+        <!-- FAQ 1 -->
+        <div class="ff-faq-item faq-item">
+          <button class="ff-faq-btn faq-question-btn">
+            <span>SpeeGo hỗ trợ những điểm đến nào?</span>
+            <span class="ff-faq-plus">+</span>
+          </button>
+          <div class="ff-faq-answer">
+            <p>SpeeGo tập trung vào 3 thị trường chính là Mỹ (US), Canada (CA) và Úc (AU), cùng mạng lưới kết nối đến nhiều quốc gia khác theo yêu cầu của doanh nghiệp.</p>
+          </div>
+        </div>
+
+        <!-- FAQ 2 -->
+        <div class="ff-faq-item faq-item">
+          <button class="ff-faq-btn faq-question-btn">
+            <span>Có thể gửi hàng lẻ không?</span>
+            <span class="ff-faq-plus">+</span>
+          </button>
+          <div class="ff-faq-answer">
+            <p>Có. SpeeGo cung cấp dịch vụ gom hàng lẻ (LCL) đường biển và vận chuyển hàng không cho các lô hàng có quy mô nhỏ, giúp tối ưu chi phí.</p>
+          </div>
+        </div>
+
+        <!-- FAQ 3 -->
+        <div class="ff-faq-item faq-item">
+          <button class="ff-faq-btn faq-question-btn">
+            <span>Thời gian vận chuyển có cố định không?</span>
+            <span class="ff-faq-plus">+</span>
+          </button>
+          <div class="ff-faq-answer">
+            <p>Thời gian phụ thuộc vào phương thức vận chuyển (hàng không ~7 ngày, đường biển ~30 ngày) và điều kiện thời tiết, lịch trình của hãng tàu / hàng không thực tế.</p>
+          </div>
+        </div>
+
+        <!-- FAQ 4 -->
+        <div class="ff-faq-item faq-item">
+          <button class="ff-faq-btn faq-question-btn">
+            <span>Tôi cần cung cấp gì để nhận báo giá?</span>
+            <span class="ff-faq-plus">+</span>
+          </button>
+          <div class="ff-faq-answer">
+            <p>Quý khách chỉ cần cung cấp loại hàng hóa, trọng lượng/kích thước ước tính, điểm đi và điểm đến mong muốn qua form tư vấn hoặc hotline.</p>
+          </div>
+        </div>
+
+        <!-- FAQ 5 -->
+        <div class="ff-faq-item faq-item">
+          <button class="ff-faq-btn faq-question-btn">
+            <span>Có thể kết hợp fulfillment tại Mỹ không?</span>
+            <span class="ff-faq-plus">+</span>
+          </button>
+          <div class="ff-faq-answer">
+            <p>Hoàn toàn được. Hàng sau khi thông quan tại Mỹ có thể được chuyển thẳng về kho 10,000 ft² của SpeeGo tại Houston, Texas để lưu kho và xử lý đơn hàng bán lẻ.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 9. TESTIMONIAL SECTION -->
+  <section class="ff-testimonial-section">
+    <div class="container">
+      <div class="ff-section-header">
+        <span class="ff-tag-eyebrow">KHÁCH HÀNG SPEEGO</span>
+        <h2 class="ff-section-title">Đồng hành cùng doanh nghiệp</h2>
+      </div>
+
+      <div class="ff-testimonial-card">
+        <div class="ff-quote-mark" aria-hidden="true">
+          <span></span><span></span>
+        </div>
+        <div class="ff-quote-body">
+          <blockquote class="ff-quote-text">
+            “Việc theo dõi OMS theo thời gian thực và chính sách không có chi phí ẩn khiến SpeeGo trở thành đối tác chuỗi cung ứng đáng tin cậy của chúng tôi.”
+          </blockquote>
+          <div class="ff-author-info">
+            <div class="ff-author-name">Sarah Mitchell</div>
+            <div class="ff-author-title">Operations Director, EcoLiving Home · Australia</div>
+            <div class="ff-author-ref">
+              <a href="#/sourcing" class="ff-ref-link">Theo chia sẻ trên website SpeeGo · bản dịch tiếng Việt ↗</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 10. CONSULTATION FORM BAND -->
+  <div data-component="cta-form" data-variant="band" id="contact-form"></div>
+
+  <!-- SCRIPT: ORIGIN TAB SWITCHER (TRUNG QUỐC ⟷ VIỆT NAM) -->
+  <script>
+    function switchRouteOrigin(origin) {
+      const btnChina = document.getElementById('tabOriginChina');
+      const btnVietnam = document.getElementById('tabOriginVietnam');
+      const originName = document.getElementById('routeOriginName');
+      const descOriginName = document.getElementById('routeOriginDescName');
+      const destUS = document.getElementById('destRouteUS');
+      const destCA = document.getElementById('destRouteCA');
+      const destAU = document.getElementById('destRouteAU');
+      const destGlobal = document.getElementById('destRouteGlobal');
+      const breadcrumbList = document.getElementById('breadcrumbList');
+
+      if (origin === 'vietnam') {
+        if (btnChina) btnChina.classList.remove('active');
+        if (btnVietnam) btnVietnam.classList.add('active');
+        if (originName) originName.textContent = 'Việt Nam';
+        if (descOriginName) descOriginName.textContent = 'Việt Nam';
+        if (destUS) destUS.textContent = 'Việt Nam ➔ Mỹ';
+        if (destCA) destCA.textContent = 'Việt Nam ➔ Canada';
+        if (destAU) destAU.textContent = 'Việt Nam ➔ Úc';
+        if (destGlobal) destGlobal.textContent = 'Việt Nam ➔ Nước khác';
+
+        // Update breadcrumb
+        if (breadcrumbList) {
+          breadcrumbList.innerHTML = `
+            <a href="#/sourcing" class="breadcrumb-link">Trang chủ</a>
+            <span class="breadcrumb-sep">/</span>
+            <span class="breadcrumb-current">Tuyến vận chuyển từ Việt Nam</span>
+          `;
+        }
+      } else {
+        if (btnVietnam) btnVietnam.classList.remove('active');
+        if (btnChina) btnChina.classList.add('active');
+        if (originName) originName.textContent = 'Trung Quốc';
+        if (descOriginName) descOriginName.textContent = 'Trung Quốc';
+        if (destUS) destUS.textContent = 'Trung Quốc ➔ Mỹ';
+        if (destCA) destCA.textContent = 'Trung Quốc ➔ Canada';
+        if (destAU) destAU.textContent = 'Trung Quốc ➔ Úc';
+        if (destGlobal) destGlobal.textContent = 'Trung Quốc ➔ Nước khác';
+
+        // Update breadcrumb
+        if (breadcrumbList) {
+          breadcrumbList.innerHTML = `
+            <a href="#/sourcing" class="breadcrumb-link">Trang chủ</a>
+            <span class="breadcrumb-sep">/</span>
+            <span class="breadcrumb-current">Tuyến vận chuyển từ Trung Quốc</span>
+          `;
+        }
+      }
+    }
+    window.switchRouteOrigin = switchRouteOrigin;
+  </script>
+
+</div>

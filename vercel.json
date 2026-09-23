@@ -2,5 +2,5 @@
   "buildCommand": "node prepare-vercel.js",
   "outputDirectory": "public",
   "cleanUrls": true,
-  "trailingSlash": false
+  "trailingSlash": true
 }

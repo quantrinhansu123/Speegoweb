@@ -8,6 +8,7 @@ const src = path.join(
   "demo-01"
 );
 const dest = path.join(__dirname, "public");
+const exploreSrc = path.join(__dirname, "explore");
 
 function copyDir(from, to) {
   fs.mkdirSync(to, { recursive: true });
@@ -36,4 +37,9 @@ try {
 } catch (e) {}
 
 copyDir(src, dest);
-console.log("Prepared public/ from demo-01 for Vercel");
+if (!fs.existsSync(exploreSrc)) {
+  console.error("Missing source:", exploreSrc);
+  process.exit(1);
+}
+copyDir(exploreSrc, path.join(dest, "explore"));
+console.log("Prepared homepage and explore pages for Vercel");

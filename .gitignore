@@ -26,3 +26,4 @@ public/
 
 # CodeGraph local index
 .codegraph/
+.vercel/

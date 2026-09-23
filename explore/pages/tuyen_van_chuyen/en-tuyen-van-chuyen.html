@@ -1,0 +1,450 @@
+<script>
+  // Auto redirect to full application shell if opened directly from File Explorer
+  if (typeof window !== 'undefined' && !document.getElementById('app-main')) {
+    window.location.replace('../../index.html#/en/shipping-routes');
+  }
+</script>
+
+<div class="page-container page-shipping-routes"
+     data-page="en-shipping-routes"
+     data-nav="shipping-routes"
+     data-breadcrumb='[{"label":"Home","href":"#/en/knowledge"},{"label":"Shipping Routes from China","href":"#/en/shipping-routes"}]'>
+
+  <!-- 1. HERO SECTION (2 COLUMNS) -->
+  <section class="page-hero-2col">
+    <div class="container">
+      <div class="hero-2col-grid">
+        <!-- Left Column: Title & Intro -->
+        <div class="hero-2col-left">
+          <div class="hero-tag-bar">INTERNATIONAL FREIGHT</div>
+          <h1 class="hero-h1-clean" id="routeHeroTitle">
+            Freight forwarding from<br>
+            <span id="routeOriginName">China</span><br>
+            <span class="text-orange">to US, Canada &amp; Australia</span>
+          </h1>
+          <p class="hero-desc-clean" id="routeHeroDesc">
+            Supporting Full Container Load (FCL) and Less than Container Load (LCL) freight from <span id="routeOriginDescName">China</span> to the US, Canada, and Australia, accommodating the dynamic needs of businesses at any scale.
+          </p>
+          <div class="hero-actions-row">
+            <a href="#contact-form" class="btn-orange">
+              Discuss Your Needs ↗
+            </a>
+            <a href="tel:+84906828898" class="hero-phone-label">
+              (+84) 906 828 898
+            </a>
+          </div>
+        </div>
+
+        <!-- Right Column: SpeeGo Warehouse Facility Image -->
+        <div class="hero-2col-right">
+          <div class="hero-img-card-wrap">
+            <img src="assets/warehouse_hero.jpg" alt="Connecting goods. Expanding markets." onerror="this.onerror=null; this.src='assets/port_sunset_hero.jpg';">
+            <div class="hero-img-caption-bar">
+              <div class="hero-caption-brand">SPEEGO LOGISTICS</div>
+              <div class="hero-caption-sub">Connecting goods. Expanding markets.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. ORIGIN SWITCHER TABS (CHINA ⟷ VIETNAM) -->
+  <div class="route-tabs-container">
+    <div class="container">
+      <div class="route-tab-pills">
+        <button type="button" class="route-tab-btn active" id="tabOriginChina" onclick="switchRouteOriginEn('china')">
+          Origin: China
+        </button>
+        <button type="button" class="route-tab-btn" id="tabOriginVietnam" onclick="switchRouteOriginEn('vietnam')">
+          Origin: Vietnam
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. SHIPPING CORRIDORS (4 DESTINATION CARDS) -->
+  <section class="route-dest-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">SHIPPING CORRIDORS</span>
+        <h2 class="section-title">Your business destinations.</h2>
+      </div>
+
+      <div class="dest-cards-grid">
+        <!-- Card US -->
+        <a href="#contact-form" class="dest-card-item">
+          <div class="dest-card-header">
+            <span>US</span>
+            <span class="dest-arrow">↗</span>
+          </div>
+          <div class="dest-card-title" id="destRouteUS">China ➔ United States</div>
+        </a>
+
+        <!-- Card CA -->
+        <a href="#contact-form" class="dest-card-item">
+          <div class="dest-card-header">
+            <span>CA</span>
+            <span class="dest-arrow">↗</span>
+          </div>
+          <div class="dest-card-title" id="destRouteCA">China ➔ Canada</div>
+        </a>
+
+        <!-- Card AU -->
+        <a href="#contact-form" class="dest-card-item">
+          <div class="dest-card-header">
+            <span>AU</span>
+            <span class="dest-arrow">↗</span>
+          </div>
+          <div class="dest-card-title" id="destRouteAU">China ➔ Australia</div>
+        </a>
+
+        <!-- Card GLOBAL -->
+        <a href="#contact-form" class="dest-card-item">
+          <div class="dest-card-header">
+            <span>GLOBAL</span>
+            <span class="dest-arrow">↗</span>
+          </div>
+          <div class="dest-card-title" id="destRouteGlobal">China ➔ Other Countries</div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. 8-STEP WORKFLOW (DARK NAVY #04243D) -->
+  <section class="process-8steps-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag" style="color: var(--speego-accent);">8-STEP WORKFLOW</span>
+        <h2 class="section-title" style="color: #FFFFFF;">
+          Clear steps.<br>
+          End-to-end connectivity.
+        </h2>
+      </div>
+
+      <div class="process-8steps-grid">
+        <!-- Step 01 -->
+        <div class="step-8-item">
+          <div class="step-8-num">01</div>
+          <div class="step-8-title">Requirement Intake</div>
+          <div class="step-8-desc">Record commodity details, origin, and destination requirements.</div>
+        </div>
+
+        <!-- Step 02 -->
+        <div class="step-8-item">
+          <div class="step-8-num">02</div>
+          <div class="step-8-title">Solution Advisory</div>
+          <div class="step-8-desc">Select the optimal route balancing budget and transit timeline.</div>
+        </div>
+
+        <!-- Step 03 -->
+        <div class="step-8-item">
+          <div class="step-8-num">03</div>
+          <div class="step-8-title">Sourcing Network</div>
+          <div class="step-8-desc">Connect with verified factories and suppliers upon request.</div>
+        </div>
+
+        <!-- Step 04 -->
+        <div class="step-8-item">
+          <div class="step-8-num">04</div>
+          <div class="step-8-title">Production Monitoring</div>
+          <div class="step-8-desc">Track production milestones aligned with client delivery schedules.</div>
+        </div>
+
+        <!-- Step 05 -->
+        <div class="step-8-item">
+          <div class="step-8-num">05</div>
+          <div class="step-8-title">Quality Control</div>
+          <div class="step-8-desc">On-site quality inspection before packaging and factory dispatch.</div>
+        </div>
+
+        <!-- Step 06 -->
+        <div class="step-8-item">
+          <div class="step-8-num">06</div>
+          <div class="step-8-title">Documentation &amp; Clearance</div>
+          <div class="step-8-desc">Prepare complete dossiers and handle customs export-import procedures.</div>
+        </div>
+
+        <!-- Step 07 -->
+        <div class="step-8-item">
+          <div class="step-8-num">07</div>
+          <div class="step-8-title">Global Transportation</div>
+          <div class="step-8-desc">Execute multi-modal transit via agreed air, ocean, or overland routes.</div>
+        </div>
+
+        <!-- Step 08 -->
+        <div class="step-8-item">
+          <div class="step-8-num">08</div>
+          <div class="step-8-title">Completion &amp; Handover</div>
+          <div class="step-8-desc">Finalize delivery and hand over all commercial &amp; customs documentation.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. TRANSPORTATION MODES (3 MODES) -->
+  <section class="shipping-methods-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">TRANSPORTATION MODES</span>
+        <h2 class="section-title">Flexible transit methods.</h2>
+      </div>
+
+      <div class="methods-3col-grid">
+        <!-- Mode 01 -->
+        <div class="method-col-item">
+          <div class="method-col-num">01</div>
+          <div class="method-col-title">Ocean Freight (FCL &amp; LCL)</div>
+        </div>
+
+        <!-- Mode 02 -->
+        <div class="method-col-item">
+          <div class="method-col-num">02</div>
+          <div class="method-col-title">Air Freight Services</div>
+        </div>
+
+        <!-- Mode 03 -->
+        <div class="method-col-item">
+          <div class="method-col-num">03</div>
+          <div class="method-col-title">Overland Trucking</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. WHY CHOOSE SPEEGO (5 CARDS LIGHT GRAY BACKGROUND) -->
+  <section class="ie-why-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">WHY CHOOSE SPEEGO</span>
+        <h2 class="section-title">Partnering on your global journey.</h2>
+      </div>
+
+      <div class="ie-why-grid">
+        <!-- Card 01 -->
+        <div class="ie-service-card">
+          <div class="ie-badge-box">01</div>
+          <h3 class="ie-card-h3">Reliable Transit Time</h3>
+          <p class="ie-card-body">Estimated from 7 days via air freight and 30 days via ocean freight. Exact schedules confirmed per lane and shipment.</p>
+        </div>
+
+        <!-- Card 02 -->
+        <div class="ie-service-card">
+          <div class="ie-badge-box">02</div>
+          <h3 class="ie-card-h3">Cost Optimization</h3>
+          <p class="ie-card-body">Tailored routing and transparent quotations aligned with your business volume and budget.</p>
+        </div>
+
+        <!-- Card 03 -->
+        <div class="ie-service-card">
+          <div class="ie-badge-box">03</div>
+          <h3 class="ie-card-h3">Multi-modal Flexibility</h3>
+          <p class="ie-card-body">Select the optimal freight mode matched to your product sensitivity, timeline, and delivery requirements.</p>
+        </div>
+
+        <!-- Card 04 -->
+        <div class="ie-service-card">
+          <div class="ie-badge-box">04</div>
+          <h3 class="ie-card-h3">US Warehousing &amp; Fulfillment</h3>
+          <p class="ie-card-body">Direct connection to SpeeGo's 10,000 ft² Houston facility for storage and order fulfillment across North America.</p>
+        </div>
+
+        <!-- Card 05 -->
+        <div class="ie-service-card">
+          <div class="ie-badge-box">05</div>
+          <h3 class="ie-card-h3">US Corporate Entity</h3>
+          <p class="ie-card-body">Incorporated business presence and operations in Texas, providing seamless cross-border coordination.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. FREIGHT RATE TRANSPARENCY -->
+  <section class="route-rate-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">TRANSPARENT PRICING</span>
+        <h2 class="section-title">Shipping Rate Inquiries</h2>
+        <p class="ff-section-sub">Fixed public tariffs are not listed here. Contact SpeeGo to receive customized quotations per consignment.</p>
+      </div>
+
+      <div class="rate-table-card">
+        <!-- Row 1: Air Freight -->
+        <div class="rate-table-row">
+          <div class="rate-col-name">Air Freight</div>
+          <div class="rate-col-desc">Based on chargeable weight and destination airport</div>
+          <a href="#contact-form" class="rate-col-action">Get a Quote ↗</a>
+        </div>
+
+        <!-- Row 2: Ocean Freight · FCL -->
+        <div class="rate-table-row">
+          <div class="rate-col-name">Ocean Freight · FCL</div>
+          <div class="rate-col-desc">Based on container type (20ft/40ft/HQ), port of origin &amp; destination</div>
+          <a href="#contact-form" class="rate-col-action">Get a Quote ↗</a>
+        </div>
+
+        <!-- Row 3: Ocean Freight · LCL -->
+        <div class="rate-table-row">
+          <div class="rate-col-name">Ocean Freight · LCL</div>
+          <div class="rate-col-desc">Based on cargo volume (CBM), commodity classification, and trade lane</div>
+          <a href="#contact-form" class="rate-col-action">Get a Quote ↗</a>
+        </div>
+      </div>
+
+      <p class="rate-table-footnote">Inquire with our team for itemized quotes and specialized handling requests.</p>
+    </div>
+  </section>
+
+  <!-- 8. FREQUENTLY ASKED QUESTIONS (FAQ ACCORDION) -->
+  <section class="ff-faq-section" style="background: #FFFFFF;">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">USEFUL INFORMATION</span>
+        <h2 class="section-title">Frequently Asked Questions</h2>
+      </div>
+
+      <div class="ff-faq-list">
+        <!-- FAQ 1 -->
+        <div class="ff-faq-item faq-item">
+          <button class="ff-faq-btn faq-question-btn">
+            <span>Which destination markets does SpeeGo support?</span>
+            <span class="ff-faq-plus">+</span>
+          </button>
+          <div class="ff-faq-answer">
+            <p>SpeeGo focuses primarily on the United States (US), Canada (CA), and Australia (AU), alongside an extensive global partner network connecting additional markets worldwide.</p>
+          </div>
+        </div>
+
+        <!-- FAQ 2 -->
+        <div class="ff-faq-item faq-item">
+          <button class="ff-faq-btn faq-question-btn">
+            <span>Can I ship Less-than-Container Load (LCL) consignments?</span>
+            <span class="ff-faq-plus">+</span>
+          </button>
+          <div class="ff-faq-answer">
+            <p>Yes. SpeeGo provides consolidated LCL ocean freight and air cargo solutions for small to medium batches, optimizing logistics expenses.</p>
+          </div>
+        </div>
+
+        <!-- FAQ 3 -->
+        <div class="ff-faq-item faq-item">
+          <button class="ff-faq-btn faq-question-btn">
+            <span>Are transit times guaranteed?</span>
+            <span class="ff-faq-plus">+</span>
+          </button>
+          <div class="ff-faq-answer">
+            <p>Transit durations depend on the transport mode (~7 days for air, ~30 days for ocean), weather conditions, and seasonal carrier schedules.</p>
+          </div>
+        </div>
+
+        <!-- FAQ 4 -->
+        <div class="ff-faq-item faq-item">
+          <button class="ff-faq-btn faq-question-btn">
+            <span>What information is required to receive a quote?</span>
+            <span class="ff-faq-plus">+</span>
+          </button>
+          <div class="ff-faq-answer">
+            <p>Simply share product descriptions, estimated weight/dimensions, origin city, and target destination via our contact form or hotline.</p>
+          </div>
+        </div>
+
+        <!-- FAQ 5 -->
+        <div class="ff-faq-item faq-item">
+          <button class="ff-faq-btn faq-question-btn">
+            <span>Can I bundle shipping with US fulfillment?</span>
+            <span class="ff-faq-plus">+</span>
+          </button>
+          <div class="ff-faq-answer">
+            <p>Absolutely. Once customs clearance is completed, cargo can be delivered directly to SpeeGo's 10,000 ft² Houston warehouse for storage and multi-channel order fulfillment.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 9. TESTIMONIAL SECTION -->
+  <section class="ff-testimonial-section">
+    <div class="container">
+      <div class="ff-section-header">
+        <span class="ff-tag-eyebrow">SPEEGO CLIENTS</span>
+        <h2 class="ff-section-title">Growing with our partners</h2>
+      </div>
+
+      <div class="ff-testimonial-card">
+        <div class="ff-quote-mark" aria-hidden="true">
+          <span></span><span></span>
+        </div>
+        <div class="ff-quote-body">
+          <blockquote class="ff-quote-text">
+            “Real-time OMS tracking and a zero-hidden-fee policy have made SpeeGo our most reliable supply chain partner.”
+          </blockquote>
+          <div class="ff-author-info">
+            <div class="ff-author-name">Sarah Mitchell</div>
+            <div class="ff-author-title">Operations Director, EcoLiving Home · Australia</div>
+            <div class="ff-author-ref">
+              <a href="#/en/sourcing" class="ff-ref-link">Customer story on SpeeGo website ↗</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 10. CONSULTATION FORM BAND -->
+  <div data-component="cta-form" data-variant="band" id="contact-form"></div>
+
+  <!-- SCRIPT: ORIGIN TAB SWITCHER (CHINA ⟷ VIETNAM) -->
+  <script>
+    function switchRouteOriginEn(origin) {
+      const btnChina = document.getElementById('tabOriginChina');
+      const btnVietnam = document.getElementById('tabOriginVietnam');
+      const originName = document.getElementById('routeOriginName');
+      const descOriginName = document.getElementById('routeOriginDescName');
+      const destUS = document.getElementById('destRouteUS');
+      const destCA = document.getElementById('destRouteCA');
+      const destAU = document.getElementById('destRouteAU');
+      const destGlobal = document.getElementById('destRouteGlobal');
+      const breadcrumbList = document.getElementById('breadcrumbList');
+
+      if (origin === 'vietnam') {
+        if (btnChina) btnChina.classList.remove('active');
+        if (btnVietnam) btnVietnam.classList.add('active');
+        if (originName) originName.textContent = 'Vietnam';
+        if (descOriginName) descOriginName.textContent = 'Vietnam';
+        if (destUS) destUS.textContent = 'Vietnam ➔ United States';
+        if (destCA) destCA.textContent = 'Vietnam ➔ Canada';
+        if (destAU) destAU.textContent = 'Vietnam ➔ Australia';
+        if (destGlobal) destGlobal.textContent = 'Vietnam ➔ Other Countries';
+
+        // Update breadcrumb
+        if (breadcrumbList) {
+          breadcrumbList.innerHTML = `
+            <a href="#/en/knowledge" class="breadcrumb-link">Home</a>
+            <span class="breadcrumb-sep">/</span>
+            <span class="breadcrumb-current">Shipping Routes from Vietnam</span>
+          `;
+        }
+      } else {
+        if (btnVietnam) btnVietnam.classList.remove('active');
+        if (btnChina) btnChina.classList.add('active');
+        if (originName) originName.textContent = 'China';
+        if (descOriginName) descOriginName.textContent = 'China';
+        if (destUS) destUS.textContent = 'China ➔ United States';
+        if (destCA) destCA.textContent = 'China ➔ Canada';
+        if (destAU) destAU.textContent = 'China ➔ Australia';
+        if (destGlobal) destGlobal.textContent = 'China ➔ Other Countries';
+
+        // Update breadcrumb
+        if (breadcrumbList) {
+          breadcrumbList.innerHTML = `
+            <a href="#/en/knowledge" class="breadcrumb-link">Home</a>
+            <span class="breadcrumb-sep">/</span>
+            <span class="breadcrumb-current">Shipping Routes from China</span>
+          `;
+        }
+      }
+    }
+    window.switchRouteOriginEn = switchRouteOriginEn;
+  </script>
+
+</div>

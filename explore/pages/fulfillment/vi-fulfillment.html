@@ -1,0 +1,782 @@
+<script>
+  // Tự động chuyển hướng sang khung ứng dụng đầy đủ nếu mở trực tiếp từ File Explorer
+  if (typeof window !== 'undefined' && !document.getElementById('app-main')) {
+    window.location.replace('../../index.html#/fulfillment');
+  }
+</script>
+
+<div class="page-container page-fulfillment" 
+     data-page="fulfillment" 
+     data-nav="fulfillment" 
+     data-breadcrumb='[{"label":"Trang chủ","href":"#/sourcing"},{"label":"Fulfillment","href":"#/fulfillment"}]'>
+
+  <!-- 1. HERO SECTION: DARK LOGISTICS HUB OVERLAY (ANHDAU.JPG) -->
+  <section class="ff-hero-dark-section">
+    <div class="container">
+      <!-- Centered Header -->
+      <div class="ff-hero-dark-header">
+        <h1 class="ff-hero-brand-title">
+          <span class="ff-brand-orange">SpeeGo</span> <span class="ff-brand-white">Fulfillment</span>
+        </h1>
+        <h2 class="ff-hero-tagline">Giải pháp kho vận tối ưu cho doanh nghiệp của bạn</h2>
+        <p class="ff-hero-summary">
+          SpeeGo Fulfillment vận hành kho 10,000 ft² tại Houston, Texas, cung cấp dịch vụ nhập kho, lưu kho, đóng gói và vận chuyển đơn hàng trên toàn nước Mỹ.
+        </p>
+      </div>
+
+      <!-- 4 Stats Bar Columns with Vertical Orange Bars -->
+      <div class="ff-stats-bars-row">
+        <div class="ff-stat-bar-item">
+          <div class="ff-stat-bar-title">Diện tích 10,000 ft²</div>
+          <div class="ff-stat-bar-desc">Trung tâm vận hành tại Houston, Texas.</div>
+        </div>
+        <div class="ff-stat-bar-item">
+          <div class="ff-stat-bar-title">Miễn phí nhập kho</div>
+          <div class="ff-stat-bar-desc">Cho 5 kiện dưới 21kg mỗi lần nhập kho.</div>
+        </div>
+        <div class="ff-stat-bar-item">
+          <div class="ff-stat-bar-title">Miễn phí lưu kho</div>
+          <div class="ff-stat-bar-desc">Trong 60 ngày hàng vào kho.</div>
+        </div>
+        <div class="ff-stat-bar-item">
+          <div class="ff-stat-bar-title">$7/order</div>
+          <div class="ff-stat-bar-desc">Phí cố định mỗi đơn đã gồm phí shipping.</div>
+        </div>
+      </div>
+
+      <!-- Floating Dark Glassmorphic Hub Bar -->
+      <div class="ff-dark-hub-card">
+        <div class="ff-dark-hub-left">
+          <div class="ff-dark-hub-tag">TRUNG TÂM VẬN HÀNH</div>
+          <div class="ff-dark-hub-title">SpeeGo Warehouse · Houston, Texas</div>
+        </div>
+        <div class="ff-dark-hub-right">
+          <div class="ff-dark-hub-address">7303 Breen Dr, Suite D2, Houston, TX 77086</div>
+          <div class="ff-dark-hub-hotline">
+            <span class="ff-hotline-lbl">Hotline:</span>
+            <a href="tel:18005501496" class="ff-hotline-val">1-800-550-1496</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Ribbon Ticker: Vibrant SpeeGo Orange -->
+  <div class="ff-ticker-orange-wrap">
+    <div class="ff-ticker-orange-inner">
+      <span>SHIPPING &amp; DISPATCHING</span><span class="ff-ticker-symbol">✦</span>
+      <span>STOCK TRANSFERS</span><span class="ff-ticker-symbol">✦</span>
+      <span>GOODS-IN &amp; RECEIVING</span><span class="ff-ticker-symbol">✦</span>
+      <span>WAREHOUSING &amp; STORAGE</span><span class="ff-ticker-symbol">✦</span>
+      <span>PICK &amp; PACK</span><span class="ff-ticker-symbol">✦</span>
+      <span>SHIPPING &amp; DISPATCHING</span><span class="ff-ticker-symbol">✦</span>
+      <span>STOCK TRANSFERS</span><span class="ff-ticker-symbol">✦</span>
+      <span>GOODS-IN &amp; RECEIVING</span><span class="ff-ticker-symbol">✦</span>
+      <span>WAREHOUSING &amp; STORAGE</span><span class="ff-ticker-symbol">✦</span>
+      <span>PICK &amp; PACK</span><span class="ff-ticker-symbol">✦</span>
+      <span>SHIPPING &amp; DISPATCHING</span><span class="ff-ticker-symbol">✦</span>
+      <span>STOCK TRANSFERS</span><span class="ff-ticker-symbol">✦</span>
+      <span>GOODS-IN &amp; RECEIVING</span><span class="ff-ticker-symbol">✦</span>
+      <span>WAREHOUSING &amp; STORAGE</span><span class="ff-ticker-symbol">✦</span>
+      <span>PICK &amp; PACK</span><span class="ff-ticker-symbol">✦</span>
+      <span>SHIPPING &amp; DISPATCHING</span><span class="ff-ticker-symbol">✦</span>
+      <span>STOCK TRANSFERS</span><span class="ff-ticker-symbol">✦</span>
+      <span>GOODS-IN &amp; RECEIVING</span><span class="ff-ticker-symbol">✦</span>
+      <span>WAREHOUSING &amp; STORAGE</span><span class="ff-ticker-symbol">✦</span>
+      <span>PICK &amp; PACK</span><span class="ff-ticker-symbol">✦</span>
+    </div>
+  </div>
+
+  <!-- 4 Quick-link Cards -->
+  <section class="ff-quicklinks-section">
+    <div class="container">
+      <div class="ff-quicklinks-grid">
+        <a href="#bang-gia-fulfillment" class="ff-quicklink-card">
+          <div class="ff-quicklink-title">Chi phí Fulfillment</div>
+          <div class="ff-quicklink-sub">Bảng phí dịch vụ kho tại Mỹ</div>
+          <div class="ff-quicklink-btn">Xem ➔</div>
+        </a>
+        <a href="#usps-zone" class="ff-quicklink-card">
+          <div class="ff-quicklink-title">USPS Ground Advantage theo Zone</div>
+          <div class="ff-quicklink-sub">Biểu phí tham khảo từ Zone 1-9</div>
+          <div class="ff-quicklink-btn">Xem ➔</div>
+        </a>
+        <a href="#uoc-tinh-chi-phi" class="ff-quicklink-card">
+          <div class="ff-quicklink-title">Ước tính chi phí fulfillment</div>
+          <div class="ff-quicklink-sub">Pick & pack + bao bì + USPS Ground Advantage</div>
+          <div class="ff-quicklink-btn">Xem ➔</div>
+        </a>
+        <a href="#chinh-sach-fulfillment" class="ff-quicklink-card">
+          <div class="ff-quicklink-title">Chính sách</div>
+          <div class="ff-quicklink-sub">Quy định lưu kho, xử lý đơn và vận chuyển</div>
+          <div class="ff-quicklink-btn">Xem ➔</div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. 5-STEP PROCESS SECTION (DARK NAVY) -->
+  <section class="ff-process-section">
+    <div class="container">
+      <div class="ff-section-header">
+        <span class="ff-tag-eyebrow ff-tag-light">QUY TRÌNH FULFILLMENT</span>
+        <h2 class="ff-section-title ff-title-white">5 bước. Một quy trình chuẩn US.</h2>
+      </div>
+
+      <div class="ff-steps-grid">
+        <!-- Step 01 -->
+        <div class="ff-step-item">
+          <div class="ff-step-num">01</div>
+          <h3 class="ff-step-name">Xử lý barcode</h3>
+          <p class="ff-step-text">Tạo hoặc gắn barcode cho từng sản phẩm. Cung cấp file PDF barcode nếu cần.</p>
+        </div>
+        <!-- Step 02 -->
+        <div class="ff-step-item">
+          <div class="ff-step-num">02</div>
+          <h3 class="ff-step-name">Yêu cầu nhập kho (IR)</h3>
+          <p class="ff-step-text">Tạo IR nhập kho trên OMS: chọn SKU và số lượng. OMS xác nhận và trả mã IR để in, dán lên kiện hàng.</p>
+        </div>
+        <!-- Step 03 -->
+        <div class="ff-step-item">
+          <div class="ff-step-num">03</div>
+          <h3 class="ff-step-name">Tiếp nhận, kiểm tra &amp; nhập kho</h3>
+          <p class="ff-step-text">Mỗi lô hàng được kiểm tra kỹ trước khi nhập kho. Tồn kho cập nhật tự động theo thời gian thực trên OMS.</p>
+        </div>
+        <!-- Step 04 -->
+        <div class="ff-step-item">
+          <div class="ff-step-num">04</div>
+          <h3 class="ff-step-name">Fulfillment &amp; vận chuyển</h3>
+          <p class="ff-step-text">Đơn hàng được xử lý, đóng gói có video ghi hình minh bạch và vận chuyển qua USPS, UPS hoặc FedEx.</p>
+        </div>
+        <!-- Step 05 -->
+        <div class="ff-step-item">
+          <div class="ff-step-num">05</div>
+          <h3 class="ff-step-name">Xử lý hàng return</h3>
+          <p class="ff-step-text">Toàn bộ quy trình tiếp nhận và xử lý hàng hoàn trả do SpeeGo đảm nhận, miễn phí cho mọi đơn hàng.</p>
+        </div>
+      </div>
+
+      <div class="ff-process-cta">
+        <a href="#contact-form" class="btn-orange">
+          Tư vấn quy trình Fulfillment ↗
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. RATE CARD SECTION (BẢNG BÁO GIÁ SPEEGO FULFILLMENT) -->
+  <section class="ff-pricing-section" id="bang-gia-fulfillment">
+    <div class="container">
+      <div class="ff-section-header">
+        <span class="ff-tag-eyebrow">BẢNG GIÁ DỊCH VỤ TẠI MỸ</span>
+        <h2 class="ff-section-title">Bảng báo giá SpeeGo Fulfillment</h2>
+        <p class="ff-section-sub">
+          Nhấn vào từng nhóm để mở hoặc thu gọn chi tiết. Yêu cầu đặc biệt hoặc phát sinh thực tế sẽ được xác nhận lại trước khi xử lý.
+        </p>
+      </div>
+
+      <!-- Accordion Pricing List -->
+      <div class="ff-pricing-accordion">
+        <!-- Accordion Item 01 (Open) -->
+        <div class="ff-pricing-group active" id="group-fulfill-pricing">
+          <div class="ff-pricing-header" onclick="togglePricingGroup(this)">
+            <div class="ff-pricing-header-left">
+              <span class="ff-pricing-badge">01</span>
+              <div>
+                <div class="ff-pricing-group-title">BẢNG GIÁ FULFILL</div>
+                <div class="ff-pricing-group-sub">Fulfillment &amp; xử lý đơn hàng</div>
+              </div>
+            </div>
+            <div class="ff-pricing-toggle-icon">✕</div>
+          </div>
+
+          <div class="ff-pricing-body">
+            <!-- 2 Highlight All-in-one Cards -->
+            <div class="ff-allinone-grid">
+              <div class="ff-allinone-card">
+                <div class="ff-aio-info">
+                  <div class="ff-aio-tag">ALL-IN-ONE · DƯỚI 800G/ORDER</div>
+                  <div class="ff-aio-desc">Phí xử lý đơn + bao bì + phí ship</div>
+                </div>
+                <div class="ff-aio-price">$7/order</div>
+              </div>
+
+              <div class="ff-allinone-card">
+                <div class="ff-aio-info">
+                  <div class="ff-aio-tag">ALL-IN-ONE · 800G ĐẾN DƯỚI 2,5KG/ORDER</div>
+                  <div class="ff-aio-desc">Phí xử lý đơn + bao bì + phí ship</div>
+                </div>
+                <div class="ff-aio-price">$10/order</div>
+              </div>
+            </div>
+
+            <!-- Table: Phí Xuất Kho -->
+            <div class="ff-table-block">
+              <div class="ff-table-title">PHÍ XUẤT KHO</div>
+              <div class="ff-table-wrap">
+                <table class="ff-rate-table">
+                  <tbody>
+                    <tr>
+                      <td class="ff-td-col1">0-5 lb</td>
+                      <td class="ff-td-col2">0–2,5 kg</td>
+                      <td class="ff-td-col3 ff-text-bold">Giá All-in-one · thỏa thuận</td>
+                    </tr>
+                    <tr>
+                      <td class="ff-td-col1">5-15 lb</td>
+                      <td class="ff-td-col2">&gt;2,5–6,75 kg</td>
+                      <td class="ff-td-col3 ff-price-text">$2.50 <span class="ff-unit">/order</span></td>
+                    </tr>
+                    <tr>
+                      <td class="ff-td-col1">15-30 lb</td>
+                      <td class="ff-td-col2">6,75–13,5 kg</td>
+                      <td class="ff-td-col3 ff-price-text">$3.25 <span class="ff-unit">/order</span></td>
+                    </tr>
+                    <tr>
+                      <td class="ff-td-col1">30-50 lb</td>
+                      <td class="ff-td-col2">13,5–22,5 kg</td>
+                      <td class="ff-td-col3 ff-price-text">$4.50 <span class="ff-unit">/order</span></td>
+                    </tr>
+                    <tr>
+                      <td class="ff-td-col1">50-70 lb</td>
+                      <td class="ff-td-col2">22,5–31,5 kg</td>
+                      <td class="ff-td-col3 ff-price-text">$6.35 <span class="ff-unit">/order</span></td>
+                    </tr>
+                    <tr>
+                      <td class="ff-td-col1">70-100 lb</td>
+                      <td class="ff-td-col2">31,5–45 kg</td>
+                      <td class="ff-td-col3 ff-price-text">$7.75 <span class="ff-unit">/order</span></td>
+                    </tr>
+                    <tr>
+                      <td class="ff-td-col1">100-150 lb</td>
+                      <td class="ff-td-col2">45–68 kg</td>
+                      <td class="ff-td-col3 ff-price-text">$10 <span class="ff-unit">/order</span></td>
+                    </tr>
+                    <tr>
+                      <td class="ff-td-col1">Trên 150 lb</td>
+                      <td class="ff-td-col2">Trên 68 kg</td>
+                      <td class="ff-td-col3 ff-text-bold">AT COST</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <p class="ff-table-note">
+                Phí tính theo trọng lượng thực tế hoặc trọng lượng thể tích, lấy giá trị lớn hơn. Trọng lượng thể tích = Dài × Rộng × Cao (cm) / 5.000.
+              </p>
+            </div>
+
+            <!-- Table: Bao bì & vật liệu đóng gói -->
+            <div class="ff-table-block">
+              <div class="ff-table-title">BAO BÌ &amp; VẬT LIỆU ĐÓNG GÓI</div>
+              <div class="ff-table-wrap">
+                <table class="ff-rate-table">
+                  <tbody>
+                    <tr>
+                      <td class="ff-td-pack-name">
+                        <div class="ff-pack-title">Poly mailer</div>
+                        <div class="ff-pack-sub">Đã bao gồm cho mọi đơn đóng túi — không tính thêm phí.</div>
+                      </td>
+                      <td class="ff-td-pack-price highlight-orange ff-text-bold">MIỄN PHÍ</td>
+                    </tr>
+                    <tr>
+                      <td class="ff-td-pack-name">
+                        <div class="ff-pack-title">Bubble mailer</div>
+                        <div class="ff-pack-sub">Lớp đệm bảo vệ phù hợp cho hàng nhỏ, dễ móp méo.</div>
+                      </td>
+                      <td class="ff-td-pack-price ff-price-text">$0.50/túi</td>
+                    </tr>
+                    <tr>
+                      <td class="ff-td-pack-name">
+                        <div class="ff-pack-title">Thùng carton</div>
+                        <div class="ff-pack-sub">6 × 4 × 4 in — $1.00 · 10 × 6 × 4 in — $1.50 · 9 × 7 × 3 in — $1.70. Kích thước khác báo giá theo yêu cầu.</div>
+                      </td>
+                      <td class="ff-td-pack-price ff-price-text">$1.00 - $1.70</td>
+                    </tr>
+                    <tr>
+                      <td class="ff-td-pack-name">
+                        <div class="ff-pack-title">Bao bì riêng của bạn</div>
+                        <div class="ff-pack-sub">Gửi bao bì thương hiệu của bạn — SpeeGo nhận, lưu và sử dụng, không tính thêm phí.</div>
+                      </td>
+                      <td class="ff-td-pack-price ff-text-bold">KHÔNG PHÍ XỬ LÝ</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Accordion Item 02 -->
+        <div class="ff-pricing-group" id="group-warehouse-handling">
+          <div class="ff-pricing-header" onclick="togglePricingGroup(this)">
+            <div class="ff-pricing-header-left">
+              <span class="ff-pricing-badge">02</span>
+              <div>
+                <div class="ff-pricing-group-title">BẢNG XỬ LÝ KHO</div>
+                <div class="ff-pricing-group-sub">Dịch vụ kho &amp; hàng hoàn</div>
+              </div>
+            </div>
+            <div class="ff-pricing-toggle-icon">+</div>
+          </div>
+          <div class="ff-pricing-body">
+            <div class="ff-table-block">
+              <div class="ff-table-wrap">
+                <table class="ff-rate-table">
+                  <tbody>
+                    <tr>
+                      <td class="ff-td-col1">Nhập kho tiêu chuẩn</td>
+                      <td class="ff-td-col2">5 kiện đầu dưới 21kg</td>
+                      <td class="ff-td-col3 highlight-orange ff-text-bold">MIỄN PHÍ</td>
+                    </tr>
+                    <tr>
+                      <td class="ff-td-col1">Lưu kho 60 ngày đầu</td>
+                      <td class="ff-td-col2">Tính từ ngày hàng nhập kho</td>
+                      <td class="ff-td-col3 highlight-orange ff-text-bold">MIỄN PHÍ</td>
+                    </tr>
+                    <tr>
+                      <td class="ff-td-col1">Lưu kho sau 60 ngày</td>
+                      <td class="ff-td-col2">Pallet tiêu chuẩn / tháng</td>
+                      <td class="ff-td-col3 ff-price-text">$25.00 /pallet</td>
+                    </tr>
+                    <tr>
+                      <td class="ff-td-col1">Tiếp nhận hàng return</td>
+                      <td class="ff-td-col2">Kiểm tra ngoại quan, nhập lại kho</td>
+                      <td class="ff-td-col3 highlight-orange ff-text-bold">MIỄN PHÍ</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Accordion Item 03 -->
+        <div class="ff-pricing-group" id="usps-zone">
+          <div class="ff-pricing-header" onclick="togglePricingGroup(this)">
+            <div class="ff-pricing-header-left">
+              <span class="ff-pricing-badge">03</span>
+              <div>
+                <div class="ff-pricing-group-title">USPS GROUND ADVANTAGE</div>
+                <div class="ff-pricing-group-sub">Bảng giá vận chuyển theo Zone</div>
+              </div>
+            </div>
+            <div class="ff-pricing-toggle-icon">+</div>
+          </div>
+          <div class="ff-pricing-body">
+            <div class="ff-table-block">
+              <div class="ff-table-wrap">
+                <table class="ff-rate-table">
+                  <thead>
+                    <tr style="background: #F8FAFC; font-weight: 700;">
+                      <th style="padding: 12px 18px; text-align: left;">Trọng lượng</th>
+                      <th style="padding: 12px 18px; text-align: center;">Zone 1-2</th>
+                      <th style="padding: 12px 18px; text-align: center;">Zone 3-4</th>
+                      <th style="padding: 12px 18px; text-align: center;">Zone 5-6</th>
+                      <th style="padding: 12px 18px; text-align: center;">Zone 7-8</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td style="padding: 12px 18px; font-weight: 600;">Dưới 4 oz (~113g)</td>
+                      <td style="padding: 12px 18px; text-align: center;">$4.15</td>
+                      <td style="padding: 12px 18px; text-align: center;">$4.45</td>
+                      <td style="padding: 12px 18px; text-align: center;">$4.85</td>
+                      <td style="padding: 12px 18px; text-align: center;">$5.25</td>
+                    </tr>
+                    <tr>
+                      <td style="padding: 12px 18px; font-weight: 600;">4 - 8 oz (~226g)</td>
+                      <td style="padding: 12px 18px; text-align: center;">$4.65</td>
+                      <td style="padding: 12px 18px; text-align: center;">$4.95</td>
+                      <td style="padding: 12px 18px; text-align: center;">$5.35</td>
+                      <td style="padding: 12px 18px; text-align: center;">$5.75</td>
+                    </tr>
+                    <tr>
+                      <td style="padding: 12px 18px; font-weight: 600;">8 - 15.99 oz (~453g)</td>
+                      <td style="padding: 12px 18px; text-align: center;">$5.55</td>
+                      <td style="padding: 12px 18px; text-align: center;">$5.95</td>
+                      <td style="padding: 12px 18px; text-align: center;">$6.55</td>
+                      <td style="padding: 12px 18px; text-align: center;">$7.15</td>
+                    </tr>
+                    <tr>
+                      <td style="padding: 12px 18px; font-weight: 600;">1 - 2 lbs</td>
+                      <td style="padding: 12px 18px; text-align: center;">$6.85</td>
+                      <td style="padding: 12px 18px; text-align: center;">$7.45</td>
+                      <td style="padding: 12px 18px; text-align: center;">$8.65</td>
+                      <td style="padding: 12px 18px; text-align: center;">$9.85</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <p class="ff-table-note">
+                Biểu phí tham khảo kết nối cổng USPS trực tiếp từ kho Houston. Cước phí thực tế được tính tự động khi xuất nhãn trên hệ thống OMS.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. ESTIMATE COST CALCULATOR WIDGET -->
+  <section class="ff-calc-section" id="uoc-tinh-chi-phi">
+    <div class="container">
+      <div class="ff-section-header">
+        <span class="ff-tag-eyebrow">ƯỚC TÍNH CHI PHÍ FULFILLMENT</span>
+        <h2 class="ff-section-title">Pick &amp; pack + bao bì + USPS Ground Advantage</h2>
+      </div>
+
+      <div class="ff-calc-card">
+        <div class="ff-calc-form">
+          <div class="ff-form-row-2">
+            <div class="ff-form-group">
+              <label class="ff-label">Cân nặng (lbs)</label>
+              <input type="number" id="calcWeight" class="ff-input" value="1" step="0.1" min="0.1" oninput="calculateFulfillmentCost()">
+            </div>
+            <div class="ff-form-group">
+              <label class="ff-label">Zone</label>
+              <select id="calcZone" class="ff-select" onchange="calculateFulfillmentCost()">
+                <option value="1" selected>Zone 1</option>
+                <option value="2">Zone 2</option>
+                <option value="3">Zone 3</option>
+                <option value="4">Zone 4</option>
+                <option value="5">Zone 5</option>
+                <option value="6">Zone 6</option>
+                <option value="7">Zone 7</option>
+                <option value="8">Zone 8</option>
+                <option value="9">Zone 9</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="ff-form-row-2">
+            <div class="ff-form-group">
+              <label class="ff-label">Dài (inch)</label>
+              <input type="number" id="calcLength" class="ff-input" value="10" min="1" oninput="calculateFulfillmentCost()">
+            </div>
+            <div class="ff-form-group">
+              <label class="ff-label">Rộng (inch)</label>
+              <input type="number" id="calcWidth" class="ff-input" value="6" min="1" oninput="calculateFulfillmentCost()">
+            </div>
+          </div>
+
+          <div class="ff-form-row-2">
+            <div class="ff-form-group">
+              <label class="ff-label">Cao (inch)</label>
+              <input type="number" id="calcHeight" class="ff-input" value="4" min="1" oninput="calculateFulfillmentCost()">
+            </div>
+            <div class="ff-form-group">
+              <label class="ff-label">Bao bì</label>
+              <select id="calcPkg" class="ff-select" onchange="calculateFulfillmentCost()">
+                <option value="poly" selected>Poly mailer — miễn phí</option>
+                <option value="bubble">Bubble mailer (+$0.50)</option>
+                <option value="carton_s">Thùng carton 6x4x4 in (+$1.00)</option>
+                <option value="carton_m">Thùng carton 10x6x4 in (+$1.50)</option>
+                <option value="carton_l">Thùng carton 9x7x3 in (+$1.70)</option>
+                <option value="custom">Bao bì riêng của bạn (miễn phí)</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="ff-calc-summary">
+          <div class="ff-summary-row">
+            <span class="ff-summary-label">Cân nặng tính cước</span>
+            <span class="ff-summary-val" id="calcResultWeight">1.73 lbs</span>
+          </div>
+          <div class="ff-summary-row">
+            <span class="ff-summary-label">Gói All-in-one</span>
+            <span class="ff-summary-val" id="calcResultAio">$7.00</span>
+          </div>
+          <div class="ff-summary-row">
+            <span class="ff-summary-label">Bao bì</span>
+            <span class="ff-summary-val" id="calcResultPkg">Đã bao gồm</span>
+          </div>
+          <div class="ff-summary-row">
+            <span class="ff-summary-label">USPS Ground Advantage</span>
+            <span class="ff-summary-val" id="calcResultShip">Đã bao gồm</span>
+          </div>
+          <div class="ff-summary-divider"></div>
+          <div class="ff-summary-total-row">
+            <span class="ff-total-label">Tổng ước tính</span>
+            <span class="ff-total-val" id="calcResultTotal">$7.00</span>
+          </div>
+        </div>
+      </div>
+
+      <p class="ff-calc-footnote">
+        Đơn dưới 800 g áp dụng gói All-in-one. Ước tính chỉ để tham khảo, chi phí cuối cùng được xác nhận theo đơn thực tế.
+      </p>
+    </div>
+  </section>
+
+  <!-- 5. INSIDE HOUSTON WAREHOUSE -->
+  <section class="ff-warehouse-section">
+    <div class="container">
+      <div class="ff-warehouse-header">
+        <div>
+          <span class="ff-tag-eyebrow">HÌNH ẢNH KHO BÃI</span>
+          <h2 class="ff-section-title">Bên trong kho Houston.</h2>
+        </div>
+        <div class="ff-gallery-nav">
+          <button class="ff-gallery-arrow" onclick="slideGallery(-1)" aria-label="Ảnh trước">←</button>
+          <button class="ff-gallery-arrow" onclick="slideGallery(1)" aria-label="Ảnh sau">→</button>
+        </div>
+      </div>
+
+      <div class="ff-warehouse-slider-frame" id="warehouseGallery">
+        <!-- Slide 0 -->
+        <div class="ff-warehouse-slide active" data-slide="0">
+          <img src="assets/port_sunset_hero.jpg" alt="Khu kệ lưu trữ kho Houston" class="ff-warehouse-img" onerror="this.onerror=null; this.src='assets/warehouse_racks_hero.jpg';">
+          <div class="ff-slide-caption-card">
+            <div class="ff-caption-tag">Khu kệ lưu trữ</div>
+            <div class="ff-caption-text">Khu vực lưu kho theo vị trí kệ, mỗi SKU gắn với một vị trí cố định trên OMS.</div>
+          </div>
+        </div>
+
+        <!-- Slide 1 -->
+        <div class="ff-warehouse-slide" data-slide="1">
+          <img src="assets/warehouse_hero.jpg" alt="Bàn đóng gói &amp; Kiểm soát camera" class="ff-warehouse-img" onerror="this.onerror=null; this.src='assets/warehouse_racks_hero.jpg';">
+          <div class="ff-slide-caption-card">
+            <div class="ff-caption-tag">Bàn đóng gói &amp; Kiểm soát camera</div>
+            <div class="ff-caption-text">Mỗi kiện hàng được đóng gói dưới camera độ phân giải cao ghi hình đồng bộ tracking.</div>
+          </div>
+        </div>
+
+        <!-- Slide 2 -->
+        <div class="ff-warehouse-slide" data-slide="2">
+          <img src="assets/warehouse_racks_hero.jpg" alt="Khu tiếp nhận &amp; Dock xuất hàng" class="ff-warehouse-img" onerror="this.onerror=null; this.src='assets/port_sunset_hero.jpg';">
+          <div class="ff-slide-caption-card">
+            <div class="ff-caption-tag">Khu tiếp nhận &amp; Dock xuất hàng</div>
+            <div class="ff-caption-text">Khu vực xuất nhập hàng liên tục kết nối trực tiếp các đơn vị vận chuyển USPS, UPS, FedEx.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="ff-slider-dots">
+        <span class="ff-dot active" onclick="setSlide(0)"></span>
+        <span class="ff-dot" onclick="setSlide(1)"></span>
+        <span class="ff-dot" onclick="setSlide(2)"></span>
+      </div>
+
+      <p class="ff-warehouse-footnote">
+        Ảnh minh họa tạm thời, sẽ thay bằng ảnh chụp thực tế tại kho Houston.
+      </p>
+    </div>
+  </section>
+
+  <!-- 6. SERVICE POLICY SECTION -->
+  <section class="ff-policy-section" id="chinh-sach-fulfillment">
+    <div class="container">
+      <div class="ff-section-header">
+        <span class="ff-tag-eyebrow">CHÍNH SÁCH DỊCH VỤ</span>
+        <h2 class="ff-section-title">Chính sách Fulfillment</h2>
+        <p class="ff-section-sub">
+          Các trường hợp dưới đây được xem xét dựa trên thông tin đơn hàng, chứng từ hợp lệ và kết quả đối soát giữa khách hàng, kho SpeeGo và đơn vị vận chuyển.
+        </p>
+      </div>
+
+      <div class="ff-policy-list">
+        <!-- Item 01 -->
+        <div class="ff-policy-item" onclick="togglePolicyItem(this)">
+          <div class="ff-policy-header">
+            <span class="ff-policy-num">01</span>
+            <span class="ff-policy-title">Hàng hóa trong kho bị thất lạc</span>
+            <span class="ff-policy-icon">+</span>
+          </div>
+          <div class="ff-policy-content">
+            <p>Trường hợp đối soát kho xác nhận hàng hóa bị thất lạc trong quá trình lưu kho, SpeeGo đền bù theo giá trị khai báo hoặc giá trị mua hàng thực tế của khách hàng căn cứ theo hóa đơn hợp lệ.</p>
+          </div>
+        </div>
+
+        <!-- Item 02 -->
+        <div class="ff-policy-item" onclick="togglePolicyItem(this)">
+          <div class="ff-policy-header">
+            <span class="ff-policy-num">02</span>
+            <span class="ff-policy-title">Kho đóng gói sai</span>
+            <span class="ff-policy-icon">+</span>
+          </div>
+          <div class="ff-policy-content">
+            <p>Nếu kho gửi sai SKU hoặc thiếu số lượng do lỗi pick &amp; pack (đối soát qua video đóng gói), SpeeGo chịu toàn bộ phí ship gửi bù hoặc thu hồi sản phẩm về kho.</p>
+          </div>
+        </div>
+
+        <!-- Item 03 -->
+        <div class="ff-policy-item" onclick="togglePolicyItem(this)">
+          <div class="ff-policy-header">
+            <span class="ff-policy-num">03</span>
+            <span class="ff-policy-title">Sai thông tin label hoặc địa chỉ giao hàng</span>
+            <span class="ff-policy-icon">+</span>
+          </div>
+          <div class="ff-policy-content">
+            <p>Trường hợp in sai label do hệ thống SpeeGo, đơn hàng được xử lý in lại và chuyển tiếp miễn phí. Khách hàng cập nhật sai địa chỉ sẽ hỗ trợ liên hệ hãng vận chuyển điều hướng theo chính sách hãng.</p>
+          </div>
+        </div>
+
+        <!-- Item 04 -->
+        <div class="ff-policy-item" onclick="togglePolicyItem(this)">
+          <div class="ff-policy-header">
+            <span class="ff-policy-num">04</span>
+            <span class="ff-policy-title">Hàng hư hỏng khi đóng gói hoặc vận chuyển nội địa</span>
+            <span class="ff-policy-icon">+</span>
+          </div>
+          <div class="ff-policy-content">
+            <p>SpeeGo hỗ trợ mở claim khiếu nại bảo hiểm với đơn vị vận chuyển (USPS/UPS/FedEx) và phối hợp bồi hoàn nhanh chóng nhất cho chủ hàng.</p>
+          </div>
+        </div>
+
+        <!-- Item 05 -->
+        <div class="ff-policy-item" onclick="togglePolicyItem(this)">
+          <div class="ff-policy-header">
+            <span class="ff-policy-num">05</span>
+            <span class="ff-policy-title">Đơn báo "Delivered" nhưng người nhận chưa nhận hàng</span>
+            <span class="ff-policy-icon">+</span>
+          </div>
+          <div class="ff-policy-content">
+            <p>Hỗ trợ kiểm tra tọa độ GPS giao hàng của bưu tá và gửi yêu cầu xác minh vị trí giao hàng chi tiết từ hãng bưu chính trong vòng 24-48 giờ làm việc.</p>
+          </div>
+        </div>
+
+        <!-- Item 06 -->
+        <div class="ff-policy-item" onclick="togglePolicyItem(this)">
+          <div class="ff-policy-header">
+            <span class="ff-policy-num">06</span>
+            <span class="ff-policy-title">Đơn hàng giao chậm so với SLA</span>
+            <span class="ff-policy-icon">+</span>
+          </div>
+          <div class="ff-policy-content">
+            <p>Đối với đơn hàng SpeeGo không xuất kho đúng thời gian cam kết (SLA), khách hàng sẽ được hoàn 100% phí xử lý fulfillment của đơn hàng đó.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2 Claim Info Cards -->
+      <div class="ff-claim-info-grid">
+        <div class="ff-claim-card">
+          <div class="ff-claim-card-tag">TIẾP NHẬN KHIẾU NẠI</div>
+          <div class="ff-claim-card-title">Thời hạn gửi yêu cầu</div>
+          <div class="ff-claim-card-desc">
+            <strong>Mất đơn hàng:</strong> Trong vòng 2 tháng kể từ ngày đơn được đơn vị vận chuyển chấp nhận.<br>
+            <strong>Hư hỏng, sai giá cước hoặc vấn đề với hàng hóa:</strong> Trong vòng 3 ngày kể từ ngày đơn được giao cho người nhận.
+          </div>
+        </div>
+
+        <div class="ff-claim-card">
+          <div class="ff-claim-card-tag">THỜI GIAN XỬ LÝ</div>
+          <div class="ff-claim-big-time">10 ngày làm việc</div>
+          <div class="ff-claim-card-desc">
+            Tính từ thời điểm tiếp nhận đầy đủ hồ sơ khiếu nại trong quá trình vận chuyển.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. FREQUENTLY ASKED QUESTIONS SECTION -->
+  <section class="ff-faq-section">
+    <div class="container">
+      <div class="ff-section-header">
+        <span class="ff-tag-eyebrow">THÔNG TIN HỮU ÍCH</span>
+        <h2 class="ff-section-title">Câu hỏi thường gặp</h2>
+      </div>
+
+      <div class="ff-faq-list">
+        <div class="ff-faq-item faq-item">
+          <button class="ff-faq-btn faq-question-btn">
+            <span>Làm thế nào để tạo yêu cầu nhập kho?</span>
+            <span class="ff-faq-plus">+</span>
+          </button>
+          <div class="ff-faq-answer">
+            <p>Doanh nghiệp tạo Inbound Request (IR) trực tiếp trên giao diện phần mềm OMS SpeeGo, chọn danh sách SKU, số lượng dự kiến và dán mã kiện hàng được cung cấp lên thùng trước khi xuất sang kho Houston.</p>
+          </div>
+        </div>
+
+        <div class="ff-faq-item faq-item">
+          <button class="ff-faq-btn faq-question-btn">
+            <span>SpeeGo hỗ trợ barcode như thế nào?</span>
+            <span class="ff-faq-plus">+</span>
+          </button>
+          <div class="ff-faq-answer">
+            <p>SpeeGo hỗ trợ cấp mã barcode chuẩn hóa quốc tế hoặc sử dụng mã vạch có sẵn của khách hàng. Chúng tôi cung cấp file PDF template in nhãn và có dịch vụ dán barcode tại kho nếu nhà máy chưa dán kịp.</p>
+          </div>
+        </div>
+
+        <div class="ff-faq-item faq-item">
+          <button class="ff-faq-btn faq-question-btn">
+            <span>Tôi theo dõi tồn kho và đơn hàng ở đâu?</span>
+            <span class="ff-faq-plus">+</span>
+          </button>
+          <div class="ff-faq-answer">
+            <p>Tất cả dữ liệu tồn kho, trạng thái đơn hàng và lịch sử vận chuyển đều được đồng bộ thời gian thực 24/7 trên hệ thống quản lý OMS trực tuyến của SpeeGo.</p>
+          </div>
+        </div>
+
+        <div class="ff-faq-item faq-item">
+          <button class="ff-faq-btn faq-question-btn">
+            <span>Có thể kiểm tra lại quá trình đóng gói không?</span>
+            <span class="ff-faq-plus">+</span>
+          </button>
+          <div class="ff-faq-answer">
+            <p>Có. SpeeGo trang bị camera độ nét cao tại từng bàn đóng gói, lưu trữ video theo từng tracking ID đơn hàng để đối soát minh bạch khi có phát sinh.</p>
+          </div>
+        </div>
+
+        <div class="ff-faq-item faq-item">
+          <button class="ff-faq-btn faq-question-btn">
+            <span>Những đơn vị nào vận chuyển đơn hàng?</span>
+            <span class="ff-faq-plus">+</span>
+          </button>
+          <div class="ff-faq-answer">
+            <p>SpeeGo hợp tác trực tiếp với các đơn vị vận chuyển hàng đầu nước Mỹ gồm USPS (ưu tiên dịch vụ Ground Advantage chi phí tối ưu), UPS và FedEx.</p>
+          </div>
+        </div>
+
+        <div class="ff-faq-item faq-item">
+          <button class="ff-faq-btn faq-question-btn">
+            <span>Hàng hoàn về được xử lý thế nào?</span>
+            <span class="ff-faq-plus">+</span>
+          </button>
+          <div class="ff-faq-answer">
+            <p>Khi hàng bị hoàn (return), kho Houston tiếp nhận, kiểm tra tình trạng sản phẩm, chụp ảnh báo cáo lên OMS và nhập lại kho để bán tiếp theo chỉ định của quý khách mà không tính thêm phí tiếp nhận.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. TESTIMONIAL SECTION -->
+  <section class="ff-testimonial-section">
+    <div class="container">
+      <div class="ff-section-header">
+        <span class="ff-tag-eyebrow">KHÁCH HÀNG SPEEGO</span>
+        <h2 class="ff-section-title">Đồng hành cùng doanh nghiệp</h2>
+      </div>
+
+      <div class="ff-testimonial-card">
+        <div class="ff-quote-mark" aria-hidden="true">
+          <span></span><span></span>
+        </div>
+        <div class="ff-quote-body">
+          <blockquote class="ff-quote-text">
+            “Việc theo dõi OMS theo thời gian thực và chính sách không có chi phí ẩn khiến SpeeGo trở thành đối tác chuỗi cung ứng đáng tin cậy của chúng tôi.”
+          </blockquote>
+          <div class="ff-author-info">
+            <div class="ff-author-name">Sarah Mitchell</div>
+            <div class="ff-author-title">Operations Director, EcoLiving Home · Australia</div>
+            <div class="ff-author-ref">
+              <a href="#/sourcing" class="ff-ref-link">Theo chia sẻ trên website SpeeGo · bản dịch tiếng Việt ↗</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 9. BAND CONSULTATION FORM -->
+  <div data-component="cta-form" data-variant="band" id="contact-form"></div>
+
+  <script>
+    if (typeof window.initWarehouseGallery === 'function') {
+      window.initWarehouseGallery();
+    }
+  </script>
+
+</div>

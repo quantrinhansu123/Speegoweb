@@ -1,0 +1,98 @@
+<!-- ==========================================================================
+     PARTIAL: HEADER & NAVIGATION (SpeeGo Logistics)
+     ========================================================================== -->
+
+<!-- 1. TOP BAR MỎNG NỀN NAVY -->
+<div class="top-bar">
+  <div class="container top-bar-inner">
+    <div class="top-bar-left">
+      GLOBAL LOGISTICS PARTNER
+    </div>
+    <div class="top-bar-right">
+      <a href="tel:02462918618" class="top-bar-link">
+        (024) 6291 8618
+      </a>
+      <span class="top-bar-sep">/</span>
+      <a href="mailto:info@speegologistic.com" class="top-bar-link">
+        info@speegologistic.com
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- 2. HEADER CHÍNH NỀN TRẮNG -->
+<header class="site-header">
+  <div class="container header-inner">
+    <!-- Logo SpeeGo -->
+    <a href="/" class="logo-link" id="headerLogoLink" title="Trang chủ SpeeGo Logistics">
+      <img src="assets/speego-logo-dark.png" alt="SpeeGo Logistics" class="logo-img">
+    </a>
+
+    <!-- Menu Điều hướng Ngang -->
+    <nav class="nav-menu" id="headerNavMenu">
+      <div class="nav-item"><a href="/" class="nav-link" id="navLinkHome">Trang chủ</a></div>
+      <div class="nav-item" data-nav="knowledge">
+        <a href="#/knowledge" class="nav-link" id="navLinkKnowledge">Knowledge</a>
+      </div>
+      <div class="nav-item" data-nav="import-export">
+        <a href="#/xuat-nhap-khau" class="nav-link" id="navLinkImportExport">Xuất nhập khẩu</a>
+      </div>
+      <div class="nav-item" data-nav="shipping-routes">
+        <a href="#/tuyen-van-chuyen" class="nav-link" id="navLinkRoutes">Tuyến vận chuyển</a>
+      </div>
+      <div class="nav-item" data-nav="fulfillment">
+        <a href="#/fulfillment" class="nav-link" id="navLinkFulfillment">Fulfillment</a>
+      </div>
+      <div class="nav-item" data-nav="sourcing">
+        <a href="#/sourcing" class="nav-link" id="navLinkSourcing">Sourcing</a>
+      </div>
+    </nav>
+
+    <!-- Nút Hành động & Đổi Ngôn ngữ -->
+    <div class="header-actions">
+      <a href="#contact-form" class="btn-navy" id="headerCtaBtn">
+        Nhận tư vấn ↗
+      </a>
+      <div class="lang-switcher" id="langToggle" title="Chuyển đổi ngôn ngữ">
+        <span id="currentLangText">English</span>
+        <span class="lang-arrow">▾</span>
+      </div>
+      <button class="mobile-menu-btn" id="mobileMenuOpen" aria-label="Mở Menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- Mobile Navigation Drawer -->
+<div class="drawer-backdrop" id="drawerBackdrop"></div>
+<div class="mobile-drawer" id="mobileDrawer">
+  <div class="drawer-header">
+    <img src="assets/speego-logo-dark.png" alt="SpeeGo Logistics" style="height: 32px; width: auto;">
+    <button class="drawer-close" id="mobileMenuClose">&times;</button>
+  </div>
+  <div class="drawer-links" id="mobileDrawerLinks">
+    <a href="/" class="drawer-link" id="mNavLinkHome">Trang chủ</a>
+    <a href="#/knowledge" class="drawer-link" data-nav="knowledge" id="mNavLinkKnowledge">Knowledge</a>
+    <a href="#/xuat-nhap-khau" class="drawer-link" data-nav="import-export" id="mNavLinkImportExport">Xuất nhập khẩu</a>
+    <a href="#/tuyen-van-chuyen" class="drawer-link" data-nav="shipping-routes" id="mNavLinkRoutes">Tuyến vận chuyển</a>
+    <a href="#/fulfillment" class="drawer-link" data-nav="fulfillment" id="mNavLinkFulfillment">Fulfillment</a>
+    <a href="#/sourcing" class="drawer-link" data-nav="sourcing" id="mNavLinkSourcing">Sourcing</a>
+    <div style="margin-top: 16px;">
+      <a href="#contact-form" class="btn-orange" id="mHeaderCtaBtn" style="width: 100%; text-align: center;">Nhận tư vấn ↗</a>
+    </div>
+  </div>
+</div>
+
+<!-- 3. DYNAMIC BREADCRUMB CONTAINER -->
+<nav class="breadcrumb-section" id="breadcrumbSection" aria-label="Đường dẫn trang">
+  <div class="container">
+    <div class="breadcrumb-list" id="breadcrumbList">
+      <!-- Breadcrumb items rendered dynamically via JS -->
+    </div>
+  </div>
+</nav>

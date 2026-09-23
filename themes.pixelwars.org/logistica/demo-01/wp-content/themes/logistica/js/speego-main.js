@@ -21,6 +21,11 @@
       nav_news: 'News',
       nav_contact: 'Contact',
       nav_quote_btn: 'Get Quote',
+      nav_sourcing: 'Sourcing',
+      nav_routes: 'Shipping Routes',
+      nav_fulfillment: 'Fulfillment',
+      nav_import_export: 'Import & Export',
+      nav_knowledge: 'Knowledge',
 
       // Hero (Spec from Image 2)
       hero_subheading: 'GLOBAL LOGISTICS PARTNER',
@@ -507,6 +512,11 @@
       nav_news: 'Tin tức',
       nav_contact: 'Liên hệ',
       nav_quote_btn: 'Nhận báo giá',
+      nav_sourcing: 'Sourcing',
+      nav_routes: 'Tuyến vận chuyển',
+      nav_fulfillment: 'Fulfillment',
+      nav_import_export: 'Xuất nhập khẩu',
+      nav_knowledge: 'Knowledge',
 
       // Hero (Spec from Image 2)
       hero_subheading: 'ĐỐI TÁC LOGISTICS TOÀN CẦU',
@@ -991,6 +1001,11 @@
       nav_news: 'Noticias',
       nav_contact: 'Contacto',
       nav_quote_btn: 'Cotizar',
+      nav_sourcing: 'Abastecimiento',
+      nav_routes: 'Rutas de envío',
+      nav_fulfillment: 'Fulfillment',
+      nav_import_export: 'Importación y exportación',
+      nav_knowledge: 'Knowledge',
 
       // Hero (Spec from Image 2)
       hero_subheading: 'SOCIO LOGÍSTICO GLOBAL',
@@ -2753,6 +2768,15 @@ stat_delivery: 'Entrega a Tiempo',
   }
 
   function submitConsultationLead(formData, form, submitBtn) {
+    if (!GOOGLE_SHEET_WEBHOOK_URL) {
+      const message = currentLang === 'vi'
+        ? 'Biểu mẫu chưa kết nối. Vui lòng email info@speegologistic.com hoặc gọi (+84) 906 828 898.'
+        : currentLang === 'es'
+          ? 'El formulario aún no está conectado. Escriba a info@speegologistic.com o llame al (+84) 906 828 898.'
+          : 'This form is not connected yet. Please email info@speegologistic.com or call (+84) 906 828 898.';
+      showToast(message, 'error');
+      return;
+    }
     const originalBtnText = submitBtn ? submitBtn.innerHTML : '';
 
     if (submitBtn) {
@@ -2866,7 +2890,9 @@ stat_delivery: 'Entrega a Tiempo',
     }
 
     toast.className = `speego-toast ${type} show`;
-    toast.innerHTML = `<i class="fas fa-check-circle" style="color: #10b981; font-size: 18px;"></i> <span>${message}</span>`;
+    const icon = type === 'error' ? 'fa-exclamation-circle' : 'fa-check-circle';
+    const color = type === 'error' ? '#f97316' : '#10b981';
+    toast.innerHTML = `<i class="fas ${icon}" style="color: ${color}; font-size: 18px;"></i> <span>${message}</span>`;
 
     setTimeout(() => {
       toast.classList.remove('show');

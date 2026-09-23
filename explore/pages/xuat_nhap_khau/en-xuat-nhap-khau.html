@@ -1,0 +1,144 @@
+<script>
+  // Auto redirect to full application shell if opened directly from File Explorer
+  if (typeof window !== 'undefined' && !document.getElementById('app-main')) {
+    window.location.replace('../../index.html#/en/import-export');
+  }
+</script>
+
+<div class="page-container page-import-export"
+     data-page="en-import-export"
+     data-nav="import-export"
+     data-breadcrumb='[{"label":"Home","href":"#/en/knowledge"},{"label":"Import & Export","href":"#/en/import-export"}]'>
+
+  <!-- 1. HERO SECTION (2 COLUMNS: TEXT LEFT, CARD IMAGE RIGHT) -->
+  <section class="page-hero-2col">
+    <div class="container">
+      <div class="hero-2col-grid">
+        <!-- Left Column: Title, Intro & Actions -->
+        <div class="hero-2col-left">
+          <div class="hero-tag-bar">IMPORT &amp; EXPORT</div>
+          <h1 class="hero-h1-clean">
+            Import &amp; export<br>
+            <span class="text-orange">made easier.</span>
+          </h1>
+          <p class="hero-desc-clean">
+            Customs documentation, declaration, and compliance support at every step of your import and export journey. A single point of contact from preparation to clearance.
+          </p>
+          <div class="hero-actions-row">
+            <a href="#contact-form" class="btn-orange">
+              Discuss Your Needs ↗
+            </a>
+            <a href="tel:+84906828898" class="hero-phone-label">
+              (+84) 906 828 898
+            </a>
+          </div>
+        </div>
+
+        <!-- Right Column: Card Device Image with SpeeGo Caption -->
+        <div class="hero-2col-right">
+          <div class="hero-img-card-wrap">
+            <img src="assets/card_hand_device.jpg" alt="Clear documentation. Seamless process." onerror="this.onerror=null; this.src='assets/warehouse_hero.jpg';">
+            <div class="hero-img-caption-bar">
+              <div class="hero-caption-brand">SPEEGO LOGISTICS</div>
+              <div class="hero-caption-sub">Clear documentation. Seamless process.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. CORE SERVICES (5 CARDS GRID: 3 COLUMNS) -->
+  <section class="ie-services-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">CORE SERVICES</span>
+        <h2 class="section-title">Solutions for every import &amp; export requirement.</h2>
+      </div>
+
+      <div class="ie-cards-3col-grid">
+        <!-- Card 01 -->
+        <div class="ie-service-card">
+          <div class="ie-badge-box">01</div>
+          <h3 class="ie-card-h3">Customs Consultation</h3>
+          <p class="ie-card-body">Consultation on HS codes, product policies, duties, and customs documentation.</p>
+        </div>
+
+        <!-- Card 02 -->
+        <div class="ie-service-card">
+          <div class="ie-badge-box">02</div>
+          <h3 class="ie-card-h3">Import &amp; Export Clearance</h3>
+          <p class="ie-card-body">End-to-end customs clearance execution for import and export shipments.</p>
+        </div>
+
+        <!-- Card 03 -->
+        <div class="ie-service-card">
+          <div class="ie-badge-box">03</div>
+          <h3 class="ie-card-h3">Specialized Inspection</h3>
+          <p class="ie-card-body">Support for specialized inspection and quality verification based on cargo classification.</p>
+        </div>
+
+        <!-- Card 04 -->
+        <div class="ie-service-card">
+          <div class="ie-badge-box">04</div>
+          <h3 class="ie-card-h3">Certificate of Origin (C/O)</h3>
+          <p class="ie-card-body">Assistance with documentation and procedures for Certificates of Origin (C/O).</p>
+        </div>
+
+        <!-- Card 05 -->
+        <div class="ie-service-card">
+          <div class="ie-badge-box">05</div>
+          <h3 class="ie-card-h3">Additional Compliance Support</h3>
+          <p class="ie-card-body">Cargo insurance, fumigation, quarantine, plant and animal inspection.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. WHY CHOOSE SPEEGO (4 CARDS LIGHT GRAY BACKGROUND) -->
+  <section class="ie-why-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">WHY CHOOSE SPEEGO</span>
+        <h2 class="section-title">
+          Understand the regulations.<br>
+          Proactively control risks.
+        </h2>
+      </div>
+
+      <div class="ie-why-grid">
+        <!-- Card 01 -->
+        <div class="ie-service-card">
+          <div class="ie-badge-box">01</div>
+          <h3 class="ie-card-h3">Deep Customs Expertise</h3>
+          <p class="ie-card-body">SpeeGo assists businesses in preparing documentation, customs declaration, and all required procedures for every shipment.</p>
+        </div>
+
+        <!-- Card 02 -->
+        <div class="ie-service-card">
+          <div class="ie-badge-box">02</div>
+          <h3 class="ie-card-h3">Diverse Commodity Support</h3>
+          <p class="ie-card-body">Advisory on import regulations, product policies, and specialized inspection requirements tailored to each cargo type.</p>
+        </div>
+
+        <!-- Card 03 -->
+        <div class="ie-service-card">
+          <div class="ie-badge-box">03</div>
+          <h3 class="ie-card-h3">Customs Risk Management</h3>
+          <p class="ie-card-body">Assistance in verifying paperwork, HS codes, and documentation to mitigate delays, requests for additional files, or unforeseen costs.</p>
+        </div>
+
+        <!-- Card 04 -->
+        <div class="ie-service-card">
+          <div class="ie-badge-box">04</div>
+          <h3 class="ie-card-h3">End-to-End Assistance</h3>
+          <p class="ie-card-body">From pre-import advisory, document preparation, and customs filing to final clearance, SpeeGo accompanies your business across the entire journey.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. CONSULTATION FORM BAND -->
+  <div data-component="cta-form" data-variant="band" id="contact-form"></div>
+
+</div>

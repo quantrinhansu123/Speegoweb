@@ -1,0 +1,782 @@
+<script>
+  // Auto redirect to full application shell if opened directly from File Explorer
+  if (typeof window !== 'undefined' && !document.getElementById('app-main')) {
+    window.location.replace('../../index.html#/en/fulfillment');
+  }
+</script>
+
+<div class="page-container page-fulfillment" 
+     data-page="fulfillment" 
+     data-nav="fulfillment" 
+     data-breadcrumb='[{"label":"Home","href":"#/en/knowledge"},{"label":"Fulfillment","href":"#/en/fulfillment"}]'>
+
+  <!-- 1. HERO SECTION: DARK LOGISTICS HUB OVERLAY (ANHDAU.JPG) -->
+  <section class="ff-hero-dark-section">
+    <div class="container">
+      <!-- Centered Header -->
+      <div class="ff-hero-dark-header">
+        <h1 class="ff-hero-brand-title">
+          <span class="ff-brand-orange">SpeeGo</span> <span class="ff-brand-white">Fulfillment</span>
+        </h1>
+        <h2 class="ff-hero-tagline">Optimized warehouse operations for your business</h2>
+        <p class="ff-hero-summary">
+          SpeeGo Fulfillment operates a 10,000 ft² warehouse in Houston, Texas, providing receiving, warehousing, pick &amp; pack, and order shipping across the United States.
+        </p>
+      </div>
+
+      <!-- 4 Stats Bar Columns with Vertical Orange Bars -->
+      <div class="ff-stats-bars-row">
+        <div class="ff-stat-bar-item">
+          <div class="ff-stat-bar-title">10,000 ft² Floor Area</div>
+          <div class="ff-stat-bar-desc">Operations hub in Houston, Texas.</div>
+        </div>
+        <div class="ff-stat-bar-item">
+          <div class="ff-stat-bar-title">Free Inbound Handling</div>
+          <div class="ff-stat-bar-desc">For the first 5 packages under 21kg per inbound.</div>
+        </div>
+        <div class="ff-stat-bar-item">
+          <div class="ff-stat-bar-title">Free Storage (60 days)</div>
+          <div class="ff-stat-bar-desc">Counted from the day goods arrive.</div>
+        </div>
+        <div class="ff-stat-bar-item">
+          <div class="ff-stat-bar-title">$7/order Flat Fee</div>
+          <div class="ff-stat-bar-desc">Per-order flat rate including shipping.</div>
+        </div>
+      </div>
+
+      <!-- Floating Dark Glassmorphic Hub Bar -->
+      <div class="ff-dark-hub-card">
+        <div class="ff-dark-hub-left">
+          <div class="ff-dark-hub-tag">OPERATIONS HUB</div>
+          <div class="ff-dark-hub-title">SpeeGo Warehouse · Houston, Texas</div>
+        </div>
+        <div class="ff-dark-hub-right">
+          <div class="ff-dark-hub-address">7303 Breen Dr, Suite D2, Houston, TX 77086</div>
+          <div class="ff-dark-hub-hotline">
+            <span class="ff-hotline-lbl">Hotline:</span>
+            <a href="tel:18005501496" class="ff-hotline-val">1-800-550-1496</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Ribbon Ticker: Vibrant SpeeGo Orange -->
+  <div class="ff-ticker-orange-wrap">
+    <div class="ff-ticker-orange-inner">
+      <span>SHIPPING &amp; DISPATCHING</span><span class="ff-ticker-symbol">✦</span>
+      <span>STOCK TRANSFERS</span><span class="ff-ticker-symbol">✦</span>
+      <span>GOODS-IN &amp; RECEIVING</span><span class="ff-ticker-symbol">✦</span>
+      <span>WAREHOUSING &amp; STORAGE</span><span class="ff-ticker-symbol">✦</span>
+      <span>PICK &amp; PACK</span><span class="ff-ticker-symbol">✦</span>
+      <span>SHIPPING &amp; DISPATCHING</span><span class="ff-ticker-symbol">✦</span>
+      <span>STOCK TRANSFERS</span><span class="ff-ticker-symbol">✦</span>
+      <span>GOODS-IN &amp; RECEIVING</span><span class="ff-ticker-symbol">✦</span>
+      <span>WAREHOUSING &amp; STORAGE</span><span class="ff-ticker-symbol">✦</span>
+      <span>PICK &amp; PACK</span><span class="ff-ticker-symbol">✦</span>
+      <span>SHIPPING &amp; DISPATCHING</span><span class="ff-ticker-symbol">✦</span>
+      <span>STOCK TRANSFERS</span><span class="ff-ticker-symbol">✦</span>
+      <span>GOODS-IN &amp; RECEIVING</span><span class="ff-ticker-symbol">✦</span>
+      <span>WAREHOUSING &amp; STORAGE</span><span class="ff-ticker-symbol">✦</span>
+      <span>PICK &amp; PACK</span><span class="ff-ticker-symbol">✦</span>
+      <span>SHIPPING &amp; DISPATCHING</span><span class="ff-ticker-symbol">✦</span>
+      <span>STOCK TRANSFERS</span><span class="ff-ticker-symbol">✦</span>
+      <span>GOODS-IN &amp; RECEIVING</span><span class="ff-ticker-symbol">✦</span>
+      <span>WAREHOUSING &amp; STORAGE</span><span class="ff-ticker-symbol">✦</span>
+      <span>PICK &amp; PACK</span><span class="ff-ticker-symbol">✦</span>
+    </div>
+  </div>
+
+  <!-- 4 Quick-link Cards -->
+  <section class="ff-quicklinks-section">
+    <div class="container">
+      <div class="ff-quicklinks-grid">
+        <a href="#bang-gia-fulfillment" class="ff-quicklink-card">
+          <div class="ff-quicklink-title">Fulfillment pricing</div>
+          <div class="ff-quicklink-sub">Warehouse service fees in the US</div>
+          <div class="ff-quicklink-btn">View ➔</div>
+        </a>
+        <a href="#usps-zone" class="ff-quicklink-card">
+          <div class="ff-quicklink-title">USPS Ground Advantage by zone</div>
+          <div class="ff-quicklink-sub">Reference rates for zones 1-9</div>
+          <div class="ff-quicklink-btn">View ➔</div>
+        </a>
+        <a href="#uoc-tinh-chi-phi" class="ff-quicklink-card">
+          <div class="ff-quicklink-title">Fulfillment cost estimate</div>
+          <div class="ff-quicklink-sub">Pick &amp; pack + packaging + USPS Ground Advantage</div>
+          <div class="ff-quicklink-btn">View ➔</div>
+        </a>
+        <a href="#chinh-sach-fulfillment" class="ff-quicklink-card">
+          <div class="ff-quicklink-title">Service policy</div>
+          <div class="ff-quicklink-sub">Storage, order handling, and shipping terms</div>
+          <div class="ff-quicklink-btn">View ➔</div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. 5-STEP PROCESS SECTION (DARK NAVY) -->
+  <section class="ff-process-section">
+    <div class="container">
+      <div class="ff-section-header">
+        <span class="ff-tag-eyebrow ff-tag-light">FULFILLMENT WORKFLOW</span>
+        <h2 class="ff-section-title ff-title-white">Five steps. One US-standard workflow.</h2>
+      </div>
+
+      <div class="ff-steps-grid">
+        <!-- Step 01 -->
+        <div class="ff-step-item">
+          <div class="ff-step-num">01</div>
+          <h3 class="ff-step-name">Barcode setup</h3>
+          <p class="ff-step-text">Create or assign a barcode for each product. Barcode PDF files provided on request.</p>
+        </div>
+        <!-- Step 02 -->
+        <div class="ff-step-item">
+          <div class="ff-step-num">02</div>
+          <h3 class="ff-step-name">Inbound request (IR)</h3>
+          <p class="ff-step-text">Create an inbound request in the OMS: pick SKUs and quantities. The OMS confirms and returns an IR code to print and attach to each package.</p>
+        </div>
+        <!-- Step 03 -->
+        <div class="ff-step-item">
+          <div class="ff-step-num">03</div>
+          <h3 class="ff-step-name">Receiving, inspection &amp; put-away</h3>
+          <p class="ff-step-text">Every shipment is inspected before put-away. Inventory updates automatically in the OMS in real time.</p>
+        </div>
+        <!-- Step 04 -->
+        <div class="ff-step-item">
+          <div class="ff-step-num">04</div>
+          <h3 class="ff-step-name">Fulfillment &amp; shipping</h3>
+          <p class="ff-step-text">Orders are picked, packed with video records, and shipped via USPS, UPS, or FedEx.</p>
+        </div>
+        <!-- Step 05 -->
+        <div class="ff-step-item">
+          <div class="ff-step-num">05</div>
+          <h3 class="ff-step-name">Returns handling</h3>
+          <p class="ff-step-text">SpeeGo handles the full returns intake and processing workflow, free of charge on every order.</p>
+        </div>
+      </div>
+
+      <div class="ff-process-cta">
+        <a href="#contact-form" class="btn-orange">
+          Discuss the workflow ↗
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. RATE CARD SECTION (SPEEGO FULFILLMENT RATE CARD) -->
+  <section class="ff-pricing-section" id="bang-gia-fulfillment">
+    <div class="container">
+      <div class="ff-section-header">
+        <span class="ff-tag-eyebrow">US SERVICE PRICING</span>
+        <h2 class="ff-section-title">SpeeGo Fulfillment rate card</h2>
+        <p class="ff-section-sub">
+          Open each group for the detailed rates. Special requests and any extras are confirmed before processing.
+        </p>
+      </div>
+
+      <!-- Accordion Pricing List -->
+      <div class="ff-pricing-accordion">
+        <!-- Accordion Item 01 (Open) -->
+        <div class="ff-pricing-group active" id="group-fulfill-pricing">
+          <div class="ff-pricing-header" onclick="togglePricingGroup(this)">
+            <div class="ff-pricing-header-left">
+              <span class="ff-pricing-badge">01</span>
+              <div>
+                <div class="ff-pricing-group-title">FULFILLMENT PRICING</div>
+                <div class="ff-pricing-group-sub">Fulfillment &amp; order handling</div>
+              </div>
+            </div>
+            <div class="ff-pricing-toggle-icon">✕</div>
+          </div>
+
+          <div class="ff-pricing-body">
+            <!-- 2 Highlight All-in-one Cards -->
+            <div class="ff-allinone-grid">
+              <div class="ff-allinone-card">
+                <div class="ff-aio-info">
+                  <div class="ff-aio-tag">ALL-IN-ONE · UNDER 800 G/ORDER</div>
+                  <div class="ff-aio-desc">Order handling + packaging + shipping</div>
+                </div>
+                <div class="ff-aio-price">$7/order</div>
+              </div>
+
+              <div class="ff-allinone-card">
+                <div class="ff-aio-info">
+                  <div class="ff-aio-tag">ALL-IN-ONE · 800 G TO UNDER 2.5 KG/ORDER</div>
+                  <div class="ff-aio-desc">Order handling + packaging + shipping</div>
+                </div>
+                <div class="ff-aio-price">$10/order</div>
+              </div>
+            </div>
+
+            <!-- Table: Outbound Handling -->
+            <div class="ff-table-block">
+              <div class="ff-table-title">OUTBOUND HANDLING</div>
+              <div class="ff-table-wrap">
+                <table class="ff-rate-table">
+                  <tbody>
+                    <tr>
+                      <td class="ff-td-col1">0-5 lb</td>
+                      <td class="ff-td-col2">0–2.5 kg</td>
+                      <td class="ff-td-col3 ff-text-bold">All-in-one · by agreement</td>
+                    </tr>
+                    <tr>
+                      <td class="ff-td-col1">5-15 lb</td>
+                      <td class="ff-td-col2">&gt;2.5–6.75 kg</td>
+                      <td class="ff-td-col3 ff-price-text">$2.50 <span class="ff-unit">/order</span></td>
+                    </tr>
+                    <tr>
+                      <td class="ff-td-col1">15-30 lb</td>
+                      <td class="ff-td-col2">6.75–13.5 kg</td>
+                      <td class="ff-td-col3 ff-price-text">$3.25 <span class="ff-unit">/order</span></td>
+                    </tr>
+                    <tr>
+                      <td class="ff-td-col1">30-50 lb</td>
+                      <td class="ff-td-col2">13.5–22.5 kg</td>
+                      <td class="ff-td-col3 ff-price-text">$4.50 <span class="ff-unit">/order</span></td>
+                    </tr>
+                    <tr>
+                      <td class="ff-td-col1">50-70 lb</td>
+                      <td class="ff-td-col2">22.5–31.5 kg</td>
+                      <td class="ff-td-col3 ff-price-text">$6.35 <span class="ff-unit">/order</span></td>
+                    </tr>
+                    <tr>
+                      <td class="ff-td-col1">70-100 lb</td>
+                      <td class="ff-td-col2">31.5–45 kg</td>
+                      <td class="ff-td-col3 ff-price-text">$7.75 <span class="ff-unit">/order</span></td>
+                    </tr>
+                    <tr>
+                      <td class="ff-td-col1">100-150 lb</td>
+                      <td class="ff-td-col2">45–68 kg</td>
+                      <td class="ff-td-col3 ff-price-text">$10 <span class="ff-unit">/order</span></td>
+                    </tr>
+                    <tr>
+                      <td class="ff-td-col1">Over 150 lb</td>
+                      <td class="ff-td-col2">Over 68 kg</td>
+                      <td class="ff-td-col3 ff-text-bold">AT COST</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <p class="ff-table-note">
+                Charged on actual or volumetric weight, whichever is greater. Volumetric weight = L × W × H (cm) / 5,000.
+              </p>
+            </div>
+
+            <!-- Table: Packaging Materials -->
+            <div class="ff-table-block">
+              <div class="ff-table-title">PACKAGING MATERIALS</div>
+              <div class="ff-table-wrap">
+                <table class="ff-rate-table">
+                  <tbody>
+                    <tr>
+                      <td class="ff-td-pack-name">
+                        <div class="ff-pack-title">Poly mailer</div>
+                        <div class="ff-pack-sub">Included on every bagged order — no extra charge.</div>
+                      </td>
+                      <td class="ff-td-pack-price highlight-orange ff-text-bold">FREE</td>
+                    </tr>
+                    <tr>
+                      <td class="ff-td-pack-name">
+                        <div class="ff-pack-title">Bubble mailer</div>
+                        <div class="ff-pack-sub">Cushioned protection for small, easily dented items.</div>
+                      </td>
+                      <td class="ff-td-pack-price ff-price-text">$0.50/mailer</td>
+                    </tr>
+                    <tr>
+                      <td class="ff-td-pack-name">
+                        <div class="ff-pack-title">Carton box</div>
+                        <div class="ff-pack-sub">6 × 4 × 4 in — $1.00 · 10 × 6 × 4 in — $1.50 · 9 × 7 × 3 in — $1.70. Other sizes quoted on request.</div>
+                      </td>
+                      <td class="ff-td-pack-price ff-price-text">$1.00 - $1.70</td>
+                    </tr>
+                    <tr>
+                      <td class="ff-td-pack-name">
+                        <div class="ff-pack-title">Your own packaging</div>
+                        <div class="ff-pack-sub">Send your branded packaging — SpeeGo receives, stores, and uses it at no extra cost.</div>
+                      </td>
+                      <td class="ff-td-pack-price ff-text-bold">NO HANDLING FEE</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Accordion Item 02 -->
+        <div class="ff-pricing-group" id="group-warehouse-handling">
+          <div class="ff-pricing-header" onclick="togglePricingGroup(this)">
+            <div class="ff-pricing-header-left">
+              <span class="ff-pricing-badge">02</span>
+              <div>
+                <div class="ff-pricing-group-title">WAREHOUSE HANDLING</div>
+                <div class="ff-pricing-group-sub">Warehouse services &amp; returns</div>
+              </div>
+            </div>
+            <div class="ff-pricing-toggle-icon">+</div>
+          </div>
+          <div class="ff-pricing-body">
+            <div class="ff-table-block">
+              <div class="ff-table-wrap">
+                <table class="ff-rate-table">
+                  <tbody>
+                    <tr>
+                      <td class="ff-td-col1">Standard inbound receiving</td>
+                      <td class="ff-td-col2">First 5 packages under 21kg</td>
+                      <td class="ff-td-col3 highlight-orange ff-text-bold">FREE</td>
+                    </tr>
+                    <tr>
+                      <td class="ff-td-col1">First 60 days storage</td>
+                      <td class="ff-td-col2">Counted from receiving date</td>
+                      <td class="ff-td-col3 highlight-orange ff-text-bold">FREE</td>
+                    </tr>
+                    <tr>
+                      <td class="ff-td-col1">Storage after 60 days</td>
+                      <td class="ff-td-col2">Standard pallet / month</td>
+                      <td class="ff-td-col3 ff-price-text">$25.00 /pallet</td>
+                    </tr>
+                    <tr>
+                      <td class="ff-td-col1">Returns intake &amp; restock</td>
+                      <td class="ff-td-col2">Visual inspection, restocked to inventory</td>
+                      <td class="ff-td-col3 highlight-orange ff-text-bold">FREE</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Accordion Item 03 -->
+        <div class="ff-pricing-group" id="usps-zone">
+          <div class="ff-pricing-header" onclick="togglePricingGroup(this)">
+            <div class="ff-pricing-header-left">
+              <span class="ff-pricing-badge">03</span>
+              <div>
+                <div class="ff-pricing-group-title">USPS GROUND ADVANTAGE</div>
+                <div class="ff-pricing-group-sub">Shipping rates by zone</div>
+              </div>
+            </div>
+            <div class="ff-pricing-toggle-icon">+</div>
+          </div>
+          <div class="ff-pricing-body">
+            <div class="ff-table-block">
+              <div class="ff-table-wrap">
+                <table class="ff-rate-table">
+                  <thead>
+                    <tr style="background: #F8FAFC; font-weight: 700;">
+                      <th style="padding: 12px 18px; text-align: left;">Weight</th>
+                      <th style="padding: 12px 18px; text-align: center;">Zone 1-2</th>
+                      <th style="padding: 12px 18px; text-align: center;">Zone 3-4</th>
+                      <th style="padding: 12px 18px; text-align: center;">Zone 5-6</th>
+                      <th style="padding: 12px 18px; text-align: center;">Zone 7-8</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td style="padding: 12px 18px; font-weight: 600;">Under 4 oz (~113g)</td>
+                      <td style="padding: 12px 18px; text-align: center;">$4.15</td>
+                      <td style="padding: 12px 18px; text-align: center;">$4.45</td>
+                      <td style="padding: 12px 18px; text-align: center;">$4.85</td>
+                      <td style="padding: 12px 18px; text-align: center;">$5.25</td>
+                    </tr>
+                    <tr>
+                      <td style="padding: 12px 18px; font-weight: 600;">4 - 8 oz (~226g)</td>
+                      <td style="padding: 12px 18px; text-align: center;">$4.65</td>
+                      <td style="padding: 12px 18px; text-align: center;">$4.95</td>
+                      <td style="padding: 12px 18px; text-align: center;">$5.35</td>
+                      <td style="padding: 12px 18px; text-align: center;">$5.75</td>
+                    </tr>
+                    <tr>
+                      <td style="padding: 12px 18px; font-weight: 600;">8 - 15.99 oz (~453g)</td>
+                      <td style="padding: 12px 18px; text-align: center;">$5.55</td>
+                      <td style="padding: 12px 18px; text-align: center;">$5.95</td>
+                      <td style="padding: 12px 18px; text-align: center;">$6.55</td>
+                      <td style="padding: 12px 18px; text-align: center;">$7.15</td>
+                    </tr>
+                    <tr>
+                      <td style="padding: 12px 18px; font-weight: 600;">1 - 2 lbs</td>
+                      <td style="padding: 12px 18px; text-align: center;">$6.85</td>
+                      <td style="padding: 12px 18px; text-align: center;">$7.45</td>
+                      <td style="padding: 12px 18px; text-align: center;">$8.65</td>
+                      <td style="padding: 12px 18px; text-align: center;">$9.85</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <p class="ff-table-note">
+                Reference commercial USPS gateway rates directly from the Houston warehouse. Actual rates are automatically applied via the OMS when printing shipping labels.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. ESTIMATE COST CALCULATOR WIDGET -->
+  <section class="ff-calc-section" id="uoc-tinh-chi-phi">
+    <div class="container">
+      <div class="ff-section-header">
+        <span class="ff-tag-eyebrow">FULFILLMENT COST ESTIMATE</span>
+        <h2 class="ff-section-title">Pick &amp; pack + packaging + USPS Ground Advantage</h2>
+      </div>
+
+      <div class="ff-calc-card">
+        <div class="ff-calc-form">
+          <div class="ff-form-row-2">
+            <div class="ff-form-group">
+              <label class="ff-label">Weight (lbs)</label>
+              <input type="number" id="calcWeight" class="ff-input" value="1" step="0.1" min="0.1" oninput="calculateFulfillmentCost()">
+            </div>
+            <div class="ff-form-group">
+              <label class="ff-label">Zone</label>
+              <select id="calcZone" class="ff-select" onchange="calculateFulfillmentCost()">
+                <option value="1" selected>Zone 1</option>
+                <option value="2">Zone 2</option>
+                <option value="3">Zone 3</option>
+                <option value="4">Zone 4</option>
+                <option value="5">Zone 5</option>
+                <option value="6">Zone 6</option>
+                <option value="7">Zone 7</option>
+                <option value="8">Zone 8</option>
+                <option value="9">Zone 9</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="ff-form-row-2">
+            <div class="ff-form-group">
+              <label class="ff-label">Length (in)</label>
+              <input type="number" id="calcLength" class="ff-input" value="10" min="1" oninput="calculateFulfillmentCost()">
+            </div>
+            <div class="ff-form-group">
+              <label class="ff-label">Width (in)</label>
+              <input type="number" id="calcWidth" class="ff-input" value="6" min="1" oninput="calculateFulfillmentCost()">
+            </div>
+          </div>
+
+          <div class="ff-form-row-2">
+            <div class="ff-form-group">
+              <label class="ff-label">Height (in)</label>
+              <input type="number" id="calcHeight" class="ff-input" value="4" min="1" oninput="calculateFulfillmentCost()">
+            </div>
+            <div class="ff-form-group">
+              <label class="ff-label">Packaging</label>
+              <select id="calcPkg" class="ff-select" onchange="calculateFulfillmentCost()">
+                <option value="poly" selected>Poly mailer — free</option>
+                <option value="bubble">Bubble mailer (+$0.50)</option>
+                <option value="carton_s">Carton box 6x4x4 in (+$1.00)</option>
+                <option value="carton_m">Carton box 10x6x4 in (+$1.50)</option>
+                <option value="carton_l">Carton box 9x7x3 in (+$1.70)</option>
+                <option value="custom">Your own packaging (no handling fee)</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="ff-calc-summary">
+          <div class="ff-summary-row">
+            <span class="ff-summary-label">Billable weight</span>
+            <span class="ff-summary-val" id="calcResultWeight">1.73 lbs</span>
+          </div>
+          <div class="ff-summary-row">
+            <span class="ff-summary-label">All-in-one package</span>
+            <span class="ff-summary-val" id="calcResultAio">$7.00</span>
+          </div>
+          <div class="ff-summary-row">
+            <span class="ff-summary-label">Packaging</span>
+            <span class="ff-summary-val" id="calcResultPkg">Included</span>
+          </div>
+          <div class="ff-summary-row">
+            <span class="ff-summary-label">USPS Ground Advantage</span>
+            <span class="ff-summary-val" id="calcResultShip">Included</span>
+          </div>
+          <div class="ff-summary-divider"></div>
+          <div class="ff-summary-total-row">
+            <span class="ff-total-label">Estimated total</span>
+            <span class="ff-total-val" id="calcResultTotal">$7.00</span>
+          </div>
+        </div>
+      </div>
+
+      <p class="ff-calc-footnote">
+        Orders under 800 g use the all-in-one package. Estimates are indicative; final cost is confirmed per actual order.
+      </p>
+    </div>
+  </section>
+
+  <!-- 5. INSIDE HOUSTON WAREHOUSE -->
+  <section class="ff-warehouse-section">
+    <div class="container">
+      <div class="ff-warehouse-header">
+        <div>
+          <span class="ff-tag-eyebrow">INSIDE THE WAREHOUSE</span>
+          <h2 class="ff-section-title">Inside the Houston warehouse.</h2>
+        </div>
+        <div class="ff-gallery-nav">
+          <button class="ff-gallery-arrow" onclick="slideGallery(-1)" aria-label="Previous slide">←</button>
+          <button class="ff-gallery-arrow" onclick="slideGallery(1)" aria-label="Next slide">→</button>
+        </div>
+      </div>
+
+      <div class="ff-warehouse-slider-frame" id="warehouseGallery">
+        <!-- Slide 0 -->
+        <div class="ff-warehouse-slide active" data-slide="0">
+          <img src="assets/port_sunset_hero.jpg" alt="Racking and storage zone Houston" class="ff-warehouse-img" onerror="this.onerror=null; this.src='assets/warehouse_racks_hero.jpg';">
+          <div class="ff-slide-caption-card">
+            <div class="ff-caption-tag">Racking &amp; storage zone</div>
+            <div class="ff-caption-text">Storage racking where each SKU is mapped to a fixed location in the OMS.</div>
+          </div>
+        </div>
+
+        <!-- Slide 1 -->
+        <div class="ff-warehouse-slide" data-slide="1">
+          <img src="assets/warehouse_hero.jpg" alt="Packing stations and video log" class="ff-warehouse-img" onerror="this.onerror=null; this.src='assets/warehouse_racks_hero.jpg';">
+          <div class="ff-slide-caption-card">
+            <div class="ff-caption-tag">Packing stations &amp; HD video log</div>
+            <div class="ff-caption-text">Every package is packed under high-definition cameras synced to individual tracking numbers.</div>
+          </div>
+        </div>
+
+        <!-- Slide 2 -->
+        <div class="ff-warehouse-slide" data-slide="2">
+          <img src="assets/warehouse_racks_hero.jpg" alt="Inbound and outbound docks" class="ff-warehouse-img" onerror="this.onerror=null; this.src='assets/port_sunset_hero.jpg';">
+          <div class="ff-slide-caption-card">
+            <div class="ff-caption-tag">Inbound &amp; outbound docks</div>
+            <div class="ff-caption-text">Continuous loading dock bays directly integrated with USPS, UPS, and FedEx carrier pickups.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="ff-slider-dots">
+        <span class="ff-dot active" onclick="setSlide(0)"></span>
+        <span class="ff-dot" onclick="setSlide(1)"></span>
+        <span class="ff-dot" onclick="setSlide(2)"></span>
+      </div>
+
+      <p class="ff-warehouse-footnote">
+        Placeholder imagery — to be replaced with photographs of the Houston warehouse.
+      </p>
+    </div>
+  </section>
+
+  <!-- 6. SERVICE POLICY SECTION -->
+  <section class="ff-policy-section" id="chinh-sach-fulfillment">
+    <div class="container">
+      <div class="ff-section-header">
+        <span class="ff-tag-eyebrow">SERVICE POLICY</span>
+        <h2 class="ff-section-title">Fulfillment policy</h2>
+        <p class="ff-section-sub">
+          Each case below is assessed from the order record, valid documentation, and the reconciliation between the customer, the SpeeGo warehouse, and the carrier.
+        </p>
+      </div>
+
+      <div class="ff-policy-list">
+        <!-- Item 01 -->
+        <div class="ff-policy-item" onclick="togglePolicyItem(this)">
+          <div class="ff-policy-header">
+            <span class="ff-policy-num">01</span>
+            <span class="ff-policy-title">Goods lost in the warehouse</span>
+            <span class="ff-policy-icon">+</span>
+          </div>
+          <div class="ff-policy-content">
+            <p>If warehouse inventory audits confirm goods are lost in storage, SpeeGo compensates based on the declared invoice value or actual purchase value verified with official documents.</p>
+          </div>
+        </div>
+
+        <!-- Item 02 -->
+        <div class="ff-policy-item" onclick="togglePolicyItem(this)">
+          <div class="ff-policy-header">
+            <span class="ff-policy-num">02</span>
+            <span class="ff-policy-title">Incorrect packing by the warehouse</span>
+            <span class="ff-policy-icon">+</span>
+          </div>
+          <div class="ff-policy-content">
+            <p>If the warehouse ships the wrong SKU or incorrect quantity due to picking/packing error (verified by video logs), SpeeGo covers all reshipment and return shipping costs.</p>
+          </div>
+        </div>
+
+        <!-- Item 03 -->
+        <div class="ff-policy-item" onclick="togglePolicyItem(this)">
+          <div class="ff-policy-header">
+            <span class="ff-policy-num">03</span>
+            <span class="ff-policy-title">Wrong label or delivery address</span>
+            <span class="ff-policy-icon">+</span>
+          </div>
+          <div class="ff-policy-content">
+            <p>In the event of label misprinting caused by SpeeGo systems, reprints and forwarding are free. If customer provided invalid address, we assist in rerouting per carrier policies.</p>
+          </div>
+        </div>
+
+        <!-- Item 04 -->
+        <div class="ff-policy-item" onclick="togglePolicyItem(this)">
+          <div class="ff-policy-header">
+            <span class="ff-policy-num">04</span>
+            <span class="ff-policy-title">Damage during packing or domestic transit</span>
+            <span class="ff-policy-icon">+</span>
+          </div>
+          <div class="ff-policy-content">
+            <p>SpeeGo supports filing insurance claims with carriers (USPS/UPS/FedEx) and coordinates prompt reimbursement for business owners.</p>
+          </div>
+        </div>
+
+        <!-- Item 05 -->
+        <div class="ff-policy-item" onclick="togglePolicyItem(this)">
+          <div class="ff-policy-header">
+            <span class="ff-policy-num">05</span>
+            <span class="ff-policy-title">Marked "Delivered" but not received</span>
+            <span class="ff-policy-icon">+</span>
+          </div>
+          <div class="ff-policy-content">
+            <p>Assistance with carrier carrier GPS delivery coordinates check and dispatching official location verification within 24–48 business hours.</p>
+          </div>
+        </div>
+
+        <!-- Item 06 -->
+        <div class="ff-policy-item" onclick="togglePolicyItem(this)">
+          <div class="ff-policy-header">
+            <span class="ff-policy-num">06</span>
+            <span class="ff-policy-title">Orders shipped later than the SLA</span>
+            <span class="ff-policy-icon">+</span>
+          </div>
+          <div class="ff-policy-content">
+            <p>For orders not dispatched by SpeeGo within the agreed dispatch SLA, 100% of the fulfillment handling fee for that order will be refunded.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2 Claim Info Cards -->
+      <div class="ff-claim-info-grid">
+        <div class="ff-claim-card">
+          <div class="ff-claim-card-tag">FILING A CLAIM</div>
+          <div class="ff-claim-card-title">Submission deadlines</div>
+          <div class="ff-claim-card-desc">
+            <strong>Lost orders:</strong> Within 2 months of the carrier accepting the order.<br>
+            <strong>Damage, incorrect rates, or issues with the goods:</strong> Within 3 days of delivery to the recipient.
+          </div>
+        </div>
+
+        <div class="ff-claim-card">
+          <div class="ff-claim-card-tag">PROCESSING TIME</div>
+          <div class="ff-claim-big-time">10 business days</div>
+          <div class="ff-claim-card-desc">
+            Counted from receipt of the complete claim file for a shipment.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. FREQUENTLY ASKED QUESTIONS SECTION -->
+  <section class="ff-faq-section">
+    <div class="container">
+      <div class="ff-section-header">
+        <span class="ff-tag-eyebrow">HELPFUL INFORMATION</span>
+        <h2 class="ff-section-title">Frequently asked questions</h2>
+      </div>
+
+      <div class="ff-faq-list">
+        <div class="ff-faq-item faq-item">
+          <button class="ff-faq-btn faq-question-btn">
+            <span>How do I create an inbound request?</span>
+            <span class="ff-faq-plus">+</span>
+          </button>
+          <div class="ff-faq-answer">
+            <p>Create an Inbound Request (IR) directly via SpeeGo OMS, select SKU quantities, and attach the system-generated IR shipping label to each carton before sending them to Houston.</p>
+          </div>
+        </div>
+
+        <div class="ff-faq-item faq-item">
+          <button class="ff-faq-btn faq-question-btn">
+            <span>How does SpeeGo support barcode setup?</span>
+            <span class="ff-faq-plus">+</span>
+          </button>
+          <div class="ff-faq-answer">
+            <p>SpeeGo supports generating standard international barcodes or adopting your existing product barcodes. We provide printable PDF templates and onsite labeling services at the warehouse.</p>
+          </div>
+        </div>
+
+        <div class="ff-faq-item faq-item">
+          <button class="ff-faq-btn faq-question-btn">
+            <span>Where can I track inventory and orders?</span>
+            <span class="ff-faq-plus">+</span>
+          </button>
+          <div class="ff-faq-answer">
+            <p>All stock levels, fulfillment milestones, and carrier tracking statuses are synced live 24/7 inside the SpeeGo online OMS portal.</p>
+          </div>
+        </div>
+
+        <div class="ff-faq-item faq-item">
+          <button class="ff-faq-btn faq-question-btn">
+            <span>Can I review how an order was packed?</span>
+            <span class="ff-faq-plus">+</span>
+          </button>
+          <div class="ff-faq-answer">
+            <p>Yes. SpeeGo packing stations are equipped with high-definition video recording indexed by tracking ID for complete transparency during claims reconciliation.</p>
+          </div>
+        </div>
+
+        <div class="ff-faq-item faq-item">
+          <button class="ff-faq-btn faq-question-btn">
+            <span>Which carriers handle orders?</span>
+            <span class="ff-faq-plus">+</span>
+          </button>
+          <div class="ff-faq-answer">
+            <p>SpeeGo partners directly with leading US tier-1 carriers: USPS (optimized via Ground Advantage), UPS, and FedEx.</p>
+          </div>
+        </div>
+
+        <div class="ff-faq-item faq-item">
+          <button class="ff-faq-btn faq-question-btn">
+            <span>How are returns handled?</span>
+            <span class="ff-faq-plus">+</span>
+          </button>
+          <div class="ff-faq-answer">
+            <p>When returns arrive at the Houston hub, our team inspects them, uploads photo reports to your OMS, and restocks eligible units into active inventory at no receiving charge.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. TESTIMONIAL SECTION -->
+  <section class="ff-testimonial-section">
+    <div class="container">
+      <div class="ff-section-header">
+        <span class="ff-tag-eyebrow">SPEEGO CUSTOMERS</span>
+        <h2 class="ff-section-title">Working alongside your business</h2>
+      </div>
+
+      <div class="ff-testimonial-card">
+        <div class="ff-quote-mark" aria-hidden="true">
+          <span></span><span></span>
+        </div>
+        <div class="ff-quote-body">
+          <blockquote class="ff-quote-text">
+            “The real-time OMS tracking and zero-hidden-costs policy make SpeeGo our most reliable supply chain partner.”
+          </blockquote>
+          <div class="ff-author-info">
+            <div class="ff-author-name">Sarah Mitchell</div>
+            <div class="ff-author-title">Operations Director, EcoLiving Home · Australia</div>
+            <div class="ff-author-ref">
+              <a href="#/en/sourcing-qc" class="ff-ref-link">As published on the SpeeGo website ↗</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 9. BAND CONSULTATION FORM -->
+  <div data-component="cta-form" data-variant="band" id="contact-form"></div>
+
+  <script>
+    if (typeof window.initWarehouseGallery === 'function') {
+      window.initWarehouseGallery();
+    }
+  </script>
+
+</div>

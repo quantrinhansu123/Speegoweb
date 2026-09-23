@@ -1,0 +1,94 @@
+<!-- ==========================================================================
+     PARTIAL: CTA FORM COMPONENT (SpeeGo Logistics)
+     Supports two variants: 'band' (full-width 2-column) and 'sidebar' (1-column card)
+     ========================================================================== -->
+
+<!-- TEMPLATE: VARIANT "band" (Dải ngang Full-width 2 cột nền Navy) -->
+<template id="tmpl-cta-band">
+  <section class="cta-form-band-section" id="contact-form">
+    <div class="container cta-form-band-grid">
+      <!-- Cột trái: Heading & Mô tả & Hotline -->
+      <div class="cta-band-left">
+        <span class="section-tag">{{TAG}}</span>
+        <h2 class="section-title section-title-white">
+          {{HEADING}}
+        </h2>
+        <p class="cta-band-desc">
+          {{SUBTEXT}}
+        </p>
+        <a href="tel:+84906828898" class="cta-hotline-link">
+          {{PHONE}}
+        </a>
+      </div>
+
+      <!-- Cột phải: Form trắng 2 cột Họ tên + Email -->
+      <div class="cta-band-right">
+        <div class="consult-card-white">
+          <form class="consult-form" onsubmit="handleConsultSubmit(event)">
+            <div class="form-row-2col">
+              <div class="form-group">
+                <label class="form-label" for="band_fullName">{{LABEL_NAME}}</label>
+                <input type="text" id="band_fullName" class="form-control" placeholder="{{PLACEHOLDER_NAME}}" required>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="band_email">{{LABEL_EMAIL}}</label>
+                <input type="email" id="band_email" class="form-control" placeholder="{{PLACEHOLDER_EMAIL}}" required>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="band_phone">{{LABEL_PHONE}}</label>
+              <input type="tel" id="band_phone" class="form-control" placeholder="{{PLACEHOLDER_PHONE}}" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="band_message">{{LABEL_MESSAGE}}</label>
+              <textarea id="band_message" class="form-control" placeholder="{{PLACEHOLDER_MESSAGE}}"></textarea>
+            </div>
+            <button type="submit" class="btn-orange btn-submit">
+              {{BTN_SUBMIT}}
+            </button>
+            <p class="form-security-note">
+              {{SECURITY_NOTE}}
+            </p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+</template>
+
+<!-- TEMPLATE: VARIANT "sidebar" (Card hẹp 1 cột xếp chồng dọc nền Navy) -->
+<template id="tmpl-cta-sidebar">
+  <div class="consult-card-sidebar" id="contact-form">
+    <span class="section-tag">{{TAG}}</span>
+    <h3 class="sidebar-title">{{HEADING}}</h3>
+    <p class="sidebar-desc">{{SUBTEXT}}</p>
+    <div>
+      <a href="tel:+84906828898" class="sidebar-hotline">{{PHONE}}</a>
+    </div>
+
+    <form class="consult-form" onsubmit="handleConsultSubmit(event)">
+      <div class="form-group">
+        <label class="form-label" for="sidebar_fullName">{{LABEL_NAME}}</label>
+        <input type="text" id="sidebar_fullName" class="form-control" placeholder="{{PLACEHOLDER_NAME}}" required>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="sidebar_email">{{LABEL_EMAIL}}</label>
+        <input type="email" id="sidebar_email" class="form-control" placeholder="{{PLACEHOLDER_EMAIL}}" required>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="sidebar_phone">{{LABEL_PHONE}}</label>
+        <input type="tel" id="sidebar_phone" class="form-control" placeholder="{{PLACEHOLDER_PHONE}}" required>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="sidebar_message">{{LABEL_MESSAGE}}</label>
+        <textarea id="sidebar_message" class="form-control" placeholder="{{PLACEHOLDER_MESSAGE}}"></textarea>
+      </div>
+      <button type="submit" class="btn-orange btn-submit">
+        {{BTN_SUBMIT}}
+      </button>
+      <p class="form-security-note">
+        {{SECURITY_NOTE}}
+      </p>
+    </form>
+  </div>
+</template>
