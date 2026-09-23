@@ -2222,6 +2222,27 @@ stat_delivery: 'Entrega a Tiempo',
     if (typeof refreshSectionTitleReveal === 'function') {
       refreshSectionTitleReveal();
     }
+
+    // Sync explore SPA links with active language
+    const isEnglish = (lang === 'en');
+    const exploreLinkMap = {
+      '/explore/#/sourcing': isEnglish ? '/explore/#/en/sourcing' : '/explore/#/sourcing',
+      '/explore/#/en/sourcing': isEnglish ? '/explore/#/en/sourcing' : '/explore/#/sourcing',
+      '/explore/#/fulfillment': isEnglish ? '/explore/#/en/fulfillment' : '/explore/#/fulfillment',
+      '/explore/#/en/fulfillment': isEnglish ? '/explore/#/en/fulfillment' : '/explore/#/fulfillment',
+      '/explore/#/tuyen-van-chuyen': isEnglish ? '/explore/#/en/shipping-routes' : '/explore/#/tuyen-van-chuyen',
+      '/explore/#/en/shipping-routes': isEnglish ? '/explore/#/en/shipping-routes' : '/explore/#/tuyen-van-chuyen',
+      '/explore/#/xuat-nhap-khau': isEnglish ? '/explore/#/en/import-export' : '/explore/#/xuat-nhap-khau',
+      '/explore/#/en/import-export': isEnglish ? '/explore/#/en/import-export' : '/explore/#/xuat-nhap-khau',
+      '/explore/#/knowledge': isEnglish ? '/explore/#/en/knowledge' : '/explore/#/knowledge',
+      '/explore/#/en/knowledge': isEnglish ? '/explore/#/en/knowledge' : '/explore/#/knowledge'
+    };
+    document.querySelectorAll('a[href*="/explore/#"]').forEach(a => {
+      const href = a.getAttribute('href');
+      if (exploreLinkMap[href]) {
+        a.setAttribute('href', exploreLinkMap[href]);
+      }
+    });
   }
 
   // =========================================================================

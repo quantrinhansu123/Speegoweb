@@ -1,0 +1,569 @@
+<script>
+  // Tự động chuyển hướng sang khung ứng dụng đầy đủ nếu mở trực tiếp từ File Explorer
+  if (typeof window !== 'undefined' && !document.getElementById('app-main')) {
+    window.location.replace('../../index.html#/en/sourcing');
+  }
+</script>
+
+<div class="page-container page-sourcing"
+     data-page="sourcing"
+     data-nav="sourcing"
+     data-breadcrumb='[{"label":"Home","href":"#/en/sourcing"},{"label":"Sourcing & quality control","href":"#/en/sourcing"}]'>
+
+  <!-- 1. HERO SECTION -->
+  <section class="page-hero-2col">
+    <div class="container">
+      <div class="hero-2col-grid">
+        <!-- Cột trái: Tiêu đề, giới thiệu & nút hành động -->
+        <div class="hero-2col-left">
+          <div class="hero-tag-bar">SOURCING &amp; QUALITY CONTROL</div>
+          <h1 class="hero-h1-clean">
+            Comprehensive<br>
+            sourcing<br>
+            <span class="text-orange">and quality control.</span>
+          </h1>
+          <p class="hero-desc-clean">
+            SpeeGo helps businesses find suitable manufacturers, verify factory capabilities, negotiate partnership terms, and check product quality before factory release.
+          </p>
+          <div class="hero-actions-row">
+            <a href="#contact-form" class="btn-orange">
+              Talk to us ↗
+            </a>
+            <a href="tel:+84906828898" class="hero-phone-label">
+              (+84) 906 828 898
+            </a>
+          </div>
+        </div>
+
+        <!-- Cột phải: Ảnh kho bãi kệ pallet xanh-cam SpeeGo -->
+        <div class="hero-2col-right">
+          <div class="hero-img-card-wrap">
+            <img src="assets/warehouse_racks_hero.jpg" alt="From the factory to global markets" onerror="this.onerror=null; this.src='assets/warehouse_hero.jpg';">
+            <div class="hero-img-caption-bar">
+              <div class="hero-caption-brand">SPEEGO LOGISTICS</div>
+              <div class="hero-caption-sub">From the factory to global markets</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. QUICK NAV ANCHOR BAR (SUBNAV DIVIDED INTO 5 EQUAL PARTS) -->
+  <div class="sourcing-subnav" id="sourcingSubnav">
+    <div class="container">
+      <div class="sourcing-subnav-grid">
+        <a href="#industries" class="subnav-grid-item">Industries</a>
+        <a href="#manufacturing-models" class="subnav-grid-item">Manufacturing models</a>
+        <a href="#why-speego" class="subnav-grid-item">Why SpeeGo</a>
+        <a href="#quality-control" class="subnav-grid-item">Quality control</a>
+        <a href="#contact-form" class="subnav-grid-item subnav-grid-cta">Discuss sourcing needs ↗</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. INDUSTRIES (5 CARDS GRID) -->
+  <section class="industries-section" id="industries">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">INDUSTRIES</span>
+        <h2 class="section-title">
+          Know the product.<br>
+          Match the right factory.
+        </h2>
+      </div>
+
+      <div class="industries-cards-grid">
+        <!-- Card 1: Cosmetics -->
+        <div class="industry-card-item">
+          <div class="industry-icon-box" aria-hidden="true">
+            <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M9 3h6v3H9z"></path>
+              <path d="M10 6v3h4V6"></path>
+              <rect x="6" y="9" width="12" height="12" rx="3"></rect>
+              <circle cx="12" cy="15" r="2"></circle>
+            </svg>
+          </div>
+          <h3 class="industry-card-title">Cosmetics</h3>
+          <p class="industry-card-desc">End-to-end cosmetics solutions, from sourcing and production to shipping.</p>
+        </div>
+
+        <!-- Card 2: Nails -->
+        <div class="industry-card-item">
+          <div class="industry-icon-box" aria-hidden="true">
+            <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M10 2h4v5h-4z"></path>
+              <rect x="7" y="7" width="10" height="14" rx="3"></rect>
+              <line x1="12" y1="11" x2="12" y2="17"></line>
+            </svg>
+          </div>
+          <h3 class="industry-card-title">Nails</h3>
+          <p class="industry-card-desc">Wholesale sourcing, manufacturing, and procurement of quality nail materials, tools, and accessories.</p>
+        </div>
+
+        <!-- Card 3: Decor & furniture -->
+        <div class="industry-card-item">
+          <div class="industry-icon-box" aria-hidden="true">
+            <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M6 19v2M18 19v2"></path>
+              <path d="M4 11a3 3 0 0 1 3-3h10a3 3 0 0 1 3 3v5H4v-5z"></path>
+              <path d="M4 16h16"></path>
+            </svg>
+          </div>
+          <h3 class="industry-card-title">Decor &amp; furniture</h3>
+          <p class="industry-card-desc">Furniture and decor for shops, nail salons, spas, restaurants, homes, and workplaces.</p>
+        </div>
+
+        <!-- Card 4: Handicrafts -->
+        <div class="industry-card-item">
+          <div class="industry-icon-box" aria-hidden="true">
+            <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2a4 4 0 0 0-4 4c0 3 4 7 4 7s4-4 4-7a4 4 0 0 0-4-4z"></path>
+              <circle cx="12" cy="18" r="3"></circle>
+            </svg>
+          </div>
+          <h3 class="industry-card-title">Handicrafts</h3>
+          <p class="industry-card-desc">Handicrafts that reflect traditional cultural craftsmanship.</p>
+        </div>
+
+        <!-- Card 5: Technical equipment -->
+        <div class="industry-card-item">
+          <div class="industry-icon-box" aria-hidden="true">
+            <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="3"></circle>
+              <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path>
+            </svg>
+          </div>
+          <h3 class="industry-card-title">Technical equipment</h3>
+          <p class="industry-card-desc">Talk to SpeeGo about a solution that fits your business requirements.</p>
+        </div>
+      </div>
+
+      <div class="industry-action-btn-row">
+        <a href="#contact-form" class="btn-orange">
+          Discuss your product category ↗
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. MANUFACTURING MODELS (3 LARGE IMAGE CARDS) -->
+  <section class="models-section" id="manufacturing-models">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">MANUFACTURING MODELS</span>
+        <h2 class="section-title">
+          Three routes to<br>
+          getting a product made.
+        </h2>
+      </div>
+
+      <div class="models-3col-grid">
+        <!-- Model OEM -->
+        <div class="model-img-card">
+          <img src="assets/warehouse_racks_hero.jpg" alt="OEM Model" class="model-bg-img" onerror="this.onerror=null; this.src='assets/warehouse_hero.jpg';">
+          <div class="model-gradient-overlay"></div>
+          <div class="model-card-content">
+            <h3 class="model-title-h3">OEM</h3>
+            <div class="model-sub-badge">ORIGINAL EQUIPMENT MANUFACTURING</div>
+            <p class="model-body-text">The factory manufactures to the design, formula, and specifications you provide.</p>
+            <div class="model-pills-row">
+              <span class="model-pill-tag">Your design</span>
+              <span class="model-pill-tag">Full customisation</span>
+              <span class="model-pill-tag">Higher MOQ</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Model ODM -->
+        <div class="model-img-card">
+          <img src="assets/port_sunset_hero.jpg" alt="ODM Model" class="model-bg-img" onerror="this.onerror=null; this.src='assets/warehouse_hero.jpg';">
+          <div class="model-gradient-overlay"></div>
+          <div class="model-card-content">
+            <h3 class="model-title-h3">ODM</h3>
+            <div class="model-sub-badge">ORIGINAL DESIGN MANUFACTURING</div>
+            <p class="model-body-text">Start from the factory's existing designs and formulas, adjust them, then brand the result as your own.</p>
+            <div class="model-pills-row">
+              <span class="model-pill-tag">Ready designs</span>
+              <span class="model-pill-tag">Moderate customisation</span>
+              <span class="model-pill-tag">Faster to market</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Model Private Label -->
+        <div class="model-img-card">
+          <img src="assets/card_hand_device.jpg" alt="Private Label Model" class="model-bg-img" onerror="this.onerror=null; this.src='assets/warehouse_hero.jpg';">
+          <div class="model-gradient-overlay"></div>
+          <div class="model-card-content">
+            <h3 class="model-title-h3">Private Label</h3>
+            <div class="model-sub-badge">NHÃN RIÊNG THƯƠNG HIỆU · OWN-BRAND LABELLING</div>
+            <p class="model-body-text">The factory's existing product, finished with your own label and packaging.</p>
+            <div class="model-pills-row">
+              <span class="model-pill-tag">Own label</span>
+              <span class="model-pill-tag">Lower MOQ</span>
+              <span class="model-pill-tag">Quickest launch</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <p class="ff-section-sub" style="font-size: 0.84rem; color: #94A3B8; margin-top: 18px;">
+        Placeholder imagery — to be replaced with photographs for each model.
+      </p>
+    </div>
+  </section>
+
+  <!-- 5. WHY SPEEGO (6 CARDS GRID) -->
+  <section class="ie-why-section" id="why-speego">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">WHY SPEEGO</span>
+        <h2 class="section-title">
+          Comprehensive sourcing<br>
+          and quality control.
+        </h2>
+      </div>
+
+      <div class="ie-why-grid">
+        <!-- Card 01 -->
+        <div class="ie-service-card">
+          <div class="ie-badge-box">01</div>
+          <h3 class="ie-card-h3">An extensive partner network</h3>
+          <p class="ie-card-body">SpeeGo combines a dedicated sourcing team with a partner network across a wide range of industries.</p>
+        </div>
+
+        <!-- Card 02 -->
+        <div class="ie-service-card">
+          <div class="ie-badge-box">02</div>
+          <h3 class="ie-card-h3">Thorough factory assessments</h3>
+          <p class="ie-card-body">We assess production capabilities to identify the right factory for each customer.</p>
+        </div>
+
+        <!-- Card 03 -->
+        <div class="ie-service-card">
+          <div class="ie-badge-box">03</div>
+          <h3 class="ie-card-h3">Competitive pricing and suitable MOQs</h3>
+          <p class="ie-card-body">We help negotiate pricing and minimum order quantities that fit your needs.</p>
+        </div>
+
+        <!-- Card 04 -->
+        <div class="ie-service-card">
+          <div class="ie-badge-box">04</div>
+          <h3 class="ie-card-h3">Production monitoring and updates</h3>
+          <p class="ie-card-body">Stay informed with regular photos, videos, product samples, and production progress updates.</p>
+        </div>
+
+        <!-- Card 05 -->
+        <div class="ie-service-card">
+          <div class="ie-badge-box">05</div>
+          <h3 class="ie-card-h3">Quality inspection (QC)</h3>
+          <p class="ie-card-body">Product inspections help ensure finished goods meet the required quality standards.</p>
+        </div>
+
+        <!-- Card 06 -->
+        <div class="ie-service-card">
+          <div class="ie-badge-box">06</div>
+          <h3 class="ie-card-h3">Shipping and fulfillment when needed</h3>
+          <p class="ie-card-body">Combine international freight with fulfillment and warehousing services as your business requires.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. QUALITY CONTROL (DARK NAVY BACKGROUND #04243D) -->
+  <section class="qc-stages-section" id="quality-control">
+    <div class="container">
+      <div class="qc-header-row">
+        <div>
+          <span class="section-tag" style="color: var(--speego-accent);">QUALITY CONTROL</span>
+          <h2 class="section-title" style="color: #FFFFFF;">
+            Quality checked<br>
+            at every stage.
+          </h2>
+        </div>
+        <p class="qc-header-sub">
+          One continuous flow from raw materials to the QC file handed to the customer.
+        </p>
+      </div>
+
+      <div class="qc-flow-grid">
+        <!-- Stage 01 -->
+        <div class="qc-stage-item">
+          <div class="qc-stage-node">01</div>
+          <div class="qc-stage-label">STAGE 01</div>
+          <h3 class="qc-stage-title">Pre-production inspection</h3>
+          <p class="qc-stage-desc">Check that materials and processes meet your requirements.</p>
+        </div>
+
+        <!-- Stage 02 -->
+        <div class="qc-stage-item">
+          <div class="qc-stage-node">02</div>
+          <div class="qc-stage-label">STAGE 02</div>
+          <h3 class="qc-stage-title">During-production inspection</h3>
+          <p class="qc-stage-desc">Identify defects early to reduce the cost of corrective action.</p>
+        </div>
+
+        <!-- Stage 03 -->
+        <div class="qc-stage-item">
+          <div class="qc-stage-node">03</div>
+          <div class="qc-stage-label">STAGE 03</div>
+          <h3 class="qc-stage-title">Pre-shipment inspection</h3>
+          <p class="qc-stage-desc">Assess products before packing and dispatch.</p>
+        </div>
+
+        <!-- Stage 04 -->
+        <div class="qc-stage-item">
+          <div class="qc-stage-node">04</div>
+          <div class="qc-stage-label">STAGE 04</div>
+          <h3 class="qc-stage-title">QC reporting</h3>
+          <p class="qc-stage-desc">Samples, photos, videos, detailed reports, and a defect list where applicable.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. PHOTOS & VIDEO (SEE THE PRODUCTION FLOOR) -->
+  <section class="prod-floor-section">
+    <div class="container">
+      <div class="prod-floor-header">
+        <div>
+          <span class="section-tag">PHOTOS &amp; VIDEO</span>
+          <h2 class="section-title">See the production floor.</h2>
+        </div>
+        <div class="prod-arrows-nav">
+          <button type="button" class="prod-arrow-btn" onclick="slideProdFloor(-1)" aria-label="Previous slide">←</button>
+          <button type="button" class="prod-arrow-btn" onclick="slideProdFloor(1)" aria-label="Next slide">→</button>
+        </div>
+      </div>
+
+      <div class="prod-slider-viewport">
+        <div class="prod-slider-track" id="prodSliderTrack">
+          <!-- Page 1 (Cards 1 - 3) -->
+          <div class="prod-slide-page">
+            <div class="prod-cards-grid">
+              <!-- Card 1: Video -->
+              <div class="prod-card-item">
+                <div class="prod-card-media">
+                  <img src="assets/warehouse_racks_hero.jpg" alt="QC on the factory floor" onerror="this.onerror=null; this.src='assets/warehouse_hero.jpg';">
+                  <div class="prod-media-badge prod-badge-video">
+                    <span>VIDEO</span> · <span>Video coming soon</span>
+                  </div>
+                </div>
+                <div class="prod-card-body">
+                  <h3 class="prod-card-title">QC on the factory floor</h3>
+                  <p class="prod-card-desc">Video of the inspection steps before goods leave the factory.</p>
+                </div>
+              </div>
+
+              <!-- Card 2: Photo -->
+              <div class="prod-card-item">
+                <div class="prod-card-media">
+                  <img src="assets/port_sunset_hero.jpg" alt="Partner production floor" onerror="this.onerror=null; this.src='assets/warehouse_hero.jpg';">
+                  <div class="prod-media-badge prod-badge-photo">
+                    <span>PHOTO</span>
+                  </div>
+                </div>
+                <div class="prod-card-body">
+                  <h3 class="prod-card-title">Partner production floor</h3>
+                  <p class="prod-card-desc">A production line inside the SpeeGo partner network.</p>
+                </div>
+              </div>
+
+              <!-- Card 3: Photo -->
+              <div class="prod-card-item">
+                <div class="prod-card-media">
+                  <img src="assets/warehouse_hero.jpg" alt="Counting &amp; packing" onerror="this.onerror=null; this.src='assets/warehouse_racks_hero.jpg';">
+                  <div class="prod-media-badge prod-badge-photo">
+                    <span>PHOTO</span>
+                  </div>
+                </div>
+                <div class="prod-card-body">
+                  <h3 class="prod-card-title">Counting &amp; packing</h3>
+                  <p class="prod-card-desc">Verifying quantities and packing specs before dispatch.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Page 2 (Cards 4 - 6: 3 High-Tech Manufacturing Photos) -->
+          <div class="prod-slide-page">
+            <div class="prod-cards-grid">
+              <!-- Card 4: Automated Assembly Line -->
+              <div class="prod-card-item">
+                <div class="prod-card-media">
+                  <img src="assets/factory_assembly_line.jpg" alt="Automated assembly line" onerror="this.onerror=null; this.src='assets/warehouse_racks_hero.jpg';">
+                  <div class="prod-media-badge prod-badge-photo">
+                    <span>PHOTO</span>
+                  </div>
+                </div>
+                <div class="prod-card-body">
+                  <h3 class="prod-card-title">Automated assembly line</h3>
+                  <p class="prod-card-desc">Robotic assembly with precision quality inspection at every station.</p>
+                </div>
+              </div>
+
+              <!-- Card 5: Cleanroom Bottling & Packaging -->
+              <div class="prod-card-item">
+                <div class="prod-card-media">
+                  <img src="assets/factory_packaging_qc.jpg" alt="Cleanroom bottling &amp; packaging" onerror="this.onerror=null; this.src='assets/port_sunset_hero.jpg';">
+                  <div class="prod-media-badge prod-badge-photo">
+                    <span>PHOTO</span>
+                  </div>
+                </div>
+                <div class="prod-card-body">
+                  <h3 class="prod-card-title">Cleanroom bottling &amp; packaging</h3>
+                  <p class="prod-card-desc">Cosmetics lines adhering strictly to hygiene and fill-level standards.</p>
+                </div>
+              </div>
+
+              <!-- Card 6: Staging & Barcode Dispatch -->
+              <div class="prod-card-item">
+                <div class="prod-card-media">
+                  <img src="assets/factory_staging_dispatch.jpg" alt="Staging &amp; barcode dispatch" onerror="this.onerror=null; this.src='assets/warehouse_hero.jpg';">
+                  <div class="prod-media-badge prod-badge-photo">
+                    <span>PHOTO</span>
+                  </div>
+                </div>
+                <div class="prod-card-body">
+                  <h3 class="prod-card-title">Staging &amp; barcode dispatch</h3>
+                  <p class="prod-card-desc">Pallet shrink-wrapping and barcode verification before international dispatch.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="ff-slider-dots" style="margin-top: 24px; justify-content: center;">
+        <span class="ff-dot active" onclick="setSlide(0)"></span>
+        <span class="ff-dot" onclick="setSlide(1)"></span>
+      </div>
+
+      <p class="ff-section-sub" style="font-size: 0.84rem; color: #94A3B8; margin-top: 14px; text-align: center;">
+        Placeholder imagery. Send the video and real photographs to fill the first slide.
+      </p>
+    </div>
+  </section>
+
+  <!-- 8. FREQUENTLY ASKED QUESTIONS (FAQ ACCORDION) -->
+  <section class="ff-faq-section" style="background: #F8FAFC;">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">HELPFUL INFORMATION</span>
+        <h2 class="section-title">Frequently asked questions</h2>
+      </div>
+
+      <div class="ff-faq-list">
+        <!-- FAQ 1 -->
+        <div class="ff-faq-item faq-item">
+          <button class="ff-faq-btn faq-question-btn">
+            <span>Does SpeeGo help negotiate MOQs?</span>
+            <span class="ff-faq-plus">+</span>
+          </button>
+          <div class="ff-faq-answer">
+            <p>Yes. SpeeGo directly works with manufacturing plants to negotiate flexible minimum order quantities (MOQ) tailored to your budget and growth stage.</p>
+          </div>
+        </div>
+
+        <!-- FAQ 2 -->
+        <div class="ff-faq-item faq-item">
+          <button class="ff-faq-btn faq-question-btn">
+            <span>How can I follow production progress?</span>
+            <span class="ff-faq-plus">+</span>
+          </button>
+          <div class="ff-faq-answer">
+            <p>Our on-site SpeeGo team shares real-time photo logs, inspection videos, and production milestone reports to ensure you stay fully informed at every stage.</p>
+          </div>
+        </div>
+
+        <!-- FAQ 3 -->
+        <div class="ff-faq-item faq-item">
+          <button class="ff-faq-btn faq-question-btn">
+            <span>What does a QC report include?</span>
+            <span class="ff-faq-plus">+</span>
+          </button>
+          <div class="ff-faq-answer">
+            <p>QC reports include piece-by-piece counting data, high-resolution defect and angle photography, functional testing videos, categorized defect severity logs, and a final sign-off inspection summary.</p>
+          </div>
+        </div>
+
+        <!-- FAQ 4 -->
+        <div class="ff-faq-item faq-item">
+          <button class="ff-faq-btn faq-question-btn">
+            <span>Can SpeeGo ship the goods after inspection?</span>
+            <span class="ff-faq-plus">+</span>
+          </button>
+          <div class="ff-faq-answer">
+            <p>Yes. SpeeGo provides an end-to-end supply chain solution: from factory quality inspection and cargo consolidation to international air/sea freight, customs clearance, and last-mile delivery.</p>
+          </div>
+        </div>
+
+        <!-- FAQ 5 -->
+        <div class="ff-faq-item faq-item">
+          <button class="ff-faq-btn faq-question-btn">
+            <span>Which manufacturing models does SpeeGo support?</span>
+            <span class="ff-faq-plus">+</span>
+          </button>
+          <div class="ff-faq-answer">
+            <p>SpeeGo supports all three major manufacturing models: OEM (custom build to your design), ODM (customising proven factory formulations), and Private Label (affixing your own brand to existing products).</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 9. SPEEGO CUSTOMERS (TESTIMONIALS) -->
+  <section class="ff-testimonial-section" style="background: #FFFFFF;">
+    <div class="container">
+      <div class="ff-section-header">
+        <span class="ff-tag-eyebrow">SPEEGO CUSTOMERS</span>
+        <h2 class="ff-section-title">Working alongside your business</h2>
+      </div>
+
+      <div class="testimonials-2col-grid">
+        <!-- Testimonial 1: Kevin Le -->
+        <div class="testimonial-card-sourcing">
+          <div>
+            <div class="ff-quote-mark" aria-hidden="true" style="margin-bottom: 16px;">
+              <span></span><span></span>
+            </div>
+            <blockquote class="ff-quote-text" style="font-size: 1.05rem; margin-bottom: 24px;">
+              “The on-site QC team saved us thousands of dollars before the container was sealed.”
+            </blockquote>
+          </div>
+          <div class="ff-author-info">
+            <div class="ff-author-name">Kevin Le</div>
+            <div class="ff-author-title">CEO, Glamour Nail Supplies · California, USA</div>
+            <div class="ff-author-ref">
+              <a href="#/en/sourcing" class="ff-ref-link">As published on the SpeeGo website ↗</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Testimonial 2: Sarah Mitchell -->
+        <div class="testimonial-card-sourcing">
+          <div>
+            <div class="ff-quote-mark" aria-hidden="true" style="margin-bottom: 16px;">
+              <span></span><span></span>
+            </div>
+            <blockquote class="ff-quote-text" style="font-size: 1.05rem; margin-bottom: 24px;">
+              “The real-time OMS tracking and zero-hidden-costs policy make SpeeGo our most reliable supply chain partner.”
+            </blockquote>
+          </div>
+          <div class="ff-author-info">
+            <div class="ff-author-name">Sarah Mitchell</div>
+            <div class="ff-author-title">Operations Director, EcoLiving Home · Australia</div>
+            <div class="ff-author-ref">
+              <a href="#/en/sourcing" class="ff-ref-link">As published on the SpeeGo website ↗</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 10. CONSULTATION FORM BAND -->
+  <div data-component="cta-form" data-variant="band" id="contact-form"></div>
+
+</div>

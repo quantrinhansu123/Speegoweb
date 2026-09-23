@@ -63,7 +63,7 @@ body {
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  overflow-x: hidden;
+  overflow-x: clip;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -3713,5 +3713,528 @@ textarea.form-control {
     margin-top: 4px;
   }
 }
+
+/* ==========================================================================
+   MODULE: SOURCING & QUALITY CONTROL (vi-sourcing.png & en-sourcing.png)
+   ========================================================================== */
+/* Quick Nav Anchor Bar (5 Equal Parts & Sticky at Top) */
+.sourcing-subnav {
+  background: #FFFFFF;
+  border-top: 1px solid #E2E8F0;
+  border-bottom: 1px solid #E2E8F0;
+  position: sticky;
+  top: 0;
+  z-index: 1002;
+  box-shadow: 0 4px 16px rgba(4, 36, 61, 0.08);
+  transition: all 0.25s ease;
+}
+
+.sourcing-subnav-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  width: 100%;
+  align-items: stretch;
+}
+
+.subnav-grid-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 16px 12px;
+  font-size: 14px;
+  font-weight: 650;
+  color: #64748B;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  position: relative;
+  border-right: 1px solid #F1F5F9;
+}
+
+.subnav-grid-item:last-child {
+  border-right: none;
+}
+
+.subnav-grid-item:hover {
+  color: var(--speego-accent);
+  background: #FFF9F5;
+}
+
+.subnav-grid-item.active {
+  color: var(--speego-accent);
+  font-weight: 750;
+  background: #FFF9F5;
+}
+
+.subnav-grid-item.active::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--speego-accent);
+}
+
+.subnav-grid-cta {
+  color: var(--speego-accent);
+  font-weight: 750;
+}
+
+.subnav-grid-cta:hover {
+  color: #FFFFFF;
+  background: var(--speego-accent);
+}
+
+/* Scroll margin top so section titles are not obscured by sticky subnav */
+#nganh-hang,
+#mo-hinh-san-xuat,
+#vi-sao-speego,
+#kiem-soat-chat-luong,
+#industries,
+#manufacturing-models,
+#why-speego,
+#quality-control,
+#contact-form {
+  scroll-margin-top: 65px;
+}
+
+/* 1. Industry Categories Grid (5 Cards: 3 on row 1, 2 on row 2) */
+.industries-section {
+  padding: 72px 0 64px;
+  background: #FFFFFF;
+}
+
+.industries-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 36px;
+}
+
+.industry-card-item {
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  border-radius: 12px;
+  padding: 28px 24px;
+  box-shadow: 0 2px 8px rgba(4, 36, 61, 0.03);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.industry-card-item:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 24px rgba(4, 36, 61, 0.07);
+}
+
+.industry-icon-box {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: #FFF4ED;
+  color: var(--speego-accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.industry-icon-box svg {
+  width: 22px;
+  height: 22px;
+  stroke: var(--speego-accent);
+  fill: none;
+}
+
+.industry-card-title {
+  font-size: 1.15rem;
+  font-weight: 750;
+  color: var(--speego-primary);
+  margin-bottom: 10px;
+  line-height: 1.35;
+}
+
+.industry-card-desc {
+  font-size: 0.92rem;
+  color: #64748B;
+  line-height: 1.62;
+}
+
+.industry-action-btn-row {
+  margin-top: 32px;
+}
+
+/* 2. Manufacturing Models (3 Dark Image Cards) */
+.models-section {
+  padding: 72px 0 80px;
+  background: #FFFFFF;
+}
+
+.models-3col-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 36px;
+}
+
+.model-img-card {
+  position: relative;
+  border-radius: 14px;
+  overflow: hidden;
+  height: 420px;
+  background: #04243D;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 30px 24px;
+  box-shadow: 0 10px 28px rgba(4, 36, 61, 0.12);
+}
+
+.model-bg-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+  transition: transform 0.5s ease;
+}
+
+.model-img-card:hover .model-bg-img {
+  transform: scale(1.06);
+}
+
+.model-gradient-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(180deg, rgba(4, 36, 61, 0.15) 0%, rgba(4, 36, 61, 0.72) 42%, rgba(4, 36, 61, 0.97) 100%);
+  z-index: 2;
+}
+
+.model-card-content {
+  position: relative;
+  z-index: 3;
+  color: #FFFFFF;
+}
+
+.model-title-h3 {
+  font-family: var(--font-heading);
+  font-size: 1.85rem;
+  font-weight: 800;
+  color: #FFFFFF;
+  margin-bottom: 4px;
+  line-height: 1.2;
+}
+
+.model-sub-badge {
+  font-size: 10.5px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--speego-accent);
+  margin-bottom: 14px;
+}
+
+.model-body-text {
+  font-size: 0.88rem;
+  color: #E2E8F0;
+  line-height: 1.58;
+  margin-bottom: 20px;
+}
+
+.model-pills-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.model-pill-tag {
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  backdrop-filter: blur(6px);
+  border-radius: 6px;
+  padding: 4px 10px;
+  font-size: 11.5px;
+  font-weight: 650;
+  color: #FFFFFF;
+}
+
+/* 3. QC Stages Section (Navy Dark #04243D) */
+.qc-stages-section {
+  padding: 80px 0;
+  background: #04243D;
+  color: #FFFFFF;
+}
+
+.qc-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 32px;
+  margin-bottom: 48px;
+}
+
+.qc-header-sub {
+  font-size: 0.95rem;
+  color: #94A3B8;
+  max-width: 400px;
+  line-height: 1.6;
+}
+
+.qc-flow-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 28px;
+  position: relative;
+}
+
+.qc-stage-item {
+  position: relative;
+}
+
+.qc-stage-node {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: #04243D;
+  border: 2.5px solid var(--speego-accent);
+  color: var(--speego-accent);
+  font-size: 14px;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  position: relative;
+  z-index: 2;
+}
+
+.qc-stage-label {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #94A3B8;
+  margin-bottom: 8px;
+}
+
+.qc-stage-title {
+  font-size: 1.05rem;
+  font-weight: 750;
+  color: #FFFFFF;
+  margin-bottom: 8px;
+  line-height: 1.35;
+}
+
+.qc-stage-desc {
+  font-size: 0.88rem;
+  color: #94A3B8;
+  line-height: 1.6;
+}
+
+/* 4. Production Floor (Photos & Video Carousel) */
+.prod-floor-section {
+  padding: 72px 0 80px;
+  background: #FFFFFF;
+}
+
+.prod-floor-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 32px;
+}
+
+.prod-arrows-nav {
+  display: flex;
+  gap: 10px;
+}
+
+.prod-arrow-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid #CBD5E1;
+  background: #FFFFFF;
+  color: #04243D;
+  font-size: 14px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.prod-arrow-btn:hover {
+  border-color: var(--speego-accent);
+  color: var(--speego-accent);
+}
+
+.prod-slider-viewport {
+  overflow: hidden;
+  width: 100%;
+  position: relative;
+  border-radius: 12px;
+}
+
+.prod-slider-track {
+  display: flex;
+  transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+  width: 100%;
+}
+
+.prod-slide-page {
+  flex: 0 0 100%;
+  width: 100%;
+  min-width: 100%;
+}
+
+.prod-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.prod-card-item {
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 14px rgba(4, 36, 61, 0.04);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.prod-card-item:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 24px rgba(4, 36, 61, 0.08);
+}
+
+.prod-card-media {
+  position: relative;
+  height: 210px;
+  overflow: hidden;
+  background: #0B233B;
+}
+
+.prod-card-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.prod-media-badge {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #FFFFFF;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.prod-badge-video {
+  background: var(--speego-accent);
+}
+
+.prod-badge-photo {
+  background: var(--speego-accent);
+}
+
+.prod-card-body {
+  padding: 22px 20px 24px;
+}
+
+.prod-card-title {
+  font-size: 1.08rem;
+  font-weight: 750;
+  color: var(--speego-primary);
+  margin-bottom: 8px;
+  line-height: 1.35;
+}
+
+.prod-card-desc {
+  font-size: 0.9rem;
+  color: #64748B;
+  line-height: 1.58;
+}
+
+/* 5. Testimonials 2-Column Grid */
+.testimonials-2col-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  margin-top: 36px;
+}
+
+.testimonial-card-sourcing {
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  border-radius: 12px;
+  padding: 32px 28px;
+  box-shadow: 0 4px 16px rgba(4, 36, 61, 0.04);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+@media (max-width: 1024px) {
+  .sourcing-subnav-grid {
+    display: flex;
+    overflow-x: auto;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+  }
+  .subnav-grid-item {
+    flex: 0 0 auto;
+    padding: 14px 18px;
+  }
+  .models-3col-grid {
+    grid-template-columns: 1fr;
+  }
+  .model-img-card {
+    height: 360px;
+  }
+  .industries-cards-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .qc-flow-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px;
+  }
+  .qc-header-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  .prod-cards-grid {
+    grid-template-columns: 1fr;
+  }
+  .testimonials-2col-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .industries-cards-grid {
+    grid-template-columns: 1fr;
+  }
+  .qc-flow-grid {
+    grid-template-columns: 1fr;
+  }
+  .sourcing-subnav {
+    top: 0;
+  }
+}
+
 
 

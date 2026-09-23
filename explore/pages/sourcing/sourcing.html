@@ -1,172 +1,71 @@
-<!-- ==========================================================================
-     PAGE: SOURCING (Tìm nguồn hàng & kiểm soát chất lượng) - REFACTORED
-     Metadata:
+<script>
+  // Tự động chuyển hướng sang khung ứng dụng đầy đủ nếu mở trực tiếp từ File Explorer
+  if (typeof window !== 'undefined' && !document.getElementById('app-main')) {
+    window.location.replace('../../index.html#/sourcing');
+  }
+</script>
+
+<div class="page-container page-sourcing"
      data-page="sourcing"
      data-nav="sourcing"
-     data-breadcrumb='[{"label":"Trang chủ","href":"#/sourcing"},{"label":"Sourcing & kiểm soát chất lượng","href":"#/sourcing"}]'
-     ========================================================================== -->
-<div class="page-container" 
-     data-page="sourcing" 
-     data-nav="sourcing" 
      data-breadcrumb='[{"label":"Trang chủ","href":"#/sourcing"},{"label":"Sourcing & kiểm soát chất lượng","href":"#/sourcing"}]'>
 
-  <!-- 1. HERO SECTION (2 CỘT) -->
-  <section class="hero-section">
-    <div class="container hero-grid">
-      <!-- Cột trái: Text & 2 CTA -->
-      <div class="hero-left">
-        <span class="hero-badge">SOURCING &amp; QUALITY CONTROL</span>
-        <h1 class="hero-title">
-          Tìm nguồn hàng &amp;<br>
-          kiểm soát chất lượng<br>
-          <span class="highlight-orange">toàn diện.</span>
-        </h1>
-        <p class="hero-desc">
-          SpeeGo hỗ trợ doanh nghiệp tìm kiếm nhà sản xuất phù hợp, xác minh năng lực nhà máy, đàm phán điều khoản hợp tác và kiểm soát chất lượng sản phẩm trước khi xuất xưởng, giúp giảm thiểu rủi ro và tối ưu hiệu quả trong chuỗi cung ứng.
-        </p>
-        <div class="hero-actions">
-          <a href="#contact-form" class="btn-orange">
-            Trao đổi nhu cầu ↗
-          </a>
-          <a href="tel:+84906828898" class="hero-phone-link">
-            (+84) 906 828 898
-          </a>
+  <!-- 1. HERO SECTION -->
+  <section class="page-hero-2col">
+    <div class="container">
+      <div class="hero-2col-grid">
+        <!-- Cột trái: Tiêu đề, giới thiệu & nút hành động -->
+        <div class="hero-2col-left">
+          <div class="hero-tag-bar">SOURCING &amp; QUALITY CONTROL</div>
+          <h1 class="hero-h1-clean">
+            Tìm nguồn hàng &amp;<br>
+            kiểm soát chất lượng<br>
+            <span class="text-orange">toàn diện.</span>
+          </h1>
+          <p class="hero-desc-clean">
+            SpeeGo hỗ trợ doanh nghiệp tìm kiếm nhà sản xuất phù hợp, xác minh năng lực nhà máy, đàm phán điều khoản hợp tác và kiểm soát chất lượng sản phẩm trước khi xuất xưởng.
+          </p>
+          <div class="hero-actions-row">
+            <a href="#contact-form" class="btn-orange">
+              Trao đổi nhu cầu ↗
+            </a>
+            <a href="tel:+84906828898" class="hero-phone-label">
+              (+84) 906 828 898
+            </a>
+          </div>
         </div>
-      </div>
 
-      <!-- Cột phải: Ảnh kho hàng kệ cao tầng với overlay caption -->
-      <div class="hero-right">
-        <div class="hero-visual-wrap">
-          <img 
-            src="assets/warehouse_hero.jpg" 
-            alt="Hệ thống kho bãi &amp; kiểm soát chất lượng SpeeGo Logistics" 
-            class="hero-img"
-          >
-          <div class="hero-overlay-caption">
-            <div class="hero-overlay-tag">SPEEGO LOGISTICS</div>
-            <div class="hero-overlay-text">Từ nhà máy đến thị trường toàn cầu</div>
+        <!-- Cột phải: Ảnh kho bãi kệ pallet xanh-cam SpeeGo -->
+        <div class="hero-2col-right">
+          <div class="hero-img-card-wrap">
+            <img src="assets/warehouse_racks_hero.jpg" alt="Từ nhà máy đến thị trường toàn cầu" onerror="this.onerror=null; this.src='assets/warehouse_hero.jpg';">
+            <div class="hero-img-caption-bar">
+              <div class="hero-caption-brand">SPEEGO LOGISTICS</div>
+              <div class="hero-caption-sub">Từ nhà máy đến thị trường toàn cầu</div>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- 2. THANH ANCHOR-LINK NGANG DƯỚI HERO -->
-  <nav class="anchor-bar">
-    <div class="container anchor-inner">
-      <div class="anchor-links-left">
-        <a href="#why-speego" class="anchor-link">Vì sao SpeeGo</a>
-        <a href="#quality-control" class="anchor-link">Kiểm soát chất lượng</a>
-        <a href="#categories" class="anchor-link">Ngành hàng</a>
-      </div>
-      <div class="anchor-links-right">
-        <a href="#contact-form" class="anchor-link-right">
-          Tư vấn nguồn hàng ↗
-        </a>
+  <!-- 2. QUICK NAV ANCHOR BAR (SUBNAV CHIA 5 PHẦN BẰNG NHAU) -->
+  <div class="sourcing-subnav" id="sourcingSubnav">
+    <div class="container">
+      <div class="sourcing-subnav-grid">
+        <a href="#nganh-hang" class="subnav-grid-item">Ngành hàng</a>
+        <a href="#mo-hinh-san-xuat" class="subnav-grid-item">Mô hình sản xuất</a>
+        <a href="#vi-sao-speego" class="subnav-grid-item">Vì sao SpeeGo</a>
+        <a href="#kiem-soat-chat-luong" class="subnav-grid-item">Kiểm soát chất lượng</a>
+        <a href="#contact-form" class="subnav-grid-item subnav-grid-cta">Tư vấn nguồn hàng ↗</a>
       </div>
     </div>
-  </nav>
+  </div>
 
-  <!-- 3. SECTION "VÌ SAO CHỌN SPEEGO" (GRID 6 CARDS: 3 CỘT X 2 HÀNG) -->
-  <section class="why-section" id="why-speego">
+  <!-- 3. NGÀNH HÀNG (5 CARDS GRID) -->
+  <section class="industries-section" id="nganh-hang">
     <div class="container">
-      <div class="why-header">
-        <span class="section-tag">VÌ SAO CHỌN SPEEGO</span>
-        <h2 class="section-title">
-          Tìm nguồn hàng &amp; kiểm soát<br>
-          chất lượng toàn diện.
-        </h2>
-      </div>
-
-      <div class="cards-grid-3x2">
-        <!-- Card 01 -->
-        <div class="feature-card">
-          <span class="card-num">01</span>
-          <h3 class="card-title">Mạng lưới đối tác rộng lớn</h3>
-          <p class="card-desc">SpeeGo có đội ngũ tìm nguồn hàng và hệ thống đối tác mọi lĩnh vực</p>
-        </div>
-
-        <!-- Card 02 -->
-        <div class="feature-card">
-          <span class="card-num">02</span>
-          <h3 class="card-title">Đánh giá nhà máy chất lượng nhất</h3>
-          <p class="card-desc">Đánh giá năng lực sản xuất, lựa chọn nhà máy phù hợp từng khách hàng</p>
-        </div>
-
-        <!-- Card 03 -->
-        <div class="feature-card">
-          <span class="card-num">03</span>
-          <h3 class="card-title">Đàm phán giá và MOQ phù hợp</h3>
-          <p class="card-desc">Hỗ trợ đàm phán giá phù hợp và lượng đặt hàng tối thiểu phù hợp với nhu cầu</p>
-        </div>
-
-        <!-- Card 04 -->
-        <div class="feature-card">
-          <span class="card-num">04</span>
-          <h3 class="card-title">Theo dõi &amp; cập nhật tiến độ sản xuất</h3>
-          <p class="card-desc">Cập nhật liên tục bằng hình ảnh, video, mẫu sản phẩm, tiến độ sản xuất</p>
-        </div>
-
-        <!-- Card 05 -->
-        <div class="feature-card">
-          <span class="card-num">05</span>
-          <h3 class="card-title">Kiểm tra chất lượng (QC)</h3>
-          <p class="card-desc">Đảm bảo chất lượng sản phẩm đầu ra đáp ứng đủ tiêu chuẩn chất lượng</p>
-        </div>
-
-        <!-- Card 06 -->
-        <div class="feature-card">
-          <span class="card-num">06</span>
-          <h3 class="card-title">Vận chuyển &amp; fulfillment (nếu cần)</h3>
-          <p class="card-desc">Vận chuyển quốc tế &amp; lưu kho fulfillment nếu khách hàng có nhu cầu</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 4. SECTION "QUALITY CONTROL" (NỀN XANH NAVY ĐẬM) -->
-  <section class="qc-section" id="quality-control">
-    <div class="container">
-      <div class="qc-header">
-        <span class="section-tag">QUALITY CONTROL</span>
-        <h2 class="section-title section-title-white">
-          Chất lượng được kiểm soát<br>
-          ở từng giai đoạn.
-        </h2>
-      </div>
-
-      <div class="qc-grid">
-        <div class="qc-col">
-          <div class="qc-num">01</div>
-          <h3 class="qc-title">Kiểm tra trước sản xuất</h3>
-          <p class="qc-desc">Đảm bảo nguyên vật liệu và quy trình đáp ứng yêu cầu.</p>
-        </div>
-
-        <div class="qc-col">
-          <div class="qc-num">02</div>
-          <h3 class="qc-title">Kiểm tra trong quá trình sản xuất</h3>
-          <p class="qc-desc">Phát hiện lỗi sớm để giảm chi phí khắc phục.</p>
-        </div>
-
-        <div class="qc-col">
-          <div class="qc-num">03</div>
-          <h3 class="qc-title">Kiểm tra trước khi xuất hàng</h3>
-          <p class="qc-desc">Đánh giá sản phẩm trước khi đóng gói và giao đi.</p>
-        </div>
-
-        <div class="qc-col">
-          <div class="qc-num">04</div>
-          <h3 class="qc-title">Báo cáo QC</h3>
-          <p class="qc-desc">Khách hàng nhận: Sample, Hình ảnh, Video, Báo cáo chi tiết, Danh sách lỗi (nếu có)</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 5. SECTION "NGÀNH HÀNG" -->
-  <section class="categories-section" id="categories">
-    <div class="container">
-      <div class="categories-header">
+      <div class="section-header">
         <span class="section-tag">NGÀNH HÀNG</span>
         <h2 class="section-title">
           Hiểu sản phẩm.<br>
@@ -174,39 +73,73 @@
         </h2>
       </div>
 
-      <div class="categories-grid">
-        <div class="feature-card">
-          <span class="card-num">01</span>
-          <h3 class="card-title">Mỹ phẩm</h3>
-          <p class="card-desc">SpeeGo Logistics cung cấp giải pháp end-to-end cho ngành mỹ phẩm từ tìm nguồn, sản xuất đến vận chuyển</p>
+      <div class="industries-cards-grid">
+        <!-- Card 1: Mỹ phẩm -->
+        <div class="industry-card-item">
+          <div class="industry-icon-box" aria-hidden="true">
+            <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M9 3h6v3H9z"></path>
+              <path d="M10 6v3h4V6"></path>
+              <rect x="6" y="9" width="12" height="12" rx="3"></rect>
+              <circle cx="12" cy="15" r="2"></circle>
+            </svg>
+          </div>
+          <h3 class="industry-card-title">Mỹ phẩm</h3>
+          <p class="industry-card-desc">Giải pháp end-to-end cho ngành mỹ phẩm: từ tìm nguồn, sản xuất đến vận chuyển.</p>
         </div>
 
-        <div class="feature-card">
-          <span class="card-num">02</span>
-          <h3 class="card-title">Nails</h3>
-          <p class="card-desc">SpeeGo Logistics chuyên sỉ, sản xuất, order đa dạng nguyên liệu, dụng cụ và phụ kiện nails chất lượng cao</p>
+        <!-- Card 2: Nails -->
+        <div class="industry-card-item">
+          <div class="industry-icon-box" aria-hidden="true">
+            <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M10 2h4v5h-4z"></path>
+              <rect x="7" y="7" width="10" height="14" rx="3"></rect>
+              <line x1="12" y1="11" x2="12" y2="17"></line>
+            </svg>
+          </div>
+          <h3 class="industry-card-title">Nails</h3>
+          <p class="industry-card-desc">Sỉ, sản xuất và đặt hàng nguyên liệu, dụng cụ và phụ kiện nails chất lượng cao.</p>
         </div>
 
-        <div class="feature-card">
-          <span class="card-num">03</span>
-          <h3 class="card-title">Decor, nội thất</h3>
-          <p class="card-desc">SpeeGo Logistics chuyên cung ứng đồ decor nội thất, trang trí cửa hàng, tiệm nails, spa, nhà hàng, đến không gian sống và làm việc</p>
+        <!-- Card 3: Decor, nội thất -->
+        <div class="industry-card-item">
+          <div class="industry-icon-box" aria-hidden="true">
+            <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M6 19v2M18 19v2"></path>
+              <path d="M4 11a3 3 0 0 1 3-3h10a3 3 0 0 1 3 3v5H4v-5z"></path>
+              <path d="M4 16h16"></path>
+            </svg>
+          </div>
+          <h3 class="industry-card-title">Decor, nội thất</h3>
+          <p class="industry-card-desc">Đồ decor và nội thất cho cửa hàng, tiệm nails, spa, nhà hàng và không gian sống.</p>
         </div>
 
-        <div class="feature-card">
-          <span class="card-num">04</span>
-          <h3 class="card-title">Thủ công mỹ nghệ</h3>
-          <p class="card-desc">SpeeGo Logistics chuyên cung cấp các mặt hàng đồ thủ công mỹ nghệ mang đậm nét truyền thống dân tộc</p>
+        <!-- Card 4: Thủ công mỹ nghệ -->
+        <div class="industry-card-item">
+          <div class="industry-icon-box" aria-hidden="true">
+            <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2a4 4 0 0 0-4 4c0 3 4 7 4 7s4-4 4-7a4 4 0 0 0-4-4z"></path>
+              <circle cx="12" cy="18" r="3"></circle>
+            </svg>
+          </div>
+          <h3 class="industry-card-title">Thủ công mỹ nghệ</h3>
+          <p class="industry-card-desc">Mặt hàng thủ công mỹ nghệ mang đậm nét truyền thống dân tộc.</p>
         </div>
 
-        <div class="feature-card">
-          <span class="card-num">05</span>
-          <h3 class="card-title">Thiết bị kỹ thuật</h3>
-          <p class="card-desc">Trao đổi với SpeeGo để lựa chọn giải pháp phù hợp với nhu cầu của doanh nghiệp.</p>
+        <!-- Card 5: Thiết bị kỹ thuật -->
+        <div class="industry-card-item">
+          <div class="industry-icon-box" aria-hidden="true">
+            <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="3"></circle>
+              <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path>
+            </svg>
+          </div>
+          <h3 class="industry-card-title">Thiết bị kỹ thuật</h3>
+          <p class="industry-card-desc">Trao đổi với SpeeGo để lựa chọn giải pháp phù hợp với nhu cầu của doanh nghiệp.</p>
         </div>
       </div>
 
-      <div style="display: flex; justify-content: flex-start; margin-top: 8px;">
+      <div class="industry-action-btn-row">
         <a href="#contact-form" class="btn-orange">
           Tư vấn ngành hàng của bạn ↗
         </a>
@@ -214,105 +147,423 @@
     </div>
   </section>
 
-  <!-- 6. SECTION FAQ CÂU HỎI THƯỜNG GẶP (ACCORDION) -->
-  <section class="faq-section">
+  <!-- 4. MÔ HÌNH SẢN XUẤT (3 CARDS ẢNH LỚN) -->
+  <section class="models-section" id="mo-hinh-san-xuat">
     <div class="container">
-      <div class="faq-header">
-        <span class="section-tag">CÂU HỎI THƯỜNG GẶP</span>
+      <div class="section-header">
+        <span class="section-tag">MÔ HÌNH SẢN XUẤT</span>
+        <h2 class="section-title">
+          Ba cách đưa sản phẩm<br>
+          ra thị trường.
+        </h2>
+      </div>
+
+      <div class="models-3col-grid">
+        <!-- Model OEM -->
+        <div class="model-img-card">
+          <img src="assets/warehouse_racks_hero.jpg" alt="Mô hình OEM" class="model-bg-img" onerror="this.onerror=null; this.src='assets/warehouse_hero.jpg';">
+          <div class="model-gradient-overlay"></div>
+          <div class="model-card-content">
+            <h3 class="model-title-h3">OEM</h3>
+            <div class="model-sub-badge">ORIGINAL EQUIPMENT MANUFACTURING</div>
+            <p class="model-body-text">Nhà máy sản xuất theo đúng thiết kế, công thức và thông số kỹ thuật do bạn cung cấp.</p>
+            <div class="model-pills-row">
+              <span class="model-pill-tag">Thiết kế của bạn</span>
+              <span class="model-pill-tag">Tùy biến tối đa</span>
+              <span class="model-pill-tag">MOQ cao hơn</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Model ODM -->
+        <div class="model-img-card">
+          <img src="assets/port_sunset_hero.jpg" alt="Mô hình ODM" class="model-bg-img" onerror="this.onerror=null; this.src='assets/warehouse_hero.jpg';">
+          <div class="model-gradient-overlay"></div>
+          <div class="model-card-content">
+            <h3 class="model-title-h3">ODM</h3>
+            <div class="model-sub-badge">ORIGINAL DESIGN MANUFACTURING</div>
+            <p class="model-body-text">Chọn mẫu và công thức có sẵn của nhà máy, điều chỉnh theo nhu cầu rồi gắn thương hiệu của bạn.</p>
+            <div class="model-pills-row">
+              <span class="model-pill-tag">Mẫu có sẵn</span>
+              <span class="model-pill-tag">Tùy chỉnh vừa phải</span>
+              <span class="model-pill-tag">Ra thị trường nhanh</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Model Private Label -->
+        <div class="model-img-card">
+          <img src="assets/card_hand_device.jpg" alt="Mô hình Private Label" class="model-bg-img" onerror="this.onerror=null; this.src='assets/warehouse_hero.jpg';">
+          <div class="model-gradient-overlay"></div>
+          <div class="model-card-content">
+            <h3 class="model-title-h3">Private Label</h3>
+            <div class="model-sub-badge">NHÃN RIÊNG THƯƠNG HIỆU · OWN-BRAND LABELLING</div>
+            <p class="model-body-text">Sản phẩm có sẵn của nhà máy, dán nhãn và bao bì thương hiệu riêng của doanh nghiệp bạn.</p>
+            <div class="model-pills-row">
+              <span class="model-pill-tag">Nhãn riêng</span>
+              <span class="model-pill-tag">MOQ thấp</span>
+              <span class="model-pill-tag">Triển khai nhanh nhất</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <p class="ff-section-sub" style="font-size: 0.84rem; color: #94A3B8; margin-top: 18px;">
+        Ảnh minh họa tạm thời, sẽ thay bằng ảnh thực tế của từng mô hình.
+      </p>
+    </div>
+  </section>
+
+  <!-- 5. VÌ SAO CHỌN SPEEGO (6 CARDS GRID) -->
+  <section class="ie-why-section" id="vi-sao-speego">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">VÌ SAO CHỌN SPEEGO</span>
+        <h2 class="section-title">
+          Tìm nguồn hàng &amp; kiểm soát<br>
+          chất lượng toàn diện.
+        </h2>
+      </div>
+
+      <div class="ie-why-grid">
+        <!-- Card 01 -->
+        <div class="ie-service-card">
+          <div class="ie-badge-box">01</div>
+          <h3 class="ie-card-h3">Mạng lưới đối tác rộng lớn</h3>
+          <p class="ie-card-body">SpeeGo có đội ngũ tìm nguồn hàng và hệ thống đối tác mọi lĩnh vực.</p>
+        </div>
+
+        <!-- Card 02 -->
+        <div class="ie-service-card">
+          <div class="ie-badge-box">02</div>
+          <h3 class="ie-card-h3">Đánh giá nhà máy chất lượng nhất</h3>
+          <p class="ie-card-body">Đánh giá năng lực sản xuất, lựa chọn nhà máy phù hợp từng khách hàng.</p>
+        </div>
+
+        <!-- Card 03 -->
+        <div class="ie-service-card">
+          <div class="ie-badge-box">03</div>
+          <h3 class="ie-card-h3">Đàm phán giá và MOQ phù hợp</h3>
+          <p class="ie-card-body">Hỗ trợ đàm phán giá phù hợp và lượng đặt hàng tối thiểu phù hợp với nhu cầu.</p>
+        </div>
+
+        <!-- Card 04 -->
+        <div class="ie-service-card">
+          <div class="ie-badge-box">04</div>
+          <h3 class="ie-card-h3">Theo dõi &amp; cập nhật tiến độ sản xuất</h3>
+          <p class="ie-card-body">Cập nhật liên tục bằng hình ảnh, video, mẫu sản phẩm, tiến độ sản xuất.</p>
+        </div>
+
+        <!-- Card 05 -->
+        <div class="ie-service-card">
+          <div class="ie-badge-box">05</div>
+          <h3 class="ie-card-h3">Kiểm tra chất lượng (QC)</h3>
+          <p class="ie-card-body">Đảm bảo chất lượng sản phẩm đầu ra đáp ứng đủ tiêu chuẩn chất lượng.</p>
+        </div>
+
+        <!-- Card 06 -->
+        <div class="ie-service-card">
+          <div class="ie-badge-box">06</div>
+          <h3 class="ie-card-h3">Vận chuyển &amp; fulfillment (nếu cần)</h3>
+          <p class="ie-card-body">Vận chuyển quốc tế &amp; lưu kho fulfillment nếu khách hàng có nhu cầu.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. KIỂM SOÁT CHẤT LƯỢNG (QUALITY CONTROL - NỀN NAVY ĐẬM #04243D) -->
+  <section class="qc-stages-section" id="kiem-soat-chat-luong">
+    <div class="container">
+      <div class="qc-header-row">
+        <div>
+          <span class="section-tag" style="color: var(--speego-accent);">QUALITY CONTROL</span>
+          <h2 class="section-title" style="color: #FFFFFF;">
+            Chất lượng được kiểm soát<br>
+            ở từng giai đoạn.
+          </h2>
+        </div>
+        <p class="qc-header-sub">
+          Một dòng chảy liên tục từ nguyên vật liệu đến bộ hồ sơ QC bàn giao cho khách hàng.
+        </p>
+      </div>
+
+      <div class="qc-flow-grid">
+        <!-- Giai đoạn 01 -->
+        <div class="qc-stage-item">
+          <div class="qc-stage-node">01</div>
+          <div class="qc-stage-label">GIAI ĐOẠN 01</div>
+          <h3 class="qc-stage-title">Kiểm tra trước sản xuất</h3>
+          <p class="qc-stage-desc">Đảm bảo nguyên vật liệu và quy trình đáp ứng yêu cầu.</p>
+        </div>
+
+        <!-- Giai đoạn 02 -->
+        <div class="qc-stage-item">
+          <div class="qc-stage-node">02</div>
+          <div class="qc-stage-label">GIAI ĐOẠN 02</div>
+          <h3 class="qc-stage-title">Kiểm tra trong quá trình sản xuất</h3>
+          <p class="qc-stage-desc">Phát hiện lỗi sớm để giảm chi phí khắc phục.</p>
+        </div>
+
+        <!-- Giai đoạn 03 -->
+        <div class="qc-stage-item">
+          <div class="qc-stage-node">03</div>
+          <div class="qc-stage-label">GIAI ĐOẠN 03</div>
+          <h3 class="qc-stage-title">Kiểm tra trước khi xuất hàng</h3>
+          <p class="qc-stage-desc">Đánh giá sản phẩm trước khi đóng gói và giao đi.</p>
+        </div>
+
+        <!-- Giai đoạn 04 -->
+        <div class="qc-stage-item">
+          <div class="qc-stage-node">04</div>
+          <div class="qc-stage-label">GIAI ĐOẠN 04</div>
+          <h3 class="qc-stage-title">Báo cáo QC</h3>
+          <p class="qc-stage-desc">Số liệu, hình ảnh, video, báo cáo chi tiết và danh sách lỗi nếu có.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. HÌNH ẢNH & VIDEO (NHÌN TẬN NƠI SẢN XUẤT) -->
+  <section class="prod-floor-section">
+    <div class="container">
+      <div class="prod-floor-header">
+        <div>
+          <span class="section-tag">HÌNH ẢNH &amp; VIDEO</span>
+          <h2 class="section-title">Nhìn tận nơi sản xuất.</h2>
+        </div>
+        <div class="prod-arrows-nav">
+          <button type="button" class="prod-arrow-btn" onclick="slideProdFloor(-1)" aria-label="Lùi ảnh">←</button>
+          <button type="button" class="prod-arrow-btn" onclick="slideProdFloor(1)" aria-label="Tiến ảnh">→</button>
+        </div>
+      </div>
+
+      <div class="prod-slider-viewport">
+        <div class="prod-slider-track" id="prodSliderTrack">
+          <!-- Trang 1 (Cards 1 - 3) -->
+          <div class="prod-slide-page">
+            <div class="prod-cards-grid">
+              <!-- Card 1: Video -->
+              <div class="prod-card-item">
+                <div class="prod-card-media">
+                  <img src="assets/warehouse_racks_hero.jpg" alt="Quy trình QC tại nhà máy" onerror="this.onerror=null; this.src='assets/warehouse_hero.jpg';">
+                  <div class="prod-media-badge prod-badge-video">
+                    <span>VIDEO</span> · <span>Video đang được cập nhật</span>
+                  </div>
+                </div>
+                <div class="prod-card-body">
+                  <h3 class="prod-card-title">Quy trình QC tại nhà máy</h3>
+                  <p class="prod-card-desc">Video ghi lại các bước kiểm tra trước khi hàng rời xưởng.</p>
+                </div>
+              </div>
+
+              <!-- Card 2: Hình ảnh -->
+              <div class="prod-card-item">
+                <div class="prod-card-media">
+                  <img src="assets/port_sunset_hero.jpg" alt="Xưởng sản xuất đối tác" onerror="this.onerror=null; this.src='assets/warehouse_hero.jpg';">
+                  <div class="prod-media-badge prod-badge-photo">
+                    <span>HÌNH ẢNH</span>
+                  </div>
+                </div>
+                <div class="prod-card-body">
+                  <h3 class="prod-card-title">Xưởng sản xuất đối tác</h3>
+                  <p class="prod-card-desc">Dây chuyền của nhà máy trong mạng lưới đối tác SpeeGo.</p>
+                </div>
+              </div>
+
+              <!-- Card 3: Hình ảnh -->
+              <div class="prod-card-item">
+                <div class="prod-card-media">
+                  <img src="assets/warehouse_hero.jpg" alt="Kiểm đếm &amp; đóng gói" onerror="this.onerror=null; this.src='assets/warehouse_racks_hero.jpg';">
+                  <div class="prod-media-badge prod-badge-photo">
+                    <span>HÌNH ẢNH</span>
+                  </div>
+                </div>
+                <div class="prod-card-body">
+                  <h3 class="prod-card-title">Kiểm đếm &amp; đóng gói</h3>
+                  <p class="prod-card-desc">Đối chiếu số lượng và quy cách đóng gói trước khi xuất hàng.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Trang 2 (Cards 4 - 6: 3 ảnh công nghệ cao vừa tạo) -->
+          <div class="prod-slide-page">
+            <div class="prod-cards-grid">
+              <!-- Card 4: Dây chuyền tự động -->
+              <div class="prod-card-item">
+                <div class="prod-card-media">
+                  <img src="assets/factory_assembly_line.jpg" alt="Dây chuyền lắp ráp tự động" onerror="this.onerror=null; this.src='assets/warehouse_racks_hero.jpg';">
+                  <div class="prod-media-badge prod-badge-photo">
+                    <span>HÌNH ẢNH</span>
+                  </div>
+                </div>
+                <div class="prod-card-body">
+                  <h3 class="prod-card-title">Dây chuyền lắp ráp tự động</h3>
+                  <p class="prod-card-desc">Hệ thống robot và kỹ thuật viên giám sát kiểm tra linh kiện chuẩn xác.</p>
+                </div>
+              </div>
+
+              <!-- Card 5: Phòng sạch chiết rót -->
+              <div class="prod-card-item">
+                <div class="prod-card-media">
+                  <img src="assets/factory_packaging_qc.jpg" alt="Chiết rót &amp; đóng gói phòng sạch" onerror="this.onerror=null; this.src='assets/port_sunset_hero.jpg';">
+                  <div class="prod-media-badge prod-badge-photo">
+                    <span>HÌNH ẢNH</span>
+                  </div>
+                </div>
+                <div class="prod-card-body">
+                  <h3 class="prod-card-title">Chiết rót &amp; đóng gói phòng sạch</h3>
+                  <p class="prod-card-desc">Dây chuyền mỹ phẩm tuân thủ nghiêm ngặt tiêu chuẩn vệ sinh và định lượng.</p>
+                </div>
+              </div>
+
+              <!-- Card 6: Biệt trữ & xuất xưởng -->
+              <div class="prod-card-item">
+                <div class="prod-card-media">
+                  <img src="assets/factory_staging_dispatch.jpg" alt="Biệt trữ &amp; quét mã xuất xưởng" onerror="this.onerror=null; this.src='assets/warehouse_hero.jpg';">
+                  <div class="prod-media-badge prod-badge-photo">
+                    <span>HÌNH ẢNH</span>
+                  </div>
+                </div>
+                <div class="prod-card-body">
+                  <h3 class="prod-card-title">Biệt trữ &amp; quét mã xuất xưởng</h3>
+                  <p class="prod-card-desc">Quấn màng pallet, đối chiếu barcode trước khi bàn giao vận chuyển quốc tế.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="ff-slider-dots" style="margin-top: 24px; justify-content: center;">
+        <span class="ff-dot active" onclick="setSlide(0)"></span>
+        <span class="ff-dot" onclick="setSlide(1)"></span>
+      </div>
+
+      <p class="ff-section-sub" style="font-size: 0.84rem; color: #94A3B8; margin-top: 14px; text-align: center;">
+        Ảnh minh họa tạm thời. Gửi video và ảnh chụp thực tế để thay vào slide đầu tiên.
+      </p>
+    </div>
+  </section>
+
+  <!-- 8. CÂU HỎI THƯỜNG GẶP (FAQ ACCORDION) -->
+  <section class="ff-faq-section" style="background: #F8FAFC;">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">THÔNG TIN HỮU ÍCH</span>
         <h2 class="section-title">Câu hỏi thường gặp</h2>
       </div>
 
-      <div class="faq-list">
+      <div class="ff-faq-list">
         <!-- FAQ 1 -->
-        <div class="faq-item">
-          <button class="faq-question-btn" type="button">
+        <div class="ff-faq-item faq-item">
+          <button class="ff-faq-btn faq-question-btn">
             <span>SpeeGo có hỗ trợ đàm phán MOQ không?</span>
-            <span class="faq-icon">+</span>
+            <span class="ff-faq-plus">+</span>
           </button>
-          <div class="faq-answer">
-            <p class="faq-answer-text">
-              Có. SpeeGo trực tiếp làm việc với các nhà xưởng đối tác để thương lượng số lượng đặt hàng tối thiểu (MOQ) phù hợp với quy mô và ngân sách thử nghiệm của bạn mà vẫn đảm bảo đơn giá cạnh tranh nhất.
-            </p>
+          <div class="ff-faq-answer">
+            <p>Có. SpeeGo trực tiếp làm việc với các nhà máy để đàm phán số lượng đặt hàng tối thiểu (MOQ) linh hoạt, phù hợp với ngân sách và giai đoạn phát triển của doanh nghiệp bạn.</p>
           </div>
         </div>
 
         <!-- FAQ 2 -->
-        <div class="faq-item">
-          <button class="faq-question-btn" type="button">
+        <div class="ff-faq-item faq-item">
+          <button class="ff-faq-btn faq-question-btn">
             <span>Tôi có thể theo dõi tiến độ sản xuất như thế nào?</span>
-            <span class="faq-icon">+</span>
+            <span class="ff-faq-plus">+</span>
           </button>
-          <div class="faq-answer">
-            <p class="faq-answer-text">
-              Đội ngũ SpeeGo tại xưởng liên tục cập nhật tiến độ định kỳ hàng tuần kèm hình ảnh và video thực tế. Mọi số liệu và mốc thời gian đều được số hóa minh bạch giúp bạn nắm bắt 24/7.
-            </p>
+          <div class="ff-faq-answer">
+            <p>Đội ngũ SpeeGo tại xưởng cập nhật hình ảnh, video và biên bản kiểm tra theo thời gian thực ở từng cột mốc sản xuất để bạn luôn nắm rõ tiến độ.</p>
           </div>
         </div>
 
         <!-- FAQ 3 -->
-        <div class="faq-item">
-          <button class="faq-question-btn" type="button">
-            <span>Báo cáo QC bao gồm những gì?</span>
-            <span class="faq-icon">+</span>
+        <div class="ff-faq-item faq-item">
+          <button class="ff-faq-btn faq-question-btn">
+            <span>Báo cáo QC gồm những gì?</span>
+            <span class="ff-faq-plus">+</span>
           </button>
-          <div class="faq-answer">
-            <p class="faq-answer-text">
-              Báo cáo kiểm định QC chuẩn AQL của SpeeGo bao gồm: đo lường thông số kích thước, kiểm tra chất liệu, chức năng thực tế, quy cách đóng gói tem nhãn barcode và hình ảnh chi tiết các lỗi phát hiện (nếu có).
-            </p>
+          <div class="ff-faq-answer">
+            <p>Báo cáo QC bao gồm bảng số liệu kiểm đếm, hình ảnh chi tiết các góc cạnh sản phẩm, video quy trình test tính năng, danh sách lỗi phân loại theo mức độ và kết luận đạt chuẩn xuất xưởng.</p>
           </div>
         </div>
 
         <!-- FAQ 4 -->
-        <div class="faq-item">
-          <button class="faq-question-btn" type="button">
-            <span>Sau khi kiểm tra, SpeeGo có hỗ trợ vận chuyển trọn gói không?</span>
-            <span class="faq-icon">+</span>
+        <div class="ff-faq-item faq-item">
+          <button class="ff-faq-btn faq-question-btn">
+            <span>Sau khi kiểm tra, SpeeGo có thể vận chuyển hàng không?</span>
+            <span class="ff-faq-plus">+</span>
           </button>
-          <div class="faq-answer">
-            <p class="faq-answer-text">
-              Hoàn toàn có. SpeeGo cung cấp giải pháp End-to-End trọn gói từ kiểm hàng xưởng, đóng gói tiêu chuẩn xuất khẩu, thủ tục hải quan cho tới vận chuyển đường biển/hàng không và fulfillment kho bãi tại Mỹ, Canada, Úc.
-            </p>
+          <div class="ff-faq-answer">
+            <p>Có. SpeeGo cung cấp giải pháp chuỗi cung ứng khép kín: từ kiểm tra chất lượng tại xưởng, gom hàng, vận chuyển quốc tế (đường biển/đường hàng không) đến thông quan và giao hàng tận nơi.</p>
+          </div>
+        </div>
+
+        <!-- FAQ 5 -->
+        <div class="ff-faq-item faq-item">
+          <button class="ff-faq-btn faq-question-btn">
+            <span>SpeeGo hỗ trợ những mô hình sản xuất nào?</span>
+            <span class="ff-faq-plus">+</span>
+          </button>
+          <div class="ff-faq-answer">
+            <p>SpeeGo hỗ trợ cả 3 mô hình sản xuất phổ biến: OEM (sản xuất theo thiết kế riêng), ODM (tùy chỉnh mẫu có sẵn của nhà máy) và Private Label (dán nhãn thương hiệu riêng).</p>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- 7. SECTION TESTIMONIAL (NỀN XÁM XANH BĂNG NHẠT) -->
-  <section class="testimonial-section">
+  <!-- 9. TESTIMONIALS (2 CARDS) -->
+  <section class="ff-testimonial-section" style="background: #FFFFFF;">
     <div class="container">
-      <div class="testimonial-header">
-        <span class="section-tag">KHÁCH HÀNG SPEEGO</span>
-        <h2 class="section-title">Đồng hành cùng doanh nghiệp</h2>
+      <div class="ff-section-header">
+        <span class="ff-tag-eyebrow">KHÁCH HÀNG SPEEGO</span>
+        <h2 class="ff-section-title">Đồng hành cùng doanh nghiệp</h2>
       </div>
 
-      <div class="testimonial-block">
-        <svg class="quote-icon" viewBox="0 0 24 24">
-          <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/>
-        </svg>
-        <div class="testimonial-content">
-          <blockquote class="quote-text">
-            “Đội ngũ QC tại chỗ đã giúp chúng tôi tiết kiệm hàng nghìn đô la trước khi container được niêm phong.”
-          </blockquote>
-          <div class="author-info">
-            <div class="author-name">Kevin Le</div>
-            <div class="author-role"> CEO, Glamour Nail Supplies • California, USA</div>
+      <div class="testimonials-2col-grid">
+        <!-- Testimonial 1: Kevin Le -->
+        <div class="testimonial-card-sourcing">
+          <div>
+            <div class="ff-quote-mark" aria-hidden="true" style="margin-bottom: 16px;">
+              <span></span><span></span>
+            </div>
+            <blockquote class="ff-quote-text" style="font-size: 1.05rem; margin-bottom: 24px;">
+              “Đội ngũ QC tại chỗ đã giúp chúng tôi tiết kiệm hàng nghìn đô la trước khi container được niêm phong.”
+            </blockquote>
           </div>
-          <a href="#" class="case-study-link">
-            Theo chia sẻ trên website SpeeGo • bản dịch tiếng Việt ↗
-          </a>
+          <div class="ff-author-info">
+            <div class="ff-author-name">Kevin Le</div>
+            <div class="ff-author-title">CEO, Glamour Nail Supplies · California, USA</div>
+            <div class="ff-author-ref">
+              <a href="#/sourcing" class="ff-ref-link">Theo chia sẻ trên website SpeeGo · bản dịch tiếng Việt ↗</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Testimonial 2: Sarah Mitchell -->
+        <div class="testimonial-card-sourcing">
+          <div>
+            <div class="ff-quote-mark" aria-hidden="true" style="margin-bottom: 16px;">
+              <span></span><span></span>
+            </div>
+            <blockquote class="ff-quote-text" style="font-size: 1.05rem; margin-bottom: 24px;">
+              “Việc theo dõi OMS theo thời gian thực và chính sách không có chi phí ẩn khiến SpeeGo trở thành đối tác chuỗi cung ứng đáng tin cậy của chúng tôi.”
+            </blockquote>
+          </div>
+          <div class="ff-author-info">
+            <div class="ff-author-name">Sarah Mitchell</div>
+            <div class="ff-author-title">Operations Director, EcoLiving Home · Australia</div>
+            <div class="ff-author-ref">
+              <a href="#/sourcing" class="ff-ref-link">Theo chia sẻ trên website SpeeGo · bản dịch tiếng Việt ↗</a>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- 8. CTA FORM CUỐI TRANG (GỌI PARTIAL BIẾN THỂ "band") -->
-  <div data-component="cta-form" 
-       data-variant="band" 
-       data-tag="LET'S MOVE FORWARD"
-       data-heading="Bắt đầu từ nhu cầu<br>của bạn." 
-       data-subtext="Chia sẻ về hàng hóa và kế hoạch của doanh nghiệp.<br> SpeeGo sẽ tư vấn giải pháp phù hợp." 
-       data-phone="(+84) 906828898 ↗">
-  </div>
+  <!-- 10. CONSULTATION FORM BAND -->
+  <div data-component="cta-form" data-variant="band" id="contact-form"></div>
 
 </div>
