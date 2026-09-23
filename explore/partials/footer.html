@@ -1,58 +1,84 @@
 <!-- ==========================================================================
-     PARTIAL: FOOTER (SpeeGo Logistics)
+     PARTIAL: FOOTER (SpeeGo Logistics - Synchronized Frame)
      ========================================================================== -->
-<footer class="site-footer">
-  <div class="container footer-grid">
+<footer id="colophon" class="site-footer speego-site-footer" role="contentinfo">
+  <div class="speego-footer-top">
     <!-- Cột 1: Logo trắng & Tagline -->
-    <div class="footer-col">
-      <a href="/" id="footerLogoLink">
-        <img src="assets/speego-logo-white.png" alt="SpeeGo Logistics" class="footer-logo">
+    <div class="speego-footer-brand">
+      <a href="/" class="speego-brand-logo" id="footerLogoLink" title="SpeeGo Logistics">
+        <img src="assets/speego-logo-white.png" alt="SpeeGo Logistics" class="speego-logo-img">
       </a>
-      <p class="footer-tagline" id="footerTagline">
-        Kết nối nguồn hàng Việt Nam &amp; Trung Quốc với thị trường Mỹ, Canada và Úc.
+      <p class="speego-footer-tagline" id="footerTagline" data-i18n="footer_tagline">
+        Đơn vị sản xuất và cung cấp dịch vụ logistics toàn cầu. Chuyên tuyến Trung Quốc và Việt Nam đi Mỹ, Canada, Úc. Tối ưu chi phí, minh bạch hành trình.
       </p>
     </div>
 
-    <!-- Cột 2: Khám phá -->
-    <div class="footer-col">
-      <h4 class="footer-col-title" id="footerExploreTitle">Khám phá</h4>
-      <ul class="footer-links" id="footerNavLinks">
-        <li><a href="#/knowledge" class="footer-link" id="footerLinkKnowledge">Knowledge</a></li>
-        <li><a href="#/xuat-nhap-khau" class="footer-link" id="footerLinkImportExport">Xuất nhập khẩu</a></li>
-        <li><a href="#/tuyen-van-chuyen" class="footer-link" id="footerLinkRoutes">Tuyến vận chuyển</a></li>
-        <li><a href="#/fulfillment" class="footer-link" id="footerLinkFulfillment">Fulfillment</a></li>
-        <li><a href="#/sourcing" class="footer-link" id="footerLinkSourcing">Sourcing</a></li>
+    <!-- Cột 2: Dịch Vụ Chính -->
+    <div>
+      <h4 class="speego-footer-heading" id="footerServicesTitle" data-i18n="footer_services_title">Dịch Vụ Chính</h4>
+      <ul class="speego-footer-links" id="footerServicesLinks">
+        <li><a href="#/sourcing" data-i18n="footer_service_sourcing">Sourcing &amp; QC</a></li>
+        <li><a href="#/tuyen-van-chuyen" data-i18n="footer_service_routes">Tuyến Vận Chuyển Toàn Cầu</a></li>
+        <li><a href="#/fulfillment" data-i18n="footer_service_fulfillment">Fulfillment &amp; Kho Bãi</a></li>
+        <li><a href="#/xuat-nhap-khau" data-i18n="footer_service_import_export">Thủ Tục Hải Quan &amp; XNK</a></li>
+        <li><a href="/#services-speego" data-i18n="footer_service_air">Vận Chuyển Hàng Không</a></li>
       </ul>
     </div>
 
-    <!-- Cột 3: Kết nối với SpeeGo -->
-    <div class="footer-col">
-      <h4 class="footer-col-title" id="footerConnectTitle">Kết nối với SpeeGo</h4>
-      <div class="footer-contact-list">
-        <div class="footer-contact-item">
-          <a href="mailto:info@speegologistic.com">info@speegologistic.com</a>
-        </div>
-        <div class="footer-contact-item">
-          <a href="tel:+84906828898">(+84) 906 828 898</a>
-        </div>
-        <div class="footer-contact-item">
-          7303 Breen Dr, Suite D2<br>
-          Houston, TX 77086, US
-        </div>
-      </div>
+    <!-- Cột 3: Liên Kết Nhanh -->
+    <div>
+      <h4 class="speego-footer-heading" id="footerQuickLinksTitle" data-i18n="footer_quick_title">Liên Kết Nhanh</h4>
+      <ul class="speego-footer-links" id="footerQuickLinks">
+        <li><a href="/#process-speego" data-i18n="footer_quick_process">Quy Trình 8 Bước</a></li>
+        <li><a href="/#why-speego" data-i18n="footer_quick_why">Vì Sao Chọn SpeeGo</a></li>
+        <li><a href="#/knowledge" data-i18n="footer_quick_knowledge">SpeeGo Knowledge Hub</a></li>
+        <li><a href="/privacy-policy" data-i18n="policy_privacy">Chính Sách Bảo Mật</a></li>
+        <li><a href="/terms-and-conditions" data-i18n="policy_terms">Điều Khoản &amp; Điều Kiện</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Khối Văn Phòng Đại Diện Toàn Cầu (5 Offices) -->
+  <div class="speego-footer-offices">
+    <h4 class="speego-footer-heading" id="footerOfficesTitle" data-i18n="footer_offices_title">Văn Phòng Đại Diện</h4>
+    <div class="speego-footer-office-grid">
+      <article class="speego-footer-office">
+        <h5 data-i18n="office_us_title">Hoa Kỳ</h5>
+        <p><a href="tel:+18322985789">(+1) 832 298 5789</a></p>
+        <p>7303 Breen Dr, Suite D2, Houston, TX 77086</p>
+        <p><strong>Hotline:</strong> <a href="tel:+18005501496">1-800-550-1496</a></p>
+        <p><strong>ZIP Code:</strong> 77075</p>
+      </article>
+      <article class="speego-footer-office">
+        <h5 data-i18n="office_hanoi_title">Hà Nội</h5>
+        <p>Leadvisors Tower, 643 Phạm Văn Đồng, Phường Nghĩa Đô, Hà Nội</p>
+        <p><strong>Hotline:</strong> <a href="tel:+842462918618">(024) 6291 8618</a></p>
+        <p><strong>Mã ZIP:</strong> 100000</p>
+      </article>
+      <article class="speego-footer-office">
+        <h5 data-i18n="office_hcm_title">Hồ Chí Minh</h5>
+        <p><strong>Văn phòng:</strong> 01 Đường số 4, KDC Cityland Park Hills, phường Gò Vấp, TP.HCM</p>
+        <p><strong>Kho hàng:</strong> 42 Nguyễn Văn Dung, phường An Nhơn, TP.HCM</p>
+        <p><strong>Hotline:</strong> <a href="tel:+84335966996">033 596 6996</a></p>
+        <p><strong>Mã ZIP:</strong> 700000</p>
+      </article>
+      <article class="speego-footer-office">
+        <h5 data-i18n="office_canada_title">Canada</h5>
+        <p>4450 Juneau Street, Burnaby, British Columbia</p>
+        <p><strong>Hotline:</strong> <a href="tel:+17144775200">1-714 477 5200</a></p>
+        <p><strong>Postal Code:</strong> V5C 4C8</p>
+      </article>
+      <article class="speego-footer-office">
+        <h5 data-i18n="office_china_title">Trung Quốc</h5>
+        <p>Khu công nghiệp Shengzhifu, Zhongluotan, quận Bạch Vân, Quảng Châu</p>
+        <p><strong>Postal Code:</strong> 510540</p>
+      </article>
     </div>
   </div>
 
   <!-- Thanh Copyright dưới cùng -->
-  <div class="footer-bottom">
-    <div class="container footer-bottom-inner">
-      <div class="footer-copyright">
-        © 2026 SpeeGo Logistics.
-      </div>
-      <div class="footer-legal-links">
-        <a href="#" id="footerLegalLink">Quy trình 8 bước ↗</a>
-      </div>
-    </div>
+  <div class="speego-footer-bottom">
+    <p data-i18n="footer_copyright">© 2026 SpeeGo Logistics. All rights reserved. Designed for Global Supply Chain Excellence.</p>
   </div>
 </footer>
 
