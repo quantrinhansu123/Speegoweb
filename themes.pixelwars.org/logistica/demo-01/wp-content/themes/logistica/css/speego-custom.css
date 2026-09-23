@@ -10082,3 +10082,230 @@ body.home .site-header .speego-header-topbar {
   .speego-track-step--current .speego-track-step__icon,
   .speego-track-step--current .speego-track-step__card { animation: none !important; }
 }
+
+/* Homepage sourcing — uses the same Inter / navy / orange design tokens. */
+.speego-sourcing-section {
+  position: relative;
+  padding: 100px 24px;
+  background: radial-gradient(circle at 85% 15%, rgba(242, 100, 25, .075), transparent 34%), #f5f8fa;
+  scroll-margin-top: 92px;
+}
+
+.speego-sourcing-inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, .92fr);
+  align-items: center;
+  gap: clamp(48px, 6vw, 96px);
+  max-width: 1320px;
+  margin: 0 auto;
+}
+
+.speego-sourcing-copy,
+.speego-sourcing-visual { min-width: 0; }
+
+.speego-sourcing-copy { font-family: var(--speego-font); }
+
+.speego-sourcing-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--speego-accent);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: .12em;
+  line-height: 1.5;
+}
+
+.speego-sourcing-eyebrow::before {
+  content: '';
+  flex: 0 0 26px;
+  height: 2px;
+  background: currentColor;
+}
+
+.speego-sourcing-title {
+  margin: 20px 0 22px !important;
+  color: var(--speego-primary) !important;
+  font: 800 clamp(34px, 3.5vw, 52px)/1.14 var(--speego-font) !important;
+  letter-spacing: -.045em;
+}
+
+.speego-sourcing-title-accent { color: var(--speego-accent); }
+
+.speego-sourcing-intro {
+  max-width: 600px;
+  margin: 0 0 26px;
+  color: #52647a;
+  font: 400 16px/1.8 var(--speego-font);
+}
+
+.speego-sourcing-steps {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid #dce5ed;
+  border-bottom: 1px solid #dce5ed;
+}
+
+.speego-sourcing-step {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  padding: 16px 0;
+}
+
+.speego-sourcing-step + .speego-sourcing-step { border-top: 1px solid #dce5ed; }
+
+.speego-sourcing-step-icon {
+  display: grid;
+  flex: 0 0 42px;
+  width: 42px;
+  height: 42px;
+  place-items: center;
+  border: 1px solid rgba(242, 100, 25, .23);
+  border-radius: 12px;
+  background: #fff;
+  color: var(--speego-accent);
+  box-shadow: 0 5px 14px rgba(4, 36, 61, .045);
+}
+
+.speego-sourcing-step-icon svg { width: 22px; height: 22px; }
+
+.speego-sourcing-step h3 {
+  margin: 0 0 3px !important;
+  color: var(--speego-primary) !important;
+  font: 750 16px/1.4 var(--speego-font) !important;
+}
+
+.speego-sourcing-step p {
+  margin: 0;
+  color: #63758a;
+  font: 400 14px/1.6 var(--speego-font);
+}
+
+.speego-sourcing-actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px 28px;
+  margin-top: 30px;
+}
+
+.speego-sourcing-primary,
+.speego-sourcing-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 50px;
+  font: 750 14px/1.2 var(--speego-font) !important;
+  text-decoration: none !important;
+  transition: background .2s ease, color .2s ease, transform .2s ease;
+}
+
+.speego-sourcing-primary {
+  padding: 0 24px;
+  border-radius: 8px;
+  background: var(--speego-accent);
+  color: #fff !important;
+  box-shadow: 0 10px 22px rgba(242, 100, 25, .17);
+}
+
+.speego-sourcing-primary:hover,
+.speego-sourcing-primary:focus-visible {
+  background: var(--speego-accent-hover);
+  color: #fff !important;
+  transform: translateY(-2px);
+}
+
+.speego-sourcing-secondary { color: var(--speego-primary) !important; }
+
+.speego-sourcing-secondary:hover,
+.speego-sourcing-secondary:focus-visible { color: var(--speego-accent) !important; }
+
+.speego-sourcing-visual {
+  position: relative;
+  height: min(620px, 47vw);
+  min-height: 480px;
+  overflow: hidden;
+  border-radius: 22px;
+  background: #173753;
+  box-shadow: 0 30px 70px rgba(4, 36, 61, .18);
+}
+
+.speego-sourcing-visual::after {
+  content: '';
+  position: absolute;
+  inset: 35% 0 0;
+  background: linear-gradient(0deg, rgba(4, 36, 61, .74), transparent);
+  pointer-events: none;
+}
+
+.speego-sourcing-visual > img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.speego-sourcing-visual-caption {
+  position: absolute;
+  z-index: 1;
+  right: 26px;
+  bottom: 26px;
+  left: 26px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 17px 18px;
+  border: 1px solid rgba(255, 255, 255, .25);
+  border-radius: 13px;
+  background: rgba(4, 36, 61, .78);
+  color: #fff;
+  backdrop-filter: blur(10px);
+}
+
+.speego-sourcing-visual-mark {
+  display: grid;
+  flex: 0 0 38px;
+  width: 38px;
+  height: 38px;
+  place-items: center;
+  border-radius: 9px;
+  background: var(--speego-accent);
+  font: 800 23px/1 var(--speego-font);
+}
+
+.speego-sourcing-visual-caption strong,
+.speego-sourcing-visual-caption span:last-child {
+  display: block;
+  font-family: var(--speego-font);
+}
+
+.speego-sourcing-visual-caption strong { margin-bottom: 3px; font-size: 15px; line-height: 1.4; }
+.speego-sourcing-visual-caption span:last-child { color: #e2e9ee; font-size: 12px; line-height: 1.5; }
+
+@media (max-width: 980px) {
+  .speego-sourcing-section { padding: 72px 24px; }
+  .speego-sourcing-inner { grid-template-columns: 1fr; gap: 38px; }
+  .speego-sourcing-visual { height: 420px; min-height: 0; }
+}
+
+@media (max-width: 640px) {
+  .speego-sourcing-section { padding: 60px 18px; scroll-margin-top: 70px; }
+  .speego-sourcing-inner { gap: 30px; }
+  .speego-sourcing-eyebrow { font-size: 10px; letter-spacing: .08em; }
+  .speego-sourcing-eyebrow::before { flex-basis: 18px; }
+  .speego-sourcing-title { margin: 16px 0 !important; font-size: clamp(31px, 8vw, 38px) !important; }
+  .speego-sourcing-intro { font-size: 15px; line-height: 1.7; }
+  .speego-sourcing-step { gap: 13px; }
+  .speego-sourcing-step h3 { font-size: 15px !important; }
+  .speego-sourcing-actions { align-items: stretch; gap: 8px; }
+  .speego-sourcing-primary { width: 100%; }
+  .speego-sourcing-secondary { min-height: 44px; }
+  .speego-sourcing-visual { height: 330px; border-radius: 16px; }
+  .speego-sourcing-visual-caption { right: 14px; bottom: 14px; left: 14px; gap: 10px; padding: 12px; }
+  .speego-sourcing-visual-mark { flex-basis: 33px; width: 33px; height: 33px; font-size: 20px; }
+  .speego-sourcing-visual-caption strong { font-size: 13px; }
+  .speego-sourcing-visual-caption span:last-child { font-size: 11px; }
+}
