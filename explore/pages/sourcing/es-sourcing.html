@@ -1,0 +1,529 @@
+<script>
+  // Redirección automática si se abre directamente desde el explorador de archivos
+  if (typeof window !== 'undefined' && !document.getElementById('app-main')) {
+    window.location.replace('../../index.html#/es/sourcing');
+  }
+</script>
+
+<div class="page-container page-sourcing"
+     data-page="sourcing-es"
+     data-nav="sourcing"
+     data-breadcrumb='[{"label":"Inicio","href":"#/es/sourcing"},{"label":"Sourcing y control de calidad","href":"#/es/sourcing"}]'>
+
+  <!-- 1. HERO SECTION -->
+  <section class="page-hero-2col">
+    <div class="container">
+      <div class="hero-2col-grid">
+        <!-- Columna izquierda: Título, resumen y acciones -->
+        <div class="hero-2col-left">
+          <div class="hero-tag-bar">SOURCING Y CONTROL DE CALIDAD</div>
+          <h1 class="hero-h1-clean">
+            Abastecimiento integral<br>
+            <span class="text-orange">y control de calidad.</span>
+          </h1>
+          <p class="hero-desc-clean">
+            SpeeGo ayuda a las empresas a encontrar fabricantes calificados, auditar instalaciones, negociar condiciones comerciales óptimas y certificar la calidad de cada lote antes de su despacho internacional.
+          </p>
+          <div class="hero-actions-row">
+            <a href="#contact-form" class="btn-orange">
+              Hable con nosotros ↗
+            </a>
+            <a href="tel:+84906828898" class="hero-phone-label">
+              (+84) 906 828 898
+            </a>
+          </div>
+        </div>
+
+        <!-- Columna derecha: Imagen del almacén -->
+        <div class="hero-2col-right">
+          <div class="hero-img-card-wrap">
+            <img src="assets/warehouse_racks_hero.jpg" alt="De la fábrica a los mercados globales" onerror="this.onerror=null; this.src='assets/warehouse_hero.jpg';">
+            <div class="hero-img-caption-bar">
+              <div class="hero-caption-brand">SPEEGO LOGISTICS</div>
+              <div class="hero-caption-sub">De la fábrica a los mercados globales</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. QUICK NAV ANCHOR BAR -->
+  <div class="sourcing-subnav" id="sourcingSubnav">
+    <div class="container">
+      <div class="sourcing-subnav-grid">
+        <a href="#industries" class="subnav-grid-item">Industrias</a>
+        <a href="#manufacturing-models" class="subnav-grid-item">Modelos de manufactura</a>
+        <a href="#why-speego" class="subnav-grid-item">Por qué SpeeGo</a>
+        <a href="#quality-control" class="subnav-grid-item">Control de calidad</a>
+        <a href="#contact-form" class="subnav-grid-item subnav-grid-cta">Consultar sourcing ↗</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. INDUSTRIES -->
+  <section class="industries-section" id="industries">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">INDUSTRIAS</span>
+        <h2 class="section-title">
+          Conocer el producto.<br>
+          Conectar con la fábrica adecuada.
+        </h2>
+      </div>
+
+      <div class="industries-cards-grid">
+        <!-- Card 1: Cosméticos -->
+        <div class="industry-card-item">
+          <div class="industry-icon-box" aria-hidden="true">
+            <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M9 3h6v3H9z"></path>
+              <path d="M10 6v3h4V6"></path>
+              <rect x="6" y="9" width="12" height="12" rx="3"></rect>
+              <circle cx="12" cy="15" r="2"></circle>
+            </svg>
+          </div>
+          <h3 class="industry-card-title">Cosméticos</h3>
+          <p class="industry-card-desc">Soluciones integrales de cosmética, desde la formulación y envases hasta la certificación y el transporte.</p>
+        </div>
+
+        <!-- Card 2: Uñas y manicura -->
+        <div class="industry-card-item">
+          <div class="industry-icon-box" aria-hidden="true">
+            <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M10 2h4v5h-4z"></path>
+              <rect x="7" y="7" width="10" height="14" rx="3"></rect>
+              <line x1="12" y1="11" x2="12" y2="17"></line>
+            </svg>
+          </div>
+          <h3 class="industry-card-title">Uñas y Manicura</h3>
+          <p class="industry-card-desc">Abastecimiento mayorista y fabricación de suministros, herramientas y accesorios profesionales para uñas.</p>
+        </div>
+
+        <!-- Card 3: Muebles y decoración -->
+        <div class="industry-card-item">
+          <div class="industry-icon-box" aria-hidden="true">
+            <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M6 19v2M18 19v2"></path>
+              <path d="M4 11a3 3 0 0 1 3-3h10a3 3 0 0 1 3 3v5H4v-5z"></path>
+              <path d="M4 16h16"></path>
+            </svg>
+          </div>
+          <h3 class="industry-card-title">Decoración y Muebles</h3>
+          <p class="industry-card-desc">Mobiliario comercial y decorativo para salones, spas, comercios, restaurantes y proyectos residenciales.</p>
+        </div>
+
+        <!-- Card 4: Artesanías -->
+        <div class="industry-card-item">
+          <div class="industry-icon-box" aria-hidden="true">
+            <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2a4 4 0 0 0-4 4c0 3 4 7 4 7s4-4 4-7a4 4 0 0 0-4-4z"></path>
+              <circle cx="12" cy="18" r="3"></circle>
+            </svg>
+          </div>
+          <h3 class="industry-card-title">Artesanías</h3>
+          <p class="industry-card-desc">Productos artesanales y manufactura tradicional con valor cultural único y calidad de exportación.</p>
+        </div>
+
+        <!-- Card 5: Equipamiento técnico -->
+        <div class="industry-card-item">
+          <div class="industry-icon-box" aria-hidden="true">
+            <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="3"></circle>
+              <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path>
+            </svg>
+          </div>
+          <h3 class="industry-card-title">Equipamiento Técnico</h3>
+          <p class="industry-card-desc">Maquinaria, componentes electrónicos y dispositivos adaptados a las especificaciones de su empresa.</p>
+        </div>
+      </div>
+
+      <div class="industry-action-btn-row">
+        <a href="#contact-form" class="btn-orange">
+          Consulte su categoría de producto ↗
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. MANUFACTURING MODELS -->
+  <section class="models-section" id="manufacturing-models">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">MODELOS DE MANUFACTURA</span>
+        <h2 class="section-title">
+          Tres vías para fabricar<br>
+          sus productos.
+        </h2>
+      </div>
+
+      <div class="models-3col-grid">
+        <!-- Model OEM -->
+        <div class="model-img-card">
+          <img src="assets/warehouse_racks_hero.jpg" alt="Modelo OEM" class="model-bg-img" onerror="this.onerror=null; this.src='assets/warehouse_hero.jpg';">
+          <div class="model-gradient-overlay"></div>
+          <div class="model-card-content">
+            <h3 class="model-title-h3">OEM</h3>
+            <div class="model-sub-badge">ORIGINAL EQUIPMENT MANUFACTURING</div>
+            <p class="model-body-text">La fábrica produce según su diseño original, formulación exclusiva y especificaciones técnicas exactas.</p>
+            <div class="model-pills-row">
+              <span class="model-pill-tag">Diseño propio</span>
+              <span class="model-pill-tag">Personalización total</span>
+              <span class="model-pill-tag">MOQ superior</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Model ODM -->
+        <div class="model-img-card">
+          <img src="assets/port_sunset_hero.jpg" alt="Modelo ODM" class="model-bg-img" onerror="this.onerror=null; this.src='assets/warehouse_hero.jpg';">
+          <div class="model-gradient-overlay"></div>
+          <div class="model-card-content">
+            <h3 class="model-title-h3">ODM</h3>
+            <div class="model-sub-badge">ORIGINAL DESIGN MANUFACTURING</div>
+            <p class="model-body-text">Parta de diseños o fórmulas comprobadas de fábrica, ajústelas a su medida y comercialícelas bajo su marca.</p>
+            <div class="model-pills-row">
+              <span class="model-pill-tag">Diseños probados</span>
+              <span class="model-pill-tag">Personalización media</span>
+              <span class="model-pill-tag">Salida rápida al mercado</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Model Private Label -->
+        <div class="model-img-card">
+          <img src="assets/card_hand_device.jpg" alt="Modelo Marca Propia" class="model-bg-img" onerror="this.onerror=null; this.src='assets/warehouse_hero.jpg';">
+          <div class="model-gradient-overlay"></div>
+          <div class="model-card-content">
+            <h3 class="model-title-h3">Private Label</h3>
+            <div class="model-sub-badge">MARCA PROPIA · ETIQUETADO EXCLUSIVO</div>
+            <p class="model-body-text">Productos de catálogo existentes de la fábrica, terminados con su propio logotipo, marca y empaque comercial.</p>
+            <div class="model-pills-row">
+              <span class="model-pill-tag">Marca propia</span>
+              <span class="model-pill-tag">Bajo MOQ</span>
+              <span class="model-pill-tag">Lanzamiento inmediato</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. WHY SPEEGO -->
+  <section class="ie-why-section" id="why-speego">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">POR QUÉ SPEEGO</span>
+        <h2 class="section-title">
+          Abastecimiento integral<br>
+          y control de calidad garantizado.
+        </h2>
+      </div>
+
+      <div class="ie-why-grid">
+        <div class="ie-service-card">
+          <div class="ie-badge-box">01</div>
+          <h3 class="ie-card-h3">Amplia red de fábricas asociadas</h3>
+          <p class="ie-card-body">SpeeGo combina equipos de abastecimiento sobre el terreno en China y Vietnam con una red verificada de proveedores industriales.</p>
+        </div>
+        <div class="ie-service-card">
+          <div class="ie-badge-box">02</div>
+          <h3 class="ie-card-h3">Auditorías rigurosas de fábrica</h3>
+          <p class="ie-card-body">Evaluamos capacidad productiva, certificaciones y solvencia técnica para asegurar que el fabricante sea el ideal para usted.</p>
+        </div>
+        <div class="ie-service-card">
+          <div class="ie-badge-box">03</div>
+          <h3 class="ie-card-h3">Precios competitivos y MOQs flexibles</h3>
+          <p class="ie-card-body">Negociamos directamente las mejores condiciones de compra y volúmenes mínimos acordes a la escala de su negocio.</p>
+        </div>
+        <div class="ie-service-card">
+          <div class="ie-badge-box">04</div>
+          <h3 class="ie-card-h3">Supervisión continua de producción</h3>
+          <p class="ie-card-body">Monitoreo paso a paso con reportes fotográficos, transmisiones en video y control estricto de los cronogramas de entrega.</p>
+        </div>
+        <div class="ie-service-card">
+          <div class="ie-badge-box">05</div>
+          <h3 class="ie-card-h3">Inspección de calidad (QC) bajo norma AQL</h3>
+          <p class="ie-card-body">Inspección meticulosa pieza por pieza o por muestreo estadístico para verificar que cada lote cumpla con sus estándares.</p>
+        </div>
+        <div class="ie-service-card">
+          <div class="ie-badge-box">06</div>
+          <h3 class="ie-card-h3">Logística y fulfillment integrados</h3>
+          <p class="ie-card-body">Conecte la producción con fletes internacionales marítimos/aéreos y almacenaje en EE.UU. sin intermediarios adicionales.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. QUALITY CONTROL -->
+  <section class="qc-stages-section" id="quality-control">
+    <div class="container">
+      <div class="qc-header-row">
+        <div>
+          <span class="section-tag" style="color: var(--speego-accent);">CONTROL DE CALIDAD</span>
+          <h2 class="section-title" style="color: #FFFFFF;">
+            Calidad verificada<br>
+            en cada etapa.
+          </h2>
+        </div>
+        <p class="qc-header-sub">
+          Un flujo de trabajo continuo desde las materias primas hasta el expediente final entregado al cliente.
+        </p>
+      </div>
+
+      <div class="qc-flow-grid">
+        <div class="qc-stage-item">
+          <div class="qc-stage-node">01</div>
+          <div class="qc-stage-label">ETAPA 01</div>
+          <h3 class="qc-stage-title">Inspección previa a la producción</h3>
+          <p class="qc-stage-desc">Verificación exhaustiva de insumos, materias primas y prototipos aprobados.</p>
+        </div>
+        <div class="qc-stage-item">
+          <div class="qc-stage-node">02</div>
+          <div class="qc-stage-label">ETAPA 02</div>
+          <h3 class="qc-stage-title">Inspección durante la producción</h3>
+          <p class="qc-stage-desc">Detección oportuna de fallos en línea de ensamble para evitar costos de reprocesamiento.</p>
+        </div>
+        <div class="qc-stage-item">
+          <div class="qc-stage-node">03</div>
+          <div class="qc-stage-label">ETAPA 03</div>
+          <h3 class="qc-stage-title">Inspección previa al despacho</h3>
+          <p class="qc-stage-desc">Control final de acabados, empaque, rotulado y embalaje antes de precintar el contenedor.</p>
+        </div>
+        <div class="qc-stage-item">
+          <div class="qc-stage-node">04</div>
+          <div class="qc-stage-label">ETAPA 04</div>
+          <h3 class="qc-stage-title">Expediente e informes de QC</h3>
+          <p class="qc-stage-desc">Entrega de informe detallado con fotos HD, videos funcionales y registro de no conformidades.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. PHOTOS & VIDEO -->
+  <section class="prod-floor-section">
+    <div class="container">
+      <div class="prod-floor-header">
+        <div>
+          <span class="section-tag">FOTOS Y VIDEO</span>
+          <h2 class="section-title">Vea la planta de producción.</h2>
+        </div>
+        <div class="prod-arrows-nav">
+          <button type="button" class="prod-arrow-btn" onclick="slideProdFloor(-1)" aria-label="Diapositiva anterior">←</button>
+          <button type="button" class="prod-arrow-btn" onclick="slideProdFloor(1)" aria-label="Siguiente diapositiva">→</button>
+        </div>
+      </div>
+
+      <div class="prod-slider-viewport">
+        <div class="prod-slider-track" id="prodSliderTrack">
+          <!-- Página 1 -->
+          <div class="prod-slide-page">
+            <div class="prod-cards-grid">
+              <div class="prod-card-item">
+                <div class="prod-card-media">
+                  <img src="assets/warehouse_racks_hero.jpg" alt="QC en planta" onerror="this.onerror=null; this.src='assets/warehouse_hero.jpg';">
+                  <div class="prod-media-badge prod-badge-video">
+                    <span>VIDEO</span> · <span>Próximamente</span>
+                  </div>
+                </div>
+                <div class="prod-card-body">
+                  <h3 class="prod-card-title">QC en planta de producción</h3>
+                  <p class="prod-card-desc">Video de las etapas de inspección previas a la salida de las mercancías.</p>
+                </div>
+              </div>
+
+              <div class="prod-card-item">
+                <div class="prod-card-media">
+                  <img src="assets/port_sunset_hero.jpg" alt="Línea de producción socia" onerror="this.onerror=null; this.src='assets/warehouse_hero.jpg';">
+                  <div class="prod-media-badge prod-badge-photo">
+                    <span>FOTO</span>
+                  </div>
+                </div>
+                <div class="prod-card-body">
+                  <h3 class="prod-card-title">Planta socia de manufactura</h3>
+                  <p class="prod-card-desc">Línea de producción activa en la red de aliados industriales de SpeeGo.</p>
+                </div>
+              </div>
+
+              <div class="prod-card-item">
+                <div class="prod-card-media">
+                  <img src="assets/warehouse_hero.jpg" alt="Conteo y empaque" onerror="this.onerror=null; this.src='assets/warehouse_racks_hero.jpg';">
+                  <div class="prod-media-badge prod-badge-photo">
+                    <span>FOTO</span>
+                  </div>
+                </div>
+                <div class="prod-card-body">
+                  <h3 class="prod-card-title">Conteo y embalaje de exportación</h3>
+                  <p class="prod-card-desc">Verificación de unidades y empaque reforzado antes de la consolidación.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Página 2 -->
+          <div class="prod-slide-page">
+            <div class="prod-cards-grid">
+              <div class="prod-card-item">
+                <div class="prod-card-media">
+                  <img src="assets/factory_assembly_line.jpg" alt="Línea de ensamble automatizada" onerror="this.onerror=null; this.src='assets/warehouse_racks_hero.jpg';">
+                  <div class="prod-media-badge prod-badge-photo">
+                    <span>FOTO</span>
+                  </div>
+                </div>
+                <div class="prod-card-body">
+                  <h3 class="prod-card-title">Línea de ensamble automatizada</h3>
+                  <p class="prod-card-desc">Ensamblaje robótico con control de precisión en cada estación de trabajo.</p>
+                </div>
+              </div>
+
+              <div class="prod-card-item">
+                <div class="prod-card-media">
+                  <img src="assets/factory_packaging_qc.jpg" alt="Envasado en sala limpia" onerror="this.onerror=null; this.src='assets/port_sunset_hero.jpg';">
+                  <div class="prod-media-badge prod-badge-photo">
+                    <span>FOTO</span>
+                  </div>
+                </div>
+                <div class="prod-card-body">
+                  <h3 class="prod-card-title">Envasado en sala limpia</h3>
+                  <p class="prod-card-desc">Líneas cosméticas que cumplen con altos estándares de higiene y dosificación.</p>
+                </div>
+              </div>
+
+              <div class="prod-card-item">
+                <div class="prod-card-media">
+                  <img src="assets/factory_staging_dispatch.jpg" alt="Preparación y despacho" onerror="this.onerror=null; this.src='assets/warehouse_hero.jpg';">
+                  <div class="prod-media-badge prod-badge-photo">
+                    <span>FOTO</span>
+                  </div>
+                </div>
+                <div class="prod-card-body">
+                  <h3 class="prod-card-title">Preparación y despacho con código de barras</h3>
+                  <p class="prod-card-desc">Paletizado retractilado y verificación por escáner antes del despacho internacional.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="ff-slider-dots" style="margin-top: 24px; justify-content: center;">
+        <span class="ff-dot active" onclick="setSlide(0)"></span>
+        <span class="ff-dot" onclick="setSlide(1)"></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. FREQUENTLY ASKED QUESTIONS -->
+  <section class="ff-faq-section" style="background: #F8FAFC;">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">INFORMACIÓN ÚTIL</span>
+        <h2 class="section-title">Preguntas frecuentes</h2>
+      </div>
+
+      <div class="ff-faq-list">
+        <div class="ff-faq-item faq-item">
+          <button class="ff-faq-btn faq-question-btn">
+            <span>¿SpeeGo ayuda a negociar las cantidades mínimas de pedido (MOQ)?</span>
+            <span class="ff-faq-plus">+</span>
+          </button>
+          <div class="ff-faq-answer">
+            <p>Sí. SpeeGo negocia directamente con las fábricas para acordar pedidos mínimos flexibles que se adapten a su presupuesto y etapa de crecimiento.</p>
+          </div>
+        </div>
+
+        <div class="ff-faq-item faq-item">
+          <button class="ff-faq-btn faq-question-btn">
+            <span>¿Cómo puedo dar seguimiento al progreso de fabricación?</span>
+            <span class="ff-faq-plus">+</span>
+          </button>
+          <div class="ff-faq-answer">
+            <p>Nuestro equipo en planta comparte bitácoras fotográficas periódicas, videos de inspección e informes de avance para mantenerle informado en todo momento.</p>
+          </div>
+        </div>
+
+        <div class="ff-faq-item faq-item">
+          <button class="ff-faq-btn faq-question-btn">
+            <span>¿Qué incluye un reporte de control de calidad (QC)?</span>
+            <span class="ff-faq-plus">+</span>
+          </button>
+          <div class="ff-faq-answer">
+            <p>Incluye conteo por unidades, fotografías detalladas de defectos y ángulos clave, pruebas de funcionamiento, clasificación de severidad y firma de aprobación final.</p>
+          </div>
+        </div>
+
+        <div class="ff-faq-item faq-item">
+          <button class="ff-faq-btn faq-question-btn">
+            <span>¿Puede SpeeGo transportar las mercancías tras la inspección?</span>
+            <span class="ff-faq-plus">+</span>
+          </button>
+          <div class="ff-faq-answer">
+            <p>Sí. Brindamos una solución logística integral: desde el control en fábrica y consolidación hasta transporte aéreo/marítimo, despacho aduanero y entrega final.</p>
+          </div>
+        </div>
+
+        <div class="ff-faq-item faq-item">
+          <button class="ff-faq-btn faq-question-btn">
+            <span>¿Qué modelos de producción admite SpeeGo?</span>
+            <span class="ff-faq-plus">+</span>
+          </button>
+          <div class="ff-faq-answer">
+            <p>Admitimos los tres modelos principales: OEM (fabricación a medida según su diseño), ODM (adaptación de fórmulas o moldes existentes) y Private Label (etiquetado de marca propia).</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 9. SPEEGO CUSTOMERS -->
+  <section class="ff-testimonial-section" style="background: #FFFFFF;">
+    <div class="container">
+      <div class="ff-section-header">
+        <span class="ff-tag-eyebrow">CLIENTES DE SPEEGO</span>
+        <h2 class="ff-section-title">Acompañando a su empresa</h2>
+      </div>
+
+      <div class="testimonials-2col-grid">
+        <div class="testimonial-card-sourcing">
+          <div>
+            <div class="ff-quote-mark" aria-hidden="true" style="margin-bottom: 16px;">
+              <span></span><span></span>
+            </div>
+            <blockquote class="ff-quote-text" style="font-size: 1.05rem; margin-bottom: 24px;">
+              “El equipo de control de calidad en planta nos ahorró miles de dólares antes de que el contenedor fuera precintado.”
+            </blockquote>
+          </div>
+          <div class="ff-author-info">
+            <div class="ff-author-name">Kevin Le</div>
+            <div class="ff-author-title">CEO, Glamour Nail Supplies · California, EE.UU.</div>
+            <div class="ff-author-ref">
+              <a href="#/es/sourcing" class="ff-ref-link">Publicado en el portal SpeeGo ↗</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card-sourcing">
+          <div>
+            <div class="ff-quote-mark" aria-hidden="true" style="margin-bottom: 16px;">
+              <span></span><span></span>
+            </div>
+            <blockquote class="ff-quote-text" style="font-size: 1.05rem; margin-bottom: 24px;">
+              “El rastreo OMS en tiempo real y la política de cero cargos ocultos hacen de SpeeGo nuestro socio logístico más confiable.”
+            </blockquote>
+          </div>
+          <div class="ff-author-info">
+            <div class="ff-author-name">Sarah Mitchell</div>
+            <div class="ff-author-title">Directora de Operaciones, EcoLiving Home · Australia</div>
+            <div class="ff-author-ref">
+              <a href="#/es/sourcing" class="ff-ref-link">Publicado en el portal SpeeGo ↗</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 10. CONSULTATION FORM BAND -->
+  <div data-component="cta-form" data-variant="band" id="contact-form"></div>
+
+</div>

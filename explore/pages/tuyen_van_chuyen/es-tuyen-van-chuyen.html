@@ -1,0 +1,379 @@
+<script>
+  // Redirección automática si se abre directamente desde el explorador de archivos
+  if (typeof window !== 'undefined' && !document.getElementById('app-main')) {
+    window.location.replace('../../index.html#/es/rutas-de-envio');
+  }
+</script>
+
+<div class="page-container page-shipping-routes"
+     data-page="es-shipping-routes"
+     data-nav="shipping-routes"
+     data-breadcrumb='[{"label":"Inicio","href":"#/es/knowledge"},{"label":"Rutas de Envío desde China","href":"#/es/rutas-de-envio"}]'>
+
+  <!-- 1. HERO SECTION (2 COLUMNS) -->
+  <section class="page-hero-2col">
+    <div class="container">
+      <div class="hero-2col-grid">
+        <!-- Left Column: Title & Intro -->
+        <div class="hero-2col-left">
+          <div class="hero-tag-bar">TRANSPORTE INTERNACIONAL</div>
+          <h1 class="hero-h1-clean" id="routeHeroTitle">
+            Transporte de carga desde<br>
+            <span id="routeOriginName">China</span><br>
+            <span class="text-orange">hacia EE.UU., Canadá y Australia</span>
+          </h1>
+          <p class="hero-desc-clean" id="routeHeroDesc">
+            Soluciones de transporte marítimo en contenedor completo (FCL) y carga consolidada (LCL) desde <span id="routeOriginDescName">China</span> hacia Estados Unidos, Canadá y Australia, adaptadas al crecimiento dinámico de su empresa.
+          </p>
+          <div class="hero-actions-row">
+            <a href="#contact-form" class="btn-orange">
+              Consulte sus necesidades ↗
+            </a>
+            <a href="tel:+84906828898" class="hero-phone-label">
+              (+84) 906 828 898
+            </a>
+          </div>
+        </div>
+
+        <!-- Right Column: SpeeGo Warehouse Facility Image -->
+        <div class="hero-2col-right">
+          <div class="hero-img-card-wrap">
+            <img src="assets/warehouse_hero.jpg" alt="Conectando mercancías. Expandiendo mercados." onerror="this.onerror=null; this.src='assets/port_sunset_hero.jpg';">
+            <div class="hero-img-caption-bar">
+              <div class="hero-caption-brand">SPEEGO LOGISTICS</div>
+              <div class="hero-caption-sub">Conectando mercancías. Expandiendo mercados.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. ORIGIN SWITCHER TABS (CHINA ⟷ VIETNAM) -->
+  <div class="route-tabs-container">
+    <div class="container">
+      <div class="route-tab-pills">
+        <button type="button" class="route-tab-btn active" id="tabOriginChina" onclick="switchRouteOriginEs('china')">
+          Origen: China
+        </button>
+        <button type="button" class="route-tab-btn" id="tabOriginVietnam" onclick="switchRouteOriginEs('vietnam')">
+          Origen: Vietnam
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. SHIPPING CORRIDORS -->
+  <section class="route-dest-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">CORREDORES DE TRANSPORTE</span>
+        <h2 class="section-title">Destinos comerciales para su empresa.</h2>
+      </div>
+
+      <div class="dest-cards-grid">
+        <!-- Card US -->
+        <a href="#contact-form" class="dest-card-item">
+          <div class="dest-card-header">
+            <span>EE.UU.</span>
+            <span class="dest-arrow">↗</span>
+          </div>
+          <div class="dest-card-title" id="destRouteUS">China ➔ Estados Unidos</div>
+        </a>
+
+        <!-- Card CA -->
+        <a href="#contact-form" class="dest-card-item">
+          <div class="dest-card-header">
+            <span>CA</span>
+            <span class="dest-arrow">↗</span>
+          </div>
+          <div class="dest-card-title" id="destRouteCA">China ➔ Canadá</div>
+        </a>
+
+        <!-- Card AU -->
+        <a href="#contact-form" class="dest-card-item">
+          <div class="dest-card-header">
+            <span>AU</span>
+            <span class="dest-arrow">↗</span>
+          </div>
+          <div class="dest-card-title" id="destRouteAU">China ➔ Australia</div>
+        </a>
+
+        <!-- Card GLOBAL -->
+        <a href="#contact-form" class="dest-card-item">
+          <div class="dest-card-header">
+            <span>GLOBAL</span>
+            <span class="dest-arrow">↗</span>
+          </div>
+          <div class="dest-card-title" id="destRouteGlobal">China ➔ Otros Países</div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. 8-STEP WORKFLOW -->
+  <section class="process-8steps-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag" style="color: var(--speego-accent);">FLUJO OPERATIVO DE 8 PASOS</span>
+        <h2 class="section-title" style="color: #FFFFFF;">
+          Pasos claros.<br>
+          Conectividad de extremo a extremo.
+        </h2>
+      </div>
+
+      <div class="process-8steps-grid">
+        <div class="step-8-item">
+          <div class="step-8-num">01</div>
+          <div class="step-8-title">Recepción de requisitos</div>
+          <div class="step-8-desc">Registro detallado de tipo de mercancía, volumen, origen y destino solicitado.</div>
+        </div>
+        <div class="step-8-item">
+          <div class="step-8-num">02</div>
+          <div class="step-8-title">Asesoría de soluciones</div>
+          <div class="step-8-desc">Selección de la ruta y modalidad óptima equilibrando presupuesto y tiempos.</div>
+        </div>
+        <div class="step-8-item">
+          <div class="step-8-num">03</div>
+          <div class="step-8-title">Red de abastecimiento</div>
+          <div class="step-8-desc">Conexión con fábricas y proveedores verificados según las necesidades del cliente.</div>
+        </div>
+        <div class="step-8-item">
+          <div class="step-8-num">04</div>
+          <div class="step-8-title">Monitoreo de producción</div>
+          <div class="step-8-desc">Seguimiento estricto de los hitos de fabricación y fechas límite de despacho.</div>
+        </div>
+        <div class="step-8-item">
+          <div class="step-8-num">05</div>
+          <div class="step-8-title">Control de calidad</div>
+          <div class="step-8-desc">Inspección presencial de calidad antes del empaque y salida de fábrica.</div>
+        </div>
+        <div class="step-8-item">
+          <div class="step-8-num">06</div>
+          <div class="step-8-title">Documentación y aduanas</div>
+          <div class="step-8-desc">Preparación de expedientes aduaneros completos y trámites de exportación e importación.</div>
+        </div>
+        <div class="step-8-item">
+          <div class="step-8-num">07</div>
+          <div class="step-8-title">Transporte global</div>
+          <div class="step-8-desc">Ejecución del tránsito multimodal acordado vía marítima, aérea o terrestre.</div>
+        </div>
+        <div class="step-8-item">
+          <div class="step-8-num">08</div>
+          <div class="step-8-title">Entrega y finalización</div>
+          <div class="step-8-desc">Entrega en destino y traspaso de toda la documentación comercial y aduanera.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. TRANSPORTATION MODES -->
+  <section class="shipping-methods-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">MODALIDADES DE TRANSPORTE</span>
+        <h2 class="section-title">Métodos de tránsito flexibles.</h2>
+      </div>
+
+      <div class="methods-3col-grid">
+        <div class="method-col-item">
+          <div class="method-col-num">01</div>
+          <div class="method-col-title">Transporte Marítimo (FCL y LCL)</div>
+          <p class="method-col-desc">Envíos de contenedores completos y cargas consolidadas hacia los principales puertos de EE.UU., Canadá y Australia.</p>
+        </div>
+        <div class="method-col-item">
+          <div class="method-col-num">02</div>
+          <div class="method-col-title">Transporte Aéreo Rápido</div>
+          <p class="method-col-desc">Carga aérea express y estándar para envíos urgentes, mercancías de alto valor y muestras de producción.</p>
+        </div>
+        <div class="method-col-item">
+          <div class="method-col-num">03</div>
+          <div class="method-col-title">Logística Multimodal y Terrestre</div>
+          <p class="method-col-desc">Integración fluida con camiones de larga distancia y distribución de última milla hacia almacenes finales.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. VALUE PROPOSITION -->
+  <section class="ie-why-section" style="background: #F8FAFC;">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">VALOR AGREGADO SPEEGO</span>
+        <h2 class="section-title">
+          Transparencia absoluta.<br>
+          Control de su cadena de suministro.
+        </h2>
+      </div>
+
+      <div class="ie-why-grid">
+        <div class="ie-service-card">
+          <div class="ie-badge-box">01</div>
+          <h3 class="ie-card-h3">Seguimiento en tiempo real</h3>
+          <p class="ie-card-body">Visibilidad completa del estado y localización del cargamento desde el retiro hasta la entrega en destino.</p>
+        </div>
+        <div class="ie-service-card">
+          <div class="ie-badge-box">02</div>
+          <h3 class="ie-card-h3">Tarifas claras sin costos ocultos</h3>
+          <p class="ie-card-body">Cotizaciones detalladas y transparentes que evitan sobrecostos sorpresa en terminales portuarias o aduanas.</p>
+        </div>
+        <div class="ie-service-card">
+          <div class="ie-badge-box">03</div>
+          <h3 class="ie-card-h3">Soporte aduanero especializado</h3>
+          <p class="ie-card-body">Manejo profesional de aranceles, clasificación HS y regulaciones de importación en América del Norte y Oceanía.</p>
+        </div>
+        <div class="ie-service-card">
+          <div class="ie-badge-box">04</div>
+          <h3 class="ie-card-h3">Gestión de riesgos y seguros</h3>
+          <p class="ie-card-body">Pólizas de seguro de carga integral para proteger su inversión ante cualquier contingencia de tránsito internacional.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. FREQUENTLY ASKED QUESTIONS -->
+  <section class="ff-faq-section" style="background: #FFFFFF;">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">INFORMACIÓN ÚTIL</span>
+        <h2 class="section-title">Preguntas frecuentes sobre rutas</h2>
+      </div>
+
+      <div class="ff-faq-list">
+        <div class="ff-faq-item faq-item">
+          <button class="ff-faq-btn faq-question-btn">
+            <span>¿Cuánto tiempo tarda el envío marítimo a Estados Unidos?</span>
+            <span class="ff-faq-plus">+</span>
+          </button>
+          <div class="ff-faq-answer">
+            <p>El tránsito marítimo a la Costa Oeste de EE.UU. (Los Ángeles/Long Beach) suele demorar entre 14 y 20 días, y a la Costa Este entre 25 y 35 días, según el puerto de salida.</p>
+          </div>
+        </div>
+
+        <div class="ff-faq-item faq-item">
+          <button class="ff-faq-btn faq-question-btn">
+            <span>¿Cuál es la diferencia entre FCL y LCL?</span>
+            <span class="ff-faq-plus">+</span>
+          </button>
+          <div class="ff-faq-answer">
+            <p>FCL (Full Container Load) implica el uso exclusivo de un contenedor de 20 o 40 pies. LCL (Less than Container Load) permite consolidar volúmenes menores compartiendo espacio con otros importadores para reducir costos.</p>
+          </div>
+        </div>
+
+        <div class="ff-faq-item faq-item">
+          <button class="ff-faq-btn faq-question-btn">
+            <span>¿SpeeGo se encarga de la entrega en almacenes de Amazon FBA?</span>
+            <span class="ff-faq-plus">+</span>
+          </button>
+          <div class="ff-faq-answer">
+            <p>Sí. Gestionamos el agendamiento de citas en centros logísticos de Amazon FBA, Walmart y almacenes 3PL con cumplimiento estricto de los requisitos de etiquetado y paletizado.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. SPEEGO CUSTOMERS -->
+  <section class="ff-testimonial-section" style="background: #F8FAFC;">
+    <div class="container">
+      <div class="ff-section-header">
+        <span class="ff-tag-eyebrow">CLIENTES DE SPEEGO</span>
+        <h2 class="ff-section-title">Historias de éxito comercial</h2>
+      </div>
+
+      <div class="testimonials-2col-grid">
+        <div class="testimonial-card-sourcing">
+          <div>
+            <div class="ff-quote-mark" aria-hidden="true" style="margin-bottom: 16px;">
+              <span></span><span></span>
+            </div>
+            <blockquote class="ff-quote-text" style="font-size: 1.05rem; margin-bottom: 24px;">
+              “La regularidad en los despachos marítimos y la atención bilingüe facilitan enormemente nuestras importaciones mensuales.”
+            </blockquote>
+          </div>
+          <div class="ff-author-info">
+            <div class="ff-author-name">David Nguyen</div>
+            <div class="ff-author-title">Gerente de Cadena de Suministro · Texas, EE.UU.</div>
+            <div class="ff-author-ref">
+              <a href="#/es/rutas-de-envio" class="ff-ref-link">Publicado en el portal SpeeGo ↗</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card-sourcing">
+          <div>
+            <div class="ff-quote-mark" aria-hidden="true" style="margin-bottom: 16px;">
+              <span></span><span></span>
+            </div>
+            <blockquote class="ff-quote-text" style="font-size: 1.05rem; margin-bottom: 24px;">
+              “Excelente coordinación en el despacho aduanero y entrega puntual en nuestros centros de distribución en Sídney.”
+            </blockquote>
+          </div>
+          <div class="ff-author-info">
+            <div class="ff-author-name">Sarah Mitchell</div>
+            <div class="ff-author-title">Directora de Operaciones, EcoLiving Home · Australia</div>
+            <div class="ff-author-ref">
+              <a href="#/es/rutas-de-envio" class="ff-ref-link">Publicado en el portal SpeeGo ↗</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 9. CONSULTATION FORM BAND -->
+  <div data-component="cta-form" data-variant="band" id="contact-form"></div>
+
+  <!-- SCRIPT: ORIGIN TAB SWITCHER (CHINA ⟷ VIETNAM) -->
+  <script>
+    function switchRouteOriginEs(origin) {
+      const btnChina = document.getElementById('tabOriginChina');
+      const btnVietnam = document.getElementById('tabOriginVietnam');
+      const originName = document.getElementById('routeOriginName');
+      const descOriginName = document.getElementById('routeOriginDescName');
+      const destUS = document.getElementById('destRouteUS');
+      const destCA = document.getElementById('destRouteCA');
+      const destAU = document.getElementById('destRouteAU');
+      const destGlobal = document.getElementById('destRouteGlobal');
+      const breadcrumbList = document.getElementById('breadcrumbList');
+
+      if (origin === 'vietnam') {
+        if (btnChina) btnChina.classList.remove('active');
+        if (btnVietnam) btnVietnam.classList.add('active');
+        if (originName) originName.textContent = 'Vietnam';
+        if (descOriginName) descOriginName.textContent = 'Vietnam';
+        if (destUS) destUS.textContent = 'Vietnam ➔ Estados Unidos';
+        if (destCA) destCA.textContent = 'Vietnam ➔ Canadá';
+        if (destAU) destAU.textContent = 'Vietnam ➔ Australia';
+        if (destGlobal) destGlobal.textContent = 'Vietnam ➔ Otros Países';
+
+        if (breadcrumbList) {
+          breadcrumbList.innerHTML = `
+            <a href="#/es/knowledge" class="breadcrumb-link">Inicio</a>
+            <span class="breadcrumb-sep">/</span>
+            <span class="breadcrumb-current">Rutas de Envío desde Vietnam</span>
+          `;
+        }
+      } else {
+        if (btnVietnam) btnVietnam.classList.remove('active');
+        if (btnChina) btnChina.classList.add('active');
+        if (originName) originName.textContent = 'China';
+        if (descOriginName) descOriginName.textContent = 'China';
+        if (destUS) destUS.textContent = 'China ➔ Estados Unidos';
+        if (destCA) destCA.textContent = 'China ➔ Canadá';
+        if (destAU) destAU.textContent = 'China ➔ Australia';
+        if (destGlobal) destGlobal.textContent = 'China ➔ Otros Países';
+
+        if (breadcrumbList) {
+          breadcrumbList.innerHTML = `
+            <a href="#/es/knowledge" class="breadcrumb-link">Inicio</a>
+            <span class="breadcrumb-sep">/</span>
+            <span class="breadcrumb-current">Rutas de Envío desde China</span>
+          `;
+        }
+      }
+    }
+    window.switchRouteOriginEs = switchRouteOriginEs;
+  </script>
+
+</div>
