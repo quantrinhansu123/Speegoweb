@@ -42,4 +42,5 @@ if (!fs.existsSync(exploreSrc)) {
   process.exit(1);
 }
 copyDir(exploreSrc, path.join(dest, "explore"));
-console.log("Prepared homepage and explore pages for Vercel");
+require("./generate-seo-pages").generate({ root: __dirname, output: dest });
+console.log("Prepared homepage and crawlable explore pages for Vercel");

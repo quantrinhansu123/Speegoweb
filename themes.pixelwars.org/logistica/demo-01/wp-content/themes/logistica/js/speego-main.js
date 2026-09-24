@@ -2224,20 +2224,45 @@ stat_delivery: 'Entrega a Tiempo',
     }
 
     // Sync explore SPA links with active language
-    const isEnglish = (lang === 'en');
-    const exploreLinkMap = {
-      '/explore/#/sourcing': isEnglish ? '/explore/#/en/sourcing' : '/explore/#/sourcing',
-      '/explore/#/en/sourcing': isEnglish ? '/explore/#/en/sourcing' : '/explore/#/sourcing',
-      '/explore/#/fulfillment': isEnglish ? '/explore/#/en/fulfillment' : '/explore/#/fulfillment',
-      '/explore/#/en/fulfillment': isEnglish ? '/explore/#/en/fulfillment' : '/explore/#/fulfillment',
-      '/explore/#/tuyen-van-chuyen': isEnglish ? '/explore/#/en/shipping-routes' : '/explore/#/tuyen-van-chuyen',
-      '/explore/#/en/shipping-routes': isEnglish ? '/explore/#/en/shipping-routes' : '/explore/#/tuyen-van-chuyen',
-      '/explore/#/xuat-nhap-khau': isEnglish ? '/explore/#/en/import-export' : '/explore/#/xuat-nhap-khau',
-      '/explore/#/en/import-export': isEnglish ? '/explore/#/en/import-export' : '/explore/#/xuat-nhap-khau',
-      '/explore/#/knowledge': isEnglish ? '/explore/#/en/knowledge' : '/explore/#/knowledge',
-      '/explore/#/en/knowledge': isEnglish ? '/explore/#/en/knowledge' : '/explore/#/knowledge'
+    const localizedExplorePath = (section, locale) => {
+      const routes = {
+        sourcing: { vi: 'sourcing', en: 'sourcing', es: 'sourcing' },
+        fulfillment: { vi: 'fulfillment', en: 'fulfillment', es: 'fulfillment' },
+        'shipping-routes': { vi: 'tuyen-van-chuyen', en: 'shipping-routes', es: 'rutas-de-envio' },
+        'import-export': { vi: 'xuat-nhap-khau', en: 'import-export', es: 'import-export' },
+        knowledge: { vi: 'knowledge', en: 'knowledge', es: 'knowledge' }
+      };
+      const slug = routes[section]?.[locale] || routes.knowledge[locale];
+      return `/explore/${locale}/${slug}/`;
     };
-    document.querySelectorAll('a[href*="/explore/#"]').forEach(a => {
+    const exploreLinkMap = {
+      '/explore/#/sourcing': localizedExplorePath('sourcing', lang),
+      '/explore/#/en/sourcing': localizedExplorePath('sourcing', lang),
+      '/explore/vi/sourcing/': localizedExplorePath('sourcing', lang),
+      '/explore/en/sourcing/': localizedExplorePath('sourcing', lang),
+      '/explore/es/sourcing/': localizedExplorePath('sourcing', lang),
+      '/explore/#/fulfillment': localizedExplorePath('fulfillment', lang),
+      '/explore/#/en/fulfillment': localizedExplorePath('fulfillment', lang),
+      '/explore/vi/fulfillment/': localizedExplorePath('fulfillment', lang),
+      '/explore/en/fulfillment/': localizedExplorePath('fulfillment', lang),
+      '/explore/es/fulfillment/': localizedExplorePath('fulfillment', lang),
+      '/explore/#/tuyen-van-chuyen': localizedExplorePath('shipping-routes', lang),
+      '/explore/#/en/shipping-routes': localizedExplorePath('shipping-routes', lang),
+      '/explore/vi/tuyen-van-chuyen/': localizedExplorePath('shipping-routes', lang),
+      '/explore/en/shipping-routes/': localizedExplorePath('shipping-routes', lang),
+      '/explore/es/rutas-de-envio/': localizedExplorePath('shipping-routes', lang),
+      '/explore/#/xuat-nhap-khau': localizedExplorePath('import-export', lang),
+      '/explore/#/en/import-export': localizedExplorePath('import-export', lang),
+      '/explore/vi/xuat-nhap-khau/': localizedExplorePath('import-export', lang),
+      '/explore/en/import-export/': localizedExplorePath('import-export', lang),
+      '/explore/es/import-export/': localizedExplorePath('import-export', lang),
+      '/explore/#/knowledge': localizedExplorePath('knowledge', lang),
+      '/explore/#/en/knowledge': localizedExplorePath('knowledge', lang),
+      '/explore/vi/knowledge/': localizedExplorePath('knowledge', lang),
+      '/explore/en/knowledge/': localizedExplorePath('knowledge', lang),
+      '/explore/es/knowledge/': localizedExplorePath('knowledge', lang)
+    };
+    document.querySelectorAll('a[href*="/explore/#"], a[href^="/explore/"]').forEach(a => {
       const href = a.getAttribute('href');
       if (exploreLinkMap[href]) {
         a.setAttribute('href', exploreLinkMap[href]);
