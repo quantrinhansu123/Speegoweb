@@ -13,7 +13,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,600;1,700;1,800&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
 
   <!-- Shared Stylesheet -->
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/style.css?v=sourcing_nav_20260924b">
 
   <script>
     if (new URLSearchParams(window.location.search).has('embedded')) {
@@ -1488,6 +1488,11 @@
       };
 
       function initSourcingScrollSpy() {
+        if (window.__sourcingScrollSpyHandler) {
+          window.removeEventListener('scroll', window.__sourcingScrollSpyHandler);
+          window.removeEventListener('resize', window.__sourcingScrollSpyHandler);
+        }
+
         const subnav = document.getElementById('sourcingSubnav');
         if (!subnav) return;
         const items = subnav.querySelectorAll('.subnav-grid-item[href^="#"]');
@@ -1500,19 +1505,25 @@
           })
           .filter(pair => pair.el !== null);
 
-        window.addEventListener('scroll', () => {
-          const scrollPos = window.scrollY + 120;
+        const sectionItems = sections.filter(pair => !pair.item.classList.contains('subnav-grid-cta'));
+        const updateActiveItem = () => {
+          const navBottom = subnav.getBoundingClientRect().bottom;
           let current = sections[0];
-          sections.forEach(s => {
-            if (s.el.offsetTop <= scrollPos) {
+          sectionItems.forEach(s => {
+            if (s.el.getBoundingClientRect().top <= navBottom + 24) {
               current = s;
             }
           });
           items.forEach(it => it.classList.remove('active'));
-          if (current && current.item) {
+          if (current && current.item && !current.item.classList.contains('subnav-grid-cta')) {
             current.item.classList.add('active');
           }
-        }, { passive: true });
+        };
+
+        window.__sourcingScrollSpyHandler = updateActiveItem;
+        window.addEventListener('scroll', updateActiveItem, { passive: true });
+        window.addEventListener('resize', updateActiveItem);
+        updateActiveItem();
       }
 
       // 10. ERROR SCREEN DISPLAY
@@ -1679,6 +1690,10 @@
                 window.location.hash = getCounterpartRoute(window.location.hash, event.data.lang);
               }
               if (event.data.type === 'speego:scroll-top') resetEmbeddedScroll();
+              if (event.data.type === 'speego:scroll-to' && typeof event.data.id === 'string') {
+                const target = document.getElementById(event.data.id);
+                if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+              }
             });
             if ('ResizeObserver' in window) {
               new ResizeObserver(() => notifyParent('speego:height', { height: document.documentElement.scrollHeight }))

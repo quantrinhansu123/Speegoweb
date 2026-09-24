@@ -38,3 +38,93 @@ body.speego-explore-active #masthead.site-header.speego-site-header {
 body.speego-explore-active #menu-main-menu a[href*="/explore/#/"] {
   scroll-behavior: auto;
 }
+
+.speego-host-sourcing-subnav {
+  position: fixed;
+  top: 114px;
+  left: 0;
+  right: 0;
+  z-index: 990;
+  background: #fff;
+  border-top: 1px solid #e2e8f0;
+  border-bottom: 1px solid #e2e8f0;
+  box-shadow: 0 4px 16px rgba(4, 36, 61, 0.08);
+}
+
+.speego-host-sourcing-subnav[hidden] {
+  display: none;
+}
+
+.speego-host-sourcing-subnav-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  width: 100%;
+  align-items: stretch;
+}
+
+.speego-host-sourcing-subnav-item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 66px;
+  padding: 14px 12px;
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  color: #64748b;
+  font: 650 14px/1.35 Inter, sans-serif;
+  text-align: center;
+  letter-spacing: normal;
+  text-transform: none !important;
+  white-space: nowrap;
+  background: transparent;
+  cursor: pointer;
+  transition: color 0.2s ease, background 0.2s ease;
+}
+
+.speego-host-sourcing-subnav-item:hover,
+.speego-host-sourcing-subnav-item.active {
+  color: #f36b21;
+  background: #fff9f5;
+}
+
+.speego-host-sourcing-subnav-item.active {
+  font-weight: 750;
+}
+
+.speego-host-sourcing-subnav-item.active::after {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 3px;
+  background: #f36b21;
+  content: '';
+}
+
+.speego-host-sourcing-subnav-item.is-cta {
+  color: #f36b21;
+  font-weight: 750;
+}
+
+.speego-host-sourcing-subnav-item.is-cta:hover {
+  color: #fff;
+  background: #f36b21;
+}
+
+@media (max-width: 1024px) {
+  .speego-host-sourcing-subnav-grid {
+    display: flex;
+    overflow-x: auto;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .speego-host-sourcing-subnav-item {
+    flex: 0 0 auto;
+    min-height: 58px;
+    padding: 14px 18px;
+  }
+}

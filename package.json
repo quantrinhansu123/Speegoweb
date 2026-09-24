@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "description": "Logistica cloned website local runner",
   "scripts": {
-    "start": "python -m http.server 8000",
-    "serve": "npx serve -l 8000",
+    "start": "npm run build && node serve-demo.js",
+    "serve": "npm run start",
     "build": "node prepare-vercel.js"
   }
 }

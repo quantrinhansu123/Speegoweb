@@ -4937,7 +4937,7 @@ body.speego-seo-page #app-main {
 /* ==========================================================================
    MODULE: SOURCING & QUALITY CONTROL (vi-sourcing.png & en-sourcing.png)
    ========================================================================== */
-/* Quick Nav Anchor Bar (5 Equal Parts & Sticky at Top) */
+/* Quick Nav Anchor Bar (5 equal parts & sticky at top) */
 .sourcing-subnav {
   background: #FFFFFF;
   border-top: 1px solid #E2E8F0;
@@ -4968,22 +4968,17 @@ body.speego-seo-page #app-main {
   text-decoration: none;
   transition: all 0.2s ease;
   position: relative;
-  border-right: 1px solid #F1F5F9;
+  border: 0;
 }
 
-.subnav-grid-item:last-child {
-  border-right: none;
-}
-
-.subnav-grid-item:hover {
+.subnav-grid-item:hover,
+.subnav-grid-item.active {
   color: var(--speego-accent);
   background: #FFF9F5;
 }
 
 .subnav-grid-item.active {
-  color: var(--speego-accent);
   font-weight: 750;
-  background: #FFF9F5;
 }
 
 .subnav-grid-item.active::after {
