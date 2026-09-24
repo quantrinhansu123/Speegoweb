@@ -60,6 +60,18 @@ function extractShell(homeHtml) {
   };
 }
 
+function renderBreadcrumb(items, routeLookup) {
+  if (!items.length) return "";
+  const links = items.map((item, index) => {
+    const isLast = index === items.length - 1;
+    if (isLast) return `<span class="breadcrumb-current">${escapeHtml(item.label)}</span>`;
+    const route = routeLookup.get(item.href);
+    const href = index === 0 ? "/" : (route ? route.urlPath : "/");
+    return `<a href="${href}" class="breadcrumb-link">${escapeHtml(item.label)}</a><span class="breadcrumb-sep">/</span>`;
+  }).join("");
+  return `<nav class="breadcrumb-section" aria-label="Đường dẫn trang"><div class="container"><div class="breadcrumb-list">${links}</div></div></nav>`;
+}
+
 function cleanupFragment(fragment, routeLookup) {
   let html = fragment.replace(/<script\b[^>]*>[\s\S]*?window\.location\.replace\([\s\S]*?<\/script>/i, "");
   html = html.replace(/href=(['"])#(\/[^'"]+)\1/gi, (_full, quote, route) => {
@@ -93,7 +105,19 @@ function generate({ root, output }) {
   for (const route of routes) {
     const source = path.join(exploreRoot, route.file);
     if (!fs.existsSync(source)) throw new Error(`Missing route content: ${route.file}`);
-    const fragment = cleanupFragment(fs.readFileSync(source, "utf8"), routeLookup);
+    let fragment = cleanupFragment(fs.readFileSync(source, "utf8"), routeLookup);
+    const breadcrumbJson = fragment.match(/\bdata-breadcrumb='([^']+)'/i)?.[1];
+    let breadcrumbs = [];
+    if (breadcrumbJson) {
+      try { breadcrumbs = JSON.parse(decodeEntities(breadcrumbJson)); } catch (error) {
+        throw new Error(`Invalid breadcrumbs for ${route.file}: ${error.message}`);
+      }
+    }
+    const breadcrumbMarkup = renderBreadcrumb(breadcrumbs, routeLookup);
+    const isPost = route.file.includes("post-");
+    if (isPost && breadcrumbMarkup) {
+      fragment = fragment.replace(/<div\b[^>]*data-post-breadcrumb-slot[^>]*>\s*<\/div>/i, breadcrumbMarkup);
+    }
     const description = (fragment.match(/<p\b[^>]*>([\s\S]*?)<\/p>/i)?.[1] || route.title);
     const metaDescription = plainText(description).slice(0, 300);
     const canonical = `${origin}${route.urlPath}`;
@@ -145,10 +169,10 @@ function generate({ root, output }) {
   <link rel="stylesheet" href="/wp-content/themes/logistica/css/speego-process-tabs.css">
   <link rel="stylesheet" href="/explore/css/style.css">
 </head>
-<body class="home wp-theme-logistica elementor-default elementor-template-full-width">
+<body class="home wp-theme-logistica elementor-default elementor-template-full-width speego-seo-page" data-seo-language="${route.lang}">
   <div id="page" class="hfeed site">
     ${localizedHeader}
-    <main id="app-main">${fragment}</main>
+    <main id="app-main">${isPost ? "" : breadcrumbMarkup}${fragment}</main>
     ${localizedFooter}
   </div>
   <script>
@@ -165,7 +189,8 @@ function generate({ root, output }) {
       }, true);
     }());
   </script>
-  <script src="/wp-content/themes/logistica/js/speego-main.js?v=seo_routes_20260924"></script>
+  <script src="/explore/js/knowledge-article.js"></script>
+  <script src="/wp-content/themes/logistica/js/speego-main.js?v=seo_routes_20260924_langfix1"></script>
 </body>
 </html>`;
     fs.writeFileSync(outputFile, html, "utf8");

@@ -1273,6 +1273,25 @@
         listEl.innerHTML = html;
       }
 
+      function positionPageBreadcrumb(pageContainer) {
+        const breadcrumb = document.getElementById('breadcrumbSection');
+        if (!breadcrumb) return;
+        const slot = pageContainer && pageContainer.querySelector('[data-post-breadcrumb-slot]');
+        if (slot) {
+          slot.appendChild(breadcrumb);
+          return;
+        }
+        if (IS_EMBEDDED) {
+          const appMain = document.getElementById('app-main');
+          if (appMain && breadcrumb.parentElement !== appMain) appMain.prepend(breadcrumb);
+          return;
+        }
+        const sharedHeader = document.querySelector('#header-container #masthead');
+        if (sharedHeader && breadcrumb.parentElement !== sharedHeader.parentElement) {
+          sharedHeader.insertAdjacentElement('afterend', breadcrumb);
+        }
+      }
+
       // 7. UPDATE ACTIVE NAVIGATION HIGHLIGHTS
       function updateNavHighlights(activeNavKey) {
         // Desktop nav
@@ -1605,6 +1624,7 @@
 
           // Update breadcrumbs and active nav menu
           renderBreadcrumb(breadcrumbs);
+          positionPageBreadcrumb(pageContainer);
           updateNavHighlights(navKey);
 
           // Render any nested CTA Form components
@@ -1971,5 +1991,6 @@
     }
     window.switchRouteOriginEn = switchRouteOriginEn;
   </script>
+  <script src="js/knowledge-article.js"></script>
 </body>
 </html>

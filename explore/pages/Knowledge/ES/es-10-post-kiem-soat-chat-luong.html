@@ -17,8 +17,8 @@
         <!-- LEFT COLUMN (~65%): ARTICLE CONTENT -->
         <article class="post-main">
           <!-- Category tag & H1 -->
-          <span class="post-cat-tag">KNOWLEDGE / Sourcing y Control de Calidad</span>
           <h1 class="post-title">Control de calidad por etapas: Verificación antes del despacho</h1>
+          <div class="post-breadcrumb-slot" data-post-breadcrumb-slot></div>
 
           <!-- Meta row & Share -->
           <div class="post-meta-row">
@@ -27,12 +27,7 @@
             <span>Actualizado el 17 de septiembre de 2026</span>
           </div>
 
-          <div class="post-share-row">
-            <span>Compartir</span>
-            <a href="javascript:void(0)" class="post-share-link">Facebook ↗</a>
-            <a href="javascript:void(0)" class="post-share-link">LinkedIn ↗</a>
-            <a href="javascript:void(0)" class="post-share-link" onclick="navigator.clipboard && navigator.clipboard.writeText(window.location.href); alert('¡Enlace copiado al portapapeles!');">Copiar enlace</a>
-          </div>
+          <div class="post-share-row"><span class="post-share-label">Compartir</span><a href="#" class="post-share-link" data-share-platform="facebook" aria-label="Facebook" title="Facebook"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.4 21v-8.1h2.8l.4-3.2h-3.2V7.6c0-.9.3-1.5 1.6-1.5h1.7V3.2c-.3 0-1.4-.1-2.6-.1-2.7 0-4.5 1.6-4.5 4.6v2H6.7v3.2h2.9V21z"/></svg></a><a href="#" class="post-share-link" data-share-platform="x" aria-label="X" title="X"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.9 2h3.1l-6.8 7.8L23.2 22h-6.3l-4.9-6.4L6.4 22H3.2l7.3-8.4L2.8 2h6.5l4.4 5.9L18.9 2zm-1.1 17.8h1.7L8.3 4.1H6.5z"/></svg></a><a href="#" class="post-share-link" data-share-platform="linkedin" aria-label="LinkedIn" title="LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5.2 3.3a2.1 2.1 0 1 1 0 4.2 2.1 2.1 0 0 1 0-4.2zM3.4 9h3.7v12H3.4zm6 0H13v1.6h.1a4 4 0 0 1 3.6-2c3.8 0 4.5 2.5 4.5 5.7V21h-3.7v-5.9c0-1.4 0-3.2-2-3.2s-2.3 1.5-2.3 3.1V21H9.4z"/></svg></a><a href="#" class="post-share-link" data-share-platform="reddit" aria-label="Reddit" title="Reddit"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5.2 13 2l4.2.9a1.8 1.8 0 1 1-.4 1.7l-2.7-.6-.7 2.2c2.2.1 4.1.8 5.4 1.9a2.2 2.2 0 1 1 2.2 3.6c.1.5.2 1 .2 1.5 0 3.6-4.1 6.5-9.2 6.5s-9.2-2.9-9.2-6.5c0-.5.1-1 .2-1.5a2.2 2.2 0 1 1 2.2-3.6C6.5 7 8.7 6.2 11 6.2l1-1zM8 11.4a1.2 1.2 0 1 0 0 2.4 1.2 1.2 0 0 0 0-2.4zm8 0a1.2 1.2 0 1 0 0 2.4 1.2 1.2 0 0 0 0-2.4zm-7.4 4.2a.8.8 0 0 0-1.2 1.1c1.1 1.2 2.7 1.8 4.6 1.8s3.5-.6 4.6-1.8a.8.8 0 0 0-1.2-1.1c-.8.8-2 1.2-3.4 1.2s-2.6-.4-3.4-1.2z"/></svg></a><button type="button" class="post-share-link" data-copy-link data-copied-label="Enlace copiado" data-copy-error-label="No se pudo copiar">Copiar enlace</button><span class="post-copy-feedback" aria-live="polite"></span></div>
 
           <!-- Hero Image -->
           <div class="post-hero-wrap">
@@ -46,9 +41,11 @@
             Desde las materias primas hasta el informe final de inspección, estos puntos de control protegen la calidad de su producto y reducen reclamos.
           </p>
 
+          <nav class="post-toc" aria-label="ÍNDICE DEL ARTÍCULO"><p class="post-toc-title">ÍNDICE DEL ARTÍCULO</p><ol class="post-toc-list"><li><a href="#post-section-1">1. Inspección previa a la producción</a></li><li><a href="#post-section-2">2. Inspección durante la producción</a></li><li><a href="#post-section-3">3. Inspección previa al embarque (PSI)</a></li><li><a href="#post-section-4">4. Informe técnico detallado para el cliente</a></li></ol></nav>
+
           <!-- Section 1 -->
           <div class="post-content-block">
-            <h3 class="post-content-h2">1. Inspección previa a la producción</h3>
+            <h2 class="post-content-h2" id="post-section-1">1. Inspección previa a la producción</h2>
             <p class="post-content-p">
               Verifique las materias primas, componentes y especificaciones acordadas en fábrica antes de que inicien las líneas de producción a gran escala.
             </p>
@@ -56,7 +53,7 @@
 
           <!-- Section 2 -->
           <div class="post-content-block">
-            <h3 class="post-content-h2">2. Inspección durante la producción</h3>
+            <h2 class="post-content-h2" id="post-section-2">2. Inspección durante la producción</h2>
             <p class="post-content-p">
               Supervise y detecte defectos en etapas tempranas del proceso manufacturero para reducir costos correctivos y prevenir demoras en la fecha de despacho.
             </p>
@@ -64,7 +61,7 @@
 
           <!-- Section 3 -->
           <div class="post-content-block">
-            <h3 class="post-content-h2">3. Inspección previa al embarque (PSI)</h3>
+            <h2 class="post-content-h2" id="post-section-3">3. Inspección previa al embarque (PSI)</h2>
             <p class="post-content-p">
               Evalúe muestras de producto terminado, empaque, rotulado y pruebas funcionales bajo estándares internacionales antes de autorizar el transporte.
             </p>
@@ -72,7 +69,7 @@
 
           <!-- Section 4 -->
           <div class="post-content-block">
-            <h3 class="post-content-h2">4. Informe técnico detallado para el cliente</h3>
+            <h2 class="post-content-h2" id="post-section-4">4. Informe técnico detallado para el cliente</h2>
             <p class="post-content-p">
               El resultado de la inspección incluye material fotográfico y en video, mediciones técnicas, informe de conformidad y la clasificación de defectos detectados.
             </p>
@@ -84,11 +81,7 @@
             <div class="post-author-info">
               <h4 class="post-author-name">Equipo Editorial SpeeGo</h4>
               <p class="post-author-role">Artículos técnicos sobre aprovisionamiento, fletes internacionales y fulfillment en SpeeGo Logistics.</p>
-              <div class="post-author-links">
-                <a href="https://speegologistics.com" target="_blank" rel="noopener">Sitio web ↗</a>
-                <span>·</span>
-                <a href="mailto:info@speegologistic.com">Correo ↗</a>
-              </div>
+              <div class="post-author-links" aria-label="Author links"><a href="https://speegologistic.com/" target="_blank" rel="noopener" aria-label="Sitio web" title="Sitio web">W</a><a href="mailto:info@speegologistic.com" aria-label="Correo electrónico" title="Correo electrónico">@</a><span class="post-author-social-disabled" aria-label="Perfil de LinkedIn no disponible" title="Perfil de LinkedIn no disponible">in</span><span class="post-author-social-disabled" aria-label="Perfil de Facebook no disponible" title="Perfil de Facebook no disponible">f</span></div>
             </div>
           </div>
         </article>

@@ -3128,6 +3128,168 @@ body:has(#speego-cookie-consent:not([hidden])) .speego-track-fab {
   transition: var(--transition);
 }
 
+/* Knowledge pages follow the 3-column reference layout. */
+.subcat-grid-4col {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.subcat-card {
+  background-color: var(--bg-white);
+  border: 1px solid var(--border-light);
+  border-radius: 12px;
+  padding: 24px 22px 20px;
+}
+
+.subcat-card:hover {
+  background-color: var(--bg-white);
+  border-color: #CBD5E1;
+  box-shadow: var(--shadow-hover);
+}
+
+.subcat-item,
+.topic-grid-3x2 .topic-article-item {
+  min-width: 0;
+}
+
+.topic-grid-3x2 .topic-article-link,
+.subcat-item .topic-article-link {
+  display: block;
+  flex: 1 1 auto;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Standalone SEO routes share the fixed homepage header. Keep route content clear of it. */
+body.speego-seo-page #app-main {
+  padding-top: 112px;
+}
+
+.post-breadcrumb-slot {
+  margin: -8px 0 14px;
+}
+
+.post-breadcrumb-slot .breadcrumb-section {
+  padding: 0;
+}
+
+.post-share-row {
+  border-bottom: 0;
+  padding-bottom: 0;
+  margin-bottom: 16px;
+}
+
+.post-share-link[data-share-platform] {
+  width: 38px;
+  height: 38px;
+  justify-content: center;
+  border: 1px solid var(--border-light);
+  border-radius: 50%;
+  background: var(--bg-white);
+}
+
+.post-share-link[data-share-platform] svg {
+  width: 15px;
+  height: 15px;
+  fill: currentColor;
+}
+
+.post-share-link[data-copy-link] {
+  min-height: 38px;
+  padding: 0 14px;
+  border: 1px solid var(--border-light);
+  border-radius: 999px;
+  appearance: none;
+  background: var(--bg-white);
+  font: inherit;
+  cursor: pointer;
+}
+
+.post-toc {
+  margin: 0 0 28px;
+  padding: 18px 22px;
+  border: 1px solid var(--border-light);
+  border-left: 3px solid var(--orange-primary);
+  border-radius: 8px;
+  background: var(--bg-light-gray);
+}
+
+.post-toc-title {
+  margin: 0 0 8px;
+  color: var(--text-muted);
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.post-toc-list {
+  margin: 0;
+  padding-left: 20px;
+}
+
+.post-toc-list li + li {
+  margin-top: 4px;
+}
+
+.post-toc-list a {
+  color: var(--text-navy);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.post-author-social-disabled {
+  opacity: 0.38;
+  cursor: default;
+}
+
+.post-author-links {
+  gap: 8px;
+}
+
+.post-author-links a,
+.post-author-links .post-author-social-disabled {
+  width: 32px;
+  height: 32px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--border-light);
+  border-radius: 50%;
+  background: var(--bg-white);
+  color: var(--text-navy);
+  font-size: 0.82rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+@media (max-width: 1024px) {
+  .subcat-grid-4col {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  body.speego-seo-page #app-main {
+    padding-top: 92px;
+  }
+}
+
+@media (max-width: 560px) {
+  .subcat-grid-4col {
+    grid-template-columns: 1fr;
+  }
+
+  .subcat-card {
+    padding: 20px 18px;
+  }
+
+  .post-toc {
+    padding: 16px 18px;
+  }
+}
+
 .topic-key-item a:hover {
   color: var(--orange-primary);
 }
