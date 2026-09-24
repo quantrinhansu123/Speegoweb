@@ -15,7 +15,24 @@
   <!-- Shared Stylesheet -->
   <link rel="stylesheet" href="css/style.css">
 
+  <script>
+    if (new URLSearchParams(window.location.search).has('embedded')) {
+      document.documentElement.classList.add('speego-embedded');
+    } else if (window.location.pathname.startsWith('/explore')) {
+      window.location.replace('/' + window.location.hash);
+    }
+  </script>
+
   <style>
+    html.speego-embedded { scroll-behavior: auto; }
+    html.speego-embedded body { min-height: 0; display: block; }
+    html.speego-embedded #app-main { min-height: 0; }
+    html.speego-embedded #header-container,
+    html.speego-embedded #footer-container,
+    html.speego-embedded #speego-cookie-consent,
+    html.speego-embedded #speego-track-fab,
+    html.speego-embedded #speego-track-search-modal,
+    html.speego-embedded #speego-track-modal { display: none !important; }
     /* Loading indicator & Error Card Styles */
     .app-loading-state {
       min-height: 400px;
@@ -200,6 +217,20 @@
   <script>
     (function () {
       'use strict';
+
+      const IS_EMBEDDED = document.documentElement.classList.contains('speego-embedded');
+      const notifyParent = (type, details = {}) => {
+        if (IS_EMBEDDED && window.parent !== window) {
+          window.parent.postMessage({ type, ...details }, window.location.origin);
+        }
+      };
+      function resetEmbeddedScroll() {
+        if (!IS_EMBEDDED) return;
+        window.scrollTo(0, 0);
+        document.documentElement.scrollTop = 0;
+        document.body.scrollTop = 0;
+        requestAnimationFrame(() => window.scrollTo(0, 0));
+      }
 
       // 1. ROUTE DEFINITIONS & PAGE FILE MAPPING
       const ROUTES = {
@@ -538,6 +569,7 @@
 
       // 3. LOAD & INITIALIZE SHARED PARTIALS
       async function loadPartials() {
+        if (IS_EMBEDDED) return true;
         try {
           // Parallel fetch header, footer, and cta-form
           const [header, footer, ctaForm] = await Promise.all([
@@ -1531,7 +1563,7 @@
         if (!appMain) return;
 
         // Show loading state
-        appMain.innerHTML = `
+        if (!IS_EMBEDDED || !appMain.querySelector('.page-container')) appMain.innerHTML = `
           <div class="app-loading-state">
             <div class="loading-spinner"></div>
             <div>${currentLang === 'en' ? 'Loading page...' : 'Đang tải trang...'}</div>
@@ -1548,6 +1580,10 @@
 
           // Inject into main
           appMain.innerHTML = pageHtml;
+
+          if (IS_EMBEDDED) {
+            appMain.querySelectorAll('[data-component="cta-form"]').forEach(el => el.remove());
+          }
 
           // Parse page-level metadata
           const pageContainer = appMain.querySelector('.page-container');
@@ -1572,13 +1608,19 @@
           updateNavHighlights(navKey);
 
           // Render any nested CTA Form components
-          renderCtaComponents(appMain);
+          if (!IS_EMBEDDED) renderCtaComponents(appMain);
 
           // Re-bind interactive events (FAQ accordion, pills)
           bindPageInteractions();
 
           // Scroll to top
-          window.scrollTo({ top: 0, behavior: 'smooth' });
+          if (IS_EMBEDDED) {
+            resetEmbeddedScroll();
+            notifyParent('speego:route', { route: hash, title: route.title });
+            notifyParent('speego:height', { height: document.documentElement.scrollHeight });
+          } else {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          }
 
         } catch (err) {
           renderErrorScreen(`Không thể tải trang [${route.file}]`, err);
@@ -1589,6 +1631,40 @@
       async function init() {
         const partialsLoaded = await loadPartials();
         if (partialsLoaded) {
+          if (IS_EMBEDDED) {
+            document.addEventListener('click', event => {
+              const link = event.target.closest('a[href]');
+              if (!link) return;
+              const href = link.getAttribute('href') || '';
+              if (href === '/' || href === '/index.html') {
+                event.preventDefault();
+                notifyParent('speego:open-home');
+              } else if (href === '#contact-form' || href === '#consultation-form') {
+                event.preventDefault();
+                notifyParent('speego:open-contact');
+              } else if (href.startsWith('#') && !href.startsWith('#/')) {
+                const target = document.getElementById(href.slice(1));
+                if (target) {
+                  event.preventDefault();
+                  target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+              }
+            });
+            window.addEventListener('message', event => {
+              if (event.origin !== window.location.origin || event.source !== window.parent || !event.data) return;
+              if (event.data.type === 'speego:navigate' && ROUTES[event.data.route]) {
+                window.location.hash = event.data.route;
+              }
+              if (event.data.type === 'speego:set-language' && ['vi', 'en', 'es'].includes(event.data.lang)) {
+                window.location.hash = getCounterpartRoute(window.location.hash, event.data.lang);
+              }
+              if (event.data.type === 'speego:scroll-top') resetEmbeddedScroll();
+            });
+            if ('ResizeObserver' in window) {
+              new ResizeObserver(() => notifyParent('speego:height', { height: document.documentElement.scrollHeight }))
+                .observe(document.getElementById('app-main'));
+            }
+          }
           window.addEventListener('hashchange', router);
           router();
         }

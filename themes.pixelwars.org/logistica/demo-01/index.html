@@ -44,6 +44,7 @@
 	<!-- SpeeGo Custom Design System & Interactive Components -->
 <link rel='stylesheet' id='speego-custom-css' href='wp-content/themes/logistica/css/speego-custom.css?v=sourcing_home_20260923' type='text/css' media='all' />
 	<link rel='stylesheet' id='speego-process-tabs-css' href='wp-content/themes/logistica/css/speego-process-tabs.css' type='text/css' media='all' />
+	<link rel="stylesheet" href="wp-content/themes/logistica/css/speego-explore.css">
 
 	<style>
 		/* Global adjustments */
@@ -93,7 +94,7 @@
 				<div class="speego-header-navbar-inner">
 					<!-- Brand Logo -->
 					<div class="site-branding speego-branding">
-						<a href="index.html" class="speego-brand-logo" rel="home">
+						<a href="#home" class="speego-brand-logo" rel="home">
 							<img src="wp-content/themes/logistica/images/logo-speego.png" alt="SpeeGo Logistics" class="speego-logo-img">
 						</a>
 					</div>
@@ -168,6 +169,9 @@
 		<!-- =================================================================
 		     HERO SECTION (Exact match to Image 2 Specifications)
 		     ================================================================= -->
+		<main id="speego-explore-panel" class="speego-explore-panel" hidden aria-label="Nội dung SpeeGo">
+			<iframe id="speego-explore-frame" title="Trang nội dung SpeeGo" loading="eager" scrolling="no"></iframe>
+		</main>
 		<section class="speego-hero-section" id="home">
 			<!-- Background video (zoomed) + bottom blur bar to hide watermark -->
 			<div class="speego-hero-bg-media" aria-hidden="true">
@@ -1042,7 +1046,7 @@
 		<footer id="colophon" class="site-footer speego-site-footer" role="contentinfo">
 			<div class="speego-footer-top">
 				<div class="speego-footer-brand">
-					<a href="index.html" class="speego-brand-logo">
+					<a href="#home" class="speego-brand-logo">
 						<img src="wp-content/themes/logistica/images/logo-speego-light.png" alt="SpeeGo Logistics" class="speego-logo-img">
 					</a>
 					<p class="speego-footer-tagline">
@@ -1200,5 +1204,6 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 	<script src="wp-content/themes/logistica/js/speego-main.js?v=sourcing_home_20260923"></script>
+	<script src="wp-content/themes/logistica/js/speego-explore.js"></script>
 </body>
 </html>
