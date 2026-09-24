@@ -517,44 +517,43 @@
           <h2 class="ff-section-title">Bên trong kho Houston.</h2>
         </div>
         <div class="ff-gallery-nav">
-          <button class="ff-gallery-arrow" onclick="slideGallery(-1)" aria-label="Ảnh trước">←</button>
-          <button class="ff-gallery-arrow" onclick="slideGallery(1)" aria-label="Ảnh sau">→</button>
+          <button class="ff-gallery-arrow" onclick="(function(g,d){var s=Array.from(g.querySelectorAll('.ff-warehouse-slide')),n=s.length,i=(Number(g.dataset.slideIndex||0)+d+n)%n;g.dataset.slideIndex=i;s.forEach(function(x,j){x.classList.toggle('active',j===i)});if(g._ffAutoTimer)window.clearTimeout(g._ffAutoTimer);if(g._ffAdvance)g._ffAutoTimer=window.setTimeout(g._ffAdvance,5000)})(document.getElementById('warehouseGallery'),-1)" aria-label="Ảnh trước" aria-controls="warehouseGallery">←</button>
+          <button class="ff-gallery-arrow" onclick="(function(g,d){var s=Array.from(g.querySelectorAll('.ff-warehouse-slide')),n=s.length,i=(Number(g.dataset.slideIndex||0)+d+n)%n;g.dataset.slideIndex=i;s.forEach(function(x,j){x.classList.toggle('active',j===i)});if(g._ffAutoTimer)window.clearTimeout(g._ffAutoTimer);if(g._ffAdvance)g._ffAutoTimer=window.setTimeout(g._ffAdvance,5000)})(document.getElementById('warehouseGallery'),1)" aria-label="Ảnh sau" aria-controls="warehouseGallery">→</button>
         </div>
       </div>
 
       <div class="ff-warehouse-slider-frame" id="warehouseGallery">
-        <!-- Slide 0 -->
-        <div class="ff-warehouse-slide active" data-slide="0">
-          <img src="assets/port_sunset_hero.jpg" alt="Khu kệ lưu trữ kho Houston" class="ff-warehouse-img" onerror="this.onerror=null; this.src='assets/warehouse_racks_hero.jpg';">
+        <div class="ff-warehouse-slide active">
+          <img src="assets/warehouse_racks_hero.jpg" alt="Kệ chứa hàng trong kho" class="ff-warehouse-img" onload="(function(g){if(!g||g.dataset.autoInit)return;g.dataset.autoInit='1';g.dataset.slideIndex='0';var advance=function(){if(document.getElementById('warehouseGallery')!==g)return;var s=Array.from(g.querySelectorAll('.ff-warehouse-slide')),i=(Number(g.dataset.slideIndex||0)+1)%s.length;g.dataset.slideIndex=i;s.forEach(function(x,j){x.classList.toggle('active',j===i)});g._ffAutoTimer=window.setTimeout(advance,5000)};g._ffAdvance=advance;g._ffAutoTimer=window.setTimeout(advance,5000)})(document.getElementById('warehouseGallery'))">
           <div class="ff-slide-caption-card">
-            <div class="ff-caption-tag">Khu kệ lưu trữ</div>
-            <div class="ff-caption-text">Khu vực lưu kho theo vị trí kệ, mỗi SKU gắn với một vị trí cố định trên OMS.</div>
+            <div class="ff-caption-tag">Kệ lưu trữ</div>
+            <div class="ff-caption-text">Hệ thống kệ kho giúp sắp xếp và bảo quản hàng hóa ngăn nắp.</div>
           </div>
         </div>
 
-        <!-- Slide 1 -->
-        <div class="ff-warehouse-slide" data-slide="1">
-          <img src="assets/warehouse_hero.jpg" alt="Bàn đóng gói &amp; Kiểm soát camera" class="ff-warehouse-img" onerror="this.onerror=null; this.src='assets/warehouse_racks_hero.jpg';">
+        <div class="ff-warehouse-slide">
+          <img src="assets/warehouse_hero.jpg" alt="Không gian làm việc bên trong kho" class="ff-warehouse-img">
           <div class="ff-slide-caption-card">
-            <div class="ff-caption-tag">Bàn đóng gói &amp; Kiểm soát camera</div>
-            <div class="ff-caption-text">Mỗi kiện hàng được đóng gói dưới camera độ phân giải cao ghi hình đồng bộ tracking.</div>
+            <div class="ff-caption-tag">Vận hành kho</div>
+            <div class="ff-caption-text">Không gian được bố trí để tiếp nhận, lưu trữ và xử lý đơn hàng.</div>
           </div>
         </div>
 
-        <!-- Slide 2 -->
-        <div class="ff-warehouse-slide" data-slide="2">
-          <img src="assets/warehouse_racks_hero.jpg" alt="Khu tiếp nhận &amp; Dock xuất hàng" class="ff-warehouse-img" onerror="this.onerror=null; this.src='assets/port_sunset_hero.jpg';">
+        <div class="ff-warehouse-slide">
+          <img src="assets/factory_staging_dispatch.jpg" alt="Nhân viên chuẩn bị đơn hàng để xuất kho" class="ff-warehouse-img">
           <div class="ff-slide-caption-card">
-            <div class="ff-caption-tag">Khu tiếp nhận &amp; Dock xuất hàng</div>
-            <div class="ff-caption-text">Khu vực xuất nhập hàng liên tục kết nối trực tiếp các đơn vị vận chuyển USPS, UPS, FedEx.</div>
+            <div class="ff-caption-tag">Chuẩn bị xuất hàng</div>
+            <div class="ff-caption-text">Các kiện hàng được sắp xếp trước khi bàn giao cho đơn vị vận chuyển.</div>
           </div>
         </div>
-      </div>
 
-      <div class="ff-slider-dots">
-        <span class="ff-dot active" onclick="setSlide(0)"></span>
-        <span class="ff-dot" onclick="setSlide(1)"></span>
-        <span class="ff-dot" onclick="setSlide(2)"></span>
+        <div class="ff-warehouse-slide">
+          <img src="assets/port_sunset_hero.jpg" alt="Tàu chở hàng và container tại cảng biển" class="ff-warehouse-img">
+          <div class="ff-slide-caption-card">
+            <div class="ff-caption-tag">Vận chuyển toàn cầu</div>
+            <div class="ff-caption-text">Mạng lưới vận chuyển kết nối hàng hóa tới nhiều thị trường.</div>
+          </div>
+        </div>
       </div>
 
       <p class="ff-warehouse-footnote">
@@ -670,7 +669,10 @@
     </div>
   </section>
 
-  <!-- 7. FREQUENTLY ASKED QUESTIONS SECTION -->
+  <!-- 7. FORM TƯ VẤN -->
+  <div data-component="cta-form" data-variant="band" id="contact-form"></div>
+
+  <!-- 8. FREQUENTLY ASKED QUESTIONS SECTION -->
   <section class="ff-faq-section">
     <div class="container">
       <div class="ff-section-header">
@@ -742,7 +744,7 @@
     </div>
   </section>
 
-  <!-- 8. TESTIMONIAL SECTION -->
+  <!-- 9. TESTIMONIAL SECTION -->
   <section class="ff-testimonial-section">
     <div class="container">
       <div class="ff-section-header">
@@ -750,33 +752,35 @@
         <h2 class="ff-section-title">Đồng hành cùng doanh nghiệp</h2>
       </div>
 
-      <div class="ff-testimonial-card">
-        <div class="ff-quote-mark" aria-hidden="true">
-          <span></span><span></span>
-        </div>
-        <div class="ff-quote-body">
-          <blockquote class="ff-quote-text">
-            “Việc theo dõi OMS theo thời gian thực và chính sách không có chi phí ẩn khiến SpeeGo trở thành đối tác chuỗi cung ứng đáng tin cậy của chúng tôi.”
-          </blockquote>
+      <div class="testimonials-2col-grid">
+        <div class="testimonial-card-sourcing">
+          <div>
+            <div class="ff-quote-mark" aria-hidden="true" style="margin-bottom: 16px;"><span></span><span></span></div>
+            <blockquote class="ff-quote-text" style="font-size: 1.05rem; margin-bottom: 24px;">
+              “Việc theo dõi OMS theo thời gian thực và chính sách không có chi phí ẩn khiến SpeeGo trở thành đối tác chuỗi cung ứng đáng tin cậy của chúng tôi.”
+            </blockquote>
+          </div>
           <div class="ff-author-info">
             <div class="ff-author-name">Sarah Mitchell</div>
             <div class="ff-author-title">Operations Director, EcoLiving Home · Australia</div>
-            <div class="ff-author-ref">
-              <a href="#/sourcing" class="ff-ref-link">Theo chia sẻ trên website SpeeGo · bản dịch tiếng Việt ↗</a>
-            </div>
+            <div class="ff-author-ref"><a href="#/sourcing" class="ff-ref-link">Theo chia sẻ trên website SpeeGo · bản dịch tiếng Việt ↗</a></div>
           </div>
         </div>
+        <div class="testimonial-card-sourcing">
+          <div>
+            <div class="ff-quote-mark" aria-hidden="true" style="margin-bottom: 16px;"><span></span><span></span></div>
+            <blockquote class="ff-quote-text" style="font-size: 1.05rem; margin-bottom: 24px;">
+              “Đội ngũ QC tại chỗ đã giúp chúng tôi tiết kiệm hàng nghìn đô la trước khi container được niêm phong.”
+            </blockquote>
+          </div>
+          <div class="ff-author-info">
+            <div class="ff-author-name">Kevin Le</div>
+            <div class="ff-author-title">CEO, Glamour Nail Supplies · California, USA</div>
+            <div class="ff-author-ref"><a href="#/sourcing" class="ff-ref-link">Theo chia sẻ trên website SpeeGo · bản dịch tiếng Việt ↗</a></div>
+            </div>
+          </div>
       </div>
     </div>
   </section>
-
-  <!-- 9. BAND CONSULTATION FORM -->
-  <div data-component="cta-form" data-variant="band" id="contact-form"></div>
-
-  <script>
-    if (typeof window.initWarehouseGallery === 'function') {
-      window.initWarehouseGallery();
-    }
-  </script>
 
 </div>

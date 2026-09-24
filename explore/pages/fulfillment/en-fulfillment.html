@@ -517,44 +517,43 @@
           <h2 class="ff-section-title">Inside the Houston warehouse.</h2>
         </div>
         <div class="ff-gallery-nav">
-          <button class="ff-gallery-arrow" onclick="slideGallery(-1)" aria-label="Previous slide">←</button>
-          <button class="ff-gallery-arrow" onclick="slideGallery(1)" aria-label="Next slide">→</button>
+          <button class="ff-gallery-arrow" onclick="(function(g,d){var s=Array.from(g.querySelectorAll('.ff-warehouse-slide')),n=s.length,i=(Number(g.dataset.slideIndex||0)+d+n)%n;g.dataset.slideIndex=i;s.forEach(function(x,j){x.classList.toggle('active',j===i)});if(g._ffAutoTimer)window.clearTimeout(g._ffAutoTimer);if(g._ffAdvance)g._ffAutoTimer=window.setTimeout(g._ffAdvance,5000)})(document.getElementById('warehouseGallery'),-1)" aria-label="Previous slide" aria-controls="warehouseGallery">←</button>
+          <button class="ff-gallery-arrow" onclick="(function(g,d){var s=Array.from(g.querySelectorAll('.ff-warehouse-slide')),n=s.length,i=(Number(g.dataset.slideIndex||0)+d+n)%n;g.dataset.slideIndex=i;s.forEach(function(x,j){x.classList.toggle('active',j===i)});if(g._ffAutoTimer)window.clearTimeout(g._ffAutoTimer);if(g._ffAdvance)g._ffAutoTimer=window.setTimeout(g._ffAdvance,5000)})(document.getElementById('warehouseGallery'),1)" aria-label="Next slide" aria-controls="warehouseGallery">→</button>
         </div>
       </div>
 
       <div class="ff-warehouse-slider-frame" id="warehouseGallery">
-        <!-- Slide 0 -->
-        <div class="ff-warehouse-slide active" data-slide="0">
-          <img src="assets/port_sunset_hero.jpg" alt="Racking and storage zone Houston" class="ff-warehouse-img" onerror="this.onerror=null; this.src='assets/warehouse_racks_hero.jpg';">
+        <div class="ff-warehouse-slide active">
+          <img src="assets/warehouse_racks_hero.jpg" alt="Warehouse storage racks" class="ff-warehouse-img" onload="(function(g){if(!g||g.dataset.autoInit)return;g.dataset.autoInit='1';g.dataset.slideIndex='0';var advance=function(){if(document.getElementById('warehouseGallery')!==g)return;var s=Array.from(g.querySelectorAll('.ff-warehouse-slide')),i=(Number(g.dataset.slideIndex||0)+1)%s.length;g.dataset.slideIndex=i;s.forEach(function(x,j){x.classList.toggle('active',j===i)});g._ffAutoTimer=window.setTimeout(advance,5000)};g._ffAdvance=advance;g._ffAutoTimer=window.setTimeout(advance,5000)})(document.getElementById('warehouseGallery'))">
           <div class="ff-slide-caption-card">
-            <div class="ff-caption-tag">Racking &amp; storage zone</div>
-            <div class="ff-caption-text">Storage racking where each SKU is mapped to a fixed location in the OMS.</div>
+            <div class="ff-caption-tag">Storage racks</div>
+            <div class="ff-caption-text">Organized warehouse shelving for secure inventory storage.</div>
           </div>
         </div>
 
-        <!-- Slide 1 -->
-        <div class="ff-warehouse-slide" data-slide="1">
-          <img src="assets/warehouse_hero.jpg" alt="Packing stations and video log" class="ff-warehouse-img" onerror="this.onerror=null; this.src='assets/warehouse_racks_hero.jpg';">
+        <div class="ff-warehouse-slide">
+          <img src="assets/warehouse_hero.jpg" alt="Warehouse interior and work area" class="ff-warehouse-img">
           <div class="ff-slide-caption-card">
-            <div class="ff-caption-tag">Packing stations &amp; HD video log</div>
-            <div class="ff-caption-text">Every package is packed under high-definition cameras synced to individual tracking numbers.</div>
+            <div class="ff-caption-tag">Warehouse operations</div>
+            <div class="ff-caption-text">An organized work area supports receiving, storage, and order handling.</div>
           </div>
         </div>
 
-        <!-- Slide 2 -->
-        <div class="ff-warehouse-slide" data-slide="2">
-          <img src="assets/warehouse_racks_hero.jpg" alt="Inbound and outbound docks" class="ff-warehouse-img" onerror="this.onerror=null; this.src='assets/port_sunset_hero.jpg';">
+        <div class="ff-warehouse-slide">
+          <img src="assets/factory_staging_dispatch.jpg" alt="Warehouse team preparing staged orders" class="ff-warehouse-img">
           <div class="ff-slide-caption-card">
-            <div class="ff-caption-tag">Inbound &amp; outbound docks</div>
-            <div class="ff-caption-text">Continuous loading dock bays directly integrated with USPS, UPS, and FedEx carrier pickups.</div>
+            <div class="ff-caption-tag">Order staging</div>
+            <div class="ff-caption-text">Packages are organized for dispatch and carrier handoff.</div>
           </div>
         </div>
-      </div>
 
-      <div class="ff-slider-dots">
-        <span class="ff-dot active" onclick="setSlide(0)"></span>
-        <span class="ff-dot" onclick="setSlide(1)"></span>
-        <span class="ff-dot" onclick="setSlide(2)"></span>
+        <div class="ff-warehouse-slide">
+          <img src="assets/port_sunset_hero.jpg" alt="Cargo ship and containers at a seaport" class="ff-warehouse-img">
+          <div class="ff-slide-caption-card">
+            <div class="ff-caption-tag">Global shipping</div>
+            <div class="ff-caption-text">Connected transportation keeps goods moving across markets.</div>
+          </div>
+        </div>
       </div>
 
       <p class="ff-warehouse-footnote">
@@ -670,7 +669,10 @@
     </div>
   </section>
 
-  <!-- 7. FREQUENTLY ASKED QUESTIONS SECTION -->
+  <!-- 7. CONSULTATION FORM BAND -->
+  <div data-component="cta-form" data-variant="band" id="contact-form"></div>
+
+  <!-- 8. FREQUENTLY ASKED QUESTIONS SECTION -->
   <section class="ff-faq-section">
     <div class="container">
       <div class="ff-section-header">
@@ -742,7 +744,7 @@
     </div>
   </section>
 
-  <!-- 8. TESTIMONIAL SECTION -->
+  <!-- 9. TESTIMONIAL SECTION -->
   <section class="ff-testimonial-section">
     <div class="container">
       <div class="ff-section-header">
@@ -750,33 +752,35 @@
         <h2 class="ff-section-title">Working alongside your business</h2>
       </div>
 
-      <div class="ff-testimonial-card">
-        <div class="ff-quote-mark" aria-hidden="true">
-          <span></span><span></span>
-        </div>
-        <div class="ff-quote-body">
-          <blockquote class="ff-quote-text">
-            “The real-time OMS tracking and zero-hidden-costs policy make SpeeGo our most reliable supply chain partner.”
-          </blockquote>
+      <div class="testimonials-2col-grid">
+        <div class="testimonial-card-sourcing">
+          <div>
+            <div class="ff-quote-mark" aria-hidden="true" style="margin-bottom: 16px;"><span></span><span></span></div>
+            <blockquote class="ff-quote-text" style="font-size: 1.05rem; margin-bottom: 24px;">
+              “The real-time OMS tracking and zero-hidden-costs policy make SpeeGo our most reliable supply chain partner.”
+            </blockquote>
+          </div>
           <div class="ff-author-info">
             <div class="ff-author-name">Sarah Mitchell</div>
             <div class="ff-author-title">Operations Director, EcoLiving Home · Australia</div>
-            <div class="ff-author-ref">
-              <a href="#/en/sourcing-qc" class="ff-ref-link">As published on the SpeeGo website ↗</a>
-            </div>
+            <div class="ff-author-ref"><a href="#/en/sourcing" class="ff-ref-link">As published on the SpeeGo website ↗</a></div>
           </div>
         </div>
+        <div class="testimonial-card-sourcing">
+          <div>
+            <div class="ff-quote-mark" aria-hidden="true" style="margin-bottom: 16px;"><span></span><span></span></div>
+            <blockquote class="ff-quote-text" style="font-size: 1.05rem; margin-bottom: 24px;">
+              “The on-site QC team saved us thousands of dollars before the container was sealed.”
+            </blockquote>
+          </div>
+          <div class="ff-author-info">
+            <div class="ff-author-name">Kevin Le</div>
+            <div class="ff-author-title">CEO, Glamour Nail Supplies · California, USA</div>
+            <div class="ff-author-ref"><a href="#/en/sourcing" class="ff-ref-link">As published on the SpeeGo website ↗</a></div>
+            </div>
+          </div>
       </div>
     </div>
   </section>
-
-  <!-- 9. BAND CONSULTATION FORM -->
-  <div data-component="cta-form" data-variant="band" id="contact-form"></div>
-
-  <script>
-    if (typeof window.initWarehouseGallery === 'function') {
-      window.initWarehouseGallery();
-    }
-  </script>
 
 </div>

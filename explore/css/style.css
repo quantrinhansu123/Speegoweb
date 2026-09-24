@@ -4360,7 +4360,11 @@ body.speego-seo-page #app-main {
   align-items: stretch;
   min-height: calc(100vh - 114px);
   min-height: calc(100svh - 114px);
-  padding: clamp(72px, 15vh, 124px) 0 24px;
+  padding: clamp(72px, 17vh, 140px) 0 24px;
+}
+
+body:has(.page-fulfillment) #breadcrumbSection {
+  display: none;
 }
 
 .page-fulfillment .ff-hero-dark-section > .container {
@@ -4395,6 +4399,10 @@ body.speego-seo-page #app-main {
   gap: 20px;
   max-width: 1280px;
   margin-bottom: clamp(24px, 5vh, 42px);
+}
+
+.page-fulfillment .ff-quicklinks-section {
+  padding: 96px 0 104px;
 }
 
 .page-fulfillment .ff-dark-hub-card {
@@ -4441,7 +4449,70 @@ body.speego-seo-page #app-main {
   padding: 18px 0;
 }
 
+.page-fulfillment .ff-warehouse-slider-frame {
+  display: block;
+  height: clamp(380px, 42vw, 620px);
+  border-radius: 16px;
+  background: #0B1E32;
+  box-shadow: 0 12px 36px rgba(4, 36, 61, 0.12);
+}
+
+.page-fulfillment .ff-warehouse-slide {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  visibility: hidden;
+  transform: scale(1.025);
+  pointer-events: none;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.page-fulfillment .ff-warehouse-slide.active {
+  opacity: 1;
+  visibility: visible;
+  transform: scale(1);
+  pointer-events: auto;
+}
+
+.page-fulfillment .ff-warehouse-img {
+  height: 100%;
+}
+
+.page-fulfillment .ff-slide-caption-card {
+  right: auto;
+  bottom: 32px;
+  left: 36px;
+  width: min(620px, calc(100% - 72px));
+  max-width: 620px;
+  padding: 0;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+
+.page-fulfillment .ff-slider-dots {
+  display: flex;
+}
+
+.page-fulfillment .ff-testimonial-section .ff-section-header {
+  margin-bottom: 28px;
+}
+
+.page-fulfillment .ff-testimonial-section .testimonials-2col-grid {
+  margin-top: 0;
+}
+
 @media (max-width: 768px) {
+  .page-fulfillment .ff-quicklinks-section {
+    padding: 44px 0;
+  }
+
   .page-fulfillment .ff-hero-dark-section {
     min-height: 0;
     padding: 36px 0 28px;
@@ -4461,6 +4532,25 @@ body.speego-seo-page #app-main {
 
   .page-fulfillment .ff-dark-hub-card {
     padding: 18px 20px;
+  }
+
+  .page-fulfillment .ff-warehouse-slide {
+    height: 100%;
+  }
+
+  .page-fulfillment .ff-warehouse-slider-frame {
+    height: min(72vh, 520px);
+    min-height: 340px;
+  }
+
+  .page-fulfillment .ff-slide-caption-card {
+    bottom: 24px;
+    left: 22px;
+    width: calc(100% - 44px);
+  }
+
+  .page-fulfillment .ff-slider-dots {
+    margin-top: 14px;
   }
 
   .page-fulfillment > section:not(.ff-hero-dark-section) {
@@ -4787,6 +4877,77 @@ body.speego-seo-page #app-main {
   line-height: 1.62;
 }
 
+/* Core services use an editorial list so this section reads differently from the Why Choose card grid. */
+.ie-service-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: 64px;
+  margin-top: 36px;
+  border-top: 1px solid #DCE4ED;
+}
+
+.ie-service-item {
+  position: relative;
+  display: grid;
+  grid-template-columns: 44px minmax(0, 1fr);
+  column-gap: 18px;
+  align-content: center;
+  min-height: 142px;
+  padding: 24px 8px;
+  border-bottom: 1px solid #DCE4ED;
+  transition: transform 0.2s ease;
+}
+
+.ie-service-item::before {
+  position: absolute;
+  top: 24px;
+  bottom: 24px;
+  left: 0;
+  width: 3px;
+  border-radius: 3px;
+  background: var(--speego-accent);
+  content: "";
+  opacity: 0.7;
+  transition: opacity 0.2s ease;
+}
+
+.ie-service-item:hover {
+  transform: translateX(4px);
+}
+
+.ie-service-item:hover::before {
+  opacity: 1;
+}
+
+.ie-service-number {
+  display: flex;
+  grid-row: span 2;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: #FFF0E8;
+  color: var(--speego-accent);
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.ie-service-title {
+  margin: 0 0 8px;
+  color: var(--speego-primary);
+  font-size: 1.08rem;
+  font-weight: 750;
+  line-height: 1.4;
+}
+
+.ie-service-description {
+  margin: 0;
+  color: #64748B;
+  font-size: 0.96rem;
+  line-height: 1.65;
+}
+
 /* Why Choose SpeeGo Section (Light Gray Background) */
 .ie-why-section {
   padding: 72px 0 80px;
@@ -5055,6 +5216,13 @@ body.speego-seo-page #app-main {
   .ie-cards-3col-grid,
   .ie-why-grid {
     grid-template-columns: 1fr;
+  }
+  .ie-service-list {
+    grid-template-columns: 1fr;
+  }
+  .ie-service-item {
+    min-height: 0;
+    padding: 22px 4px 22px 8px;
   }
   .rate-table-row {
     flex-direction: column;
