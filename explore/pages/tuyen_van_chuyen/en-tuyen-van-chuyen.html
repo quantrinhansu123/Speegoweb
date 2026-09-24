@@ -52,14 +52,10 @@
   <!-- 2. ORIGIN SWITCHER TABS (CHINA ⟷ VIETNAM) -->
   <div class="route-tabs-container">
     <div class="container">
-      <div class="route-tab-pills">
-        <button type="button" class="route-tab-btn active" id="tabOriginChina" onclick="switchRouteOriginEn('china')">
-          Origin: China
-        </button>
-        <button type="button" class="route-tab-btn" id="tabOriginVietnam" onclick="switchRouteOriginEn('vietnam')">
-          Origin: Vietnam
-        </button>
-      </div>
+      <nav class="route-tab-pills" aria-label="Shipping origin">
+        <a class="route-tab-btn active" data-route-origin="china" href="#/en/logistics/china-to-us-ca-au" aria-current="page">Origin: China</a>
+        <a class="route-tab-btn" data-route-origin="vietnam" href="#/en/logistics/vietnam-to-us-ca-au">Origin: Vietnam</a>
+      </nav>
     </div>
   </div>
 
@@ -111,7 +107,37 @@
     </div>
   </section>
 
-  <!-- 4. 8-STEP WORKFLOW (DARK NAVY #04243D) -->
+  <!-- 4. TRANSPORTATION MODES (3 MODES) -->
+  <section class="shipping-methods-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">TRANSPORTATION MODES</span>
+        <h2 class="section-title">Flexible transit methods.</h2>
+      </div>
+
+      <div class="methods-3col-grid">
+        <!-- Mode 01 -->
+        <div class="method-col-item"><figure class="method-col-visual"><img src="/wp-content/uploads/sites/2/2023/08/aerial-view-cargo-ship-with-cargo-container-sea-550x367.jpg" alt="Ocean freight cargo ship" loading="lazy"></figure>
+          <div class="method-col-num">01</div>
+          <div class="method-col-title">Ocean Freight (FCL &amp; LCL)</div>
+        </div>
+
+        <!-- Mode 02 -->
+        <div class="method-col-item"><figure class="method-col-visual"><img src="/wp-content/uploads/sites/2/2023/08/global-logistic-airplane-parcel-box-concept-air-delivery-shipping-generative-ai-550x362.jpg" alt="Air freight aircraft" loading="lazy"></figure>
+          <div class="method-col-num">02</div>
+          <div class="method-col-title">Air Freight Services</div>
+        </div>
+
+        <!-- Mode 03 -->
+        <div class="method-col-item"><figure class="method-col-visual"><img src="/wp-content/uploads/sites/2/2023/08/futuristic-truck-with-neon-lights-night-roadcreated-with-generative-ai-technology-550x362.jpg" alt="Overland freight truck" loading="lazy"></figure>
+          <div class="method-col-num">03</div>
+          <div class="method-col-title">Overland Trucking</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. 8-STEP WORKFLOW (DARK NAVY #04243D) -->
   <section class="process-8steps-section">
     <div class="container">
       <div class="section-header">
@@ -182,37 +208,43 @@
     </div>
   </section>
 
-  <!-- 5. TRANSPORTATION MODES (3 MODES) -->
-  <section class="shipping-methods-section">
+  <!-- 6. FREIGHT RATE TRANSPARENCY -->
+  <section class="route-rate-section">
     <div class="container">
       <div class="section-header">
-        <span class="section-tag">TRANSPORTATION MODES</span>
-        <h2 class="section-title">Flexible transit methods.</h2>
+        <span class="section-tag">TRANSPARENT PRICING</span>
+        <h2 class="section-title">Shipping Rate Inquiries</h2>
+        <p class="ff-section-sub">Fixed public tariffs are not listed here. Contact SpeeGo to receive customized quotations per consignment.</p>
       </div>
 
-      <div class="methods-3col-grid">
-        <!-- Mode 01 -->
-        <div class="method-col-item">
-          <div class="method-col-num">01</div>
-          <div class="method-col-title">Ocean Freight (FCL &amp; LCL)</div>
+      <div class="rate-table-card">
+        <!-- Row 1: Air Freight -->
+        <div class="rate-table-row">
+          <div class="rate-col-name">Air Freight</div>
+          <div class="rate-col-desc">Based on chargeable weight and destination airport</div>
+          <a href="#contact-form" class="rate-col-action">Get a Quote ↗</a>
         </div>
 
-        <!-- Mode 02 -->
-        <div class="method-col-item">
-          <div class="method-col-num">02</div>
-          <div class="method-col-title">Air Freight Services</div>
+        <!-- Row 2: Ocean Freight · FCL -->
+        <div class="rate-table-row">
+          <div class="rate-col-name">Ocean Freight · FCL</div>
+          <div class="rate-col-desc">Based on container type (20ft/40ft/HQ), port of origin &amp; destination</div>
+          <a href="#contact-form" class="rate-col-action">Get a Quote ↗</a>
         </div>
 
-        <!-- Mode 03 -->
-        <div class="method-col-item">
-          <div class="method-col-num">03</div>
-          <div class="method-col-title">Overland Trucking</div>
+        <!-- Row 3: Ocean Freight · LCL -->
+        <div class="rate-table-row">
+          <div class="rate-col-name">Ocean Freight · LCL</div>
+          <div class="rate-col-desc">Based on cargo volume (CBM), commodity classification, and trade lane</div>
+          <a href="#contact-form" class="rate-col-action">Get a Quote ↗</a>
         </div>
       </div>
+
+      <p class="rate-table-footnote">Inquire with our team for itemized quotes and specialized handling requests.</p>
     </div>
   </section>
 
-  <!-- 6. WHY CHOOSE SPEEGO (5 CARDS LIGHT GRAY BACKGROUND) -->
+  <!-- 7. WHY CHOOSE SPEEGO (5 CARDS LIGHT GRAY BACKGROUND) -->
   <section class="ie-why-section">
     <div class="container">
       <div class="section-header">
@@ -259,43 +291,9 @@
     </div>
   </section>
 
-  <!-- 7. FREIGHT RATE TRANSPARENCY -->
-  <section class="route-rate-section">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-tag">TRANSPARENT PRICING</span>
-        <h2 class="section-title">Shipping Rate Inquiries</h2>
-        <p class="ff-section-sub">Fixed public tariffs are not listed here. Contact SpeeGo to receive customized quotations per consignment.</p>
-      </div>
-
-      <div class="rate-table-card">
-        <!-- Row 1: Air Freight -->
-        <div class="rate-table-row">
-          <div class="rate-col-name">Air Freight</div>
-          <div class="rate-col-desc">Based on chargeable weight and destination airport</div>
-          <a href="#contact-form" class="rate-col-action">Get a Quote ↗</a>
-        </div>
-
-        <!-- Row 2: Ocean Freight · FCL -->
-        <div class="rate-table-row">
-          <div class="rate-col-name">Ocean Freight · FCL</div>
-          <div class="rate-col-desc">Based on container type (20ft/40ft/HQ), port of origin &amp; destination</div>
-          <a href="#contact-form" class="rate-col-action">Get a Quote ↗</a>
-        </div>
-
-        <!-- Row 3: Ocean Freight · LCL -->
-        <div class="rate-table-row">
-          <div class="rate-col-name">Ocean Freight · LCL</div>
-          <div class="rate-col-desc">Based on cargo volume (CBM), commodity classification, and trade lane</div>
-          <a href="#contact-form" class="rate-col-action">Get a Quote ↗</a>
-        </div>
-      </div>
-
-      <p class="rate-table-footnote">Inquire with our team for itemized quotes and specialized handling requests.</p>
-    </div>
-  </section>
-
-  <!-- 8. FREQUENTLY ASKED QUESTIONS (FAQ ACCORDION) -->
+  <!-- 8. CONSULTATION FORM BAND -->
+  <div data-component="cta-form" data-variant="band" id="contact-form"></div>
+<!-- 9. FREQUENTLY ASKED QUESTIONS (FAQ ACCORDION) -->
   <section class="ff-faq-section" style="background: #FFFFFF;">
     <div class="container">
       <div class="section-header">
@@ -362,89 +360,12 @@
     </div>
   </section>
 
-  <!-- 9. TESTIMONIAL SECTION -->
-  <section class="ff-testimonial-section">
-    <div class="container">
-      <div class="ff-section-header">
-        <span class="ff-tag-eyebrow">SPEEGO CLIENTS</span>
-        <h2 class="ff-section-title">Growing with our partners</h2>
-      </div>
-
-      <div class="ff-testimonial-card">
-        <div class="ff-quote-mark" aria-hidden="true">
-          <span></span><span></span>
-        </div>
-        <div class="ff-quote-body">
-          <blockquote class="ff-quote-text">
-            “Real-time OMS tracking and a zero-hidden-fee policy have made SpeeGo our most reliable supply chain partner.”
-          </blockquote>
-          <div class="ff-author-info">
-            <div class="ff-author-name">Sarah Mitchell</div>
-            <div class="ff-author-title">Operations Director, EcoLiving Home · Australia</div>
-            <div class="ff-author-ref">
-              <a href="#/en/sourcing" class="ff-ref-link">Customer story on SpeeGo website ↗</a>
-            </div>
-          </div>
-        </div>
-      </div>
+  <!-- 10. TESTIMONIAL SECTION -->
+  <section class="ff-testimonial-section"><div class="container">
+    <div class="ff-section-header"><span class="ff-tag-eyebrow">SPEEGO CLIENTS</span><h2 class="ff-section-title">Growing with our partners</h2></div>
+    <div class="testimonials-2col-grid">
+      <article class="testimonial-card-sourcing"><div><div class="ff-quote-mark" aria-hidden="true"><span></span><span></span></div><blockquote class="ff-quote-text">“Regular ocean departures and bilingual support make our monthly imports much easier to manage.”</blockquote></div><div class="ff-author-info"><div class="ff-author-name">David Nguyen</div><div class="ff-author-title">Supply Chain Manager · Texas, USA</div><div class="ff-author-ref"><a href="#/en/shipping-routes" class="ff-ref-link">Customer story on SpeeGo website ↗</a></div></div></article>
+      <article class="testimonial-card-sourcing"><div><div class="ff-quote-mark" aria-hidden="true"><span></span><span></span></div><blockquote class="ff-quote-text">“Real-time OMS tracking and a zero-hidden-fee policy have made SpeeGo our most reliable supply chain partner.”</blockquote></div><div class="ff-author-info"><div class="ff-author-name">Sarah Mitchell</div><div class="ff-author-title">Operations Director, EcoLiving Home · Australia</div><div class="ff-author-ref"><a href="#/en/shipping-routes" class="ff-ref-link">Customer story on SpeeGo website ↗</a></div></div></article>
     </div>
-  </section>
-
-  <!-- 10. CONSULTATION FORM BAND -->
-  <div data-component="cta-form" data-variant="band" id="contact-form"></div>
-
-  <!-- SCRIPT: ORIGIN TAB SWITCHER (CHINA ⟷ VIETNAM) -->
-  <script>
-    function switchRouteOriginEn(origin) {
-      const btnChina = document.getElementById('tabOriginChina');
-      const btnVietnam = document.getElementById('tabOriginVietnam');
-      const originName = document.getElementById('routeOriginName');
-      const descOriginName = document.getElementById('routeOriginDescName');
-      const destUS = document.getElementById('destRouteUS');
-      const destCA = document.getElementById('destRouteCA');
-      const destAU = document.getElementById('destRouteAU');
-      const destGlobal = document.getElementById('destRouteGlobal');
-      const breadcrumbList = document.getElementById('breadcrumbList');
-
-      if (origin === 'vietnam') {
-        if (btnChina) btnChina.classList.remove('active');
-        if (btnVietnam) btnVietnam.classList.add('active');
-        if (originName) originName.textContent = 'Vietnam';
-        if (descOriginName) descOriginName.textContent = 'Vietnam';
-        if (destUS) destUS.textContent = 'Vietnam ➔ United States';
-        if (destCA) destCA.textContent = 'Vietnam ➔ Canada';
-        if (destAU) destAU.textContent = 'Vietnam ➔ Australia';
-        if (destGlobal) destGlobal.textContent = 'Vietnam ➔ Other Countries';
-
-        // Update breadcrumb
-        if (breadcrumbList) {
-          breadcrumbList.innerHTML = `
-            <a href="#/en/knowledge" class="breadcrumb-link">Home</a>
-            <span class="breadcrumb-sep">/</span>
-            <span class="breadcrumb-current">Shipping Routes from Vietnam</span>
-          `;
-        }
-      } else {
-        if (btnVietnam) btnVietnam.classList.remove('active');
-        if (btnChina) btnChina.classList.add('active');
-        if (originName) originName.textContent = 'China';
-        if (descOriginName) descOriginName.textContent = 'China';
-        if (destUS) destUS.textContent = 'China ➔ United States';
-        if (destCA) destCA.textContent = 'China ➔ Canada';
-        if (destAU) destAU.textContent = 'China ➔ Australia';
-        if (destGlobal) destGlobal.textContent = 'China ➔ Other Countries';
-
-        // Update breadcrumb
-        if (breadcrumbList) {
-          breadcrumbList.innerHTML = `
-            <a href="#/en/knowledge" class="breadcrumb-link">Home</a>
-            <span class="breadcrumb-sep">/</span>
-            <span class="breadcrumb-current">Shipping Routes from China</span>
-          `;
-        }
-      }
-    }
-    window.switchRouteOriginEn = switchRouteOriginEn;
-  </script>
-
+  </div></section>
 </div>

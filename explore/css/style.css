@@ -5118,6 +5118,98 @@ body:has(.page-fulfillment) #breadcrumbSection {
   color: var(--speego-primary);
 }
 
+/* Logistics page: show freight modes as image-led cards before the workflow. */
+.page-shipping-routes .shipping-methods-section {
+  padding: 56px 0 64px;
+  background: #F8FAFC;
+}
+
+.page-shipping-routes .shipping-methods-section .methods-3col-grid {
+  gap: 24px;
+  margin-top: 28px;
+}
+
+.page-shipping-routes .shipping-methods-section .method-col-item {
+  overflow: hidden;
+  padding: 0 0 22px;
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  border-radius: 14px;
+  box-shadow: 0 8px 22px rgba(4, 36, 61, 0.06);
+}
+
+.page-shipping-routes .method-col-visual {
+  height: clamp(160px, 19vw, 240px);
+  margin: 0 0 20px;
+  overflow: hidden;
+  background: #E2E8F0;
+}
+
+.page-shipping-routes .method-col-visual img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.35s ease;
+}
+
+.page-shipping-routes .method-col-item:hover .method-col-visual img {
+  transform: scale(1.035);
+}
+
+.page-shipping-routes .method-col-num,
+.page-shipping-routes .method-col-title {
+  margin-left: 22px;
+  margin-right: 22px;
+}
+
+.page-shipping-routes .method-col-title {
+  line-height: 1.35;
+}
+
+.page-shipping-routes .route-tabs-container {
+  padding-bottom: 40px;
+}
+
+.page-shipping-routes .route-tab-pills {
+  flex-wrap: wrap;
+}
+
+.page-shipping-routes .route-tab-btn {
+  display: inline-flex;
+  align-items: center;
+  min-height: 48px;
+}
+
+.page-shipping-routes .route-rate-section {
+  padding: 56px 0 60px;
+  background: #FFFFFF;
+}
+
+.page-shipping-routes .ff-testimonial-section .testimonials-2col-grid {
+  margin-top: 30px;
+}
+
+.page-shipping-routes .ff-testimonial-section .testimonial-card-sourcing {
+  height: 100%;
+}
+
+@media (max-width: 768px) {
+  .page-shipping-routes .shipping-methods-section,
+  .page-shipping-routes .route-rate-section {
+    padding: 42px 0 48px;
+  }
+
+  .page-shipping-routes .shipping-methods-section .methods-3col-grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .page-shipping-routes .method-col-visual {
+    height: 210px;
+  }
+}
+
 /* Rate Transparency Table */
 .route-rate-section {
   padding: 64px 0 72px;
@@ -5757,3 +5849,143 @@ body:has(.page-fulfillment) #breadcrumbSection {
 
 
 
+
+
+/* Sourcing page refinements: focused hero, compact capability overlay, and fulfillment-style QC workflow. */
+body:has(.page-sourcing) #breadcrumbSection,
+body:has(.page-fulfillment) #breadcrumbSection,
+body:has(.page-shipping-routes) #breadcrumbSection,
+body:has(.page-import-export) #breadcrumbSection {
+  display: none;
+}
+
+.page-sourcing .sourcing-hero-section {
+  padding: 76px 0 68px;
+}
+
+.page-sourcing .sourcing-hero-section .hero-2col-grid {
+  grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
+  gap: 28px;
+}
+
+.page-sourcing .sourcing-hero-section .hero-2col-left {
+  padding-block: 12px;
+}
+
+.page-sourcing .sourcing-hero-section .hero-h1-clean {
+  font-size: clamp(42px, 4.2vw, 60px);
+  line-height: 1.12;
+  margin-bottom: 22px;
+}
+
+.page-sourcing .sourcing-hero-section .hero-img-card-wrap img {
+  height: clamp(360px, 35vw, 460px);
+}
+
+.page-sourcing .sourcing-banner-copy {
+  padding: 42px 24px 18px;
+}
+
+.page-sourcing .sourcing-banner-copy .hero-caption-sub {
+  display: block;
+  max-width: 100%;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  backdrop-filter: none;
+  font-size: 11px;
+  font-weight: 800;
+  line-height: 1.5;
+  letter-spacing: 0.08em;
+  color: #FFFFFF;
+}
+
+/* Match the Fulfillment workflow's dark band and numbered, top-ruled steps. */
+.page-sourcing .qc-stages-section {
+  padding: 72px 0 80px;
+}
+
+.page-sourcing .qc-header-row {
+  display: block;
+  margin-bottom: 40px;
+}
+
+.page-sourcing .qc-header-row .section-title {
+  font-size: clamp(26px, 3.2vw, 34px);
+  line-height: 1.25;
+}
+
+.page-sourcing .qc-header-sub {
+  max-width: 720px;
+  margin-top: 8px;
+}
+
+.page-sourcing .qc-flow-grid {
+  gap: 24px;
+}
+
+.page-sourcing .qc-stage-item {
+  border-top: 1.5px solid rgba(255, 255, 255, 0.12);
+  padding-top: 24px;
+}
+
+.page-sourcing .qc-stage-node {
+  width: auto;
+  height: auto;
+  display: block;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  justify-content: initial;
+  font-size: 28px;
+  line-height: 1;
+  margin-bottom: 12px;
+}
+
+.page-sourcing .qc-stage-label {
+  display: none;
+}
+
+.page-sourcing .qc-stage-title {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.page-sourcing .qc-stage-desc {
+  font-size: 13px;
+}
+
+@media (max-width: 1024px) {
+  .page-sourcing .sourcing-hero-section .hero-2col-grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .page-sourcing .sourcing-hero-section .hero-img-card-wrap img {
+    height: clamp(300px, 58vw, 420px);
+  }
+}
+
+@media (max-width: 768px) {
+  .page-sourcing .sourcing-hero-section {
+    padding: 52px 0 48px;
+  }
+
+  .page-sourcing .sourcing-hero-section .hero-h1-clean {
+    font-size: clamp(40px, 10vw, 52px);
+  }
+
+  .page-sourcing .sourcing-hero-section .hero-img-card-wrap img {
+    height: 300px;
+  }
+
+  .page-sourcing .sourcing-banner-copy {
+    padding: 44px 16px 14px;
+  }
+
+  .page-sourcing .sourcing-banner-copy .hero-caption-sub {
+    font-size: 9px;
+    letter-spacing: 0.045em;
+  }
+}

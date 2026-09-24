@@ -257,7 +257,22 @@
           file: 'pages/tuyen_van_chuyen/tuyen-van-chuyen.html',
           title: 'Tuyến vận chuyển SpeeGo | Kết nối toàn cầu',
           nav: 'shipping-routes',
-          lang: 'vi'
+          lang: 'vi',
+          origin: 'china'
+        },
+        '#/logistics/china-to-us-ca-au': {
+          file: 'pages/tuyen_van_chuyen/tuyen-van-chuyen.html',
+          title: 'Vận chuyển từ Trung Quốc đến Mỹ, Canada & Úc | SpeeGo Logistics',
+          nav: 'shipping-routes',
+          lang: 'vi',
+          origin: 'china'
+        },
+        '#/logistics/vietnam-to-us-ca-au': {
+          file: 'pages/tuyen_van_chuyen/tuyen-van-chuyen.html',
+          title: 'Vận chuyển từ Việt Nam đến Mỹ, Canada & Úc | SpeeGo Logistics',
+          nav: 'shipping-routes',
+          lang: 'vi',
+          origin: 'vietnam'
         },
         '#/xuat-nhap-khau': {
           file: 'pages/xuat_nhap_khau/xuat-nhap-khau.html',
@@ -345,7 +360,22 @@
           file: 'pages/tuyen_van_chuyen/en-tuyen-van-chuyen.html',
           title: 'SpeeGo Shipping Routes | Global Corridors',
           nav: 'shipping-routes',
-          lang: 'en'
+          lang: 'en',
+          origin: 'china'
+        },
+        '#/en/logistics/china-to-us-ca-au': {
+          file: 'pages/tuyen_van_chuyen/en-tuyen-van-chuyen.html',
+          title: 'Freight from China to the US, Canada & Australia | SpeeGo Logistics',
+          nav: 'shipping-routes',
+          lang: 'en',
+          origin: 'china'
+        },
+        '#/en/logistics/vietnam-to-us-ca-au': {
+          file: 'pages/tuyen_van_chuyen/en-tuyen-van-chuyen.html',
+          title: 'Freight from Vietnam to the US, Canada & Australia | SpeeGo Logistics',
+          nav: 'shipping-routes',
+          lang: 'en',
+          origin: 'vietnam'
         },
         '#/en/import-export': {
           file: 'pages/xuat_nhap_khau/en-xuat-nhap-khau.html',
@@ -432,7 +462,22 @@
           file: 'pages/tuyen_van_chuyen/es-tuyen-van-chuyen.html',
           title: 'Rutas de Envío SpeeGo | Conectividad Global',
           nav: 'shipping-routes',
-          lang: 'es'
+          lang: 'es',
+          origin: 'china'
+        },
+        '#/es/logistica/china-a-eeuu-canada-australia': {
+          file: 'pages/tuyen_van_chuyen/es-tuyen-van-chuyen.html',
+          title: 'Transporte de China a EE. UU., Canadá y Australia | SpeeGo Logistics',
+          nav: 'shipping-routes',
+          lang: 'es',
+          origin: 'china'
+        },
+        '#/es/logistica/vietnam-a-eeuu-canada-australia': {
+          file: 'pages/tuyen_van_chuyen/es-tuyen-van-chuyen.html',
+          title: 'Transporte de Vietnam a EE. UU., Canadá y Australia | SpeeGo Logistics',
+          nav: 'shipping-routes',
+          lang: 'es',
+          origin: 'vietnam'
         },
         '#/es/import-export': {
           file: 'pages/xuat_nhap_khau/es-xuat-nhap-khau.html',
@@ -504,6 +549,8 @@
         { vi: '#/fulfillment', en: '#/en/fulfillment', es: '#/es/fulfillment' },
         { vi: '#/sourcing', en: '#/en/sourcing', es: '#/es/sourcing' },
         { vi: '#/tuyen-van-chuyen', en: '#/en/shipping-routes', es: '#/es/rutas-de-envio' },
+        { vi: '#/logistics/china-to-us-ca-au', en: '#/en/logistics/china-to-us-ca-au', es: '#/es/logistica/china-a-eeuu-canada-australia' },
+        { vi: '#/logistics/vietnam-to-us-ca-au', en: '#/en/logistics/vietnam-to-us-ca-au', es: '#/es/logistica/vietnam-a-eeuu-canada-australia' },
         { vi: '#/xuat-nhap-khau', en: '#/en/import-export', es: '#/es/import-export' },
         { vi: '#/knowledge/huong-dan-van-chuyen', en: '#/en/shipping-guides', es: '#/es/guias-de-envio' },
         { vi: '#/knowledge/kien-thuc-nganh-hang', en: '#/en/industry-guides', es: '#/es/guias-por-industria' },
@@ -569,7 +616,15 @@
 
       // 3. LOAD & INITIALIZE SHARED PARTIALS
       async function loadPartials() {
-        if (IS_EMBEDDED) return true;
+        if (IS_EMBEDDED) {
+          try {
+            const ctaForm = await fetchText('partials/cta-form.html');
+            parseCtaTemplates(ctaForm);
+          } catch (err) {
+            console.error('Unable to load the logistics contact form template:', err);
+          }
+          return true;
+        }
         try {
           // Parallel fetch header, footer, and cta-form
           const [header, footer, ctaForm] = await Promise.all([
@@ -1611,7 +1666,7 @@
           // Inject into main
           appMain.innerHTML = pageHtml;
 
-          if (IS_EMBEDDED) {
+          if (IS_EMBEDDED && route.nav !== 'shipping-routes') {
             appMain.querySelectorAll('[data-component="cta-form"]').forEach(el => el.remove());
           }
 
@@ -1621,10 +1676,57 @@
           let navKey = route.nav;
 
           if (pageContainer) {
+            if (pageContainer.classList.contains('page-shipping-routes')) {
+              const routeOrigin = route.origin === 'vietnam' ? 'vietnam' : 'china';
+              const logisticsCopy = {
+                vi: {
+                  origin: routeOrigin === 'vietnam' ? 'Việt Nam' : 'Trung Quốc',
+                  destinations: routeOrigin === 'vietnam' ? ['Việt Nam ➔ Mỹ', 'Việt Nam ➔ Canada', 'Việt Nam ➔ Úc', 'Việt Nam ➔ Nước khác'] : ['Trung Quốc ➔ Mỹ', 'Trung Quốc ➔ Canada', 'Trung Quốc ➔ Úc', 'Trung Quốc ➔ Nước khác'],
+                  breadcrumb: routeOrigin === 'vietnam' ? 'Tuyến vận chuyển từ Việt Nam' : 'Tuyến vận chuyển từ Trung Quốc'
+                },
+                en: {
+                  origin: routeOrigin === 'vietnam' ? 'Vietnam' : 'China',
+                  destinations: routeOrigin === 'vietnam' ? ['Vietnam ➔ United States', 'Vietnam ➔ Canada', 'Vietnam ➔ Australia', 'Vietnam ➔ Other Countries'] : ['China ➔ United States', 'China ➔ Canada', 'China ➔ Australia', 'China ➔ Other Countries'],
+                  breadcrumb: routeOrigin === 'vietnam' ? 'Shipping Routes from Vietnam' : 'Shipping Routes from China'
+                },
+                es: {
+                  origin: routeOrigin === 'vietnam' ? 'Vietnam' : 'China',
+                  destinations: routeOrigin === 'vietnam' ? ['Vietnam ➔ Estados Unidos', 'Vietnam ➔ Canadá', 'Vietnam ➔ Australia', 'Vietnam ➔ Otros Países'] : ['China ➔ Estados Unidos', 'China ➔ Canadá', 'China ➔ Australia', 'China ➔ Otros Países'],
+                  breadcrumb: routeOrigin === 'vietnam' ? 'Rutas de Envío desde Vietnam' : 'Rutas de Envío desde China'
+                }
+              }[currentLang] || null;
+
+              if (logisticsCopy) {
+                pageContainer.dataset.origin = routeOrigin;
+                const originHeading = pageContainer.querySelector('#routeOriginName');
+                const originDescription = pageContainer.querySelector('#routeOriginDescName');
+                if (originHeading) originHeading.textContent = logisticsCopy.origin;
+                if (originDescription) originDescription.textContent = logisticsCopy.origin;
+                ['destRouteUS', 'destRouteCA', 'destRouteAU', 'destRouteGlobal'].forEach((id, index) => {
+                  const destination = pageContainer.querySelector(`#${id}`);
+                  if (destination) destination.textContent = logisticsCopy.destinations[index];
+                });
+                pageContainer.querySelectorAll('[data-route-origin]').forEach(link => {
+                  const isCurrent = link.dataset.routeOrigin === routeOrigin;
+                  link.classList.toggle('active', isCurrent);
+                  if (isCurrent) link.setAttribute('aria-current', 'page');
+                  else link.removeAttribute('aria-current');
+                });
+              }
+            }
+
             const rawBreadcrumbs = pageContainer.getAttribute('data-breadcrumb');
             if (rawBreadcrumbs) {
               try {
                 breadcrumbs = JSON.parse(rawBreadcrumbs);
+                if (pageContainer.classList.contains('page-shipping-routes') && breadcrumbs.length) {
+                  const isVietnamRoute = route.origin === 'vietnam';
+                  breadcrumbs[breadcrumbs.length - 1].label = currentLang === 'en'
+                    ? `Shipping Routes from ${isVietnamRoute ? 'Vietnam' : 'China'}`
+                    : currentLang === 'es'
+                      ? `Rutas de Envío desde ${isVietnamRoute ? 'Vietnam' : 'China'}`
+                      : `Tuyến vận chuyển từ ${isVietnamRoute ? 'Việt Nam' : 'Trung Quốc'}`;
+                }
               } catch (e) {
                 console.error('Invalid breadcrumb JSON:', e);
               }
@@ -1639,7 +1741,7 @@
           updateNavHighlights(navKey);
 
           // Render any nested CTA Form components
-          if (!IS_EMBEDDED) renderCtaComponents(appMain);
+          if (!IS_EMBEDDED || route.nav === 'shipping-routes') renderCtaComponents(appMain);
 
           // Re-bind interactive events (FAQ accordion, pills)
           bindPageInteractions();

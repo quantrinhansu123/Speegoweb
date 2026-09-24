@@ -33,14 +33,67 @@ function extractRoutes(indexHtml) {
   const table = indexHtml.slice(start, end);
   const routePattern = /'(#\/[^']+)':\s*\{\s*file:\s*'([^']+)',\s*title:\s*'((?:\\.|[^'])*)',\s*nav:\s*'([^']+)',\s*lang:\s*'([^']+)'/g;
   const routes = [];
+  const logisticsPaths = {
+    '#/logistics/china-to-us-ca-au': '/logistics/china-to-us-ca-au/',
+    '#/logistics/vietnam-to-us-ca-au': '/logistics/vietnam-to-us-ca-au/',
+    '#/en/logistics/china-to-us-ca-au': '/en/logistics/china-to-us-ca-au/',
+    '#/en/logistics/vietnam-to-us-ca-au': '/en/logistics/vietnam-to-us-ca-au/',
+    '#/es/logistica/china-a-eeuu-canada-australia': '/es/logistica/china-a-eeuu-canada-australia/',
+    '#/es/logistica/vietnam-a-eeuu-canada-australia': '/es/logistica/vietnam-a-eeuu-canada-australia/'
+  };
   for (const match of table.matchAll(routePattern)) {
     const [, hash, file, rawTitle, nav, lang] = match;
     const routePath = hash.slice(2);
     const localizedPath = lang === "vi" ? `vi/${routePath}` : `${lang}/${routePath.replace(/^(en|es)\//, "")}`;
-    routes.push({ hash, file, title: rawTitle.replace(/\\'/g, "'"), nav, lang, urlPath: `/explore/${localizedPath}/` });
+    const origin = routePath.includes('vietnam-to-us-ca-au') || routePath.includes('vietnam-a-eeuu-canada-australia') ? 'vietnam' :
+      routePath.includes('china-to-us-ca-au') || routePath.includes('china-a-eeuu-canada-australia') ? 'china' : null;
+    routes.push({ hash, file, title: rawTitle.replace(/\\'/g, "'"), nav, lang, origin, urlPath: logisticsPaths[hash] || `/explore/${localizedPath}/` });
   }
   if (!routes.length) throw new Error("No explore routes were found for SEO page generation");
   return routes;
+}
+
+function applyShippingOrigin(fragment, route) {
+  if (!route.origin) return fragment;
+  const vietnam = route.origin === 'vietnam';
+  const names = {
+    vi: vietnam ? 'Việt Nam' : 'Trung Quốc',
+    en: vietnam ? 'Vietnam' : 'China',
+    es: vietnam ? 'Vietnam' : 'China'
+  };
+  const origin = names[route.lang] || names.vi;
+  const destinations = {
+    vi: vietnam ? ['Việt Nam ➔ Mỹ', 'Việt Nam ➔ Canada', 'Việt Nam ➔ Úc', 'Việt Nam ➔ Nước khác'] : ['Trung Quốc ➔ Mỹ', 'Trung Quốc ➔ Canada', 'Trung Quốc ➔ Úc', 'Trung Quốc ➔ Nước khác'],
+    en: vietnam ? ['Vietnam ➔ United States', 'Vietnam ➔ Canada', 'Vietnam ➔ Australia', 'Vietnam ➔ Other Countries'] : ['China ➔ United States', 'China ➔ Canada', 'China ➔ Australia', 'China ➔ Other Countries'],
+    es: vietnam ? ['Vietnam ➔ Estados Unidos', 'Vietnam ➔ Canadá', 'Vietnam ➔ Australia', 'Vietnam ➔ Otros Países'] : ['China ➔ Estados Unidos', 'China ➔ Canadá', 'China ➔ Australia', 'China ➔ Otros Países']
+  }[route.lang] || [];
+  const replaceElementText = (html, id, text) => {
+    const escaped = escapeHtml(text);
+    const pattern = new RegExp(`(<[^>]*\\bid=["']${id}["'][^>]*>)[\\s\\S]*?(<\\/[a-z][^>]*>)`, 'i');
+    return html.replace(pattern, `$1${escaped}$2`);
+  };
+  fragment = replaceElementText(fragment, 'routeOriginName', origin);
+  fragment = replaceElementText(fragment, 'routeOriginDescName', origin);
+  ['destRouteUS', 'destRouteCA', 'destRouteAU', 'destRouteGlobal'].forEach((id, index) => {
+    fragment = replaceElementText(fragment, id, destinations[index]);
+  });
+  fragment = fragment.replace(/<a\b([^>]*data-route-origin="(?:china|vietnam)"[^>]*)>([\s\S]*?)<\/a>/gi, (_all, attrs, content) => {
+    const current = attrs.includes(`data-route-origin="${route.origin}"`);
+    const cleanAttrs = attrs.replace(/\s+aria-current="page"/gi, '').replace(/\s+class="([^"]*)"/i, (_match, classes) => ` class="${classes.split(/\s+/).filter((name) => name !== 'active').concat(current ? ['active'] : []).join(' ')}"`);
+    return `<a${cleanAttrs}${current ? ' aria-current="page"' : ''}>${content}</a>`;
+  });
+  const currentName = route.lang === 'en' ? `Shipping Routes from ${vietnam ? 'Vietnam' : 'China'}` :
+    route.lang === 'es' ? `Rutas de Envío desde ${vietnam ? 'Vietnam' : 'China'}` :
+      `Tuyến vận chuyển từ ${vietnam ? 'Việt Nam' : 'Trung Quốc'}`;
+  const breadcrumbAttr = fragment.match(/\bdata-breadcrumb='([^']+)'/i);
+  if (breadcrumbAttr) {
+    try {
+      const crumbs = JSON.parse(decodeEntities(breadcrumbAttr[1]));
+      if (crumbs.length) crumbs[crumbs.length - 1].label = currentName;
+      fragment = fragment.replace(breadcrumbAttr[0], `data-breadcrumb='${JSON.stringify(crumbs)}'`);
+    } catch (_) {}
+  }
+  return fragment;
 }
 
 function extractShell(homeHtml) {
@@ -105,7 +158,8 @@ function generate({ root, output }) {
   for (const route of routes) {
     const source = path.join(exploreRoot, route.file);
     if (!fs.existsSync(source)) throw new Error(`Missing route content: ${route.file}`);
-    let fragment = cleanupFragment(fs.readFileSync(source, "utf8"), routeLookup);
+    let fragment = applyShippingOrigin(fs.readFileSync(source, "utf8"), route);
+    fragment = cleanupFragment(fragment, routeLookup);
     const breadcrumbJson = fragment.match(/\bdata-breadcrumb='([^']+)'/i)?.[1];
     let breadcrumbs = [];
     if (breadcrumbJson) {

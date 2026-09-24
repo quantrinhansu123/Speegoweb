@@ -52,14 +52,10 @@
   <!-- 2. ORIGIN SWITCHER TABS (TRUNG QUỐC ⟷ VIỆT NAM) -->
   <div class="route-tabs-container">
     <div class="container">
-      <div class="route-tab-pills">
-        <button type="button" class="route-tab-btn active" id="tabOriginChina" onclick="switchRouteOrigin('china')">
-          Xuất phát từ Trung Quốc
-        </button>
-        <button type="button" class="route-tab-btn" id="tabOriginVietnam" onclick="switchRouteOrigin('vietnam')">
-          Xuất phát từ Việt Nam
-        </button>
-      </div>
+      <nav class="route-tab-pills" aria-label="Shipping origin">
+        <a class="route-tab-btn active" data-route-origin="china" href="#/logistics/china-to-us-ca-au" aria-current="page">Xuất phát từ Trung Quốc</a>
+        <a class="route-tab-btn" data-route-origin="vietnam" href="#/logistics/vietnam-to-us-ca-au">Xuất phát từ Việt Nam</a>
+      </nav>
     </div>
   </div>
 
@@ -111,7 +107,37 @@
     </div>
   </section>
 
-  <!-- 4. QUY TRÌNH 8 BƯỚC (NỀN XANH NAVY #04243D) -->
+  <!-- 4. GIẢI PHÁP VẬN CHUYỂN (3 PHƯƠNG THỨC) -->
+  <section class="shipping-methods-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">GIẢI PHÁP VẬN CHUYỂN</span>
+        <h2 class="section-title">Linh hoạt phương thức vận chuyển.</h2>
+      </div>
+
+      <div class="methods-3col-grid">
+        <!-- Phương thức 01 -->
+        <div class="method-col-item"><figure class="method-col-visual"><img src="/wp-content/uploads/sites/2/2023/08/aerial-view-cargo-ship-with-cargo-container-sea-550x367.jpg" alt="Vận chuyển hàng hóa bằng đường biển" loading="lazy"></figure>
+          <div class="method-col-num">01</div>
+          <div class="method-col-title">Vận chuyển đường biển</div>
+        </div>
+
+        <!-- Phương thức 02 -->
+        <div class="method-col-item"><figure class="method-col-visual"><img src="/wp-content/uploads/sites/2/2023/08/global-logistic-airplane-parcel-box-concept-air-delivery-shipping-generative-ai-550x362.jpg" alt="Vận chuyển hàng hóa bằng đường hàng không" loading="lazy"></figure>
+          <div class="method-col-num">02</div>
+          <div class="method-col-title">Vận chuyển đường hàng không</div>
+        </div>
+
+        <!-- Phương thức 03 -->
+        <div class="method-col-item"><figure class="method-col-visual"><img src="/wp-content/uploads/sites/2/2023/08/futuristic-truck-with-neon-lights-night-roadcreated-with-generative-ai-technology-550x362.jpg" alt="Vận chuyển hàng hóa bằng đường bộ" loading="lazy"></figure>
+          <div class="method-col-num">03</div>
+          <div class="method-col-title">Vận chuyển đường bộ</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. QUY TRÌNH 8 BƯỚC (NỀN XANH NAVY #04243D) -->
   <section class="process-8steps-section">
     <div class="container">
       <div class="section-header">
@@ -182,37 +208,43 @@
     </div>
   </section>
 
-  <!-- 5. GIẢI PHÁP VẬN CHUYỂN (3 PHƯƠNG THỨC) -->
-  <section class="shipping-methods-section">
+  <!-- 6. BẢNG GIÁ VẬN CHUYỂN -->
+  <section class="route-rate-section">
     <div class="container">
       <div class="section-header">
-        <span class="section-tag">GIẢI PHÁP VẬN CHUYỂN</span>
-        <h2 class="section-title">Linh hoạt phương thức vận chuyển.</h2>
+        <span class="section-tag">CHI PHÍ MINH BẠCH</span>
+        <h2 class="section-title">Bảng giá vận chuyển</h2>
+        <p class="ff-section-sub">Hiện chưa có mức giá cố định được công bố tại đây. Liên hệ SpeeGo để nhận báo giá theo lô hàng.</p>
       </div>
 
-      <div class="methods-3col-grid">
-        <!-- Phương thức 01 -->
-        <div class="method-col-item">
-          <div class="method-col-num">01</div>
-          <div class="method-col-title">Vận chuyển đường biển</div>
+      <div class="rate-table-card">
+        <!-- Dòng 1: Đường hàng không -->
+        <div class="rate-table-row">
+          <div class="rate-col-name">Đường hàng không</div>
+          <div class="rate-col-desc">Theo trọng lượng tính cước và điểm đến</div>
+          <a href="#contact-form" class="rate-col-action">Nhận báo giá ↗</a>
         </div>
 
-        <!-- Phương thức 02 -->
-        <div class="method-col-item">
-          <div class="method-col-num">02</div>
-          <div class="method-col-title">Vận chuyển đường hàng không</div>
+        <!-- Dòng 2: Đường biển · FCL -->
+        <div class="rate-table-row">
+          <div class="rate-col-name">Đường biển · FCL</div>
+          <div class="rate-col-desc">Theo loại container, cảng đi và cảng đến</div>
+          <a href="#contact-form" class="rate-col-action">Nhận báo giá ↗</a>
         </div>
 
-        <!-- Phương thức 03 -->
-        <div class="method-col-item">
-          <div class="method-col-num">03</div>
-          <div class="method-col-title">Vận chuyển đường bộ</div>
+        <!-- Dòng 3: Đường biển · LCL -->
+        <div class="rate-table-row">
+          <div class="rate-col-name">Đường biển · LCL</div>
+          <div class="rate-col-desc">Theo thể tích, loại hàng và tuyến vận chuyển</div>
+          <a href="#contact-form" class="rate-col-action">Nhận báo giá ↗</a>
         </div>
       </div>
+
+      <p class="rate-table-footnote">Liên hệ để nhận báo giá chi tiết cho lô hàng và yêu cầu dịch vụ cụ thể.</p>
     </div>
   </section>
 
-  <!-- 6. VÌ SAO CHỌN SPEEGO (5 CARDS NỀN XÁM NHẠT) -->
+  <!-- 7. VÌ SAO CHỌN SPEEGO (5 CARDS NỀN XÁM NHẠT) -->
   <section class="ie-why-section">
     <div class="container">
       <div class="section-header">
@@ -259,43 +291,9 @@
     </div>
   </section>
 
-  <!-- 7. BẢNG GIÁ VẬN CHUYỂN -->
-  <section class="route-rate-section">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-tag">CHI PHÍ MINH BẠCH</span>
-        <h2 class="section-title">Bảng giá vận chuyển</h2>
-        <p class="ff-section-sub">Hiện chưa có mức giá cố định được công bố tại đây. Liên hệ SpeeGo để nhận báo giá theo lô hàng.</p>
-      </div>
-
-      <div class="rate-table-card">
-        <!-- Dòng 1: Đường hàng không -->
-        <div class="rate-table-row">
-          <div class="rate-col-name">Đường hàng không</div>
-          <div class="rate-col-desc">Theo trọng lượng tính cước và điểm đến</div>
-          <a href="#contact-form" class="rate-col-action">Nhận báo giá ↗</a>
-        </div>
-
-        <!-- Dòng 2: Đường biển · FCL -->
-        <div class="rate-table-row">
-          <div class="rate-col-name">Đường biển · FCL</div>
-          <div class="rate-col-desc">Theo loại container, cảng đi và cảng đến</div>
-          <a href="#contact-form" class="rate-col-action">Nhận báo giá ↗</a>
-        </div>
-
-        <!-- Dòng 3: Đường biển · LCL -->
-        <div class="rate-table-row">
-          <div class="rate-col-name">Đường biển · LCL</div>
-          <div class="rate-col-desc">Theo thể tích, loại hàng và tuyến vận chuyển</div>
-          <a href="#contact-form" class="rate-col-action">Nhận báo giá ↗</a>
-        </div>
-      </div>
-
-      <p class="rate-table-footnote">Liên hệ để nhận báo giá chi tiết cho lô hàng và yêu cầu dịch vụ cụ thể.</p>
-    </div>
-  </section>
-
-  <!-- 8. CÂU HỎI THƯỜNG GẶP (FAQ ACCORDION) -->
+  <!-- 8. CONSULTATION FORM BAND -->
+  <div data-component="cta-form" data-variant="band" id="contact-form"></div>
+<!-- 9. CÂU HỎI THƯỜNG GẶP (FAQ ACCORDION) -->
   <section class="ff-faq-section" style="background: #FFFFFF;">
     <div class="container">
       <div class="section-header">
@@ -362,89 +360,12 @@
     </div>
   </section>
 
-  <!-- 9. TESTIMONIAL SECTION -->
-  <section class="ff-testimonial-section">
-    <div class="container">
-      <div class="ff-section-header">
-        <span class="ff-tag-eyebrow">KHÁCH HÀNG SPEEGO</span>
-        <h2 class="ff-section-title">Đồng hành cùng doanh nghiệp</h2>
-      </div>
-
-      <div class="ff-testimonial-card">
-        <div class="ff-quote-mark" aria-hidden="true">
-          <span></span><span></span>
-        </div>
-        <div class="ff-quote-body">
-          <blockquote class="ff-quote-text">
-            “Việc theo dõi OMS theo thời gian thực và chính sách không có chi phí ẩn khiến SpeeGo trở thành đối tác chuỗi cung ứng đáng tin cậy của chúng tôi.”
-          </blockquote>
-          <div class="ff-author-info">
-            <div class="ff-author-name">Sarah Mitchell</div>
-            <div class="ff-author-title">Operations Director, EcoLiving Home · Australia</div>
-            <div class="ff-author-ref">
-              <a href="#/sourcing" class="ff-ref-link">Theo chia sẻ trên website SpeeGo · bản dịch tiếng Việt ↗</a>
-            </div>
-          </div>
-        </div>
-      </div>
+  <!-- 10. TESTIMONIAL SECTION -->
+  <section class="ff-testimonial-section"><div class="container">
+    <div class="ff-section-header"><span class="ff-tag-eyebrow">KHÁCH HÀNG SPEEGO</span><h2 class="ff-section-title">Đồng hành cùng doanh nghiệp</h2></div>
+    <div class="testimonials-2col-grid">
+      <article class="testimonial-card-sourcing"><div><div class="ff-quote-mark" aria-hidden="true"><span></span><span></span></div><blockquote class="ff-quote-text">“Lịch vận chuyển đường biển ổn định và sự hỗ trợ song ngữ giúp chúng tôi quản lý các lô hàng nhập khẩu hàng tháng dễ dàng hơn.”</blockquote></div><div class="ff-author-info"><div class="ff-author-name">David Nguyen</div><div class="ff-author-title">Quản lý chuỗi cung ứng · Texas, Hoa Kỳ</div><div class="ff-author-ref"><a href="#/tuyen-van-chuyen" class="ff-ref-link">Theo chia sẻ trên website SpeeGo ↗</a></div></div></article>
+      <article class="testimonial-card-sourcing"><div><div class="ff-quote-mark" aria-hidden="true"><span></span><span></span></div><blockquote class="ff-quote-text">“Việc theo dõi OMS theo thời gian thực và chính sách không có chi phí ẩn khiến SpeeGo trở thành đối tác chuỗi cung ứng đáng tin cậy của chúng tôi.”</blockquote></div><div class="ff-author-info"><div class="ff-author-name">Sarah Mitchell</div><div class="ff-author-title">Operations Director, EcoLiving Home · Australia</div><div class="ff-author-ref"><a href="#/tuyen-van-chuyen" class="ff-ref-link">Theo chia sẻ trên website SpeeGo · bản dịch tiếng Việt ↗</a></div></div></article>
     </div>
-  </section>
-
-  <!-- 10. CONSULTATION FORM BAND -->
-  <div data-component="cta-form" data-variant="band" id="contact-form"></div>
-
-  <!-- SCRIPT: ORIGIN TAB SWITCHER (TRUNG QUỐC ⟷ VIỆT NAM) -->
-  <script>
-    function switchRouteOrigin(origin) {
-      const btnChina = document.getElementById('tabOriginChina');
-      const btnVietnam = document.getElementById('tabOriginVietnam');
-      const originName = document.getElementById('routeOriginName');
-      const descOriginName = document.getElementById('routeOriginDescName');
-      const destUS = document.getElementById('destRouteUS');
-      const destCA = document.getElementById('destRouteCA');
-      const destAU = document.getElementById('destRouteAU');
-      const destGlobal = document.getElementById('destRouteGlobal');
-      const breadcrumbList = document.getElementById('breadcrumbList');
-
-      if (origin === 'vietnam') {
-        if (btnChina) btnChina.classList.remove('active');
-        if (btnVietnam) btnVietnam.classList.add('active');
-        if (originName) originName.textContent = 'Việt Nam';
-        if (descOriginName) descOriginName.textContent = 'Việt Nam';
-        if (destUS) destUS.textContent = 'Việt Nam ➔ Mỹ';
-        if (destCA) destCA.textContent = 'Việt Nam ➔ Canada';
-        if (destAU) destAU.textContent = 'Việt Nam ➔ Úc';
-        if (destGlobal) destGlobal.textContent = 'Việt Nam ➔ Nước khác';
-
-        // Update breadcrumb
-        if (breadcrumbList) {
-          breadcrumbList.innerHTML = `
-            <a href="#/sourcing" class="breadcrumb-link">Trang chủ</a>
-            <span class="breadcrumb-sep">/</span>
-            <span class="breadcrumb-current">Tuyến vận chuyển từ Việt Nam</span>
-          `;
-        }
-      } else {
-        if (btnVietnam) btnVietnam.classList.remove('active');
-        if (btnChina) btnChina.classList.add('active');
-        if (originName) originName.textContent = 'Trung Quốc';
-        if (descOriginName) descOriginName.textContent = 'Trung Quốc';
-        if (destUS) destUS.textContent = 'Trung Quốc ➔ Mỹ';
-        if (destCA) destCA.textContent = 'Trung Quốc ➔ Canada';
-        if (destAU) destAU.textContent = 'Trung Quốc ➔ Úc';
-        if (destGlobal) destGlobal.textContent = 'Trung Quốc ➔ Nước khác';
-
-        // Update breadcrumb
-        if (breadcrumbList) {
-          breadcrumbList.innerHTML = `
-            <a href="#/sourcing" class="breadcrumb-link">Trang chủ</a>
-            <span class="breadcrumb-sep">/</span>
-            <span class="breadcrumb-current">Tuyến vận chuyển từ Trung Quốc</span>
-          `;
-        }
-      }
-    }
-    window.switchRouteOrigin = switchRouteOrigin;
-  </script>
-
+  </div></section>
 </div>
