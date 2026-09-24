@@ -4341,6 +4341,142 @@ body.speego-seo-page #app-main {
   border-top: 1px solid #F1F5F9;
 }
 
+/* --------------------------------------------------------------------------
+   20. SUBPAGE BODY TYPE & FULFILLMENT RHYTHM
+   -------------------------------------------------------------------------- */
+.page-container :is(p, li, [class*="description"], [class$="-desc"]) {
+  font-size: 16px;
+}
+
+/* Rate-card accordion copy is intentionally a little denser than page body copy. */
+.page-fulfillment .ff-pricing-section .ff-pricing-group-sub,
+.page-fulfillment .ff-pricing-section .ff-pricing-body :is(td, .ff-aio-desc, .ff-pack-sub, .ff-table-note, .ff-unit) {
+  font-size: 14px;
+}
+
+/* Keep the complete fulfillment banner compact enough for a desktop first screen. */
+.page-fulfillment .ff-hero-dark-section {
+  display: flex;
+  align-items: stretch;
+  min-height: calc(100vh - 114px);
+  min-height: calc(100svh - 114px);
+  padding: clamp(72px, 15vh, 124px) 0 24px;
+}
+
+.page-fulfillment .ff-hero-dark-section > .container {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.page-fulfillment .ff-hero-summary {
+  max-width: 760px;
+}
+
+.page-fulfillment .ff-hero-brand-title {
+  font-size: clamp(36px, 4.2vw, 64px);
+}
+
+.page-fulfillment .ff-hero-tagline {
+  font-size: clamp(18px, 2vw, 30px);
+}
+
+.page-fulfillment .ff-hero-dark-header {
+  margin-bottom: clamp(32px, 8vh, 68px);
+}
+
+.page-fulfillment .ff-hero-brand-title,
+.page-fulfillment .ff-hero-tagline {
+  margin-bottom: 8px;
+}
+
+.page-fulfillment .ff-stats-bars-row {
+  gap: 20px;
+  max-width: 1280px;
+  margin-bottom: clamp(24px, 5vh, 42px);
+}
+
+.page-fulfillment .ff-dark-hub-card {
+  max-width: 1040px;
+  padding: 18px 30px;
+}
+
+.page-fulfillment .ff-stat-bar-title {
+  font-size: clamp(16px, 1.35vw, 20px);
+}
+
+.page-fulfillment > section:not(.ff-hero-dark-section) {
+  padding-top: 56px;
+  padding-bottom: 64px;
+}
+
+.page-fulfillment .ff-section-header {
+  margin-bottom: 28px;
+}
+
+.page-fulfillment .ff-steps-grid {
+  gap: 20px;
+  margin-top: 28px;
+}
+
+.page-fulfillment .ff-pricing-accordion {
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.page-fulfillment .ff-pricing-header {
+  padding: 18px 24px;
+}
+
+.page-fulfillment .ff-pricing-body {
+  padding: 0 24px 24px;
+}
+
+.page-fulfillment .ff-faq-list {
+  margin-top: 24px;
+}
+
+.page-fulfillment .ff-faq-btn {
+  padding: 18px 0;
+}
+
+@media (max-width: 768px) {
+  .page-fulfillment .ff-hero-dark-section {
+    min-height: 0;
+    padding: 36px 0 28px;
+  }
+
+  .page-fulfillment .ff-hero-dark-section > .container {
+    gap: 28px;
+  }
+
+  .page-fulfillment .ff-hero-dark-header {
+    margin-bottom: 0;
+  }
+
+  .page-fulfillment .ff-stats-bars-row {
+    margin-bottom: 0;
+  }
+
+  .page-fulfillment .ff-dark-hub-card {
+    padding: 18px 20px;
+  }
+
+  .page-fulfillment > section:not(.ff-hero-dark-section) {
+    padding-top: 44px;
+    padding-bottom: 48px;
+  }
+
+  .page-fulfillment .ff-pricing-header {
+    padding: 16px;
+  }
+
+  .page-fulfillment .ff-pricing-body {
+    padding: 0 16px 18px;
+  }
+}
+
 .ff-testimonial-block,
 .ff-testimonial-card {
   max-width: 960px;
