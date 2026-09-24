@@ -249,7 +249,9 @@ img {
 .speego-header-contact-icon {
   width: 14px;
   height: 14px;
-  color: #FF6A00;
+  color: #FFFFFF;
+  stroke: #FFFFFF;
+  stroke-width: 1.5;
   flex-shrink: 0;
 }
 

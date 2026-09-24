@@ -2,35 +2,140 @@
      HEADER & MULTI-LANGUAGE NAVIGATION (Exact Design Spec from Web Tổng)
      ================================================================= -->
 <header id="masthead" class="site-header speego-site-header" role="banner">
-  <!-- Top Bar: Hotline & Email -->
+  <!-- ================================================================
+     Top Bar: Hotline & Email
+     ================================================================ -->
   <div class="speego-header-topbar">
     <div class="speego-header-topbar-inner">
-      <div class="speego-header-contact" aria-label="SpeeGo contact details">
+
+      <div
+        class="speego-header-contact"
+        aria-label="SpeeGo contact details"
+      >
+
+        <!-- Phone -->
         <details class="speego-header-contact-popover">
-          <summary class="speego-header-contact-item" aria-label="Xem số điện thoại SpeeGo">
-            <svg class="speego-header-contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.12.9.33 1.78.62 2.64a2 2 0 0 1-.45 2.11L8.01 9.74a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.86.29 1.74.5 2.64.62A2 2 0 0 1 22 16.92z"/></svg>
-            <span class="speego-header-contact-val">(024) 6291 8618</span>
+          <summary
+            class="speego-header-contact-item"
+            aria-label="Xem số điện thoại SpeeGo"
+          >
+            <svg
+              class="speego-header-contact-icon speego-header-contact-icon-white"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="#FFFFFF"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.12.9.33 1.78.62 2.64a2 2 0 0 1-.45 2.11L8.01 9.74a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.86.29 1.74.5 2.64.62A2 2 0 0 1 22 16.92z"/>
+            </svg>
+
+            <span class="speego-header-contact-val">
+              (024) 6291 8618
+            </span>
           </summary>
-          <a class="speego-header-contact-popover-link" href="tel:+842462918618">Gọi (024) 6291 8618</a>
+
+          <a
+            class="speego-header-contact-popover-link"
+            href="tel:+842462918618"
+          >
+            Gọi (024) 6291 8618
+          </a>
         </details>
-        <span class="speego-header-contact-sep" aria-hidden="true">|</span>
+
+        <!-- Separator -->
+        <span
+          class="speego-header-contact-sep"
+          aria-hidden="true"
+        >|</span>
+
+        <!-- Email -->
         <details class="speego-header-contact-popover">
-          <summary class="speego-header-contact-item speego-header-contact-email" aria-label="Xem email SpeeGo">
-            <svg class="speego-header-contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
-            <span class="speego-header-contact-val">info@speegologistic.com</span>
+          <summary
+            class="speego-header-contact-item speego-header-contact-email"
+            aria-label="Xem email SpeeGo"
+          >
+            <svg
+              class="speego-header-contact-icon speego-header-contact-icon-white"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="#FFFFFF"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <rect
+                x="3"
+                y="5"
+                width="18"
+                height="14"
+                rx="2"
+              />
+              <path d="m3 7 9 6 9-6"/>
+            </svg>
+
+            <span class="speego-header-contact-val">
+              info@speegologistic.com
+            </span>
           </summary>
-          <a class="speego-header-contact-popover-link" href="mailto:info@speegologistic.com">Gửi email info@speegologistic.com</a>
+
+          <a
+            class="speego-header-contact-popover-link"
+            href="mailto:info@speegologistic.com"
+          >
+            Gửi email info@speegologistic.com
+          </a>
         </details>
+
       </div>
+
+      <!-- Policy -->
       <div class="speego-policy-menu speego-topbar-policy">
-        <button type="button" class="speego-policy-toggle" id="speegoPolicyToggle" aria-expanded="false" aria-controls="speego-policy-dropdown" data-i18n="policy_label">Chính sách</button>
-        <ul id="speego-policy-dropdown" class="speego-policy-dropdown" aria-label="Chính sách">
-          <li><a href="/privacy-policy" id="policyPrivacyLink" data-i18n="policy_privacy">Chính sách bảo mật</a></li>
-          <li><a href="/terms-and-conditions" id="policyTermsLink" data-i18n="policy_terms">Điều khoản &amp; Điều kiện</a></li>
+
+        <button
+          type="button"
+          class="speego-policy-toggle"
+          id="speegoPolicyToggle"
+          aria-expanded="false"
+          aria-controls="speego-policy-dropdown"
+          data-i18n="policy_label"
+        >
+          Chính sách
+        </button>
+
+        <ul
+          id="speego-policy-dropdown"
+          class="speego-policy-dropdown"
+          aria-label="Chính sách"
+        >
+          <li>
+            <a
+              href="/privacy-policy"
+              id="policyPrivacyLink"
+              data-i18n="policy_privacy"
+            >
+              Chính sách bảo mật
+            </a>
+          </li>
+
+          <li>
+            <a
+              href="/terms-and-conditions"
+              id="policyTermsLink"
+              data-i18n="policy_terms"
+            >
+              Điều khoản &amp; Điều kiện
+            </a>
+          </li>
         </ul>
+
       </div>
+
     </div>
-  </div>
+</div>
 
   <!-- Main Navigation Bar -->
   <div class="speego-header-navbar">
