@@ -134,17 +134,19 @@ function cleanupFragment(fragment, routeLookup, route) {
   html = html.replace(/(src|poster|href)=(['"])assets\//gi, "$1=$2/explore/assets/");
   html = html.replace(/url\((['"]?)assets\//gi, "url($1/explore/assets/");
 
-  // Inline the CTA band for static SEO pages (SPA mounts this via data-component).
+  // Inline CTA band for SEO pages. Never inject band into a sidebar slot —
+  // strip all placeholders, then append one full-width band after page content.
   const ctaBand = buildCtaBandHtml(route && route.lang);
-  if (ctaBand) {
-    html = html.replace(
-      /\s*<div\b(?:(?:[^>"']|"[^"]*"|'[^']*'))*data-component=(["'])cta-form\1(?:(?:[^>"']|"[^"]*"|'[^']*'))*>\s*<\/div>/gi,
-      `\n${ctaBand}\n`
-    );
+  const hadCta = /data-component=(["'])cta-form\1/i.test(html);
+  html = html.replace(
+    /\s*<div\b(?:(?:[^>"']|"[^"]*"|'[^']*'))*data-component=(["'])cta-form\1(?:(?:[^>"']|"[^"]*"|'[^']*'))*>\s*<\/div>/gi,
+    ""
+  );
+  if (hadCta && ctaBand) {
+    html = `${html.trimEnd()}\n${ctaBand}\n`;
     html = html.replace(/href=(['"])#contact-form\1/gi, 'href="#contact-form"');
-  } else {
+  } else if (!ctaBand) {
     html = html.replace(/href=(['"])#contact-form\1/gi, 'href="/#consultation-form"');
-    html = html.replace(/\s*<div\b(?:(?:[^>"']|"[^"]*"|'[^']*'))*data-component=(["'])cta-form\1(?:(?:[^>"']|"[^"]*"|'[^']*'))*>\s*<\/div>/gi, "");
   }
   return html;
 }
@@ -318,7 +320,7 @@ function generate({ root, output }) {
   <link rel="stylesheet" href="/wp-content/themes/logistica/styleb54d.css?ver=6.8.8">
   <link rel="stylesheet" href="/wp-content/themes/logistica/css/speego-custom.css?v=mobile_tracking_20260923">
   <link rel="stylesheet" href="/wp-content/themes/logistica/css/speego-process-tabs.css">
-  <link rel="stylesheet" href="/explore/css/style.css?v=cta_left_form_right_20260925">
+  <link rel="stylesheet" href="/explore/css/style.css?v=topic_cards_navy_20260925">
 </head>
 <body class="home wp-theme-logistica elementor-default elementor-template-full-width speego-seo-page" data-seo-language="${route.lang}">
   <div id="page" class="hfeed site">
@@ -353,6 +355,7 @@ function generate({ root, output }) {
       window.location.href = 'mailto:info@speegologistic.com?subject=' + subject + '&body=' + body;
     }
   </script>
+  <script src="/explore/js/cta-band.js?v=cta_motion_20260925"></script>
   ${route.nav === "fulfillment" ? '<script src="/explore/js/fulfillment-dock.js?v=ff_dock_fix_20260925e"></script>' : ""}
   <script src="/explore/js/knowledge-article.js"></script>
   <script src="/wp-content/themes/logistica/js/speego-main.js?v=seo_routes_20260924_langfix1"></script>

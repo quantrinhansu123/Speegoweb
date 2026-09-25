@@ -13,7 +13,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,600;1,700;1,800&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
 
   <!-- Shared Stylesheet -->
-  <link rel="stylesheet" href="css/style.css?v=ff_dock_navy_20260925">
+  <link rel="stylesheet" href="css/style.css?v=topic_cards_navy_20260925">
 
   <script>
     if (new URLSearchParams(window.location.search).has('embedded')) {
@@ -736,6 +736,8 @@
           navProcess: 'Quy trình',
           navSourcing: 'Sourcing',
           navRoutes: 'Logistics',
+          navOriginChina: 'Xuất phát: Trung Quốc',
+          navOriginVietnam: 'Xuất phát: Việt Nam',
           navFulfillment: 'Fulfillment',
           navImportExport: 'Import & Export',
           navKnowledge: 'Knowledge',
@@ -789,6 +791,8 @@
           navProcess: 'Process',
           navSourcing: 'Sourcing',
           navRoutes: 'Logistics',
+          navOriginChina: 'Origin: China',
+          navOriginVietnam: 'Origin: Vietnam',
           navFulfillment: 'Fulfillment',
           navImportExport: 'Import & Export',
           navKnowledge: 'Knowledge',
@@ -842,6 +846,8 @@
           navProcess: 'Proceso',
           navSourcing: 'Sourcing',
           navRoutes: 'Logistics',
+          navOriginChina: 'Origen: China',
+          navOriginVietnam: 'Origen: Vietnam',
           navFulfillment: 'Fulfillment',
           navImportExport: 'Import & Export',
           navKnowledge: 'Knowledge',
@@ -905,6 +911,8 @@
           nav_process: t.navProcess,
           nav_sourcing: t.navSourcing,
           nav_routes: t.navRoutes,
+          nav_origin_china: t.navOriginChina,
+          nav_origin_vietnam: t.navOriginVietnam,
           nav_fulfillment: t.navFulfillment,
           nav_import_export: t.navImportExport,
           nav_knowledge: t.navKnowledge,
@@ -959,7 +967,9 @@
         // Navigation links href mapping
         const navItems = [
           { id: 'navLinkSourcing', mId: 'mNavLinkSourcing', href: isVi ? '#/sourcing' : (isEs ? '#/es/sourcing' : '#/en/sourcing') },
-          { id: 'navLinkRoutes', mId: 'mNavLinkRoutes', href: isVi ? '#/tuyen-van-chuyen' : (isEs ? '#/es/rutas-de-envio' : '#/en/shipping-routes') },
+          { id: 'navLinkRoutes', mId: 'mNavLinkRoutes', href: isVi ? '#/logistics/china-to-us-ca-au' : (isEs ? '#/es/logistica/china-a-eeuu-canada-australia' : '#/en/logistics/china-to-us-ca-au') },
+          { id: 'navLinkOriginChina', href: isVi ? '#/logistics/china-to-us-ca-au' : (isEs ? '#/es/logistica/china-a-eeuu-canada-australia' : '#/en/logistics/china-to-us-ca-au') },
+          { id: 'navLinkOriginVietnam', href: isVi ? '#/logistics/vietnam-to-us-ca-au' : (isEs ? '#/es/logistica/vietnam-a-eeuu-canada-australia' : '#/en/logistics/vietnam-to-us-ca-au') },
           { id: 'navLinkFulfillment', mId: 'mNavLinkFulfillment', href: isVi ? '#/fulfillment' : (isEs ? '#/es/fulfillment' : '#/en/fulfillment') },
           { id: 'navLinkImportExport', mId: 'mNavLinkImportExport', href: isVi ? '#/xuat-nhap-khau' : (isEs ? '#/es/import-export' : '#/en/import-export') },
           { id: 'navLinkKnowledge', mId: 'mNavLinkKnowledge', href: isVi ? '#/knowledge' : (isEs ? '#/es/knowledge' : '#/en/knowledge') }
@@ -1303,6 +1313,11 @@
             el.outerHTML = renderedHtml;
           }
         });
+        if (typeof window.initPageMotion === 'function') {
+          window.initPageMotion(container);
+        } else if (typeof window.initCtaBandMotion === 'function') {
+          window.initCtaBandMotion(container);
+        }
       }
 
       // 6. RENDER DYNAMIC BREADCRUMB
@@ -1351,7 +1366,7 @@
       // 7. UPDATE ACTIVE NAVIGATION HIGHLIGHTS
       function updateNavHighlights(activeNavKey) {
         // Desktop nav
-        document.querySelectorAll('#headerNavMenu .speego-nav-item, #headerNavMenu .nav-item').forEach(item => {
+        document.querySelectorAll('#menu-main-menu .speego-nav-item, #headerNavMenu .speego-nav-item, #headerNavMenu .nav-item').forEach(item => {
           if (item.getAttribute('data-nav') === activeNavKey) {
             item.classList.add('active');
           } else {
@@ -1713,6 +1728,12 @@
                   if (destination) destination.textContent = logisticsCopy.destinations[index];
                 });
                 pageContainer.querySelectorAll('[data-route-origin]').forEach(link => {
+                  const isCurrent = link.dataset.routeOrigin === routeOrigin;
+                  link.classList.toggle('active', isCurrent);
+                  if (isCurrent) link.setAttribute('aria-current', 'page');
+                  else link.removeAttribute('aria-current');
+                });
+                document.querySelectorAll('.speego-nav-dropdown-link[data-route-origin]').forEach(link => {
                   const isCurrent = link.dataset.routeOrigin === routeOrigin;
                   link.classList.toggle('active', isCurrent);
                   if (isCurrent) link.setAttribute('aria-current', 'page');
@@ -2151,6 +2172,7 @@
     window.switchRouteOriginEn = switchRouteOriginEn;
   </script>
   <script src="js/knowledge-article.js"></script>
+  <script src="js/cta-band.js"></script>
   <script src="js/fulfillment-dock.js"></script>
 </body>
 </html>
