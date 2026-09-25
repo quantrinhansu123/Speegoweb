@@ -125,18 +125,115 @@ function renderBreadcrumb(items, routeLookup) {
   return `<nav class="breadcrumb-section" aria-label="Đường dẫn trang"><div class="container"><div class="breadcrumb-list">${links}</div></div></nav>`;
 }
 
-function cleanupFragment(fragment, routeLookup) {
+function cleanupFragment(fragment, routeLookup, route) {
   let html = fragment.replace(/<script\b[^>]*>[\s\S]*?window\.location\.replace\([\s\S]*?<\/script>/i, "");
-  html = html.replace(/href=(['"])#(\/[^'"]+)\1/gi, (_full, quote, route) => {
-    const target = routeLookup.get(`#${route}`);
-    return target ? `href=${quote}${target.urlPath}${quote}` : `href=${quote}#${route}${quote}`;
+  html = html.replace(/href=(['"])#(\/[^'"]+)\1/gi, (_full, quote, routeHash) => {
+    const target = routeLookup.get(`#${routeHash}`);
+    return target ? `href=${quote}${target.urlPath}${quote}` : `href=${quote}#${routeHash}${quote}`;
   });
   html = html.replace(/(src|poster|href)=(['"])assets\//gi, "$1=$2/explore/assets/");
   html = html.replace(/url\((['"]?)assets\//gi, "url($1/explore/assets/");
-  html = html.replace(/href=(['"])#contact-form\1/gi, 'href="/#consultation-form"');
-  // These client-rendered form mounts have no usable form in static HTML. The shared homepage CTA remains available.
-  html = html.replace(/\s*<div\b(?:(?:[^>"']|"[^"]*"|'[^']*'))*data-component=(["'])cta-form\1(?:(?:[^>"']|"[^"]*"|'[^']*'))*>\s*<\/div>/gi, "");
+
+  // Inline the CTA band for static SEO pages (SPA mounts this via data-component).
+  const ctaBand = buildCtaBandHtml(route && route.lang);
+  if (ctaBand) {
+    html = html.replace(
+      /\s*<div\b(?:(?:[^>"']|"[^"]*"|'[^']*'))*data-component=(["'])cta-form\1(?:(?:[^>"']|"[^"]*"|'[^']*'))*>\s*<\/div>/gi,
+      `\n${ctaBand}\n`
+    );
+    html = html.replace(/href=(['"])#contact-form\1/gi, 'href="#contact-form"');
+  } else {
+    html = html.replace(/href=(['"])#contact-form\1/gi, 'href="/#consultation-form"');
+    html = html.replace(/\s*<div\b(?:(?:[^>"']|"[^"]*"|'[^']*'))*data-component=(["'])cta-form\1(?:(?:[^>"']|"[^"]*"|'[^']*'))*>\s*<\/div>/gi, "");
+  }
   return html;
+}
+
+function buildCtaBandHtml(lang) {
+  const copy = {
+    vi: {
+      tag: "LET'S MOVE FORWARD",
+      heading: "Bắt đầu từ nhu cầu của bạn.",
+      subtext: "Chia sẻ về hàng hóa và kế hoạch của doanh nghiệp. SpeeGo sẽ tư vấn giải pháp phù hợp.",
+      labelName: "Họ và tên",
+      placeholderName: "Nguyễn Văn An",
+      labelEmail: "Email",
+      placeholderEmail: "ban@congty.com",
+      labelPhone: "Số điện thoại",
+      placeholderPhone: "Số điện thoại liên hệ",
+      labelMessage: "Nhu cầu tư vấn",
+      placeholderMessage: "Loại hàng, số lượng, điểm đi và điểm đến...",
+      btn: "Soạn email tư vấn ↗",
+      note: "Mở ứng dụng email với nội dung đã điền. Thông tin chỉ được gửi đi khi bạn bấm Gửi trong email."
+    },
+    en: {
+      tag: "LET'S MOVE FORWARD",
+      heading: "Start with what<br>you need.",
+      subtext: "Tell us about your products and business plans. SpeeGo will help you find the right solution.",
+      labelName: "Full name",
+      placeholderName: "Your full name",
+      labelEmail: "Email",
+      placeholderEmail: "you@company.com",
+      labelPhone: "Phone number",
+      placeholderPhone: "Your contact number",
+      labelMessage: "How can we help?",
+      placeholderMessage: "Product type, quantity, origin, and destination...",
+      btn: "Draft an Inquiry ↗",
+      note: "Opens your email app with a prepared message. Your information is only sent when you click Send in your email app."
+    },
+    es: {
+      tag: "AVANCEMOS JUNTOS",
+      heading: "Comience con lo que<br>su negocio necesita.",
+      subtext: "Comparta los detalles de sus productos y planes comerciales. SpeeGo diseñará la solución ideal para usted.",
+      labelName: "Nombre completo",
+      placeholderName: "Su nombre y apellido",
+      labelEmail: "Correo electrónico",
+      placeholderEmail: "usted@empresa.com",
+      labelPhone: "Número de teléfono",
+      placeholderPhone: "Teléfono de contacto",
+      labelMessage: "Consulta de servicios",
+      placeholderMessage: "Tipo de producto, volumen estimado, origen y destino...",
+      btn: "Enviar consulta comercial ↗",
+      note: "Abre su aplicación de correo con el mensaje preparado. Sus datos se envían únicamente al hacer clic en Enviar en su cliente de correo."
+    }
+  }[lang || "vi"] || null;
+  if (!copy) return "";
+  return `  <section class="cta-form-band-section" id="contact-form">
+    <div class="container cta-form-band-grid">
+      <div class="cta-band-left">
+        <span class="section-tag">${copy.tag}</span>
+        <h2 class="section-title section-title-white">${copy.heading}</h2>
+        <p class="cta-band-desc">${copy.subtext}</p>
+        <a href="tel:+84906828898" class="cta-hotline-link">(+84) 906 828 898 ↗</a>
+      </div>
+      <div class="cta-band-right">
+        <div class="consult-card-white">
+          <form class="consult-form" onsubmit="handleConsultSubmit(event)">
+            <div class="form-row-2col">
+              <div class="form-group">
+                <label class="form-label" for="band_fullName">${copy.labelName}</label>
+                <input type="text" id="band_fullName" name="fullName" class="form-control" placeholder="${copy.placeholderName}" required>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="band_email">${copy.labelEmail}</label>
+                <input type="email" id="band_email" name="email" class="form-control" placeholder="${copy.placeholderEmail}" required>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="band_phone">${copy.labelPhone}</label>
+              <input type="tel" id="band_phone" name="phone" class="form-control" placeholder="${copy.placeholderPhone}" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="band_message">${copy.labelMessage}</label>
+              <textarea id="band_message" name="message" class="form-control" placeholder="${copy.placeholderMessage}"></textarea>
+            </div>
+            <button type="submit" class="btn-orange btn-submit">${copy.btn}</button>
+            <p class="form-security-note">${copy.note}</p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>`;
 }
 
 function generate({ root, output }) {
@@ -159,7 +256,7 @@ function generate({ root, output }) {
     const source = path.join(exploreRoot, route.file);
     if (!fs.existsSync(source)) throw new Error(`Missing route content: ${route.file}`);
     let fragment = applyShippingOrigin(fs.readFileSync(source, "utf8"), route);
-    fragment = cleanupFragment(fragment, routeLookup);
+    fragment = cleanupFragment(fragment, routeLookup, route);
     const breadcrumbJson = fragment.match(/\bdata-breadcrumb='([^']+)'/i)?.[1];
     let breadcrumbs = [];
     if (breadcrumbJson) {
@@ -215,13 +312,13 @@ function generate({ root, output }) {
   <link rel="icon" href="/wp-content/themes/logistica/images/favicon-speego.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,600;1,700;1,800&display=swap">
   <link rel="stylesheet" href="/wp-content/themes/logistica/css/bootstrapb54d.css?ver=6.8.8">
   <link rel="stylesheet" href="/wp-content/themes/logistica/css/mainb54d.css?ver=6.8.8">
-  <link rel="stylesheet" href="/wp-content/themes/logistica/css/styleb54d.css?ver=6.8.8">
-  <link rel="stylesheet" href="/wp-content/themes/logistica/css/speego-custom.css?v=sourcing_home_20260923">
+  <link rel="stylesheet" href="/wp-content/themes/logistica/styleb54d.css?ver=6.8.8">
+  <link rel="stylesheet" href="/wp-content/themes/logistica/css/speego-custom.css?v=mobile_tracking_20260923">
   <link rel="stylesheet" href="/wp-content/themes/logistica/css/speego-process-tabs.css">
-  <link rel="stylesheet" href="/explore/css/style.css">
+  <link rel="stylesheet" href="/explore/css/style.css?v=cta_left_form_right_20260925">
 </head>
 <body class="home wp-theme-logistica elementor-default elementor-template-full-width speego-seo-page" data-seo-language="${route.lang}">
   <div id="page" class="hfeed site">
@@ -243,6 +340,20 @@ function generate({ root, output }) {
       }, true);
     }());
   </script>
+  <script>
+    function handleConsultSubmit(event) {
+      event.preventDefault();
+      var form = event.target;
+      var name = (form.querySelector('[name="fullName"]') || {}).value || '';
+      var email = (form.querySelector('[name="email"]') || {}).value || '';
+      var phone = (form.querySelector('[name="phone"]') || {}).value || '';
+      var message = (form.querySelector('[name="message"]') || {}).value || '';
+      var subject = encodeURIComponent('SpeeGo inquiry — ' + name);
+      var body = encodeURIComponent('Full name: ' + name + '\\nEmail: ' + email + '\\nPhone: ' + phone + '\\n\\nMessage:\\n' + message);
+      window.location.href = 'mailto:info@speegologistic.com?subject=' + subject + '&body=' + body;
+    }
+  </script>
+  ${route.nav === "fulfillment" ? '<script src="/explore/js/fulfillment-dock.js?v=ff_dock_fix_20260925e"></script>' : ""}
   <script src="/explore/js/knowledge-article.js"></script>
   <script src="/wp-content/themes/logistica/js/speego-main.js?v=seo_routes_20260924_langfix1"></script>
 </body>

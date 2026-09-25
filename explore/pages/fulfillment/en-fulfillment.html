@@ -87,7 +87,7 @@
     </div>
   </div>
 
-  <!-- 4 Quick-link Cards -->
+  <!-- 5 Quick-link Cards -->
   <section class="ff-quicklinks-section">
     <div class="container">
       <div class="ff-quicklinks-grid">
@@ -96,7 +96,7 @@
           <div class="ff-quicklink-sub">Warehouse service fees in the US</div>
           <div class="ff-quicklink-btn">View ➔</div>
         </a>
-        <a href="#usps-zone" class="ff-quicklink-card">
+        <a href="#shipping-rates" class="ff-quicklink-card">
           <div class="ff-quicklink-title">USPS Ground Advantage by zone</div>
           <div class="ff-quicklink-sub">Reference rates for zones 1-9</div>
           <div class="ff-quicklink-btn">View ➔</div>
@@ -110,6 +110,11 @@
           <div class="ff-quicklink-title">Service policy</div>
           <div class="ff-quicklink-sub">Storage, order handling, and shipping terms</div>
           <div class="ff-quicklink-btn">View ➔</div>
+        </a>
+        <a href="https://hub.speegologistic.com" class="ff-quicklink-card ff-quicklink-card--hub" target="_blank" rel="noopener noreferrer">
+          <div class="ff-quicklink-title">Hub System</div>
+          <div class="ff-quicklink-sub">Access SpeeGo’s operations management portal</div>
+          <div class="ff-quicklink-btn">Open ➔</div>
         </a>
       </div>
     </div>
@@ -164,255 +169,291 @@
     </div>
   </section>
 
-  <!-- 3. RATE CARD SECTION (SPEEGO FULFILLMENT RATE CARD) -->
-  <section class="ff-pricing-section" id="bang-gia-fulfillment">
+  <!-- 3. RATE CARD SECTION (demo-matched SpeeGo Fulfillment rate card) -->
+  <section class="ff-pricing-section ff-pricing-catalog" id="bang-gia-fulfillment">
     <div class="container">
       <div class="ff-section-header">
         <span class="ff-tag-eyebrow">US SERVICE PRICING</span>
         <h2 class="ff-section-title">SpeeGo Fulfillment rate card</h2>
-        <p class="ff-section-sub">
-          Open each group for the detailed rates. Special requests and any extras are confirmed before processing.
-        </p>
+        <p class="ff-section-sub">Rates are compiled from the Fulfill pricing sheet and the warehouse handling sheet. Open each group for details.</p>
       </div>
 
-      <!-- Accordion Pricing List -->
-      <div class="ff-pricing-accordion">
-        <!-- Accordion Item 01 (Open) -->
-        <div class="ff-pricing-group active" id="group-fulfill-pricing">
-          <div class="ff-pricing-header" onclick="togglePricingGroup(this)">
-            <div class="ff-pricing-header-left">
-              <span class="ff-pricing-badge">01</span>
-              <div>
-                <div class="ff-pricing-group-title">FULFILLMENT PRICING</div>
-                <div class="ff-pricing-group-sub">Fulfillment &amp; order handling</div>
-              </div>
-            </div>
-            <div class="ff-pricing-toggle-icon">✕</div>
+      <nav class="ff-pricing-jump" aria-label="Pricing navigation">
+        <a href="#fulfillment-cost">Fulfill pricing</a>
+        <a href="#warehouse-handling">Warehouse handling</a>
+        <a href="#shipping-rates">USPS Ground Advantage</a>
+      </nav>
+
+      <section class="ff-pricing-sheet" id="fulfillment-cost">
+        <header class="ff-sheet-heading">
+          <div>
+            <small>01 · FULFILL PRICING</small>
+            <h3>Fulfillment &amp; order handling</h3>
           </div>
-
-          <div class="ff-pricing-body">
-            <!-- 2 Highlight All-in-one Cards -->
-            <div class="ff-allinone-grid">
-              <div class="ff-allinone-card">
-                <div class="ff-aio-info">
-                  <div class="ff-aio-tag">ALL-IN-ONE · UNDER 800 G/ORDER</div>
-                  <div class="ff-aio-desc">Order handling + packaging + shipping</div>
-                </div>
-                <div class="ff-aio-price">$7/order</div>
-              </div>
-
-              <div class="ff-allinone-card">
-                <div class="ff-aio-info">
-                  <div class="ff-aio-tag">ALL-IN-ONE · 800 G TO UNDER 2.5 KG/ORDER</div>
-                  <div class="ff-aio-desc">Order handling + packaging + shipping</div>
-                </div>
-                <div class="ff-aio-price">$10/order</div>
-              </div>
-            </div>
-
-            <!-- Table: Outbound Handling -->
-            <div class="ff-table-block">
-              <div class="ff-table-title">OUTBOUND HANDLING</div>
-              <div class="ff-table-wrap">
-                <table class="ff-rate-table">
-                  <tbody>
-                    <tr>
-                      <td class="ff-td-col1">0-5 lb</td>
-                      <td class="ff-td-col2">0–2.5 kg</td>
-                      <td class="ff-td-col3 ff-text-bold">All-in-one · by agreement</td>
-                    </tr>
-                    <tr>
-                      <td class="ff-td-col1">5-15 lb</td>
-                      <td class="ff-td-col2">&gt;2.5–6.75 kg</td>
-                      <td class="ff-td-col3 ff-price-text">$2.50 <span class="ff-unit">/order</span></td>
-                    </tr>
-                    <tr>
-                      <td class="ff-td-col1">15-30 lb</td>
-                      <td class="ff-td-col2">6.75–13.5 kg</td>
-                      <td class="ff-td-col3 ff-price-text">$3.25 <span class="ff-unit">/order</span></td>
-                    </tr>
-                    <tr>
-                      <td class="ff-td-col1">30-50 lb</td>
-                      <td class="ff-td-col2">13.5–22.5 kg</td>
-                      <td class="ff-td-col3 ff-price-text">$4.50 <span class="ff-unit">/order</span></td>
-                    </tr>
-                    <tr>
-                      <td class="ff-td-col1">50-70 lb</td>
-                      <td class="ff-td-col2">22.5–31.5 kg</td>
-                      <td class="ff-td-col3 ff-price-text">$6.35 <span class="ff-unit">/order</span></td>
-                    </tr>
-                    <tr>
-                      <td class="ff-td-col1">70-100 lb</td>
-                      <td class="ff-td-col2">31.5–45 kg</td>
-                      <td class="ff-td-col3 ff-price-text">$7.75 <span class="ff-unit">/order</span></td>
-                    </tr>
-                    <tr>
-                      <td class="ff-td-col1">100-150 lb</td>
-                      <td class="ff-td-col2">45–68 kg</td>
-                      <td class="ff-td-col3 ff-price-text">$10 <span class="ff-unit">/order</span></td>
-                    </tr>
-                    <tr>
-                      <td class="ff-td-col1">Over 150 lb</td>
-                      <td class="ff-td-col2">Over 68 kg</td>
-                      <td class="ff-td-col3 ff-text-bold">AT COST</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-              <p class="ff-table-note">
-                Charged on actual or volumetric weight, whichever is greater. Volumetric weight = L × W × H (cm) / 5,000.
-              </p>
-            </div>
-
-            <!-- Table: Packaging Materials -->
-            <div class="ff-table-block">
-              <div class="ff-table-title">PACKAGING MATERIALS</div>
-              <div class="ff-table-wrap">
-                <table class="ff-rate-table">
-                  <tbody>
-                    <tr>
-                      <td class="ff-td-pack-name">
-                        <div class="ff-pack-title">Poly mailer</div>
-                        <div class="ff-pack-sub">Included on every bagged order — no extra charge.</div>
-                      </td>
-                      <td class="ff-td-pack-price highlight-orange ff-text-bold">FREE</td>
-                    </tr>
-                    <tr>
-                      <td class="ff-td-pack-name">
-                        <div class="ff-pack-title">Bubble mailer</div>
-                        <div class="ff-pack-sub">Cushioned protection for small, easily dented items.</div>
-                      </td>
-                      <td class="ff-td-pack-price ff-price-text">$0.50/mailer</td>
-                    </tr>
-                    <tr>
-                      <td class="ff-td-pack-name">
-                        <div class="ff-pack-title">Carton box</div>
-                        <div class="ff-pack-sub">6 × 4 × 4 in — $1.00 · 10 × 6 × 4 in — $1.50 · 9 × 7 × 3 in — $1.70. Other sizes quoted on request.</div>
-                      </td>
-                      <td class="ff-td-pack-price ff-price-text">$1.00 - $1.70</td>
-                    </tr>
-                    <tr>
-                      <td class="ff-td-pack-name">
-                        <div class="ff-pack-title">Your own packaging</div>
-                        <div class="ff-pack-sub">Send your branded packaging — SpeeGo receives, stores, and uses it at no extra cost.</div>
-                      </td>
-                      <td class="ff-td-pack-price ff-text-bold">NO HANDLING FEE</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
+          <span>3 service groups</span>
+        </header>
+        <div class="ff-plan-strip">
+          <article>
+            <small>ALL-IN-ONE · UNDER 800 G/ORDER</small>
+            <b>Order handling + packaging + shipping</b>
+            <strong>$7<em>/order</em></strong>
+          </article>
+          <article>
+            <small>ALL-IN-ONE · 800 G TO UNDER 2.5 KG/ORDER</small>
+            <b>Order handling + packaging + shipping</b>
+            <strong>$10<em>/order</em></strong>
+          </article>
         </div>
+        <details class="ff-price-group" id="ff-outbound-rates">
+  <summary><span><i aria-hidden="true"></i>OUTBOUND HANDLING</span><small>8 items</small></summary>
+  <div class="ff-price-body"><div class="ff-price-subhead">ORDER HANDLING RATES · US</div>
+<div class="ff-price-row">
+  <div>
+    <b>0–5 lb <span>(incl. 5 lb)</span></b>
+    <small>0–2.5 kg · All-in-one price</small>
+  </div>
+  <strong>By agreement</strong>
+</div>
+<div class="ff-price-note">Orders over 2.5 kg are charged on the rates below. Fee uses actual or volumetric weight, whichever is greater.</div>
+<div class="ff-price-row">
+  <div>
+    <b>5–15 lb <span>(incl. 15 lb)</span></b>
+    <small>&gt;2.5–6.75 kg</small>
+  </div>
+  <strong>$2.50 <em>/order</em></strong>
+</div>
+<div class="ff-price-row">
+  <div>
+    <b>15–30 lb <span>(incl. 30 lb)</span></b>
+    <small>6.75–13.5 kg</small>
+  </div>
+  <strong>$3.25 <em>/order</em></strong>
+</div>
+<div class="ff-price-row">
+  <div>
+    <b>30–50 lb <span>(incl. 50 lb)</span></b>
+    <small>13.5–22.5 kg</small>
+  </div>
+  <strong>$4.50 <em>/order</em></strong>
+</div>
+<div class="ff-price-row">
+  <div>
+    <b>50–70 lb <span>(incl. 70 lb)</span></b>
+    <small>22.5–31.5 kg</small>
+  </div>
+  <strong>$6.35 <em>/order</em></strong>
+</div>
+<div class="ff-price-row">
+  <div>
+    <b>70–100 lb <span>(incl. 100 lb)</span></b>
+    <small>31.5–45 kg</small>
+  </div>
+  <strong>$7.75 <em>/order</em></strong>
+</div>
+<div class="ff-price-row">
+  <div>
+    <b>100–150 lb <span>(incl. 150 lb)</span></b>
+    <small>45–68 kg</small>
+  </div>
+  <strong>$10 <em>/order</em></strong>
+</div>
+<div class="ff-price-row">
+  <div>
+    <b>Over 150 lb</b>
+    <small>Over 68 kg</small>
+  </div>
+  <strong>AT COST</strong>
+</div>
+<div class="ff-price-footnote">Volumetric weight = L × W × H (cm) / 5,000.</div></div>
+</details>
+        <details class="ff-price-group ff-packaging-showcase-group">
+  <summary><span><i aria-hidden="true"></i>PACKAGING &amp; MATERIALS</span><small>5 options</small></summary>
+  <div class="ff-packaging-showcase">
+    <div class="ff-packaging-intro"><small>PACKAGING</small><h4>Packaging &amp; box rates</h4><p>Choose the right packaging, or send your branded packaging to the SpeeGo warehouse.</p></div>
+    <div class="ff-packaging-grid">
+      <article class="ff-packaging-card"><h5>Poly mailer</h5><strong class="ff-package-badge">Free</strong><p>Included on every bagged order — no extra charge.</p></article>
+      <article class="ff-packaging-card"><h5>Bubble mailer</h5><strong>$0.50<em>/mailer</em></strong><p>Cushioned protection for small, easily dented items.</p></article>
+      <article class="ff-packaging-card"><h5>Bubble wrap</h5><strong>$0.50<em>/meter</em></strong><p>Extra shock protection, charged per meter used.</p></article>
+      <article class="ff-packaging-card"><h5>Carton box</h5><dl><div><dt>8 × 8 × 8 in</dt><dd>$1.00</dd></div><div><dt>10 × 6 × 4 in</dt><dd>$1.50</dd></div><div><dt>9 × 7 × 3 in</dt><dd>$1.70</dd></div></dl><p>Three sizes in stock. Other sizes quoted on request.</p></article>
+      <article class="ff-packaging-card"><h5>Your own packaging</h5><strong class="ff-package-badge">No handling fee</strong><p>Send your branded packaging — SpeeGo receives, stores, and uses it at no extra cost.</p></article>
+    </div>
+  </div>
+</details>
+      </section>
 
-        <!-- Accordion Item 02 -->
-        <div class="ff-pricing-group" id="group-warehouse-handling">
-          <div class="ff-pricing-header" onclick="togglePricingGroup(this)">
-            <div class="ff-pricing-header-left">
-              <span class="ff-pricing-badge">02</span>
-              <div>
-                <div class="ff-pricing-group-title">WAREHOUSE HANDLING</div>
-                <div class="ff-pricing-group-sub">Warehouse services &amp; returns</div>
-              </div>
-            </div>
-            <div class="ff-pricing-toggle-icon">+</div>
+      <section class="ff-pricing-sheet" id="warehouse-handling">
+        <header class="ff-sheet-heading">
+          <div>
+            <small>02 · WAREHOUSE HANDLING</small>
+            <h3>Warehouse services &amp; returns</h3>
           </div>
-          <div class="ff-pricing-body">
-            <div class="ff-table-block">
-              <div class="ff-table-wrap">
-                <table class="ff-rate-table">
-                  <tbody>
-                    <tr>
-                      <td class="ff-td-col1">Standard inbound receiving</td>
-                      <td class="ff-td-col2">First 5 packages under 21kg</td>
-                      <td class="ff-td-col3 highlight-orange ff-text-bold">FREE</td>
-                    </tr>
-                    <tr>
-                      <td class="ff-td-col1">First 60 days storage</td>
-                      <td class="ff-td-col2">Counted from receiving date</td>
-                      <td class="ff-td-col3 highlight-orange ff-text-bold">FREE</td>
-                    </tr>
-                    <tr>
-                      <td class="ff-td-col1">Storage after 60 days</td>
-                      <td class="ff-td-col2">Standard pallet / month</td>
-                      <td class="ff-td-col3 ff-price-text">$25.00 /pallet</td>
-                    </tr>
-                    <tr>
-                      <td class="ff-td-col1">Returns intake &amp; restock</td>
-                      <td class="ff-td-col2">Visual inspection, restocked to inventory</td>
-                      <td class="ff-td-col3 highlight-orange ff-text-bold">FREE</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
-        </div>
+          <span>4 service groups</span>
+        </header>
+        <details class="ff-price-group">
+  <summary><span><i aria-hidden="true"></i>UNLOADING FEES</span><small>4 items</small></summary>
+  <div class="ff-price-body"><div class="ff-price-row">
+  <div>
+    <b>Pallet</b>
+    <small>1 m × 1.2 m × 1.2 m</small>
+  </div>
+  <strong>$35 <em>/pallet</em></strong>
+</div>
+<div class="ff-price-row">
+  <div>
+    <b>Container 20GP</b>
+    
+  </div>
+  <strong>$450 <em>/container</em></strong>
+</div>
+<div class="ff-price-row">
+  <div>
+    <b>Container 40HQ</b>
+    
+  </div>
+  <strong>$510 <em>/container</em></strong>
+</div>
+<div class="ff-price-row">
+  <div>
+    <b>Container 45HQ</b>
+    
+  </div>
+  <strong>$590 <em>/container</em></strong>
+</div></div>
+</details>
+        <details class="ff-price-group">
+  <summary><span><i aria-hidden="true"></i>RETURN FEES</span><small>3 items</small></summary>
+  <div class="ff-price-body"><div class="ff-price-row">
+  <div>
+    <b>0 &lt; X ≤ 2.5 kg</b>
+    <small>Receive return and restock</small>
+  </div>
+  <strong class="ff-free-price">Free</strong>
+</div>
+<div class="ff-price-row">
+  <div>
+    <b>5 &lt; X ≤ 10 kg</b>
+    
+  </div>
+  <strong>$12 <em>/package</em></strong>
+</div>
+<div class="ff-price-row">
+  <div>
+    <b>10 &lt; X ≤ 20 kg</b>
+    
+  </div>
+  <strong>$15 <em>/package</em></strong>
+</div></div>
+</details>
+        <details class="ff-price-group">
+  <summary><span><i aria-hidden="true"></i>STORAGE FEES</span><small>5 time tiers</small></summary>
+  <div class="ff-price-body"><div class="ff-price-promo"><div><b>Volume condition</b><small>Storage fee $500/month if volume is under 200 orders/month.</small></div><span>NOTE</span></div>
+<div class="ff-price-row">
+  <div>
+    <b>30–60 days</b>
+    
+  </div>
+  <strong>$1 <em>/CBM/day</em></strong>
+</div>
+<div class="ff-price-row">
+  <div>
+    <b>61–90 days</b>
+    
+  </div>
+  <strong>$1.45 <em>/CBM/day</em></strong>
+</div>
+<div class="ff-price-row">
+  <div>
+    <b>91–180 days</b>
+    
+  </div>
+  <strong>$1.80 <em>/CBM/day</em></strong>
+</div>
+<div class="ff-price-row">
+  <div>
+    <b>181–360 days</b>
+    
+  </div>
+  <strong>$2 <em>/CBM/day</em></strong>
+</div>
+<div class="ff-price-row">
+  <div>
+    <b>Over 360 days</b>
+    
+  </div>
+  <strong>$4 <em>/CBM/day</em></strong>
+</div></div>
+</details>
+        <details class="ff-price-group">
+  <summary><span><i aria-hidden="true"></i>WAREHOUSE SERVICES</span><small>6 items</small></summary>
+  <div class="ff-price-body"><div class="ff-price-row">
+  <div>
+    <b>Inbound counting</b>
+    <small>Count by carton under 21 kg</small>
+  </div>
+  <strong class="ff-free-price">Free</strong>
+</div>
+<div class="ff-price-row">
+  <div>
+    <b>Count &amp; sort by product</b>
+    <small>Carton under 2 SKUs</small>
+  </div>
+  <strong>$0.08 <em>/item</em></strong>
+</div>
+<div class="ff-price-row">
+  <div>
+    <b>Count &amp; sort by product</b>
+    <small>Carton over 2 SKUs</small>
+  </div>
+  <strong>$0.10 <em>/item</em></strong>
+</div>
+<div class="ff-price-row">
+  <div>
+    <b>Recount while selling</b>
+    <small>Per inventory count schedule</small>
+  </div>
+  <strong>See file</strong>
+</div>
+<div class="ff-price-row">
+  <div>
+    <b>Basic disposal</b>
+    <small>With photos proving defect; periodic process</small>
+  </div>
+  <strong>Case by case</strong>
+</div>
+<div class="ff-price-row">
+  <div>
+    <b>Special disposal handling</b>
+    <small>Labeling, video, or custom handling</small>
+  </div>
+  <strong>$30–$50 <em>/job</em><small>About $25/hour</small></strong>
+</div></div>
+</details>
+      </section>
 
-        <!-- Accordion Item 03 -->
-        <div class="ff-pricing-group" id="usps-zone">
-          <div class="ff-pricing-header" onclick="togglePricingGroup(this)">
-            <div class="ff-pricing-header-left">
-              <span class="ff-pricing-badge">03</span>
-              <div>
-                <div class="ff-pricing-group-title">USPS GROUND ADVANTAGE</div>
-                <div class="ff-pricing-group-sub">Shipping rates by zone</div>
-              </div>
-            </div>
-            <div class="ff-pricing-toggle-icon">+</div>
+      <section class="ff-pricing-sheet" id="shipping-rates">
+        <header class="ff-sheet-heading">
+          <div>
+            <small>03 · USPS GROUND ADVANTAGE</small>
+            <h3>Shipping rates by zone</h3>
           </div>
-          <div class="ff-pricing-body">
-            <div class="ff-table-block">
-              <div class="ff-table-wrap">
-                <table class="ff-rate-table">
-                  <thead>
-                    <tr style="background: #F8FAFC; font-weight: 700;">
-                      <th style="padding: 12px 18px; text-align: left;">Weight</th>
-                      <th style="padding: 12px 18px; text-align: center;">Zone 1-2</th>
-                      <th style="padding: 12px 18px; text-align: center;">Zone 3-4</th>
-                      <th style="padding: 12px 18px; text-align: center;">Zone 5-6</th>
-                      <th style="padding: 12px 18px; text-align: center;">Zone 7-8</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td style="padding: 12px 18px; font-weight: 600;">Under 4 oz (~113g)</td>
-                      <td style="padding: 12px 18px; text-align: center;">$4.15</td>
-                      <td style="padding: 12px 18px; text-align: center;">$4.45</td>
-                      <td style="padding: 12px 18px; text-align: center;">$4.85</td>
-                      <td style="padding: 12px 18px; text-align: center;">$5.25</td>
-                    </tr>
-                    <tr>
-                      <td style="padding: 12px 18px; font-weight: 600;">4 - 8 oz (~226g)</td>
-                      <td style="padding: 12px 18px; text-align: center;">$4.65</td>
-                      <td style="padding: 12px 18px; text-align: center;">$4.95</td>
-                      <td style="padding: 12px 18px; text-align: center;">$5.35</td>
-                      <td style="padding: 12px 18px; text-align: center;">$5.75</td>
-                    </tr>
-                    <tr>
-                      <td style="padding: 12px 18px; font-weight: 600;">8 - 15.99 oz (~453g)</td>
-                      <td style="padding: 12px 18px; text-align: center;">$5.55</td>
-                      <td style="padding: 12px 18px; text-align: center;">$5.95</td>
-                      <td style="padding: 12px 18px; text-align: center;">$6.55</td>
-                      <td style="padding: 12px 18px; text-align: center;">$7.15</td>
-                    </tr>
-                    <tr>
-                      <td style="padding: 12px 18px; font-weight: 600;">1 - 2 lbs</td>
-                      <td style="padding: 12px 18px; text-align: center;">$6.85</td>
-                      <td style="padding: 12px 18px; text-align: center;">$7.45</td>
-                      <td style="padding: 12px 18px; text-align: center;">$8.65</td>
-                      <td style="padding: 12px 18px; text-align: center;">$9.85</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-              <p class="ff-table-note">
-                Reference commercial USPS gateway rates directly from the Houston warehouse. Actual rates are automatically applied via the OMS when printing shipping labels.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
+          <span>Reference</span>
+        </header>
+        <div class="ff-price-body ff-usps-body"><div class="ff-usps-scroll">
+  <table class="ff-usps-table">
+    <thead><tr><th>lbs</th><th>ZONE 1</th><th>ZONE 2</th><th>ZONE 3</th><th>ZONE 4</th><th>ZONE 5</th><th>ZONE 6</th><th>ZONE 7</th><th>ZONE 8</th><th>ZONE 9</th></tr></thead>
+    <tbody>
+      <tr><th>1 lbs</th><td>$5.76</td><td>$5.98</td><td>$6.21</td><td>$6.54</td><td>$6.98</td><td>$7.55</td><td>$8.05</td><td>$8.52</td><td>$8.52</td></tr>
+      <tr><th>2 lbs</th><td>$6.35</td><td>$6.68</td><td>$7.05</td><td>$7.55</td><td>$8.25</td><td>$9.05</td><td>$9.85</td><td>$10.55</td><td>$10.55</td></tr>
+      <tr><th>3 lbs</th><td>$6.95</td><td>$7.45</td><td>$7.95</td><td>$8.65</td><td>$9.65</td><td>$10.75</td><td>$11.85</td><td>$12.85</td><td>$12.85</td></tr>
+      <tr><th>5 lbs</th><td>$8.15</td><td>$8.95</td><td>$9.75</td><td>$10.95</td><td>$12.55</td><td>$14.25</td><td>$15.95</td><td>$17.55</td><td>$17.55</td></tr>
+      <tr><th>10 lbs</th><td>$11.25</td><td>$12.85</td><td>$14.55</td><td>$17.25</td><td>$20.85</td><td>$24.55</td><td>$28.15</td><td>$31.55</td><td>$31.55</td></tr>
+    </tbody>
+  </table>
+</div>
+<p class="ff-price-footnote">* Shipping rates include an 8% USPS fuel surcharge.</p></div>
+      </section>
+
+      <p class="ff-pricing-disclaimer">Rates are indicative SpeeGo pricing. Special requests and extras are confirmed before processing.</p>
     </div>
   </section>
 
@@ -468,10 +509,11 @@
               <select id="calcPkg" class="ff-select" onchange="calculateFulfillmentCost()">
                 <option value="poly" selected>Poly mailer — free</option>
                 <option value="bubble">Bubble mailer (+$0.50)</option>
-                <option value="carton_s">Carton box 6x4x4 in (+$1.00)</option>
-                <option value="carton_m">Carton box 10x6x4 in (+$1.50)</option>
-                <option value="carton_l">Carton box 9x7x3 in (+$1.70)</option>
-                <option value="custom">Your own packaging (no handling fee)</option>
+                <option value="bubble_wrap">Bubble wrap (+$0.50/m)</option>
+                <option value="carton_s">Carton 8 × 8 × 8 in (+$1.00)</option>
+                <option value="carton_m">Carton 10 × 6 × 4 in (+$1.50)</option>
+                <option value="carton_l">Carton 9 × 7 × 3 in (+$1.70)</option>
+                <option value="custom">Your own packaging — free</option>
               </select>
             </div>
           </div>
@@ -499,6 +541,7 @@
             <span class="ff-total-label">Estimated total</span>
             <span class="ff-total-val" id="calcResultTotal">$7.00</span>
           </div>
+          <div class="ff-calc-brand"><img src="assets/speego-logo-white.png" alt="SpeeGo Logistics"></div>
         </div>
       </div>
 
@@ -565,107 +608,110 @@
   <!-- 6. SERVICE POLICY SECTION -->
   <section class="ff-policy-section" id="chinh-sach-fulfillment">
     <div class="container">
-      <div class="ff-section-header">
-        <span class="ff-tag-eyebrow">SERVICE POLICY</span>
-        <h2 class="ff-section-title">Fulfillment policy</h2>
-        <p class="ff-section-sub">
+      <header class="ff-policy-heading">
+        <div>
+          <p class="ff-tag-eyebrow">SERVICE POLICY</p>
+          <h2 class="ff-section-title">Fulfillment policy</h2>
+        </div>
+        <p>
           Each case below is assessed from the order record, valid documentation, and the reconciliation between the customer, the SpeeGo warehouse, and the carrier.
         </p>
-      </div>
+      </header>
 
       <div class="ff-policy-list">
-        <!-- Item 01 -->
-        <div class="ff-policy-item" onclick="togglePolicyItem(this)">
-          <div class="ff-policy-header">
+        <details class="ff-policy-item">
+          <summary class="ff-policy-header">
             <span class="ff-policy-num">01</span>
-            <span class="ff-policy-title">Goods lost in the warehouse</span>
-            <span class="ff-policy-icon">+</span>
-          </div>
+            <strong class="ff-policy-title">Goods lost in the warehouse</strong>
+            <i class="ff-policy-icon" aria-hidden="true">+</i>
+          </summary>
           <div class="ff-policy-content">
-            <p>If warehouse inventory audits confirm goods are lost in storage, SpeeGo compensates based on the declared invoice value or actual purchase value verified with official documents.</p>
+            <p><b>Eligibility:</b> Goods were received into inventory correctly but were lost while in storage.</p>
+            <p><b>Compensation:</b> If an entire lot is lost, SpeeGo reimburses 100% of the merchandise cost and shipping fees when the customer provides complete valid documentation.</p>
           </div>
-        </div>
+        </details>
 
-        <!-- Item 02 -->
-        <div class="ff-policy-item" onclick="togglePolicyItem(this)">
-          <div class="ff-policy-header">
+        <details class="ff-policy-item">
+          <summary class="ff-policy-header">
             <span class="ff-policy-num">02</span>
-            <span class="ff-policy-title">Incorrect packing by the warehouse</span>
-            <span class="ff-policy-icon">+</span>
-          </div>
+            <strong class="ff-policy-title">Incorrect packing by the warehouse</strong>
+            <i class="ff-policy-icon" aria-hidden="true">+</i>
+          </summary>
           <div class="ff-policy-content">
-            <p>If the warehouse ships the wrong SKU or incorrect quantity due to picking/packing error (verified by video logs), SpeeGo covers all reshipment and return shipping costs.</p>
+            <p><b>Warehouse error:</b> Staff packed the wrong SKU. SpeeGo covers the cost of reshipping to the buyer and reimburses 100% of merchandise cost, up to <b>$20/item</b>.</p>
+            <p><b>Customer data error:</b> If the wrong SKU results from the customer printing or applying an incorrect product barcode, SpeeGo has no compensation obligation.</p>
           </div>
-        </div>
+        </details>
 
-        <!-- Item 03 -->
-        <div class="ff-policy-item" onclick="togglePolicyItem(this)">
-          <div class="ff-policy-header">
+        <details class="ff-policy-item">
+          <summary class="ff-policy-header">
             <span class="ff-policy-num">03</span>
-            <span class="ff-policy-title">Wrong label or delivery address</span>
-            <span class="ff-policy-icon">+</span>
-          </div>
+            <strong class="ff-policy-title">Wrong label or delivery address</strong>
+            <i class="ff-policy-icon" aria-hidden="true">+</i>
+          </summary>
           <div class="ff-policy-content">
-            <p>In the event of label misprinting caused by SpeeGo systems, reprints and forwarding are free. If customer provided invalid address, we assist in rerouting per carrier policies.</p>
+            <p><b>Failed delivery:</b> If the address is missing or the warehouse entered incorrect information / printed or applied the wrong label, SpeeGo covers the cost of reshipping the order.</p>
+            <p><b>Wrong address delivery:</b> If the error originated in the warehouse, SpeeGo reships free of charge and reimburses 100% of merchandise cost, up to <b>$3/item</b>.</p>
+            <p><b>Customer cancels before reship:</b> Fulfillment and shipping fees for that order are refunded.</p>
+            <p class="ff-policy-exclusion"><b>Note:</b> If the seller provided inaccurate information, SpeeGo has no compensation obligation.</p>
           </div>
-        </div>
+        </details>
 
-        <!-- Item 04 -->
-        <div class="ff-policy-item" onclick="togglePolicyItem(this)">
-          <div class="ff-policy-header">
+        <details class="ff-policy-item">
+          <summary class="ff-policy-header">
             <span class="ff-policy-num">04</span>
-            <span class="ff-policy-title">Damage during packing or domestic transit</span>
-            <span class="ff-policy-icon">+</span>
-          </div>
+            <strong class="ff-policy-title">Damage during packing or domestic transit</strong>
+            <i class="ff-policy-icon" aria-hidden="true">+</i>
+          </summary>
           <div class="ff-policy-content">
-            <p>SpeeGo supports filing insurance claims with carriers (USPS/UPS/FedEx) and coordinates prompt reimbursement for business owners.</p>
+            <p><b>Warehouse packing error:</b> If a packing error causes a refund, SpeeGo refunds 100% of fulfillment and shipping fees and supports reimbursement of 100% of merchandise cost, up to <b>$20/order</b>.</p>
+            <p><b>Damage in transit:</b> If the warehouse packed as agreed, SpeeGo helps the customer reconcile with USPS, UPS, or FedEx to file a claim.</p>
+            <p class="ff-policy-exclusion"><b>Exclusion:</b> No compensation when the customer requested minimal packing to reduce cost and accepted the risk.</p>
           </div>
-        </div>
+        </details>
 
-        <!-- Item 05 -->
-        <div class="ff-policy-item" onclick="togglePolicyItem(this)">
-          <div class="ff-policy-header">
+        <details class="ff-policy-item">
+          <summary class="ff-policy-header">
             <span class="ff-policy-num">05</span>
-            <span class="ff-policy-title">Marked "Delivered" but not received</span>
-            <span class="ff-policy-icon">+</span>
-          </div>
+            <strong class="ff-policy-title">Marked “Delivered” but not received</strong>
+            <i class="ff-policy-icon" aria-hidden="true">+</i>
+          </summary>
           <div class="ff-policy-content">
-            <p>Assistance with carrier carrier GPS delivery coordinates check and dispatching official location verification within 24–48 business hours.</p>
+            <p><b>Eligibility:</b> Applies to orders that require a signature. The customer must help gather information from the buyer and support the reconciliation process.</p>
+            <p><b>Handling:</b> SpeeGo reconciles with USPS, UPS, or FedEx. If the carrier confirms loss, the claim follows the carrier’s policy.</p>
+            <p class="ff-policy-exclusion"><b>Exclusion:</b> If status remains “Delivered” and the carrier does not confirm loss, SpeeGo has no compensation obligation.</p>
           </div>
-        </div>
+        </details>
 
-        <!-- Item 06 -->
-        <div class="ff-policy-item" onclick="togglePolicyItem(this)">
-          <div class="ff-policy-header">
+        <details class="ff-policy-item">
+          <summary class="ff-policy-header">
             <span class="ff-policy-num">06</span>
-            <span class="ff-policy-title">Orders shipped later than the SLA</span>
-            <span class="ff-policy-icon">+</span>
-          </div>
+            <strong class="ff-policy-title">Orders shipped later than the SLA</strong>
+            <i class="ff-policy-icon" aria-hidden="true">+</i>
+          </summary>
           <div class="ff-policy-content">
-            <p>For orders not dispatched by SpeeGo within the agreed dispatch SLA, 100% of the fulfillment handling fee for that order will be refunded.</p>
+            <p><b>Eligibility:</b> A fulfillment tracking number was created but the order was not shipped within <b>3 business days</b>, excluding U.S. weekends and holidays.</p>
+            <p><b>Handling:</b> If warehouse processing exceeds the SLA by more than 3 business days, SpeeGo refunds 100% of the fulfillment fee for that order.</p>
+            <p class="ff-policy-exclusion"><b>Exclusion:</b> If the warehouse handed the order to USPS, UPS, or FedEx within SLA but the delay occurred in transit, SpeeGo is not liable for compensation.</p>
           </div>
-        </div>
+        </details>
       </div>
 
-      <!-- 2 Claim Info Cards -->
-      <div class="ff-claim-info-grid">
-        <div class="ff-claim-card">
-          <div class="ff-claim-card-tag">FILING A CLAIM</div>
-          <div class="ff-claim-card-title">Submission deadlines</div>
-          <div class="ff-claim-card-desc">
-            <strong>Lost orders:</strong> Within 2 months of the carrier accepting the order.<br>
-            <strong>Damage, incorrect rates, or issues with the goods:</strong> Within 3 days of delivery to the recipient.
-          </div>
+      <aside class="ff-claim-policy">
+        <div>
+          <small>FILING A CLAIM</small>
+          <h3>Submission deadlines</h3>
         </div>
-
-        <div class="ff-claim-card">
-          <div class="ff-claim-card-tag">PROCESSING TIME</div>
-          <div class="ff-claim-big-time">10 business days</div>
-          <div class="ff-claim-card-desc">
-            Counted from receipt of the complete claim file for a shipment.
-          </div>
+        <ul>
+          <li><b>Lost orders:</b> Within 2 months of the carrier accepting the order.</li>
+          <li><b>Damage, incorrect rates, or issues with the goods:</b> Within 3 days of delivery to the recipient.</li>
+        </ul>
+        <div class="ff-claim-time">
+          <small>PROCESSING TIME</small>
+          <strong>10 business days</strong>
+          <span>Counted from receipt of the complete claim file during transit.</span>
         </div>
-      </div>
+      </aside>
     </div>
   </section>
 

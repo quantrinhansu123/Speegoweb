@@ -12,8 +12,8 @@
   const i18nData = {
     en: {
       // Nav
-      nav_home: 'Home',
-      nav_about: 'About Us',
+      nav_home: 'Homepage',
+      nav_about: 'About',
       nav_services: 'Services',
       nav_process: '8-Step Process',
       nav_why: 'Why SpeeGo',
@@ -32,7 +32,7 @@
       track_demo_title: 'Sample shipment journey',
       track_open_ups: 'Check on UPS ↗',
       nav_sourcing: 'Sourcing',
-      nav_routes: 'Shipping Routes',
+      nav_routes: 'Logistics',
       nav_fulfillment: 'Fulfillment',
       nav_import_export: 'Import & Export',
       nav_knowledge: 'Knowledge',
@@ -527,8 +527,8 @@
 
     vi: {
       // Nav
-      nav_home: 'Trang chủ',
-      nav_about: 'Về SpeeGo',
+      nav_home: 'Homepage',
+      nav_about: 'About',
       nav_services: 'Dịch vụ',
       nav_process: 'Quy trình 8 bước',
       nav_why: 'Vì sao chọn SpeeGo',
@@ -547,9 +547,9 @@
       track_demo_title: 'Hành trình minh họa',
       track_open_ups: 'Tra cứu trên UPS ↗',
       nav_sourcing: 'Sourcing',
-      nav_routes: 'Tuyến vận chuyển',
+      nav_routes: 'Logistics',
       nav_fulfillment: 'Fulfillment',
-      nav_import_export: 'Xuất nhập khẩu',
+      nav_import_export: 'Import & Export',
       nav_knowledge: 'Knowledge',
       sourcing_eyebrow: 'TÌM NGUỒN HÀNG & KIỂM SOÁT CHẤT LƯỢNG',
       sourcing_title_main: 'Đúng nhà cung cấp.',
@@ -1040,8 +1040,8 @@
 
     es: {
       // Nav
-      nav_home: 'Inicio',
-      nav_about: 'Sobre SpeeGo',
+      nav_home: 'Homepage',
+      nav_about: 'About',
       nav_services: 'Servicios',
       nav_process: 'Proceso 8 Pasos',
       nav_why: 'Por qué SpeeGo',
@@ -1059,10 +1059,10 @@
       track_demo_disclaimer: 'Recorrido de muestra · no son datos en vivo de UPS',
       track_demo_title: 'Recorrido de muestra',
       track_open_ups: 'Consultar en UPS ↗',
-      nav_sourcing: 'Abastecimiento',
-      nav_routes: 'Rutas de envío',
+      nav_sourcing: 'Sourcing',
+      nav_routes: 'Logistics',
       nav_fulfillment: 'Fulfillment',
-      nav_import_export: 'Importación y exportación',
+      nav_import_export: 'Import & Export',
       nav_knowledge: 'Knowledge',
       sourcing_eyebrow: 'ABASTECIMIENTO Y CONTROL DE CALIDAD',
       sourcing_title_main: 'El proveedor adecuado.',
