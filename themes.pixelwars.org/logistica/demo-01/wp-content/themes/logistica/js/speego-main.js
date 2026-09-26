@@ -2224,49 +2224,103 @@ stat_delivery: 'Entrega a Tiempo',
       refreshSectionTitleReveal();
     }
 
-    // Sync explore SPA links with active language
+    // Sync service/knowledge links with active language (canonical /{lang}/… URLs)
     const localizedExplorePath = (section, locale) => {
       const routes = {
         sourcing: { vi: 'sourcing', en: 'sourcing', es: 'sourcing' },
         fulfillment: { vi: 'fulfillment', en: 'fulfillment', es: 'fulfillment' },
-        'shipping-routes': { vi: 'tuyen-van-chuyen', en: 'shipping-routes', es: 'rutas-de-envio' },
+        logistics: { vi: 'logistics', en: 'logistics', es: 'logistics' },
         'import-export': { vi: 'xuat-nhap-khau', en: 'import-export', es: 'import-export' },
-        knowledge: { vi: 'knowledge', en: 'knowledge', es: 'knowledge' }
+        knowledge: { vi: 'knowledge', en: 'knowledge', es: 'knowledge' },
+        'about-us': { vi: 'about-us', en: 'about-us', es: 'about-us' },
+        contact: { vi: 'contact', en: 'contact', es: 'contact' },
+        home: { vi: '', en: '', es: '' }
       };
+      if (section === 'home') return `/${locale}/`;
       const slug = routes[section]?.[locale] || routes.knowledge[locale];
-      return `/explore/${locale}/${slug}/`;
+      return `/${locale}/${slug}/`;
     };
+    const withAnchor = (base, anchor) => (anchor ? `${base.replace(/\/$/, '/')}${anchor}` : base);
     const exploreLinkMap = {
       '/explore/#/sourcing': localizedExplorePath('sourcing', lang),
       '/explore/#/en/sourcing': localizedExplorePath('sourcing', lang),
       '/explore/vi/sourcing/': localizedExplorePath('sourcing', lang),
       '/explore/en/sourcing/': localizedExplorePath('sourcing', lang),
       '/explore/es/sourcing/': localizedExplorePath('sourcing', lang),
+      '/en/sourcing/': localizedExplorePath('sourcing', lang),
+      '/vi/sourcing/': localizedExplorePath('sourcing', lang),
+      '/es/sourcing/': localizedExplorePath('sourcing', lang),
       '/explore/#/fulfillment': localizedExplorePath('fulfillment', lang),
       '/explore/#/en/fulfillment': localizedExplorePath('fulfillment', lang),
       '/explore/vi/fulfillment/': localizedExplorePath('fulfillment', lang),
       '/explore/en/fulfillment/': localizedExplorePath('fulfillment', lang),
       '/explore/es/fulfillment/': localizedExplorePath('fulfillment', lang),
-      '/explore/#/tuyen-van-chuyen': localizedExplorePath('shipping-routes', lang),
-      '/explore/#/en/shipping-routes': localizedExplorePath('shipping-routes', lang),
-      '/explore/vi/tuyen-van-chuyen/': localizedExplorePath('shipping-routes', lang),
-      '/explore/en/shipping-routes/': localizedExplorePath('shipping-routes', lang),
-      '/explore/es/rutas-de-envio/': localizedExplorePath('shipping-routes', lang),
+      '/en/fulfillment/': localizedExplorePath('fulfillment', lang),
+      '/vi/fulfillment/': localizedExplorePath('fulfillment', lang),
+      '/es/fulfillment/': localizedExplorePath('fulfillment', lang),
+      '/explore/#/tuyen-van-chuyen': localizedExplorePath('logistics', lang),
+      '/explore/#/en/shipping-routes': localizedExplorePath('logistics', lang),
+      '/explore/vi/tuyen-van-chuyen/': localizedExplorePath('logistics', lang),
+      '/explore/en/shipping-routes/': localizedExplorePath('logistics', lang),
+      '/explore/es/rutas-de-envio/': localizedExplorePath('logistics', lang),
+      '/en/logistics/': localizedExplorePath('logistics', lang),
+      '/vi/logistics/': localizedExplorePath('logistics', lang),
+      '/es/logistics/': localizedExplorePath('logistics', lang),
       '/explore/#/xuat-nhap-khau': localizedExplorePath('import-export', lang),
       '/explore/#/en/import-export': localizedExplorePath('import-export', lang),
       '/explore/vi/xuat-nhap-khau/': localizedExplorePath('import-export', lang),
       '/explore/en/import-export/': localizedExplorePath('import-export', lang),
       '/explore/es/import-export/': localizedExplorePath('import-export', lang),
+      '/en/import-export/': localizedExplorePath('import-export', lang),
+      '/vi/xuat-nhap-khau/': localizedExplorePath('import-export', lang),
+      '/es/import-export/': localizedExplorePath('import-export', lang),
       '/explore/#/knowledge': localizedExplorePath('knowledge', lang),
       '/explore/#/en/knowledge': localizedExplorePath('knowledge', lang),
       '/explore/vi/knowledge/': localizedExplorePath('knowledge', lang),
       '/explore/en/knowledge/': localizedExplorePath('knowledge', lang),
-      '/explore/es/knowledge/': localizedExplorePath('knowledge', lang)
+      '/explore/es/knowledge/': localizedExplorePath('knowledge', lang),
+      '/en/knowledge/': localizedExplorePath('knowledge', lang),
+      '/vi/knowledge/': localizedExplorePath('knowledge', lang),
+      '/es/knowledge/': localizedExplorePath('knowledge', lang),
+      '/en/about-us/': localizedExplorePath('about-us', lang),
+      '/vi/about-us/': localizedExplorePath('about-us', lang),
+      '/es/about-us/': localizedExplorePath('about-us', lang),
+      '/#why-speego': localizedExplorePath('about-us', lang),
+      '/en/contact/': localizedExplorePath('contact', lang),
+      '/vi/contact/': localizedExplorePath('contact', lang),
+      '/es/contact/': localizedExplorePath('contact', lang),
+      '#consultation-form': localizedExplorePath('contact', lang),
+      '/en/': localizedExplorePath('home', lang),
+      '/vi/': localizedExplorePath('home', lang),
+      '/es/': localizedExplorePath('home', lang)
     };
-    document.querySelectorAll('a[href*="/explore/#"], a[href^="/explore/"]').forEach(a => {
+    const logisticsChild = {
+      china: {
+        vi: '/vi/logistics/china-to-us-ca-au/',
+        en: '/en/logistics/china-to-us-ca-au/',
+        es: '/es/logistics/china-to-us-ca-au/'
+      },
+      vietnam: {
+        vi: '/vi/logistics/vietnam-to-us-ca-au/',
+        en: '/en/logistics/vietnam-to-us-ca-au/',
+        es: '/es/logistics/vietnam-to-us-ca-au/'
+      }
+    };
+    document.querySelectorAll('a[href]').forEach(a => {
       const href = a.getAttribute('href');
-      if (exploreLinkMap[href]) {
-        a.setAttribute('href', exploreLinkMap[href]);
+      if (!href) return;
+      const origin = a.getAttribute('data-route-origin');
+      if (origin && logisticsChild[origin]) {
+        a.setAttribute('href', logisticsChild[origin][lang] || logisticsChild[origin].en);
+        return;
+      }
+      const [pathPart, hashPart] = href.split('#');
+      const normalized = pathPart.endsWith('/') || pathPart === '' || pathPart.startsWith('#') ? pathPart : `${pathPart}/`;
+      const mapped = exploreLinkMap[href] || exploreLinkMap[normalized] || exploreLinkMap[`${normalized}`];
+      if (mapped) {
+        a.setAttribute('href', hashPart !== undefined && !href.startsWith('#') && href.includes('#')
+          ? withAnchor(mapped, `#${hashPart}`)
+          : mapped);
       }
     });
   }

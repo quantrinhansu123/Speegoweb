@@ -438,7 +438,9 @@
           </div>
           <span>Referencia</span>
         </header>
-        <div class="ff-price-body ff-usps-body"><div class="ff-usps-scroll">
+        <details class="ff-price-group">
+          <summary><span><i aria-hidden="true"></i>TABLA POR ZONA</span><small>5 filas de peso</small></summary>
+          <div class="ff-price-body ff-usps-body"><div class="ff-usps-scroll">
   <table class="ff-usps-table">
     <thead><tr><th>lbs</th><th>ZONE 1</th><th>ZONE 2</th><th>ZONE 3</th><th>ZONE 4</th><th>ZONE 5</th><th>ZONE 6</th><th>ZONE 7</th><th>ZONE 8</th><th>ZONE 9</th></tr></thead>
     <tbody>
@@ -451,103 +453,119 @@
   </table>
 </div>
 <p class="ff-price-footnote">* Las tarifas incluyen el 8% de recargo de combustible USPS.</p></div>
+        </details>
       </section>
 
       <p class="ff-pricing-disclaimer">Las tarifas son referenciales de SpeeGo. Solicitudes especiales se confirman antes de procesar.</p>
     </div>
   </section>
 
-  <!-- 4. ESTIMATE COST CALCULATOR WIDGET -->
+  <!-- 4. FULFILLMENT COST ESTIMATOR -->
   <section class="ff-calc-section" id="uoc-tinh-chi-phi">
     <div class="container">
-      <div class="ff-section-header">
-        <span class="ff-tag-eyebrow">CALCULADORA DE COSTOS DE FULFILLMENT</span>
-        <h2 class="ff-section-title">Pick &amp; pack + packaging + USPS Ground Advantage</h2>
-      </div>
-
-      <div class="ff-calc-card">
-        <div class="ff-calc-form">
-          <div class="ff-form-row-2">
-            <div class="ff-form-group">
-              <label class="ff-label">Peso (lbs)</label>
-              <input type="number" id="calcWeight" class="ff-input" value="1" step="0.1" min="0.1" oninput="calculateFulfillmentCost()">
-            </div>
-            <div class="ff-form-group">
-              <label class="ff-label">Zona postal</label>
-              <select id="calcZone" class="ff-select" onchange="calculateFulfillmentCost()">
-                <option value="1" selected>Zona postal 1</option>
-                <option value="2">Zona postal 2</option>
-                <option value="3">Zona postal 3</option>
-                <option value="4">Zona postal 4</option>
-                <option value="5">Zona postal 5</option>
-                <option value="6">Zona postal 6</option>
-                <option value="7">Zona postal 7</option>
-                <option value="8">Zona postal 8</option>
-                <option value="9">Zona postal 9</option>
-              </select>
-            </div>
+      <div class="ff-estimator" id="cost-estimator">
+        <div class="ff-estimator-heading">
+          <div>
+            <small>ESTIMACIÓN DE COSTOS DE FULFILLMENT</small>
+            <p>Manejo de salida + embalaje + transportista</p>
           </div>
-
-          <div class="ff-form-row-2">
-            <div class="ff-form-group">
-              <label class="ff-label">Largo (pulgadas)</label>
-              <input type="number" id="calcLength" class="ff-input" value="10" min="1" oninput="calculateFulfillmentCost()">
-            </div>
-            <div class="ff-form-group">
-              <label class="ff-label">Ancho (pulgadas)</label>
-              <input type="number" id="calcWidth" class="ff-input" value="6" min="1" oninput="calculateFulfillmentCost()">
-            </div>
-          </div>
-
-          <div class="ff-form-row-2">
-            <div class="ff-form-group">
-              <label class="ff-label">Alto (pulgadas)</label>
-              <input type="number" id="calcHeight" class="ff-input" value="4" min="1" oninput="calculateFulfillmentCost()">
-            </div>
-            <div class="ff-form-group">
-              <label class="ff-label">Tipo de embalaje</label>
-              <select id="calcPkg" class="ff-select" onchange="calculateFulfillmentCost()">
-                <option value="poly" selected>Bolsa de polietileno (Poly mailer) — gratis</option>
-                <option value="bubble">Sobre acolchado (Bubble mailer) (+$0.50)</option>
-                <option value="bubble_wrap">Bubble wrap (+$0.50/m)</option>
-                <option value="carton_s">Caja 8 × 8 × 8 in (+$1.00)</option>
-                <option value="carton_m">Caja 10 × 6 × 4 in (+$1.50)</option>
-                <option value="carton_l">Caja 9 × 7 × 3 in (+$1.70)</option>
-                <option value="custom">Su propio embalaje — gratis</option>
-              </select>
-            </div>
-          </div>
+          <span aria-hidden="true">▦</span>
         </div>
+        <div class="ff-estimator-body">
+          <form class="ff-estimator-form" aria-label="Estimación de costos de fulfillment">
+            <div class="ff-estimate-guide">
+              <span>01</span>
+              <div>
+                <strong>Datos del pedido</strong>
+                <small>Ingrese el peso, elija la zona y el tipo de embalaje.</small>
+              </div>
+            </div>
 
-        <div class="ff-calc-summary">
-          <div class="ff-summary-row">
-            <span class="ff-summary-label">Peso facturable</span>
-            <span class="ff-summary-val" id="calcResultWeight">1.73 lbs</span>
-          </div>
-          <div class="ff-summary-row">
-            <span class="ff-summary-label">Paquete todo incluido</span>
-            <span class="ff-summary-val" id="calcResultAio">$7.00</span>
-          </div>
-          <div class="ff-summary-row">
-            <span class="ff-summary-label">Tipo de embalaje</span>
-            <span class="ff-summary-val" id="calcResultPkg">Incluido</span>
-          </div>
-          <div class="ff-summary-row">
-            <span class="ff-summary-label">USPS Ground Advantage</span>
-            <span class="ff-summary-val" id="calcResultShip">Incluido</span>
-          </div>
-          <div class="ff-summary-divider"></div>
-          <div class="ff-summary-total-row">
-            <span class="ff-total-label">Total estimado por pedido</span>
-            <span class="ff-total-val" id="calcResultTotal">$7.00</span>
-          </div>
-          <div class="ff-calc-brand"><img src="assets/speego-logo-white.png" alt="SpeeGo Logistics"></div>
+            <label class="ff-estimate-field">Peso (lbs)
+              <input type="number" id="calcWeight" min="0.1" step="0.1" value="1" inputmode="decimal">
+            </label>
+            <label class="ff-estimate-field">Zona
+              <select id="calcZone">
+                <option value="1" selected>Zone 1</option>
+                <option value="2">Zone 2</option>
+                <option value="3">Zone 3</option>
+                <option value="4">Zone 4</option>
+                <option value="5">Zone 5</option>
+                <option value="6">Zone 6</option>
+                <option value="7">Zone 7</option>
+                <option value="8">Zone 8</option>
+                <option value="9">Zone 9</option>
+              </select>
+            </label>
+
+            <fieldset class="ff-shipping-choice">
+              <legend>Etiqueta de envío</legend>
+              <label class="ff-package-option ff-shipping-option">
+                <input id="useSpeegoLabel" type="checkbox" checked>
+                <span>
+                  <b>Usar etiqueta USPS de SpeeGo</b>
+                  <small id="shippingChoiceStatus">En uso</small>
+                </span>
+              </label>
+              <p>Desmarque si el cliente aporta su propio tracking o etiqueta de envío.</p>
+            </fieldset>
+
+            <fieldset class="ff-package-choice">
+              <legend>Embalaje</legend>
+              <div class="ff-package-options">
+                <label class="ff-package-option">
+                  <input type="checkbox" name="estimate-packaging" data-package="poly" value="0" checked>
+                  <span><b>Poly mailer</b><small>Gratis</small></span>
+                </label>
+                <label class="ff-package-option">
+                  <input type="checkbox" name="estimate-packaging" data-package="seller" value="0">
+                  <span><b>Embalaje del seller</b><small>Manejo gratis</small></span>
+                </label>
+                <label class="ff-package-option ff-quantity-package">
+                  <input type="checkbox" name="estimate-packaging" data-package="bubble-wrap" value="0.15">
+                  <span>
+                    <b>Bubble wrap</b><small>$0.15/artículo</small>
+                    <i class="ff-quantity-editor"><em>Cantidad</em>
+                      <input type="number" class="ff-package-quantity" data-quantity-for="bubble-wrap" min="1" step="1" value="1" inputmode="numeric" aria-label="Cantidad de bubble wrap">
+                    </i>
+                  </span>
+                </label>
+                <label class="ff-package-option ff-quantity-package">
+                  <input type="checkbox" name="estimate-packaging" data-package="bubble-mailer" value="0.5">
+                  <span>
+                    <b>Bubble mailer</b><small>$0.50/bolsa</small>
+                    <i class="ff-quantity-editor"><em>Cantidad</em>
+                      <input type="number" class="ff-package-quantity" data-quantity-for="bubble-mailer" min="1" step="1" value="1" inputmode="numeric" aria-label="Cantidad de bubble mailer">
+                    </i>
+                  </span>
+                </label>
+                <label class="ff-package-option">
+                  <input type="checkbox" name="estimate-packaging" data-package="carton" value="1">
+                  <span><b>Caja de cartón</b><small>Desde $1.00</small></span>
+                </label>
+              </div>
+            </fieldset>
+          </form>
+
+          <aside class="ff-estimate-result" aria-live="polite">
+            <small>PESO FACTURABLE</small>
+            <strong id="calcResultWeight">1.00 lbs</strong>
+            <dl>
+              <div><dt>Manejo de salida</dt><dd id="calcResultAio">$7.00</dd></div>
+              <div><dt>Embalaje</dt><dd id="calcResultPkg">Incluido</dd></div>
+              <div><dt>Transportista</dt><dd id="calcResultShip">Incluido</dd></div>
+            </dl>
+            <div class="ff-estimate-total">
+              <span>TOTAL ESTIMADO</span>
+              <b id="calcResultTotal">$7.00</b>
+            </div>
+            <p id="calcEstimateNote">Pedidos de hasta 800g con etiqueta USPS de SpeeGo usan la tarifa all-in-one de $7. Estimación solo de referencia.</p>
+            <div class="ff-estimate-brand" aria-hidden="true">
+              <img src="assets/speego-logo-dark.png" alt="">
+            </div>
+          </aside>
         </div>
       </div>
-
-      <p class="ff-calc-footnote">
-        Los pedidos de menos de 800 g aplican al paquete todo incluido. Las estimaciones son orientativas y se confirman con cada orden.
-      </p>
     </div>
   </section>
 
@@ -559,49 +577,41 @@
           <span class="ff-tag-eyebrow">DENTRO DE NUESTRAS INSTALACIONES</span>
           <h2 class="ff-section-title">Conozca el centro de operaciones en Houston.</h2>
         </div>
-        <div class="ff-gallery-nav">
-          <button class="ff-gallery-arrow" onclick="(function(g,d){var s=Array.from(g.querySelectorAll('.ff-warehouse-slide')),n=s.length,i=(Number(g.dataset.slideIndex||0)+d+n)%n;g.dataset.slideIndex=i;s.forEach(function(x,j){x.classList.toggle('active',j===i)});if(g._ffAutoTimer)window.clearTimeout(g._ffAutoTimer);if(g._ffAdvance)g._ffAutoTimer=window.setTimeout(g._ffAdvance,5000)})(document.getElementById('warehouseGallery'),-1)" aria-label="Diapositiva anterior" aria-controls="warehouseGallery">←</button>
-          <button class="ff-gallery-arrow" onclick="(function(g,d){var s=Array.from(g.querySelectorAll('.ff-warehouse-slide')),n=s.length,i=(Number(g.dataset.slideIndex||0)+d+n)%n;g.dataset.slideIndex=i;s.forEach(function(x,j){x.classList.toggle('active',j===i)});if(g._ffAutoTimer)window.clearTimeout(g._ffAutoTimer);if(g._ffAdvance)g._ffAutoTimer=window.setTimeout(g._ffAdvance,5000)})(document.getElementById('warehouseGallery'),1)" aria-label="Diapositiva siguiente" aria-controls="warehouseGallery">→</button>
-        </div>
       </div>
 
-      <div class="ff-warehouse-slider-frame" id="warehouseGallery">
-        <div class="ff-warehouse-slide active">
-          <img src="assets/warehouse_racks_hero.jpg" alt="Estanterías de almacenaje" class="ff-warehouse-img" onload="(function(g){if(!g||g.dataset.autoInit)return;g.dataset.autoInit='1';g.dataset.slideIndex='0';var advance=function(){if(document.getElementById('warehouseGallery')!==g)return;var s=Array.from(g.querySelectorAll('.ff-warehouse-slide')),i=(Number(g.dataset.slideIndex||0)+1)%s.length;g.dataset.slideIndex=i;s.forEach(function(x,j){x.classList.toggle('active',j===i)});g._ffAutoTimer=window.setTimeout(advance,5000)};g._ffAdvance=advance;g._ffAutoTimer=window.setTimeout(advance,5000)})(document.getElementById('warehouseGallery'))">
-          <div class="ff-slide-caption-card">
-            <div class="ff-caption-tag">Estanterías de almacenaje</div>
-            <div class="ff-caption-text">Estanterías organizadas para guardar el inventario de forma segura.</div>
+      <div class="ff-warehouse-cards-grid" id="warehouseGallery" role="region" aria-label="Fotos del almacén en Houston" tabindex="0">
+        <article class="ff-warehouse-card">
+          <img src="assets/houston_warehouse_ops.jpg" alt="Planta de operaciones del almacén en Houston" class="ff-warehouse-card-img" loading="lazy">
+          <div class="ff-warehouse-card-caption">
+            <h3 class="ff-warehouse-card-title">Operaciones de almacén</h3>
+            <p class="ff-warehouse-card-text">Espacios organizados para recibir, almacenar y preparar pedidos.</p>
           </div>
-        </div>
+        </article>
 
-        <div class="ff-warehouse-slide">
-          <img src="assets/warehouse_hero.jpg" alt="Interior y área de trabajo del almacén" class="ff-warehouse-img">
-          <div class="ff-slide-caption-card">
-            <div class="ff-caption-tag">Operaciones de almacén</div>
-            <div class="ff-caption-text">Un espacio organizado para recibir, almacenar y preparar pedidos.</div>
+        <article class="ff-warehouse-card">
+          <img src="assets/houston_warehouse_hero.jpg" alt="Instalaciones SpeeGo en Houston" class="ff-warehouse-card-img" loading="lazy">
+          <div class="ff-warehouse-card-caption">
+            <h3 class="ff-warehouse-card-title">Instalaciones en Houston</h3>
+            <p class="ff-warehouse-card-text">El almacén de SpeeGo en EE. UU. para fulfillment multi-mercado.</p>
           </div>
-        </div>
+        </article>
 
-        <div class="ff-warehouse-slide">
-          <img src="assets/factory_staging_dispatch.jpg" alt="Equipo preparando pedidos para su despacho" class="ff-warehouse-img">
-          <div class="ff-slide-caption-card">
-            <div class="ff-caption-tag">Preparación de pedidos</div>
-            <div class="ff-caption-text">Los paquetes se organizan antes de entregarlos al transportista.</div>
+        <article class="ff-warehouse-card">
+          <img src="assets/warehouse_racks_hero.jpg" alt="Estanterías del almacén en Houston" class="ff-warehouse-card-img" loading="lazy">
+          <div class="ff-warehouse-card-caption">
+            <h3 class="ff-warehouse-card-title">Estanterías de almacenaje</h3>
+            <p class="ff-warehouse-card-text">Inventario organizado y listo para pick &amp; pack.</p>
           </div>
-        </div>
+        </article>
 
-        <div class="ff-warehouse-slide">
-          <img src="assets/port_sunset_hero.jpg" alt="Buque de carga y contenedores en un puerto" class="ff-warehouse-img">
-          <div class="ff-slide-caption-card">
-            <div class="ff-caption-tag">Envíos globales</div>
-            <div class="ff-caption-text">Una red conectada mantiene el flujo de mercancías entre mercados.</div>
+        <article class="ff-warehouse-card">
+          <img src="assets/factory_staging_dispatch.jpg" alt="Área de preparación de pedidos en Houston" class="ff-warehouse-card-img" loading="lazy">
+          <div class="ff-warehouse-card-caption">
+            <h3 class="ff-warehouse-card-title">Preparación de pedidos</h3>
+            <p class="ff-warehouse-card-text">Paquetes listos antes de entregarlos al transportista.</p>
           </div>
-        </div>
+        </article>
       </div>
-
-      <p class="ff-warehouse-footnote">
-        Placeholder imagery — to be replaced with photographs of the Houston warehouse.
-      </p>
     </div>
   </section>
 

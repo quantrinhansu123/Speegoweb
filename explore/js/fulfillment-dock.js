@@ -153,8 +153,54 @@
 
   window.initFulfillmentQuicklinkDock = initFulfillmentQuicklinkDock;
 
+  function initWarehouseSwipe() {
+    var scroller = document.getElementById('warehouseGallery');
+    if (!scroller || scroller.dataset.swipeReady === '1') return;
+    scroller.dataset.swipeReady = '1';
+
+    var dragging = false;
+    var startX = 0;
+    var startScroll = 0;
+    var moved = false;
+
+    scroller.addEventListener('pointerdown', function (event) {
+      if (event.pointerType === 'touch') return;
+      dragging = true;
+      moved = false;
+      startX = event.clientX;
+      startScroll = scroller.scrollLeft;
+      scroller.classList.add('is-dragging');
+      try { scroller.setPointerCapture(event.pointerId); } catch (_) {}
+    });
+
+    scroller.addEventListener('pointermove', function (event) {
+      if (!dragging) return;
+      var dx = event.clientX - startX;
+      if (Math.abs(dx) > 3) moved = true;
+      scroller.scrollLeft = startScroll - dx;
+    });
+
+    function endDrag(event) {
+      if (!dragging) return;
+      dragging = false;
+      scroller.classList.remove('is-dragging');
+      try { scroller.releasePointerCapture(event.pointerId); } catch (_) {}
+    }
+
+    scroller.addEventListener('pointerup', endDrag);
+    scroller.addEventListener('pointercancel', endDrag);
+    scroller.addEventListener('click', function (event) {
+      if (moved) {
+        event.preventDefault();
+        event.stopPropagation();
+        moved = false;
+      }
+    }, true);
+  }
+
   function boot() {
     initFulfillmentQuicklinkDock();
+    initWarehouseSwipe();
   }
 
   if (document.readyState === 'loading') {

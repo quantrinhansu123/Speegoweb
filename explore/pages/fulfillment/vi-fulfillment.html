@@ -438,7 +438,9 @@
           </div>
           <span>Tham khảo</span>
         </header>
-        <div class="ff-price-body ff-usps-body"><div class="ff-usps-scroll">
+        <details class="ff-price-group">
+          <summary><span><i aria-hidden="true"></i>BẢNG GIÁ THEO ZONE</span><small>5 mức cân nặng</small></summary>
+          <div class="ff-price-body ff-usps-body"><div class="ff-usps-scroll">
   <table class="ff-usps-table">
     <thead><tr><th>lbs</th><th>ZONE 1</th><th>ZONE 2</th><th>ZONE 3</th><th>ZONE 4</th><th>ZONE 5</th><th>ZONE 6</th><th>ZONE 7</th><th>ZONE 8</th><th>ZONE 9</th></tr></thead>
     <tbody>
@@ -451,30 +453,39 @@
   </table>
 </div>
 <p class="ff-price-footnote">* Phí vận chuyển đã bao gồm 8% phụ phí nhiên liệu USPS.</p></div>
+        </details>
       </section>
 
       <p class="ff-pricing-disclaimer">Giá trên là dữ liệu tham khảo từ bảng báo giá SpeeGo. Các yêu cầu đặc biệt hoặc phát sinh thực tế sẽ được xác nhận lại trước khi xử lý.</p>
     </div>
   </section>
 
-  <!-- 4. ESTIMATE COST CALCULATOR WIDGET -->
+  <!-- 4. FULFILLMENT COST ESTIMATOR -->
   <section class="ff-calc-section" id="uoc-tinh-chi-phi">
     <div class="container">
-      <div class="ff-section-header">
-        <span class="ff-tag-eyebrow">ƯỚC TÍNH CHI PHÍ FULFILLMENT</span>
-        <h2 class="ff-section-title">Pick &amp; pack + bao bì + USPS Ground Advantage</h2>
-      </div>
-
-      <div class="ff-calc-card">
-        <div class="ff-calc-form">
-          <div class="ff-form-row-2">
-            <div class="ff-form-group">
-              <label class="ff-label">Cân nặng (lbs)</label>
-              <input type="number" id="calcWeight" class="ff-input" value="1" step="0.1" min="0.1" oninput="calculateFulfillmentCost()">
+      <div class="ff-estimator" id="cost-estimator">
+        <div class="ff-estimator-heading">
+          <div>
+            <small>ƯỚC TÍNH CHI PHÍ FULFILLMENT</small>
+            <p>Phí xuất kho + bao bì + hãng vận chuyển</p>
+          </div>
+          <span aria-hidden="true">▦</span>
+        </div>
+        <div class="ff-estimator-body">
+          <form class="ff-estimator-form" aria-label="Ước tính chi phí fulfillment">
+            <div class="ff-estimate-guide">
+              <span>01</span>
+              <div>
+                <strong>Thông tin đơn hàng</strong>
+                <small>Nhập cân nặng, chọn khu vực giao và loại bao bì.</small>
+              </div>
             </div>
-            <div class="ff-form-group">
-              <label class="ff-label">Zone</label>
-              <select id="calcZone" class="ff-select" onchange="calculateFulfillmentCost()">
+
+            <label class="ff-estimate-field">Cân nặng (lbs)
+              <input type="number" id="calcWeight" min="0.1" step="0.1" value="1" inputmode="decimal">
+            </label>
+            <label class="ff-estimate-field">Zone
+              <select id="calcZone">
                 <option value="1" selected>Zone 1</option>
                 <option value="2">Zone 2</option>
                 <option value="3">Zone 3</option>
@@ -485,69 +496,76 @@
                 <option value="8">Zone 8</option>
                 <option value="9">Zone 9</option>
               </select>
-            </div>
-          </div>
+            </label>
 
-          <div class="ff-form-row-2">
-            <div class="ff-form-group">
-              <label class="ff-label">Dài (inch)</label>
-              <input type="number" id="calcLength" class="ff-input" value="10" min="1" oninput="calculateFulfillmentCost()">
-            </div>
-            <div class="ff-form-group">
-              <label class="ff-label">Rộng (inch)</label>
-              <input type="number" id="calcWidth" class="ff-input" value="6" min="1" oninput="calculateFulfillmentCost()">
-            </div>
-          </div>
+            <fieldset class="ff-shipping-choice">
+              <legend>Label vận chuyển</legend>
+              <label class="ff-package-option ff-shipping-option">
+                <input id="useSpeegoLabel" type="checkbox" checked>
+                <span>
+                  <b>Sử dụng label USPS của SpeeGo</b>
+                  <small id="shippingChoiceStatus">Đang sử dụng</small>
+                </span>
+              </label>
+              <p>Bỏ chọn nếu khách tự cung cấp tracking hoặc label vận chuyển.</p>
+            </fieldset>
 
-          <div class="ff-form-row-2">
-            <div class="ff-form-group">
-              <label class="ff-label">Cao (inch)</label>
-              <input type="number" id="calcHeight" class="ff-input" value="4" min="1" oninput="calculateFulfillmentCost()">
-            </div>
-            <div class="ff-form-group">
-              <label class="ff-label">Bao bì</label>
-              <select id="calcPkg" class="ff-select" onchange="calculateFulfillmentCost()">
-                <option value="poly" selected>Poly mailer — miễn phí</option>
-                <option value="bubble">Bubble mailer (+$0.50)</option>
-                <option value="bubble_wrap">Bubble wrap (+$0.50/m)</option>
-                <option value="carton_s">Thùng carton 8 × 8 × 8 in (+$1.00)</option>
-                <option value="carton_m">Thùng carton 10 × 6 × 4 in (+$1.50)</option>
-                <option value="carton_l">Thùng carton 9 × 7 × 3 in (+$1.70)</option>
-                <option value="custom">Bao bì riêng của bạn — miễn phí</option>
-              </select>
-            </div>
-          </div>
-        </div>
+            <fieldset class="ff-package-choice">
+              <legend>Bao bì</legend>
+              <div class="ff-package-options">
+                <label class="ff-package-option">
+                  <input type="checkbox" name="estimate-packaging" data-package="poly" value="0" checked>
+                  <span><b>Poly mailer</b><small>Miễn phí</small></span>
+                </label>
+                <label class="ff-package-option">
+                  <input type="checkbox" name="estimate-packaging" data-package="seller" value="0">
+                  <span><b>Bao bì của seller</b><small>Miễn phí xử lý</small></span>
+                </label>
+                <label class="ff-package-option ff-quantity-package">
+                  <input type="checkbox" name="estimate-packaging" data-package="bubble-wrap" value="0.15">
+                  <span>
+                    <b>Bubble wrap</b><small>$0.15/sản phẩm</small>
+                    <i class="ff-quantity-editor"><em>Số lượng</em>
+                      <input type="number" class="ff-package-quantity" data-quantity-for="bubble-wrap" min="1" step="1" value="1" inputmode="numeric" aria-label="Số lượng Bubble wrap">
+                    </i>
+                  </span>
+                </label>
+                <label class="ff-package-option ff-quantity-package">
+                  <input type="checkbox" name="estimate-packaging" data-package="bubble-mailer" value="0.5">
+                  <span>
+                    <b>Bubble mailer</b><small>$0.50/túi</small>
+                    <i class="ff-quantity-editor"><em>Số lượng</em>
+                      <input type="number" class="ff-package-quantity" data-quantity-for="bubble-mailer" min="1" step="1" value="1" inputmode="numeric" aria-label="Số lượng Bubble mailer">
+                    </i>
+                  </span>
+                </label>
+                <label class="ff-package-option">
+                  <input type="checkbox" name="estimate-packaging" data-package="carton" value="1">
+                  <span><b>Thùng carton</b><small>Từ $1.00</small></span>
+                </label>
+              </div>
+            </fieldset>
+          </form>
 
-        <div class="ff-calc-summary">
-          <div class="ff-summary-row">
-            <span class="ff-summary-label">Cân nặng tính cước</span>
-            <span class="ff-summary-val" id="calcResultWeight">1.73 lbs</span>
-          </div>
-          <div class="ff-summary-row">
-            <span class="ff-summary-label">Gói All-in-one</span>
-            <span class="ff-summary-val" id="calcResultAio">$7.00</span>
-          </div>
-          <div class="ff-summary-row">
-            <span class="ff-summary-label">Bao bì</span>
-            <span class="ff-summary-val" id="calcResultPkg">Đã bao gồm</span>
-          </div>
-          <div class="ff-summary-row">
-            <span class="ff-summary-label">USPS Ground Advantage</span>
-            <span class="ff-summary-val" id="calcResultShip">Đã bao gồm</span>
-          </div>
-          <div class="ff-summary-divider"></div>
-          <div class="ff-summary-total-row">
-            <span class="ff-total-label">Tổng ước tính</span>
-            <span class="ff-total-val" id="calcResultTotal">$7.00</span>
-          </div>
-          <div class="ff-calc-brand"><img src="assets/speego-logo-white.png" alt="SpeeGo Logistics"></div>
+          <aside class="ff-estimate-result" aria-live="polite">
+            <small>CÂN NẶNG TÍNH CƯỚC</small>
+            <strong id="calcResultWeight">1.00 lbs</strong>
+            <dl>
+              <div><dt>Phí xuất kho</dt><dd id="calcResultAio">$7.00</dd></div>
+              <div><dt>Phí bao bì</dt><dd id="calcResultPkg">Đã bao gồm</dd></div>
+              <div><dt>Hãng vận chuyển</dt><dd id="calcResultShip">Đã bao gồm</dd></div>
+            </dl>
+            <div class="ff-estimate-total">
+              <span>TỔNG ƯỚC TÍNH</span>
+              <b id="calcResultTotal">$7.00</b>
+            </div>
+            <p id="calcEstimateNote">Đơn đến 800g sử dụng label USPS của SpeeGo áp dụng giá All-in-one $7. Ước tính chỉ để tham khảo.</p>
+            <div class="ff-estimate-brand" aria-hidden="true">
+              <img src="assets/speego-logo-dark.png" alt="">
+            </div>
+          </aside>
         </div>
       </div>
-
-      <p class="ff-calc-footnote">
-        Đơn dưới 800 g áp dụng gói All-in-one. Ước tính chỉ để tham khảo, chi phí cuối cùng được xác nhận theo đơn thực tế.
-      </p>
     </div>
   </section>
 
@@ -559,49 +577,41 @@
           <span class="ff-tag-eyebrow">HÌNH ẢNH KHO BÃI</span>
           <h2 class="ff-section-title">Bên trong kho Houston.</h2>
         </div>
-        <div class="ff-gallery-nav">
-          <button class="ff-gallery-arrow" onclick="(function(g,d){var s=Array.from(g.querySelectorAll('.ff-warehouse-slide')),n=s.length,i=(Number(g.dataset.slideIndex||0)+d+n)%n;g.dataset.slideIndex=i;s.forEach(function(x,j){x.classList.toggle('active',j===i)});if(g._ffAutoTimer)window.clearTimeout(g._ffAutoTimer);if(g._ffAdvance)g._ffAutoTimer=window.setTimeout(g._ffAdvance,5000)})(document.getElementById('warehouseGallery'),-1)" aria-label="Ảnh trước" aria-controls="warehouseGallery">←</button>
-          <button class="ff-gallery-arrow" onclick="(function(g,d){var s=Array.from(g.querySelectorAll('.ff-warehouse-slide')),n=s.length,i=(Number(g.dataset.slideIndex||0)+d+n)%n;g.dataset.slideIndex=i;s.forEach(function(x,j){x.classList.toggle('active',j===i)});if(g._ffAutoTimer)window.clearTimeout(g._ffAutoTimer);if(g._ffAdvance)g._ffAutoTimer=window.setTimeout(g._ffAdvance,5000)})(document.getElementById('warehouseGallery'),1)" aria-label="Ảnh sau" aria-controls="warehouseGallery">→</button>
-        </div>
       </div>
 
-      <div class="ff-warehouse-slider-frame" id="warehouseGallery">
-        <div class="ff-warehouse-slide active">
-          <img src="assets/warehouse_racks_hero.jpg" alt="Kệ chứa hàng trong kho" class="ff-warehouse-img" onload="(function(g){if(!g||g.dataset.autoInit)return;g.dataset.autoInit='1';g.dataset.slideIndex='0';var advance=function(){if(document.getElementById('warehouseGallery')!==g)return;var s=Array.from(g.querySelectorAll('.ff-warehouse-slide')),i=(Number(g.dataset.slideIndex||0)+1)%s.length;g.dataset.slideIndex=i;s.forEach(function(x,j){x.classList.toggle('active',j===i)});g._ffAutoTimer=window.setTimeout(advance,5000)};g._ffAdvance=advance;g._ffAutoTimer=window.setTimeout(advance,5000)})(document.getElementById('warehouseGallery'))">
-          <div class="ff-slide-caption-card">
-            <div class="ff-caption-tag">Kệ lưu trữ</div>
-            <div class="ff-caption-text">Hệ thống kệ kho giúp sắp xếp và bảo quản hàng hóa ngăn nắp.</div>
+      <div class="ff-warehouse-cards-grid" id="warehouseGallery" role="region" aria-label="Hình ảnh kho Houston" tabindex="0">
+        <article class="ff-warehouse-card">
+          <img src="assets/houston_warehouse_ops.jpg" alt="Sàn vận hành kho Houston" class="ff-warehouse-card-img" loading="lazy">
+          <div class="ff-warehouse-card-caption">
+            <h3 class="ff-warehouse-card-title">Vận hành kho</h3>
+            <p class="ff-warehouse-card-text">Không gian được bố trí để tiếp nhận, lưu trữ và xử lý đơn hàng.</p>
           </div>
-        </div>
+        </article>
 
-        <div class="ff-warehouse-slide">
-          <img src="assets/warehouse_hero.jpg" alt="Không gian làm việc bên trong kho" class="ff-warehouse-img">
-          <div class="ff-slide-caption-card">
-            <div class="ff-caption-tag">Vận hành kho</div>
-            <div class="ff-caption-text">Không gian được bố trí để tiếp nhận, lưu trữ và xử lý đơn hàng.</div>
+        <article class="ff-warehouse-card">
+          <img src="assets/houston_warehouse_hero.jpg" alt="Cơ sở kho SpeeGo tại Houston" class="ff-warehouse-card-img" loading="lazy">
+          <div class="ff-warehouse-card-caption">
+            <h3 class="ff-warehouse-card-title">Cơ sở Houston</h3>
+            <p class="ff-warehouse-card-text">Kho Mỹ của SpeeGo hỗ trợ fulfillment cho nhiều thị trường.</p>
           </div>
-        </div>
+        </article>
 
-        <div class="ff-warehouse-slide">
-          <img src="assets/factory_staging_dispatch.jpg" alt="Nhân viên chuẩn bị đơn hàng để xuất kho" class="ff-warehouse-img">
-          <div class="ff-slide-caption-card">
-            <div class="ff-caption-tag">Chuẩn bị xuất hàng</div>
-            <div class="ff-caption-text">Các kiện hàng được sắp xếp trước khi bàn giao cho đơn vị vận chuyển.</div>
+        <article class="ff-warehouse-card">
+          <img src="assets/warehouse_racks_hero.jpg" alt="Kệ chứa hàng trong kho Houston" class="ff-warehouse-card-img" loading="lazy">
+          <div class="ff-warehouse-card-caption">
+            <h3 class="ff-warehouse-card-title">Kệ lưu trữ</h3>
+            <p class="ff-warehouse-card-text">Hệ thống kệ kho giúp sắp xếp và bảo quản hàng hóa ngăn nắp.</p>
           </div>
-        </div>
+        </article>
 
-        <div class="ff-warehouse-slide">
-          <img src="assets/port_sunset_hero.jpg" alt="Tàu chở hàng và container tại cảng biển" class="ff-warehouse-img">
-          <div class="ff-slide-caption-card">
-            <div class="ff-caption-tag">Vận chuyển toàn cầu</div>
-            <div class="ff-caption-text">Mạng lưới vận chuyển kết nối hàng hóa tới nhiều thị trường.</div>
+        <article class="ff-warehouse-card">
+          <img src="assets/factory_staging_dispatch.jpg" alt="Khu chuẩn bị xuất hàng kho Houston" class="ff-warehouse-card-img" loading="lazy">
+          <div class="ff-warehouse-card-caption">
+            <h3 class="ff-warehouse-card-title">Chuẩn bị xuất hàng</h3>
+            <p class="ff-warehouse-card-text">Các kiện hàng được sắp xếp trước khi bàn giao đơn vị vận chuyển.</p>
           </div>
-        </div>
+        </article>
       </div>
-
-      <p class="ff-warehouse-footnote">
-        Ảnh minh họa tạm thời, sẽ thay bằng ảnh chụp thực tế tại kho Houston.
-      </p>
     </div>
   </section>
 
