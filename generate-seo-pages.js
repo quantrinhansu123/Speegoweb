@@ -402,7 +402,7 @@ function generate({ root, output }) {
     }
   </script>
   <script src="/explore/js/cta-band.js?v=cta_motion_20260925"></script>
-  ${route.nav === "fulfillment" ? '<script src="/explore/js/fulfillment-dock.js?v=ff_dock_fix_20260925e"></script>' : ""}
+  ${route.nav === "fulfillment" ? '<script src="/explore/js/fulfillment-estimate.js?v=ff_estimate_20260926"></script>\n  <script src="/explore/js/fulfillment-dock.js?v=ff_dock_fix_20260925e"></script>' : ""}
   <script src="/explore/js/knowledge-article.js"></script>
   <script src="/wp-content/themes/logistica/js/speego-main.js?v=seo_routes_20260924_langfix1"></script>
 </body>
