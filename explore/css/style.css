@@ -151,8 +151,21 @@ img {
   color: var(--orange-primary);
 }
 
-/* Common Buttons */
-.btn-orange {
+/* Hide uppercase section eyebrows — navigation lives in header dropdowns */
+.page-sourcing .section-header > .section-tag,
+.page-sourcing .ff-section-header > .ff-tag-eyebrow,
+.page-sourcing .prod-floor-header .section-tag,
+.page-shipping-routes .section-header > .section-tag,
+.page-import-export .section-header > .section-tag,
+.page-fulfillment .ff-section-header > .ff-tag-eyebrow,
+.page-fulfillment .ff-policy-heading .ff-tag-eyebrow,
+.page-fulfillment .ff-pricing-section .ff-tag-eyebrow,
+.page-fulfillment .ff-calc-section .ff-tag-eyebrow,
+.page-fulfillment .ff-faq-section .ff-tag-eyebrow,
+.page-fulfillment .ff-testimonial-section .ff-tag-eyebrow,
+.page-fulfillment .ff-warehouse-section .ff-tag-eyebrow {
+  display: none !important;
+}
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -7883,15 +7896,17 @@ body:has(.page-import-export) .breadcrumb-section {
   overflow: hidden;
 }
 
+/* Sourcing is the subpage margin standard: hero 1480 / 24 */
 .page-sourcing .sourcing-hero-section > .container,
 .page-shipping-routes .page-hero-2col > .container,
 .page-import-export .page-hero-2col > .container {
-  max-width: 1480px;
-  width: 100%;
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: 24px;
-  padding-right: 24px;
+  max-width: 1480px !important;
+  width: 100% !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  padding-left: 24px !important;
+  padding-right: 24px !important;
+  box-sizing: border-box !important;
 }
 
 .page-sourcing .sourcing-hero-section .hero-2col-grid {
@@ -8170,32 +8185,72 @@ body:has(.page-import-export) .breadcrumb-section {
   }
 }
 
-/* Knowledge hub + all knowledge pages: match header width, kill Bootstrap fixed widths */
+/* ==========================================================================
+   SUBPAGE CONTENT SHELL — Sourcing is the margin standard
+   Body sections: 1320 / 24px (same as .container)
+   Heroes: 1480 / 24px (see above)
+   ========================================================================== */
+.page-sourcing > section:not(.sourcing-hero-section) > .container,
+.page-shipping-routes > section:not(.page-hero-2col) > .container,
+.page-import-export > section:not(.page-hero-2col) > .container,
+.page-fulfillment > section:not(.ff-hero-dark-section) > .container,
+.page-container[data-nav="knowledge"] > section > .container,
+.page-container[data-nav="sourcing"] > section:not(.sourcing-hero-section) > .container,
+.page-container[data-nav="shipping-routes"] > section:not(.page-hero-2col) > .container,
+.page-container[data-nav="import-export"] > section:not(.page-hero-2col) > .container,
+.page-container[data-nav="fulfillment"] > section:not(.ff-hero-dark-section) > .container,
+body.speego-seo-page:has(.page-sourcing) #app-main > .breadcrumb-section .container,
+body.speego-seo-page:has(.page-shipping-routes) #app-main > .breadcrumb-section .container,
+body.speego-seo-page:has(.page-import-export) #app-main > .breadcrumb-section .container,
+body.speego-seo-page:has(.page-fulfillment) #app-main > .breadcrumb-section .container,
+body.speego-seo-page:has([data-nav="knowledge"]) #app-main > .breadcrumb-section .container,
+body.speego-seo-page:has(.page-sourcing) .page-sourcing > section:not(.sourcing-hero-section) > .container,
+body.speego-seo-page:has(.page-shipping-routes) .page-shipping-routes > section:not(.page-hero-2col) > .container,
+body.speego-seo-page:has(.page-import-export) .page-import-export > section:not(.page-hero-2col) > .container,
+body.speego-seo-page:has([data-nav="knowledge"]) .page-container[data-nav="knowledge"] > section > .container,
+body:has(.page-sourcing) #app-main > .breadcrumb-section .container,
+body:has(.page-shipping-routes) #app-main > .breadcrumb-section .container,
+body:has(.page-import-export) #app-main > .breadcrumb-section .container,
+body:has([data-nav="knowledge"]) #app-main > .breadcrumb-section .container,
+.page-sourcing .cta-form-band-section > .container.cta-form-band-grid,
+.page-shipping-routes .cta-form-band-section > .container.cta-form-band-grid,
+.page-import-export .cta-form-band-section > .container.cta-form-band-grid,
+.page-container[data-nav="knowledge"] ~ .cta-form-band-section > .container.cta-form-band-grid,
+body.speego-seo-page:has(.page-sourcing) .cta-form-band-section > .container.cta-form-band-grid,
+body.speego-seo-page:has(.page-shipping-routes) .cta-form-band-section > .container.cta-form-band-grid,
+body.speego-seo-page:has(.page-import-export) .cta-form-band-section > .container.cta-form-band-grid,
+body.speego-seo-page:has([data-nav="knowledge"]) .cta-form-band-section > .container.cta-form-band-grid {
+  width: 100% !important;
+  max-width: 1320px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  padding-left: 24px !important;
+  padding-right: 24px !important;
+  box-sizing: border-box !important;
+}
+
+/* Keep fulfillment rate-card full-bleed exception (after #bang-gia-fulfillment) */
+.page-fulfillment #bang-gia-fulfillment > .container,
+.page-fulfillment #bang-gia-fulfillment ~ section > .container,
+.page-fulfillment #bang-gia-fulfillment ~ .cta-form-band-section > .container,
+.page-fulfillment #bang-gia-fulfillment ~ #contact-form > .container {
+  max-width: none !important;
+  width: 100% !important;
+  padding-left: clamp(16px, 3.5vw, 48px) !important;
+  padding-right: clamp(16px, 3.5vw, 48px) !important;
+}
+
+/* Knowledge hub text left-align (margins handled by shell above) */
 body.speego-seo-page:has([data-nav="knowledge"]) #app-main > .breadcrumb-section .container,
 body.speego-seo-page:has([data-nav="knowledge"]) .page-container[data-nav="knowledge"] .container,
 .page-container[data-nav="knowledge"] .container,
 body:has([data-nav="knowledge"]) #app-main > .breadcrumb-section .container {
   width: 100% !important;
-  max-width: 1440px !important;
+  max-width: 1320px !important;
   margin-left: auto !important;
   margin-right: auto !important;
-  padding-left: clamp(20px, 3.5vw, 40px) !important;
-  padding-right: clamp(20px, 3.5vw, 40px) !important;
-  box-sizing: border-box !important;
-}
-
-/* Shipping routes / logistics SEO: left-align titles with header gutter */
-body.speego-seo-page:has([data-nav="shipping-routes"]) #app-main > .breadcrumb-section .container,
-body.speego-seo-page:has([data-nav="shipping-routes"]) .page-container[data-nav="shipping-routes"] .container,
-.page-container[data-nav="shipping-routes"] .container,
-body:has([data-nav="shipping-routes"]) #app-main > .breadcrumb-section .container,
-.page-shipping-routes > section > .container {
-  width: 100% !important;
-  max-width: 1440px !important;
-  margin-left: auto !important;
-  margin-right: auto !important;
-  padding-left: clamp(20px, 3.5vw, 40px) !important;
-  padding-right: clamp(20px, 3.5vw, 40px) !important;
+  padding-left: 24px !important;
+  padding-right: 24px !important;
   box-sizing: border-box !important;
 }
 
@@ -8209,14 +8264,6 @@ body.speego-seo-page:has([data-nav="shipping-routes"]) .page-shipping-routes .fa
   text-align: left !important;
   margin-left: 0 !important;
   margin-right: 0 !important;
-}
-
-body.speego-seo-page:has([data-nav="shipping-routes"]) .cta-form-band-section > .container.cta-form-band-grid {
-  max-width: 1440px !important;
-  margin-left: auto !important;
-  margin-right: auto !important;
-  padding-left: clamp(20px, 3.5vw, 40px) !important;
-  padding-right: clamp(20px, 3.5vw, 40px) !important;
 }
 
 @media (min-width: 768px) {
@@ -8291,16 +8338,20 @@ body.speego-seo-page:has([data-nav="knowledge"]) .cta-form-band-section > .conta
 .page-container[data-nav="knowledge"] .cta-form-band-grid {
   margin-left: auto !important;
   margin-right: auto !important;
-  max-width: 1440px !important;
+  max-width: 1320px !important;
   width: 100% !important;
-  padding-left: clamp(20px, 3.5vw, 40px) !important;
-  padding-right: clamp(20px, 3.5vw, 40px) !important;
+  padding-left: 24px !important;
+  padding-right: 24px !important;
 }
 
 @media (max-width: 768px) {
-  body.speego-seo-page:has([data-nav="knowledge"]) #app-main > .breadcrumb-section .container,
-  body.speego-seo-page:has([data-nav="knowledge"]) .page-container[data-nav="knowledge"] .container,
+  .page-sourcing > section > .container,
+  .page-shipping-routes > section > .container,
+  .page-import-export > section > .container,
+  .page-container[data-nav="knowledge"] > section > .container,
   .page-container[data-nav="knowledge"] .container,
+  body.speego-seo-page:has([data-nav="knowledge"]) #app-main > .breadcrumb-section .container,
+  body.speego-seo-page:has(.page-shipping-routes) #app-main > .breadcrumb-section .container,
   body:has([data-nav="knowledge"]) #app-main > .breadcrumb-section .container {
     padding-left: 16px !important;
     padding-right: 16px !important;

@@ -320,7 +320,7 @@ function generate({ root, output }) {
   <link rel="stylesheet" href="/wp-content/themes/logistica/styleb54d.css?ver=6.8.8">
   <link rel="stylesheet" href="/wp-content/themes/logistica/css/speego-custom.css?v=mobile_tracking_20260923">
   <link rel="stylesheet" href="/wp-content/themes/logistica/css/speego-process-tabs.css">
-  <link rel="stylesheet" href="/explore/css/style.css?v=topic_cards_navy_20260925">
+  <link rel="stylesheet" href="/explore/css/style.css?v=nav_dropdowns_hide_tags_20260926">
 </head>
 <body class="home wp-theme-logistica elementor-default elementor-template-full-width speego-seo-page" data-seo-language="${route.lang}">
   <div id="page" class="hfeed site">

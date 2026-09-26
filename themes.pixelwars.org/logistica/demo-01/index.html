@@ -104,9 +104,50 @@
 						<ul class="speego-nav-menu" id="menu-main-menu">
 							<li class="speego-nav-item"><a href="/" class="speego-nav-link" data-i18n="nav_home">Homepage</a></li>
 							<li class="speego-nav-item"><a href="/#why-speego" class="speego-nav-link" data-i18n="nav_about">About</a></li>
-							<li class="speego-nav-item"><a href="/explore/#/sourcing" class="speego-nav-link" data-i18n="nav_sourcing">Sourcing</a></li>
-							<li class="speego-nav-item"><a href="/explore/#/tuyen-van-chuyen" class="speego-nav-link" data-i18n="nav_routes">Logistics</a></li>
-							<li class="speego-nav-item"><a href="/explore/#/fulfillment" class="speego-nav-link" data-i18n="nav_fulfillment">Fulfillment</a></li>
+							<li class="speego-nav-item speego-nav-has-sub" data-nav="sourcing">
+								<a href="/explore/#/sourcing" class="speego-nav-link" aria-haspopup="true" aria-expanded="false">
+									<span data-i18n="nav_sourcing">Sourcing</span>
+									<svg class="speego-nav-caret" viewBox="0 0 10 6" width="10" height="6" aria-hidden="true" focusable="false">
+										<path d="M1 1.25 L5 4.75 L9 1.25" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+									</svg>
+								</a>
+								<ul class="speego-nav-dropdown" aria-label="Sourcing sections">
+									<li><a href="/explore/en/sourcing/#industries" class="speego-nav-dropdown-link" data-i18n="nav_sourcing_industries">Industries</a></li>
+									<li><a href="/explore/en/sourcing/#manufacturing-models" class="speego-nav-dropdown-link" data-i18n="nav_sourcing_models">Manufacturing models</a></li>
+									<li><a href="/explore/en/sourcing/#quality-control" class="speego-nav-dropdown-link" data-i18n="nav_sourcing_qc">Quality control</a></li>
+									<li><a href="/explore/en/sourcing/#why-speego" class="speego-nav-dropdown-link" data-i18n="nav_sourcing_why">Why SpeeGo</a></li>
+								</ul>
+							</li>
+							<li class="speego-nav-item speego-nav-has-sub" data-nav="shipping-routes">
+								<a href="/explore/#/logistics/china-to-us-ca-au" class="speego-nav-link" aria-haspopup="true" aria-expanded="false">
+									<span data-i18n="nav_routes">Logistics</span>
+									<svg class="speego-nav-caret" viewBox="0 0 10 6" width="10" height="6" aria-hidden="true" focusable="false">
+										<path d="M1 1.25 L5 4.75 L9 1.25" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+									</svg>
+								</a>
+								<ul class="speego-nav-dropdown" aria-label="Logistics origins">
+									<li>
+										<a href="/explore/#/logistics/china-to-us-ca-au" class="speego-nav-dropdown-link" data-route-origin="china" data-i18n="nav_origin_china">Origin: China</a>
+									</li>
+									<li>
+										<a href="/explore/#/logistics/vietnam-to-us-ca-au" class="speego-nav-dropdown-link" data-route-origin="vietnam" data-i18n="nav_origin_vietnam">Origin: Vietnam</a>
+									</li>
+								</ul>
+							</li>
+							<li class="speego-nav-item speego-nav-has-sub" data-nav="fulfillment">
+								<a href="/explore/#/fulfillment" class="speego-nav-link" aria-haspopup="true" aria-expanded="false">
+									<span data-i18n="nav_fulfillment">Fulfillment</span>
+									<svg class="speego-nav-caret" viewBox="0 0 10 6" width="10" height="6" aria-hidden="true" focusable="false">
+										<path d="M1 1.25 L5 4.75 L9 1.25" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+									</svg>
+								</a>
+								<ul class="speego-nav-dropdown" aria-label="Fulfillment sections">
+									<li><a href="/explore/en/fulfillment/#bang-gia-fulfillment" class="speego-nav-dropdown-link" data-i18n="nav_ff_pricing">Fulfillment pricing</a></li>
+									<li><a href="/explore/en/fulfillment/#shipping-rates" class="speego-nav-dropdown-link" data-i18n="nav_ff_rates">Shipping rates</a></li>
+									<li><a href="/explore/en/fulfillment/#uoc-tinh-chi-phi" class="speego-nav-dropdown-link" data-i18n="nav_ff_estimate">Cost estimate</a></li>
+									<li><a href="/explore/en/fulfillment/#chinh-sach-fulfillment" class="speego-nav-dropdown-link" data-i18n="nav_ff_policy">Service policy</a></li>
+								</ul>
+							</li>
 							<li class="speego-nav-item"><a href="/explore/#/xuat-nhap-khau" class="speego-nav-link" data-i18n="nav_import_export">Import &amp; Export</a></li>
 							<li class="speego-nav-item"><a href="/explore/#/knowledge" class="speego-nav-link" data-i18n="nav_knowledge">Knowledge</a></li>
 							<li class="speego-nav-item speego-nav-cta-item">

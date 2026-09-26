@@ -152,7 +152,20 @@
         <ul class="speego-nav-menu" id="menu-main-menu">
           <li class="speego-nav-item"><a href="/" class="speego-nav-link" id="navLinkHome" data-i18n="nav_home">Homepage</a></li>
           <li class="speego-nav-item"><a href="/#why-speego" class="speego-nav-link" id="navLinkAbout" data-i18n="nav_about">About</a></li>
-          <li class="speego-nav-item" data-nav="sourcing"><a href="#/sourcing" class="speego-nav-link" id="navLinkSourcing" data-i18n="nav_sourcing">Sourcing</a></li>
+          <li class="speego-nav-item speego-nav-has-sub" data-nav="sourcing">
+            <a href="#/sourcing" class="speego-nav-link" id="navLinkSourcing" aria-haspopup="true" aria-expanded="false">
+              <span data-i18n="nav_sourcing">Sourcing</span>
+              <svg class="speego-nav-caret" viewBox="0 0 10 6" width="10" height="6" aria-hidden="true" focusable="false">
+                <path d="M1 1.25 L5 4.75 L9 1.25" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+            <ul class="speego-nav-dropdown" aria-label="Sourcing sections">
+              <li><a href="#/sourcing" class="speego-nav-dropdown-link" data-page-route="sourcing" data-section="industries" data-i18n="nav_sourcing_industries">Industries</a></li>
+              <li><a href="#/sourcing" class="speego-nav-dropdown-link" data-page-route="sourcing" data-section="manufacturing-models" data-i18n="nav_sourcing_models">Manufacturing models</a></li>
+              <li><a href="#/sourcing" class="speego-nav-dropdown-link" data-page-route="sourcing" data-section="quality-control" data-i18n="nav_sourcing_qc">Quality control</a></li>
+              <li><a href="#/sourcing" class="speego-nav-dropdown-link" data-page-route="sourcing" data-section="why-speego" data-i18n="nav_sourcing_why">Why SpeeGo</a></li>
+            </ul>
+          </li>
           <li class="speego-nav-item speego-nav-has-sub" data-nav="shipping-routes">
             <a href="#/logistics/china-to-us-ca-au" class="speego-nav-link" id="navLinkRoutes" aria-haspopup="true" aria-expanded="false">
               <span data-i18n="nav_routes">Logistics</span>
@@ -169,7 +182,20 @@
               </li>
             </ul>
           </li>
-          <li class="speego-nav-item" data-nav="fulfillment"><a href="#/fulfillment" class="speego-nav-link" id="navLinkFulfillment" data-i18n="nav_fulfillment">Fulfillment</a></li>
+          <li class="speego-nav-item speego-nav-has-sub" data-nav="fulfillment">
+            <a href="#/fulfillment" class="speego-nav-link" id="navLinkFulfillment" aria-haspopup="true" aria-expanded="false">
+              <span data-i18n="nav_fulfillment">Fulfillment</span>
+              <svg class="speego-nav-caret" viewBox="0 0 10 6" width="10" height="6" aria-hidden="true" focusable="false">
+                <path d="M1 1.25 L5 4.75 L9 1.25" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+            <ul class="speego-nav-dropdown" aria-label="Fulfillment sections">
+              <li><a href="#/fulfillment" class="speego-nav-dropdown-link" data-page-route="fulfillment" data-section="bang-gia-fulfillment" data-i18n="nav_ff_pricing">Fulfillment pricing</a></li>
+              <li><a href="#/fulfillment" class="speego-nav-dropdown-link" data-page-route="fulfillment" data-section="shipping-rates" data-i18n="nav_ff_rates">Shipping rates</a></li>
+              <li><a href="#/fulfillment" class="speego-nav-dropdown-link" data-page-route="fulfillment" data-section="uoc-tinh-chi-phi" data-i18n="nav_ff_estimate">Cost estimate</a></li>
+              <li><a href="#/fulfillment" class="speego-nav-dropdown-link" data-page-route="fulfillment" data-section="chinh-sach-fulfillment" data-i18n="nav_ff_policy">Service policy</a></li>
+            </ul>
+          </li>
           <li class="speego-nav-item" data-nav="import-export"><a href="#/xuat-nhap-khau" class="speego-nav-link" id="navLinkImportExport" data-i18n="nav_import_export">Import &amp; Export</a></li>
           <li class="speego-nav-item" data-nav="knowledge"><a href="#/knowledge" class="speego-nav-link" id="navLinkKnowledge" data-i18n="nav_knowledge">Knowledge</a></li>
           <li class="speego-nav-item speego-nav-cta-item">
