@@ -5834,7 +5834,7 @@ body.speego-seo-page #app-main {
   width: 100%;
 }
 
-/* 5. Warehouse Tour Section — shorter cards, horizontal swipe */
+/* 5. Warehouse Tour Section — full-width cards, swipe on small screens */
 .ff-warehouse-section {
   padding: 64px 0;
   background: #F8FAFC;
@@ -5853,17 +5853,12 @@ body.speego-seo-page #app-main {
 
 .ff-warehouse-cards-grid {
   display: flex;
-  gap: 14px;
-  overflow-x: auto;
+  gap: 16px;
+  width: 100%;
+  overflow-x: visible;
   overflow-y: hidden;
-  scroll-snap-type: x mandatory;
-  scroll-padding-inline: 2px;
-  -webkit-overflow-scrolling: touch;
-  overscroll-behavior-x: contain;
-  scrollbar-width: none;
-  padding: 2px 2px 8px;
+  padding: 2px 0 4px;
   margin: 0;
-  cursor: grab;
 }
 
 .ff-warehouse-cards-grid::-webkit-scrollbar {
@@ -5877,15 +5872,14 @@ body.speego-seo-page #app-main {
 
 .ff-warehouse-card {
   position: relative;
-  flex: 0 0 min(260px, 68vw);
-  width: min(260px, 68vw);
-  height: 190px;
-  min-height: 0;
+  flex: 1 1 0;
+  min-width: 0;
+  width: auto;
+  height: 220px;
   border-radius: 14px;
   overflow: hidden;
   background: #0B1E32;
   box-shadow: 0 8px 22px rgba(4, 36, 61, 0.1);
-  scroll-snap-align: start;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
@@ -5914,15 +5908,15 @@ body.speego-seo-page #app-main {
   left: 0;
   right: 0;
   bottom: 0;
-  padding: 14px 14px 12px;
+  padding: 16px 16px 14px;
   background: linear-gradient(180deg, transparent 0%, rgba(4, 36, 61, 0.88) 70%);
   color: #FFFFFF;
 }
 
 .ff-warehouse-card-title {
-  margin: 0 0 3px;
+  margin: 0 0 4px;
   font-family: var(--font-heading);
-  font-size: 0.98rem;
+  font-size: 1.05rem;
   font-weight: 800;
   letter-spacing: -0.02em;
   color: #FFFFFF;
@@ -5930,7 +5924,7 @@ body.speego-seo-page #app-main {
 
 .ff-warehouse-card-text {
   margin: 0;
-  font-size: 0.78rem;
+  font-size: 0.82rem;
   line-height: 1.4;
   color: #E2E8F0;
   font-weight: 500;
@@ -5945,18 +5939,30 @@ body.speego-seo-page #app-main {
 }
 
 @media (max-width: 1100px) {
+  .ff-warehouse-cards-grid {
+    gap: 14px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-x: contain;
+    scrollbar-width: none;
+    cursor: grab;
+    padding-bottom: 8px;
+  }
+
   .ff-warehouse-card {
-    flex-basis: min(240px, 62vw);
-    width: min(240px, 62vw);
-    height: 180px;
+    flex: 0 0 min(280px, 48vw);
+    width: min(280px, 48vw);
+    height: 200px;
+    scroll-snap-align: start;
   }
 }
 
 @media (max-width: 640px) {
   .ff-warehouse-card {
-    flex-basis: min(220px, 78vw);
-    width: min(220px, 78vw);
-    height: 168px;
+    flex-basis: min(260px, 82vw);
+    width: min(260px, 82vw);
+    height: 180px;
   }
 
   .ff-warehouse-card-caption {
@@ -6907,17 +6913,36 @@ body:has(.page-fulfillment) #breadcrumbSection {
 
 .page-fulfillment .ff-warehouse-cards-grid {
   display: flex;
-  gap: 14px;
+  gap: 16px;
+  width: 100%;
 }
 
 .page-fulfillment .ff-warehouse-card {
+  flex: 1 1 0;
+  min-width: 0;
+  width: auto;
   min-height: 0;
-  height: 190px;
+  height: 220px;
 }
 
 .page-fulfillment .ff-warehouse-card-img {
   min-height: 0;
   height: 100%;
+}
+
+@media (max-width: 1100px) {
+  .page-fulfillment .ff-warehouse-cards-grid {
+    gap: 14px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    cursor: grab;
+  }
+
+  .page-fulfillment .ff-warehouse-card {
+    flex: 0 0 min(280px, 48vw);
+    width: min(280px, 48vw);
+    height: 200px;
+  }
 }
 
 .page-fulfillment .ff-warehouse-slider-frame {
@@ -6995,9 +7020,12 @@ body:has(.page-fulfillment) #breadcrumbSection {
 
   .page-fulfillment .ff-warehouse-cards-grid {
     display: flex;
+    overflow-x: auto;
   }
 
   .page-fulfillment .ff-warehouse-card {
+    flex: 0 0 min(260px, 82vw);
+    width: min(260px, 82vw);
     height: 180px;
   }
 
