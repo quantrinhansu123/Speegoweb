@@ -7338,8 +7338,8 @@ body.home .speego-route-logo-card:hover {
    ========================================================================== */
 .site-header.speego-site-header,
 .site-header {
-  position: sticky !important;
-  top: 0 !important;
+  position: relative !important;
+  top: auto !important;
   left: 0 !important;
   width: 100% !important;
   height: auto !important;
@@ -7348,6 +7348,15 @@ body.home .speego-route-logo-card:hover {
   border-bottom: none !important;
   padding: 0 !important;
   display: block !important;
+}
+
+/* The header is injected into #header-container, so stick the outer wrapper
+   to the document viewport instead of constraining sticky behavior to the
+   header's own short containing block. */
+#header-container {
+  position: sticky !important;
+  top: 0 !important;
+  z-index: 1000 !important;
 }
 
 /* Top Bar: #04243D */
@@ -7606,6 +7615,17 @@ body.home .speego-route-logo-card:hover {
   transition: color 0.2s ease !important;
   padding: 8px 0 !important;
   display: inline-block !important;
+}
+
+@media (min-width: 992px) and (max-width: 1320px) {
+  .speego-nav-menu {
+    gap: 10px !important;
+  }
+
+  .speego-nav-link {
+    font-size: 13px !important;
+    white-space: nowrap !important;
+  }
 }
 
 .speego-nav-item.active .speego-nav-link,

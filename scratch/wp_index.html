@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="vi">
-<head>
+<head><base href="http://localhost/wordpress_demo/wp-content/themes/speego-logistics/explore/"><script>window.SPEEGO_WP_HOME="http:\/\/localhost\/wordpress_demo\/";var speegoInitialRoute="#\/home";if(speegoInitialRoute&&(!window.location.hash||window.location.hash==="#"||window.location.hash==="#/")){window.location.hash=speegoInitialRoute;}document.addEventListener("click",function(event){const link=event.target.closest&&event.target.closest("a[href]");if(!link)return;const href=link.getAttribute("href");if(!href||href.startsWith("//")||href.startsWith("http://")||href.startsWith("https://")||href.startsWith("tel:")||href.startsWith("mailto:"))return;if(href==="/"||href==="/index.html"){event.preventDefault();window.location.hash=(window.location.hash.startsWith("#/en")?"#/en/home":(window.location.hash.startsWith("#/es")?"#/es/inicio":"#/home"));return;}if(href.startsWith("/#")){event.preventDefault();const id=href.slice(2);const targetHome=(window.location.hash.startsWith("#/en")?"#/en/home":(window.location.hash.startsWith("#/es")?"#/es/inicio":"#/home"));const el=document.getElementById(id);if(el){el.scrollIntoView({behavior:"smooth",block:"start"});}else{try{sessionStorage.setItem("speegoScrollTo",id);}catch(_){}window.location.hash=targetHome;}return;}if(href.startsWith("#/")){event.preventDefault();if(window.location.hash!==href){window.location.hash=href;}return;}},true);</script>
   <script>
     (() => {
       // The theme's asset directory is not a second website. If a hash link
@@ -29,10 +29,8 @@
 
   <!-- Shared Stylesheets -->
   <link rel="stylesheet" href="css/style.css?v=ie_services_cards_20260926">
-  <link rel="stylesheet" href="css/speego-custom.css?v=20260926_sticky_wp_spa_v2">
+  <link rel="stylesheet" href="css/speego-custom.css?v=20260926_partners_v3">
   <link rel="stylesheet" href="css/speego-process-tabs.css?v=20260926">
-
-  <script src="js/speego-page-i18n.js?v=20260926"></script>
 
   <script>
     if (new URLSearchParams(window.location.search).has('embedded')) {
@@ -253,19 +251,19 @@
       const ROUTES = {
         '#/home': {
           file: 'pages/Knowledge/VI/vi-01-chuyenmuc-tat-ca-chuyen-muc.html',
-          title: 'SpeeGo Logistics | Tìm nguồn hàng & logistics quốc tế',
+          title: 'SpeeGo Logistics | Global Sourcing, QC & International Supply Chain',
           nav: 'home',
           lang: 'vi'
         },
         '#/en/home': {
           file: 'pages/Knowledge/EN/en-01-chuyenmuc-tat-ca-chuyen-muc.html',
-          title: 'SpeeGo Logistics | Global Sourcing & Logistics',
+          title: 'SpeeGo Logistics | Global Sourcing, QC & International Supply Chain',
           nav: 'home',
           lang: 'en'
         },
         '#/es/inicio': {
           file: 'pages/Knowledge/ES/es-01-chuyenmuc-tat-ca-chuyen-muc.html',
-          title: 'SpeeGo Logistics | Abastecimiento y logística global',
+          title: 'SpeeGo Logistics | Abastecimiento Global, QC y Cadena de Suministro',
           nav: 'home',
           lang: 'es'
         },
@@ -794,12 +792,11 @@
           langCode: 'vi',
           badgeText: 'VN',
           flagHtml: '<img src="assets/flags/vn.png" alt="VN" class="speego-lang-flag" width="18" height="13">',
-          navHome: 'Trang chủ',
-          navAbout: 'Về SpeeGo',
+          navHome: 'Homepage',
           navServices: 'Dịch vụ',
           navProcess: 'Quy trình',
-          navSourcing: 'Tìm nguồn hàng',
-          navRoutes: 'Vận chuyển',
+          navSourcing: 'Sourcing',
+          navRoutes: 'Logistics',
           navOriginChina: 'Xuất phát: Trung Quốc',
           navOriginVietnam: 'Xuất phát: Việt Nam',
           navSourcingIndustries: 'Ngành hàng',
@@ -811,8 +808,8 @@
           navFfEstimate: 'Ước tính chi phí',
           navFfPolicy: 'Chính sách dịch vụ',
           navFulfillment: 'Fulfillment',
-          navImportExport: 'Xuất nhập khẩu',
-          navKnowledge: 'Kiến thức',
+          navImportExport: 'Import & Export',
+          navKnowledge: 'Knowledge',
           quoteBtn: 'Nhận báo giá',
           policyToggle: 'Chính sách',
           policyPrivacy: 'Chính sách bảo mật',
@@ -859,7 +856,6 @@
           badgeText: 'EN',
           flagHtml: '<img src="assets/flags/us.png" alt="US" class="speego-lang-flag" width="18" height="13">',
           navHome: 'Homepage',
-          navAbout: 'About',
           navServices: 'Services',
           navProcess: 'Process',
           navSourcing: 'Sourcing',
@@ -922,12 +918,11 @@
           langCode: 'es',
           badgeText: 'ES',
           flagHtml: '<svg class="speego-lang-flag" viewBox="0 0 3 2" width="18" height="13" aria-hidden="true" style="border-radius:2px;box-shadow:0 1px 2px rgba(0,0,0,0.15);"><rect width="3" height="2" fill="#c60b1e"/><rect y="0.5" width="3" height="1" fill="#ffc400"/></svg>',
-          navHome: 'Inicio',
-          navAbout: 'Acerca de',
+          navHome: 'Homepage',
           navServices: 'Servicios',
           navProcess: 'Proceso',
-          navSourcing: 'Abastecimiento',
-          navRoutes: 'Logística',
+          navSourcing: 'Sourcing',
+          navRoutes: 'Logistics',
           navOriginChina: 'Origen: China',
           navOriginVietnam: 'Origen: Vietnam',
           navSourcingIndustries: 'Industrias',
@@ -939,8 +934,8 @@
           navFfEstimate: 'Estimación de costos',
           navFfPolicy: 'Política de servicio',
           navFulfillment: 'Fulfillment',
-          navImportExport: 'Importación y exportación',
-          navKnowledge: 'Conocimientos',
+          navImportExport: 'Import & Export',
+          navKnowledge: 'Knowledge',
           quoteBtn: 'Cotizar',
           policyToggle: 'Políticas',
           policyPrivacy: 'Política de Privacidad',
@@ -996,7 +991,7 @@
         // Generic updater for all data-i18n elements
         const I18N_MAP = {
           nav_home: t.navHome,
-          nav_about: t.navAbout,
+          nav_about: 'About',
           nav_services: t.navServices,
           nav_process: t.navProcess,
           nav_sourcing: t.navSourcing,
@@ -1062,10 +1057,6 @@
           }
         });
 
-        [document.getElementById('navLinkHome'), document.getElementById('mNavLinkHome')]
-          .filter(Boolean)
-          .forEach(link => { link.textContent = t.navHome; });
-
         // Navigation links href mapping
         const navItems = [
           { id: 'navLinkHome', mId: 'mNavLinkHome', href: isVi ? '#/home' : (isEs ? '#/es/inicio' : '#/en/home') },
@@ -1116,41 +1107,6 @@
         document.querySelectorAll('.speego-lang-pill').forEach(pill => {
           const pillLang = pill.getAttribute('data-lang');
           pill.classList.toggle('active', pillLang === langKey);
-        });
-      }
-
-      function translatePageContent(container, lang) {
-        const dictionary = window.SPEEGO_I18N_DATA && window.SPEEGO_I18N_DATA[lang];
-        if (!container || !dictionary) return;
-
-        // The last two homepage news cards predate the shared translation
-        // attributes, although their translations already exist in the page
-        // dictionary. Attach keys here so they follow the selected language.
-        const newsCards = container.querySelectorAll('#news-speego .speego-service-card');
-        [2, 3].forEach(cardIndex => {
-          const card = newsCards[cardIndex];
-          if (!card) return;
-          const itemNumber = cardIndex + 1;
-          const title = card.querySelector('.speego-service-title');
-          const category = card.querySelector('.speego-service-body > span');
-          const description = card.querySelector('.speego-service-text');
-          const linkLabel = card.querySelector('.speego-service-link span');
-          if (category) category.setAttribute('data-i18n', `news${itemNumber}_cat`);
-          if (title) title.setAttribute('data-i18n', `news${itemNumber}_title`);
-          if (description) description.setAttribute('data-i18n', `news${itemNumber}_desc`);
-          if (linkLabel) linkLabel.setAttribute('data-i18n', 'news_read');
-        });
-
-        container.querySelectorAll('[data-i18n]').forEach(el => {
-          const value = dictionary[el.getAttribute('data-i18n')];
-          if (typeof value !== 'string') return;
-          if (value.includes('<')) el.innerHTML = value;
-          else el.textContent = value;
-        });
-
-        container.querySelectorAll('[data-i18n-ph]').forEach(el => {
-          const value = dictionary[el.getAttribute('data-i18n-ph')];
-          if (typeof value === 'string') el.setAttribute('placeholder', value);
         });
       }
 
@@ -1656,12 +1612,6 @@
           const targetRoute = getCounterpartRoute(currentHash, selectedLang);
           currentLang = selectedLang;
           updateShellLanguage(selectedLang);
-          if (ROUTES[currentHash] && ROUTES[currentHash].nav === 'home') {
-            const localizedUrl = new URL(window.location.href);
-            if (selectedLang === 'vi') localizedUrl.searchParams.delete('lang');
-            else localizedUrl.searchParams.set('lang', selectedLang);
-            window.history.replaceState({}, '', localizedUrl.pathname + localizedUrl.search + currentHash);
-          }
           window.location.hash = targetRoute;
         }
 
@@ -1936,10 +1886,9 @@
 
         const appMain = document.getElementById('app-main');
         if (!appMain) return;
-        const hasServerRenderedContent = appMain.getAttribute('data-speego-prerendered-route') === hash;
 
         // Show loading state
-        if ((!IS_EMBEDDED || !appMain.querySelector('.page-container')) && !hasServerRenderedContent) appMain.innerHTML = `
+        if (!IS_EMBEDDED || !appMain.querySelector('.page-container')) appMain.innerHTML = `
           <div class="app-loading-state">
             <div class="loading-spinner"></div>
             <div>${currentLang === 'en' ? 'Loading page...' : 'Đang tải trang...'}</div>
@@ -1952,7 +1901,6 @@
           // routes can share one fallback file while their editable content
           // is different (for example Home and Knowledge).
           let pageHtml = cache.pages[hash];
-          if (!pageHtml && hasServerRenderedContent) pageHtml = appMain.innerHTML;
           if (!pageHtml) {
             if (window.SPEEGO_WP_HOME) {
               const editable = await fetchEditableContent({ route: hash });
@@ -1970,7 +1918,6 @@
 
           // Inject into main
           appMain.innerHTML = pageHtml;
-          if (route.nav === 'home') translatePageContent(appMain, currentLang);
 
           // Initialize Hero Console interactive tabs / form / tracking
           initHeroConsole();

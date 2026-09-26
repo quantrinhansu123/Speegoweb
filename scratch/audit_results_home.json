@@ -1,0 +1,334 @@
+{
+  "wpHome": {
+    "label": "Local WP Home",
+    "targetUrl": "http://localhost/wordpress_demo/",
+    "failedRequests": [],
+    "logs": [],
+    "domInfo": {
+      "title": "SpeeGo Logistics | Global Sourcing, QC & International Supply Chain",
+      "lang": "vi",
+      "totalImages": 8,
+      "brokenImages": [],
+      "sections": [
+        "header-container",
+        "masthead",
+        "speegoPolicyToggle",
+        "speego-policy-dropdown",
+        "policyPrivacyLink",
+        "policyTermsLink",
+        "headerLogoLink",
+        "site-navigation",
+        "menu-main-menu",
+        "navLinkHome",
+        "navLinkAbout",
+        "navLinkSourcing",
+        "navLinkRoutes",
+        "navLinkOriginChina",
+        "navLinkOriginVietnam",
+        "navLinkFulfillment",
+        "navLinkImportExport",
+        "navLinkKnowledge",
+        "mHeaderCtaBtn",
+        "speegoLangSelector"
+      ]
+    }
+  },
+  "vercelHome": {
+    "label": "Vercel Home",
+    "targetUrl": "https://speegoweb.vercel.app/",
+    "failedRequests": [
+      {
+        "url": "net::ERR_ABORTED",
+        "error": "net::ERR_ABORTED"
+      }
+    ],
+    "logs": [
+      {
+        "source": "other",
+        "level": "warning",
+        "text": "Tracking Prevention blocked access to storage for https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js.",
+        "timestamp": 1790439228154.088,
+        "url": "https://speegoweb.vercel.app/",
+        "lineNumber": 771
+      },
+      {
+        "source": "other",
+        "level": "warning",
+        "text": "Tracking Prevention blocked access to storage for https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js.",
+        "timestamp": 1790439228154.197,
+        "url": "https://speegoweb.vercel.app/",
+        "lineNumber": 771
+      },
+      {
+        "source": "other",
+        "level": "warning",
+        "text": "Tracking Prevention blocked access to storage for https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js.",
+        "timestamp": 1790439228154.245,
+        "url": "https://speegoweb.vercel.app/",
+        "lineNumber": 771
+      },
+      {
+        "source": "other",
+        "level": "warning",
+        "text": "Tracking Prevention blocked access to storage for https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js.",
+        "timestamp": 1790439228154.298,
+        "url": "https://speegoweb.vercel.app/",
+        "lineNumber": 771
+      },
+      {
+        "source": "other",
+        "level": "warning",
+        "text": "Tracking Prevention blocked access to storage for https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js.",
+        "timestamp": 1790439228154.338,
+        "url": "https://speegoweb.vercel.app/",
+        "lineNumber": 771
+      },
+      {
+        "source": "other",
+        "level": "warning",
+        "text": "Tracking Prevention blocked access to storage for https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js.",
+        "timestamp": 1790439228154.377,
+        "url": "https://speegoweb.vercel.app/",
+        "lineNumber": 771
+      },
+      {
+        "source": "other",
+        "level": "warning",
+        "text": "Tracking Prevention blocked access to storage for https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js.",
+        "timestamp": 1790439228154.43,
+        "url": "https://speegoweb.vercel.app/",
+        "lineNumber": 771
+      },
+      {
+        "source": "other",
+        "level": "warning",
+        "text": "Tracking Prevention blocked access to storage for https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js.",
+        "timestamp": 1790439228154.469,
+        "url": "https://speegoweb.vercel.app/",
+        "lineNumber": 771
+      }
+    ],
+    "domInfo": {
+      "title": "SpeeGo Logistics | Global Sourcing, QC & International Supply Chain",
+      "h1": "Từ tìm nguồn hàng\nĐến\nGiao hàng toàn cầu",
+      "lang": "vi",
+      "totalImages": 43,
+      "brokenImages": [
+        {
+          "src": "https://speegoweb.vercel.app/wp-content/themes/logistica/images/013-speego-logistics-services-3.jpg",
+          "alt": "Fulfillment",
+          "visible": true,
+          "className": ""
+        },
+        {
+          "src": "https://speegoweb.vercel.app/wp-content/themes/logistica/images/017-speego-logistics-services-4.jpg",
+          "alt": "Xuất nhập khẩu",
+          "visible": true,
+          "className": ""
+        },
+        {
+          "src": "https://speegoweb.vercel.app/wp-content/themes/logistica/images/logos-partners/025-Vietnam_Airlines_logo.svg_.png",
+          "alt": "Vietnam Airlines Cargo",
+          "visible": false,
+          "className": "speego-trust-logo-img"
+        },
+        {
+          "src": "https://speegoweb.vercel.app/wp-content/themes/logistica/images/logos-partners/029-Press-Release-image-Cathay-Cargo-Logo-scaled.png",
+          "alt": "Cathay Cargo",
+          "visible": false,
+          "className": "speego-trust-logo-img"
+        },
+        {
+          "src": "https://speegoweb.vercel.app/wp-content/themes/logistica/images/logos-partners/028-Singapore-Airlines-Cargo-Logo-scaled.png",
+          "alt": "Singapore Airlines Cargo",
+          "visible": false,
+          "className": "speego-trust-logo-img"
+        },
+        {
+          "src": "https://speegoweb.vercel.app/wp-content/themes/logistica/images/logos-partners/024-American-Airlines-Cargo_0.png",
+          "alt": "American Airlines Cargo",
+          "visible": false,
+          "className": "speego-trust-logo-img"
+        },
+        {
+          "src": "https://speegoweb.vercel.app/wp-content/themes/logistica/images/logos-partners/026-Air_Canada_Cargo_logo.svg_.png",
+          "alt": "Air Canada Cargo",
+          "visible": false,
+          "className": "speego-trust-logo-img"
+        },
+        {
+          "src": "https://speegoweb.vercel.app/wp-content/themes/logistica/images/logos-partners/023-China-Eastern-Airlines-Logo-scaled.png",
+          "alt": "China Eastern Airlines Cargo",
+          "visible": false,
+          "className": "speego-trust-logo-img"
+        },
+        {
+          "src": "https://speegoweb.vercel.app/wp-content/themes/logistica/images/logos-partners/027-Qantas_Freight_Logo.svg_.png",
+          "alt": "Qantas Freight",
+          "visible": false,
+          "className": "speego-trust-logo-img"
+        },
+        {
+          "src": "https://speegoweb.vercel.app/wp-content/themes/logistica/images/logos-partners/031-Logo_di_Air_China_Cargo.png",
+          "alt": "Air China Cargo",
+          "visible": false,
+          "className": "speego-trust-logo-img"
+        },
+        {
+          "src": "https://speegoweb.vercel.app/wp-content/themes/logistica/images/logos-partners/032-Hong_Kong_Airlines-Logo.wine_-scaled.png",
+          "alt": "Hong Kong Airlines Cargo",
+          "visible": false,
+          "className": "speego-trust-logo-img"
+        },
+        {
+          "src": "https://speegoweb.vercel.app/wp-content/themes/logistica/images/logos-partners/022-UPS_Logo_Shield_2017.svg-1.png",
+          "alt": "UPS Supply Chain Solutions",
+          "visible": false,
+          "className": "speego-trust-logo-img"
+        },
+        {
+          "src": "https://speegoweb.vercel.app/wp-content/themes/logistica/images/logos-partners/043-ft-logo.png",
+          "alt": "FT Express Freight Logistics",
+          "visible": false,
+          "className": "speego-trust-logo-img"
+        },
+        {
+          "src": "https://speegoweb.vercel.app/wp-content/themes/logistica/images/logos-partners/020-image-7.png",
+          "alt": "Global Logistics Partner",
+          "visible": false,
+          "className": "speego-trust-logo-img"
+        },
+        {
+          "src": "https://speegoweb.vercel.app/wp-content/themes/logistica/images/logos-partners/021-image-3.png",
+          "alt": "International Cargo Network",
+          "visible": false,
+          "className": "speego-trust-logo-img"
+        },
+        {
+          "src": "https://speegoweb.vercel.app/wp-content/themes/logistica/images/logos-partners/025-Vietnam_Airlines_logo.svg_.png",
+          "alt": "Vietnam Airlines Cargo",
+          "visible": false,
+          "className": "speego-trust-logo-img"
+        },
+        {
+          "src": "https://speegoweb.vercel.app/wp-content/themes/logistica/images/logos-partners/029-Press-Release-image-Cathay-Cargo-Logo-scaled.png",
+          "alt": "Cathay Cargo",
+          "visible": false,
+          "className": "speego-trust-logo-img"
+        },
+        {
+          "src": "https://speegoweb.vercel.app/wp-content/themes/logistica/images/logos-partners/028-Singapore-Airlines-Cargo-Logo-scaled.png",
+          "alt": "Singapore Airlines Cargo",
+          "visible": false,
+          "className": "speego-trust-logo-img"
+        },
+        {
+          "src": "https://speegoweb.vercel.app/wp-content/themes/logistica/images/logos-partners/024-American-Airlines-Cargo_0.png",
+          "alt": "American Airlines Cargo",
+          "visible": false,
+          "className": "speego-trust-logo-img"
+        },
+        {
+          "src": "https://speegoweb.vercel.app/wp-content/themes/logistica/images/logos-partners/026-Air_Canada_Cargo_logo.svg_.png",
+          "alt": "Air Canada Cargo",
+          "visible": false,
+          "className": "speego-trust-logo-img"
+        },
+        {
+          "src": "https://speegoweb.vercel.app/wp-content/themes/logistica/images/logos-partners/023-China-Eastern-Airlines-Logo-scaled.png",
+          "alt": "China Eastern Airlines Cargo",
+          "visible": false,
+          "className": "speego-trust-logo-img"
+        },
+        {
+          "src": "https://speegoweb.vercel.app/wp-content/themes/logistica/images/logos-partners/027-Qantas_Freight_Logo.svg_.png",
+          "alt": "Qantas Freight",
+          "visible": false,
+          "className": "speego-trust-logo-img"
+        },
+        {
+          "src": "https://speegoweb.vercel.app/wp-content/themes/logistica/images/logos-partners/031-Logo_di_Air_China_Cargo.png",
+          "alt": "Air China Cargo",
+          "visible": false,
+          "className": "speego-trust-logo-img"
+        },
+        {
+          "src": "https://speegoweb.vercel.app/wp-content/themes/logistica/images/logos-partners/032-Hong_Kong_Airlines-Logo.wine_-scaled.png",
+          "alt": "Hong Kong Airlines Cargo",
+          "visible": false,
+          "className": "speego-trust-logo-img"
+        },
+        {
+          "src": "https://speegoweb.vercel.app/wp-content/themes/logistica/images/logos-partners/022-UPS_Logo_Shield_2017.svg-1.png",
+          "alt": "UPS Supply Chain Solutions",
+          "visible": false,
+          "className": "speego-trust-logo-img"
+        },
+        {
+          "src": "https://speegoweb.vercel.app/wp-content/themes/logistica/images/logos-partners/043-ft-logo.png",
+          "alt": "FT Express Freight Logistics",
+          "visible": false,
+          "className": "speego-trust-logo-img"
+        },
+        {
+          "src": "https://speegoweb.vercel.app/wp-content/themes/logistica/images/logos-partners/020-image-7.png",
+          "alt": "Global Logistics Partner",
+          "visible": false,
+          "className": "speego-trust-logo-img"
+        },
+        {
+          "src": "https://speegoweb.vercel.app/wp-content/themes/logistica/images/logos-partners/021-image-3.png",
+          "alt": "International Cargo Network",
+          "visible": false,
+          "className": "speego-trust-logo-img"
+        },
+        {
+          "src": "https://speegoweb.vercel.app/wp-content/uploads/sites/2/2023/08/loaded-container-cargo-ship-is-seen-front-as-it-speeds-ocean-generative-ai.jpg",
+          "alt": "Ocean freight trends",
+          "visible": true,
+          "className": ""
+        },
+        {
+          "src": "https://speegoweb.vercel.app/wp-content/uploads/sites/2/2023/08/global-logistic-airplane-parcel-box-concept-air-delivery-shipping-generative-ai.jpg",
+          "alt": "Air Cargo",
+          "visible": true,
+          "className": ""
+        },
+        {
+          "src": "https://speegoweb.vercel.app/wp-content/uploads/sites/2/2023/08/foreman-control-loading-containers-box-from-cargo-freight-ship-import-export-created-with-generative-ai-technology-1060x398.jpg",
+          "alt": "Factory Sourcing",
+          "visible": true,
+          "className": ""
+        },
+        {
+          "src": "https://speegoweb.vercel.app/wp-content/uploads/sites/2/2023/08/futuristic-truck-with-neon-lights-night-roadcreated-with-generative-ai-technology.jpg",
+          "alt": "Technology in Logistics",
+          "visible": true,
+          "className": ""
+        }
+      ],
+      "sections": [
+        "fontello-css",
+        "bootstrap-css",
+        "elementor-icons-fa-solid-css",
+        "elementor-icons-fa-brands-css",
+        "logistica-main-css",
+        "logistica-style-css",
+        "speego-custom-css",
+        "speego-process-tabs-css",
+        "page",
+        "masthead",
+        "speego-policy-dropdown",
+        "site-navigation",
+        "menu-main-menu",
+        "speego-lang-toggle",
+        "speego-current-lang-flag",
+        "speego-current-lang-text",
+        "speego-lang-dropdown",
+        "speego-explore-panel",
+        "speego-explore-frame",
+        "home"
+      ]
+    }
+  }
+}
