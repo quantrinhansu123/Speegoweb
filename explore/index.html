@@ -12,14 +12,14 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,600;1,700;1,800&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
 
-  <!-- Shared Stylesheet -->
+  <!-- Shared Stylesheets -->
   <link rel="stylesheet" href="css/style.css?v=ie_services_cards_20260926">
+  <link rel="stylesheet" href="css/speego-custom.css?v=20260926_partners_v3">
+  <link rel="stylesheet" href="css/speego-process-tabs.css?v=20260926">
 
   <script>
     if (new URLSearchParams(window.location.search).has('embedded')) {
       document.documentElement.classList.add('speego-embedded');
-    } else if (window.location.pathname.startsWith('/explore')) {
-      window.location.replace('/' + window.location.hash);
     }
   </script>
 
@@ -234,6 +234,24 @@
 
       // 1. ROUTE DEFINITIONS & PAGE FILE MAPPING
       const ROUTES = {
+        '#/home': {
+          file: 'pages/Knowledge/VI/vi-01-chuyenmuc-tat-ca-chuyen-muc.html',
+          title: 'SpeeGo Logistics | Global Sourcing, QC & International Supply Chain',
+          nav: 'home',
+          lang: 'vi'
+        },
+        '#/en/home': {
+          file: 'pages/Knowledge/EN/en-01-chuyenmuc-tat-ca-chuyen-muc.html',
+          title: 'SpeeGo Logistics | Global Sourcing, QC & International Supply Chain',
+          nav: 'home',
+          lang: 'en'
+        },
+        '#/es/inicio': {
+          file: 'pages/Knowledge/ES/es-01-chuyenmuc-tat-ca-chuyen-muc.html',
+          title: 'SpeeGo Logistics | Abastecimiento Global, QC y Cadena de Suministro',
+          nav: 'home',
+          lang: 'es'
+        },
         // Core 5 Section Primary Routes (Vietnamese)
         '#/knowledge': {
           file: 'pages/Knowledge/VI/vi-01-chuyenmuc-tat-ca-chuyen-muc.html',
@@ -545,6 +563,7 @@
 
       // 1b. TRI-LINGUAL COUNTERPARTS MAPPING (VI ⇄ EN ⇄ ES)
       const TRI_LANG_MAP = [
+        { vi: '#/home', en: '#/en/home', es: '#/es/inicio' },
         { vi: '#/knowledge', en: '#/en/knowledge', es: '#/es/knowledge' },
         { vi: '#/fulfillment', en: '#/en/fulfillment', es: '#/es/fulfillment' },
         { vi: '#/sourcing', en: '#/en/sourcing', es: '#/es/sourcing' },
@@ -586,7 +605,22 @@
 
       let currentLang = 'vi';
 
-            // 2. HELPER: FETCH WITH OFFLINE BUNDLE FALLBACK (file:/// & network offline)
+      // 2. HELPER: FETCH EDITABLE CONTENT FROM WORDPRESS REST API
+      async function fetchEditableContent(params) {
+        if (!window.SPEEGO_WP_HOME) return null;
+        try {
+          const url = new URL('wp-json/speego/v1/content', window.SPEEGO_WP_HOME);
+          Object.entries(params).forEach(([key, value]) => url.searchParams.set(key, value));
+          const response = await fetch(url, { credentials: 'same-origin', cache: 'no-store' });
+          if (!response.ok) return null;
+          return await response.json();
+        } catch (e) {
+          console.warn('WP REST fetch error, falling back to static:', e);
+          return null;
+        }
+      }
+
+      // 2b. HELPER: FETCH WITH OFFLINE BUNDLE FALLBACK (file:/// & network offline)
       async function fetchText(url) {
         // Return from memory cache if available
         if (cache.pages && cache.pages[url]) {
@@ -626,12 +660,24 @@
           return true;
         }
         try {
-          // Parallel fetch header, footer, and cta-form
-          const [header, footer, ctaForm] = await Promise.all([
-            fetchText('partials/header.html'),
-            fetchText('partials/footer.html'),
-            fetchText('partials/cta-form.html')
-          ]);
+          let header = null;
+          let footer = null;
+          let ctaForm = null;
+
+          if (window.SPEEGO_WP_HOME) {
+            const [hdrData, ftrData, ctaData] = await Promise.all([
+              fetchEditableContent({ partial: 'header-' + currentLang }),
+              fetchEditableContent({ partial: 'footer-' + currentLang }),
+              fetchEditableContent({ partial: 'cta-' + currentLang })
+            ]);
+            if (hdrData && hdrData.content) header = hdrData.content;
+            if (ftrData && ftrData.content) footer = ftrData.content;
+            if (ctaData && ctaData.content) ctaForm = ctaData.content;
+          }
+
+          if (!header) header = await fetchText('partials/header.html');
+          if (!footer) footer = await fetchText('partials/footer.html');
+          if (!ctaForm) ctaForm = await fetchText('partials/cta-form.html');
 
           cache.headerHtml = header;
           cache.footerHtml = footer;
@@ -998,6 +1044,10 @@
 
         // Navigation links href mapping
         const navItems = [
+          { id: 'navLinkHome', mId: 'mNavLinkHome', href: isVi ? '#/home' : (isEs ? '#/es/inicio' : '#/en/home') },
+          { id: 'navLinkAbout', mId: 'mNavLinkAbout', href: isVi ? '#/home' : (isEs ? '#/es/inicio' : '#/en/home') },
+          { id: 'headerLogoLink', href: isVi ? '#/home' : (isEs ? '#/es/inicio' : '#/en/home') },
+          { id: 'footerLogoLink', href: isVi ? '#/home' : (isEs ? '#/es/inicio' : '#/en/home') },
           { id: 'navLinkSourcing', mId: 'mNavLinkSourcing', href: isVi ? '#/sourcing' : (isEs ? '#/es/sourcing' : '#/en/sourcing') },
           { id: 'navLinkRoutes', mId: 'mNavLinkRoutes', href: isVi ? '#/logistics/china-to-us-ca-au' : (isEs ? '#/es/logistica/china-a-eeuu-canada-australia' : '#/en/logistics/china-to-us-ca-au') },
           { id: 'navLinkOriginChina', href: isVi ? '#/logistics/china-to-us-ca-au' : (isEs ? '#/es/logistica/china-a-eeuu-canada-australia' : '#/en/logistics/china-to-us-ca-au') },
@@ -1309,6 +1359,8 @@
             else if (trackSearchModal && !trackSearchModal.hidden) closeSearchModal();
           }
         });
+
+        window.openTrackModal = openTrackModal;
       }
 
       // 5. RENDER CTA FORM INSTANCES IN PAGE
@@ -1439,14 +1491,15 @@
           a.addEventListener('click', closeMobileMenu);
         });
 
-        // Smooth scroll for in-page section anchors (#contact-form, subnav links, etc.) without altering SPA hash
+        // Smooth scroll for in-page section anchors (#contact-form, subnav links, About link, etc.)
         document.addEventListener('click', function (e) {
-          const sectionLink = e.target.closest('a.speego-nav-dropdown-link[data-page-route][data-section]');
+          const sectionLink = e.target.closest('a[data-page-route][data-section]');
           if (sectionLink) {
             e.preventDefault();
             const pageRoute = sectionLink.getAttribute('data-page-route');
             const sectionId = sectionLink.getAttribute('data-section');
             const routeMap = {
+              home: { vi: '#/home', en: '#/en/home', es: '#/es/inicio' },
               sourcing: { vi: '#/sourcing', en: '#/en/sourcing', es: '#/es/sourcing' },
               fulfillment: { vi: '#/fulfillment', en: '#/en/fulfillment', es: '#/es/fulfillment' }
             };
@@ -1476,6 +1529,11 @@
             const targetEl = document.getElementById(targetId);
             if (targetEl) {
               targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            } else {
+              const homeRoutes = { vi: '#/home', en: '#/en/home', es: '#/es/inicio' };
+              const targetHome = homeRoutes[currentLang || 'vi'] || '#/home';
+              try { sessionStorage.setItem('speegoScrollTo', targetId); } catch (_) {}
+              window.location.hash = targetHome;
             }
           }
         });
@@ -1675,6 +1733,75 @@
         updateActiveItem();
       }
 
+      // 9b. BIND HERO CONSOLE (Home Page Tabs, Consultation Form & Tracking)
+      function initHeroConsole() {
+        const tabs = document.querySelectorAll('.speego-console-tab');
+        const panes = document.querySelectorAll('.speego-console-pane');
+        if (tabs.length) {
+          tabs.forEach(tab => {
+            tab.onclick = function (e) {
+              e.preventDefault();
+              const targetId = this.getAttribute('data-target');
+              tabs.forEach(t => t.classList.remove('active'));
+              panes.forEach(p => p.classList.remove('active'));
+              this.classList.add('active');
+              const targetPane = document.getElementById(targetId);
+              if (targetPane) targetPane.classList.add('active');
+            };
+          });
+        }
+
+        const heroForm = document.getElementById('speego-hero-consult-form');
+        if (heroForm) {
+          heroForm.onsubmit = function (e) {
+            e.preventDefault();
+            const toast = document.getElementById('toastPopup');
+            const toastText = document.getElementById('toastText');
+            if (toast && toastText) {
+              toastText.textContent = (currentLang === 'en')
+                ? 'Thank you! SpeeGo team will contact you shortly.'
+                : (currentLang === 'es')
+                  ? '¡Gracias! El equipo de SpeeGo se pondrá en contacto pronto.'
+                  : 'Gửi yêu cầu tư vấn thành công! SpeeGo sẽ liên hệ lại sớm nhất.';
+              toast.classList.add('show');
+              setTimeout(() => toast.classList.remove('show'), 3500);
+            }
+            heroForm.reset();
+          };
+        }
+
+        const trackBtn = document.getElementById('speego-track-btn');
+        const trackInput = document.getElementById('speego-track-input');
+        if (trackBtn && trackInput) {
+          const runHeroTrack = () => {
+            const code = (trackInput.value || '').trim();
+            if (!code) {
+              alert(currentLang === 'en' ? 'Please enter a UPS tracking code' : (currentLang === 'es' ? 'Por favor ingrese un número de seguimiento UPS' : 'Vui lòng nhập mã tracking UPS'));
+              trackInput.focus();
+              return;
+            }
+            if (typeof window.openTrackModal === 'function') {
+              window.openTrackModal(code);
+            } else {
+              const fab = document.getElementById('speego-track-fab');
+              if (fab) fab.click();
+            }
+          };
+
+          trackBtn.onclick = function (e) {
+            e.preventDefault();
+            runHeroTrack();
+          };
+
+          trackInput.onkeydown = function (e) {
+            if (e.key === 'Enter') {
+              e.preventDefault();
+              runHeroTrack();
+            }
+          };
+        }
+      }
+
       // 10. ERROR SCREEN DISPLAY
       function renderErrorScreen(title, err) {
         const appMain = document.getElementById('app-main');
@@ -1717,7 +1844,7 @@
         
         // Normalize empty or root hashes to default route
         if (!hash || hash === '#' || hash === '#/') {
-          window.location.hash = '#/knowledge';
+          window.location.hash = window.SPEEGO_WP_HOME ? '#/home' : '#/knowledge';
           return;
         }
 
@@ -1727,13 +1854,17 @@
           return;
         }
 
-        const route = ROUTES[hash] || ROUTES['#/knowledge'];
+        const route = ROUTES[hash] || (window.SPEEGO_WP_HOME ? ROUTES['#/home'] : ROUTES['#/knowledge']);
         currentLang = route.lang || 'vi';
 
         // Update document title
         if (route.title) {
           document.title = route.title;
         }
+
+        // Toggle 'home' class on body for homepage-specific CSS styling
+        document.body.classList.toggle('home', route.nav === 'home');
+        document.body.setAttribute('data-route-nav', route.nav || '');
 
         // Update Shell / Wrapper components for current language
         updateShellLanguage(currentLang);
@@ -1750,15 +1881,29 @@
         `;
 
         try {
-          // Fetch or get from cache
-          let pageHtml = cache.pages[route.file];
+          // Fetch or get from cache (checks WP editable REST endpoint when running in WP)
+          let pageHtml = cache.pages[hash] || cache.pages[route.file];
           if (!pageHtml) {
-            pageHtml = await fetchText(route.file);
-            cache.pages[route.file] = pageHtml;
+            if (window.SPEEGO_WP_HOME) {
+              const editable = await fetchEditableContent({ route: hash });
+              if (editable && editable.content) {
+                pageHtml = editable.content;
+              }
+            }
+            if (!pageHtml) {
+              pageHtml = await fetchText(route.file);
+            }
+            if (pageHtml) {
+              cache.pages[hash] = pageHtml;
+              cache.pages[route.file] = pageHtml;
+            }
           }
 
           // Inject into main
           appMain.innerHTML = pageHtml;
+
+          // Initialize Hero Console interactive tabs / form / tracking
+          initHeroConsole();
 
           if (IS_EMBEDDED && route.nav !== 'shipping-routes') {
             appMain.querySelectorAll('[data-component="cta-form"]').forEach(el => el.remove());
@@ -1837,7 +1982,7 @@
 
           // Update breadcrumbs and active nav menu
           const hideBreadcrumbPages = ['page-sourcing', 'page-fulfillment', 'page-shipping-routes', 'page-import-export'];
-          const shouldHideBreadcrumb = pageContainer && hideBreadcrumbPages.some((cls) => pageContainer.classList.contains(cls));
+          const shouldHideBreadcrumb = (route.nav === 'home') || (pageContainer && hideBreadcrumbPages.some((cls) => pageContainer.classList.contains(cls)));
           renderBreadcrumb(shouldHideBreadcrumb ? [] : breadcrumbs);
           positionPageBreadcrumb(pageContainer);
           const breadcrumbEl = document.getElementById('breadcrumbSection');
