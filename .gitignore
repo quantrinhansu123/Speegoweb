@@ -23,6 +23,7 @@ node_modules/
 
 # Vercel build output
 public/
+artifacts/
 
 # CodeGraph local index
 .codegraph/
