@@ -9241,40 +9241,6 @@ body.speego-seo-page:has([data-nav="knowledge"]) .cta-form-band-section > .conta
 
 .page-container > section:first-of-type.page-hero-2col,
 .page-container > section:first-of-type.ff-hero-dark-section {
-  padding-bottom: clamp(48px, 5vw, 72px) !important;
-}
-
-/* Houston warehouse gallery: 3 large photos, no captions */
-.page-fulfillment .ff-warehouse-cards--lg {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 12px;
-  overflow: visible;
-  cursor: default;
-  scroll-snap-type: none;
-}
-
-.page-fulfillment .ff-warehouse-cards--lg .ff-warehouse-card {
-  flex: none;
-  width: 100%;
-  min-width: 0;
-  height: auto;
-  aspect-ratio: 320 / 206;
-  border-radius: 16px;
-}
-
-.page-fulfillment .ff-warehouse-cards--lg .ff-warehouse-card-img {
-  width: 100%;
-  height: 100%;
-  min-height: 0;
-  object-fit: cover;
-}
-
-@media (max-width: 720px) {
-  .page-fulfillment .ff-warehouse-cards--lg {
-    grid-template-columns: 1fr;
-    gap: 12px;
-  }
 }
 
 /* ==========================================================================
@@ -9815,6 +9781,140 @@ body.speego-seo-page:has([data-nav="knowledge"]) .cta-form-band-section > .conta
   }
 }
 
+/* Fulfillment: looped warehouse carousel, always presenting three clean photos. */
+.page-fulfillment .ff-warehouse-cards-grid {
+  --ff-warehouse-gap: 18px;
+  display: block;
+  width: 100%;
+  overflow: hidden;
+  padding: 3px 0 10px;
+  cursor: default;
+  touch-action: pan-y;
+}
+
+.page-fulfillment .ff-warehouse-track {
+  display: flex;
+  gap: var(--ff-warehouse-gap);
+  width: 100%;
+  transform: translate3d(0, 0, 0);
+  transition: transform 680ms cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
+}
+
+.page-fulfillment .ff-warehouse-track.is-jump {
+  transition: none;
+}
+
+.page-fulfillment .ff-warehouse-card {
+  flex: 0 0 calc((100% - (var(--ff-warehouse-gap) * 2)) / 3);
+  width: calc((100% - (var(--ff-warehouse-gap) * 2)) / 3);
+  min-width: 0;
+  height: clamp(190px, 21vw, 286px);
+  border-radius: 16px;
+  margin: 0;
+}
+
+.page-fulfillment .ff-warehouse-card-caption,
+.page-fulfillment .ff-warehouse-card-title,
+.page-fulfillment .ff-warehouse-card-text {
+  display: none;
+}
+
+.page-fulfillment .ff-warehouse-cards-grid:focus-visible {
+  outline: 3px solid rgba(255, 91, 31, 0.55);
+  outline-offset: 5px;
+}
+
+@media (max-width: 768px) {
+  .page-fulfillment .ff-warehouse-cards-grid {
+    --ff-warehouse-gap: 8px;
+    overflow: hidden;
+  }
+
+  .page-fulfillment .ff-warehouse-card {
+    flex-basis: calc((100% - (var(--ff-warehouse-gap) * 2)) / 3);
+    width: calc((100% - (var(--ff-warehouse-gap) * 2)) / 3);
+    height: clamp(118px, 31vw, 168px);
+    border-radius: 10px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page-fulfillment .ff-warehouse-track {
+    transition-duration: 1ms;
+  }
+}
+
+/* Logistics: use one predictable vertical rhythm, matching Fulfillment. */
+.page-container.page-shipping-routes {
+  --logistics-section-space: clamp(52px, 4.5vw, 68px);
+  --logistics-section-edge: calc(var(--logistics-section-space) / 2);
+}
+
+.page-container.page-shipping-routes > section:not(.page-hero-2col) {
+  padding-top: var(--logistics-section-edge) !important;
+  padding-bottom: var(--logistics-section-edge) !important;
+}
+
+/* The ticker needs one full leading gap. Adjacent sections contribute half
+   from each side, producing the same total gap at every boundary. */
+.page-container.page-shipping-routes > .route-dest-section {
+  padding-top: var(--logistics-section-space) !important;
+}
+
+.page-container.page-shipping-routes > section:last-of-type {
+  padding-bottom: var(--logistics-section-space) !important;
+}
+
+.page-shipping-routes .dest-cards-grid,
+.page-shipping-routes .models-3col-grid,
+.page-shipping-routes .process-8steps-grid,
+.page-shipping-routes .ie-why-grid,
+.page-shipping-routes .ff-faq-list,
+.page-shipping-routes .testimonials-2col-grid {
+  margin-top: 32px;
+}
+
+.page-shipping-routes .hero-h1-clean .hero-h1-line {
+  display: block;
+  white-space: nowrap;
+}
+
+.page-shipping-routes .hero-h1-clean {
+  max-width: 100%;
+  font-size: clamp(34px, 3.1vw, 48px);
+}
+
+/* Enlarge only the Logistics hero artwork while preserving the shared
+   1320px container and its 24px side gutters used by every section below. */
+@media (min-width: 1025px) {
+  .page-shipping-routes .hero-2col-grid {
+    grid-template-columns: minmax(0, 1fr) clamp(390px, 36vw, 500px);
+    gap: clamp(48px, 4.5vw, 68px);
+  }
+
+  .page-shipping-routes .hero-2col-left {
+    padding-right: 0;
+  }
+
+  .page-shipping-routes .hero-2col-right {
+    width: 100%;
+    max-width: 500px;
+  }
+
+  .page-shipping-routes .hero-img-card-wrap img {
+    width: 100%;
+    height: clamp(430px, 42vw, 560px);
+    object-position: center;
+  }
+}
+
+@media (max-width: 1024px) {
+  .page-shipping-routes .hero-2col-grid {
+    row-gap: clamp(32px, 5vw, 40px);
+  }
+}
+
 @media (max-width: 768px) {
   .page-about .about-intro,
   .page-about .about-history,
@@ -9832,6 +9932,24 @@ body.speego-seo-page:has([data-nav="knowledge"]) .cta-form-band-section > .conta
 
   .page-about .about-stats {
     gap: 20px 16px;
+  }
+
+  .page-container.page-shipping-routes {
+    --logistics-section-space: 48px;
+    --logistics-section-edge: 24px;
+  }
+
+  .page-shipping-routes .dest-cards-grid,
+  .page-shipping-routes .models-3col-grid,
+  .page-shipping-routes .process-8steps-grid,
+  .page-shipping-routes .ie-why-grid,
+  .page-shipping-routes .ff-faq-list,
+  .page-shipping-routes .testimonials-2col-grid {
+    margin-top: 24px;
+  }
+
+  .page-shipping-routes .hero-h1-clean .hero-h1-line {
+    white-space: normal;
   }
 }
 
