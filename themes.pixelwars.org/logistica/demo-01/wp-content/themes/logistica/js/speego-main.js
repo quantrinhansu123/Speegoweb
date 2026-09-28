@@ -2025,8 +2025,12 @@ stat_delivery: 'Entrega a Tiempo',
     }
   }
 
-  const seoPageLang = document.body && document.body.getAttribute('data-seo-language');
-  let currentLang = getLangFromQuery() || (i18nData[seoPageLang] ? seoPageLang : null) || safeStorage.getItem('speego_lang') || 'vi';
+  const declaredLang = document.body && (document.body.getAttribute('data-seo-language') || document.body.getAttribute('data-default-lang'));
+  function langFromPath() {
+    const match = (window.location.pathname || '').match(/^\/(en|vi|es)(\/|$)/);
+    return match ? match[1] : null;
+  }
+  let currentLang = (i18nData[declaredLang] ? declaredLang : null) || langFromPath() || safeStorage.getItem('speego_lang') || 'vi';
   if (!i18nData[currentLang]) currentLang = 'vi';
 
   // =========================================================================
@@ -2047,15 +2051,13 @@ stat_delivery: 'Entrega a Tiempo',
     // Keep static hreflang alternate links intact; they already cover EN/VI/ES/x-default
   }
 
-  function syncLangQueryParam(lang) {
+  function syncLangQueryParam() {
     try {
       const url = new URL(window.location.href);
-      if (lang === 'vi') {
-        url.searchParams.delete('lang');
-      } else {
-        url.searchParams.set('lang', lang);
-      }
-      window.history.replaceState({}, '', url.pathname + url.search + url.hash);
+      if (!url.searchParams.has('lang')) return;
+      url.searchParams.delete('lang');
+      const search = url.searchParams.toString();
+      window.history.replaceState({}, '', url.pathname + (search ? `?${search}` : '') + url.hash);
     } catch (e) {}
   }
 
@@ -2227,7 +2229,7 @@ stat_delivery: 'Entrega a Tiempo',
     // Sync service/knowledge links with active language (canonical /{lang}/… URLs)
     const localizedExplorePath = (section, locale) => {
       const routes = {
-        sourcing: { vi: 'sourcing', en: 'sourcing', es: 'sourcing' },
+        sourcing: { vi: 'tim-nguon-hang', en: 'sourcing', es: 'abastecimiento' },
         fulfillment: { vi: 'fulfillment', en: 'fulfillment', es: 'fulfillment' },
         logistics: { vi: 'logistics', en: 'logistics', es: 'logistics' },
         'import-export': { vi: 'xuat-nhap-khau', en: 'import-export', es: 'import-export' },
@@ -2250,6 +2252,8 @@ stat_delivery: 'Entrega a Tiempo',
       '/en/sourcing/': localizedExplorePath('sourcing', lang),
       '/vi/sourcing/': localizedExplorePath('sourcing', lang),
       '/es/sourcing/': localizedExplorePath('sourcing', lang),
+      '/vi/tim-nguon-hang/': localizedExplorePath('sourcing', lang),
+      '/es/abastecimiento/': localizedExplorePath('sourcing', lang),
       '/explore/#/fulfillment': localizedExplorePath('fulfillment', lang),
       '/explore/#/en/fulfillment': localizedExplorePath('fulfillment', lang),
       '/explore/vi/fulfillment/': localizedExplorePath('fulfillment', lang),
@@ -3884,11 +3888,31 @@ stat_delivery: 'Entrega a Tiempo',
     // The current top-bar selector uses direct EN / VI / ES buttons, not a
     // dropdown trigger. Bind options independently so both selector variants
     // remain functional.
+    function siblingLocalePath(targetLang) {
+      const path = window.location.pathname || '/';
+      const match = path.match(/^\/(en|vi|es)(\/.*)?$/);
+      if (!match || match[1] === targetLang) return null;
+      let rest = match[2] || '/';
+      if (!rest.endsWith('/')) rest += '/';
+      const sourcing = {
+        '/sourcing/': { en: '/sourcing/', vi: '/tim-nguon-hang/', es: '/abastecimiento/' },
+        '/tim-nguon-hang/': { en: '/sourcing/', vi: '/tim-nguon-hang/', es: '/abastecimiento/' },
+        '/abastecimiento/': { en: '/sourcing/', vi: '/tim-nguon-hang/', es: '/abastecimiento/' }
+      };
+      if (sourcing[rest]) return `/${targetLang}${sourcing[rest][targetLang]}`;
+      return `/${targetLang}${rest}`.replace(/\/{2,}/g, '/');
+    }
+
     document.querySelectorAll('.speego-lang-option, .speego-lang-pill').forEach(item => {
       item.addEventListener('click', function (e) {
         e.preventDefault();
         const targetLang = this.getAttribute('data-lang');
         if (targetLang) {
+          const nextPath = siblingLocalePath(targetLang);
+          if (nextPath && nextPath !== window.location.pathname) {
+            window.location.assign(nextPath);
+            return;
+          }
           applyLanguage(targetLang);
           syncMobileHeroBannerHeight();
         }

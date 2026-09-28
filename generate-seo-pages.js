@@ -49,7 +49,10 @@ function toSeoUrlPath(hash, lang, file) {
     '#/en/post/quality-control': '/en/sourcing-qc/quality-control/',
     '#/es/post/preparar-su-envio': '/es/guias-de-envio/preparar-su-envio/',
     '#/es/post/recepcion-fulfillment': '/es/fulfillment-almacen/recepcion-fulfillment/',
-    '#/es/post/control-de-calidad': '/es/sourcing-qc/control-de-calidad/'
+    '#/es/post/control-de-calidad': '/es/sourcing-qc/control-de-calidad/',
+    '#/sourcing': '/vi/tim-nguon-hang/',
+    '#/en/sourcing': '/en/sourcing/',
+    '#/es/sourcing': '/es/abastecimiento/',
   };
   if (explicit[hash]) return explicit[hash];
 
@@ -474,10 +477,10 @@ function generate({ root, output }) {
   <script src="/explore/js/cta-band.js?v=cta_motion_20260925"></script>
   ${route.nav === "fulfillment" ? '<script src="/explore/js/fulfillment-estimate.js?v=ff_estimate_20260926"></script>\n  <script src="/explore/js/fulfillment-dock.js?v=ff_dock_fix_20260925e"></script>' : ""}
   <script src="/explore/js/knowledge-article.js"></script>
-  <script src="/wp-content/themes/logistica/js/speego-main.js?v=seo_routes_20260924_langfix1"></script>
+  <script src="/wp-content/themes/logistica/js/speego-main.js?v=seo_slugs_20260928"></script>
 </body>
 </html>`;
-    fs.writeFileSync(outputFile, html, "utf8");
+    fs.writeFileSync(outputFile, localizeKnownSlugs(html, route.lang), "utf8");
   }
 
   // Point homepage discovery links at the full HTML routes so both visitors and crawlers reach page content directly.
@@ -507,6 +510,16 @@ function generate({ root, output }) {
   fs.writeFileSync(path.join(output, "sitemap.xml"), sitemap.join("\n"), "utf8");
   fs.writeFileSync(path.join(output, "robots.txt"), `User-agent: *\nAllow: /\nSitemap: ${origin}/sitemap.xml\n`, "utf8");
   console.log(`Generated ${routes.length} static SEO routes, locale homes, about/contact, sitemap.xml, and robots.txt`);
+}
+
+function localizeKnownSlugs(html, lang) {
+  const sourcing = {
+    en: "/en/sourcing/",
+    vi: "/vi/tim-nguon-hang/",
+    es: "/es/abastecimiento/"
+  }[lang];
+  if (!sourcing) return html;
+  return html.replace(/href=(['"])\/(?:en|vi|es)\/sourcing\/?\1/gi, `href=$1${sourcing}$1`);
 }
 
 function rewriteDiscoveryLinks(html, routeLookup) {
@@ -554,7 +567,7 @@ function writeLocaleHomepages({ homepage, output, origin }) {
     }
     const outFile = path.join(output, lang, "index.html");
     fs.mkdirSync(path.dirname(outFile), { recursive: true });
-    fs.writeFileSync(outFile, html, "utf8");
+    fs.writeFileSync(outFile, localizeKnownSlugs(html, lang), "utf8");
   }
 }
 
@@ -643,12 +656,12 @@ function writeAboutAndContactPages({ homepage, header, footer, origin, output, r
     <main id="app-main">${page.section}</main>
     ${localizedFooter}
   </div>
-  <script src="/wp-content/themes/logistica/js/speego-main.js?v=seo_routes_20260926_urls"></script>
+  <script src="/wp-content/themes/logistica/js/speego-main.js?v=seo_slugs_20260928"></script>
 </body>
 </html>`;
       const outFile = path.join(output, lang, page.slug, "index.html");
       fs.mkdirSync(path.dirname(outFile), { recursive: true });
-      fs.writeFileSync(outFile, html, "utf8");
+      fs.writeFileSync(outFile, localizeKnownSlugs(html, lang), "utf8");
     }
   }
 }

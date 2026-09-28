@@ -22,12 +22,47 @@ const MIME_TYPES = {
   '.webp': 'image/webp'
 };
 
+const REDIRECTS = {
+  '/vi/sourcing': '/vi/tim-nguon-hang/',
+  '/vi/sourcing/': '/vi/tim-nguon-hang/',
+  '/es/sourcing': '/es/abastecimiento/',
+  '/es/sourcing/': '/es/abastecimiento/',
+  '/explore/vi/sourcing': '/vi/tim-nguon-hang/',
+  '/explore/vi/sourcing/': '/vi/tim-nguon-hang/',
+  '/explore/es/sourcing': '/es/abastecimiento/',
+  '/explore/es/sourcing/': '/es/abastecimiento/'
+};
+
 const server = http.createServer((req, res) => {
+  let requestUrl;
+  try {
+    requestUrl = new URL(req.url, 'http://localhost');
+  } catch (e) {
+    res.writeHead(400, { 'Content-Type': 'text/plain; charset=utf-8' });
+    res.end('Bad Request');
+    return;
+  }
+
+  const redirected = REDIRECTS[requestUrl.pathname];
+  if (redirected) {
+    res.writeHead(301, { Location: redirected });
+    res.end();
+    return;
+  }
+
+  if (requestUrl.searchParams.has('lang')) {
+    requestUrl.searchParams.delete('lang');
+    const search = requestUrl.searchParams.toString();
+    res.writeHead(301, { Location: requestUrl.pathname + (search ? `?${search}` : '') });
+    res.end();
+    return;
+  }
+
   let decodedUrl;
   try {
-    decodedUrl = decodeURI(req.url.split('?')[0]);
+    decodedUrl = decodeURI(requestUrl.pathname);
   } catch (e) {
-    decodedUrl = req.url.split('?')[0];
+    decodedUrl = requestUrl.pathname;
   }
 
   let filePath = path.join(ROOT, decodedUrl);
