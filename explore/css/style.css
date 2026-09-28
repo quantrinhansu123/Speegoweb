@@ -9490,12 +9490,6 @@ body.speego-seo-page:has([data-nav="knowledge"]) .cta-form-band-section > .conta
   align-items: center;
 }
 
-/* Bootstrap's container clearfix must not occupy cells in this grid. */
-.page-about .about-vision-inner::before,
-.page-about .about-vision-inner::after {
-  content: none;
-}
-
 .page-about .about-vision-mark {
   min-width: 0;
   max-width: 120px;
