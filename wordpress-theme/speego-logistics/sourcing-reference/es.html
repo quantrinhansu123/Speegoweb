@@ -24,19 +24,7 @@
   <link rel="stylesheet" href="/wp-content/themes/logistica/styleb54d.css?ver=6.8.8">
   <link rel="stylesheet" href="/wp-content/themes/logistica/css/speego-custom.css?v=mobile_tracking_20260923">
   <link rel="stylesheet" href="/wp-content/themes/logistica/css/speego-process-tabs.css">
-  <link rel="stylesheet" href="/explore/css/style.css?v=sourcing_rhythm_20260928">
-  <script>
-    window.addEventListener('click', function (event) {
-      var option = event.target.closest('.speego-lang-option, .speego-lang-pill');
-      if (!option) return;
-      var routes = {"vi":"/vi/sourcing/","en":"/en/sourcing/","es":"/es/sourcing/"};
-      var target = routes[option.getAttribute('data-lang')];
-      if (!target) return;
-      event.preventDefault();
-      event.stopImmediatePropagation();
-      window.location.assign(target);
-    }, true);
-  </script>
+  <link rel="stylesheet" href="/explore/css/style.css?v=ticker_xnk_20260928">
 </head>
 <body class="home wp-theme-logistica elementor-default elementor-template-full-width speego-seo-page" data-seo-language="es">
   <div id="page" class="hfeed site">
@@ -464,7 +452,8 @@
     </div>
   </section>
 
-    <section class="cta-form-band-section" id="contact-form">
+  
+  <section class="cta-form-band-section" id="contact-form">
     <div class="container cta-form-band-grid">
       <div class="cta-band-left">
         <span class="section-tag">AVANCEMOS JUNTOS</span>
@@ -500,6 +489,7 @@
       </div>
     </div>
   </section>
+
 
   <!-- 7. PHOTOS & VIDEO -->
   <section class="prod-floor-section">
@@ -803,6 +793,20 @@
 		</footer>
   </div>
   <script>
+    (function () {
+      var localizedRoutes = {"vi":"/vi/sourcing/","en":"/en/sourcing/","es":"/es/sourcing/"};
+      document.addEventListener('click', function (event) {
+        var option = event.target.closest('.speego-lang-option, .speego-lang-pill');
+        if (!option) return;
+        var target = localizedRoutes[option.getAttribute('data-lang')];
+        if (!target) return;
+        event.preventDefault();
+        event.stopImmediatePropagation();
+        window.location.assign(target);
+      }, true);
+    }());
+  </script>
+  <script>
     function handleConsultSubmit(event) {
       event.preventDefault();
       var form = event.target;
@@ -818,6 +822,6 @@
   <script src="/explore/js/cta-band.js?v=cta_motion_20260925"></script>
   
   <script src="/explore/js/knowledge-article.js"></script>
-  <script src="/wp-content/themes/logistica/js/speego-main.js?v=sourcing_nav_20260928"></script>
+  <script src="/wp-content/themes/logistica/js/speego-main.js?v=seo_routes_20260924_langfix1"></script>
 </body>
 </html>

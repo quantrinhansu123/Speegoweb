@@ -34,7 +34,7 @@ function speego_get_pages_definitions()
         // About Us Pages (Tri-lingual)
         '#/about-us' => [
             'title' => 'Về SpeeGo (About Us)',
-            'slug' => 'about-us',
+            'slug' => 've-chung-toi',
             'file' => 'pages/about/vi-about.html',
             'lang' => 'vi',
         ],
@@ -46,7 +46,7 @@ function speego_get_pages_definitions()
         ],
         '#/es/about-us' => [
             'title' => 'Sobre SpeeGo (ES)',
-            'slug' => 'about-us-es',
+            'slug' => 'sobre-nosotros',
             'file' => 'pages/about/es-about.html',
             'lang' => 'es',
         ],
@@ -97,7 +97,7 @@ function speego_get_pages_definitions()
         // Fulfillment
         '#/fulfillment' => [
             'title' => 'Fulfillment & Kho bãi',
-            'slug' => 'fulfillment',
+            'slug' => 'kho-van',
             'file' => 'pages/fulfillment/vi-fulfillment.html',
             'lang' => 'vi',
         ],
@@ -109,7 +109,7 @@ function speego_get_pages_definitions()
         ],
         '#/es/fulfillment' => [
             'title' => 'Fulfillment y Almacén (ES)',
-            'slug' => 'fulfillment-es',
+            'slug' => 'almacenamiento-es',
             'file' => 'pages/fulfillment/es-fulfillment.html',
             'lang' => 'es',
         ],
@@ -240,19 +240,21 @@ function speego_seed_all_pages($force = false)
     }
 }
 
-define('SPEEGO_THEME_VERSION', '1.1.0');
-
 add_action('after_switch_theme', function () {
-    speego_seed_all_pages(true);
-    update_option('speego_theme_installed_version', SPEEGO_THEME_VERSION);
+    speego_seed_all_pages(false);
 });
 
-// Auto-seed / sync all pages when theme version is upgraded or on initial install
-add_action('init', function () {
-    $installedVersion = get_option('speego_theme_installed_version', '');
-    if ($installedVersion !== SPEEGO_THEME_VERSION) {
-        speego_seed_all_pages(true);
-        update_option('speego_theme_installed_version', SPEEGO_THEME_VERSION);
+// Auto-seed on first admin visit if homepage doesn't exist
+add_action('admin_init', function () {
+    $existing = get_posts([
+        'post_type' => 'page',
+        'post_status' => ['publish', 'draft'],
+        'numberposts' => 1,
+        'meta_key' => '_speego_route_hash',
+        'meta_value' => '#/home',
+    ]);
+    if (!$existing) {
+        speego_seed_all_pages(false);
     }
 });
 
@@ -282,17 +284,7 @@ function speego_register_admin_menus()
         'speego_render_homepage_manager_page'
     );
 
-    // Submenu 2: About Us Manager
-    add_submenu_page(
-        'speego-manager',
-        'Quản lý Trang Về SpeeGo (About Us)',
-        'Về SpeeGo (About)',
-        'edit_pages',
-        'speego-about-manager',
-        'speego_render_about_manager_page'
-    );
-
-    // Submenu 3: Sourcing Headline
+    // Submenu 2: Sourcing Headline
     add_submenu_page(
         'speego-manager',
         'Chỉnh tiêu đề Sourcing',
@@ -302,7 +294,7 @@ function speego_register_admin_menus()
         'speego_render_sourcing_headline_page'
     );
 
-    // Submenu 4: Direct link to Pages
+    // Submenu 3: Direct link to Pages
     add_submenu_page(
         'speego-manager',
         'Tất cả các trang SpeeGo',
@@ -467,9 +459,9 @@ function speego_render_about_manager_page()
     echo '<tbody>';
 
     $languages = [
-        ['name' => 'Tiếng Việt (Mặc định)', 'flag' => '🇻🇳', 'page' => $viAbout, 'url' => home_url('/about-us/'), 'route' => '#/about-us'],
-        ['name' => 'English (Tiếng Anh)', 'flag' => '🇺🇸', 'page' => $enAbout, 'url' => home_url('/about-us-en/'), 'route' => '#/en/about-us'],
-        ['name' => 'Español (Tiếng Tây Ban Nha)', 'flag' => '🇪🇸', 'page' => $esAbout, 'url' => home_url('/about-us-es/'), 'route' => '#/es/about-us'],
+        ['name' => 'Tiếng Việt', 'flag' => '🇻🇳', 'page' => $viAbout, 'url' => home_url(speego_public_route_path('#/about-us')), 'route' => '#/about-us'],
+        ['name' => 'English (Tiếng Anh)', 'flag' => '🇺🇸', 'page' => $enAbout, 'url' => home_url(speego_public_route_path('#/en/about-us')), 'route' => '#/en/about-us'],
+        ['name' => 'Español (Tiếng Tây Ban Nha)', 'flag' => '🇪🇸', 'page' => $esAbout, 'url' => home_url(speego_public_route_path('#/es/about-us')), 'route' => '#/es/about-us'],
     ];
 
     foreach ($languages as $lang) {
@@ -593,9 +585,41 @@ add_action('admin_post_speego_save_sourcing_headline', 'speego_save_sourcing_hea
  */
 function speego_route_hash_for_path($requestPath)
 {
+    $requestPath = rawurldecode((string) wp_parse_url($requestPath, PHP_URL_PATH));
+    $homePath = untrailingslashit((string) wp_parse_url(home_url('/'), PHP_URL_PATH));
+    if ($homePath !== '' && strpos($requestPath, $homePath . '/') === 0) {
+        $requestPath = substr($requestPath, strlen($homePath) + 1);
+    } elseif ($homePath !== '' && $requestPath === $homePath) {
+        $requestPath = '';
+    }
     $requestPath = trim($requestPath, '/');
     if ($requestPath === '') {
         return '';
+    }
+    $routeMap = speego_public_route_map();
+    foreach ($routeMap['pages'] as $routeHash => $definition) {
+        if (trim($definition['path'], '/') === $requestPath) {
+            return $routeHash;
+        }
+    }
+    // Check aliases in route-map
+    $normalized = '/' . $requestPath . '/';
+    if (isset($routeMap['aliases'][$normalized])) {
+        $target = trim($routeMap['aliases'][$normalized], '/');
+        foreach ($routeMap['pages'] as $routeHash => $definition) {
+            if (trim($definition['path'], '/') === $target) {
+                return $routeHash;
+            }
+        }
+    }
+    $normalizedNoSlash = '/' . $requestPath;
+    if (isset($routeMap['aliases'][$normalizedNoSlash])) {
+        $target = trim($routeMap['aliases'][$normalizedNoSlash], '/');
+        foreach ($routeMap['pages'] as $routeHash => $definition) {
+            if (trim($definition['path'], '/') === $target) {
+                return $routeHash;
+            }
+        }
     }
     $aliases = [
         'vi/tim-nguon-hang' => '#/sourcing',
@@ -608,9 +632,24 @@ function speego_route_hash_for_path($requestPath)
         'es/about-us' => '#/es/about-us',
         'about-us' => '#/about-us',
         'about' => '#/about-us',
-        'vi/contact' => '#/home',
-        'en/contact' => '#/en/home',
-        'es/contact' => '#/es/inicio',
+        'vi/contact' => '#/contact',
+        'en/contact' => '#/en/contact',
+        'es/contact' => '#/es/contact',
+        'contact' => '#/en/contact',
+        'vi/sourcing' => '#/sourcing',
+        'es/sourcing' => '#/es/sourcing',
+        'vi/kho-van' => '#/fulfillment',
+        'vi/hoan-tat-don-hang' => '#/fulfillment',
+        'vi/fulfillment' => '#/fulfillment',
+        'es/almacenamiento' => '#/es/fulfillment',
+        'es/cumplimiento' => '#/es/fulfillment',
+        'es/almacen' => '#/es/fulfillment',
+        'es/fulfillment' => '#/es/fulfillment',
+        'vi/ve-chung-toi' => '#/about-us',
+        'es/sobre-nosotros' => '#/es/about-us',
+        'en' => '#/en/home',
+        'vi' => '#/home',
+        'es' => '#/es/inicio',
     ];
     if (isset($aliases[$requestPath])) {
         return $aliases[$requestPath];
@@ -620,6 +659,63 @@ function speego_route_hash_for_path($requestPath)
     }
     return '#/' . $requestPath;
 }
+
+/** Shared public URL definitions for the first multilingual routes. */
+function speego_public_route_map()
+{
+    static $routeMap = null;
+    if ($routeMap !== null) {
+        return $routeMap;
+    }
+    $file = __DIR__ . '/route-map.json';
+    $decoded = is_readable($file) ? json_decode(file_get_contents($file), true) : null;
+    $routeMap = is_array($decoded) && isset($decoded['pages'], $decoded['aliases'])
+        ? $decoded
+        : ['pages' => [], 'aliases' => []];
+    return $routeMap;
+}
+
+function speego_public_route_path($routeHash)
+{
+    $routeMap = speego_public_route_map();
+    return isset($routeMap['pages'][$routeHash]['path']) ? $routeMap['pages'][$routeHash]['path'] : '';
+}
+
+/** Redirect the old home and page slugs to the language-aware canonical URLs. */
+function speego_redirect_public_route_aliases()
+{
+    $requestPath = rawurldecode((string) wp_parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH));
+    $homePath = untrailingslashit((string) wp_parse_url(home_url('/'), PHP_URL_PATH));
+    if ($homePath !== '' && $requestPath === $homePath) {
+        $requestPath = '/';
+    } elseif ($homePath !== '' && strpos($requestPath, $homePath . '/') === 0) {
+        $requestPath = substr($requestPath, strlen($homePath));
+    }
+    $routeMap = speego_public_route_map();
+    $trimmed = trim($requestPath, '/');
+    $normalized = '/' . $trimmed . '/';
+    $normalizedNoSlash = '/' . $trimmed;
+
+    if ($trimmed === '') {
+        $language = isset($_GET['lang']) ? sanitize_key(wp_unslash($_GET['lang'])) : 'en';
+        $destination = $language === 'vi' ? '/vi/' : ($language === 'es' ? '/es/' : '/en/');
+        wp_safe_redirect(home_url($destination), 301);
+        exit;
+    }
+
+    $destination = '';
+    if (isset($routeMap['aliases'][$normalized])) {
+        $destination = $routeMap['aliases'][$normalized];
+    } elseif (isset($routeMap['aliases'][$normalizedNoSlash])) {
+        $destination = $routeMap['aliases'][$normalizedNoSlash];
+    }
+
+    if ($destination !== '' && trim($destination, '/') !== $trimmed) {
+        wp_safe_redirect(home_url($destination), 301);
+        exit;
+    }
+}
+add_action('template_redirect', 'speego_redirect_public_route_aliases', 1);
 
 function speego_resolve_route_page($wp)
 {
@@ -658,11 +754,81 @@ add_filter('redirect_canonical', function ($redirectUrl) {
     if ($homePath !== '' && strpos($path, $homePath . '/') === 0) {
         $path = substr($path, strlen($homePath) + 1);
     }
-    $cleanPath = trim($path, '/');
-    if ($cleanPath !== '' && function_exists('speego_route_hash_for_path') && speego_route_hash_for_path($cleanPath)) {
+    $clean = trim($path, '/');
+    $routeMap = speego_public_route_map();
+    foreach ($routeMap['pages'] as $def) {
+        if (trim($def['path'], '/') === $clean) {
+            return false;
+        }
+    }
+    if (isset($routeMap['aliases']['/' . $clean . '/']) || isset($routeMap['aliases']['/' . $clean])) {
+        return false;
+    }
+    if (in_array($clean, ['vi/sourcing', 'en/sourcing', 'es/sourcing', 'vi/about-us', 'en/about-us', 'es/about-us', 'about-us', 'about', 'vi/ve-chung-toi', 'es/sobre-nosotros', 'vi/tim-nguon-hang', 'es/abastecimiento', 'vi/kho-van', 'es/almacenamiento', 'vi/fulfillment', 'es/fulfillment', 'en', 'vi', 'es'], true)) {
         return false;
     }
     return $redirectUrl;
+});
+
+// Ensure any SpeeGo route loads front-page.php and returns status 200 without 404
+add_filter('pre_handle_404', function ($preempt, $wp_query) {
+    $requestPath = rawurldecode((string) wp_parse_url($_SERVER['REQUEST_URI'] ?? '', PHP_URL_PATH));
+    $homePath = untrailingslashit((string) wp_parse_url(home_url('/'), PHP_URL_PATH));
+    if ($homePath !== '' && strpos($requestPath, $homePath . '/') === 0) {
+        $requestPath = substr($requestPath, strlen($homePath) + 1);
+    }
+    $clean = trim($requestPath, '/');
+    if (function_exists('speego_route_hash_for_path') && speego_route_hash_for_path($clean)) {
+        $wp_query->is_404 = false;
+        status_header(200);
+        return true;
+    }
+    return $preempt;
+}, 10, 2);
+
+add_filter('template_include', function ($template) {
+    $requestPath = rawurldecode((string) wp_parse_url($_SERVER['REQUEST_URI'] ?? '', PHP_URL_PATH));
+    $homePath = untrailingslashit((string) wp_parse_url(home_url('/'), PHP_URL_PATH));
+    if ($homePath !== '' && strpos($requestPath, $homePath . '/') === 0) {
+        $requestPath = substr($requestPath, strlen($homePath) + 1);
+    }
+    $clean = trim($requestPath, '/');
+    if (function_exists('speego_route_hash_for_path') && speego_route_hash_for_path($clean)) {
+        return get_template_directory() . '/front-page.php';
+    }
+    return $template;
+});
+
+
+// Deliver clean plain-text robots.txt and XML sitemap for WordPress
+add_action('init', function () {
+    $requestPath = rawurldecode((string) wp_parse_url($_SERVER['REQUEST_URI'] ?? '', PHP_URL_PATH));
+    $homePath = untrailingslashit((string) wp_parse_url(home_url('/'), PHP_URL_PATH));
+    if ($homePath !== '' && strpos($requestPath, $homePath . '/') === 0) {
+        $requestPath = substr($requestPath, strlen($homePath) + 1);
+    }
+    $requestPath = trim($requestPath, '/');
+    if ($requestPath === 'robots.txt') {
+        header('Content-Type: text/plain; charset=UTF-8');
+        echo "User-agent: *\nAllow: /\nSitemap: " . esc_url(home_url('/sitemap.xml')) . "\n";
+        exit;
+    }
+    if ($requestPath === 'sitemap.xml' || $requestPath === 'wp-sitemap.xml') {
+        header('Content-Type: application/xml; charset=UTF-8');
+        $routeMap = speego_public_route_map();
+        echo '<?xml version="1.0" encoding="UTF-8"?>' . "\n";
+        echo '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">' . "\n";
+        foreach ($routeMap['pages'] as $hash => $page) {
+            $loc = home_url($page['path']);
+            $changefreq = ($page['group'] === 'home') ? 'weekly' : 'monthly';
+            echo "  <url>\n";
+            echo "    <loc>" . esc_url($loc) . "</loc>\n";
+            echo "    <changefreq>{$changefreq}</changefreq>\n";
+            echo "  </url>\n";
+        }
+        echo "</urlset>\n";
+        exit;
+    }
 });
 
 /**
@@ -670,25 +836,10 @@ add_filter('redirect_canonical', function ($redirectUrl) {
  */
 function speego_page_link_fix($link, $post_id)
 {
-    if (is_admin() || wp_is_json_request()) {
-        $route = get_post_meta($post_id, '_speego_route_hash', true);
-        $sourcingPaths = [
-            '#/home' => '/',
-            '#/en/home' => '/?lang=en',
-            '#/es/inicio' => '/?lang=es',
-            '#/about-us' => '/vi/about-us/',
-            '#/en/about-us' => '/en/about-us/',
-            '#/es/about-us' => '/es/about-us/',
-            '#/sourcing' => '/vi/sourcing/',
-            '#/en/sourcing' => '/en/sourcing/',
-            '#/es/sourcing' => '/es/sourcing/',
-        ];
-        if (isset($sourcingPaths[$route])) {
-            return home_url($sourcingPaths[$route]);
-        }
-        if ($route) {
-            return home_url('/' . $route);
-        }
+    $route = get_post_meta($post_id, '_speego_route_hash', true);
+    $publicPath = speego_public_route_path($route);
+    if ($publicPath !== '') {
+        return home_url($publicPath);
     }
     return $link;
 }

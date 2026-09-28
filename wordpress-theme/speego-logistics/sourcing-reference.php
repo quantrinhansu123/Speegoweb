@@ -100,6 +100,30 @@ function speego_render_reference_sourcing($routeHash, $queriedId)
     }
     $referenceContent = $main[2];
 
+    // The checked-in reference carries production metadata; bind each copy to
+    // the active site's canonical URLs so local and production routes agree.
+    $routeHashes = [
+        'vi' => '#/sourcing',
+        'en' => '#/en/sourcing',
+        'es' => '#/es/sourcing',
+    ];
+    $routePaths = [];
+    foreach ($routeHashes as $language => $hash) {
+        $routePaths[$language] = speego_public_route_path($hash);
+    }
+    $canonical = home_url($routePaths[$languages[$routeHash]]);
+    $html = preg_replace('/<link\\s+rel="canonical"\\s+href="[^"]*"\\s*\\/?\\s*>/i', '<link rel="canonical" href="' . esc_url($canonical) . '">', $html, 1);
+    $alternateTags = '';
+    foreach ($routePaths as $language => $path) {
+        $alternateTags .= '<link rel="alternate" hreflang="' . esc_attr($language) . '" href="' . esc_url(home_url($path)) . '">';
+    }
+    $alternateTags .= '<link rel="alternate" hreflang="x-default" href="' . esc_url(home_url($routePaths['en'])) . '">';
+    $html = preg_replace('/(?:\\s*<link\\s+rel="alternate"\\s+hreflang="[^"]+"\\s+href="[^"]*"\\s*\\/?\\s*>)+/i', $alternateTags, $html, 1);
+    $html = preg_replace('/<meta\\s+property="og:url"\\s+content="[^"]*"\\s*\\/?\\s*>/i', '<meta property="og:url" content="' . esc_url($canonical) . '">', $html, 1);
+    if (!get_option('blog_public')) {
+        $html = preg_replace('/<meta\\s+name="robots"\\s+content="[^"]*"\\s*\\/?\\s*>/i', '<meta name="robots" content="noindex,follow">', $html, 1);
+    }
+
     // The Classic editor rewrites complex markup, including inline SVGs.
     // Render the intact reference and keep only the existing headline edit.
     $editedHeadline = speego_sourcing_headline_from_content($content);

@@ -4,6 +4,12 @@
   "cleanUrls": true,
   "trailingSlash": true,
   "redirects": [
+    { "source": "/", "destination": "/en/", "permanent": true },
+    { "source": "/home", "destination": "/vi/", "permanent": true },
+    { "source": "/vi/home", "destination": "/vi/", "permanent": true },
+    { "source": "/en/home", "destination": "/en/", "permanent": true },
+    { "source": "/es/home", "destination": "/es/", "permanent": true },
+    { "source": "/es/inicio", "destination": "/es/", "permanent": true },
     { "source": "/explore/en/sourcing", "destination": "/en/sourcing/", "permanent": true },
     { "source": "/explore/en/fulfillment", "destination": "/en/fulfillment/", "permanent": true },
     { "source": "/explore/en/import-export", "destination": "/en/import-export/", "permanent": true },
@@ -36,6 +42,16 @@
     { "source": "/es/logistica/china-a-eeuu-canada-australia", "destination": "/es/logistics/china-to-us-ca-au/", "permanent": true },
     { "source": "/es/logistica/vietnam-a-eeuu-canada-australia", "destination": "/es/logistics/vietnam-to-us-ca-au/", "permanent": true },
     { "source": "/about-us", "destination": "/en/about-us/", "permanent": true },
+    { "source": "/about", "destination": "/en/about-us/", "permanent": true },
+    { "source": "/en/about", "destination": "/en/about-us/", "permanent": true },
+    { "source": "/vi/about-us", "destination": "/vi/ve-chung-toi/", "permanent": true },
+    { "source": "/vi/about", "destination": "/vi/ve-chung-toi/", "permanent": true },
+    { "source": "/es/about-us", "destination": "/es/sobre-nosotros/", "permanent": true },
+    { "source": "/es/about", "destination": "/es/sobre-nosotros/", "permanent": true },
+    { "source": "/sourcing", "destination": "/en/sourcing/", "permanent": true },
+    { "source": "/explore/en/about-us", "destination": "/en/about-us/", "permanent": true },
+    { "source": "/explore/vi/about-us", "destination": "/vi/ve-chung-toi/", "permanent": true },
+    { "source": "/explore/es/about-us", "destination": "/es/sobre-nosotros/", "permanent": true },
     { "source": "/contact", "destination": "/en/contact/", "permanent": true }
   ]
 }

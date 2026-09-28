@@ -3,16 +3,10 @@ $requestPath = trim(rawurldecode((string) wp_parse_url($_SERVER['REQUEST_URI'], 
 $homePath = trim((string) wp_parse_url(home_url('/'), PHP_URL_PATH), '/');
 if ($homePath !== '' && strpos($requestPath, $homePath . '/') === 0) {
     $requestPath = substr($requestPath, strlen($homePath) + 1);
+} elseif ($homePath !== '' && $requestPath === $homePath) {
+    $requestPath = '';
 }
-if ($requestPath === 'vi/tim-nguon-hang') {
-    $siteBase = wp_json_encode(trailingslashit(home_url('/')), JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_AMP | JSON_HEX_QUOT);
-    status_header(200);
-    echo '<!doctype html><html><head><meta charset="utf-8"><script>';
-    echo 'var route=location.hash;var lang=route.indexOf("#/en/sourcing")===0?"en":route.indexOf("#/es/sourcing")===0?"es":"vi";';
-    echo 'location.replace(' . $siteBase . '+lang+"/sourcing/");';
-    echo '</script></head><body></body></html>';
-    return;
-}
+
 $entry = file_get_contents(__DIR__ . '/explore/index.html');
 if ($entry === false) {
     status_header(500);
@@ -27,8 +21,13 @@ $home = wp_json_encode(home_url('/'), JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_AM
 $queriedId = get_queried_object_id();
 $routeHash = get_post_meta($queriedId, '_speego_route_hash', true);
 if (!$routeHash && function_exists('speego_route_hash_for_path')) {
-    $requestPath = (string) wp_parse_url($_SERVER['REQUEST_URI'] ?? '', PHP_URL_PATH);
     $routeHash = speego_route_hash_for_path($requestPath);
+}
+if (!$queriedId && $routeHash && function_exists('speego_get_page_by_route')) {
+    $matchedPost = speego_get_page_by_route($routeHash);
+    if ($matchedPost) {
+        $queriedId = $matchedPost->ID;
+    }
 }
 require_once __DIR__ . '/sourcing-reference.php';
 $referenceSourcing = speego_render_reference_sourcing($routeHash, $queriedId);
@@ -88,13 +87,16 @@ if (in_array($routeHash, ['#/home', '#/en/home', '#/es/inicio'], true)) {
     $seo = $seoByLanguage[$seoLanguage];
     $seoTitle = $seo['title'];
     $seoDescription = $seo['description'];
-    $canonicalUrl = $seoLanguage === 'vi'
-        ? home_url('/')
-        : add_query_arg('lang', $seoLanguage, home_url('/'));
+    $homepagePaths = [
+        'vi' => speego_public_route_path('#/home'),
+        'en' => speego_public_route_path('#/en/home'),
+        'es' => speego_public_route_path('#/es/inicio'),
+    ];
+    $canonicalUrl = home_url($homepagePaths[$seoLanguage]);
     $alternateUrls = [
-        'vi' => home_url('/'),
-        'en' => add_query_arg('lang', 'en', home_url('/')),
-        'es' => add_query_arg('lang', 'es', home_url('/')),
+        'vi' => home_url($homepagePaths['vi']),
+        'en' => home_url($homepagePaths['en']),
+        'es' => home_url($homepagePaths['es']),
     ];
     $logoUrl = get_template_directory_uri() . '/explore/assets/speego-logo-dark.png';
     $shareImageUrl = get_template_directory_uri() . '/explore/assets/anh-nen.png';
@@ -155,7 +157,7 @@ if (in_array($routeHash, ['#/home', '#/en/home', '#/es/inicio'], true)) {
             esc_url($alternateUrl)
         );
     }
-    $alternateHead .= sprintf('<link rel="alternate" hreflang="x-default" href="%s">', esc_url($alternateUrls['vi']));
+    $alternateHead .= sprintf('<link rel="alternate" hreflang="x-default" href="%s">', esc_url($alternateUrls['en']));
     $alternateLocales = array_values(array_diff(array_column($seoByLanguage, 'locale'), [$seo['locale']]));
     $alternateLocaleHead = '';
     foreach ($alternateLocales as $alternateLocale) {
@@ -355,8 +357,29 @@ if (in_array($routeHash, ['#/about-us', '#/en/about-us', '#/es/about-us', '#/abo
     $currentMeta = $aboutMeta[$langKey];
     $seoTitle = $currentMeta['title'];
     $seoDesc = $currentMeta['description'];
+    $aboutPaths = [
+        'vi' => speego_public_route_path('#/about-us'),
+        'en' => speego_public_route_path('#/en/about-us'),
+        'es' => speego_public_route_path('#/es/about-us'),
+    ];
+    $canonicalUrl = home_url($aboutPaths[$langKey]);
+    $robots = get_option('blog_public') ? 'index,follow,max-image-preview:large' : 'noindex,follow';
+    $alternateHead = '';
+    foreach ($aboutPaths as $language => $path) {
+        $alternateHead .= '<link rel="alternate" hreflang="' . esc_attr($language) . '" href="' . esc_url(home_url($path)) . '">';
+    }
+    $alternateHead .= '<link rel="alternate" hreflang="x-default" href="' . esc_url(home_url($aboutPaths['en'])) . '">';
 
-    $entry = preg_replace('/<title\\b[^>]*>.*?<\\/title>/is', '<title>' . esc_html($seoTitle) . '</title><meta name="description" content="' . esc_attr($seoDesc) . '">', $entry, 1);
+    $aboutSeoHead = '<meta name="description" content="' . esc_attr($seoDesc) . '">'
+        . '<meta name="robots" content="' . esc_attr($robots) . '">'
+        . '<link rel="canonical" href="' . esc_url($canonicalUrl) . '">'
+        . $alternateHead
+        . '<meta property="og:type" content="website">'
+        . '<meta property="og:locale" content="' . esc_attr($currentMeta['locale']) . '">'
+        . '<meta property="og:title" content="' . esc_attr($seoTitle) . '">'
+        . '<meta property="og:description" content="' . esc_attr($seoDesc) . '">'
+        . '<meta property="og:url" content="' . esc_url($canonicalUrl) . '">';
+    $entry = preg_replace('/<title\\b[^>]*>.*?<\\/title>/is', '<title>' . esc_html($seoTitle) . '</title>' . $aboutSeoHead, $entry, 1);
     $entry = preg_replace('/<html\\b([^>]*\\blang=")[^"]*("[^>]*)>/i', '<html$1' . esc_attr($currentMeta['schemaLanguage']) . '$2>', $entry, 1);
 
     // Fetch editable content from WordPress post or fallback to static HTML file
@@ -371,7 +394,7 @@ if (in_array($routeHash, ['#/about-us', '#/en/about-us', '#/es/about-us', '#/abo
     $aboutHtml = '';
     if ($aboutPosts && !empty($aboutPosts[0]->post_content)) {
         $aboutHtml = trim($aboutPosts[0]->post_content);
-        $aboutHtml = preg_replace('#<!--s*/?wp:htmls*-->#i', '', $aboutHtml);
+        $aboutHtml = preg_replace('#<!--\s*/?wp:html\s*-->#i', '', $aboutHtml);
     } elseif (is_readable($currentMeta['file'])) {
         $aboutHtml = trim(file_get_contents($currentMeta['file']));
     }
@@ -431,6 +454,34 @@ if (strpos($entry, 'data-speego-prerendered-route=') === false) {
 require_once __DIR__ . '/sourcing-seo.php';
 $entry = speego_render_sourcing_seo($entry, $routeHash, $queriedId);
 
-$bridge = '<base href="' . $base . '"><script>window.SPEEGO_WP_HOME=' . $home . ';var speegoInitialRoute=' . $route . ';if(speegoInitialRoute&&(!window.location.hash||window.location.hash==="#"||window.location.hash==="#/")&&window.location.pathname==="/"&&/^#\\/(?:home|en\\/home|es\\/inicio)$/.test(speegoInitialRoute)){window.location.hash="#home";}document.addEventListener("click",function(event){const link=event.target.closest&&event.target.closest("a[href]");if(!link)return;const href=link.getAttribute("href");if(!href||href.startsWith("//")||href.startsWith("http://")||href.startsWith("https://")||href.startsWith("tel:")||href.startsWith("mailto:"))return;if(href==="/"||href==="/index.html"){event.preventDefault();window.location.hash="#home";return;}if(href.startsWith("/#")){event.preventDefault();const id=href.slice(2);const targetHome="#home";const el=document.getElementById(id);if(el){el.scrollIntoView({behavior:"smooth",block:"start"});}else{try{sessionStorage.setItem("speegoScrollTo",id);}catch(_){}window.location.hash=targetHome;}return;}if(href.startsWith("#/")){event.preventDefault();if(window.location.hash!==href){window.location.hash=href;}return;}},true);</script>';
+require_once __DIR__ . '/page-seo.php';
+$entry = speego_render_generic_page_seo($entry, $routeHash, $queriedId);
+
+$publicRoutes = [];
+if (function_exists('speego_public_route_map')) {
+    $map = speego_public_route_map();
+    if (isset($map['pages'])) {
+        foreach ($map['pages'] as $h => $def) {
+            $u = home_url($def['path']);
+            $publicRoutes[$h] = $u;
+            $publicRoutes[$def['path']] = $u;
+            $publicRoutes[rtrim($def['path'], '/')] = $u;
+            $publicRoutes['#' . rtrim($def['path'], '/')] = $u;
+            $publicRoutes['#' . $def['path']] = $u;
+        }
+    }
+    if (isset($map['aliases'])) {
+        foreach ($map['aliases'] as $aliasPath => $targetPath) {
+            $u = home_url($targetPath);
+            $publicRoutes[$aliasPath] = $u;
+            $publicRoutes[rtrim($aliasPath, '/')] = $u;
+            $publicRoutes['#' . rtrim($aliasPath, '/')] = $u;
+            $publicRoutes['#' . $aliasPath] = $u;
+        }
+    }
+}
+$publicRoutesJson = wp_json_encode($publicRoutes, JSON_UNESCAPED_SLASHES | JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_AMP | JSON_HEX_QUOT);
+
+$bridge = '<base href="' . $base . '"><script>window.SPEEGO_WP_HOME=' . $home . ';window.SPEEGO_PUBLIC_ROUTES=' . $publicRoutesJson . ';var speegoInitialRoute=' . $route . ';document.addEventListener("click",function(event){const link=event.target.closest&&event.target.closest("a[href]");if(!link)return;const href=link.getAttribute("href");if(!href||href.startsWith("//")||href.startsWith("http://")||href.startsWith("https://")||href.startsWith("tel:")||href.startsWith("mailto:")||href.startsWith("javascript:"))return;if(href==="/"||href==="/index.html"||href==="#home"){event.preventDefault();event.stopImmediatePropagation();var targetHome=(window.SPEEGO_PUBLIC_ROUTES&&window.SPEEGO_PUBLIC_ROUTES[window.speegoInitialRoute||"#/home"])?window.SPEEGO_PUBLIC_ROUTES[window.speegoInitialRoute||"#/home"]:(window.SPEEGO_WP_HOME?window.SPEEGO_WP_HOME+"en/":"/en/");window.location.href=targetHome;return;}if(href.startsWith("/#")){event.preventDefault();const id=href.slice(2);const el=document.getElementById(id);if(el){el.scrollIntoView({behavior:"smooth",block:"start"});}else{try{sessionStorage.setItem("speegoScrollTo",id);}catch(_){}var targetHome=(window.SPEEGO_PUBLIC_ROUTES&&window.SPEEGO_PUBLIC_ROUTES[window.speegoInitialRoute||"#/home"])?window.SPEEGO_PUBLIC_ROUTES[window.speegoInitialRoute||"#/home"]:(window.SPEEGO_WP_HOME?window.SPEEGO_WP_HOME+"en/":"/en/");window.location.href=targetHome;}return;}if(window.SPEEGO_PUBLIC_ROUTES&&window.SPEEGO_PUBLIC_ROUTES[href]){event.preventDefault();event.stopImmediatePropagation();window.location.href=window.SPEEGO_PUBLIC_ROUTES[href];return;}if(window.SPEEGO_WP_HOME&&(href.startsWith("/vi/")||href.startsWith("/en/")||href.startsWith("/es/"))){event.preventDefault();event.stopImmediatePropagation();var cleanHome=window.SPEEGO_WP_HOME.replace(/\/+$/,"");window.location.href=cleanHome+href;return;}if(href.startsWith("#/")){event.preventDefault();event.stopImmediatePropagation();var cleanHash=href.replace(/^#/,"");if(window.SPEEGO_PUBLIC_ROUTES&&window.SPEEGO_PUBLIC_ROUTES[cleanHash]){window.location.href=window.SPEEGO_PUBLIC_ROUTES[cleanHash];return;}if(window.SPEEGO_WP_HOME){var cleanHome=window.SPEEGO_WP_HOME.replace(/\/+$/,"");window.location.href=cleanHome+(cleanHash.startsWith("/")?cleanHash:"/"+cleanHash);}else{window.location.href=cleanHash;}return;}},true);</script>';
 $entry = preg_replace('/<head>/i', '<head>' . $bridge, $entry, 1);
 echo $entry;

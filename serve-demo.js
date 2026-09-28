@@ -22,16 +22,16 @@ const MIME_TYPES = {
   '.webp': 'image/webp'
 };
 
-const REDIRECTS = {
-  '/vi/sourcing': '/vi/tim-nguon-hang/',
-  '/vi/sourcing/': '/vi/tim-nguon-hang/',
-  '/es/sourcing': '/es/abastecimiento/',
-  '/es/sourcing/': '/es/abastecimiento/',
-  '/explore/vi/sourcing': '/vi/tim-nguon-hang/',
-  '/explore/vi/sourcing/': '/vi/tim-nguon-hang/',
-  '/explore/es/sourcing': '/es/abastecimiento/',
-  '/explore/es/sourcing/': '/es/abastecimiento/'
-};
+let REDIRECTS = {};
+try {
+  const routeMapFile = path.join(__dirname, 'route-map.json');
+  if (fs.existsSync(routeMapFile)) {
+    const routeMap = JSON.parse(fs.readFileSync(routeMapFile, 'utf8'));
+    REDIRECTS = routeMap.aliases || {};
+  }
+} catch (e) {
+  console.warn('Could not read route-map.json for REDIRECTS:', e);
+}
 
 const server = http.createServer((req, res) => {
   let requestUrl;
@@ -73,6 +73,16 @@ const server = http.createServer((req, res) => {
 
   if (!fs.existsSync(filePath) && fs.existsSync(filePath + '.html')) {
     filePath = filePath + '.html';
+  }
+
+  if (!fs.existsSync(filePath)) {
+    const localeAssetMatch = decodedUrl.match(/^\/(?:en|vi|es)\/(.+)$/);
+    if (localeAssetMatch) {
+      const fallbackPath = path.join(ROOT, localeAssetMatch[1]);
+      if (fs.existsSync(fallbackPath) && fs.statSync(fallbackPath).isFile()) {
+        filePath = fallbackPath;
+      }
+    }
   }
 
   if (fs.existsSync(filePath) && fs.statSync(filePath).isFile()) {

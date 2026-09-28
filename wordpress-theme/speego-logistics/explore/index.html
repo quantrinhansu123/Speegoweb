@@ -29,9 +29,9 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,600;1,700;1,800&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
 
   <!-- Shared Stylesheets -->
-  <link rel="stylesheet" href="css/style.css?v=speego_v110_20260928">
-  <link rel="stylesheet" href="css/speego-custom.css?v=speego_v110_20260928">
-  <link rel="stylesheet" href="css/speego-process-tabs.css?v=speego_v110_20260928">
+  <link rel="stylesheet" href="css/style.css?v=about_vision_fix_20260928">
+  <link rel="stylesheet" href="css/speego-custom.css?v=20260926_sticky_wp_spa_v2">
+  <link rel="stylesheet" href="css/speego-process-tabs.css?v=20260926">
 
   <script src="js/speego-page-i18n.js?v=20260926"></script>
 
@@ -306,6 +306,12 @@
           nav: 'home',
           lang: 'es'
         },
+        '#/contact': {
+          file: 'pages/home/vi-home.html',
+          title: 'Liên hệ & Nhận báo giá | SpeeGo Logistics',
+          nav: 'home',
+          lang: 'vi'
+        },
         // Core 5 Section Primary Routes (Vietnamese)
         '#/knowledge': {
           file: 'pages/Knowledge/VI/vi-01-chuyenmuc-tat-ca-chuyen-muc.html',
@@ -488,6 +494,12 @@
           nav: 'import-export',
           lang: 'en'
         },
+        '#/en/contact': {
+          file: 'pages/home/en-home.html',
+          title: 'Contact & Request a Quote | SpeeGo Logistics',
+          nav: 'home',
+          lang: 'en'
+        },
 
         // Knowledge Subcategory & Article Routes (English)
         '#/en/shipping-guides': {
@@ -609,6 +621,12 @@
           nav: 'import-export',
           lang: 'es'
         },
+        '#/es/contact': {
+          file: 'pages/home/es-home.html',
+          title: 'Contacto & Solicitar Cotización | SpeeGo Logistics',
+          nav: 'home',
+          lang: 'es'
+        },
 
         // Knowledge Subcategory & Article Routes (Spanish)
         '#/es/guias-de-envio': {
@@ -669,11 +687,10 @@
 
       // 1b. TRI-LINGUAL COUNTERPARTS MAPPING (VI ⇄ EN ⇄ ES)
       const TRI_LANG_MAP = [
-        { vi: '#/about-us', en: '#/en/about-us', es: '#/es/about-us' },
         { vi: '#/home', en: '#/en/home', es: '#/es/inicio' },
         { vi: '#/about-us', en: '#/en/about-us', es: '#/es/about-us' },
-        { vi: '#/about', en: '#/en/about', es: '#/es/about' },
-        { vi: '#/ve-chung-toi', en: '#/en/about-us', es: '#/es/about-us' },
+        { vi: '#/ve-chung-toi', en: '#/en/about-us', es: '#/es/sobre-nosotros' },
+        { vi: '#/about', en: '#/en/about-us', es: '#/es/sobre-nosotros' },
         { vi: '#/knowledge', en: '#/en/knowledge', es: '#/es/knowledge' },
         { vi: '#/fulfillment', en: '#/en/fulfillment', es: '#/es/fulfillment' },
         { vi: '#/sourcing', en: '#/en/sourcing', es: '#/es/sourcing' },
@@ -689,10 +706,17 @@
         { vi: '#/knowledge/tin-xuat-nhap-khau', en: '#/en/import-export-news', es: '#/es/noticias-import-export' },
         { vi: '#/knowledge/chuan-bi-lo-hang', en: '#/en/post/preparing-your-shipment', es: '#/es/post/preparar-su-envio' },
         { vi: '#/knowledge/quy-trinh-nhap-kho', en: '#/en/post/fulfillment-receiving', es: '#/es/post/recepcion-fulfillment' },
-        { vi: '#/knowledge/kiem-soat-chat-luong', en: '#/en/post/quality-control', es: '#/es/post/control-de-calidad' }
+        { vi: '#/knowledge/kiem-soat-chat-luong', en: '#/en/post/quality-control', es: '#/es/post/control-de-calidad' },
+        { vi: '#/contact', en: '#/en/contact', es: '#/es/contact' }
       ];
 
       function getCounterpartRoute(currentHash, targetLang) {
+        if (currentHash === '#/es/sobre-nosotros') {
+          return targetLang === 'vi' ? '#/about-us' : (targetLang === 'en' ? '#/en/about-us' : '#/es/about-us');
+        }
+        if (currentHash === '#/ve-chung-toi') {
+          return targetLang === 'en' ? '#/en/about-us' : (targetLang === 'es' ? '#/es/about-us' : '#/about-us');
+        }
         const found = TRI_LANG_MAP.find(entry => entry.vi === currentHash || entry.en === currentHash || entry.es === currentHash);
         if (found && found[targetLang]) {
           return found[targetLang];
@@ -1159,21 +1183,26 @@
           .filter(Boolean)
           .forEach(link => { link.textContent = t.navHome; });
 
+        const wpBase = (typeof window !== 'undefined' && window.SPEEGO_WP_HOME)
+          ? new URL(window.SPEEGO_WP_HOME).pathname.replace(/\/+$/, '')
+          : '';
+        const withBase = (p) => wpBase ? (wpBase + p) : p;
+
         // Navigation links href mapping
         const navItems = [
-          { id: 'navLinkHome', mId: 'mNavLinkHome', href: '/' },
-          { id: 'navLinkAbout', mId: 'mNavLinkAbout', href: isVi ? '/vi/about-us/' : (isEs ? '/es/about-us/' : '/en/about-us/') },
-          { id: 'headerLogoLink', href: '#home' },
-          { id: 'footerLogoLink', href: '#home' },
-          { id: 'navLinkSourcing', mId: 'mNavLinkSourcing', href: isVi ? '/vi/tim-nguon-hang/' : (isEs ? '/es/abastecimiento/' : '/en/sourcing/') },
-          { id: 'navLinkRoutes', mId: 'mNavLinkRoutes', href: isVi ? '/vi/logistics/' : (isEs ? '/es/logistics/' : '/en/logistics/') },
-          { id: 'navLinkOriginChina', href: isVi ? '/vi/logistics/china-to-us-ca-au/' : (isEs ? '/es/logistics/china-to-us-ca-au/' : '/en/logistics/china-to-us-ca-au/') },
-          { id: 'navLinkOriginVietnam', href: isVi ? '/vi/logistics/vietnam-to-us-ca-au/' : (isEs ? '/es/logistics/vietnam-to-us-ca-au/' : '/en/logistics/vietnam-to-us-ca-au/') },
-          { id: 'navLinkFulfillment', mId: 'mNavLinkFulfillment', href: isVi ? '/vi/fulfillment/' : (isEs ? '/es/fulfillment/' : '/en/fulfillment/') },
-          { id: 'navLinkImportExport', mId: 'mNavLinkImportExport', href: isVi ? '/vi/xuat-nhap-khau/' : (isEs ? '/es/import-export/' : '/en/import-export/') },
-          { id: 'navLinkKnowledge', mId: 'mNavLinkKnowledge', href: isVi ? '/vi/knowledge/' : (isEs ? '/es/knowledge/' : '/en/knowledge/') },
-          { id: 'mHeaderCtaBtn', href: isVi ? '/vi/contact/' : (isEs ? '/es/contact/' : '/en/contact/') },
-          { id: 'headerCtaBtn', href: isVi ? '/vi/contact/' : (isEs ? '/es/contact/' : '/en/contact/') }
+          { id: 'navLinkHome', mId: 'mNavLinkHome', href: withBase(isVi ? '/vi/' : (isEs ? '/es/' : '/en/')) },
+          { id: 'navLinkAbout', mId: 'mNavLinkAbout', href: withBase(isVi ? '/vi/ve-chung-toi/' : (isEs ? '/es/sobre-nosotros/' : '/en/about-us/')) },
+          { id: 'headerLogoLink', href: withBase(isVi ? '/vi/' : (isEs ? '/es/' : '/en/')) },
+          { id: 'footerLogoLink', href: withBase(isVi ? '/vi/' : (isEs ? '/es/' : '/en/')) },
+          { id: 'navLinkSourcing', mId: 'mNavLinkSourcing', href: withBase(isVi ? '/vi/tim-nguon-hang/' : (isEs ? '/es/abastecimiento/' : '/en/sourcing/')) },
+          { id: 'navLinkRoutes', mId: 'mNavLinkRoutes', href: withBase(isVi ? '/vi/logistics/' : (isEs ? '/es/logistica/' : '/en/logistics/')) },
+          { id: 'navLinkOriginChina', href: withBase(isVi ? '/vi/logistics/china-to-us-ca-au/' : (isEs ? '/es/logistica/china-to-us-ca-au/' : '/en/logistics/china-to-us-ca-au/')) },
+          { id: 'navLinkOriginVietnam', href: withBase(isVi ? '/vi/logistics/vietnam-to-us-ca-au/' : (isEs ? '/es/logistica/vietnam-to-us-ca-au/' : '/en/logistics/vietnam-to-us-ca-au/')) },
+          { id: 'navLinkFulfillment', mId: 'mNavLinkFulfillment', href: withBase(isVi ? '/vi/kho-van/' : (isEs ? '/es/almacenamiento/' : '/en/fulfillment/')) },
+          { id: 'navLinkImportExport', mId: 'mNavLinkImportExport', href: withBase(isVi ? '/vi/xuat-nhap-khau/' : (isEs ? '/es/import-export/' : '/en/import-export/')) },
+          { id: 'navLinkKnowledge', mId: 'mNavLinkKnowledge', href: withBase(isVi ? '/vi/kien-thuc/' : (isEs ? '/es/conocimiento/' : '/en/knowledge/')) },
+          { id: 'mHeaderCtaBtn', href: withBase(isVi ? '/vi/lien-he/' : (isEs ? '/es/contacto/' : '/en/contact/')) },
+          { id: 'headerCtaBtn', href: withBase(isVi ? '/vi/lien-he/' : (isEs ? '/es/contacto/' : '/en/contact/')) }
         ];
         navItems.forEach(item => {
           const el = document.getElementById(item.id);
@@ -1197,14 +1226,14 @@
         // Update footer service links
         const footerLinks = document.querySelectorAll('#footerServicesLinks a');
         if (footerLinks.length >= 4) {
-          footerLinks[0].setAttribute('href', isVi ? '/vi/tim-nguon-hang/' : (isEs ? '/es/abastecimiento/' : '/en/sourcing/'));
-          footerLinks[1].setAttribute('href', isVi ? '/vi/logistics/' : (isEs ? '/es/logistics/' : '/en/logistics/'));
-          footerLinks[2].setAttribute('href', isVi ? '/vi/fulfillment/' : (isEs ? '/es/fulfillment/' : '/en/fulfillment/'));
-          footerLinks[3].setAttribute('href', isVi ? '/vi/xuat-nhap-khau/' : (isEs ? '/es/import-export/' : '/en/import-export/'));
+          footerLinks[0].setAttribute('href', withBase(isVi ? '/vi/tim-nguon-hang/' : (isEs ? '/es/abastecimiento/' : '/en/sourcing/')));
+          footerLinks[1].setAttribute('href', withBase(isVi ? '/vi/logistics/' : (isEs ? '/es/logistica/' : '/en/logistics/')));
+          footerLinks[2].setAttribute('href', withBase(isVi ? '/vi/kho-van/' : (isEs ? '/es/almacenamiento/' : '/en/fulfillment/')));
+          footerLinks[3].setAttribute('href', withBase(isVi ? '/vi/xuat-nhap-khau/' : (isEs ? '/es/import-export/' : '/en/import-export/')));
         }
-        const footerKnowledgeLink = document.querySelector('#footerQuickLinks a[href*="knowledge"]');
+        const footerKnowledgeLink = document.querySelector('#footerQuickLinks a[href*="knowledge"], #footerQuickLinks a[href*="kien-thuc"], #footerQuickLinks a[href*="conocimiento"]');
         if (footerKnowledgeLink) {
-          footerKnowledgeLink.setAttribute('href', isVi ? '/vi/knowledge/' : (isEs ? '/es/knowledge/' : '/en/knowledge/'));
+          footerKnowledgeLink.setAttribute('href', withBase(isVi ? '/vi/kien-thuc/' : (isEs ? '/es/conocimiento/' : '/en/knowledge/')));
         }
 
         // Language Selector State
@@ -1263,25 +1292,78 @@
 
       function syncLocalizedContentLinks(container, lang) {
         if (!container) return;
+        const wpBase = (typeof window !== 'undefined' && window.SPEEGO_WP_HOME)
+          ? new URL(window.SPEEGO_WP_HOME).pathname.replace(/\/+$/, '')
+          : '';
+        const withBase = (p) => wpBase ? (wpBase + p) : p;
         const routes = {
-          about: { vi: '/vi/about-us/', en: '/en/about-us/', es: '/es/about-us/' },
-          sourcing: { vi: '/vi/tim-nguon-hang/', en: '/en/sourcing/', es: '/es/abastecimiento/' },
-          logistics: { vi: '/vi/logistics/', en: '/en/logistics/', es: '/es/logistics/' },
-          fulfillment: { vi: '/vi/fulfillment/', en: '/en/fulfillment/', es: '/es/fulfillment/' },
-          importExport: { vi: '/vi/xuat-nhap-khau/', en: '/en/import-export/', es: '/es/import-export/' }
+          home: { vi: withBase('/vi/'), en: withBase('/en/'), es: withBase('/es/') },
+          about: { vi: withBase('/vi/ve-chung-toi/'), en: withBase('/en/about-us/'), es: withBase('/es/sobre-nosotros/') },
+          sourcing: { vi: withBase('/vi/tim-nguon-hang/'), en: withBase('/en/sourcing/'), es: withBase('/es/abastecimiento/') },
+          logistics: { vi: withBase('/vi/logistics/'), en: withBase('/en/logistics/'), es: withBase('/es/logistica/') },
+          fulfillment: { vi: withBase('/vi/kho-van/'), en: withBase('/en/fulfillment/'), es: withBase('/es/almacenamiento/') },
+          importExport: { vi: withBase('/vi/xuat-nhap-khau/'), en: withBase('/en/import-export/'), es: withBase('/es/import-export/') },
+          knowledge: { vi: withBase('/vi/kien-thuc/'), en: withBase('/en/knowledge/'), es: withBase('/es/conocimiento/') },
+          contact: { vi: withBase('/vi/lien-he/'), en: withBase('/en/contact/'), es: withBase('/es/contacto/') }
         };
         const routeByPath = {
-          '/vi/about-us/': 'about', '/en/about-us/': 'about', '/es/about-us/': 'about',
+          '/': 'home', '/vi/': 'home', '/en/': 'home', '/es/': 'home',
+          '/vi/about-us/': 'about', '/vi/ve-chung-toi/': 'about', '/en/about-us/': 'about', '/es/about-us/': 'about', '/es/sobre-nosotros/': 'about',
           '/vi/tim-nguon-hang/': 'sourcing', '/en/sourcing/': 'sourcing', '/es/abastecimiento/': 'sourcing',
-          '/vi/logistics/': 'logistics', '/en/logistics/': 'logistics', '/es/logistics/': 'logistics',
-          '/vi/fulfillment/': 'fulfillment', '/en/fulfillment/': 'fulfillment', '/es/fulfillment/': 'fulfillment',
-          '/vi/xuat-nhap-khau/': 'importExport', '/en/import-export/': 'importExport', '/es/import-export/': 'importExport'
+          '/vi/logistics/': 'logistics', '/en/logistics/': 'logistics', '/es/logistics/': 'logistics', '/es/logistica/': 'logistics',
+          '/vi/fulfillment/': 'fulfillment', '/en/fulfillment/': 'fulfillment', '/es/fulfillment/': 'fulfillment', '/vi/kho-van/': 'fulfillment', '/es/almacenamiento/': 'fulfillment',
+          '/vi/xuat-nhap-khau/': 'importExport', '/en/import-export/': 'importExport', '/es/import-export/': 'importExport',
+          '/vi/knowledge/': 'knowledge', '/en/knowledge/': 'knowledge', '/es/knowledge/': 'knowledge',
+          '/vi/kien-thuc/': 'knowledge', '/es/conocimiento/': 'knowledge',
+          '/vi/contact/': 'contact', '/en/contact/': 'contact', '/es/contact/': 'contact',
+          '/vi/lien-he/': 'contact', '/es/contacto/': 'contact'
         };
+        const headerLogo = document.getElementById('headerLogoLink');
+        if (headerLogo) headerLogo.setAttribute('href', routes.home[lang] || routes.home.vi);
+        const footerLogo = document.getElementById('footerLogoLink');
+        if (footerLogo) footerLogo.setAttribute('href', routes.home[lang] || routes.home.vi);
+        const navHome = document.getElementById('navLinkHome');
+        if (navHome) navHome.setAttribute('href', routes.home[lang] || routes.home.vi);
+
         container.querySelectorAll('a[href]').forEach(link => {
-          const route = routeByPath[link.getAttribute('href')];
+          const hrefVal = link.getAttribute('href');
+          if (!hrefVal) return;
+          if (hrefVal === '#home' || hrefVal === '/' || hrefVal === '/vi/' || hrefVal === '/en/' || hrefVal === '/es/') {
+            link.setAttribute('href', routes.home[lang] || routes.home.vi);
+            return;
+          }
+          if (hrefVal.startsWith('#/') && window.SPEEGO_PUBLIC_ROUTES && window.SPEEGO_PUBLIC_ROUTES[hrefVal]) {
+            link.setAttribute('href', withBase(window.SPEEGO_PUBLIC_ROUTES[hrefVal]));
+            return;
+          }
+          if (wpBase && (hrefVal.startsWith('/vi/') || hrefVal.startsWith('/en/') || hrefVal.startsWith('/es/'))) {
+            link.setAttribute('href', withBase(hrefVal));
+            return;
+          }
+          const cleanHref = wpBase && hrefVal.startsWith(wpBase) ? hrefVal.slice(wpBase.length) : hrefVal;
+          const route = routeByPath[cleanHref];
           if (route) link.setAttribute('href', routes[route][lang] || routes[route].en);
         });
       }
+
+      // Global click handler to intercept any hash routes and navigate cleanly
+      document.addEventListener('click', function (event) {
+        const link = event.target.closest('a[href]');
+        if (!link) return;
+        const href = link.getAttribute('href');
+        if (!href) return;
+        if (href.startsWith('#/')) {
+          if (window.SPEEGO_PUBLIC_ROUTES && window.SPEEGO_PUBLIC_ROUTES[href]) {
+            event.preventDefault();
+            event.stopImmediatePropagation();
+            const wpBase = (typeof window !== 'undefined' && window.SPEEGO_WP_HOME)
+              ? new URL(window.SPEEGO_WP_HOME).pathname.replace(/\/+$/, '')
+              : '';
+            const target = wpBase ? (wpBase + window.SPEEGO_PUBLIC_ROUTES[href]) : window.SPEEGO_PUBLIC_ROUTES[href];
+            window.location.assign(target);
+          }
+        }
+      }, true);
 
       // 4d. TRACKING TIMELINE I18N & DEMO DATA
       const TRACK_EVENT_META = [
@@ -1602,13 +1684,25 @@
           return;
         }
 
+        const wpBase = (typeof window !== 'undefined' && window.SPEEGO_WP_HOME)
+          ? new URL(window.SPEEGO_WP_HOME).pathname.replace(/\/+$/, '')
+          : '';
+        const withBase = (p) => wpBase ? (wpBase + p) : p;
         let html = '';
         items.forEach((item, index) => {
           const isLast = index === items.length - 1;
           if (isLast) {
             html += `<span class="breadcrumb-current">${item.label}</span>`;
           } else {
-            html += `<a href="${index === 0 ? '/' : item.href}" class="breadcrumb-link">${item.label}</a>`;
+            let targetHref = item.href;
+            if (index === 0) {
+              targetHref = withBase(currentLang === 'vi' ? '/vi/' : (currentLang === 'es' ? '/es/' : '/en/'));
+            } else if (window.SPEEGO_PUBLIC_ROUTES && window.SPEEGO_PUBLIC_ROUTES[item.href]) {
+              targetHref = window.SPEEGO_PUBLIC_ROUTES[item.href];
+            } else if (targetHref && targetHref.startsWith('/')) {
+              targetHref = withBase(targetHref);
+            }
+            html += `<a href="${targetHref}" class="breadcrumb-link">${item.label}</a>`;
             html += `<span class="breadcrumb-sep">/</span>`;
           }
         });
@@ -1781,20 +1875,27 @@
           if (selectedLang === currentLang) return;
 
           localStorage.setItem('speego_lang', selectedLang);
+          const wpBase = (typeof window !== 'undefined' && window.SPEEGO_WP_HOME)
+            ? new URL(window.SPEEGO_WP_HOME).pathname.replace(/\/+$/, '')
+            : '';
+          const withBase = (p) => wpBase ? (wpBase + p) : p;
+
           const currentHash = window.location.hash === '#home'
             ? (window.speegoInitialRoute || '#/home')
-            : (window.location.hash || '#/knowledge');
+            : (window.location.hash || window.speegoInitialRoute || '#/knowledge');
           const targetRoute = getCounterpartRoute(currentHash, selectedLang);
-          currentLang = selectedLang;
-          updateShellLanguage(selectedLang);
-          if (ROUTES[currentHash] && ROUTES[currentHash].nav === 'home') {
-            window.speegoInitialRoute = targetRoute;
-            const localizedUrl = new URL(window.location.href);
-            localizedUrl.searchParams.delete('lang');
-            window.history.replaceState({}, '', localizedUrl.pathname + localizedUrl.search + '#home');
-            router();
+          const publicTarget = window.SPEEGO_PUBLIC_ROUTES && window.SPEEGO_PUBLIC_ROUTES[targetRoute];
+          if (publicTarget) {
+            window.location.assign(withBase(publicTarget));
             return;
           }
+          if (ROUTES[currentHash] && ROUTES[currentHash].nav === 'home') {
+            const homePaths = { vi: withBase('/vi/'), en: withBase('/en/'), es: withBase('/es/') };
+            window.location.assign(homePaths[selectedLang] || homePaths.en);
+            return;
+          }
+          currentLang = selectedLang;
+          updateShellLanguage(selectedLang);
           window.location.hash = targetRoute;
         }
 
@@ -2047,10 +2148,16 @@
         
         // Normalize empty or root hashes to default route
         if (!hash || hash === '#' || hash === '#/') {
-          if (window.speegoInitialRoute) hash = window.speegoInitialRoute;
-          else {
-            window.location.hash = window.SPEEGO_WP_HOME ? '#/home' : '#/knowledge';
-            return;
+          if (window.speegoInitialRoute) {
+            hash = window.speegoInitialRoute;
+          } else {
+            const pMatch = (window.location.pathname || '').match(/\/(vi|en|es)(\/|$)/);
+            if (pMatch) {
+              const langCode = pMatch[1];
+              hash = langCode === 'en' ? '#/en/home' : (langCode === 'es' ? '#/es/inicio' : '#/home');
+            } else {
+              hash = '#/home';
+            }
           }
         }
         if (hash === '#home') {
@@ -2521,8 +2628,8 @@
   </script>
   <script src="js/knowledge-article.js"></script>
   <script src="js/cta-band.js"></script>
-  <script src="js/fulfillment-estimate.js?v=speego_v110_20260928"></script>
-  <script src="js/fulfillment-dock.js?v=speego_v110_20260928"></script>
-  <script src="js/about-page.js?v=speego_v110_20260928"></script>
+  <script src="js/fulfillment-estimate.js?v=ff_estimate_20260926"></script>
+  <script src="js/fulfillment-dock.js"></script>
+  <script src="js/about-page.js?v=about_click_slider_20260928"></script>
 </body>
 </html>

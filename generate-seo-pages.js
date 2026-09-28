@@ -1,5 +1,6 @@
 const fs = require("fs");
 const path = require("path");
+const publicRouteDefinitions = require("./wordpress-theme/speego-logistics/route-map.json").pages;
 
 const escapeHtml = (value) => String(value)
   .replace(/&/g, "&amp;")
@@ -28,38 +29,70 @@ function plainText(html) {
 
 /** Canonical public URLs per SpeeGo URL table (/{lang}/…). */
 function toSeoUrlPath(hash, lang, file) {
+  if (publicRouteDefinitions[hash]) return publicRouteDefinitions[hash].path;
   const explicit = {
     // Logistics corridor pages
     '#/logistics/china-to-us-ca-au': '/vi/logistics/china-to-us-ca-au/',
     '#/logistics/vietnam-to-us-ca-au': '/vi/logistics/vietnam-to-us-ca-au/',
     '#/en/logistics/china-to-us-ca-au': '/en/logistics/china-to-us-ca-au/',
     '#/en/logistics/vietnam-to-us-ca-au': '/en/logistics/vietnam-to-us-ca-au/',
-    '#/es/logistica/china-a-eeuu-canada-australia': '/es/logistics/china-to-us-ca-au/',
-    '#/es/logistica/vietnam-a-eeuu-canada-australia': '/es/logistics/vietnam-to-us-ca-au/',
-    // Logistics parent (was shipping-routes / tuyen-van-chuyen)
+    '#/es/logistica/china-a-eeuu-canada-australia': '/es/logistica/china-to-us-ca-au/',
+    '#/es/logistica/vietnam-a-eeuu-canada-australia': '/es/logistica/vietnam-to-us-ca-au/',
+    // Logistics parent
     '#/tuyen-van-chuyen': '/vi/logistics/',
     '#/en/shipping-routes': '/en/logistics/',
-    '#/es/rutas-de-envio': '/es/logistics/',
-    // Posts: /{lang}/{category}/{post-slug}
-    '#/knowledge/chuan-bi-lo-hang': '/vi/huong-dan-van-chuyen/chuan-bi-lo-hang/',
-    '#/knowledge/quy-trinh-nhap-kho': '/vi/fulfillment-kho-van/quy-trinh-nhap-kho/',
-    '#/knowledge/kiem-soat-chat-luong': '/vi/sourcing-qc/kiem-soat-chat-luong/',
-    '#/en/post/preparing-your-shipment': '/en/shipping-guides/preparing-your-shipment/',
-    '#/en/post/fulfillment-receiving': '/en/fulfillment-warehouse/fulfillment-receiving/',
-    '#/en/post/quality-control': '/en/sourcing-qc/quality-control/',
-    '#/es/post/preparar-su-envio': '/es/guias-de-envio/preparar-su-envio/',
-    '#/es/post/recepcion-fulfillment': '/es/fulfillment-almacen/recepcion-fulfillment/',
-    '#/es/post/control-de-calidad': '/es/sourcing-qc/control-de-calidad/',
+    '#/es/rutas-de-envio': '/es/logistica/',
+    // Knowledge Hub
+    '#/knowledge': '/vi/kien-thuc/',
+    '#/en/knowledge': '/en/knowledge/',
+    '#/es/knowledge': '/es/conocimiento/',
+    // Knowledge Categories
+    '#/knowledge/huong-dan-van-chuyen': '/vi/kien-thuc/huong-dan-van-chuyen/',
+    '#/en/shipping-guides': '/en/knowledge/shipping-guides/',
+    '#/es/guias-de-envio': '/es/conocimiento/guias-de-envio/',
+    '#/knowledge/kien-thuc-nganh-hang': '/vi/kien-thuc/kien-thuc-nganh-hang/',
+    '#/en/industry-guides': '/en/knowledge/industry-guides/',
+    '#/es/guias-por-industria': '/es/conocimiento/guias-por-industria/',
+    '#/knowledge/tuyen-thuong-mai': '/vi/kien-thuc/tuyen-thuong-mai/',
+    '#/en/trade-routes': '/en/knowledge/trade-routes/',
+    '#/es/rutas-comerciales': '/es/conocimiento/rutas-comerciales/',
+    '#/knowledge/sourcing-qc': '/vi/kien-thuc/sourcing-qc/',
+    '#/en/sourcing-qc': '/en/knowledge/sourcing-qc/',
+    '#/es/sourcing-qc': '/es/conocimiento/sourcing-qc/',
+    '#/knowledge/fulfillment-kho-van': '/vi/kien-thuc/fulfillment-kho-van/',
+    '#/en/fulfillment-warehouse': '/en/knowledge/fulfillment-warehouse/',
+    '#/es/fulfillment-almacen': '/es/conocimiento/fulfillment-almacen/',
+    '#/knowledge/tin-xuat-nhap-khau': '/vi/kien-thuc/tin-xuat-nhap-khau/',
+    '#/en/import-export-news': '/en/knowledge/import-export-news/',
+    '#/es/noticias-import-export': '/es/conocimiento/noticias-import-export/',
+    // Posts: /{lang}/{knowledge-base}/{category}/{post-slug}
+    '#/knowledge/chuan-bi-lo-hang': '/vi/kien-thuc/huong-dan-van-chuyen/chuan-bi-lo-hang/',
+    '#/knowledge/quy-trinh-nhap-kho': '/vi/kien-thuc/fulfillment-kho-van/quy-trinh-nhap-kho/',
+    '#/knowledge/kiem-soat-chat-luong': '/vi/kien-thuc/sourcing-qc/kiem-soat-chat-luong/',
+    '#/en/post/preparing-your-shipment': '/en/knowledge/shipping-guides/preparing-your-shipment/',
+    '#/en/post/fulfillment-receiving': '/en/knowledge/fulfillment-warehouse/fulfillment-receiving/',
+    '#/en/post/quality-control': '/en/knowledge/sourcing-qc/quality-control/',
+    '#/es/post/preparar-su-envio': '/es/conocimiento/guias-de-envio/preparar-su-envio/',
+    '#/es/post/recepcion-fulfillment': '/es/conocimiento/fulfillment-almacen/recepcion-fulfillment/',
+    '#/es/post/control-de-calidad': '/es/conocimiento/sourcing-qc/control-de-calidad/',
+    // Sourcing
     '#/sourcing': '/vi/tim-nguon-hang/',
     '#/en/sourcing': '/en/sourcing/',
     '#/es/sourcing': '/es/abastecimiento/',
+    // Fulfillment
+    '#/fulfillment': '/vi/kho-van/',
+    '#/en/fulfillment': '/en/fulfillment/',
+    '#/es/fulfillment': '/es/almacenamiento/',
+    // Contact
+    '#/contact': '/vi/lien-he/',
+    '#/en/contact': '/en/contact/',
+    '#/es/contact': '/es/contacto/'
   };
   if (explicit[hash]) return explicit[hash];
 
   let slug = hash.slice(2); // strip "#/"
   if (lang === 'en' || lang === 'es') slug = slug.replace(new RegExp(`^${lang}/`), '');
 
-  // Knowledge categories → /{lang}/knowledge/{category}
   const knowledgeCategories = {
     en: new Set(['shipping-guides', 'industry-guides', 'trade-routes', 'sourcing-qc', 'fulfillment-warehouse', 'import-export-news']),
     es: new Set(['guias-de-envio', 'guias-por-industria', 'rutas-comerciales', 'sourcing-qc', 'fulfillment-almacen', 'noticias-import-export']),
@@ -67,14 +100,15 @@ function toSeoUrlPath(hash, lang, file) {
   };
   if (lang === 'vi' && slug.startsWith('knowledge/')) {
     const rest = slug.slice('knowledge/'.length);
-    if (knowledgeCategories.vi.has(rest)) return `/vi/knowledge/${rest}/`;
-    // VI posts already handled in explicit map; leftover knowledge/* hub stays
+    if (knowledgeCategories.vi.has(rest)) return `/vi/kien-thuc/${rest}/`;
   }
-  if ((lang === 'en' || lang === 'es') && knowledgeCategories[lang].has(slug)) {
-    return `/${lang}/knowledge/${slug}/`;
+  if (lang === 'en' && knowledgeCategories.en.has(slug)) {
+    return `/en/knowledge/${slug}/`;
+  }
+  if (lang === 'es' && knowledgeCategories.es.has(slug)) {
+    return `/es/conocimiento/${slug}/`;
   }
 
-  // Service + knowledge hub pages: /{lang}/{slug}
   return `/${lang}/${slug}/`;
 }
 
@@ -164,16 +198,17 @@ function extractShell(homeHtml) {
   };
 }
 
-function renderBreadcrumb(items, routeLookup) {
+function renderBreadcrumb(items, routeLookup, lang = "vi") {
   if (!items.length) return "";
   const links = items.map((item, index) => {
     const isLast = index === items.length - 1;
     if (isLast) return `<span class="breadcrumb-current">${escapeHtml(item.label)}</span>`;
     const route = routeLookup.get(item.href);
-    const href = index === 0 ? "/" : (route ? route.urlPath : "/");
+    const href = index === 0 ? `/${lang}/` : (route ? route.urlPath : `/${lang}/`);
     return `<a href="${href}" class="breadcrumb-link">${escapeHtml(item.label)}</a><span class="breadcrumb-sep">/</span>`;
   }).join("");
-  return `<nav class="breadcrumb-section" aria-label="Đường dẫn trang"><div class="container"><div class="breadcrumb-list">${links}</div></div></nav>`;
+  const ariaLabel = lang === 'en' ? 'Breadcrumb' : (lang === 'es' ? 'Miga de pan' : 'Đường dẫn trang');
+  return `<nav class="breadcrumb-section" aria-label="${ariaLabel}"><div class="container"><div class="breadcrumb-list">${links}</div></div></nav>`;
 }
 
 function cleanupFragment(fragment, routeLookup, route) {
@@ -387,7 +422,7 @@ function generate({ root, output }) {
         throw new Error(`Invalid breadcrumbs for ${route.file}: ${error.message}`);
       }
     }
-    const breadcrumbMarkup = renderBreadcrumb(breadcrumbs, routeLookup);
+    const breadcrumbMarkup = renderBreadcrumb(breadcrumbs, routeLookup, route.lang);
     const isPost = route.file.includes("post-");
     if (isPost && breadcrumbMarkup) {
       fragment = fragment.replace(/<div\b[^>]*data-post-breadcrumb-slot[^>]*>\s*<\/div>/i, breadcrumbMarkup);
@@ -507,8 +542,12 @@ function generate({ root, output }) {
   }
   for (const lang of ["en", "vi", "es"]) {
     sitemap.push(`  <url><loc>${origin}/${lang}/</loc><changefreq>weekly</changefreq></url>`);
-    sitemap.push(`  <url><loc>${origin}/${lang}/about-us/</loc><changefreq>monthly</changefreq></url>`);
-    sitemap.push(`  <url><loc>${origin}/${lang}/contact/</loc><changefreq>monthly</changefreq></url>`);
+    const aboutHash = lang === "vi" ? "#/about-us" : (lang === "es" ? "#/es/about-us" : "#/en/about-us");
+    const aboutPath = publicRouteDefinitions[aboutHash].path;
+    sitemap.push(`  <url><loc>${origin}${aboutPath}</loc><changefreq>monthly</changefreq></url>`);
+    const contactHash = lang === "vi" ? "#/contact" : (lang === "es" ? "#/es/contact" : "#/en/contact");
+    const contactPath = publicRouteDefinitions[contactHash] ? publicRouteDefinitions[contactHash].path : `/${lang}/contact/`;
+    sitemap.push(`  <url><loc>${origin}${contactPath}</loc><changefreq>monthly</changefreq></url>`);
   }
   sitemap.push(`  <url><loc>${origin}/</loc><changefreq>weekly</changefreq></url>`, `</urlset>`, "");
   fs.writeFileSync(path.join(output, "sitemap.xml"), sitemap.join("\n"), "utf8");
@@ -521,20 +560,39 @@ function localizeKnownSlugs(html, lang) {
   // Homepage shell is English, so VI/ES pages must rewrite nav/footer paths.
   const counterparts = {
     "": { en: "", vi: "", es: "" },
-    "about-us": { en: "about-us", vi: "about-us", es: "about-us" },
-    contact: { en: "contact", vi: "contact", es: "contact" },
-    fulfillment: { en: "fulfillment", vi: "fulfillment", es: "fulfillment" },
-    knowledge: { en: "knowledge", vi: "knowledge", es: "knowledge" },
-    logistics: { en: "logistics", vi: "logistics", es: "logistics" },
+    "about-us": { en: "about-us", vi: "ve-chung-toi", es: "sobre-nosotros" },
+    "ve-chung-toi": { en: "about-us", vi: "ve-chung-toi", es: "sobre-nosotros" },
+    "sobre-nosotros": { en: "about-us", vi: "ve-chung-toi", es: "sobre-nosotros" },
+    contact: { en: "contact", vi: "lien-he", es: "contacto" },
+    "lien-he": { en: "contact", vi: "lien-he", es: "contacto" },
+    contacto: { en: "contact", vi: "lien-he", es: "contacto" },
+    fulfillment: { en: "fulfillment", vi: "kho-van", es: "almacenamiento" },
+    "kho-van": { en: "fulfillment", vi: "kho-van", es: "almacenamiento" },
+    almacenamiento: { en: "fulfillment", vi: "kho-van", es: "almacenamiento" },
+    knowledge: { en: "knowledge", vi: "kien-thuc", es: "conocimiento" },
+    "kien-thuc": { en: "knowledge", vi: "kien-thuc", es: "conocimiento" },
+    conocimiento: { en: "knowledge", vi: "kien-thuc", es: "conocimiento" },
+    logistics: { en: "logistics", vi: "logistics", es: "logistica" },
+    logistica: { en: "logistics", vi: "logistics", es: "logistica" },
     "logistics/china-to-us-ca-au": {
       en: "logistics/china-to-us-ca-au",
       vi: "logistics/china-to-us-ca-au",
-      es: "logistics/china-to-us-ca-au"
+      es: "logistica/china-to-us-ca-au"
+    },
+    "logistica/china-to-us-ca-au": {
+      en: "logistics/china-to-us-ca-au",
+      vi: "logistics/china-to-us-ca-au",
+      es: "logistica/china-to-us-ca-au"
     },
     "logistics/vietnam-to-us-ca-au": {
       en: "logistics/vietnam-to-us-ca-au",
       vi: "logistics/vietnam-to-us-ca-au",
-      es: "logistics/vietnam-to-us-ca-au"
+      es: "logistica/vietnam-to-us-ca-au"
+    },
+    "logistica/vietnam-to-us-ca-au": {
+      en: "logistics/vietnam-to-us-ca-au",
+      vi: "logistics/vietnam-to-us-ca-au",
+      es: "logistica/vietnam-to-us-ca-au"
     },
     sourcing: { en: "sourcing", vi: "tim-nguon-hang", es: "abastecimiento" },
     "tim-nguon-hang": { en: "sourcing", vi: "tim-nguon-hang", es: "abastecimiento" },
@@ -543,79 +601,138 @@ function localizeKnownSlugs(html, lang) {
     "xuat-nhap-khau": { en: "import-export", vi: "xuat-nhap-khau", es: "import-export" },
     "knowledge/shipping-guides": {
       en: "knowledge/shipping-guides",
-      vi: "knowledge/huong-dan-van-chuyen",
-      es: "knowledge/guias-de-envio"
+      vi: "kien-thuc/huong-dan-van-chuyen",
+      es: "conocimiento/guias-de-envio"
     },
-    "knowledge/huong-dan-van-chuyen": {
+    "kien-thuc/huong-dan-van-chuyen": {
       en: "knowledge/shipping-guides",
-      vi: "knowledge/huong-dan-van-chuyen",
-      es: "knowledge/guias-de-envio"
+      vi: "kien-thuc/huong-dan-van-chuyen",
+      es: "conocimiento/guias-de-envio"
     },
-    "knowledge/guias-de-envio": {
+    "conocimiento/guias-de-envio": {
       en: "knowledge/shipping-guides",
-      vi: "knowledge/huong-dan-van-chuyen",
-      es: "knowledge/guias-de-envio"
+      vi: "kien-thuc/huong-dan-van-chuyen",
+      es: "conocimiento/guias-de-envio"
     },
     "knowledge/industry-guides": {
       en: "knowledge/industry-guides",
-      vi: "knowledge/kien-thuc-nganh-hang",
-      es: "knowledge/guias-por-industria"
+      vi: "kien-thuc/kien-thuc-nganh-hang",
+      es: "conocimiento/guias-por-industria"
     },
-    "knowledge/kien-thuc-nganh-hang": {
+    "kien-thuc/kien-thuc-nganh-hang": {
       en: "knowledge/industry-guides",
-      vi: "knowledge/kien-thuc-nganh-hang",
-      es: "knowledge/guias-por-industria"
+      vi: "kien-thuc/kien-thuc-nganh-hang",
+      es: "conocimiento/guias-por-industria"
     },
-    "knowledge/guias-por-industria": {
+    "conocimiento/guias-por-industria": {
       en: "knowledge/industry-guides",
-      vi: "knowledge/kien-thuc-nganh-hang",
-      es: "knowledge/guias-por-industria"
+      vi: "kien-thuc/kien-thuc-nganh-hang",
+      es: "conocimiento/guias-por-industria"
     },
     "knowledge/trade-routes": {
       en: "knowledge/trade-routes",
-      vi: "knowledge/tuyen-thuong-mai",
-      es: "knowledge/rutas-comerciales"
+      vi: "kien-thuc/tuyen-thuong-mai",
+      es: "conocimiento/rutas-comerciales"
     },
-    "knowledge/tuyen-thuong-mai": {
+    "kien-thuc/tuyen-thuong-mai": {
       en: "knowledge/trade-routes",
-      vi: "knowledge/tuyen-thuong-mai",
-      es: "knowledge/rutas-comerciales"
+      vi: "kien-thuc/tuyen-thuong-mai",
+      es: "conocimiento/rutas-comerciales"
     },
-    "knowledge/rutas-comerciales": {
+    "conocimiento/rutas-comerciales": {
       en: "knowledge/trade-routes",
-      vi: "knowledge/tuyen-thuong-mai",
-      es: "knowledge/rutas-comerciales"
+      vi: "kien-thuc/tuyen-thuong-mai",
+      es: "conocimiento/rutas-comerciales"
     },
-    "knowledge/sourcing-qc": { en: "knowledge/sourcing-qc", vi: "knowledge/sourcing-qc", es: "knowledge/sourcing-qc" },
+    "knowledge/sourcing-qc": {
+      en: "knowledge/sourcing-qc",
+      vi: "kien-thuc/sourcing-qc",
+      es: "conocimiento/sourcing-qc"
+    },
+    "kien-thuc/sourcing-qc": {
+      en: "knowledge/sourcing-qc",
+      vi: "kien-thuc/sourcing-qc",
+      es: "conocimiento/sourcing-qc"
+    },
+    "conocimiento/sourcing-qc": {
+      en: "knowledge/sourcing-qc",
+      vi: "kien-thuc/sourcing-qc",
+      es: "conocimiento/sourcing-qc"
+    },
     "knowledge/fulfillment-warehouse": {
       en: "knowledge/fulfillment-warehouse",
-      vi: "knowledge/fulfillment-kho-van",
-      es: "knowledge/fulfillment-almacen"
+      vi: "kien-thuc/fulfillment-kho-van",
+      es: "conocimiento/fulfillment-almacen"
     },
-    "knowledge/fulfillment-kho-van": {
+    "kien-thuc/fulfillment-kho-van": {
       en: "knowledge/fulfillment-warehouse",
-      vi: "knowledge/fulfillment-kho-van",
-      es: "knowledge/fulfillment-almacen"
+      vi: "kien-thuc/fulfillment-kho-van",
+      es: "conocimiento/fulfillment-almacen"
     },
-    "knowledge/fulfillment-almacen": {
+    "conocimiento/fulfillment-almacen": {
       en: "knowledge/fulfillment-warehouse",
-      vi: "knowledge/fulfillment-kho-van",
-      es: "knowledge/fulfillment-almacen"
+      vi: "kien-thuc/fulfillment-kho-van",
+      es: "conocimiento/fulfillment-almacen"
     },
     "knowledge/import-export-news": {
       en: "knowledge/import-export-news",
-      vi: "knowledge/tin-xuat-nhap-khau",
-      es: "knowledge/noticias-import-export"
+      vi: "kien-thuc/tin-xuat-nhap-khau",
+      es: "conocimiento/noticias-import-export"
     },
-    "knowledge/tin-xuat-nhap-khau": {
+    "kien-thuc/tin-xuat-nhap-khau": {
       en: "knowledge/import-export-news",
-      vi: "knowledge/tin-xuat-nhap-khau",
-      es: "knowledge/noticias-import-export"
+      vi: "kien-thuc/tin-xuat-nhap-khau",
+      es: "conocimiento/noticias-import-export"
     },
-    "knowledge/noticias-import-export": {
+    "conocimiento/noticias-import-export": {
       en: "knowledge/import-export-news",
-      vi: "knowledge/tin-xuat-nhap-khau",
-      es: "knowledge/noticias-import-export"
+      vi: "kien-thuc/tin-xuat-nhap-khau",
+      es: "conocimiento/noticias-import-export"
+    },
+    "knowledge/shipping-guides/preparing-your-shipment": {
+      en: "knowledge/shipping-guides/preparing-your-shipment",
+      vi: "kien-thuc/huong-dan-van-chuyen/chuan-bi-lo-hang",
+      es: "conocimiento/guias-de-envio/preparar-su-envio"
+    },
+    "kien-thuc/huong-dan-van-chuyen/chuan-bi-lo-hang": {
+      en: "knowledge/shipping-guides/preparing-your-shipment",
+      vi: "kien-thuc/huong-dan-van-chuyen/chuan-bi-lo-hang",
+      es: "conocimiento/guias-de-envio/preparar-su-envio"
+    },
+    "conocimiento/guias-de-envio/preparar-su-envio": {
+      en: "knowledge/shipping-guides/preparing-your-shipment",
+      vi: "kien-thuc/huong-dan-van-chuyen/chuan-bi-lo-hang",
+      es: "conocimiento/guias-de-envio/preparar-su-envio"
+    },
+    "knowledge/fulfillment-warehouse/fulfillment-receiving": {
+      en: "knowledge/fulfillment-warehouse/fulfillment-receiving",
+      vi: "kien-thuc/fulfillment-kho-van/quy-trinh-nhap-kho",
+      es: "conocimiento/fulfillment-almacen/recepcion-fulfillment"
+    },
+    "kien-thuc/fulfillment-kho-van/quy-trinh-nhap-kho": {
+      en: "knowledge/fulfillment-warehouse/fulfillment-receiving",
+      vi: "kien-thuc/fulfillment-kho-van/quy-trinh-nhap-kho",
+      es: "conocimiento/fulfillment-almacen/recepcion-fulfillment"
+    },
+    "conocimiento/fulfillment-almacen/recepcion-fulfillment": {
+      en: "knowledge/fulfillment-warehouse/fulfillment-receiving",
+      vi: "kien-thuc/fulfillment-kho-van/quy-trinh-nhap-kho",
+      es: "conocimiento/fulfillment-almacen/recepcion-fulfillment"
+    },
+    "knowledge/sourcing-qc/quality-control": {
+      en: "knowledge/sourcing-qc/quality-control",
+      vi: "kien-thuc/sourcing-qc/kiem-soat-chat-luong",
+      es: "conocimiento/sourcing-qc/control-de-calidad"
+    },
+    "kien-thuc/sourcing-qc/kiem-soat-chat-luong": {
+      en: "knowledge/sourcing-qc/quality-control",
+      vi: "kien-thuc/sourcing-qc/kiem-soat-chat-luong",
+      es: "conocimiento/sourcing-qc/control-de-calidad"
+    },
+    "conocimiento/sourcing-qc/control-de-calidad": {
+      en: "knowledge/sourcing-qc/quality-control",
+      vi: "kien-thuc/sourcing-qc/kiem-soat-chat-luong",
+      es: "conocimiento/sourcing-qc/control-de-calidad"
     }
   };
 
@@ -650,8 +767,8 @@ function rewriteDiscoveryLinks(html, routeLookup, lang = "en") {
     const target = routeLookup.get(`#${hashPath}`);
     return target ? `href=${quote}${target.urlPath}${quote}` : `href=${quote}/${lang}/${quote}`;
   });
-  out = out.replace(/href=(['"])\/#why-speego\1/gi, `href="${`/${lang}/about-us/`}"`);
-  out = out.replace(/href=(['"])\/about-us\/?\1/gi, `href="${`/${lang}/about-us/`}"`);
+  out = out.replace(/href=(['"])\/#why-speego\1/gi, `href="${publicRouteDefinitions[lang === "vi" ? "#/about-us" : (lang === "es" ? "#/es/about-us" : "#/en/about-us")].path}"`);
+  out = out.replace(/href=(['"])\/about-us\/?\1/gi, `href="${publicRouteDefinitions[lang === "vi" ? "#/about-us" : (lang === "es" ? "#/es/about-us" : "#/en/about-us")].path}"`);
   out = out.replace(/href=(['"])#consultation-form\1/gi, `href="${`/${lang}/contact/`}"`);
   out = out.replace(/href=(['"])#contact-form\1/gi, `href="${`/${lang}/contact/`}"`);
   return out;
@@ -678,6 +795,10 @@ function writeLocaleHomepages({ homepage, output, origin }) {
     ).join("\n  ");
     if (!html.includes(`hreflang="${lang}"`)) {
       html = html.replace(/<link rel="canonical"[^>]*>/i, (m) => `${m}\n  ${alternate}`);
+    }
+    html = html.replace(/(href|src)=(["'])(wp-content|wp-includes|images|assets)\//g, '$1=$2/$3/');
+    if (!/<base\b/i.test(html)) {
+      html = html.replace(/<head>/i, '<head>\n\t<base href="/">');
     }
     const outFile = path.join(output, lang, "index.html");
     fs.mkdirSync(path.dirname(outFile), { recursive: true });
@@ -739,10 +860,16 @@ function writeAboutAndContactPages({ homepage, header, footer, origin, output, r
         section = fs.readFileSync(aboutPath, "utf8")
           .replace(/<script\b[\s\S]*?<\/script>/gi, "")
           .replace(/(src|href)=(['"])(?!\/|#|[a-z]+:|tel:|mailto:)([^'"]+)\2/gi, "$1=$2/explore/$3$2");
+        section = rewriteDiscoveryLinks(section, routeLookup, lang);
       }
       if (!section) continue;
 
-      const urlPath = `/${lang}/${page.slug}/`;
+      const routeHash = page.slug === "about-us"
+        ? ({ en: "#/en/about-us", vi: "#/about-us", es: "#/es/about-us" })[lang]
+        : ({ en: "#/en/contact", vi: "#/contact", es: "#/es/contact" })[lang];
+      const urlPath = routeHash && publicRouteDefinitions[routeHash]
+        ? publicRouteDefinitions[routeHash].path
+        : `/${lang}/${page.slug}/`;
       const localizedHeader = rewriteDiscoveryLinks(
         header
           .replace(/(src|href)=(['"])(?!\/|#|[a-z]+:)([^'"]+)\2/gi, "$1=$2/$3$2")
@@ -758,7 +885,13 @@ function writeAboutAndContactPages({ homepage, header, footer, origin, output, r
         lang
       );
       const alternateTags = ["en", "vi", "es"]
-        .map((code) => `<link rel="alternate" hreflang="${code}" href="${origin}/${code}/${page.slug}/">`)
+        .map((code) => {
+          const hash = page.slug === "about-us"
+            ? ({ en: "#/en/about-us", vi: "#/about-us", es: "#/es/about-us" })[code]
+            : ({ en: "#/en/contact", vi: "#/contact", es: "#/es/contact" })[code];
+          const localizedPath = hash && publicRouteDefinitions[hash] ? publicRouteDefinitions[hash].path : `/${code}/${page.slug}/`;
+          return `<link rel="alternate" hreflang="${code}" href="${origin}${localizedPath}">`;
+        })
         .join("\n    ");
       const html = `<!doctype html>
 <html lang="${lang}">
@@ -795,7 +928,13 @@ function writeAboutAndContactPages({ homepage, header, footer, origin, output, r
   ${page.scripts || ""}
   <script>
     (function () {
-      var localizedRoutes = ${JSON.stringify(Object.fromEntries(["en", "vi", "es"].map((code) => [code, `/${code}/${page.slug}/`])))};
+      var localizedRoutes = ${JSON.stringify(Object.fromEntries(["en", "vi", "es"].map((code) => {
+        const hash = page.slug === "about-us"
+          ? ({ en: "#/en/about-us", vi: "#/about-us", es: "#/es/about-us" })[code]
+          : ({ en: "#/en/contact", vi: "#/contact", es: "#/es/contact" })[code];
+        const localizedPath = hash && publicRouteDefinitions[hash] ? publicRouteDefinitions[hash].path : `/${code}/${page.slug}/`;
+        return [code, localizedPath];
+      })))};
       document.addEventListener('click', function (event) {
         var option = event.target.closest('.speego-lang-option, .speego-lang-pill');
         if (!option) return;
@@ -810,7 +949,7 @@ function writeAboutAndContactPages({ homepage, header, footer, origin, output, r
   <script src="/wp-content/themes/logistica/js/speego-main.js?v=seo_slugs_20260928"></script>
 </body>
 </html>`;
-      const outFile = path.join(output, lang, page.slug, "index.html");
+      const outFile = path.join(output, ...urlPath.replace(/^\//, "").split("/"), "index.html");
       fs.mkdirSync(path.dirname(outFile), { recursive: true });
       fs.writeFileSync(outFile, localizeKnownSlugs(html, lang), "utf8");
     }

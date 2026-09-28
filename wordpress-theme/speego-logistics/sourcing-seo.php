@@ -43,9 +43,9 @@ function speego_render_sourcing_seo($entry, $routeHash, $queriedId)
 
     $page = $pages[$routeHash];
     $paths = [
-        'vi' => '/vi/sourcing/',
-        'en' => '/en/sourcing/',
-        'es' => '/es/sourcing/',
+        'vi' => speego_public_route_path('#/sourcing'),
+        'en' => speego_public_route_path('#/en/sourcing'),
+        'es' => speego_public_route_path('#/es/sourcing'),
     ];
     $canonical = home_url($paths[$page['lang']]);
     $image = get_template_directory_uri() . '/explore/assets/warehouse_racks_hero.jpg';
@@ -55,7 +55,7 @@ function speego_render_sourcing_seo($entry, $routeHash, $queriedId)
     foreach ($paths as $lang => $path) {
         $alternates .= '<link rel="alternate" hreflang="' . esc_attr($lang) . '" href="' . esc_url(home_url($path)) . '">';
     }
-    $alternates .= '<link rel="alternate" hreflang="x-default" href="' . esc_url(home_url($paths['vi'])) . '">';
+    $alternates .= '<link rel="alternate" hreflang="x-default" href="' . esc_url(home_url($paths['en'])) . '">';
 
     $schema = [
         '@context' => 'https://schema.org',

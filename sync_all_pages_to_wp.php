@@ -1,13 +1,29 @@
 <?php
 define('WP_USE_THEMES', false);
-require 'E:/download/xamp/htdocs/wordpress_demo/wp-load.php';
+
+$wpLoadCandidates = [
+    'C:/xampp/htdocs/wordpress_demo/wp-load.php',
+    'E:/download/xamp/htdocs/wordpress_demo/wp-load.php',
+    dirname(__DIR__) . '/wordpress_demo/wp-load.php',
+];
+$wpLoaded = false;
+foreach ($wpLoadCandidates as $candidate) {
+    if (file_exists($candidate)) {
+        require_once $candidate;
+        $wpLoaded = true;
+        break;
+    }
+}
+if (!$wpLoaded) {
+    die("Could not find wp-load.php. Please verify WordPress installation.\n");
+}
 
 // Unhook KSES to prevent stripping of SVGs, data-* attributes, etc.
 kses_remove_filters();
 
-$srcRoot = 'D:/Speegoweb';
+$srcRoot = __DIR__;
 
-// 1. Hompepage content map (from scratch extracted 9 sections)
+// 1. Homepage content map (from scratch extracted 9 sections)
 $homeMap = [
     152 => "$srcRoot/scratch/vi_home_sections.html",
     153 => "$srcRoot/scratch/en_home_sections.html",
@@ -89,23 +105,151 @@ $pagesMap = [
     64 => "$srcRoot/explore/pages/Knowledge/ES/es-10-post-kiem-soat-chat-luong.html"
 ];
 
+$slugMap = [
+    9 => 'kho-van',
+    47 => 'almacenamiento'
+];
+
 foreach ($pagesMap as $id => $file) {
     if (file_exists($file)) {
         $content = file_get_contents($file);
-        // Strip offline file:// redirect script
         $content = preg_replace('#<script\b[^>]*>.*?window\.location\.replace\(.*?</script>#is', '', $content);
-        wp_update_post([
+        $updateData = [
             'ID' => $id,
             'post_content' => $content,
             'post_status' => 'publish'
-        ]);
+        ];
+        if (isset($slugMap[$id])) {
+            $updateData['post_name'] = $slugMap[$id];
+        }
+        wp_update_post($updateData);
         echo "Updated Page ID $id from $file (" . strlen($content) . " bytes)\n";
     } else {
         echo "File NOT found for ID $id: $file\n";
     }
 }
 
-// 3. Shared Partials
+// 3. About Us Pages (Tri-lingual: VI, EN, ES)
+$aboutPages = [
+    '#/about-us' => [
+        'title' => 'Về SpeeGo (About Us)',
+        'slug' => 've-chung-toi',
+        'file' => "$srcRoot/explore/pages/about/vi-about.html",
+    ],
+    '#/en/about-us' => [
+        'title' => 'About SpeeGo (EN)',
+        'slug' => 'about-us-en',
+        'file' => "$srcRoot/explore/pages/about/en-about.html",
+    ],
+    '#/es/about-us' => [
+        'title' => 'Sobre SpeeGo (ES)',
+        'slug' => 'sobre-nosotros',
+        'file' => "$srcRoot/explore/pages/about/es-about.html",
+    ],
+];
+
+foreach ($aboutPages as $route => $aboutDef) {
+    $existing = get_posts([
+        'post_type' => 'page',
+        'post_status' => ['publish', 'draft'],
+        'numberposts' => 1,
+        'meta_key' => '_speego_route_hash',
+        'meta_value' => $route,
+    ]);
+
+    $content = '';
+    if (file_exists($aboutDef['file'])) {
+        $content = file_get_contents($aboutDef['file']);
+        $content = preg_replace('#<script\b[^>]*>.*?window\.location\.replace\(.*?</script>#is', '', $content);
+    }
+
+    if ($existing) {
+        $postId = $existing[0]->ID;
+        wp_update_post([
+            'ID' => $postId,
+            'post_title' => $aboutDef['title'],
+            'post_name' => $aboutDef['slug'],
+            'post_content' => $content,
+            'post_status' => 'publish'
+        ]);
+        echo "Updated About Page ID $postId ($route) from {$aboutDef['file']}\n";
+    } else {
+        $postId = wp_insert_post([
+            'post_type' => 'page',
+            'post_title' => $aboutDef['title'],
+            'post_name' => $aboutDef['slug'],
+            'post_content' => $content,
+            'post_status' => 'publish'
+        ]);
+        if ($postId && !is_wp_error($postId)) {
+            update_post_meta($postId, '_speego_route_hash', $route);
+            update_post_meta($postId, '_speego_content_editable', '1');
+            echo "Created new About Page ID $postId ($route) with slug '{$aboutDef['slug']}'\n";
+        }
+    }
+}
+
+// 3b. Contact Pages (Tri-lingual: VI, EN, ES)
+$contactPages = [
+    '#/contact' => [
+        'title' => 'Liên hệ & Nhận báo giá | SpeeGo Logistics',
+        'slug' => 'lien-he',
+        'file' => "$srcRoot/explore/pages/home/vi-home.html",
+    ],
+    '#/en/contact' => [
+        'title' => 'Contact & Request a Quote | SpeeGo Logistics',
+        'slug' => 'contact-en',
+        'file' => "$srcRoot/explore/pages/home/en-home.html",
+    ],
+    '#/es/contact' => [
+        'title' => 'Contacto & Solicitar Cotización | SpeeGo Logistics',
+        'slug' => 'contacto-es',
+        'file' => "$srcRoot/explore/pages/home/es-home.html",
+    ],
+];
+
+foreach ($contactPages as $route => $contactDef) {
+    $existing = get_posts([
+        'post_type' => 'page',
+        'post_status' => ['publish', 'draft'],
+        'numberposts' => 1,
+        'meta_key' => '_speego_route_hash',
+        'meta_value' => $route,
+    ]);
+
+    $content = '';
+    if (file_exists($contactDef['file'])) {
+        $content = file_get_contents($contactDef['file']);
+        $content = preg_replace('#<script\b[^>]*>.*?window\.location\.replace\(.*?</script>#is', '', $content);
+    }
+
+    if ($existing) {
+        $postId = $existing[0]->ID;
+        wp_update_post([
+            'ID' => $postId,
+            'post_title' => $contactDef['title'],
+            'post_name' => $contactDef['slug'],
+            'post_content' => $content,
+            'post_status' => 'publish'
+        ]);
+        echo "Updated Contact Page ID $postId ($route) from {$contactDef['file']}\n";
+    } else {
+        $postId = wp_insert_post([
+            'post_type' => 'page',
+            'post_title' => $contactDef['title'],
+            'post_name' => $contactDef['slug'],
+            'post_content' => $content,
+            'post_status' => 'publish'
+        ]);
+        if ($postId && !is_wp_error($postId)) {
+            update_post_meta($postId, '_speego_route_hash', $route);
+            update_post_meta($postId, '_speego_content_editable', '1');
+            echo "Created new Contact Page ID $postId ($route) with slug '{$contactDef['slug']}'\n";
+        }
+    }
+}
+
+// 4. Shared Partials
 $partials = [
     114 => "$srcRoot/explore/partials/header.html",
     115 => "$srcRoot/explore/partials/footer.html",

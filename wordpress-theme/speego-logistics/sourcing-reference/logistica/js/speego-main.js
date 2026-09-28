@@ -2006,7 +2006,7 @@ stat_delivery: 'Entrega a Tiempo',
     vi: {
       htmlLang: 'vi',
       ogLocale: 'vi_VN',
-      canonical: 'https://speegologistic.com/'
+      canonical: 'https://speegologistic.com/vi/'
     },
     es: {
       htmlLang: 'es',
@@ -2236,7 +2236,7 @@ stat_delivery: 'Entrega a Tiempo',
         logistics: { vi: 'logistics', en: 'logistics', es: 'logistics' },
         'import-export': { vi: 'xuat-nhap-khau', en: 'import-export', es: 'import-export' },
         knowledge: { vi: 'knowledge', en: 'knowledge', es: 'knowledge' },
-        'about-us': { vi: 'about-us', en: 'about-us', es: 'about-us' },
+        'about-us': { vi: 've-chung-toi', en: 'about-us', es: 'sobre-nosotros' },
         contact: { vi: 'contact', en: 'contact', es: 'contact' },
         home: { vi: '', en: '', es: '' }
       };
@@ -2289,6 +2289,8 @@ stat_delivery: 'Entrega a Tiempo',
       '/vi/knowledge/': localizedExplorePath('knowledge', lang),
       '/es/knowledge/': localizedExplorePath('knowledge', lang),
       '/en/about-us/': localizedExplorePath('about-us', lang),
+      '/vi/ve-chung-toi/': localizedExplorePath('about-us', lang),
+      '/es/sobre-nosotros/': localizedExplorePath('about-us', lang),
       '/vi/about-us/': localizedExplorePath('about-us', lang),
       '/es/about-us/': localizedExplorePath('about-us', lang),
       '/#why-speego': localizedExplorePath('about-us', lang),
@@ -3893,7 +3895,8 @@ stat_delivery: 'Entrega a Tiempo',
     function siblingLocalePath(targetLang) {
       const path = window.location.pathname || '/';
       const match = path.match(/^\/(en|vi|es)(\/.*)?$/);
-      if (!match || match[1] === targetLang) return null;
+      if (!match) return `/${targetLang}/`;
+      if (match[1] === targetLang) return null;
       let rest = match[2] || '/';
       if (!rest.endsWith('/')) rest += '/';
 
@@ -3905,7 +3908,9 @@ stat_delivery: 'Entrega a Tiempo',
         '/abastecimiento/': { en: '/sourcing/', vi: '/tim-nguon-hang/', es: '/abastecimiento/' },
         '/import-export/': { en: '/import-export/', vi: '/xuat-nhap-khau/', es: '/import-export/' },
         '/xuat-nhap-khau/': { en: '/import-export/', vi: '/xuat-nhap-khau/', es: '/import-export/' },
-        '/about-us/': { en: '/about-us/', vi: '/about-us/', es: '/about-us/' },
+        '/about-us/': { en: '/about-us/', vi: '/ve-chung-toi/', es: '/sobre-nosotros/' },
+        '/ve-chung-toi/': { en: '/about-us/', vi: '/ve-chung-toi/', es: '/sobre-nosotros/' },
+        '/sobre-nosotros/': { en: '/about-us/', vi: '/ve-chung-toi/', es: '/sobre-nosotros/' },
         '/contact/': { en: '/contact/', vi: '/contact/', es: '/contact/' },
         '/fulfillment/': { en: '/fulfillment/', vi: '/fulfillment/', es: '/fulfillment/' },
         '/logistics/': { en: '/logistics/', vi: '/logistics/', es: '/logistics/' },
