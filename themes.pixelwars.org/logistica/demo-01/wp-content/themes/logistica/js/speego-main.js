@@ -2039,6 +2039,7 @@ stat_delivery: 'Entrega a Tiempo',
   function syncSeoLocale(lang) {
     const meta = LOCALE_META[lang] || LOCALE_META.vi || LOCALE_META.en;
     if (typeof document === 'undefined') return;
+    if (document.body && document.body.hasAttribute('data-seo-language')) return;
 
     document.documentElement.lang = meta.htmlLang;
 
@@ -2051,7 +2052,8 @@ stat_delivery: 'Entrega a Tiempo',
     // Keep static hreflang alternate links intact; they already cover EN/VI/ES/x-default
   }
 
-  function syncLangQueryParam() {
+  function syncLangQueryParam(lang) {
+    if (document.body && document.body.hasAttribute('data-seo-language')) return;
     try {
       const url = new URL(window.location.href);
       if (!url.searchParams.has('lang')) return;

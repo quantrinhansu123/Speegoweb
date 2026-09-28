@@ -113,6 +113,10 @@ function speego_render_reference_sourcing($routeHash, $queriedId)
     if ($headline === '') {
         $headline = $editedHeadline;
     }
+    // Remove the one-off test headline saved during the migration preview.
+    if (preg_match('/^Anh [Cc]ông(?: chỉnh)?\.?$/u', trim($headline))) {
+        $headline = '';
+    }
     if ($headline !== '') {
         $content = preg_replace_callback(
             '/(<h1\b[^>]*class="[^"]*\bhero-h1-clean\b[^"]*"[^>]*>.*?<span\b[^>]*class="[^"]*\btext-orange\b[^"]*"[^>]*>).*?(<\/span>)/is',

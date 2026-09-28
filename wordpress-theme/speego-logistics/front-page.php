@@ -1,4 +1,18 @@
 <?php
+$requestPath = trim(rawurldecode((string) wp_parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH)), '/');
+$homePath = trim((string) wp_parse_url(home_url('/'), PHP_URL_PATH), '/');
+if ($homePath !== '' && strpos($requestPath, $homePath . '/') === 0) {
+    $requestPath = substr($requestPath, strlen($homePath) + 1);
+}
+if ($requestPath === 'vi/tim-nguon-hang') {
+    $siteBase = wp_json_encode(trailingslashit(home_url('/')), JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_AMP | JSON_HEX_QUOT);
+    status_header(200);
+    echo '<!doctype html><html><head><meta charset="utf-8"><script>';
+    echo 'var route=location.hash;var lang=route.indexOf("#/en/sourcing")===0?"en":route.indexOf("#/es/sourcing")===0?"es":"vi";';
+    echo 'location.replace(' . $siteBase . '+lang+"/sourcing/");';
+    echo '</script></head><body></body></html>';
+    return;
+}
 $entry = file_get_contents(__DIR__ . '/explore/index.html');
 if ($entry === false) {
     status_header(500);

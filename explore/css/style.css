@@ -151,10 +151,7 @@ img {
   color: var(--orange-primary);
 }
 
-/* Hide uppercase section eyebrows — navigation lives in header dropdowns */
-.page-sourcing .section-header > .section-tag,
-.page-sourcing .ff-section-header > .ff-tag-eyebrow,
-.page-sourcing .prod-floor-header .section-tag,
+/* Keep the Sourcing section eyebrows visible next to their headings. */
 .page-shipping-routes .section-header > .section-tag,
 .page-import-export .section-header > .section-tag,
 .page-fulfillment .ff-section-header > .ff-tag-eyebrow,
@@ -166,6 +163,8 @@ img {
 .page-fulfillment .ff-warehouse-section .ff-tag-eyebrow {
   display: none !important;
 }
+
+.btn-orange {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -8732,6 +8731,11 @@ body:has(.page-import-export) .breadcrumb-section {
 }
 
 /* Shared 2-col hero: image size + gap match Sourcing reference */
+.page-shipping-routes .page-hero-2col > .container,
+.page-import-export .page-hero-2col > .container {
+  max-width: 1480px !important;
+}
+
 .page-sourcing .sourcing-hero-section .hero-2col-grid,
 .page-shipping-routes .hero-2col-grid,
 .page-import-export .hero-2col-grid,
@@ -8739,6 +8743,21 @@ body:has(.page-import-export) .breadcrumb-section {
   grid-template-columns: minmax(0, 1.15fr) minmax(360px, 0.85fr);
   gap: clamp(36px, 4vw, 56px);
   align-items: center;
+}
+
+.page-sourcing .sourcing-hero-section .hero-2col-grid {
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+  gap: clamp(28px, 3vw, 40px);
+}
+
+.page-shipping-routes .hero-2col-grid {
+  grid-template-columns: minmax(0, 1.45fr) minmax(260px, 0.55fr);
+  gap: clamp(48px, 6vw, 88px);
+}
+
+.page-import-export .hero-2col-grid {
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+  gap: clamp(28px, 3.5vw, 48px);
 }
 
 .page-sourcing .sourcing-hero-section .hero-2col-left,
@@ -8753,6 +8772,7 @@ body:has(.page-import-export) .breadcrumb-section {
 }
 
 .page-sourcing .hero-h1-clean {
+  font-size: clamp(40px, 3.4vw, 56px);
   white-space: normal;
 }
 
@@ -9184,13 +9204,22 @@ body.speego-seo-page:has([data-nav="knowledge"]) .cta-form-band-section > .conta
   }
 }
 
-/* Keep section headings and page section spacing consistent across all pages. */
-.page-container .section-header > .section-tag + .section-title {
-  margin-top: 0;
+/* Keep section labels close to their headings on every service page. Hero labels use separate styles. */
+.page-container .section-tag + .section-title,
+.page-container .ff-tag-eyebrow + .ff-section-title {
+  margin-top: 0 !important;
 }
 
-.page-container .ff-section-header > .ff-tag-eyebrow + .ff-section-title {
-  margin-top: 0;
+.page-container .section-header > .section-tag,
+.page-container .prod-floor-header .section-tag,
+.page-container .ff-section-header > .ff-tag-eyebrow,
+.page-container .cta-band-left > .section-tag,
+.page-container .cta-band-copy > .section-tag {
+  margin-bottom: 8px;
+}
+
+.page-container .prod-floor-header .section-tag {
+  display: block;
 }
 
 .page-container > section:not(.page-hero-2col):not(.ff-hero-dark-section) {
@@ -9481,74 +9510,158 @@ body.speego-seo-page:has([data-nav="knowledge"]) .cta-form-band-section > .conta
   z-index: 0;
 }
 
-.page-about .about-vision-inner {
+.page-about .about-vision-watermark-bg {
+  position: absolute;
+  right: -30px;
+  bottom: -30px;
+  width: min(360px, 35vw);
+  opacity: 0.08;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Ensure bootstrap clearfix pseudo-elements never break the grid */
+.page-about .about-vision-inner::before,
+.page-about .about-vision-inner::after,
+.page-about .about-vision-grid::before,
+.page-about .about-vision-grid::after {
+  display: none !important;
+  content: none !important;
+}
+
+.page-about .about-vision-grid {
   position: relative;
   z-index: 1;
   display: grid;
-  grid-template-columns: minmax(72px, 120px) minmax(0, 1fr) minmax(100px, 180px);
-  gap: clamp(20px, 3vw, 40px);
-  align-items: center;
+  grid-template-columns: minmax(300px, 380px) minmax(0, 1fr);
+  gap: clamp(24px, 4vw, 48px);
+  align-items: stretch;
 }
 
-.page-about .about-vision-mark {
-  min-width: 0;
-  max-width: 120px;
+.page-about .about-vision-brand-card {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 20px;
+  padding: clamp(28px, 3.5vw, 44px) clamp(24px, 3vw, 36px);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+}
+
+.page-about .about-vision-brand-badge {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #ff6b35;
+  background: rgba(255, 107, 53, 0.12);
+  border: 1px solid rgba(255, 107, 53, 0.25);
+  padding: 5px 12px;
+  border-radius: 20px;
+  margin-bottom: 22px;
+}
+
+.page-about .about-vision-brand-logo {
+  width: 100%;
+  max-width: 250px;
+  height: auto;
+  display: block;
+  margin-bottom: 22px;
+  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.3));
+}
+
+.page-about .about-vision-brand-line {
+  width: 48px;
+  height: 3px;
+  background: linear-gradient(90deg, #ff6b35, transparent);
+  border-radius: 2px;
+  margin-bottom: 18px;
+}
+
+.page-about .about-vision-brand-slogan {
+  font-size: 15px;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.8);
+  font-weight: 400;
+  margin: 0;
+}
+
+.page-about .about-vision-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  justify-content: center;
+}
+
+.page-about .about-vision-card {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: clamp(24px, 3vw, 32px) clamp(24px, 3vw, 36px);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
   position: relative;
-  z-index: 0;
   overflow: hidden;
 }
 
-.page-about .about-vision-mark-desktop {
-  display: block;
-  width: 100%;
-  max-width: 118px;
-  height: auto;
+.page-about .about-vision-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: linear-gradient(180deg, #ff6b35, #0056b3);
 }
 
-.page-about .about-vision-mark-mobile {
-  display: none;
-  max-width: 180px;
-  width: 100%;
-  height: auto;
-  margin: 0 auto;
+.page-about .about-vision-card:hover {
+  border-color: rgba(255, 107, 53, 0.35);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+  transform: translateY(-2px);
 }
 
-.page-about .about-vision-text {
+.page-about .about-vision-card-head {
   display: flex;
-  flex-direction: column;
-  gap: 32px;
-  min-width: 0;
-  position: relative;
-  z-index: 1;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 12px;
+}
+
+.page-about .about-vision-card-icon {
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  background: rgba(255, 107, 53, 0.15);
+  border: 1px solid rgba(255, 107, 53, 0.3);
+  color: #ff6b35;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
 }
 
 .page-about .about-vision-title {
   color: #fff;
-  font-size: clamp(22px, 2.4vw, 28px);
-  margin: 0 0 12px;
+  font-size: clamp(20px, 2.2vw, 24px);
+  font-weight: 800;
+  margin: 0;
   text-transform: uppercase;
+  letter-spacing: -0.01em;
 }
 
-.page-about .about-vision-card p {
+.page-about .about-vision-card p,
+.page-about .about-vision-desc {
   margin: 0;
-  color: rgba(255, 255, 255, 0.9);
-  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.88);
+  font-size: 15px;
   line-height: 1.65;
   font-weight: 400;
-}
-
-.page-about .about-vision-logo {
-  min-width: 0;
-  justify-self: end;
-  align-self: end;
-}
-
-.page-about .about-vision-logo img {
-  max-width: 160px;
-  width: 100%;
-  height: auto;
-  display: block;
-  margin: 0;
 }
 
 .page-about .about-split-media img,
@@ -9693,24 +9806,12 @@ body.speego-seo-page:has([data-nav="knowledge"]) .cta-form-band-section > .conta
   .page-about .about-vision-inner {
     grid-template-columns: 1fr;
   }
+}
 
-  .page-about .about-vision-mark {
-    max-width: none;
-    justify-self: center;
-  }
-
-  .page-about .about-vision-mark-desktop {
-    display: none;
-  }
-
-  .page-about .about-vision-mark-mobile {
-    display: block;
-  }
-
-  .page-about .about-vision-logo {
-    order: -1;
-    justify-self: center;
-    align-self: center;
+@media (max-width: 991px) {
+  .page-about .about-vision-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
   }
 }
 
@@ -9734,3 +9835,19 @@ body.speego-seo-page:has([data-nav="knowledge"]) .cta-form-band-section > .conta
   }
 }
 
+/* One vertical spacing scale for every Sourcing section, including the hero. */
+.page-container.page-sourcing > section.sourcing-hero-section,
+.page-container.page-sourcing > section#why-speego,
+.page-container.page-sourcing > section:not(.sourcing-hero-section) {
+  padding-top: 64px !important;
+  padding-bottom: 64px !important;
+}
+
+@media (max-width: 768px) {
+  .page-container.page-sourcing > section.sourcing-hero-section,
+  .page-container.page-sourcing > section#why-speego,
+  .page-container.page-sourcing > section:not(.sourcing-hero-section) {
+    padding-top: 48px !important;
+    padding-bottom: 48px !important;
+  }
+}

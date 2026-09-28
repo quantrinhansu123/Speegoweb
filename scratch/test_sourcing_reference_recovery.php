@@ -40,9 +40,15 @@ $damaged = str_replace('<span class="text-orange">chất lượng toàn diện.<
 $GLOBALS['page']->post_content = $damaged;
 $recovered = speego_render_reference_sourcing('#/sourcing', 6);
 if (substr_count($recovered, '<svg') !== $referenceIconCount
-    || strpos($recovered, '<span class="text-orange">Anh Công chỉnh</span>') === false
+    || strpos($recovered, '<span class="text-orange">chất lượng toàn diện.</span>') === false
     || substr_count($recovered, '<h1') !== 1) {
     throw new RuntimeException('Visual Editor damage was not recovered.');
+}
+
+$GLOBALS['meta']['_speego_sourcing_headline'] = 'Anh công.';
+$testHeadlineRemoved = speego_render_reference_sourcing('#/sourcing', 6);
+if (strpos($testHeadlineRemoved, '<span class="text-orange">chất lượng toàn diện.</span>') === false) {
+    throw new RuntimeException('The migration test headline was not removed.');
 }
 
 $GLOBALS['meta']['_speego_sourcing_headline'] = 'Đã chỉnh an toàn';

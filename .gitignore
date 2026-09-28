@@ -31,3 +31,11 @@ artifacts/
 
 # Archives
 *.zip
+
+# Scratch media & artifacts
+scratch/*.png
+scratch/*.jpg
+scratch/*.jpeg
+scratch/*.html
+scratch/*.py
+scratch/chrome_profile/

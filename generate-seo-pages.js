@@ -197,7 +197,7 @@ function cleanupFragment(fragment, routeLookup, route) {
     (full) => {
       if (!ctaBand || !/data-variant=(["'])band\1/i.test(full)) return full;
       placedBand = true;
-      return `\n${ctaBand}\n`;
+      return ctaBand;
     }
   );
   const hadCta = /data-component=(["'])cta-form\1/i.test(html);

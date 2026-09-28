@@ -5,6 +5,7 @@ function add_filter() {}
 function remove_filter() {}
 function wp_parse_url($url, $component) { return parse_url($url, $component); }
 function untrailingslashit($value) { return rtrim($value, '/'); }
+function trailingslashit($value) { return rtrim($value, '/') . '/'; }
 function home_url($path = '/') { return 'http://localhost/wordpress_demo' . $path; }
 function get_template_directory() { return dirname(__DIR__); }
 function get_template_directory_uri() { return 'http://localhost/wordpress_demo/wp-content/themes/speego-logistics'; }
@@ -18,6 +19,7 @@ function current_user_can($capability) { return true; }
 function wp_nonce_field($action, $name) { echo '<input type="hidden" name="' . $name . '">'; }
 function submit_button($text, $type = 'primary', $name = 'submit', $wrap = true) { echo '<button type="submit">' . $text . '</button>'; }
 function wp_json_encode($value, $flags = 0) { return json_encode($value, $flags); }
+function status_header($status) {}
 $GLOBALS['mockRoutes'] = [10 => '#/sourcing', 28 => '#/en/sourcing', 48 => '#/es/sourcing'];
 $GLOBALS['createdPages'] = [];
 function get_post_meta($id, $key, $single = false)
@@ -103,5 +105,14 @@ speego_seed_sourcing_pages();
 speego_seed_sourcing_pages();
 if (count($GLOBALS['createdPages']) !== 3 || count($GLOBALS['mockRoutes']) !== 3) {
     throw new RuntimeException('Sourcing seed must create three pages only once');
+}
+$_SERVER['REQUEST_URI'] = '/wordpress_demo/vi/tim-nguon-hang/';
+ob_start();
+include __DIR__ . '/../wordpress-theme/speego-logistics/front-page.php';
+$legacyRedirect = ob_get_clean();
+if (strpos($legacyRedirect, 'location.hash') === false
+    || strpos($legacyRedirect, '/sourcing/') === false
+    || strpos($legacyRedirect, 'location.replace(') === false) {
+    throw new RuntimeException('Legacy Sourcing URL did not redirect to the canonical page.');
 }
 echo "Sourcing route and HTML smoke tests passed.\n";
