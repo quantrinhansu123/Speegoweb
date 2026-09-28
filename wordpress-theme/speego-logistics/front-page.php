@@ -12,6 +12,10 @@ $home = wp_json_encode(home_url('/'), JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_AM
 
 $queriedId = get_queried_object_id();
 $routeHash = get_post_meta($queriedId, '_speego_route_hash', true);
+if (!$routeHash && function_exists('speego_route_hash_for_path')) {
+    $requestPath = (string) wp_parse_url($_SERVER['REQUEST_URI'] ?? '', PHP_URL_PATH);
+    $routeHash = speego_route_hash_for_path($requestPath);
+}
 require_once __DIR__ . '/sourcing-reference.php';
 $referenceSourcing = speego_render_reference_sourcing($routeHash, $queriedId);
 if ($referenceSourcing !== false) {
@@ -338,8 +342,8 @@ if (in_array($routeHash, ['#/about-us', '#/en/about-us', '#/es/about-us', '#/abo
     $seoTitle = $currentMeta['title'];
     $seoDesc = $currentMeta['description'];
 
-    $entry = preg_replace('/<title[^>]*>.*?</title>/is', '<title>' . esc_html($seoTitle) . '</title><meta name="description" content="' . esc_attr($seoDesc) . '">', $entry, 1);
-    $entry = preg_replace('/<html([^>]*lang=")[^"]*("[^>]*)>/i', '<html$1' . esc_attr($currentMeta['schemaLanguage']) . '$2>', $entry, 1);
+    $entry = preg_replace('/<title\\b[^>]*>.*?<\\/title>/is', '<title>' . esc_html($seoTitle) . '</title><meta name="description" content="' . esc_attr($seoDesc) . '">', $entry, 1);
+    $entry = preg_replace('/<html\\b([^>]*\\blang=")[^"]*("[^>]*)>/i', '<html$1' . esc_attr($currentMeta['schemaLanguage']) . '$2>', $entry, 1);
 
     // Fetch editable content from WordPress post or fallback to static HTML file
     $aboutPosts = get_posts([
@@ -360,7 +364,7 @@ if (in_array($routeHash, ['#/about-us', '#/en/about-us', '#/es/about-us', '#/abo
 
     if ($aboutHtml !== '') {
         $entry = preg_replace_callback(
-            '/(<main[^>]*id="app-main"[^>]*>).*?(</main>)/is',
+            '/(<main\\b[^>]*\\bid="app-main"[^>]*>).*?(<\\/main>)/is',
             function ($matches) use ($aboutHtml, $routeHash) {
                 $mainOpen = preg_replace('/>$/', ' data-speego-prerendered-route="' . esc_attr($routeHash) . '">', $matches[1], 1);
                 return $mainOpen . $aboutHtml . $matches[2];
@@ -374,6 +378,6 @@ if (in_array($routeHash, ['#/about-us', '#/en/about-us', '#/es/about-us', '#/abo
 require_once __DIR__ . '/sourcing-seo.php';
 $entry = speego_render_sourcing_seo($entry, $routeHash, $queriedId);
 
-$bridge = '<base href="' . $base . '"><script>window.SPEEGO_WP_HOME=' . $home . ';var speegoInitialRoute=' . $route . ';if(speegoInitialRoute&&(!window.location.hash||window.location.hash==="#"||window.location.hash==="#/")){window.location.hash=speegoInitialRoute;}document.addEventListener("click",function(event){const link=event.target.closest&&event.target.closest("a[href]");if(!link)return;const href=link.getAttribute("href");if(!href||href.startsWith("//")||href.startsWith("http://")||href.startsWith("https://")||href.startsWith("tel:")||href.startsWith("mailto:"))return;if(href==="/"||href==="/index.html"){event.preventDefault();window.location.hash=(window.location.hash.startsWith("#/en")?"#/en/home":(window.location.hash.startsWith("#/es")?"#/es/inicio":"#/home"));return;}if(href.startsWith("/#")){event.preventDefault();const id=href.slice(2);const targetHome=(window.location.hash.startsWith("#/en")?"#/en/home":(window.location.hash.startsWith("#/es")?"#/es/inicio":"#/home"));const el=document.getElementById(id);if(el){el.scrollIntoView({behavior:"smooth",block:"start"});}else{try{sessionStorage.setItem("speegoScrollTo",id);}catch(_){}window.location.hash=targetHome;}return;}if(href.startsWith("#/")){event.preventDefault();if(window.location.hash!==href){window.location.hash=href;}return;}},true);</script>';
+$bridge = '<base href="' . $base . '"><script>window.SPEEGO_WP_HOME=' . $home . ';var speegoInitialRoute=' . $route . ';if(speegoInitialRoute&&(!window.location.hash||window.location.hash==="#"||window.location.hash==="#/")&&window.location.pathname==="/"&&/^#\\/(?:home|en\\/home|es\\/inicio)$/.test(speegoInitialRoute)){window.location.hash="#home";}document.addEventListener("click",function(event){const link=event.target.closest&&event.target.closest("a[href]");if(!link)return;const href=link.getAttribute("href");if(!href||href.startsWith("//")||href.startsWith("http://")||href.startsWith("https://")||href.startsWith("tel:")||href.startsWith("mailto:"))return;if(href==="/"||href==="/index.html"){event.preventDefault();window.location.hash="#home";return;}if(href.startsWith("/#")){event.preventDefault();const id=href.slice(2);const targetHome="#home";const el=document.getElementById(id);if(el){el.scrollIntoView({behavior:"smooth",block:"start"});}else{try{sessionStorage.setItem("speegoScrollTo",id);}catch(_){}window.location.hash=targetHome;}return;}if(href.startsWith("#/")){event.preventDefault();if(window.location.hash!==href){window.location.hash=href;}return;}},true);</script>';
 $entry = preg_replace('/<head>/i', '<head>' . $bridge, $entry, 1);
 echo $entry;

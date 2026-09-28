@@ -589,6 +589,24 @@ function speego_route_hash_for_path($requestPath)
     if ($requestPath === '') {
         return '';
     }
+    $aliases = [
+        'vi/tim-nguon-hang' => '#/sourcing',
+        'vi/logistics' => '#/tuyen-van-chuyen',
+        'en/logistics' => '#/en/shipping-routes',
+        'es/abastecimiento' => '#/es/sourcing',
+        'es/logistics' => '#/es/rutas-de-envio',
+        'vi/about-us' => '#/about-us',
+        'en/about-us' => '#/en/about-us',
+        'es/about-us' => '#/es/about-us',
+        'about-us' => '#/about-us',
+        'about' => '#/about-us',
+        'vi/contact' => '#/home',
+        'en/contact' => '#/en/home',
+        'es/contact' => '#/es/inicio',
+    ];
+    if (isset($aliases[$requestPath])) {
+        return $aliases[$requestPath];
+    }
     if (strpos($requestPath, 'vi/') === 0) {
         $requestPath = substr($requestPath, 3);
     }
@@ -632,7 +650,7 @@ add_filter('redirect_canonical', function ($redirectUrl) {
     if ($homePath !== '' && strpos($path, $homePath . '/') === 0) {
         $path = substr($path, strlen($homePath) + 1);
     }
-    if (in_array(trim($path, '/'), ['vi/sourcing', 'en/sourcing', 'es/sourcing'], true)) {
+    if (in_array(trim($path, '/'), ['vi/sourcing', 'en/sourcing', 'es/sourcing', 'vi/about-us', 'en/about-us', 'es/about-us', 'about-us'], true)) {
         return false;
     }
     return $redirectUrl;
@@ -649,6 +667,9 @@ function speego_page_link_fix($link, $post_id)
             '#/home' => '/',
             '#/en/home' => '/?lang=en',
             '#/es/inicio' => '/?lang=es',
+            '#/about-us' => '/vi/about-us/',
+            '#/en/about-us' => '/en/about-us/',
+            '#/es/about-us' => '/es/about-us/',
             '#/sourcing' => '/vi/sourcing/',
             '#/en/sourcing' => '/en/sourcing/',
             '#/es/sourcing' => '/es/sourcing/',

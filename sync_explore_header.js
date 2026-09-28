@@ -35,7 +35,7 @@ if (sIdx !== -1 && eIdx !== -1) {
 // Fix navLinkAbout to about-us
 indexContent = indexContent.replace(
   /\{\s*id:\s*'navLinkAbout'[^}]+\}/,
-  "{ id: 'navLinkAbout', mId: 'mNavLinkAbout', href: isVi ? '#/about-us' : (isEs ? '#/es/about-us' : '#/en/about-us') }"
+  "{ id: 'navLinkAbout', mId: 'mNavLinkAbout', href: isVi ? '/vi/about-us/' : (isEs ? '/es/about-us/' : '/en/about-us/') }"
 );
 
 fs.writeFileSync(indexFile, indexContent, 'utf8');
