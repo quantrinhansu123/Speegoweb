@@ -3894,12 +3894,160 @@ stat_delivery: 'Entrega a Tiempo',
       if (!match || match[1] === targetLang) return null;
       let rest = match[2] || '/';
       if (!rest.endsWith('/')) rest += '/';
-      const sourcing = {
+
+      // Keep the same page when switching VI ⇄ EN ⇄ ES (slug differs by language).
+      const counterparts = {
+        '/': { en: '/', vi: '/', es: '/' },
         '/sourcing/': { en: '/sourcing/', vi: '/tim-nguon-hang/', es: '/abastecimiento/' },
         '/tim-nguon-hang/': { en: '/sourcing/', vi: '/tim-nguon-hang/', es: '/abastecimiento/' },
-        '/abastecimiento/': { en: '/sourcing/', vi: '/tim-nguon-hang/', es: '/abastecimiento/' }
+        '/abastecimiento/': { en: '/sourcing/', vi: '/tim-nguon-hang/', es: '/abastecimiento/' },
+        '/import-export/': { en: '/import-export/', vi: '/xuat-nhap-khau/', es: '/import-export/' },
+        '/xuat-nhap-khau/': { en: '/import-export/', vi: '/xuat-nhap-khau/', es: '/import-export/' },
+        '/about-us/': { en: '/about-us/', vi: '/about-us/', es: '/about-us/' },
+        '/contact/': { en: '/contact/', vi: '/contact/', es: '/contact/' },
+        '/fulfillment/': { en: '/fulfillment/', vi: '/fulfillment/', es: '/fulfillment/' },
+        '/logistics/': { en: '/logistics/', vi: '/logistics/', es: '/logistics/' },
+        '/logistics/china-to-us-ca-au/': {
+          en: '/logistics/china-to-us-ca-au/',
+          vi: '/logistics/china-to-us-ca-au/',
+          es: '/logistics/china-to-us-ca-au/'
+        },
+        '/logistics/vietnam-to-us-ca-au/': {
+          en: '/logistics/vietnam-to-us-ca-au/',
+          vi: '/logistics/vietnam-to-us-ca-au/',
+          es: '/logistics/vietnam-to-us-ca-au/'
+        },
+        '/knowledge/': { en: '/knowledge/', vi: '/knowledge/', es: '/knowledge/' },
+        '/knowledge/shipping-guides/': {
+          en: '/knowledge/shipping-guides/',
+          vi: '/knowledge/huong-dan-van-chuyen/',
+          es: '/knowledge/guias-de-envio/'
+        },
+        '/knowledge/huong-dan-van-chuyen/': {
+          en: '/knowledge/shipping-guides/',
+          vi: '/knowledge/huong-dan-van-chuyen/',
+          es: '/knowledge/guias-de-envio/'
+        },
+        '/knowledge/guias-de-envio/': {
+          en: '/knowledge/shipping-guides/',
+          vi: '/knowledge/huong-dan-van-chuyen/',
+          es: '/knowledge/guias-de-envio/'
+        },
+        '/knowledge/industry-guides/': {
+          en: '/knowledge/industry-guides/',
+          vi: '/knowledge/kien-thuc-nganh-hang/',
+          es: '/knowledge/guias-por-industria/'
+        },
+        '/knowledge/kien-thuc-nganh-hang/': {
+          en: '/knowledge/industry-guides/',
+          vi: '/knowledge/kien-thuc-nganh-hang/',
+          es: '/knowledge/guias-por-industria/'
+        },
+        '/knowledge/guias-por-industria/': {
+          en: '/knowledge/industry-guides/',
+          vi: '/knowledge/kien-thuc-nganh-hang/',
+          es: '/knowledge/guias-por-industria/'
+        },
+        '/knowledge/trade-routes/': {
+          en: '/knowledge/trade-routes/',
+          vi: '/knowledge/tuyen-thuong-mai/',
+          es: '/knowledge/rutas-comerciales/'
+        },
+        '/knowledge/tuyen-thuong-mai/': {
+          en: '/knowledge/trade-routes/',
+          vi: '/knowledge/tuyen-thuong-mai/',
+          es: '/knowledge/rutas-comerciales/'
+        },
+        '/knowledge/rutas-comerciales/': {
+          en: '/knowledge/trade-routes/',
+          vi: '/knowledge/tuyen-thuong-mai/',
+          es: '/knowledge/rutas-comerciales/'
+        },
+        '/knowledge/sourcing-qc/': {
+          en: '/knowledge/sourcing-qc/',
+          vi: '/knowledge/sourcing-qc/',
+          es: '/knowledge/sourcing-qc/'
+        },
+        '/knowledge/fulfillment-warehouse/': {
+          en: '/knowledge/fulfillment-warehouse/',
+          vi: '/knowledge/fulfillment-kho-van/',
+          es: '/knowledge/fulfillment-almacen/'
+        },
+        '/knowledge/fulfillment-kho-van/': {
+          en: '/knowledge/fulfillment-warehouse/',
+          vi: '/knowledge/fulfillment-kho-van/',
+          es: '/knowledge/fulfillment-almacen/'
+        },
+        '/knowledge/fulfillment-almacen/': {
+          en: '/knowledge/fulfillment-warehouse/',
+          vi: '/knowledge/fulfillment-kho-van/',
+          es: '/knowledge/fulfillment-almacen/'
+        },
+        '/knowledge/import-export-news/': {
+          en: '/knowledge/import-export-news/',
+          vi: '/knowledge/tin-xuat-nhap-khau/',
+          es: '/knowledge/noticias-import-export/'
+        },
+        '/knowledge/tin-xuat-nhap-khau/': {
+          en: '/knowledge/import-export-news/',
+          vi: '/knowledge/tin-xuat-nhap-khau/',
+          es: '/knowledge/noticias-import-export/'
+        },
+        '/knowledge/noticias-import-export/': {
+          en: '/knowledge/import-export-news/',
+          vi: '/knowledge/tin-xuat-nhap-khau/',
+          es: '/knowledge/noticias-import-export/'
+        },
+        '/shipping-guides/preparing-your-shipment/': {
+          en: '/shipping-guides/preparing-your-shipment/',
+          vi: '/huong-dan-van-chuyen/chuan-bi-lo-hang/',
+          es: '/guias-de-envio/preparar-su-envio/'
+        },
+        '/huong-dan-van-chuyen/chuan-bi-lo-hang/': {
+          en: '/shipping-guides/preparing-your-shipment/',
+          vi: '/huong-dan-van-chuyen/chuan-bi-lo-hang/',
+          es: '/guias-de-envio/preparar-su-envio/'
+        },
+        '/guias-de-envio/preparar-su-envio/': {
+          en: '/shipping-guides/preparing-your-shipment/',
+          vi: '/huong-dan-van-chuyen/chuan-bi-lo-hang/',
+          es: '/guias-de-envio/preparar-su-envio/'
+        },
+        '/fulfillment-warehouse/fulfillment-receiving/': {
+          en: '/fulfillment-warehouse/fulfillment-receiving/',
+          vi: '/fulfillment-kho-van/quy-trinh-nhap-kho/',
+          es: '/fulfillment-almacen/recepcion-fulfillment/'
+        },
+        '/fulfillment-kho-van/quy-trinh-nhap-kho/': {
+          en: '/fulfillment-warehouse/fulfillment-receiving/',
+          vi: '/fulfillment-kho-van/quy-trinh-nhap-kho/',
+          es: '/fulfillment-almacen/recepcion-fulfillment/'
+        },
+        '/fulfillment-almacen/recepcion-fulfillment/': {
+          en: '/fulfillment-warehouse/fulfillment-receiving/',
+          vi: '/fulfillment-kho-van/quy-trinh-nhap-kho/',
+          es: '/fulfillment-almacen/recepcion-fulfillment/'
+        },
+        '/sourcing-qc/quality-control/': {
+          en: '/sourcing-qc/quality-control/',
+          vi: '/sourcing-qc/kiem-soat-chat-luong/',
+          es: '/sourcing-qc/control-de-calidad/'
+        },
+        '/sourcing-qc/kiem-soat-chat-luong/': {
+          en: '/sourcing-qc/quality-control/',
+          vi: '/sourcing-qc/kiem-soat-chat-luong/',
+          es: '/sourcing-qc/control-de-calidad/'
+        },
+        '/sourcing-qc/control-de-calidad/': {
+          en: '/sourcing-qc/quality-control/',
+          vi: '/sourcing-qc/kiem-soat-chat-luong/',
+          es: '/sourcing-qc/control-de-calidad/'
+        }
       };
-      if (sourcing[rest]) return `/${targetLang}${sourcing[rest][targetLang]}`;
+
+      if (counterparts[rest] && counterparts[rest][targetLang]) {
+        return `/${targetLang}${counterparts[rest][targetLang]}`.replace(/\/{2,}/g, '/');
+      }
       return `/${targetLang}${rest}`.replace(/\/{2,}/g, '/');
     }
 

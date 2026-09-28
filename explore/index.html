@@ -20,7 +20,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Khám phá dịch vụ | SpeeGo Logistics</title>
   
-  <link rel="icon" href="assets/speego-logo-dark.png">
+  <link rel="icon" type="image/png" href="assets/favicon-speego.png">
+  <link rel="shortcut icon" type="image/png" href="assets/favicon-speego.png">
 
   <!-- Google Fonts: Inter (Homepage Primary Font) & Plus Jakarta Sans -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -372,6 +373,26 @@
           lang: 'vi'
         },
 
+        // About Us Routes (Vietnamese) — content from speegologistic.com/ve-chung-toi
+        '#/about-us': {
+          file: 'pages/about/vi-about.html',
+          title: 'Về chúng tôi - SpeeGo Logistics',
+          nav: 'about',
+          lang: 'vi'
+        },
+        '#/about': {
+          file: 'pages/about/vi-about.html',
+          title: 'Về chúng tôi - SpeeGo Logistics',
+          nav: 'about',
+          lang: 'vi'
+        },
+        '#/ve-chung-toi': {
+          file: 'pages/about/vi-about.html',
+          title: 'Về chúng tôi - SpeeGo Logistics',
+          nav: 'about',
+          lang: 'vi'
+        },
+
         // About Us Routes (English)
         '#/en/about-us': {
           file: 'pages/about/en-about.html',
@@ -613,6 +634,9 @@
       // 1b. TRI-LINGUAL COUNTERPARTS MAPPING (VI ⇄ EN ⇄ ES)
       const TRI_LANG_MAP = [
         { vi: '#/home', en: '#/en/home', es: '#/es/inicio' },
+        { vi: '#/about-us', en: '#/en/about-us', es: '#/es/about-us' },
+        { vi: '#/about', en: '#/en/about', es: '#/es/about' },
+        { vi: '#/ve-chung-toi', en: '#/en/about-us', es: '#/es/about-us' },
         { vi: '#/knowledge', en: '#/en/knowledge', es: '#/es/knowledge' },
         { vi: '#/fulfillment', en: '#/en/fulfillment', es: '#/es/fulfillment' },
         { vi: '#/sourcing', en: '#/en/sourcing', es: '#/es/sourcing' },
@@ -636,9 +660,9 @@
         if (found && found[targetLang]) {
           return found[targetLang];
         }
-        if (targetLang === 'es') return '#/es/knowledge';
-        if (targetLang === 'en') return '#/en/knowledge';
-        return '#/knowledge';
+        if (targetLang === 'es') return '#/es/inicio';
+        if (targetLang === 'en') return '#/en/home';
+        return '#/home';
       }
 
 
@@ -1762,6 +1786,11 @@
           window.initFulfillmentQuicklinkDock();
         }
 
+        // About Us counters / reveal / gallery
+        if (typeof window.initAboutPage === 'function') {
+          window.initAboutPage();
+        }
+
         // Initialize Sourcing ScrollSpy
         initSourcingScrollSpy();
       }
@@ -2410,5 +2439,6 @@
   <script src="js/cta-band.js"></script>
   <script src="js/fulfillment-estimate.js?v=ff_estimate_20260926"></script>
   <script src="js/fulfillment-dock.js"></script>
+  <script src="js/about-page.js?v=about_click_slider_20260928"></script>
 </body>
 </html>

@@ -1,193 +1,164 @@
 <script>
-  // Tự động chuyển hướng sang khung ứng dụng đầy đủ nếu mở trực tiếp từ File Explorer
   if (typeof window !== 'undefined' && !document.getElementById('app-main')) {
     window.location.replace('../../index.html#/about-us');
   }
 </script>
 
-<div class="page-container page-about" 
-     data-page="about-us" 
-     data-nav="about" 
-     data-breadcrumb='[{"label":"Trang chủ","href":"#/home"},{"label":"Về SpeeGo","href":"#/about-us"}]'>
+<div class="page-container page-about"
+     data-page="about-us"
+     data-nav="about"
+     data-breadcrumb='[{"label":"Trang chủ","href":"#/home"},{"label":"Về chúng tôi","href":"#/about-us"}]'>
 
-  <!-- 1. HERO SECTION (2 COLUMNS: TEXT LEFT, CARD IMAGE RIGHT) -->
-  <section class="page-hero-2col">
+  <!-- 1. Hero banner -->
+  <section class="about-banner about-reveal">
+    <img src="assets/about/about-speego-logistics-1.jpg" alt="SpeeGo Logistics — đơn vị sản xuất và logistics toàn cầu" class="about-banner-img">
+  </section>
+
+  <!-- 2. Intro + counters -->
+  <section class="about-intro" id="about-intro">
     <div class="container">
-      <div class="hero-2col-grid">
-        <!-- Cột trái: Tiêu đề, giới thiệu & nút trao đổi -->
-        <div class="hero-2col-left">
-          <div class="hero-tag-bar" data-i18n="about_tag">VỀ SPEEGO LOGISTICS</div>
-          <h1 class="hero-h1-clean">
-            <span data-i18n="about_hero_title_1">Đồng hành chuỗi cung ứng</span><br>
-            <span class="text-orange" data-i18n="about_hero_title_2">minh bạch và toàn diện.</span>
+      <div class="about-intro-grid">
+        <div class="about-intro-media about-reveal">
+          <div class="about-intro-frame" data-about-slider aria-roledescription="carousel" aria-label="Hình ảnh nhân sự SpeeGo">
+            <div class="about-intro-slides">
+              <img class="is-active" src="assets/about/Rectangle-141236.png" alt="Nhân sự SpeeGo 1" data-about-slide>
+              <img src="assets/about/Rectangle-141237.png" alt="Nhân sự SpeeGo 2" loading="lazy" data-about-slide>
+              <img src="assets/about/Rectangle-141238.png" alt="Nhân sự SpeeGo 3" loading="lazy" data-about-slide>
+              <img src="assets/about/Rectangle-141239.png" alt="Nhân sự SpeeGo 4" loading="lazy" data-about-slide>
+              <img src="assets/about/Rectangle-141240.png" alt="Nhân sự SpeeGo 5" loading="lazy" data-about-slide>
+              <img src="assets/about/Rectangle-141242.png" alt="Nhân sự SpeeGo 6" loading="lazy" data-about-slide>
+              <img src="assets/about/Rectangle-141241.png" alt="Nhân sự SpeeGo 7" loading="lazy" data-about-slide>
+              <img src="assets/about/Rectangle-141243.png" alt="Nhân sự SpeeGo 8" loading="lazy" data-about-slide>
+            </div>
+          </div>
+        </div>
+        <div class="about-intro-copy about-reveal">
+          <p class="about-eyebrow">VỀ SPEEGO LOGISTICS</p>
+          <h1 class="about-title">
+            SpeeGo <span class="text-orange">Logistics</span>
           </h1>
-          <p class="hero-desc-clean" data-i18n="about_hero_desc">
-            SpeeGo Logistics kết nối các xưởng sản xuất uy tín tại Việt Nam và Trung Quốc với doanh nghiệp tại Mỹ, Canada và Úc. Chúng tôi tối ưu hóa từng khâu từ tìm xưởng, kiểm định chất lượng, vận tải đa phương thức đến fulfillment tại thị trường đích.
-          </p>
-          <div class="hero-actions-row">
-            <a href="#consultation-form" class="btn-orange" data-i18n="about_hero_cta">
-              Nhận tư vấn ngay ↗
-            </a>
-            <a href="tel:+84906828898" class="hero-phone-label">
-              (+84) 906 828 898
-            </a>
+          <div class="about-desc">
+            <p>SpeeGo Logistics là đơn vị cung cấp giải pháp tổng thể <strong>All-in-One</strong>, tích hợp đầy đủ dịch vụ từ sản xuất phụ kiện nails, mỹ phẩm, thủ công mỹ nghệ, decor đến logistics toàn cầu.</p>
+            <p>Từ ý tưởng ban đầu đến khi sản phẩm đến tay khách hàng, SpeeGo đồng hành trọn vẹn: tư vấn &amp; phát triển sản phẩm, sản xuất theo yêu cầu, đóng gói, xử lý đơn hàng và vận chuyển đến hơn 200 quốc gia.</p>
           </div>
-        </div>
 
-        <!-- Cột phải: Ảnh đội ngũ SpeeGo -->
-        <div class="hero-2col-right">
-          <div class="hero-img-card-wrap">
-            <img src="assets/speego-team.png" alt="Đội ngũ SpeeGo Logistics" onerror="this.onerror=null; this.src='assets/007-speego-logistics-team-1.png';">
+          <div class="about-stats" id="aboutStats">
+            <div class="about-stat">
+              <div class="about-stat-num"><span class="about-counter" data-target="200">0</span><span class="about-stat-suffix">+</span></div>
+              <p class="about-stat-label">quốc gia &amp; vùng lãnh thổ có dịch vụ vận chuyển</p>
+            </div>
+            <div class="about-stat">
+              <div class="about-stat-num"><span class="about-counter" data-target="5000">0</span><span class="about-stat-suffix">+</span></div>
+              <p class="about-stat-label">khách hàng doanh nghiệp trên toàn thế giới</p>
+            </div>
+            <div class="about-stat">
+              <div class="about-stat-num"><span class="about-counter" data-target="10000">0</span><span class="about-stat-suffix">m²</span></div>
+              <p class="about-stat-label">hệ thống kho trung chuyển quốc tế (Mỹ, Canada, Úc)</p>
+            </div>
+            <div class="about-stat">
+              <div class="about-stat-num"><span class="about-counter" data-target="30">0</span><span class="about-stat-suffix">+</span></div>
+              <p class="about-stat-label">nhà máy đối tác đạt chuẩn quốc tế tại Trung Quốc</p>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Orange Ticker Ribbon -->
-  <div class="ff-ticker-orange-wrap" aria-hidden="true">
-    <div class="ff-ticker-orange-inner">
-      <span>GLOBAL SOURCING</span><span class="ff-ticker-symbol">✦</span>
-      <span>QUALITY CONTROL</span><span class="ff-ticker-symbol">✦</span>
-      <span>INTERNATIONAL LOGISTICS</span><span class="ff-ticker-symbol">✦</span>
-      <span>FULFILLMENT</span><span class="ff-ticker-symbol">✦</span>
-      <span>SUPPLY CHAIN SOLUTIONS</span><span class="ff-ticker-symbol">✦</span>
-      <span>GLOBAL SOURCING</span><span class="ff-ticker-symbol">✦</span>
-      <span>QUALITY CONTROL</span><span class="ff-ticker-symbol">✦</span>
-      <span>INTERNATIONAL LOGISTICS</span><span class="ff-ticker-symbol">✦</span>
-      <span>FULFILLMENT</span><span class="ff-ticker-symbol">✦</span>
-      <span>SUPPLY CHAIN SOLUTIONS</span><span class="ff-ticker-symbol">✦</span>
+  <!-- 3. Vision & Mission -->
+  <section class="about-vision" style="--about-vision-bg: url('assets/about/skyscraper-1.png')">
+    <div class="container about-vision-inner">
+      <div class="about-vision-mark about-reveal" aria-hidden="true">
+        <img src="assets/about/about-speego-logistics-3.png" alt="" class="about-vision-mark-desktop">
+        <img src="assets/about/Group2.png" alt="" class="about-vision-mark-mobile">
+      </div>
+      <div class="about-vision-text about-reveal">
+        <article class="about-vision-card">
+          <h2 class="about-vision-title">Tầm nhìn</h2>
+          <p>Trở thành đối tác chiến lược hàng đầu trong sản xuất và logistics quốc tế. SpeeGo hướng đến vị thế biểu tượng niềm tin — lựa chọn đầu tiên khi doanh nghiệp tìm giải pháp sản xuất – vận chuyển – xuất khẩu trọn gói, nhanh và hiệu quả.</p>
+        </article>
+        <article class="about-vision-card">
+          <h2 class="about-vision-title">Sứ mệnh</h2>
+          <p>Là cầu nối thương mại với giải pháp an toàn – nhanh chóng – minh bạch. Đồng hành cùng doanh nghiệp trong hành trình kinh doanh và tạo dựng giá trị kinh tế lâu dài.</p>
+        </article>
+      </div>
+      <div class="about-vision-logo about-reveal" aria-hidden="true">
+        <img src="assets/about/Group-1.png" alt="">
+      </div>
     </div>
+  </section>
+
+  <!-- 4. History -->
+  <section class="about-history">
+    <div class="container">
+      <div class="about-split">
+        <div class="about-split-copy about-reveal">
+          <p class="about-eyebrow">HÀNH TRÌNH</p>
+          <h2 class="about-section-title">Lịch sử hình thành</h2>
+          <div class="about-desc">
+            <p>Thành lập năm 2015, SpeeGo Logistics khởi đầu với sứ mệnh đơn giản hóa kinh doanh quốc tế cho doanh nghiệp, chủ cửa hàng và nhà khởi nghiệp — xóa bỏ rào cản sản xuất và hậu cần.</p>
+            <p>Sau gần một thập kỷ, chúng tôi đã xây dựng mạng lưới đối tác sản xuất đạt chuẩn và kho trung chuyển 5.000–10.000 m² tại Mỹ, Canada, Úc, đồng hành cùng hơn 5.000 khách hàng toàn cầu.</p>
+          </div>
+        </div>
+        <div class="about-split-media about-reveal">
+          <img src="assets/about/about-speego-logistics-4.png" alt="Lịch sử hình thành SpeeGo">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. Ecosystem + gallery -->
+  <section class="about-ecosystem">
+    <img class="about-ecosystem-deco" src="assets/about/Group-1000003945.png" alt="" aria-hidden="true">
+    <div class="container">
+      <div class="about-eco-top about-reveal">
+        <div class="about-eco-figure">
+          <img src="assets/about/Frame-427324327.png" alt="Hệ sinh thái SpeeGo">
+        </div>
+        <div class="about-desc">
+          <p>Trong thời đại tốc độ và kết nối định hình mọi giá trị, SpeeGo ra đời với khát vọng xây dựng hệ sinh thái sản xuất và logistics toàn cầu — nơi ý tưởng được hiện thực hóa nhanh hơn, bền vững hơn và thông minh hơn.</p>
+          <p>Trong hành trình mở rộng, <strong class="about-accent-name">Ceva Nails Supply</strong> ra đời như cánh tay chuyên sâu của SpeeGo trong ngành Nails: cung ứng sỉ, order và sản xuất theo yêu cầu toàn bộ sản phẩm, phụ kiện, máy móc và bao bì cho ngành.</p>
+        </div>
+      </div>
+
+      <div class="about-gallery about-reveal" id="aboutGallery">
+        <button type="button" class="about-gallery-item" data-full="assets/about/Rectangle-141236.png"><img src="assets/about/Rectangle-141236.png" alt="SpeeGo gallery 1" loading="lazy"></button>
+        <button type="button" class="about-gallery-item" data-full="assets/about/Rectangle-141237.png"><img src="assets/about/Rectangle-141237.png" alt="SpeeGo gallery 2" loading="lazy"></button>
+        <button type="button" class="about-gallery-item" data-full="assets/about/Rectangle-141238.png"><img src="assets/about/Rectangle-141238.png" alt="SpeeGo gallery 3" loading="lazy"></button>
+        <button type="button" class="about-gallery-item" data-full="assets/about/Rectangle-141239.png"><img src="assets/about/Rectangle-141239.png" alt="SpeeGo gallery 4" loading="lazy"></button>
+        <button type="button" class="about-gallery-item" data-full="assets/about/Rectangle-141240.png"><img src="assets/about/Rectangle-141240.png" alt="SpeeGo gallery 5" loading="lazy"></button>
+        <button type="button" class="about-gallery-item" data-full="assets/about/Rectangle-141242.png"><img src="assets/about/Rectangle-141242.png" alt="SpeeGo gallery 6" loading="lazy"></button>
+        <button type="button" class="about-gallery-item" data-full="assets/about/Rectangle-141241.png"><img src="assets/about/Rectangle-141241.png" alt="SpeeGo gallery 7" loading="lazy"></button>
+        <button type="button" class="about-gallery-item" data-full="assets/about/Rectangle-141243.png"><img src="assets/about/Rectangle-141243.png" alt="SpeeGo gallery 8" loading="lazy"></button>
+      </div>
+
+      <div class="about-eco-cta about-reveal">
+        <a href="#/sourcing" class="btn-orange about-cta-btn">Tìm hiểu thêm phụ kiện nails ↗</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. Positioning -->
+  <section class="about-position">
+    <div class="container">
+      <div class="about-split">
+        <div class="about-split-copy about-reveal">
+          <p class="about-eyebrow">GIÁ TRỊ KHÁC BIỆT</p>
+          <h2 class="about-section-title">Khẳng định vị thế</h2>
+          <div class="about-desc">
+            <p>Điều làm nên khác biệt của SpeeGo không chỉ là tốc độ và độ chính xác, mà còn là niềm tin, sự minh bạch và khát vọng phát triển bền vững.</p>
+            <p>Chúng tôi không chỉ là nhà cung cấp dịch vụ — chúng tôi là cánh tay nối dài, hiện thực hóa ý tưởng và đưa thương hiệu của bạn vươn xa.<br>SpeeGo Logistics – Nơi ý tưởng được hiện thực hóa và vươn xa.</p>
+          </div>
+        </div>
+        <div class="about-split-media about-reveal">
+          <img src="assets/about/about-speego-logistics-5.png" alt="Khẳng định vị thế SpeeGo">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="about-lightbox" id="aboutLightbox" hidden>
+    <button type="button" class="about-lightbox-close" aria-label="Đóng">×</button>
+    <img src="" alt="" id="aboutLightboxImg">
   </div>
-
-  <!-- 2. WHY SPEEGO (6 PILLARS) -->
-  <section class="speego-why-section" id="why-speego">
-    <div class="speego-why-inner">
-      <header class="speego-why-header">
-        <span class="speego-why-accent" aria-hidden="true"></span>
-        <h2 class="speego-why-title" data-i18n="why_title">TẠI SAO NÊN CHỌN SPEEGO LOGISTICS</h2>
-        <p class="speego-why-subtitle" data-i18n="why_subtitle">
-          Cam kết giá trị minh bạch, hạ tầng đồng bộ và đội ngũ chuyên gia tận tâm.
-        </p>
-      </header>
-
-      <div class="speego-why-container">
-        <div class="speego-why-grid">
-          <article class="speego-why-cell">
-            <span class="speego-why-cell-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9.5 6C6.5 7.6 5 10 5 12.8c0 2 1.2 3.4 3 3.4 1.6 0 2.7-1.1 2.7-2.6 0-1.4-1-2.4-2.3-2.4-.2 0-.4 0-.5.1.3-1.6 1.6-3 3.3-3.9L9.5 6Zm9 0c-3 1.6-4.5 4-4.5 6.8 0 2 1.2 3.4 3 3.4 1.6 0 2.7-1.1 2.7-2.6 0-1.4-1-2.4-2.3-2.4-.2 0-.4 0-.5.1.3-1.6 1.6-3 3.3-3.9L18.5 6Z"/></svg></span>
-            <h3 class="speego-why-cell-title" data-i18n="why1_title">Chuỗi cung ứng đa lĩnh vực</h3>
-            <p class="speego-why-cell-desc" data-i18n="why1_desc">Đáp ứng nhu cầu sản xuất và vận chuyển quốc tế cho doanh nghiệp.</p>
-          </article>
-          <article class="speego-why-cell">
-            <span class="speego-why-cell-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9.5 6C6.5 7.6 5 10 5 12.8c0 2 1.2 3.4 3 3.4 1.6 0 2.7-1.1 2.7-2.6 0-1.4-1-2.4-2.3-2.4-.2 0-.4 0-.5.1.3-1.6 1.6-3 3.3-3.9L9.5 6Zm9 0c-3 1.6-4.5 4-4.5 6.8 0 2 1.2 3.4 3 3.4 1.6 0 2.7-1.1 2.7-2.6 0-1.4-1-2.4-2.3-2.4-.2 0-.4 0-.5.1.3-1.6 1.6-3 3.3-3.9L18.5 6Z"/></svg></span>
-            <h3 class="speego-why-cell-title" data-i18n="why2_title">Mạng lưới nhà máy rộng khắp TQ, VN</h3>
-            <p class="speego-why-cell-desc" data-i18n="why2_desc">Kết nối đối tác, nhà máy và xưởng sản xuất tại Trung Quốc và Việt Nam.</p>
-          </article>
-          <article class="speego-why-cell">
-            <span class="speego-why-cell-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9.5 6C6.5 7.6 5 10 5 12.8c0 2 1.2 3.4 3 3.4 1.6 0 2.7-1.1 2.7-2.6 0-1.4-1-2.4-2.3-2.4-.2 0-.4 0-.5.1.3-1.6 1.6-3 3.3-3.9L9.5 6Zm9 0c-3 1.6-4.5 4-4.5 6.8 0 2 1.2 3.4 3 3.4 1.6 0 2.7-1.1 2.7-2.6 0-1.4-1-2.4-2.3-2.4-.2 0-.4 0-.5.1.3-1.6 1.6-3 3.3-3.9L18.5 6Z"/></svg></span>
-            <h3 class="speego-why-cell-title" data-i18n="why3_title">Đa dạng phương thức vận chuyển</h3>
-            <p class="speego-why-cell-desc" data-i18n="why3_desc">Linh hoạt vận chuyển đường biển và đường hàng không.</p>
-          </article>
-          <article class="speego-why-cell">
-            <span class="speego-why-cell-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9.5 6C6.5 7.6 5 10 5 12.8c0 2 1.2 3.4 3 3.4 1.6 0 2.7-1.1 2.7-2.6 0-1.4-1-2.4-2.3-2.4-.2 0-.4 0-.5.1.3-1.6 1.6-3 3.3-3.9L9.5 6Zm9 0c-3 1.6-4.5 4-4.5 6.8 0 2 1.2 3.4 3 3.4 1.6 0 2.7-1.1 2.7-2.6 0-1.4-1-2.4-2.3-2.4-.2 0-.4 0-.5.1.3-1.6 1.6-3 3.3-3.9L18.5 6Z"/></svg></span>
-            <h3 class="speego-why-cell-title" data-i18n="why4_title">Cam kết không chi phí ẩn</h3>
-            <p class="speego-why-cell-desc" data-i18n="why4_desc">Báo giá chi tiết, minh bạch cho từng hạng mục.</p>
-          </article>
-          <article class="speego-why-cell">
-            <span class="speego-why-cell-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9.5 6C6.5 7.6 5 10 5 12.8c0 2 1.2 3.4 3 3.4 1.6 0 2.7-1.1 2.7-2.6 0-1.4-1-2.4-2.3-2.4-.2 0-.4 0-.5.1.3-1.6 1.6-3 3.3-3.9L9.5 6Zm9 0c-3 1.6-4.5 4-4.5 6.8 0 2 1.2 3.4 3 3.4 1.6 0 2.7-1.1 2.7-2.6 0-1.4-1-2.4-2.3-2.4-.2 0-.4 0-.5.1.3-1.6 1.6-3 3.3-3.9L18.5 6Z"/></svg></span>
-            <h3 class="speego-why-cell-title" data-i18n="why5_title">Đội ngũ hỗ trợ nhanh chóng</h3>
-            <p class="speego-why-cell-desc" data-i18n="why5_desc">Chuyên viên giàu kinh nghiệm luôn sẵn sàng đồng hành.</p>
-          </article>
-          <article class="speego-why-cell">
-            <span class="speego-why-cell-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9.5 6C6.5 7.6 5 10 5 12.8c0 2 1.2 3.4 3 3.4 1.6 0 2.7-1.1 2.7-2.6 0-1.4-1-2.4-2.3-2.4-.2 0-.4 0-.5.1.3-1.6 1.6-3 3.3-3.9L9.5 6Zm9 0c-3 1.6-4.5 4-4.5 6.8 0 2 1.2 3.4 3 3.4 1.6 0 2.7-1.1 2.7-2.6 0-1.4-1-2.4-2.3-2.4-.2 0-.4 0-.5.1.3-1.6 1.6-3 3.3-3.9L18.5 6Z"/></svg></span>
-            <h3 class="speego-why-cell-title" data-i18n="why6_title">Tracking bằng hệ thống OMS</h3>
-            <p class="speego-why-cell-desc" data-i18n="why6_desc">Theo dõi tình trạng lô hàng nhanh chóng, thuận tiện và chính xác.</p>
-          </article>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 3. CONSULTATION & CONTACT FORM -->
-  <section class="speego-section speego-consult-section" id="consultation-form">
-    <div class="speego-consult-stage">
-      <div class="speego-consult-video-frame">
-        <video class="speego-consult-video" autoplay muted loop playsinline preload="metadata" poster="assets/anh-nen.png" aria-hidden="true">
-          <source src="assets/consult-video.mp4?v=drive1" type="video/mp4">
-        </video>
-      </div>
-
-      <div class="speego-form-container speego-form-container--featured speego-form-container--overlay">
-        <div class="speego-form-heading">
-          <h3 data-i18n="form_consult_title">Đăng ký tư vấn miễn phí</h3>
-          <p data-i18n="form_consult_note">Thông tin của bạn chỉ dùng để liên hệ tư vấn.</p>
-        </div>
-        <div class="speego-form-invite" aria-hidden="true">
-          <span class="speego-form-invite__dot"></span>
-          <span data-i18n="form_invite">Điền ngay · phản hồi trong 2 giờ</span>
-        </div>
-        <form id="speego-consultation-form">
-          <div class="speego-form-grid">
-            <div class="speego-form-group">
-              <label data-i18n="form_name_lbl">Họ và tên quý khách *</label>
-              <input type="text" id="speego-form-name" class="speego-form-input" required placeholder="Nguyen Van A">
-            </div>
-
-            <div class="speego-form-group">
-              <label data-i18n="form_phone_lbl">SĐT / Zalo / WhatsApp *</label>
-              <input type="tel" id="speego-form-phone" class="speego-form-input" required placeholder="+84 906 828 898">
-            </div>
-
-            <div class="speego-form-group">
-              <label data-i18n="form_email_lbl">Email doanh nghiệp *</label>
-              <input type="email" id="speego-form-email" class="speego-form-input" required placeholder="contact@yourcompany.com">
-            </div>
-
-            <div class="speego-form-group">
-              <label data-i18n="form_company_lbl">Tên công ty / Thương hiệu</label>
-              <input type="text" id="speego-form-company" class="speego-form-input" placeholder="Your Brand / Enterprise">
-            </div>
-
-            <div class="speego-form-group">
-              <label data-i18n="form_service_lbl">Dịch vụ cần tư vấn *</label>
-              <select id="speego-form-service" class="speego-form-select">
-                <option value="Sourcing & QC" data-i18n="form_service_sourcing">Sourcing &amp; QC (Tìm xưởng &amp; Kiểm định)</option>
-                <option value="International Logistics" data-i18n="form_service_logistics">Logistics quốc tế (Đường biển / Hàng không)</option>
-                <option value="Fulfillment" data-i18n="form_service_fulfillment">Fulfillment kho bãi &amp; Đóng gói giao hàng</option>
-                <option value="Customs" data-i18n="form_service_customs">Thủ tục hải quan &amp; Xuất nhập khẩu</option>
-                <option value="All-in-One Package" data-i18n="form_service_all_in_one">Trọn gói toàn chuỗi cung ứng</option>
-              </select>
-            </div>
-
-            <div class="speego-form-group">
-              <label data-i18n="form_route_lbl">Tuyến vận chuyển quan tâm *</label>
-              <select id="speego-form-route" class="speego-form-select">
-                <option value="Vietnam to USA" data-i18n="form_route_vn_us">Việt Nam ➔ Hoa Kỳ (US)</option>
-                <option value="China to USA" data-i18n="form_route_cn_us">Trung Quốc ➔ Hoa Kỳ (US)</option>
-                <option value="Vietnam/China to Canada" data-i18n="form_route_vn_cn_ca">Việt Nam / Trung Quốc ➔ Canada</option>
-                <option value="Vietnam/China to Australia" data-i18n="form_route_vn_cn_au">Việt Nam / Trung Quốc ➔ Úc (Australia)</option>
-                <option value="Other" data-i18n="form_route_other">Tuyến vận chuyển khác</option>
-              </select>
-            </div>
-
-            <div class="speego-form-group speego-form-full">
-              <label data-i18n="form_msg_lbl">Chi tiết loại hàng &amp; yêu cầu cụ thể *</label>
-              <textarea id="speego-form-msg" rows="3" class="speego-form-textarea" required data-i18n-ph="form_msg_ph" placeholder="Mô tả sản phẩm, số lượng ước tính (CBM / KG), địa chỉ nhận hàng, thời gian mong muốn..."></textarea>
-            </div>
-
-            <div class="speego-form-full">
-              <button type="submit" class="speego-form-submit-btn">
-                <i class="fas fa-paper-plane"></i>
-                <span data-i18n="form_submit_btn">Gửi Yêu Cầu Tư Vấn Ngay</span>
-              </button>
-              <div class="speego-form-secure-note">
-                <i class="fas fa-shield-alt"></i> <span data-i18n="form_footnote">Thông tin được mã hóa an toàn và tự động đồng bộ về hệ thống quản lý SpeeGo.</span>
-              </div>
-            </div>
-          </div>
-        </form>
-      </div>
-    </div>
-  </section>
-
 </div>

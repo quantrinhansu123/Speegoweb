@@ -405,13 +405,15 @@ function generate({ root, output }) {
       header
         .replace(/(src|href)=(['"])(?!\/|#|[a-z]+:)([^'"]+)\2/gi, "$1=$2/$3$2")
         .replace(/href=(['"])#([^'"]*)\1/gi, 'href="/#$2"'),
-      routeLookup
+      routeLookup,
+      route.lang
     );
     const localizedFooter = rewriteDiscoveryLinks(
       footer
         .replace(/(src|href)=(['"])(?!\/|#|[a-z]+:)([^'"]+)\2/gi, "$1=$2/$3$2")
         .replace(/href=(['"])#([^'"]*)\1/gi, 'href="/#$2"'),
-      routeLookup
+      routeLookup,
+      route.lang
     );
     const outputFile = path.join(output, ...route.urlPath.replace(/^\//, "").split("/"), "index.html");
     fs.mkdirSync(path.dirname(outputFile), { recursive: true });
@@ -476,6 +478,7 @@ function generate({ root, output }) {
   </script>
   <script src="/explore/js/cta-band.js?v=cta_motion_20260925"></script>
   ${route.nav === "fulfillment" ? '<script src="/explore/js/fulfillment-estimate.js?v=ff_estimate_20260926"></script>\n  <script src="/explore/js/fulfillment-dock.js?v=ff_dock_fix_20260925e"></script>' : ""}
+  ${route.nav === "about" ? '<script src="/explore/js/about-page.js?v=about_click_slider_20260928"></script>' : ""}
   <script src="/explore/js/knowledge-article.js"></script>
   <script src="/wp-content/themes/logistica/js/speego-main.js?v=seo_slugs_20260928"></script>
 </body>
@@ -486,11 +489,12 @@ function generate({ root, output }) {
   // Point homepage discovery links at the full HTML routes so both visitors and crawlers reach page content directly.
   const homepagePath = path.join(output, "index.html");
   let homepage = fs.readFileSync(homepagePath, "utf8");
-  homepage = rewriteDiscoveryLinks(homepage, routeLookup);
+  homepage = rewriteDiscoveryLinks(homepage, routeLookup, "en");
   fs.writeFileSync(homepagePath, homepage, "utf8");
 
   writeLocaleHomepages({ homepage, output, origin });
-  writeAboutAndContactPages({ homepage, header, footer, origin, output, routeLookup });
+  writeAboutAndContactPages({ homepage, header, footer, origin, output, routeLookup, exploreRoot });
+
 
   const sitemap = [`<?xml version="1.0" encoding="UTF-8"?>`, `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">`];
   for (const route of routes) {
@@ -513,33 +517,143 @@ function generate({ root, output }) {
 }
 
 function localizeKnownSlugs(html, lang) {
-  const sourcing = {
-    en: "/en/sourcing/",
-    vi: "/vi/tim-nguon-hang/",
-    es: "/es/abastecimiento/"
-  }[lang];
-  if (!sourcing) return html;
-  return html.replace(/href=(['"])\/(?:en|vi|es)\/sourcing\/?\1/gi, `href=$1${sourcing}$1`);
+  // Remap every /{en|vi|es}/… href onto the counterpart slug for `lang`.
+  // Homepage shell is English, so VI/ES pages must rewrite nav/footer paths.
+  const counterparts = {
+    "": { en: "", vi: "", es: "" },
+    "about-us": { en: "about-us", vi: "about-us", es: "about-us" },
+    contact: { en: "contact", vi: "contact", es: "contact" },
+    fulfillment: { en: "fulfillment", vi: "fulfillment", es: "fulfillment" },
+    knowledge: { en: "knowledge", vi: "knowledge", es: "knowledge" },
+    logistics: { en: "logistics", vi: "logistics", es: "logistics" },
+    "logistics/china-to-us-ca-au": {
+      en: "logistics/china-to-us-ca-au",
+      vi: "logistics/china-to-us-ca-au",
+      es: "logistics/china-to-us-ca-au"
+    },
+    "logistics/vietnam-to-us-ca-au": {
+      en: "logistics/vietnam-to-us-ca-au",
+      vi: "logistics/vietnam-to-us-ca-au",
+      es: "logistics/vietnam-to-us-ca-au"
+    },
+    sourcing: { en: "sourcing", vi: "tim-nguon-hang", es: "abastecimiento" },
+    "tim-nguon-hang": { en: "sourcing", vi: "tim-nguon-hang", es: "abastecimiento" },
+    abastecimiento: { en: "sourcing", vi: "tim-nguon-hang", es: "abastecimiento" },
+    "import-export": { en: "import-export", vi: "xuat-nhap-khau", es: "import-export" },
+    "xuat-nhap-khau": { en: "import-export", vi: "xuat-nhap-khau", es: "import-export" },
+    "knowledge/shipping-guides": {
+      en: "knowledge/shipping-guides",
+      vi: "knowledge/huong-dan-van-chuyen",
+      es: "knowledge/guias-de-envio"
+    },
+    "knowledge/huong-dan-van-chuyen": {
+      en: "knowledge/shipping-guides",
+      vi: "knowledge/huong-dan-van-chuyen",
+      es: "knowledge/guias-de-envio"
+    },
+    "knowledge/guias-de-envio": {
+      en: "knowledge/shipping-guides",
+      vi: "knowledge/huong-dan-van-chuyen",
+      es: "knowledge/guias-de-envio"
+    },
+    "knowledge/industry-guides": {
+      en: "knowledge/industry-guides",
+      vi: "knowledge/kien-thuc-nganh-hang",
+      es: "knowledge/guias-por-industria"
+    },
+    "knowledge/kien-thuc-nganh-hang": {
+      en: "knowledge/industry-guides",
+      vi: "knowledge/kien-thuc-nganh-hang",
+      es: "knowledge/guias-por-industria"
+    },
+    "knowledge/guias-por-industria": {
+      en: "knowledge/industry-guides",
+      vi: "knowledge/kien-thuc-nganh-hang",
+      es: "knowledge/guias-por-industria"
+    },
+    "knowledge/trade-routes": {
+      en: "knowledge/trade-routes",
+      vi: "knowledge/tuyen-thuong-mai",
+      es: "knowledge/rutas-comerciales"
+    },
+    "knowledge/tuyen-thuong-mai": {
+      en: "knowledge/trade-routes",
+      vi: "knowledge/tuyen-thuong-mai",
+      es: "knowledge/rutas-comerciales"
+    },
+    "knowledge/rutas-comerciales": {
+      en: "knowledge/trade-routes",
+      vi: "knowledge/tuyen-thuong-mai",
+      es: "knowledge/rutas-comerciales"
+    },
+    "knowledge/sourcing-qc": { en: "knowledge/sourcing-qc", vi: "knowledge/sourcing-qc", es: "knowledge/sourcing-qc" },
+    "knowledge/fulfillment-warehouse": {
+      en: "knowledge/fulfillment-warehouse",
+      vi: "knowledge/fulfillment-kho-van",
+      es: "knowledge/fulfillment-almacen"
+    },
+    "knowledge/fulfillment-kho-van": {
+      en: "knowledge/fulfillment-warehouse",
+      vi: "knowledge/fulfillment-kho-van",
+      es: "knowledge/fulfillment-almacen"
+    },
+    "knowledge/fulfillment-almacen": {
+      en: "knowledge/fulfillment-warehouse",
+      vi: "knowledge/fulfillment-kho-van",
+      es: "knowledge/fulfillment-almacen"
+    },
+    "knowledge/import-export-news": {
+      en: "knowledge/import-export-news",
+      vi: "knowledge/tin-xuat-nhap-khau",
+      es: "knowledge/noticias-import-export"
+    },
+    "knowledge/tin-xuat-nhap-khau": {
+      en: "knowledge/import-export-news",
+      vi: "knowledge/tin-xuat-nhap-khau",
+      es: "knowledge/noticias-import-export"
+    },
+    "knowledge/noticias-import-export": {
+      en: "knowledge/import-export-news",
+      vi: "knowledge/tin-xuat-nhap-khau",
+      es: "knowledge/noticias-import-export"
+    }
+  };
+
+  return html.replace(
+    /href=(['"])\/(en|vi|es)(?:\/([^'"#]*?))?\/?(#[^'"]*)?\1/gi,
+    (_full, quote, _fromLang, rest = "", anchor = "") => {
+      const path = String(rest || "").replace(/\/+$/, "");
+      const mapped = counterparts[path];
+      const next = mapped ? mapped[lang] : path;
+      const href = next ? `/${lang}/${next}/` : `/${lang}/`;
+      return `href=${quote}${href}${anchor || ""}${quote}`;
+    }
+  );
 }
 
-function rewriteDiscoveryLinks(html, routeLookup) {
+function rewriteDiscoveryLinks(html, routeLookup, lang = "en") {
   let out = html;
   out = out.replace(/href=(['"])\/explore\/#(\/[^'"]+)\1/gi, (_full, quote, hash) => {
     const target = routeLookup.get(`#${hash}`);
     return target ? `href=${quote}${target.urlPath}${quote}` : `href=${quote}/${quote}`;
   });
   // Legacy SEO folders: /explore/{lang}/{path}/#anchor → /{lang}/… or mapped SEO path
-  out = out.replace(/href=(['"])\/explore\/(en|es|vi)\/([^'"#]*)(#[^'"]*)?\1/gi, (_full, quote, lang, rest, anchor = "") => {
+  out = out.replace(/href=(['"])\/explore\/(en|es|vi)\/([^'"#]*)(#[^'"]*)?\1/gi, (_full, quote, _fromLang, rest, anchor = "") => {
     const pathOnly = String(rest || "").replace(/\/$/, "");
-    const hash = lang === "vi" ? `#/${pathOnly}` : `#/${lang}/${pathOnly}`;
+    const hash = _fromLang === "vi" ? `#/${pathOnly}` : `#/${_fromLang}/${pathOnly}`;
     const target = routeLookup.get(hash);
-    if (target) return `href=${quote}${target.urlPath.replace(/\/$/, "/")}${anchor || ""}${quote}`.replace(`/${anchor}`, anchor);
-    // Fallback without route table entry
+    if (target) return `href=${quote}${target.urlPath}${anchor || ""}${quote}`;
     return `href=${quote}/${lang}/${pathOnly}/${anchor || ""}${quote}`.replace(/\/+#/, "#").replace(/\/{2,}(#|$)/, "/$1");
   });
-  out = out.replace(/href=(['"])\/#why-speego\1/gi, 'href="/en/about-us/"');
-  out = out.replace(/href=(['"])\/about-us\/?\1/gi, 'href="/en/about-us/"');
-  out = out.replace(/href=(['"])#consultation-form\1/gi, 'href="/en/contact/"');
+  // Hash SPA routes → SEO paths for current page language
+  out = out.replace(/href=(['"])\/#(\/[^'"]+)\1/gi, (_full, quote, hashPath) => {
+    const target = routeLookup.get(`#${hashPath}`);
+    return target ? `href=${quote}${target.urlPath}${quote}` : `href=${quote}/${lang}/${quote}`;
+  });
+  out = out.replace(/href=(['"])\/#why-speego\1/gi, `href="${`/${lang}/about-us/`}"`);
+  out = out.replace(/href=(['"])\/about-us\/?\1/gi, `href="${`/${lang}/about-us/`}"`);
+  out = out.replace(/href=(['"])#consultation-form\1/gi, `href="${`/${lang}/contact/`}"`);
+  out = out.replace(/href=(['"])#contact-form\1/gi, `href="${`/${lang}/contact/`}"`);
   return out;
 }
 
@@ -577,23 +691,27 @@ function extractHomepageSection(homepage, sectionId) {
   return match ? match[0] : "";
 }
 
-function writeAboutAndContactPages({ homepage, header, footer, origin, output, routeLookup }) {
-  const aboutSection = extractHomepageSection(homepage, "why-speego");
+function writeAboutAndContactPages({ homepage, header, footer, origin, output, routeLookup, exploreRoot }) {
   const contactSection = extractHomepageSection(homepage, "consultation-form");
+  const aboutFiles = {
+    vi: path.join(exploreRoot, "pages/about/vi-about.html"),
+    en: path.join(exploreRoot, "pages/about/en-about.html"),
+    es: path.join(exploreRoot, "pages/about/es-about.html")
+  };
   const pages = [
     {
       slug: "about-us",
-      section: aboutSection && contactSection ? `${aboutSection}\n${contactSection}` : aboutSection,
       titles: {
-        en: "About SpeeGo | Why businesses choose SpeeGo",
-        vi: "Về SpeeGo | Vì sao doanh nghiệp chọn SpeeGo",
-        es: "Sobre SpeeGo | Por qué elegir SpeeGo"
+        en: "About SpeeGo Logistics | Global Sourcing & Supply Chain Partner",
+        vi: "Về chúng tôi - SpeeGo Logistics",
+        es: "Acerca de SpeeGo Logistics"
       },
       descriptions: {
         en: "Learn why businesses trust SpeeGo for sourcing, international logistics, fulfillment, and import-export.",
-        vi: "Tìm hiểu vì sao doanh nghiệp tin tưởng SpeeGo cho sourcing, logistics quốc tế, fulfillment và xuất nhập khẩu.",
-        es: "Descubra por qué las empresas confían en SpeeGo para sourcing, logística internacional, fulfillment e importación-exportación."
-      }
+        vi: "Tìm hiểu về SpeeGo Logistics — tầm nhìn, sứ mệnh, lịch sử và năng lực chuỗi cung ứng toàn cầu.",
+        es: "Conozca SpeeGo Logistics: visión, misión, historia y capacidades de cadena de suministro global."
+      },
+      scripts: '<script src="/explore/js/about-page.js?v=about_click_slider_20260928"></script>'
     },
     {
       slug: "contact",
@@ -607,20 +725,38 @@ function writeAboutAndContactPages({ homepage, header, footer, origin, output, r
         en: "Contact SpeeGo for sourcing, shipping, fulfillment, and customs support.",
         vi: "Liên hệ SpeeGo để được tư vấn sourcing, vận chuyển, fulfillment và thủ tục hải quan.",
         es: "Contacte a SpeeGo para sourcing, envíos, fulfillment y apoyo aduanero."
-      }
+      },
+      scripts: ""
     }
   ];
 
   for (const page of pages) {
-    if (!page.section) continue;
     for (const lang of ["en", "vi", "es"]) {
+      let section = page.section || "";
+      if (page.slug === "about-us") {
+        const aboutPath = aboutFiles[lang];
+        if (!fs.existsSync(aboutPath)) continue;
+        section = fs.readFileSync(aboutPath, "utf8")
+          .replace(/<script\b[\s\S]*?<\/script>/gi, "")
+          .replace(/(src|href)=(['"])(?!\/|#|[a-z]+:|tel:|mailto:)([^'"]+)\2/gi, "$1=$2/explore/$3$2");
+      }
+      if (!section) continue;
+
       const urlPath = `/${lang}/${page.slug}/`;
-      const localizedHeader = header
-        .replace(/(src|href)=(['"])(?!\/|#|[a-z]+:)([^'"]+)\2/gi, "$1=$2/$3$2")
-        .replace(/href=(['"])#([^'"]*)\1/gi, 'href="/#$2"');
-      const localizedFooter = footer
-        .replace(/(src|href)=(['"])(?!\/|#|[a-z]+:)([^'"]+)\2/gi, "$1=$2/$3$2")
-        .replace(/href=(['"])#([^'"]*)\1/gi, 'href="/#$2"');
+      const localizedHeader = rewriteDiscoveryLinks(
+        header
+          .replace(/(src|href)=(['"])(?!\/|#|[a-z]+:)([^'"]+)\2/gi, "$1=$2/$3$2")
+          .replace(/href=(['"])#([^'"]*)\1/gi, 'href="/#$2"'),
+        routeLookup,
+        lang
+      );
+      const localizedFooter = rewriteDiscoveryLinks(
+        footer
+          .replace(/(src|href)=(['"])(?!\/|#|[a-z]+:)([^'"]+)\2/gi, "$1=$2/$3$2")
+          .replace(/href=(['"])#([^'"]*)\1/gi, 'href="/#$2"'),
+        routeLookup,
+        lang
+      );
       const alternateTags = ["en", "vi", "es"]
         .map((code) => `<link rel="alternate" hreflang="${code}" href="${origin}/${code}/${page.slug}/">`)
         .join("\n    ");
@@ -653,9 +789,24 @@ function writeAboutAndContactPages({ homepage, header, footer, origin, output, r
 <body class="home wp-theme-logistica elementor-default elementor-template-full-width speego-seo-page" data-seo-language="${lang}" data-default-lang="${lang}">
   <div id="page" class="hfeed site">
     ${localizedHeader}
-    <main id="app-main">${page.section}</main>
+    <main id="app-main">${section}</main>
     ${localizedFooter}
   </div>
+  ${page.scripts || ""}
+  <script>
+    (function () {
+      var localizedRoutes = ${JSON.stringify(Object.fromEntries(["en", "vi", "es"].map((code) => [code, `/${code}/${page.slug}/`])))};
+      document.addEventListener('click', function (event) {
+        var option = event.target.closest('.speego-lang-option, .speego-lang-pill');
+        if (!option) return;
+        var target = localizedRoutes[option.getAttribute('data-lang')];
+        if (!target) return;
+        event.preventDefault();
+        event.stopImmediatePropagation();
+        window.location.assign(target);
+      }, true);
+    }());
+  </script>
   <script src="/wp-content/themes/logistica/js/speego-main.js?v=seo_slugs_20260928"></script>
 </body>
 </html>`;
