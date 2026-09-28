@@ -9485,19 +9485,31 @@ body.speego-seo-page:has([data-nav="knowledge"]) .cta-form-band-section > .conta
   position: relative;
   z-index: 1;
   display: grid;
-  grid-template-columns: auto minmax(0, 1fr) auto;
-  gap: 32px;
+  grid-template-columns: minmax(72px, 120px) minmax(0, 1fr) minmax(100px, 180px);
+  gap: clamp(20px, 3vw, 40px);
   align-items: center;
+}
+
+.page-about .about-vision-mark {
+  min-width: 0;
+  max-width: 120px;
+  position: relative;
+  z-index: 0;
+  overflow: hidden;
 }
 
 .page-about .about-vision-mark-desktop {
   display: block;
+  width: 100%;
   max-width: 118px;
+  height: auto;
 }
 
 .page-about .about-vision-mark-mobile {
   display: none;
   max-width: 180px;
+  width: 100%;
+  height: auto;
   margin: 0 auto;
 }
 
@@ -9505,6 +9517,9 @@ body.speego-seo-page:has([data-nav="knowledge"]) .cta-form-band-section > .conta
   display: flex;
   flex-direction: column;
   gap: 32px;
+  min-width: 0;
+  position: relative;
+  z-index: 1;
 }
 
 .page-about .about-vision-title {
@@ -9522,10 +9537,18 @@ body.speego-seo-page:has([data-nav="knowledge"]) .cta-form-band-section > .conta
   font-weight: 400;
 }
 
+.page-about .about-vision-logo {
+  min-width: 0;
+  justify-self: end;
+  align-self: end;
+}
+
 .page-about .about-vision-logo img {
   max-width: 160px;
+  width: 100%;
+  height: auto;
   display: block;
-  margin: 0 auto;
+  margin: 0;
 }
 
 .page-about .about-split-media img,
@@ -9671,6 +9694,11 @@ body.speego-seo-page:has([data-nav="knowledge"]) .cta-form-band-section > .conta
     grid-template-columns: 1fr;
   }
 
+  .page-about .about-vision-mark {
+    max-width: none;
+    justify-self: center;
+  }
+
   .page-about .about-vision-mark-desktop {
     display: none;
   }
@@ -9681,6 +9709,8 @@ body.speego-seo-page:has([data-nav="knowledge"]) .cta-form-band-section > .conta
 
   .page-about .about-vision-logo {
     order: -1;
+    justify-self: center;
+    align-self: center;
   }
 }
 
