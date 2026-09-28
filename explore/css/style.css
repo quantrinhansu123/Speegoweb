@@ -9391,3 +9391,23 @@ body.speego-seo-page:has([data-nav="knowledge"]) .cta-form-band-section > .conta
     white-space: normal;
   }
 }
+
+/* Keep the Logistics hero gutter identical on the SPA and SEO production
+   routes.  A later main-branch rule widens this container to 1480px; this
+   scoped final override preserves the shared 1320px content edge. */
+.page-shipping-routes .page-hero-2col > .container {
+  width: 100% !important;
+  max-width: 1320px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  padding-left: 24px !important;
+  padding-right: 24px !important;
+  box-sizing: border-box !important;
+}
+
+@media (max-width: 768px) {
+  .page-shipping-routes .page-hero-2col > .container {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+}
