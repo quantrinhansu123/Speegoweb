@@ -182,15 +182,27 @@ function cleanupFragment(fragment, routeLookup, route) {
   html = html.replace(/(src|poster|href)=(['"])assets\//gi, "$1=$2/explore/assets/");
   html = html.replace(/url\((['"]?)assets\//gi, "url($1/explore/assets/");
 
-  // Inline CTA band for SEO pages. Never inject band into a sidebar slot —
-  // strip all placeholders, then append one full-width band after page content.
+  // Article sidebars stay in place. Full-width bands stay where the page
+  // placeholder sits (directly under "Why SpeeGo" when that section exists).
+  const isPost = route && String(route.file || "").includes("post-");
+  if (isPost) html = inlineSidebarCtas(html, route.lang);
+
   const ctaBand = buildCtaBandHtml(route && route.lang);
+  let placedBand = false;
+  html = html.replace(
+    /<div\b(?:(?:[^>"']|"[^"]*"|'[^']*'))*data-component=(["'])cta-form\1(?:(?:[^>"']|"[^"]*"|'[^']*'))*>\s*<\/div>/gi,
+    (full) => {
+      if (!ctaBand || !/data-variant=(["'])band\1/i.test(full)) return full;
+      placedBand = true;
+      return `\n${ctaBand}\n`;
+    }
+  );
   const hadCta = /data-component=(["'])cta-form\1/i.test(html);
   html = html.replace(
     /\s*<div\b(?:(?:[^>"']|"[^"]*"|'[^']*'))*data-component=(["'])cta-form\1(?:(?:[^>"']|"[^"]*"|'[^']*'))*>\s*<\/div>/gi,
     ""
   );
-  if (hadCta && ctaBand) {
+  if (hadCta && ctaBand && !placedBand) {
     html = `${html.trimEnd()}\n${ctaBand}\n`;
     html = html.replace(/href=(['"])#contact-form\1/gi, 'href="#contact-form"');
   } else if (!ctaBand) {
@@ -199,8 +211,62 @@ function cleanupFragment(fragment, routeLookup, route) {
   return html;
 }
 
-function buildCtaBandHtml(lang) {
-  const copy = {
+function inlineSidebarCtas(html, lang) {
+  const copy = ctaCopy(lang);
+  if (!copy) return html;
+  return html.replace(
+    /<div\b((?:(?:[^>"']|"[^"]*"|'[^']*'))*)data-component=(["'])cta-form\2((?:(?:[^>"']|"[^"]*"|'[^']*'))*)>\s*<\/div>/gi,
+    (full, before, _quote, after) => {
+      const attrs = `${before} ${after}`;
+      if (!/data-variant=(["'])sidebar\1/i.test(attrs)) return full;
+      const attr = (name) => {
+        const match = attrs.match(new RegExp(`data-${name}=(["'])([\\s\\S]*?)\\1`, "i"));
+        return match ? decodeEntities(match[2]) : "";
+      };
+      return buildSidebarCtaHtml({
+        tag: attr("tag") || copy.tag,
+        heading: attr("heading") || "Ask us a question",
+        subtext: attr("subtext") || copy.subtext,
+        phone: attr("phone") || "(+84) 906 828 898 ↗",
+        copy
+      });
+    }
+  );
+}
+
+function buildSidebarCtaHtml({ tag, heading, subtext, phone, copy }) {
+  return `<div class="consult-card-sidebar" id="contact-form">
+    <span class="section-tag">${escapeHtml(tag)}</span>
+    <h3 class="sidebar-title">${escapeHtml(heading)}</h3>
+    <p class="sidebar-desc">${escapeHtml(subtext)}</p>
+    <div>
+      <a href="tel:+84906828898" class="sidebar-hotline">${escapeHtml(phone)}</a>
+    </div>
+    <form class="consult-form" onsubmit="handleConsultSubmit(event)">
+      <div class="form-group">
+        <label class="form-label" for="sidebar_fullName">${escapeHtml(copy.labelName)}</label>
+        <input type="text" id="sidebar_fullName" name="fullName" class="form-control" placeholder="${escapeHtml(copy.placeholderName)}" required>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="sidebar_email">${escapeHtml(copy.labelEmail)}</label>
+        <input type="email" id="sidebar_email" name="email" class="form-control" placeholder="${escapeHtml(copy.placeholderEmail)}" required>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="sidebar_phone">${escapeHtml(copy.labelPhone)}</label>
+        <input type="tel" id="sidebar_phone" name="phone" class="form-control" placeholder="${escapeHtml(copy.placeholderPhone)}" required>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="sidebar_message">${escapeHtml(copy.labelMessage)}</label>
+        <textarea id="sidebar_message" name="message" class="form-control" placeholder="${escapeHtml(copy.placeholderMessage)}"></textarea>
+      </div>
+      <button type="submit" class="btn-orange btn-submit">${escapeHtml(copy.btn)}</button>
+      <p class="form-security-note">${escapeHtml(copy.note)}</p>
+    </form>
+  </div>`;
+}
+
+function ctaCopy(lang) {
+  return {
     vi: {
       tag: "LET'S MOVE FORWARD",
       heading: "Bắt đầu từ nhu cầu của bạn.",
@@ -247,6 +313,10 @@ function buildCtaBandHtml(lang) {
       note: "Abre su aplicación de correo con el mensaje preparado. Sus datos se envían únicamente al hacer clic en Enviar en su cliente de correo."
     }
   }[lang || "vi"] || null;
+}
+
+function buildCtaBandHtml(lang) {
+  const copy = ctaCopy(lang);
   if (!copy) return "";
   return `  <section class="cta-form-band-section" id="contact-form">
     <div class="container cta-form-band-grid">
@@ -366,7 +436,7 @@ function generate({ root, output }) {
   <link rel="stylesheet" href="/wp-content/themes/logistica/styleb54d.css?ver=6.8.8">
   <link rel="stylesheet" href="/wp-content/themes/logistica/css/speego-custom.css?v=mobile_tracking_20260923">
   <link rel="stylesheet" href="/wp-content/themes/logistica/css/speego-process-tabs.css">
-  <link rel="stylesheet" href="/explore/css/style.css?v=import_export_card_spacing_20260926">
+  <link rel="stylesheet" href="/explore/css/style.css?v=testimonial_type_20260928">
 </head>
 <body class="home wp-theme-logistica elementor-default elementor-template-full-width speego-seo-page" data-seo-language="${route.lang}">
   <div id="page" class="hfeed site">
@@ -500,7 +570,7 @@ function writeAboutAndContactPages({ homepage, header, footer, origin, output, r
   const pages = [
     {
       slug: "about-us",
-      section: aboutSection,
+      section: aboutSection && contactSection ? `${aboutSection}\n${contactSection}` : aboutSection,
       titles: {
         en: "About SpeeGo | Why businesses choose SpeeGo",
         vi: "Về SpeeGo | Vì sao doanh nghiệp chọn SpeeGo",
@@ -565,7 +635,7 @@ function writeAboutAndContactPages({ homepage, header, footer, origin, output, r
   <link rel="stylesheet" href="/wp-content/themes/logistica/styleb54d.css?ver=6.8.8">
   <link rel="stylesheet" href="/wp-content/themes/logistica/css/speego-custom.css?v=mobile_tracking_20260923">
   <link rel="stylesheet" href="/wp-content/themes/logistica/css/speego-process-tabs.css">
-  <link rel="stylesheet" href="/explore/css/style.css?v=import_export_card_spacing_20260926">
+  <link rel="stylesheet" href="/explore/css/style.css?v=testimonial_type_20260928">
 </head>
 <body class="home wp-theme-logistica elementor-default elementor-template-full-width speego-seo-page" data-seo-language="${lang}" data-default-lang="${lang}">
   <div id="page" class="hfeed site">

@@ -7867,8 +7867,8 @@ body:has(.page-fulfillment) #breadcrumbSection {
 
 /* Logistics page: show freight modes as image-led cards before the workflow. */
 .page-shipping-routes .shipping-methods-section {
-  padding: 64px 0 72px;
-  background: #F8FAFC;
+  padding: 72px 0;
+  background: #FFFFFF;
 }
 
 .page-shipping-routes .shipping-methods-section .methods-3col-grid {
@@ -8602,6 +8602,16 @@ body:has(.page-fulfillment) #breadcrumbSection {
   justify-content: space-between;
 }
 
+.testimonial-card-sourcing .ff-quote-text {
+  font-family: var(--font-heading);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--speego-primary);
+  line-height: 1.55;
+  letter-spacing: -0.01em;
+  margin: 0 0 24px;
+}
+
 @media (max-width: 1024px) {
   .models-3col-grid {
     grid-template-columns: 1fr;
@@ -8682,8 +8692,17 @@ body:has(.page-import-export) .breadcrumb-section {
   overflow: hidden;
 }
 
-/* Sourcing is the subpage margin standard: hero 1480 / 24 */
-.page-sourcing .sourcing-hero-section > .container,
+/* Sourcing hero matches body sections (1320 / 24). Other heroes stay 1480. */
+.page-sourcing .sourcing-hero-section > .container {
+  max-width: 1320px !important;
+  width: 100% !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  padding-left: 24px !important;
+  padding-right: 24px !important;
+  box-sizing: border-box !important;
+}
+
 .page-shipping-routes .page-hero-2col > .container,
 .page-import-export .page-hero-2col > .container {
   max-width: 1480px !important;
