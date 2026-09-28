@@ -315,55 +315,68 @@ img {
   display: inline-block;
 }
 
+.speego-header-topbar .speego-policy-toggle,
 .speego-policy-toggle {
   background: transparent;
   border: none;
-  color: rgba(255, 255, 255, 0.8);
-  font-family: var(--font-primary);
-  font-size: 12.5px;
+  color: rgba(255, 255, 255, 0.92);
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
   font-weight: 600;
-  padding: 4px 8px;
+  padding: 5px 0;
   cursor: pointer;
   border-radius: 4px;
   transition: color 0.2s ease;
 }
 
-.speego-policy-toggle:hover {
-  color: #FFFFFF;
+.speego-header-topbar .speego-policy-toggle:hover,
+.speego-policy-toggle:hover,
+.speego-policy-menu.is-open .speego-policy-toggle {
+  color: #fff;
 }
 
 .speego-policy-dropdown {
   display: none;
   position: absolute;
-  top: calc(100% + 6px);
+  top: calc(100% + 10px);
   right: 0;
-  background: #061B2E;
+  background: #fff;
   min-width: 180px;
+  width: max-content;
+  max-width: min(280px, calc(100vw - 32px));
   border-radius: 8px;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
-  padding: 6px 0;
+  border: 1px solid #e7edf1;
+  box-shadow: 0 12px 28px rgba(4, 36, 61, 0.16);
+  padding: 6px;
   z-index: 1050;
   list-style: none;
   margin: 0;
 }
 
+.speego-policy-menu:hover .speego-policy-dropdown,
+.speego-policy-menu:focus-within .speego-policy-dropdown,
 .speego-policy-dropdown.is-open {
   display: block;
 }
 
 .speego-policy-dropdown li a {
   display: block;
-  padding: 8px 16px;
-  color: #CBD5E1;
-  font-size: 12.5px;
+  padding: 10px 12px;
+  border-radius: 5px;
+  color: #04243d !important;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.35;
   text-decoration: none;
+  white-space: normal;
   transition: background 0.15s ease, color 0.15s ease;
 }
 
-.speego-policy-dropdown li a:hover {
-  background: rgba(255, 255, 255, 0.08);
-  color: var(--orange-primary);
+.speego-policy-dropdown li a:hover,
+.speego-policy-dropdown li a:focus-visible {
+  background: #f2f6f8;
+  color: #ff6a00 !important;
 }
 
 /* Main Site Header: Sticky at top: 0 with z-index 1000 */
@@ -3264,8 +3277,8 @@ body:has(#speego-cookie-consent:not([hidden])) .speego-track-fab {
 
 .post-grid {
   display: grid;
-  grid-template-columns: 1.62fr 1fr;
-  gap: 48px;
+  grid-template-columns: minmax(0, 1fr) 320px;
+  gap: 40px;
   align-items: flex-start;
 }
 
@@ -3430,6 +3443,12 @@ body:has(#speego-cookie-consent:not([hidden])) .speego-track-fab {
   display: flex;
   flex-direction: column;
   gap: 22px;
+  width: 320px;
+  max-width: 100%;
+}
+
+.post-sidebar .consult-card-sidebar {
+  padding: 22px 18px;
 }
 
 .topic-key-articles-card {
@@ -3655,6 +3674,10 @@ body.speego-seo-page #app-main {
     grid-template-columns: 1fr;
     gap: 36px;
   }
+
+  .post-sidebar {
+    width: 100%;
+  }
 }
 
 @media (max-width: 768px) {
@@ -3872,7 +3895,8 @@ body.speego-seo-page #app-main {
   color: #FFFFFF;
   overflow: hidden;
   white-space: nowrap;
-  padding: 11px 0;
+  padding: 14px 0;
+  line-height: 1.4;
   box-shadow: 0 4px 14px rgba(240, 88, 40, 0.25);
 }
 
@@ -3881,6 +3905,7 @@ body.speego-seo-page #app-main {
   align-items: center;
   font-size: 11.5px;
   font-weight: 800;
+  line-height: 1.4;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   animation: ffTickerOrange 35s linear infinite;
@@ -8684,7 +8709,7 @@ body:has(.page-import-export) .breadcrumb-section {
   line-height: 1.12;
 }
 
-/* Hero spacing: wider text column so title stays one line; image shifted right */
+/* Hero spacing: same left edge as body sections (1320 / 24) */
 .page-sourcing .sourcing-hero-section,
 .page-shipping-routes .page-hero-2col,
 .page-import-export .page-hero-2col {
@@ -8692,20 +8717,11 @@ body:has(.page-import-export) .breadcrumb-section {
   overflow: hidden;
 }
 
-/* Sourcing hero matches body sections (1320 / 24). Other heroes stay 1480. */
-.page-sourcing .sourcing-hero-section > .container {
-  max-width: 1320px !important;
-  width: 100% !important;
-  margin-left: auto !important;
-  margin-right: auto !important;
-  padding-left: 24px !important;
-  padding-right: 24px !important;
-  box-sizing: border-box !important;
-}
-
+.page-sourcing .sourcing-hero-section > .container,
 .page-shipping-routes .page-hero-2col > .container,
-.page-import-export .page-hero-2col > .container {
-  max-width: 1480px !important;
+.page-import-export .page-hero-2col > .container,
+.page-fulfillment .ff-hero-dark-section > .container {
+  max-width: 1320px !important;
   width: 100% !important;
   margin-left: auto !important;
   margin-right: auto !important;
@@ -9020,9 +9036,8 @@ body:has(.page-import-export) .breadcrumb-section {
 }
 
 /* ==========================================================================
-   SUBPAGE CONTENT SHELL — Sourcing is the margin standard
-   Body sections: 1320 / 24px (same as .container)
-   Heroes: 1480 / 24px (see above)
+   SUBPAGE CONTENT SHELL — one margin for every service page
+   Body sections and heroes: 1320 / 24px (same as .container)
    ========================================================================== */
 .page-sourcing > section:not(.sourcing-hero-section) > .container,
 .page-shipping-routes > section:not(.page-hero-2col) > .container,
@@ -9204,6 +9219,18 @@ body.speego-seo-page:has([data-nav="knowledge"]) .cta-form-band-section > .conta
 .page-container > section:not(.page-hero-2col):not(.ff-hero-dark-section) {
   padding-top: clamp(48px, 5vw, 72px) !important;
   padding-bottom: clamp(48px, 5vw, 72px) !important;
+}
+
+/* Logistics: one even gap between blocks. Light sections keep bottom padding only
+   so the next heading does not add a second gap. */
+.page-container.page-shipping-routes > section:not(.page-hero-2col) {
+  padding-top: 48px !important;
+  padding-bottom: 48px !important;
+}
+
+.page-container.page-shipping-routes > section:not(.page-hero-2col):not(.process-8steps-section):not(.cta-form-band-section)
+  + section:not(.process-8steps-section):not(.cta-form-band-section) {
+  padding-top: 0 !important;
 }
 
 .page-container > section:first-of-type.page-hero-2col,
