@@ -8764,6 +8764,12 @@ body:has(.page-import-export) .breadcrumb-section {
 }
 
 .page-sourcing .hero-h1-clean {
+  white-space: normal;
+}
+
+.page-sourcing .hero-h1-clean .hero-h1-line,
+.page-sourcing .hero-h1-clean .text-orange {
+  display: inline-block;
   white-space: nowrap;
 }
 
