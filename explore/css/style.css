@@ -9237,3 +9237,36 @@ body.speego-seo-page:has([data-nav="knowledge"]) .cta-form-band-section > .conta
 .page-container > section:first-of-type.ff-hero-dark-section {
   padding-bottom: clamp(48px, 5vw, 72px) !important;
 }
+
+/* Houston warehouse gallery: 3 large photos, no captions */
+.page-fulfillment .ff-warehouse-cards--lg {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  overflow: visible;
+  cursor: default;
+  scroll-snap-type: none;
+}
+
+.page-fulfillment .ff-warehouse-cards--lg .ff-warehouse-card {
+  flex: none;
+  width: 100%;
+  min-width: 0;
+  height: auto;
+  aspect-ratio: 320 / 206;
+  border-radius: 16px;
+}
+
+.page-fulfillment .ff-warehouse-cards--lg .ff-warehouse-card-img {
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  object-fit: cover;
+}
+
+@media (max-width: 720px) {
+  .page-fulfillment .ff-warehouse-cards--lg {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+}
