@@ -240,21 +240,19 @@ function speego_seed_all_pages($force = false)
     }
 }
 
+define('SPEEGO_THEME_VERSION', '1.1.0');
+
 add_action('after_switch_theme', function () {
-    speego_seed_all_pages(false);
+    speego_seed_all_pages(true);
+    update_option('speego_theme_installed_version', SPEEGO_THEME_VERSION);
 });
 
-// Auto-seed on first admin visit if homepage doesn't exist
-add_action('admin_init', function () {
-    $existing = get_posts([
-        'post_type' => 'page',
-        'post_status' => ['publish', 'draft'],
-        'numberposts' => 1,
-        'meta_key' => '_speego_route_hash',
-        'meta_value' => '#/home',
-    ]);
-    if (!$existing) {
-        speego_seed_all_pages(false);
+// Auto-seed / sync all pages when theme version is upgraded or on initial install
+add_action('init', function () {
+    $installedVersion = get_option('speego_theme_installed_version', '');
+    if ($installedVersion !== SPEEGO_THEME_VERSION) {
+        speego_seed_all_pages(true);
+        update_option('speego_theme_installed_version', SPEEGO_THEME_VERSION);
     }
 });
 
@@ -284,7 +282,17 @@ function speego_register_admin_menus()
         'speego_render_homepage_manager_page'
     );
 
-    // Submenu 2: Sourcing Headline
+    // Submenu 2: About Us Manager
+    add_submenu_page(
+        'speego-manager',
+        'Quản lý Trang Về SpeeGo (About Us)',
+        'Về SpeeGo (About)',
+        'edit_pages',
+        'speego-about-manager',
+        'speego_render_about_manager_page'
+    );
+
+    // Submenu 3: Sourcing Headline
     add_submenu_page(
         'speego-manager',
         'Chỉnh tiêu đề Sourcing',
@@ -294,7 +302,7 @@ function speego_register_admin_menus()
         'speego_render_sourcing_headline_page'
     );
 
-    // Submenu 3: Direct link to Pages
+    // Submenu 4: Direct link to Pages
     add_submenu_page(
         'speego-manager',
         'Tất cả các trang SpeeGo',
@@ -650,7 +658,8 @@ add_filter('redirect_canonical', function ($redirectUrl) {
     if ($homePath !== '' && strpos($path, $homePath . '/') === 0) {
         $path = substr($path, strlen($homePath) + 1);
     }
-    if (in_array(trim($path, '/'), ['vi/sourcing', 'en/sourcing', 'es/sourcing', 'vi/about-us', 'en/about-us', 'es/about-us', 'about-us'], true)) {
+    $cleanPath = trim($path, '/');
+    if ($cleanPath !== '' && function_exists('speego_route_hash_for_path') && speego_route_hash_for_path($cleanPath)) {
         return false;
     }
     return $redirectUrl;

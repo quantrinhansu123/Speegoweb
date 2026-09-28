@@ -1,193 +1,176 @@
 <script>
-  // Automatically redirect to full app container if opened directly from File Explorer
   if (typeof window !== 'undefined' && !document.getElementById('app-main')) {
     window.location.replace('../../index.html#/en/about-us');
   }
 </script>
 
-<div class="page-container page-about" 
-     data-page="about-us" 
-     data-nav="about" 
+<div class="page-container page-about"
+     data-page="about-us"
+     data-nav="about"
      data-breadcrumb='[{"label":"Home","href":"#/en/home"},{"label":"About Us","href":"#/en/about-us"}]'>
 
-  <!-- 1. HERO SECTION (2 COLUMNS: TEXT LEFT, CARD IMAGE RIGHT) -->
-  <section class="page-hero-2col">
+  <!-- 1. Hero banner -->
+  <section class="about-banner about-reveal">
+    <img src="assets/about/about-speego-logistics-1.jpg" alt="SpeeGo Logistics — global manufacturing and logistics partner" class="about-banner-img">
+  </section>
+
+  <!-- 2. Intro + counters -->
+  <section class="about-intro" id="about-intro">
     <div class="container">
-      <div class="hero-2col-grid">
-        <!-- Left Column: Title, Intro & Actions -->
-        <div class="hero-2col-left">
-          <div class="hero-tag-bar" data-i18n="about_tag">ABOUT SPEEGO LOGISTICS</div>
-          <h1 class="hero-h1-clean">
-            <span data-i18n="about_hero_title_1">Connecting Global Supply Chains</span><br>
-            <span class="text-orange" data-i18n="about_hero_title_2">Transparent &amp; End-to-End.</span>
+      <div class="about-intro-grid">
+        <div class="about-intro-media about-reveal">
+          <div class="about-intro-frame" data-about-slider aria-roledescription="carousel" aria-label="SpeeGo team photos">
+            <div class="about-intro-slides">
+              <img class="is-active" src="assets/about/Rectangle-141236.png" alt="SpeeGo team 1" data-about-slide>
+              <img src="assets/about/Rectangle-141237.png" alt="SpeeGo team 2" loading="lazy" data-about-slide>
+              <img src="assets/about/Rectangle-141238.png" alt="SpeeGo team 3" loading="lazy" data-about-slide>
+              <img src="assets/about/Rectangle-141239.png" alt="SpeeGo team 4" loading="lazy" data-about-slide>
+              <img src="assets/about/Rectangle-141240.png" alt="SpeeGo team 5" loading="lazy" data-about-slide>
+              <img src="assets/about/Rectangle-141242.png" alt="SpeeGo team 6" loading="lazy" data-about-slide>
+              <img src="assets/about/Rectangle-141241.png" alt="SpeeGo team 7" loading="lazy" data-about-slide>
+              <img src="assets/about/Rectangle-141243.png" alt="SpeeGo team 8" loading="lazy" data-about-slide>
+            </div>
+          </div>
+        </div>
+        <div class="about-intro-copy about-reveal">
+          <p class="about-eyebrow">ABOUT SPEEGO LOGISTICS</p>
+          <h1 class="about-title">
+            SpeeGo <span class="text-orange">Logistics</span>
           </h1>
-          <p class="hero-desc-clean" data-i18n="about_hero_desc">
-            SpeeGo Logistics connects reliable factories in Vietnam and China with businesses across the US, Canada, and Australia. We streamline every step—from factory sourcing and quality control to multimodal freight and destination fulfillment.
-          </p>
-          <div class="hero-actions-row">
-            <a href="#consultation-form" class="btn-orange" data-i18n="about_hero_cta">
-              Get Free Consultation ↗
-            </a>
-            <a href="tel:+84906828898" class="hero-phone-label">
-              (+84) 906 828 898
-            </a>
+          <div class="about-desc">
+            <p>SpeeGo Logistics is an <strong>All-in-One</strong> partner that integrates manufacturing of nail accessories, cosmetics, handicrafts, and décor with global logistics services.</p>
+            <p>From the first idea to the product in your customer’s hands, SpeeGo stays with you end to end: product consulting &amp; development, custom manufacturing, packaging, order processing, and shipping to more than 200 countries.</p>
           </div>
-        </div>
 
-        <!-- Right Column: SpeeGo Team Card Image -->
-        <div class="hero-2col-right">
-          <div class="hero-img-card-wrap">
-            <img src="assets/speego-team.png" alt="SpeeGo Logistics Team" onerror="this.onerror=null; this.src='assets/007-speego-logistics-team-1.png';">
+          <div class="about-stats" id="aboutStats">
+            <div class="about-stat">
+              <div class="about-stat-num"><span class="about-counter" data-target="200">0</span><span class="about-stat-suffix">+</span></div>
+              <p class="about-stat-label">countries &amp; territories with shipping coverage</p>
+            </div>
+            <div class="about-stat">
+              <div class="about-stat-num"><span class="about-counter" data-target="5000">0</span><span class="about-stat-suffix">+</span></div>
+              <p class="about-stat-label">business customers worldwide</p>
+            </div>
+            <div class="about-stat">
+              <div class="about-stat-num"><span class="about-counter" data-target="10000">0</span><span class="about-stat-suffix">m²</span></div>
+              <p class="about-stat-label">international transit warehouse network (US, Canada, Australia)</p>
+            </div>
+            <div class="about-stat">
+              <div class="about-stat-num"><span class="about-counter" data-target="30">0</span><span class="about-stat-suffix">+</span></div>
+              <p class="about-stat-label">partner factories meeting international standards in China</p>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Orange Ticker Ribbon -->
-  <div class="ff-ticker-orange-wrap" aria-hidden="true">
-    <div class="ff-ticker-orange-inner">
-      <span>GLOBAL SOURCING</span><span class="ff-ticker-symbol">✦</span>
-      <span>QUALITY CONTROL</span><span class="ff-ticker-symbol">✦</span>
-      <span>INTERNATIONAL LOGISTICS</span><span class="ff-ticker-symbol">✦</span>
-      <span>FULFILLMENT</span><span class="ff-ticker-symbol">✦</span>
-      <span>SUPPLY CHAIN SOLUTIONS</span><span class="ff-ticker-symbol">✦</span>
-      <span>GLOBAL SOURCING</span><span class="ff-ticker-symbol">✦</span>
-      <span>QUALITY CONTROL</span><span class="ff-ticker-symbol">✦</span>
-      <span>INTERNATIONAL LOGISTICS</span><span class="ff-ticker-symbol">✦</span>
-      <span>FULFILLMENT</span><span class="ff-ticker-symbol">✦</span>
-      <span>SUPPLY CHAIN SOLUTIONS</span><span class="ff-ticker-symbol">✦</span>
-    </div>
-  </div>
-
-  <!-- 2. WHY SPEEGO (6 PILLARS) -->
-  <section class="speego-why-section" id="why-speego">
-    <div class="speego-why-inner">
-      <header class="speego-why-header">
-        <span class="speego-why-accent" aria-hidden="true"></span>
-        <h2 class="speego-why-title" data-i18n="why_title">WHY CHOOSE SPEEGO LOGISTICS</h2>
-        <p class="speego-why-subtitle" data-i18n="why_subtitle">
-          Transparent value commitment, integrated infrastructure, and dedicated expert teams.
-        </p>
-      </header>
-
-      <div class="speego-why-container">
-        <div class="speego-why-grid">
-          <article class="speego-why-cell">
-            <span class="speego-why-cell-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9.5 6C6.5 7.6 5 10 5 12.8c0 2 1.2 3.4 3 3.4 1.6 0 2.7-1.1 2.7-2.6 0-1.4-1-2.4-2.3-2.4-.2 0-.4 0-.5.1.3-1.6 1.6-3 3.3-3.9L9.5 6Zm9 0c-3 1.6-4.5 4-4.5 6.8 0 2 1.2 3.4 3 3.4 1.6 0 2.7-1.1 2.7-2.6 0-1.4-1-2.4-2.3-2.4-.2 0-.4 0-.5.1.3-1.6 1.6-3 3.3-3.9L18.5 6Z"/></svg></span>
-            <h3 class="speego-why-cell-title" data-i18n="why1_title">Multi-industry Supply Chain</h3>
-            <p class="speego-why-cell-desc" data-i18n="why1_desc">Comprehensive support for international production and shipping needs.</p>
-          </article>
-          <article class="speego-why-cell">
-            <span class="speego-why-cell-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9.5 6C6.5 7.6 5 10 5 12.8c0 2 1.2 3.4 3 3.4 1.6 0 2.7-1.1 2.7-2.6 0-1.4-1-2.4-2.3-2.4-.2 0-.4 0-.5.1.3-1.6 1.6-3 3.3-3.9L9.5 6Zm9 0c-3 1.6-4.5 4-4.5 6.8 0 2 1.2 3.4 3 3.4 1.6 0 2.7-1.1 2.7-2.6 0-1.4-1-2.4-2.3-2.4-.2 0-.4 0-.5.1.3-1.6 1.6-3 3.3-3.9L18.5 6Z"/></svg></span>
-            <h3 class="speego-why-cell-title" data-i18n="why2_title">Factory Network Across CN &amp; VN</h3>
-            <p class="speego-why-cell-desc" data-i18n="why2_desc">Direct partnerships with verified factories in China and Vietnam.</p>
-          </article>
-          <article class="speego-why-cell">
-            <span class="speego-why-cell-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9.5 6C6.5 7.6 5 10 5 12.8c0 2 1.2 3.4 3 3.4 1.6 0 2.7-1.1 2.7-2.6 0-1.4-1-2.4-2.3-2.4-.2 0-.4 0-.5.1.3-1.6 1.6-3 3.3-3.9L9.5 6Zm9 0c-3 1.6-4.5 4-4.5 6.8 0 2 1.2 3.4 3 3.4 1.6 0 2.7-1.1 2.7-2.6 0-1.4-1-2.4-2.3-2.4-.2 0-.4 0-.5.1.3-1.6 1.6-3 3.3-3.9L18.5 6Z"/></svg></span>
-            <h3 class="speego-why-cell-title" data-i18n="why3_title">Flexible Freight Modes</h3>
-            <p class="speego-why-cell-desc" data-i18n="why3_desc">Optimized ocean FCL/LCL and express air freight solutions.</p>
-          </article>
-          <article class="speego-why-cell">
-            <span class="speego-why-cell-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9.5 6C6.5 7.6 5 10 5 12.8c0 2 1.2 3.4 3 3.4 1.6 0 2.7-1.1 2.7-2.6 0-1.4-1-2.4-2.3-2.4-.2 0-.4 0-.5.1.3-1.6 1.6-3 3.3-3.9L9.5 6Zm9 0c-3 1.6-4.5 4-4.5 6.8 0 2 1.2 3.4 3 3.4 1.6 0 2.7-1.1 2.7-2.6 0-1.4-1-2.4-2.3-2.4-.2 0-.4 0-.5.1.3-1.6 1.6-3 3.3-3.9L18.5 6Z"/></svg></span>
-            <h3 class="speego-why-cell-title" data-i18n="why4_title">Zero Hidden Surcharges</h3>
-            <p class="speego-why-cell-desc" data-i18n="why4_desc">Transparent, line-by-line itemized quotes upfront.</p>
-          </article>
-          <article class="speego-why-cell">
-            <span class="speego-why-cell-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9.5 6C6.5 7.6 5 10 5 12.8c0 2 1.2 3.4 3 3.4 1.6 0 2.7-1.1 2.7-2.6 0-1.4-1-2.4-2.3-2.4-.2 0-.4 0-.5.1.3-1.6 1.6-3 3.3-3.9L9.5 6Zm9 0c-3 1.6-4.5 4-4.5 6.8 0 2 1.2 3.4 3 3.4 1.6 0 2.7-1.1 2.7-2.6 0-1.4-1-2.4-2.3-2.4-.2 0-.4 0-.5.1.3-1.6 1.6-3 3.3-3.9L18.5 6Z"/></svg></span>
-            <h3 class="speego-why-cell-title" data-i18n="why5_title">Rapid Dedicated Support</h3>
-            <p class="speego-why-cell-desc" data-i18n="why5_desc">Experienced logistics specialists available around the clock.</p>
-          </article>
-          <article class="speego-why-cell">
-            <span class="speego-why-cell-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9.5 6C6.5 7.6 5 10 5 12.8c0 2 1.2 3.4 3 3.4 1.6 0 2.7-1.1 2.7-2.6 0-1.4-1-2.4-2.3-2.4-.2 0-.4 0-.5.1.3-1.6 1.6-3 3.3-3.9L9.5 6Zm9 0c-3 1.6-4.5 4-4.5 6.8 0 2 1.2 3.4 3 3.4 1.6 0 2.7-1.1 2.7-2.6 0-1.4-1-2.4-2.3-2.4-.2 0-.4 0-.5.1.3-1.6 1.6-3 3.3-3.9L18.5 6Z"/></svg></span>
-            <h3 class="speego-why-cell-title" data-i18n="why6_title">Integrated OMS Tracking</h3>
-            <p class="speego-why-cell-desc" data-i18n="why6_desc">Real-time order milestone tracking with complete clarity.</p>
-          </article>
+  <!-- 3. Vision & Mission -->
+  <section class="about-vision" style="--about-vision-bg: url('assets/about/skyscraper-1.png')">
+    <img src="assets/about/Group-1.png" class="about-vision-watermark-bg" alt="" aria-hidden="true">
+    <div class="container">
+      <div class="about-vision-grid">
+        <div class="about-vision-brand-card about-reveal">
+          <span class="about-vision-brand-badge">Core Values</span>
+          <img src="assets/speego-logo-white.png" alt="SpeeGo Logistics" class="about-vision-brand-logo">
+          <div class="about-vision-brand-line"></div>
+          <p class="about-vision-brand-slogan">Symbol of trust — The first choice for end-to-end international manufacturing, shipping, and export solutions.</p>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 3. CONSULTATION & CONTACT FORM -->
-  <section class="speego-section speego-consult-section" id="consultation-form">
-    <div class="speego-consult-stage">
-      <div class="speego-consult-video-frame">
-        <video class="speego-consult-video" autoplay muted loop playsinline preload="metadata" poster="assets/anh-nen.png" aria-hidden="true">
-          <source src="assets/consult-video.mp4?v=drive1" type="video/mp4">
-        </video>
-      </div>
-
-      <div class="speego-form-container speego-form-container--featured speego-form-container--overlay">
-        <div class="speego-form-heading">
-          <h3 data-i18n="form_consult_title">Request Free Consultation</h3>
-          <p data-i18n="form_consult_note">Your information is strictly used for consultation purposes.</p>
-        </div>
-        <div class="speego-form-invite" aria-hidden="true">
-          <span class="speego-form-invite__dot"></span>
-          <span data-i18n="form_invite">Submit now · response within 2 hours</span>
-        </div>
-        <form id="speego-consultation-form">
-          <div class="speego-form-grid">
-            <div class="speego-form-group">
-              <label data-i18n="form_name_lbl">Full Name *</label>
-              <input type="text" id="speego-form-name" class="speego-form-input" required placeholder="John Doe">
-            </div>
-
-            <div class="speego-form-group">
-              <label data-i18n="form_phone_lbl">Phone / WhatsApp *</label>
-              <input type="tel" id="speego-form-phone" class="speego-form-input" required placeholder="+1 234 567 8900">
-            </div>
-
-            <div class="speego-form-group">
-              <label data-i18n="form_email_lbl">Corporate Email *</label>
-              <input type="email" id="speego-form-email" class="speego-form-input" required placeholder="contact@yourcompany.com">
-            </div>
-
-            <div class="speego-form-group">
-              <label data-i18n="form_company_lbl">Company / Brand</label>
-              <input type="text" id="speego-form-company" class="speego-form-input" placeholder="Your Brand / Enterprise">
-            </div>
-
-            <div class="speego-form-group">
-              <label data-i18n="form_service_lbl">Service Required *</label>
-              <select id="speego-form-service" class="speego-form-select">
-                <option value="Sourcing & QC" data-i18n="form_service_sourcing">Sourcing &amp; QC (Supplier Match &amp; Audit)</option>
-                <option value="International Logistics" data-i18n="form_service_logistics">International Logistics (Ocean / Air)</option>
-                <option value="Fulfillment" data-i18n="form_service_fulfillment">Fulfillment, Warehousing &amp; Pick/Pack</option>
-                <option value="Customs" data-i18n="form_service_customs">Customs Clearance &amp; Import/Export</option>
-                <option value="All-in-One Package" data-i18n="form_service_all_in_one">All-in-One Supply Chain Package</option>
-              </select>
-            </div>
-
-            <div class="speego-form-group">
-              <label data-i18n="form_route_lbl">Trade Route *</label>
-              <select id="speego-form-route" class="speego-form-select">
-                <option value="Vietnam to USA" data-i18n="form_route_vn_us">Vietnam ➔ United States (US)</option>
-                <option value="China to USA" data-i18n="form_route_cn_us">China ➔ United States (US)</option>
-                <option value="Vietnam/China to Canada" data-i18n="form_route_vn_cn_ca">Vietnam / China ➔ Canada</option>
-                <option value="Vietnam/China to Australia" data-i18n="form_route_vn_cn_au">Vietnam / China ➔ Australia</option>
-                <option value="Other" data-i18n="form_route_other">Other shipping routes</option>
-              </select>
-            </div>
-
-            <div class="speego-form-group speego-form-full">
-              <label data-i18n="form_msg_lbl">Cargo Details &amp; Requirements *</label>
-              <textarea id="speego-form-msg" rows="3" class="speego-form-textarea" required data-i18n-ph="form_msg_ph" placeholder="Describe product details, estimated volume (CBM / KG), destination, and target timeline..."></textarea>
-            </div>
-
-            <div class="speego-form-full">
-              <button type="submit" class="speego-form-submit-btn">
-                <i class="fas fa-paper-plane"></i>
-                <span data-i18n="form_submit_btn">Submit Consultation Request</span>
-              </button>
-              <div class="speego-form-secure-note">
-                <i class="fas fa-shield-alt"></i> <span data-i18n="form_footnote">Information is securely encrypted and synchronized with SpeeGo's management system.</span>
+        <div class="about-vision-cards">
+          <article class="about-vision-card about-reveal">
+            <div class="about-vision-card-head">
+              <div class="about-vision-card-icon" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="2" x2="12" y2="6"/><line x1="12" y1="18" x2="12" y2="22"/><line x1="2" y1="12" x2="6" y2="12"/><line x1="18" y1="12" x2="22" y2="12"/><circle cx="12" cy="12" r="3"/></svg>
               </div>
+              <h2 class="about-vision-title">Vision</h2>
             </div>
-          </div>
-        </form>
+            <p class="about-vision-desc">To become the leading strategic partner in international manufacturing and logistics. SpeeGo aims to be a symbol of trust — the first choice when businesses need a complete, fast, and effective production–shipping–export solution.</p>
+          </article>
+          <article class="about-vision-card about-reveal">
+            <div class="about-vision-card-head">
+              <div class="about-vision-card-icon" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+              </div>
+              <h2 class="about-vision-title">Mission</h2>
+            </div>
+            <p class="about-vision-desc">To be a trade bridge with safe, fast, and transparent solutions. We walk alongside businesses on their growth journey and help build lasting economic value.</p>
+          </article>
+        </div>
       </div>
     </div>
   </section>
 
+  <!-- 4. History -->
+  <section class="about-history">
+    <div class="container">
+      <div class="about-split">
+        <div class="about-split-copy about-reveal">
+          <p class="about-eyebrow">OUR JOURNEY</p>
+          <h2 class="about-section-title">Our history</h2>
+          <div class="about-desc">
+            <p>Founded in 2015, SpeeGo Logistics began with a simple mission: make international business simpler for companies, store owners, and entrepreneurs — removing barriers in manufacturing and logistics.</p>
+            <p>After nearly a decade, we have built a network of certified manufacturing partners and 5,000–10,000 m² transit warehouses in the US, Canada, and Australia, serving more than 5,000 customers worldwide.</p>
+          </div>
+        </div>
+        <div class="about-split-media about-reveal">
+          <img src="assets/about/about-speego-logistics-4.png" alt="SpeeGo history">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. Ecosystem + gallery -->
+  <section class="about-ecosystem">
+    <img class="about-ecosystem-deco" src="assets/about/Group-1000003945.png" alt="" aria-hidden="true">
+    <div class="container">
+      <div class="about-eco-top about-reveal">
+        <div class="about-eco-figure">
+          <img src="assets/about/Frame-427324327.png" alt="SpeeGo ecosystem">
+        </div>
+        <div class="about-desc">
+          <p>In an era where speed and connection shape every value, SpeeGo was born to build a global manufacturing and logistics ecosystem — where ideas become reality faster, more sustainably, and more intelligently.</p>
+          <p>As we expanded, <strong class="about-accent-name">Ceva Nails Supply</strong> became SpeeGo’s specialized arm in the Nails industry: wholesale supply, ordering, and custom manufacturing of products, accessories, equipment, and packaging for the sector.</p>
+        </div>
+      </div>
+
+      <div class="about-gallery about-reveal" id="aboutGallery">
+        <button type="button" class="about-gallery-item" data-full="assets/about/Rectangle-141236.png"><img src="assets/about/Rectangle-141236.png" alt="SpeeGo gallery 1" loading="lazy"></button>
+        <button type="button" class="about-gallery-item" data-full="assets/about/Rectangle-141237.png"><img src="assets/about/Rectangle-141237.png" alt="SpeeGo gallery 2" loading="lazy"></button>
+        <button type="button" class="about-gallery-item" data-full="assets/about/Rectangle-141238.png"><img src="assets/about/Rectangle-141238.png" alt="SpeeGo gallery 3" loading="lazy"></button>
+        <button type="button" class="about-gallery-item" data-full="assets/about/Rectangle-141239.png"><img src="assets/about/Rectangle-141239.png" alt="SpeeGo gallery 4" loading="lazy"></button>
+        <button type="button" class="about-gallery-item" data-full="assets/about/Rectangle-141240.png"><img src="assets/about/Rectangle-141240.png" alt="SpeeGo gallery 5" loading="lazy"></button>
+        <button type="button" class="about-gallery-item" data-full="assets/about/Rectangle-141242.png"><img src="assets/about/Rectangle-141242.png" alt="SpeeGo gallery 6" loading="lazy"></button>
+        <button type="button" class="about-gallery-item" data-full="assets/about/Rectangle-141241.png"><img src="assets/about/Rectangle-141241.png" alt="SpeeGo gallery 7" loading="lazy"></button>
+        <button type="button" class="about-gallery-item" data-full="assets/about/Rectangle-141243.png"><img src="assets/about/Rectangle-141243.png" alt="SpeeGo gallery 8" loading="lazy"></button>
+      </div>
+
+      <div class="about-eco-cta about-reveal">
+        <a href="#/en/sourcing" class="btn-orange about-cta-btn">Explore nail accessories ↗</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. Positioning -->
+  <section class="about-position">
+    <div class="container">
+      <div class="about-split">
+        <div class="about-split-copy about-reveal">
+          <p class="about-eyebrow">WHAT SETS US APART</p>
+          <h2 class="about-section-title">Our positioning</h2>
+          <div class="about-desc">
+            <p>What makes SpeeGo different is not only speed and accuracy, but also trust, transparency, and a drive for sustainable growth.</p>
+            <p>We are more than a service provider — we are an extension of your team, turning ideas into reality and taking your brand further.<br>SpeeGo Logistics – Where ideas take shape and go global.</p>
+          </div>
+        </div>
+        <div class="about-split-media about-reveal">
+          <img src="assets/about/about-speego-logistics-5.png" alt="SpeeGo positioning">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="about-lightbox" id="aboutLightbox" hidden>
+    <button type="button" class="about-lightbox-close" aria-label="Close">×</button>
+    <img src="" alt="" id="aboutLightboxImg">
+  </div>
 </div>

@@ -23,18 +23,24 @@ if (Test-Path (Join-Path $workspace 'prepare-vercel.js')) {
 # 2. Sync explore home templates
 $homeTemplates = Join-Path $exploreRoot 'pages\home'
 New-Item -ItemType Directory -Path $homeTemplates -Force | Out-Null
-Copy-Item (Join-Path $workspace 'scratch\vi_home_sections.html') (Join-Path $homeTemplates 'vi-home.html') -Force
-Copy-Item (Join-Path $workspace 'scratch\en_home_sections.html') (Join-Path $homeTemplates 'en-home.html') -Force
-Copy-Item (Join-Path $workspace 'scratch\es_home_sections.html') (Join-Path $homeTemplates 'es-home.html') -Force
+if (Test-Path (Join-Path $workspace 'scratch\vi_home_sections.html')) {
+    Copy-Item (Join-Path $workspace 'scratch\vi_home_sections.html') (Join-Path $homeTemplates 'vi-home.html') -Force
+    Copy-Item (Join-Path $workspace 'scratch\en_home_sections.html') (Join-Path $homeTemplates 'en-home.html') -Force
+    Copy-Item (Join-Path $workspace 'scratch\es_home_sections.html') (Join-Path $homeTemplates 'es-home.html') -Force
+}
 
-# Copy into theme explore
+# Copy all page templates into theme explore
 $themeExplore = Join-Path $themeRoot 'explore'
-New-Item -ItemType Directory -Path (Join-Path $themeExplore 'pages\home') -Force | Out-Null
-Copy-Item (Join-Path $homeTemplates '*') (Join-Path $themeExplore 'pages\home\') -Force
-$aboutTemplates = Join-Path $exploreRoot 'pages\about'
-if (Test-Path -LiteralPath $aboutTemplates) {
-    New-Item -ItemType Directory -Path (Join-Path $themeExplore 'pages\about') -Force | Out-Null
-    Copy-Item (Join-Path $aboutTemplates '*') (Join-Path $themeExplore 'pages\about\') -Force
+New-Item -ItemType Directory -Path (Join-Path $themeExplore 'pages') -Force | Out-Null
+foreach ($dir in (Get-ChildItem -LiteralPath (Join-Path $exploreRoot 'pages') -Directory)) {
+    $targetDir = Join-Path (Join-Path $themeExplore 'pages') $dir.Name
+    New-Item -ItemType Directory -Path $targetDir -Force | Out-Null
+    Get-ChildItem -LiteralPath $dir.FullName -Recurse -Filter '*.html' | ForEach-Object {
+        $sub = $_.FullName.Substring($dir.FullName.Length).TrimStart('\')
+        $dest = Join-Path $targetDir $sub
+        New-Item -ItemType Directory -Path (Split-Path $dest -Parent) -Force | Out-Null
+        Copy-Item -LiteralPath $_.FullName -Destination $dest -Force
+    }
 }
 Copy-Item (Join-Path $exploreRoot 'index.html') (Join-Path $themeExplore 'index.html') -Force
 

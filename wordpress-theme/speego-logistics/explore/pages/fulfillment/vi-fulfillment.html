@@ -1,0 +1,826 @@
+<script>
+  // Tự động chuyển hướng sang khung ứng dụng đầy đủ nếu mở trực tiếp từ File Explorer
+  if (typeof window !== 'undefined' && !document.getElementById('app-main')) {
+    window.location.replace('../../index.html#/fulfillment');
+  }
+</script>
+
+<div class="page-container page-fulfillment" 
+     data-page="fulfillment" 
+     data-nav="fulfillment" 
+     data-breadcrumb='[{"label":"Trang chủ","href":"#/sourcing"},{"label":"Fulfillment","href":"#/fulfillment"}]'>
+
+  <!-- 1. HERO SECTION: DARK LOGISTICS HUB OVERLAY (ANHDAU.JPG) -->
+  <section class="ff-hero-dark-section">
+    <div class="container">
+      <!-- Centered Header -->
+      <div class="ff-hero-dark-header">
+        <h1 class="ff-hero-brand-title">
+          <span class="ff-brand-orange">SpeeGo</span> <span class="ff-brand-white">Fulfillment</span>
+        </h1>
+        <h2 class="ff-hero-tagline">Giải pháp kho vận tối ưu cho doanh nghiệp của bạn</h2>
+        <p class="ff-hero-summary">
+          SpeeGo Fulfillment vận hành kho 10,000 ft² tại Houston, Texas, cung cấp dịch vụ nhập kho, lưu kho, đóng gói và vận chuyển đơn hàng trên toàn nước Mỹ.
+        </p>
+      </div>
+
+      <!-- 4 Stats Bar Columns with Vertical Orange Bars -->
+      <div class="ff-stats-bars-row">
+        <div class="ff-stat-bar-item">
+          <div class="ff-stat-bar-title">Diện tích 10,000 ft²</div>
+          <div class="ff-stat-bar-desc">Trung tâm vận hành tại Houston, Texas.</div>
+        </div>
+        <div class="ff-stat-bar-item">
+          <div class="ff-stat-bar-title">Miễn phí nhập kho</div>
+          <div class="ff-stat-bar-desc">Cho 5 kiện dưới 21kg mỗi lần nhập kho.</div>
+        </div>
+        <div class="ff-stat-bar-item">
+          <div class="ff-stat-bar-title">Miễn phí lưu kho</div>
+          <div class="ff-stat-bar-desc">Trong 60 ngày hàng vào kho.</div>
+        </div>
+        <div class="ff-stat-bar-item">
+          <div class="ff-stat-bar-title">$7/order</div>
+          <div class="ff-stat-bar-desc">Phí cố định mỗi đơn đã gồm phí shipping.</div>
+        </div>
+      </div>
+
+      <!-- Floating Dark Glassmorphic Hub Bar -->
+      <div class="ff-dark-hub-card">
+        <div class="ff-dark-hub-left">
+          <div class="ff-dark-hub-tag">TRUNG TÂM VẬN HÀNH</div>
+          <div class="ff-dark-hub-title">SpeeGo Warehouse · Houston, Texas</div>
+        </div>
+        <div class="ff-dark-hub-right">
+          <div class="ff-dark-hub-address">7303 Breen Dr, Suite D2, Houston, TX 77086</div>
+          <div class="ff-dark-hub-hotline">
+            <span class="ff-hotline-lbl">Hotline:</span>
+            <a href="tel:18005501496" class="ff-hotline-val">1-800-550-1496</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Ribbon Ticker: Vibrant SpeeGo Orange -->
+  <div class="ff-ticker-orange-wrap">
+    <div class="ff-ticker-orange-inner">
+      <span>SHIPPING &amp; DISPATCHING</span><span class="ff-ticker-symbol">✦</span>
+      <span>STOCK TRANSFERS</span><span class="ff-ticker-symbol">✦</span>
+      <span>GOODS-IN &amp; RECEIVING</span><span class="ff-ticker-symbol">✦</span>
+      <span>WAREHOUSING &amp; STORAGE</span><span class="ff-ticker-symbol">✦</span>
+      <span>PICK &amp; PACK</span><span class="ff-ticker-symbol">✦</span>
+      <span>SHIPPING &amp; DISPATCHING</span><span class="ff-ticker-symbol">✦</span>
+      <span>STOCK TRANSFERS</span><span class="ff-ticker-symbol">✦</span>
+      <span>GOODS-IN &amp; RECEIVING</span><span class="ff-ticker-symbol">✦</span>
+      <span>WAREHOUSING &amp; STORAGE</span><span class="ff-ticker-symbol">✦</span>
+      <span>PICK &amp; PACK</span><span class="ff-ticker-symbol">✦</span>
+      <span>SHIPPING &amp; DISPATCHING</span><span class="ff-ticker-symbol">✦</span>
+      <span>STOCK TRANSFERS</span><span class="ff-ticker-symbol">✦</span>
+      <span>GOODS-IN &amp; RECEIVING</span><span class="ff-ticker-symbol">✦</span>
+      <span>WAREHOUSING &amp; STORAGE</span><span class="ff-ticker-symbol">✦</span>
+      <span>PICK &amp; PACK</span><span class="ff-ticker-symbol">✦</span>
+      <span>SHIPPING &amp; DISPATCHING</span><span class="ff-ticker-symbol">✦</span>
+      <span>STOCK TRANSFERS</span><span class="ff-ticker-symbol">✦</span>
+      <span>GOODS-IN &amp; RECEIVING</span><span class="ff-ticker-symbol">✦</span>
+      <span>WAREHOUSING &amp; STORAGE</span><span class="ff-ticker-symbol">✦</span>
+      <span>PICK &amp; PACK</span><span class="ff-ticker-symbol">✦</span>
+    </div>
+  </div>
+
+  <!-- 5 Quick-link Cards -->
+  <section class="ff-quicklinks-section">
+    <div class="container">
+      <div class="ff-quicklinks-grid">
+        <a href="#bang-gia-fulfillment" class="ff-quicklink-card">
+          <div class="ff-quicklink-title">Chi phí Fulfillment</div>
+          <div class="ff-quicklink-sub">Bảng phí dịch vụ kho tại Mỹ</div>
+          <div class="ff-quicklink-btn">Xem ➔</div>
+        </a>
+        <a href="#shipping-rates" class="ff-quicklink-card">
+          <div class="ff-quicklink-title">USPS Ground Advantage theo Zone</div>
+          <div class="ff-quicklink-sub">Biểu phí tham khảo từ Zone 1-9</div>
+          <div class="ff-quicklink-btn">Xem ➔</div>
+        </a>
+        <a href="#uoc-tinh-chi-phi" class="ff-quicklink-card">
+          <div class="ff-quicklink-title">Ước tính chi phí fulfillment</div>
+          <div class="ff-quicklink-sub">Pick &amp; pack + bao bì + USPS Ground Advantage</div>
+          <div class="ff-quicklink-btn">Xem ➔</div>
+        </a>
+        <a href="#chinh-sach-fulfillment" class="ff-quicklink-card">
+          <div class="ff-quicklink-title">Chính sách</div>
+          <div class="ff-quicklink-sub">Quy định lưu kho, xử lý đơn và vận chuyển</div>
+          <div class="ff-quicklink-btn">Xem ➔</div>
+        </a>
+        <a href="https://hub.speegologistic.com" class="ff-quicklink-card ff-quicklink-card--hub" target="_blank" rel="noopener noreferrer">
+          <div class="ff-quicklink-title">Hub System</div>
+          <div class="ff-quicklink-sub">Truy cập cổng quản lý vận hành SpeeGo</div>
+          <div class="ff-quicklink-btn">Mở ➔</div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. 5-STEP PROCESS SECTION (DARK NAVY) -->
+  <section class="ff-process-section">
+    <div class="container">
+      <div class="ff-section-header">
+        <span class="ff-tag-eyebrow ff-tag-light">QUY TRÌNH FULFILLMENT</span>
+        <h2 class="ff-section-title ff-title-white">5 bước. Một quy trình chuẩn US.</h2>
+      </div>
+
+      <div class="ff-steps-grid">
+        <!-- Step 01 -->
+        <div class="ff-step-item">
+          <div class="ff-step-num">01</div>
+          <h3 class="ff-step-name">Xử lý barcode</h3>
+          <p class="ff-step-text">Tạo hoặc gắn barcode cho từng sản phẩm. Cung cấp file PDF barcode nếu cần.</p>
+        </div>
+        <!-- Step 02 -->
+        <div class="ff-step-item">
+          <div class="ff-step-num">02</div>
+          <h3 class="ff-step-name">Yêu cầu nhập kho (IR)</h3>
+          <p class="ff-step-text">Tạo IR nhập kho trên OMS: chọn SKU và số lượng. OMS xác nhận và trả mã IR để in, dán lên kiện hàng.</p>
+        </div>
+        <!-- Step 03 -->
+        <div class="ff-step-item">
+          <div class="ff-step-num">03</div>
+          <h3 class="ff-step-name">Tiếp nhận, kiểm tra &amp; nhập kho</h3>
+          <p class="ff-step-text">Mỗi lô hàng được kiểm tra kỹ trước khi nhập kho. Tồn kho cập nhật tự động theo thời gian thực trên OMS.</p>
+        </div>
+        <!-- Step 04 -->
+        <div class="ff-step-item">
+          <div class="ff-step-num">04</div>
+          <h3 class="ff-step-name">Fulfillment &amp; vận chuyển</h3>
+          <p class="ff-step-text">Đơn hàng được xử lý, đóng gói có video ghi hình minh bạch và vận chuyển qua USPS, UPS hoặc FedEx.</p>
+        </div>
+        <!-- Step 05 -->
+        <div class="ff-step-item">
+          <div class="ff-step-num">05</div>
+          <h3 class="ff-step-name">Xử lý hàng return</h3>
+          <p class="ff-step-text">Toàn bộ quy trình tiếp nhận và xử lý hàng hoàn trả do SpeeGo đảm nhận, miễn phí cho mọi đơn hàng.</p>
+        </div>
+      </div>
+
+      <div class="ff-process-cta">
+        <a href="#contact-form" class="btn-orange">
+          Tư vấn quy trình Fulfillment ↗
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. RATE CARD SECTION (demo-matched SpeeGo Fulfillment rate card) -->
+  <section class="ff-pricing-section ff-pricing-catalog" id="bang-gia-fulfillment">
+    <div class="container">
+      <div class="ff-section-header">
+        <span class="ff-tag-eyebrow">BẢNG GIÁ DỊCH VỤ TẠI MỸ</span>
+        <h2 class="ff-section-title">Bảng báo giá SpeeGo Fulfillment</h2>
+        <p class="ff-section-sub">Dữ liệu được tổng hợp từ hai bảng “Bảng giá Fulfill” và “Bảng giá xử lý kho”. Nhấn vào từng nhóm để mở hoặc thu gọn chi tiết.</p>
+      </div>
+
+      <nav class="ff-pricing-jump" aria-label="Pricing navigation">
+        <a href="#fulfillment-cost">Bảng giá Fulfill</a>
+        <a href="#warehouse-handling">Bảng xử lý kho</a>
+        <a href="#shipping-rates">USPS Ground Advantage</a>
+      </nav>
+
+      <section class="ff-pricing-sheet" id="fulfillment-cost">
+        <header class="ff-sheet-heading">
+          <div>
+            <small>01 · BẢNG GIÁ FULFILL</small>
+            <h3>Fulfillment &amp; xử lý đơn hàng</h3>
+          </div>
+          <span>3 nhóm dịch vụ</span>
+        </header>
+        <div class="ff-plan-strip">
+          <article>
+            <small>ALL-IN-ONE · DƯỚI 800G/ORDER</small>
+            <b>Phí xử lý đơn + bao bì + phí ship</b>
+            <strong>$7<em>/order</em></strong>
+          </article>
+          <article>
+            <small>ALL-IN-ONE · 800G ĐẾN DƯỚI 2,5KG/ORDER</small>
+            <b>Phí xử lý đơn + bao bì + phí ship</b>
+            <strong>$10<em>/order</em></strong>
+          </article>
+        </div>
+        <details class="ff-price-group" id="ff-outbound-rates">
+  <summary><span><i aria-hidden="true"></i>PHÍ XUẤT KHO</span><small>8 mục</small></summary>
+  <div class="ff-price-body"><div class="ff-price-subhead">BẢNG GIÁ DỊCH VỤ XỬ LÝ ĐƠN HÀNG · US</div>
+<div class="ff-price-row">
+  <div>
+    <b>0–5 lb <span>(bao gồm 5 lb)</span></b>
+    <small>0–2,5 kg · Giá All-in-one</small>
+  </div>
+  <strong>Thỏa thuận</strong>
+</div>
+<div class="ff-price-note">Các kiện hàng trên 2,5 kg/order được tính theo biểu phí bên dưới. Phí tính theo trọng lượng thực tế hoặc trọng lượng thể tích, lấy giá trị lớn hơn.</div>
+<div class="ff-price-row">
+  <div>
+    <b>5–15 lb <span>(bao gồm 15 lb)</span></b>
+    <small>&gt;2,5–6,75 kg</small>
+  </div>
+  <strong>$2.50 <em>/order</em></strong>
+</div>
+<div class="ff-price-row">
+  <div>
+    <b>15–30 lb <span>(bao gồm 30 lb)</span></b>
+    <small>6,75–13,5 kg</small>
+  </div>
+  <strong>$3.25 <em>/order</em></strong>
+</div>
+<div class="ff-price-row">
+  <div>
+    <b>30–50 lb <span>(bao gồm 50 lb)</span></b>
+    <small>13,5–22,5 kg</small>
+  </div>
+  <strong>$4.50 <em>/order</em></strong>
+</div>
+<div class="ff-price-row">
+  <div>
+    <b>50–70 lb <span>(bao gồm 70 lb)</span></b>
+    <small>22,5–31,5 kg</small>
+  </div>
+  <strong>$6.35 <em>/order</em></strong>
+</div>
+<div class="ff-price-row">
+  <div>
+    <b>70–100 lb <span>(bao gồm 100 lb)</span></b>
+    <small>31,5–45 kg</small>
+  </div>
+  <strong>$7.75 <em>/order</em></strong>
+</div>
+<div class="ff-price-row">
+  <div>
+    <b>100–150 lb <span>(bao gồm 150 lb)</span></b>
+    <small>45–68 kg</small>
+  </div>
+  <strong>$10 <em>/order</em></strong>
+</div>
+<div class="ff-price-row">
+  <div>
+    <b>Trên 150 lb</b>
+    <small>Trên 68 kg</small>
+  </div>
+  <strong>AT COST</strong>
+</div>
+<div class="ff-price-footnote">Trọng lượng thể tích = Dài × Rộng × Cao (cm) / 5.000.</div></div>
+</details>
+        <details class="ff-price-group ff-packaging-showcase-group">
+  <summary><span><i aria-hidden="true"></i>BAO BÌ &amp; VẬT LIỆU ĐÓNG GÓI</span><small>5 lựa chọn</small></summary>
+  <div class="ff-packaging-showcase">
+    <div class="ff-packaging-intro"><small>BAO BÌ</small><h4>Bảng phí bao bì &amp; hộp</h4><p>Chọn loại bao bì phù hợp, hoặc gửi bao bì thương hiệu riêng đến kho SpeeGo.</p></div>
+    <div class="ff-packaging-grid">
+      <article class="ff-packaging-card"><h5>Poly mailer</h5><strong class="ff-package-badge">Miễn phí</strong><p>Đã bao gồm cho mọi đơn đóng túi — không tính thêm phí.</p></article>
+      <article class="ff-packaging-card"><h5>Bubble mailer</h5><strong>$0.50<em>/túi</em></strong><p>Lớp đệm bảo vệ phù hợp cho hàng nhỏ, dễ móp méo.</p></article>
+      <article class="ff-packaging-card"><h5>Bubble wrap</h5><strong>$0.50<em>/mét</em></strong><p>Bọc chống sốc bổ sung, tính theo mét sử dụng.</p></article>
+      <article class="ff-packaging-card"><h5>Thùng carton</h5><dl><div><dt>8 × 8 × 8 in</dt><dd>$1.00</dd></div><div><dt>10 × 6 × 4 in</dt><dd>$1.50</dd></div><div><dt>9 × 7 × 3 in</dt><dd>$1.70</dd></div></dl><p>Ba kích thước có sẵn. Kích thước khác báo giá theo yêu cầu.</p></article>
+      <article class="ff-packaging-card"><h5>Bao bì của seller</h5><strong class="ff-package-badge">Miễn phí xử lý</strong><p>Gửi bao bì thương hiệu của bạn — SpeeGo nhận, lưu và sử dụng, không tính thêm phí.</p></article>
+    </div>
+  </div>
+</details>
+      </section>
+
+      <section class="ff-pricing-sheet" id="warehouse-handling">
+        <header class="ff-sheet-heading">
+          <div>
+            <small>02 · BẢNG XỬ LÝ KHO</small>
+            <h3>Dịch vụ kho &amp; hàng hoàn</h3>
+          </div>
+          <span>4 nhóm dịch vụ</span>
+        </header>
+        <details class="ff-price-group">
+  <summary><span><i aria-hidden="true"></i>PHÍ DỠ HÀNG</span><small>4 mục</small></summary>
+  <div class="ff-price-body"><div class="ff-price-row">
+  <div>
+    <b>Pallet</b>
+    <small>1 m × 1,2 m × 1,2 m</small>
+  </div>
+  <strong>$35 <em>/pallet</em></strong>
+</div>
+<div class="ff-price-row">
+  <div>
+    <b>Container 20GP</b>
+    
+  </div>
+  <strong>$450 <em>/container</em></strong>
+</div>
+<div class="ff-price-row">
+  <div>
+    <b>Container 40HQ</b>
+    
+  </div>
+  <strong>$510 <em>/container</em></strong>
+</div>
+<div class="ff-price-row">
+  <div>
+    <b>Container 45HQ</b>
+    
+  </div>
+  <strong>$590 <em>/container</em></strong>
+</div></div>
+</details>
+        <details class="ff-price-group">
+  <summary><span><i aria-hidden="true"></i>PHÍ RETURN</span><small>3 mục</small></summary>
+  <div class="ff-price-body"><div class="ff-price-row">
+  <div>
+    <b>0 &lt; X ≤ 2,5 kg</b>
+    <small>Nhận hàng return và nhập lại kệ hàng</small>
+  </div>
+  <strong class="ff-free-price">Miễn phí</strong>
+</div>
+<div class="ff-price-row">
+  <div>
+    <b>5 &lt; X ≤ 10 kg</b>
+    
+  </div>
+  <strong>$12 <em>/package</em></strong>
+</div>
+<div class="ff-price-row">
+  <div>
+    <b>10 &lt; X ≤ 20 kg</b>
+    
+  </div>
+  <strong>$15 <em>/package</em></strong>
+</div></div>
+</details>
+        <details class="ff-price-group">
+  <summary><span><i aria-hidden="true"></i>PHÍ LƯU KHO</span><small>5 mức thời gian</small></summary>
+  <div class="ff-price-body"><div class="ff-price-promo"><div><b>Điều kiện sản lượng</b><small>Phí lưu kho $500/tháng nếu sản lượng dưới 200 đơn/tháng.</small></div><span>LƯU Ý</span></div>
+<div class="ff-price-row">
+  <div>
+    <b>30–60 ngày</b>
+    
+  </div>
+  <strong>$1 <em>/CBM/ngày</em></strong>
+</div>
+<div class="ff-price-row">
+  <div>
+    <b>61–90 ngày</b>
+    
+  </div>
+  <strong>$1.45 <em>/CBM/ngày</em></strong>
+</div>
+<div class="ff-price-row">
+  <div>
+    <b>91–180 ngày</b>
+    
+  </div>
+  <strong>$1.80 <em>/CBM/ngày</em></strong>
+</div>
+<div class="ff-price-row">
+  <div>
+    <b>181–360 ngày</b>
+    
+  </div>
+  <strong>$2 <em>/CBM/ngày</em></strong>
+</div>
+<div class="ff-price-row">
+  <div>
+    <b>Trên 360 ngày</b>
+    
+  </div>
+  <strong>$4 <em>/CBM/ngày</em></strong>
+</div></div>
+</details>
+        <details class="ff-price-group">
+  <summary><span><i aria-hidden="true"></i>DỊCH VỤ XỬ LÝ KHO</span><small>6 mục</small></summary>
+  <div class="ff-price-body"><div class="ff-price-row">
+  <div>
+    <b>Kiểm đếm hàng lúc nhập kho</b>
+    <small>Kiểm đếm hàng theo thùng dưới 21 kg</small>
+  </div>
+  <strong class="ff-free-price">Miễn phí</strong>
+</div>
+<div class="ff-price-row">
+  <div>
+    <b>Kiểm đếm &amp; phân loại theo sản phẩm</b>
+    <small>Thùng dưới 2 SKU</small>
+  </div>
+  <strong>$0.08 <em>/sản phẩm</em></strong>
+</div>
+<div class="ff-price-row">
+  <div>
+    <b>Kiểm đếm &amp; phân loại theo sản phẩm</b>
+    <small>Thùng trên 2 SKU</small>
+  </div>
+  <strong>$0.10 <em>/sản phẩm</em></strong>
+</div>
+<div class="ff-price-row">
+  <div>
+    <b>Kiểm đếm lại khi đang bán</b>
+    <small>Theo bảng “Kiểm kê số lượng tồn kho sản phẩm”</small>
+  </div>
+  <strong>Xem file</strong>
+</div>
+<div class="ff-price-row">
+  <div>
+    <b>Hủy hàng cơ bản</b>
+    <small>Có hình ảnh chứng minh lỗi, thực hiện theo quy trình định kỳ</small>
+  </div>
+  <strong>Case by case</strong>
+</div>
+<div class="ff-price-row">
+  <div>
+    <b>Thao tác đặc biệt khi hủy</b>
+    <small>Dán nhãn, quay video hoặc xử lý riêng</small>
+  </div>
+  <strong>$30–$50 <em>/lần</em><small>Khoảng $25/giờ</small></strong>
+</div></div>
+</details>
+      </section>
+
+      <section class="ff-pricing-sheet" id="shipping-rates">
+        <header class="ff-sheet-heading">
+          <div>
+            <small>03 · USPS GROUND ADVANTAGE</small>
+            <h3>Bảng giá vận chuyển theo Zone</h3>
+          </div>
+          <span>Tham khảo</span>
+        </header>
+        <details class="ff-price-group">
+          <summary><span><i aria-hidden="true"></i>BẢNG GIÁ THEO ZONE</span><small>5 mức cân nặng</small></summary>
+          <div class="ff-price-body ff-usps-body"><div class="ff-usps-scroll">
+  <table class="ff-usps-table">
+    <thead><tr><th>lbs</th><th>ZONE 1</th><th>ZONE 2</th><th>ZONE 3</th><th>ZONE 4</th><th>ZONE 5</th><th>ZONE 6</th><th>ZONE 7</th><th>ZONE 8</th><th>ZONE 9</th></tr></thead>
+    <tbody>
+      <tr><th>1 lbs</th><td>$5.76</td><td>$5.98</td><td>$6.21</td><td>$6.54</td><td>$6.98</td><td>$7.55</td><td>$8.05</td><td>$8.52</td><td>$8.52</td></tr>
+      <tr><th>2 lbs</th><td>$6.35</td><td>$6.68</td><td>$7.05</td><td>$7.55</td><td>$8.25</td><td>$9.05</td><td>$9.85</td><td>$10.55</td><td>$10.55</td></tr>
+      <tr><th>3 lbs</th><td>$6.95</td><td>$7.45</td><td>$7.95</td><td>$8.65</td><td>$9.65</td><td>$10.75</td><td>$11.85</td><td>$12.85</td><td>$12.85</td></tr>
+      <tr><th>5 lbs</th><td>$8.15</td><td>$8.95</td><td>$9.75</td><td>$10.95</td><td>$12.55</td><td>$14.25</td><td>$15.95</td><td>$17.55</td><td>$17.55</td></tr>
+      <tr><th>10 lbs</th><td>$11.25</td><td>$12.85</td><td>$14.55</td><td>$17.25</td><td>$20.85</td><td>$24.55</td><td>$28.15</td><td>$31.55</td><td>$31.55</td></tr>
+    </tbody>
+  </table>
+</div>
+<p class="ff-price-footnote">* Phí vận chuyển đã bao gồm 8% phụ phí nhiên liệu USPS.</p></div>
+        </details>
+      </section>
+
+      <p class="ff-pricing-disclaimer">Giá trên là dữ liệu tham khảo từ bảng báo giá SpeeGo. Các yêu cầu đặc biệt hoặc phát sinh thực tế sẽ được xác nhận lại trước khi xử lý.</p>
+    </div>
+  </section>
+
+  <!-- 4. FULFILLMENT COST ESTIMATOR -->
+  <section class="ff-calc-section" id="uoc-tinh-chi-phi">
+    <div class="container">
+      <div class="ff-estimator" id="cost-estimator">
+        <div class="ff-estimator-heading">
+          <div>
+            <small>ƯỚC TÍNH CHI PHÍ FULFILLMENT</small>
+            <p>Phí xuất kho + bao bì + hãng vận chuyển</p>
+          </div>
+          <span aria-hidden="true">▦</span>
+        </div>
+        <div class="ff-estimator-body">
+          <form class="ff-estimator-form" aria-label="Ước tính chi phí fulfillment">
+            <div class="ff-estimate-guide">
+              <span>01</span>
+              <div>
+                <strong>Thông tin đơn hàng</strong>
+                <small>Nhập cân nặng, chọn khu vực giao và loại bao bì.</small>
+              </div>
+            </div>
+
+            <label class="ff-estimate-field">Cân nặng (lbs)
+              <input type="number" id="calcWeight" min="0.1" step="0.1" value="1" inputmode="decimal">
+            </label>
+            <label class="ff-estimate-field">Zone
+              <select id="calcZone">
+                <option value="1" selected>Zone 1</option>
+                <option value="2">Zone 2</option>
+                <option value="3">Zone 3</option>
+                <option value="4">Zone 4</option>
+                <option value="5">Zone 5</option>
+                <option value="6">Zone 6</option>
+                <option value="7">Zone 7</option>
+                <option value="8">Zone 8</option>
+                <option value="9">Zone 9</option>
+              </select>
+            </label>
+
+            <fieldset class="ff-shipping-choice">
+              <legend>Label vận chuyển</legend>
+              <label class="ff-package-option ff-shipping-option">
+                <input id="useSpeegoLabel" type="checkbox" checked>
+                <span>
+                  <b>Sử dụng label USPS của SpeeGo</b>
+                  <small id="shippingChoiceStatus">Đang sử dụng</small>
+                </span>
+              </label>
+              <p>Bỏ chọn nếu khách tự cung cấp tracking hoặc label vận chuyển.</p>
+            </fieldset>
+
+            <fieldset class="ff-package-choice">
+              <legend>Bao bì</legend>
+              <div class="ff-package-options">
+                <label class="ff-package-option">
+                  <input type="checkbox" name="estimate-packaging" data-package="poly" value="0" checked>
+                  <span><b>Poly mailer</b><small>Miễn phí</small></span>
+                </label>
+                <label class="ff-package-option">
+                  <input type="checkbox" name="estimate-packaging" data-package="seller" value="0">
+                  <span><b>Bao bì của seller</b><small>Miễn phí xử lý</small></span>
+                </label>
+                <label class="ff-package-option ff-quantity-package">
+                  <input type="checkbox" name="estimate-packaging" data-package="bubble-wrap" value="0.15">
+                  <span>
+                    <b>Bubble wrap</b><small>$0.15/sản phẩm</small>
+                    <i class="ff-quantity-editor"><em>Số lượng</em>
+                      <input type="number" class="ff-package-quantity" data-quantity-for="bubble-wrap" min="1" step="1" value="1" inputmode="numeric" aria-label="Số lượng Bubble wrap">
+                    </i>
+                  </span>
+                </label>
+                <label class="ff-package-option ff-quantity-package">
+                  <input type="checkbox" name="estimate-packaging" data-package="bubble-mailer" value="0.5">
+                  <span>
+                    <b>Bubble mailer</b><small>$0.50/túi</small>
+                    <i class="ff-quantity-editor"><em>Số lượng</em>
+                      <input type="number" class="ff-package-quantity" data-quantity-for="bubble-mailer" min="1" step="1" value="1" inputmode="numeric" aria-label="Số lượng Bubble mailer">
+                    </i>
+                  </span>
+                </label>
+                <label class="ff-package-option">
+                  <input type="checkbox" name="estimate-packaging" data-package="carton" value="1">
+                  <span><b>Thùng carton</b><small>Từ $1.00</small></span>
+                </label>
+              </div>
+            </fieldset>
+          </form>
+
+          <aside class="ff-estimate-result" aria-live="polite">
+            <small>CÂN NẶNG TÍNH CƯỚC</small>
+            <strong id="calcResultWeight">1.00 lbs</strong>
+            <dl>
+              <div><dt>Phí xuất kho</dt><dd id="calcResultAio">$7.00</dd></div>
+              <div><dt>Phí bao bì</dt><dd id="calcResultPkg">Đã bao gồm</dd></div>
+              <div><dt>Hãng vận chuyển</dt><dd id="calcResultShip">Đã bao gồm</dd></div>
+            </dl>
+            <div class="ff-estimate-total">
+              <span>TỔNG ƯỚC TÍNH</span>
+              <b id="calcResultTotal">$7.00</b>
+            </div>
+            <p id="calcEstimateNote">Đơn đến 800g sử dụng label USPS của SpeeGo áp dụng giá All-in-one $7. Ước tính chỉ để tham khảo.</p>
+            <div class="ff-estimate-brand" aria-hidden="true">
+              <img src="assets/speego-logo-dark.png" alt="">
+            </div>
+          </aside>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. INSIDE HOUSTON WAREHOUSE -->
+  <section class="ff-warehouse-section">
+    <div class="container">
+      <div class="ff-warehouse-header">
+        <div>
+          <span class="ff-tag-eyebrow">HÌNH ẢNH KHO BÃI</span>
+          <h2 class="ff-section-title">Bên trong kho Houston.</h2>
+        </div>
+      </div>
+
+      <div class="ff-warehouse-cards-grid" id="warehouseGallery" role="region" aria-label="Băng chuyền hình ảnh kho Houston" aria-roledescription="carousel" tabindex="0">
+        <article class="ff-warehouse-card">
+          <img src="assets/warehouse_hero.jpg" alt="Sàn vận hành kho Houston" class="ff-warehouse-card-img" loading="lazy">
+        </article>
+
+        <article class="ff-warehouse-card">
+          <img src="assets/houston_fulfillment_floor_clean.png" alt="Xử lý đơn hàng bên trong kho fulfillment Houston" class="ff-warehouse-card-img" loading="lazy">
+        </article>
+
+        <article class="ff-warehouse-card">
+          <img src="assets/warehouse_racks_hero.jpg" alt="Kệ chứa hàng trong kho Houston" class="ff-warehouse-card-img" loading="lazy">
+        </article>
+
+        <article class="ff-warehouse-card">
+          <img src="assets/houston_order_staging_clean.png" alt="Khu chuẩn bị xuất hàng kho Houston" class="ff-warehouse-card-img" loading="lazy">
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. SERVICE POLICY SECTION -->
+  <section class="ff-policy-section" id="chinh-sach-fulfillment">
+    <div class="container">
+      <header class="ff-policy-heading">
+        <div>
+          <p class="ff-tag-eyebrow">CHÍNH SÁCH DỊCH VỤ</p>
+          <h2 class="ff-section-title">Chính sách Fulfillment</h2>
+        </div>
+        <p>
+          Các trường hợp dưới đây được xem xét dựa trên thông tin đơn hàng, chứng từ hợp lệ và kết quả đối soát giữa khách hàng, kho SpeeGo và đơn vị vận chuyển.
+        </p>
+      </header>
+
+      <div class="ff-policy-list">
+        <details class="ff-policy-item">
+          <summary class="ff-policy-header">
+            <span class="ff-policy-num">01</span>
+            <strong class="ff-policy-title">Hàng hóa trong kho bị thất lạc</strong>
+            <i class="ff-policy-icon" aria-hidden="true">+</i>
+          </summary>
+          <div class="ff-policy-content">
+            <p><b>Điều kiện áp dụng:</b> Hàng đã được nhập kho hợp lệ nhưng bị thất lạc trong quá trình lưu kho.</p>
+            <p><b>Mức đền bù:</b> Nếu thất lạc toàn bộ lô hàng, SpeeGo đền bù 100% giá vốn hàng hóa và phí vận chuyển khi khách hàng cung cấp đầy đủ chứng từ hợp lệ.</p>
+          </div>
+        </details>
+
+        <details class="ff-policy-item">
+          <summary class="ff-policy-header">
+            <span class="ff-policy-num">02</span>
+            <strong class="ff-policy-title">Kho đóng gói sai</strong>
+            <i class="ff-policy-icon" aria-hidden="true">+</i>
+          </summary>
+          <div class="ff-policy-content">
+            <p><b>Lỗi từ kho:</b> Nhân viên đóng sai SKU trong đơn hàng. SpeeGo chịu chi phí gửi lại đơn cho người mua và hoàn 100% giá vốn hàng hóa, tối đa <b>20 USD/sản phẩm</b>.</p>
+            <p><b>Lỗi thông tin từ khách hàng:</b> Nếu sai SKU do khách hàng in hoặc dán sai barcode sản phẩm, SpeeGo không có nghĩa vụ đền bù.</p>
+          </div>
+        </details>
+
+        <details class="ff-policy-item">
+          <summary class="ff-policy-header">
+            <span class="ff-policy-num">03</span>
+            <strong class="ff-policy-title">Sai thông tin label hoặc địa chỉ giao hàng</strong>
+            <i class="ff-policy-icon" aria-hidden="true">+</i>
+          </summary>
+          <div class="ff-policy-content">
+            <p><b>Giao không thành công:</b> Nếu thiếu địa chỉ hoặc kho nhập sai thông tin, in/dán nhầm label, SpeeGo chịu chi phí gửi lại đơn hàng.</p>
+            <p><b>Giao nhầm địa chỉ:</b> Nếu lỗi phát sinh từ kho, SpeeGo gửi lại đơn miễn phí và hoàn 100% giá vốn hàng hóa, tối đa <b>3 USD/sản phẩm</b>.</p>
+            <p><b>Khách hủy trước khi gửi lại:</b> Hoàn phí fulfillment và phí vận chuyển của đơn hàng.</p>
+            <p class="ff-policy-exclusion"><b>Lưu ý:</b> Nếu seller cung cấp thông tin không chính xác, SpeeGo không có nghĩa vụ đền bù.</p>
+          </div>
+        </details>
+
+        <details class="ff-policy-item">
+          <summary class="ff-policy-header">
+            <span class="ff-policy-num">04</span>
+            <strong class="ff-policy-title">Hàng hư hỏng khi đóng gói hoặc vận chuyển nội địa</strong>
+            <i class="ff-policy-icon" aria-hidden="true">+</i>
+          </summary>
+          <div class="ff-policy-content">
+            <p><b>Lỗi đóng gói từ kho:</b> Nếu lỗi đóng gói khiến đơn bị hoàn tiền, SpeeGo hoàn 100% phí fulfillment, phí vận chuyển và hỗ trợ đền bù 100% giá vốn hàng hóa, tối đa <b>20 USD/đơn hàng</b>.</p>
+            <p><b>Hư hỏng khi vận chuyển:</b> Nếu kho đóng gói đúng thỏa thuận, SpeeGo hỗ trợ khách hàng đối soát với USPS, UPS hoặc FedEx để yêu cầu bồi thường.</p>
+            <p class="ff-policy-exclusion"><b>Loại trừ:</b> Không đền bù khi khách hàng chủ động yêu cầu phương án đóng gói tối giản để tiết kiệm chi phí và đã chấp nhận rủi ro.</p>
+          </div>
+        </details>
+
+        <details class="ff-policy-item">
+          <summary class="ff-policy-header">
+            <span class="ff-policy-num">05</span>
+            <strong class="ff-policy-title">Đơn báo “Delivered” nhưng người nhận chưa nhận hàng</strong>
+            <i class="ff-policy-icon" aria-hidden="true">+</i>
+          </summary>
+          <div class="ff-policy-content">
+            <p><b>Điều kiện:</b> Áp dụng với đơn sử dụng hình thức ký nhận. Khách hàng cần phối hợp thu thập thông tin từ người mua và hỗ trợ quá trình đối soát.</p>
+            <p><b>Xử lý:</b> SpeeGo hỗ trợ đối soát với USPS, UPS hoặc FedEx. Nếu đơn vị vận chuyển xác nhận mất hàng, yêu cầu bồi thường được xử lý theo chính sách của đơn vị vận chuyển.</p>
+            <p class="ff-policy-exclusion"><b>Loại trừ:</b> Nếu trạng thái vẫn là “Delivered” và đơn vị vận chuyển không xác nhận mất hàng, SpeeGo không có nghĩa vụ đền bù.</p>
+          </div>
+        </details>
+
+        <details class="ff-policy-item">
+          <summary class="ff-policy-header">
+            <span class="ff-policy-num">06</span>
+            <strong class="ff-policy-title">Đơn hàng giao chậm so với SLA</strong>
+            <i class="ff-policy-icon" aria-hidden="true">+</i>
+          </summary>
+          <div class="ff-policy-content">
+            <p><b>Điều kiện:</b> Đơn đã tạo tracking fulfillment nhưng chưa xuất kho trong vòng <b>3 ngày làm việc</b>, không tính cuối tuần và ngày lễ tại Hoa Kỳ.</p>
+            <p><b>Xử lý:</b> Nếu thời gian xử lý tại kho trễ quá 3 ngày làm việc so với SLA, SpeeGo hoàn 100% phí fulfillment của đơn hàng.</p>
+            <p class="ff-policy-exclusion"><b>Loại trừ:</b> Nếu kho đã bàn giao cho USPS, UPS hoặc FedEx đúng SLA nhưng đơn chậm trong quá trình vận chuyển, SpeeGo không chịu trách nhiệm đền bù.</p>
+          </div>
+        </details>
+      </div>
+
+      <aside class="ff-claim-policy">
+        <div>
+          <small>TIẾP NHẬN KHIẾU NẠI</small>
+          <h3>Thời hạn gửi yêu cầu</h3>
+        </div>
+        <ul>
+          <li><b>Mất đơn hàng:</b> Trong vòng 2 tháng kể từ ngày đơn được đơn vị vận chuyển chấp nhận.</li>
+          <li><b>Hư hỏng, sai giá cước hoặc vấn đề trực tiếp với hàng hóa:</b> Trong vòng 3 ngày kể từ ngày đơn được giao cho người nhận.</li>
+        </ul>
+        <div class="ff-claim-time">
+          <small>THỜI GIAN XỬ LÝ</small>
+          <strong>10 ngày làm việc</strong>
+          <span>Tính từ thời điểm tiếp nhận đầy đủ hồ sơ khiếu nại trong quá trình vận chuyển.</span>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- 7. FORM TƯ VẤN -->
+  <div data-component="cta-form" data-variant="band" id="contact-form"></div>
+
+  <!-- 8. FREQUENTLY ASKED QUESTIONS SECTION -->
+  <section class="ff-faq-section">
+    <div class="container">
+      <div class="ff-section-header">
+        <span class="ff-tag-eyebrow">THÔNG TIN HỮU ÍCH</span>
+        <h2 class="ff-section-title">Câu hỏi thường gặp</h2>
+      </div>
+
+      <div class="ff-faq-list">
+        <div class="ff-faq-item faq-item">
+          <button class="ff-faq-btn faq-question-btn">
+            <span>Làm thế nào để tạo yêu cầu nhập kho?</span>
+            <span class="ff-faq-plus">+</span>
+          </button>
+          <div class="ff-faq-answer">
+            <p>Doanh nghiệp tạo Inbound Request (IR) trực tiếp trên giao diện phần mềm OMS SpeeGo, chọn danh sách SKU, số lượng dự kiến và dán mã kiện hàng được cung cấp lên thùng trước khi xuất sang kho Houston.</p>
+          </div>
+        </div>
+
+        <div class="ff-faq-item faq-item">
+          <button class="ff-faq-btn faq-question-btn">
+            <span>SpeeGo hỗ trợ barcode như thế nào?</span>
+            <span class="ff-faq-plus">+</span>
+          </button>
+          <div class="ff-faq-answer">
+            <p>SpeeGo hỗ trợ cấp mã barcode chuẩn hóa quốc tế hoặc sử dụng mã vạch có sẵn của khách hàng. Chúng tôi cung cấp file PDF template in nhãn và có dịch vụ dán barcode tại kho nếu nhà máy chưa dán kịp.</p>
+          </div>
+        </div>
+
+        <div class="ff-faq-item faq-item">
+          <button class="ff-faq-btn faq-question-btn">
+            <span>Tôi theo dõi tồn kho và đơn hàng ở đâu?</span>
+            <span class="ff-faq-plus">+</span>
+          </button>
+          <div class="ff-faq-answer">
+            <p>Tất cả dữ liệu tồn kho, trạng thái đơn hàng và lịch sử vận chuyển đều được đồng bộ thời gian thực 24/7 trên hệ thống quản lý OMS trực tuyến của SpeeGo.</p>
+          </div>
+        </div>
+
+        <div class="ff-faq-item faq-item">
+          <button class="ff-faq-btn faq-question-btn">
+            <span>Có thể kiểm tra lại quá trình đóng gói không?</span>
+            <span class="ff-faq-plus">+</span>
+          </button>
+          <div class="ff-faq-answer">
+            <p>Có. SpeeGo trang bị camera độ nét cao tại từng bàn đóng gói, lưu trữ video theo từng tracking ID đơn hàng để đối soát minh bạch khi có phát sinh.</p>
+          </div>
+        </div>
+
+        <div class="ff-faq-item faq-item">
+          <button class="ff-faq-btn faq-question-btn">
+            <span>Những đơn vị nào vận chuyển đơn hàng?</span>
+            <span class="ff-faq-plus">+</span>
+          </button>
+          <div class="ff-faq-answer">
+            <p>SpeeGo hợp tác trực tiếp với các đơn vị vận chuyển hàng đầu nước Mỹ gồm USPS (ưu tiên dịch vụ Ground Advantage chi phí tối ưu), UPS và FedEx.</p>
+          </div>
+        </div>
+
+        <div class="ff-faq-item faq-item">
+          <button class="ff-faq-btn faq-question-btn">
+            <span>Hàng hoàn về được xử lý thế nào?</span>
+            <span class="ff-faq-plus">+</span>
+          </button>
+          <div class="ff-faq-answer">
+            <p>Khi hàng bị hoàn (return), kho Houston tiếp nhận, kiểm tra tình trạng sản phẩm, chụp ảnh báo cáo lên OMS và nhập lại kho để bán tiếp theo chỉ định của quý khách mà không tính thêm phí tiếp nhận.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 9. TESTIMONIAL SECTION -->
+  <section class="ff-testimonial-section">
+    <div class="container">
+      <div class="ff-section-header">
+        <span class="ff-tag-eyebrow">KHÁCH HÀNG SPEEGO</span>
+        <h2 class="ff-section-title">Đồng hành cùng doanh nghiệp</h2>
+      </div>
+
+      <div class="testimonials-2col-grid">
+        <div class="testimonial-card-sourcing">
+          <div>
+            <div class="ff-quote-mark" aria-hidden="true" style="margin-bottom: 16px;"><span></span><span></span></div>
+            <blockquote class="ff-quote-text">
+              “Việc theo dõi OMS theo thời gian thực và chính sách không có chi phí ẩn khiến SpeeGo trở thành đối tác chuỗi cung ứng đáng tin cậy của chúng tôi.”
+            </blockquote>
+          </div>
+          <div class="ff-author-info">
+            <div class="ff-author-name">Sarah Mitchell</div>
+            <div class="ff-author-title">Operations Director, EcoLiving Home · Australia</div>
+            <div class="ff-author-ref"><a href="#/sourcing" class="ff-ref-link">Theo chia sẻ trên website SpeeGo · bản dịch tiếng Việt ↗</a></div>
+          </div>
+        </div>
+        <div class="testimonial-card-sourcing">
+          <div>
+            <div class="ff-quote-mark" aria-hidden="true" style="margin-bottom: 16px;"><span></span><span></span></div>
+            <blockquote class="ff-quote-text">
+              “Đội ngũ QC tại chỗ đã giúp chúng tôi tiết kiệm hàng nghìn đô la trước khi container được niêm phong.”
+            </blockquote>
+          </div>
+          <div class="ff-author-info">
+            <div class="ff-author-name">Kevin Le</div>
+            <div class="ff-author-title">CEO, Glamour Nail Supplies · California, USA</div>
+            <div class="ff-author-ref"><a href="#/sourcing" class="ff-ref-link">Theo chia sẻ trên website SpeeGo · bản dịch tiếng Việt ↗</a></div>
+            </div>
+          </div>
+      </div>
+    </div>
+  </section>
+
+</div>

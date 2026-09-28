@@ -1,0 +1,165 @@
+<script>
+  // Tự động chuyển hướng sang khung ứng dụng đầy đủ nếu mở trực tiếp từ File Explorer
+  if (typeof window !== 'undefined' && !document.getElementById('app-main')) {
+    window.location.replace('../../index.html#/xuat-nhap-khau');
+  }
+</script>
+
+<div class="page-container page-import-export"
+     data-page="xuat-nhap-khau"
+     data-nav="import-export"
+     data-breadcrumb='[{"label":"Trang chủ","href":"#/sourcing"},{"label":"Xuất nhập khẩu","href":"#/xuat-nhap-khau"}]'>
+
+  <!-- 1. HERO SECTION (2 COLUMNS: TEXT LEFT, CARD IMAGE RIGHT) -->
+  <section class="page-hero-2col">
+    <div class="container">
+      <div class="hero-2col-grid">
+        <!-- Cột trái: Tiêu đề, giới thiệu & nút trao đổi -->
+        <div class="hero-2col-left">
+          <div class="hero-tag-bar">IMPORT &amp; EXPORT</div>
+          <h1 class="hero-h1-clean">
+            Xuất nhập khẩu<br>
+            <span class="text-orange">thuận lợi hơn.</span>
+          </h1>
+          <p class="hero-desc-clean">
+            Tư vấn chứng từ, khai báo hải quan và hỗ trợ tuân thủ trong từng bước xuất nhập khẩu. Một đầu mối đồng hành từ chuẩn bị hồ sơ đến thông quan.
+          </p>
+          <div class="hero-actions-row">
+            <a href="#contact-form" class="btn-orange">
+              Trao đổi nhu cầu ↗
+            </a>
+            <a href="tel:+84906828898" class="hero-phone-label">
+              (+84) 906 828 898
+            </a>
+          </div>
+        </div>
+
+        <!-- Cột phải: Ảnh thiết bị chứng từ kèm caption SpeeGo -->
+        <div class="hero-2col-right">
+          <div class="hero-img-card-wrap">
+            <img src="assets/import-export-consultation.png" alt="Chứng từ rõ ràng. Quy trình xuyên suốt." onerror="this.onerror=null; this.src='assets/warehouse_hero.jpg';">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="ff-ticker-orange-wrap" aria-hidden="true">
+    <div class="ff-ticker-orange-inner">
+      <span>GLOBAL SOURCING</span><span class="ff-ticker-symbol">✦</span>
+      <span>QUALITY CONTROL</span><span class="ff-ticker-symbol">✦</span>
+      <span>INTERNATIONAL LOGISTICS</span><span class="ff-ticker-symbol">✦</span>
+      <span>FULFILLMENT</span><span class="ff-ticker-symbol">✦</span>
+      <span>SUPPLY CHAIN SOLUTIONS</span><span class="ff-ticker-symbol">✦</span>
+      <span>GLOBAL SOURCING</span><span class="ff-ticker-symbol">✦</span>
+      <span>QUALITY CONTROL</span><span class="ff-ticker-symbol">✦</span>
+      <span>INTERNATIONAL LOGISTICS</span><span class="ff-ticker-symbol">✦</span>
+      <span>FULFILLMENT</span><span class="ff-ticker-symbol">✦</span>
+      <span>SUPPLY CHAIN SOLUTIONS</span><span class="ff-ticker-symbol">✦</span>
+    </div>
+  </div>
+
+  <!-- 2. DỊCH VỤ CHÍNH (NAVY INDEX RAIL) -->
+  <section class="ie-services-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">DỊCH VỤ CHÍNH</span>
+        <h2 class="section-title">Giải pháp cho mọi yêu cầu xuất nhập khẩu.</h2>
+        <p class="ie-services-lead">Hỗ trợ toàn diện từ tư vấn đến chứng nhận, giúp hoạt động xuất nhập khẩu thông suốt và đúng quy định.</p>
+      </div>
+      <div class="ie-service-grid">
+        <article class="ie-service-card-new">
+          <div class="ie-service-card-top">
+            <span class="ie-service-index" aria-hidden="true">01</span>
+            <span class="ie-service-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.4"/><path d="M5.5 20c.4-3.1 2.9-5.2 6.5-5.2 1.2 0 2.2.2 3.1.7"/><path d="M16.5 4.5h5v5h-2l-2 2v-2h-1z"/></svg>
+            </span>
+          </div>
+          <h3 class="ie-service-title">Tư vấn hải quan</h3>
+          <p class="ie-service-description">Tư vấn mã HS, chính sách mặt hàng, thuế và hồ sơ hải quan.</p>
+          <img class="ie-service-card-image" src="assets/import-export-consultation.png" alt="Tư vấn thủ tục hải quan" loading="lazy">
+        </article>
+        <article class="ie-service-card-new">
+          <div class="ie-service-card-top">
+            <span class="ie-service-index" aria-hidden="true">02</span>
+            <span class="ie-service-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M3 16.5h18l-2.4 3H6z"/><path d="M6 15.5l2.4-5h7.2l2.4 5M12 10V4m0 0L9.5 6.5M12 4l2.5 2.5"/><path d="M4 21h16"/></svg>
+            </span>
+          </div>
+          <h3 class="ie-service-title">Khai báo và thông quan</h3>
+          <p class="ie-service-description">Thực hiện trọn gói thủ tục thông quan cho hàng hóa xuất nhập khẩu.</p>
+          <img class="ie-service-card-image" src="assets/port_sunset_hero.jpg" alt="Tàu hàng và cảng biển" loading="lazy">
+        </article>
+        <article class="ie-service-card-new">
+          <div class="ie-service-card-top">
+            <span class="ie-service-index" aria-hidden="true">03</span>
+            <span class="ie-service-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><rect x="5" y="3.5" width="14" height="17" rx="1.5"/><path d="M9 8h6m-6 4h6m-6 4h3"/><path d="m16.5 14.5 1.3 1.3 2.7-3"/></svg>
+            </span>
+          </div>
+          <h3 class="ie-service-title">Kiểm tra chuyên ngành</h3>
+          <p class="ie-service-description">Hỗ trợ kiểm tra chuyên ngành và xác minh chất lượng theo phân loại hàng hóa.</p>
+          <img class="ie-service-card-image" src="assets/factory_packaging_qc.jpg" alt="Kiểm tra chất lượng hàng hóa" loading="lazy">
+        </article>
+        <article class="ie-service-card-new">
+          <div class="ie-service-card-top">
+            <span class="ie-service-index" aria-hidden="true">04</span>
+            <span class="ie-service-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M7 3h8l4 4v10H7z"/><path d="M15 3v5h4M10 11h6m-6 3h6"/><circle cx="9" cy="18" r="3"/><path d="m7.5 20.5-.5 2 2-1 2 1-.5-2"/></svg>
+            </span>
+          </div>
+          <h3 class="ie-service-title">Chứng nhận xuất xứ (C/O)</h3>
+          <p class="ie-service-description">Hỗ trợ xin cấp Giấy chứng nhận xuất xứ (C/O) và chuẩn bị hồ sơ liên quan.</p>
+          <img class="ie-service-card-image" src="assets/factory_staging_dispatch.jpg" alt="Hàng hóa được chuẩn bị trước khi xuất khẩu" loading="lazy">
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. VÌ SAO CHỌN SPEEGO (4 CARDS NỀN XÁM NHẠT) -->
+  <section class="ie-why-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">VÌ SAO CHỌN SPEEGO</span>
+        <h2 class="section-title">
+          Hiểu thủ tục.<br>
+          Chủ động kiểm soát rủi ro.
+        </h2>
+      </div>
+
+      <div class="ie-why-grid">
+        <!-- Card 01 -->
+        <div class="ie-service-card">
+          <div class="ie-badge-box">01</div>
+          <h3 class="ie-card-h3">Am hiểu thủ tục xuất nhập khẩu</h3>
+          <p class="ie-card-body">SpeeGo hỗ trợ doanh nghiệp xử lý chứng từ, khai báo hải quan và các thủ tục cần thiết cho từng lô hàng xuất nhập khẩu.</p>
+        </div>
+
+        <!-- Card 02 -->
+        <div class="ie-service-card">
+          <div class="ie-badge-box">02</div>
+          <h3 class="ie-card-h3">Hỗ trợ đa dạng loại hàng</h3>
+          <p class="ie-card-body">Tư vấn yêu cầu nhập khẩu, chính sách mặt hàng và các thủ tục kiểm tra chuyên ngành phù hợp với từng loại hàng hóa.</p>
+        </div>
+
+        <!-- Card 03 -->
+        <div class="ie-service-card">
+          <div class="ie-badge-box">03</div>
+          <h3 class="ie-card-h3">Kiểm soát rủi ro hải quan</h3>
+          <p class="ie-card-body">Hỗ trợ kiểm tra hồ sơ, mã HS, chứng từ và các yêu cầu liên quan nhằm giảm rủi ro chậm thông quan, bổ sung hồ sơ hoặc phát sinh chi phí.</p>
+        </div>
+
+        <!-- Card 04 -->
+        <div class="ie-service-card">
+          <div class="ie-badge-box">04</div>
+          <h3 class="ie-card-h3">Hỗ trợ xuyên suốt quy trình</h3>
+          <p class="ie-card-body">Từ tư vấn trước khi nhập khẩu, chuẩn bị chứng từ, khai báo đến thông quan, SpeeGo đồng hành cùng doanh nghiệp trong toàn bộ quy trình.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. CONSULTATION FORM BAND -->
+  <div data-component="cta-form" data-variant="band" id="contact-form"></div>
+
+</div>

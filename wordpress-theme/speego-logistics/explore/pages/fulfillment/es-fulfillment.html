@@ -1,0 +1,826 @@
+<script>
+  // Auto redirect to full application shell if opened directly from File Explorer
+  if (typeof window !== 'undefined' && !document.getElementById('app-main')) {
+    window.location.replace('../../index.html#/es/fulfillment');
+  }
+</script>
+
+<div class="page-container page-fulfillment" 
+     data-page="fulfillment" 
+     data-nav="fulfillment" 
+     data-breadcrumb='[{"label":"Inicio","href":"#/es/knowledge"},{"label":"Fulfillment","href":"#/es/fulfillment"}]'>
+
+  <!-- 1. HERO SECTION: DARK LOGISTICS HUB OVERLAY (ANHDAU.JPG) -->
+  <section class="ff-hero-dark-section">
+    <div class="container">
+      <!-- Centered Header -->
+      <div class="ff-hero-dark-header">
+        <h1 class="ff-hero-brand-title">
+          <span class="ff-brand-orange">SpeeGo</span> <span class="ff-brand-white">Fulfillment</span>
+        </h1>
+        <h2 class="ff-hero-tagline">Operaciones de almacén optimizadas para su empresa</h2>
+        <p class="ff-hero-summary">
+          SpeeGo Fulfillment opera un centro de 10,000 ft² en Houston, Texas, ofreciendo recepción, almacenaje, preparación (pick &amp; pack) y despacho de pedidos a todo Estados Unidos.
+        </p>
+      </div>
+
+      <!-- 4 Stats Bar Columns with Vertical Orange Bars -->
+      <div class="ff-stats-bars-row">
+        <div class="ff-stat-bar-item">
+          <div class="ff-stat-bar-title">10,000 ft² de Superficie</div>
+          <div class="ff-stat-bar-desc">Centro operativo en Houston, Texas.</div>
+        </div>
+        <div class="ff-stat-bar-item">
+          <div class="ff-stat-bar-title">Recepción Inbound Gratuita</div>
+          <div class="ff-stat-bar-desc">Primeros 5 paquetes de menos de 21 kg por envío sin costo.</div>
+        </div>
+        <div class="ff-stat-bar-item">
+          <div class="ff-stat-bar-title">Almacenamiento Gratis (60 días)</div>
+          <div class="ff-stat-bar-desc">Contabilizados a partir de la llegada de la carga.</div>
+        </div>
+        <div class="ff-stat-bar-item">
+          <div class="ff-stat-bar-title">Tarifa Plana de $7/pedido</div>
+          <div class="ff-stat-bar-desc">Tarifa todo incluido por orden con envío estándar.</div>
+        </div>
+      </div>
+
+      <!-- Floating Dark Glassmorphic Hub Bar -->
+      <div class="ff-dark-hub-card">
+        <div class="ff-dark-hub-left">
+          <div class="ff-dark-hub-tag">CENTRO DE OPERACIONES</div>
+          <div class="ff-dark-hub-title">Almacén SpeeGo · Houston, Texas</div>
+        </div>
+        <div class="ff-dark-hub-right">
+          <div class="ff-dark-hub-address">7303 Breen Dr, Suite D2, Houston, TX 77086</div>
+          <div class="ff-dark-hub-hotline">
+            <span class="ff-hotline-lbl">Hotline:</span>
+            <a href="tel:18005501496" class="ff-hotline-val">1-800-550-1496</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Ribbon Ticker: Vibrant SpeeGo Orange -->
+  <div class="ff-ticker-orange-wrap">
+    <div class="ff-ticker-orange-inner">
+      <span>DESPACHO Y ENVÍO</span><span class="ff-ticker-symbol">✦</span>
+      <span>TRANSFERENCIA DE INVENTARIO</span><span class="ff-ticker-symbol">✦</span>
+      <span>RECEPCIÓN DE MERCANCÍAS</span><span class="ff-ticker-symbol">✦</span>
+      <span>ALMACENAMIENTO SEGURO</span><span class="ff-ticker-symbol">✦</span>
+      <span>PICK &amp; PACK</span><span class="ff-ticker-symbol">✦</span>
+      <span>DESPACHO Y ENVÍO</span><span class="ff-ticker-symbol">✦</span>
+      <span>TRANSFERENCIA DE INVENTARIO</span><span class="ff-ticker-symbol">✦</span>
+      <span>RECEPCIÓN DE MERCANCÍAS</span><span class="ff-ticker-symbol">✦</span>
+      <span>ALMACENAMIENTO SEGURO</span><span class="ff-ticker-symbol">✦</span>
+      <span>PICK &amp; PACK</span><span class="ff-ticker-symbol">✦</span>
+      <span>DESPACHO Y ENVÍO</span><span class="ff-ticker-symbol">✦</span>
+      <span>TRANSFERENCIA DE INVENTARIO</span><span class="ff-ticker-symbol">✦</span>
+      <span>RECEPCIÓN DE MERCANCÍAS</span><span class="ff-ticker-symbol">✦</span>
+      <span>ALMACENAMIENTO SEGURO</span><span class="ff-ticker-symbol">✦</span>
+      <span>PICK &amp; PACK</span><span class="ff-ticker-symbol">✦</span>
+      <span>DESPACHO Y ENVÍO</span><span class="ff-ticker-symbol">✦</span>
+      <span>TRANSFERENCIA DE INVENTARIO</span><span class="ff-ticker-symbol">✦</span>
+      <span>RECEPCIÓN DE MERCANCÍAS</span><span class="ff-ticker-symbol">✦</span>
+      <span>ALMACENAMIENTO SEGURO</span><span class="ff-ticker-symbol">✦</span>
+      <span>PICK &amp; PACK</span><span class="ff-ticker-symbol">✦</span>
+    </div>
+  </div>
+
+  <!-- 5 Quick-link Cards -->
+  <section class="ff-quicklinks-section">
+    <div class="container">
+      <div class="ff-quicklinks-grid">
+        <a href="#bang-gia-fulfillment" class="ff-quicklink-card">
+          <div class="ff-quicklink-title">Tarifas de fulfillment</div>
+          <div class="ff-quicklink-sub">Costos de servicios de almacén en EE.UU.</div>
+          <div class="ff-quicklink-btn">Ver ➔</div>
+        </a>
+        <a href="#shipping-rates" class="ff-quicklink-card">
+          <div class="ff-quicklink-title">USPS Ground Advantage por zonas</div>
+          <div class="ff-quicklink-sub">Tarifas de referencia para zonas 1 a 9</div>
+          <div class="ff-quicklink-btn">Ver ➔</div>
+        </a>
+        <a href="#uoc-tinh-chi-phi" class="ff-quicklink-card">
+          <div class="ff-quicklink-title">Estimación de costos de fulfillment</div>
+          <div class="ff-quicklink-sub">Pick &amp; pack + empaque + USPS Ground Advantage</div>
+          <div class="ff-quicklink-btn">Ver ➔</div>
+        </a>
+        <a href="#chinh-sach-fulfillment" class="ff-quicklink-card">
+          <div class="ff-quicklink-title">Políticas del servicio</div>
+          <div class="ff-quicklink-sub">Términos de almacenamiento, manejo y despacho</div>
+          <div class="ff-quicklink-btn">Ver ➔</div>
+        </a>
+        <a href="https://hub.speegologistic.com" class="ff-quicklink-card ff-quicklink-card--hub" target="_blank" rel="noopener noreferrer">
+          <div class="ff-quicklink-title">Hub System</div>
+          <div class="ff-quicklink-sub">Accede al portal de operaciones de SpeeGo</div>
+          <div class="ff-quicklink-btn">Abrir ➔</div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. 5-STEP PROCESS SECTION (DARK NAVY) -->
+  <section class="ff-process-section">
+    <div class="container">
+      <div class="ff-section-header">
+        <span class="ff-tag-eyebrow ff-tag-light">FULFILLMENT WORKFLOW</span>
+        <h2 class="ff-section-title ff-title-white">Cinco pasos. Un flujo bajo estándar estadounidense.</h2>
+      </div>
+
+      <div class="ff-steps-grid">
+        <!-- Step 01 -->
+        <div class="ff-step-item">
+          <div class="ff-step-num">01</div>
+          <h3 class="ff-step-name">Configuración de códigos de barras</h3>
+          <p class="ff-step-text">Creación o asignación de código de barras por SKU. Archivos PDF de etiquetas disponibles a solicitud.</p>
+        </div>
+        <!-- Step 02 -->
+        <div class="ff-step-item">
+          <div class="ff-step-num">02</div>
+          <h3 class="ff-step-name">Solicitud de recepción (IR)</h3>
+          <p class="ff-step-text">Cree la solicitud en el OMS seleccionando SKUs y cantidades. El sistema genera el código IR para rotular cada bulto.</p>
+        </div>
+        <!-- Step 03 -->
+        <div class="ff-step-item">
+          <div class="ff-step-num">03</div>
+          <h3 class="ff-step-name">Recepción, inspección y ubicación en rack</h3>
+          <p class="ff-step-text">Cada carga es inspeccionada antes de su ubicación. El inventario se actualiza automáticamente en el OMS en tiempo real.</p>
+        </div>
+        <!-- Step 04 -->
+        <div class="ff-step-item">
+          <div class="ff-step-num">04</div>
+          <h3 class="ff-step-name">Preparación y despacho de pedidos</h3>
+          <p class="ff-step-text">Los pedidos son seleccionados, embalados bajo registro de video y enviados vía USPS, UPS o FedEx.</p>
+        </div>
+        <!-- Step 05 -->
+        <div class="ff-step-item">
+          <div class="ff-step-num">05</div>
+          <h3 class="ff-step-name">Gestión de devoluciones (Reverse Logistics)</h3>
+          <p class="ff-step-text">SpeeGo gestiona la recepción, verificación y reingreso de devoluciones sin cargos adicionales.</p>
+        </div>
+      </div>
+
+      <div class="ff-process-cta">
+        <a href="#contact-form" class="btn-orange">
+          Consulte el flujo de trabajo ↗
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. RATE CARD SECTION (demo-matched SpeeGo Fulfillment rate card) -->
+  <section class="ff-pricing-section ff-pricing-catalog" id="bang-gia-fulfillment">
+    <div class="container">
+      <div class="ff-section-header">
+        <span class="ff-tag-eyebrow">TARIFAS DE SERVICIO EN EE. UU.</span>
+        <h2 class="ff-section-title">Tarifario SpeeGo Fulfillment</h2>
+        <p class="ff-section-sub">Tarifas compiladas de la hoja Fulfill y de manejo de almacén. Abra cada grupo para ver el detalle.</p>
+      </div>
+
+      <nav class="ff-pricing-jump" aria-label="Pricing navigation">
+        <a href="#fulfillment-cost">Tarifas Fulfill</a>
+        <a href="#warehouse-handling">Manejo de almacén</a>
+        <a href="#shipping-rates">USPS Ground Advantage</a>
+      </nav>
+
+      <section class="ff-pricing-sheet" id="fulfillment-cost">
+        <header class="ff-sheet-heading">
+          <div>
+            <small>01 · TARIFAS FULFILL</small>
+            <h3>Fulfillment y procesamiento de pedidos</h3>
+          </div>
+          <span>3 grupos de servicio</span>
+        </header>
+        <div class="ff-plan-strip">
+          <article>
+            <small>ALL-IN-ONE · MENOS DE 800 G/PEDIDO</small>
+            <b>Manejo + embalaje + envío</b>
+            <strong>$7<em>/order</em></strong>
+          </article>
+          <article>
+            <small>ALL-IN-ONE · 800 G A MENOS DE 2,5 KG/PEDIDO</small>
+            <b>Manejo + embalaje + envío</b>
+            <strong>$10<em>/order</em></strong>
+          </article>
+        </div>
+        <details class="ff-price-group" id="ff-outbound-rates">
+  <summary><span><i aria-hidden="true"></i>MANEJO DE SALIDA</span><small>8 ítems</small></summary>
+  <div class="ff-price-body"><div class="ff-price-subhead">TARIFAS DE MANEJO DE PEDIDOS · US</div>
+<div class="ff-price-row">
+  <div>
+    <b>0–5 lb <span>(incl. 5 lb)</span></b>
+    <small>0–2,5 kg · Precio All-in-one</small>
+  </div>
+  <strong>Por acuerdo</strong>
+</div>
+<div class="ff-price-note">Los pedidos de más de 2,5 kg se cobran según las tarifas siguientes. Se usa el mayor entre peso real y volumétrico.</div>
+<div class="ff-price-row">
+  <div>
+    <b>5–15 lb <span>(incl. 15 lb)</span></b>
+    <small>&gt;2,5–6,75 kg</small>
+  </div>
+  <strong>$2.50 <em>/order</em></strong>
+</div>
+<div class="ff-price-row">
+  <div>
+    <b>15–30 lb <span>(incl. 30 lb)</span></b>
+    <small>6,75–13,5 kg</small>
+  </div>
+  <strong>$3.25 <em>/order</em></strong>
+</div>
+<div class="ff-price-row">
+  <div>
+    <b>30–50 lb <span>(incl. 50 lb)</span></b>
+    <small>13,5–22,5 kg</small>
+  </div>
+  <strong>$4.50 <em>/order</em></strong>
+</div>
+<div class="ff-price-row">
+  <div>
+    <b>50–70 lb <span>(incl. 70 lb)</span></b>
+    <small>22,5–31,5 kg</small>
+  </div>
+  <strong>$6.35 <em>/order</em></strong>
+</div>
+<div class="ff-price-row">
+  <div>
+    <b>70–100 lb <span>(incl. 100 lb)</span></b>
+    <small>31,5–45 kg</small>
+  </div>
+  <strong>$7.75 <em>/order</em></strong>
+</div>
+<div class="ff-price-row">
+  <div>
+    <b>100–150 lb <span>(incl. 150 lb)</span></b>
+    <small>45–68 kg</small>
+  </div>
+  <strong>$10 <em>/order</em></strong>
+</div>
+<div class="ff-price-row">
+  <div>
+    <b>Más de 150 lb</b>
+    <small>Más de 68 kg</small>
+  </div>
+  <strong>AT COST</strong>
+</div>
+<div class="ff-price-footnote">Peso volumétrico = L × A × H (cm) / 5.000.</div></div>
+</details>
+        <details class="ff-price-group ff-packaging-showcase-group">
+  <summary><span><i aria-hidden="true"></i>EMBALAJE Y MATERIALES</span><small>5 opciones</small></summary>
+  <div class="ff-packaging-showcase">
+    <div class="ff-packaging-intro"><small>EMBALAJE</small><h4>Tarifas de embalaje y cajas</h4><p>Elija el embalaje adecuado o envíe su embalaje de marca al almacén SpeeGo.</p></div>
+    <div class="ff-packaging-grid">
+      <article class="ff-packaging-card"><h5>Poly mailer</h5><strong class="ff-package-badge">Gratis</strong><p>Incluido en cada pedido embolsado — sin cargo extra.</p></article>
+      <article class="ff-packaging-card"><h5>Bubble mailer</h5><strong>$0.50<em>/unidad</em></strong><p>Protección acolchada para artículos pequeños y delicados.</p></article>
+      <article class="ff-packaging-card"><h5>Bubble wrap</h5><strong>$0.50<em>/metro</em></strong><p>Protección adicional, cobrada por metro usado.</p></article>
+      <article class="ff-packaging-card"><h5>Caja de cartón</h5><dl><div><dt>8 × 8 × 8 in</dt><dd>$1.00</dd></div><div><dt>10 × 6 × 4 in</dt><dd>$1.50</dd></div><div><dt>9 × 7 × 3 in</dt><dd>$1.70</dd></div></dl><p>Tres tamaños disponibles. Otros tamaños bajo cotización.</p></article>
+      <article class="ff-packaging-card"><h5>Embalaje del seller</h5><strong class="ff-package-badge">Sin cargo de manejo</strong><p>Envíe su embalaje de marca — SpeeGo lo recibe, almacena y usa sin costo extra.</p></article>
+    </div>
+  </div>
+</details>
+      </section>
+
+      <section class="ff-pricing-sheet" id="warehouse-handling">
+        <header class="ff-sheet-heading">
+          <div>
+            <small>02 · MANEJO DE ALMACÉN</small>
+            <h3>Servicios de bodega y devoluciones</h3>
+          </div>
+          <span>4 grupos de servicio</span>
+        </header>
+        <details class="ff-price-group">
+  <summary><span><i aria-hidden="true"></i>TARIFAS DE DESCARGA</span><small>4 ítems</small></summary>
+  <div class="ff-price-body"><div class="ff-price-row">
+  <div>
+    <b>Pallet</b>
+    <small>1 m × 1,2 m × 1,2 m</small>
+  </div>
+  <strong>$35 <em>/pallet</em></strong>
+</div>
+<div class="ff-price-row">
+  <div>
+    <b>Container 20GP</b>
+    
+  </div>
+  <strong>$450 <em>/container</em></strong>
+</div>
+<div class="ff-price-row">
+  <div>
+    <b>Container 40HQ</b>
+    
+  </div>
+  <strong>$510 <em>/container</em></strong>
+</div>
+<div class="ff-price-row">
+  <div>
+    <b>Container 45HQ</b>
+    
+  </div>
+  <strong>$590 <em>/container</em></strong>
+</div></div>
+</details>
+        <details class="ff-price-group">
+  <summary><span><i aria-hidden="true"></i>TARIFAS DE DEVOLUCIÓN</span><small>3 ítems</small></summary>
+  <div class="ff-price-body"><div class="ff-price-row">
+  <div>
+    <b>0 &lt; X ≤ 2,5 kg</b>
+    <small>Recibir devolución y reingresar a estantería</small>
+  </div>
+  <strong class="ff-free-price">Gratis</strong>
+</div>
+<div class="ff-price-row">
+  <div>
+    <b>5 &lt; X ≤ 10 kg</b>
+    
+  </div>
+  <strong>$12 <em>/package</em></strong>
+</div>
+<div class="ff-price-row">
+  <div>
+    <b>10 &lt; X ≤ 20 kg</b>
+    
+  </div>
+  <strong>$15 <em>/package</em></strong>
+</div></div>
+</details>
+        <details class="ff-price-group">
+  <summary><span><i aria-hidden="true"></i>TARIFAS DE ALMACENAJE</span><small>5 niveles</small></summary>
+  <div class="ff-price-body"><div class="ff-price-promo"><div><b>Condición de volumen</b><small>Tarifa de almacenaje $500/mes si el volumen es menor a 200 pedidos/mes.</small></div><span>NOTA</span></div>
+<div class="ff-price-row">
+  <div>
+    <b>30–60 días</b>
+    
+  </div>
+  <strong>$1 <em>/CBM/día</em></strong>
+</div>
+<div class="ff-price-row">
+  <div>
+    <b>61–90 días</b>
+    
+  </div>
+  <strong>$1.45 <em>/CBM/día</em></strong>
+</div>
+<div class="ff-price-row">
+  <div>
+    <b>91–180 días</b>
+    
+  </div>
+  <strong>$1.80 <em>/CBM/día</em></strong>
+</div>
+<div class="ff-price-row">
+  <div>
+    <b>181–360 días</b>
+    
+  </div>
+  <strong>$2 <em>/CBM/día</em></strong>
+</div>
+<div class="ff-price-row">
+  <div>
+    <b>Más de 360 días</b>
+    
+  </div>
+  <strong>$4 <em>/CBM/día</em></strong>
+</div></div>
+</details>
+        <details class="ff-price-group">
+  <summary><span><i aria-hidden="true"></i>SERVICIOS DE ALMACÉN</span><small>6 ítems</small></summary>
+  <div class="ff-price-body"><div class="ff-price-row">
+  <div>
+    <b>Conteo al ingreso</b>
+    <small>Conteo por caja bajo 21 kg</small>
+  </div>
+  <strong class="ff-free-price">Gratis</strong>
+</div>
+<div class="ff-price-row">
+  <div>
+    <b>Conteo y clasificación por producto</b>
+    <small>Caja con menos de 2 SKU</small>
+  </div>
+  <strong>$0.08 <em>/artículo</em></strong>
+</div>
+<div class="ff-price-row">
+  <div>
+    <b>Conteo y clasificación por producto</b>
+    <small>Caja con más de 2 SKU</small>
+  </div>
+  <strong>$0.10 <em>/artículo</em></strong>
+</div>
+<div class="ff-price-row">
+  <div>
+    <b>Reconteo en venta</b>
+    <small>Según tabla de inventario</small>
+  </div>
+  <strong>Ver archivo</strong>
+</div>
+<div class="ff-price-row">
+  <div>
+    <b>Destrucción básica</b>
+    <small>Con fotos de defecto; proceso periódico</small>
+  </div>
+  <strong>Case by case</strong>
+</div>
+<div class="ff-price-row">
+  <div>
+    <b>Manejo especial de destrucción</b>
+    <small>Etiquetado, video o manejo especial</small>
+  </div>
+  <strong>$30–$50 <em>/vez</em><small>Aprox. $25/hora</small></strong>
+</div></div>
+</details>
+      </section>
+
+      <section class="ff-pricing-sheet" id="shipping-rates">
+        <header class="ff-sheet-heading">
+          <div>
+            <small>03 · USPS GROUND ADVANTAGE</small>
+            <h3>Tarifas de envío por zona</h3>
+          </div>
+          <span>Referencia</span>
+        </header>
+        <details class="ff-price-group">
+          <summary><span><i aria-hidden="true"></i>TABLA POR ZONA</span><small>5 filas de peso</small></summary>
+          <div class="ff-price-body ff-usps-body"><div class="ff-usps-scroll">
+  <table class="ff-usps-table">
+    <thead><tr><th>lbs</th><th>ZONE 1</th><th>ZONE 2</th><th>ZONE 3</th><th>ZONE 4</th><th>ZONE 5</th><th>ZONE 6</th><th>ZONE 7</th><th>ZONE 8</th><th>ZONE 9</th></tr></thead>
+    <tbody>
+      <tr><th>1 lbs</th><td>$5.76</td><td>$5.98</td><td>$6.21</td><td>$6.54</td><td>$6.98</td><td>$7.55</td><td>$8.05</td><td>$8.52</td><td>$8.52</td></tr>
+      <tr><th>2 lbs</th><td>$6.35</td><td>$6.68</td><td>$7.05</td><td>$7.55</td><td>$8.25</td><td>$9.05</td><td>$9.85</td><td>$10.55</td><td>$10.55</td></tr>
+      <tr><th>3 lbs</th><td>$6.95</td><td>$7.45</td><td>$7.95</td><td>$8.65</td><td>$9.65</td><td>$10.75</td><td>$11.85</td><td>$12.85</td><td>$12.85</td></tr>
+      <tr><th>5 lbs</th><td>$8.15</td><td>$8.95</td><td>$9.75</td><td>$10.95</td><td>$12.55</td><td>$14.25</td><td>$15.95</td><td>$17.55</td><td>$17.55</td></tr>
+      <tr><th>10 lbs</th><td>$11.25</td><td>$12.85</td><td>$14.55</td><td>$17.25</td><td>$20.85</td><td>$24.55</td><td>$28.15</td><td>$31.55</td><td>$31.55</td></tr>
+    </tbody>
+  </table>
+</div>
+<p class="ff-price-footnote">* Las tarifas incluyen el 8% de recargo de combustible USPS.</p></div>
+        </details>
+      </section>
+
+      <p class="ff-pricing-disclaimer">Las tarifas son referenciales de SpeeGo. Solicitudes especiales se confirman antes de procesar.</p>
+    </div>
+  </section>
+
+  <!-- 4. FULFILLMENT COST ESTIMATOR -->
+  <section class="ff-calc-section" id="uoc-tinh-chi-phi">
+    <div class="container">
+      <div class="ff-estimator" id="cost-estimator">
+        <div class="ff-estimator-heading">
+          <div>
+            <small>ESTIMACIÓN DE COSTOS DE FULFILLMENT</small>
+            <p>Manejo de salida + embalaje + transportista</p>
+          </div>
+          <span aria-hidden="true">▦</span>
+        </div>
+        <div class="ff-estimator-body">
+          <form class="ff-estimator-form" aria-label="Estimación de costos de fulfillment">
+            <div class="ff-estimate-guide">
+              <span>01</span>
+              <div>
+                <strong>Datos del pedido</strong>
+                <small>Ingrese el peso, elija la zona y el tipo de embalaje.</small>
+              </div>
+            </div>
+
+            <label class="ff-estimate-field">Peso (lbs)
+              <input type="number" id="calcWeight" min="0.1" step="0.1" value="1" inputmode="decimal">
+            </label>
+            <label class="ff-estimate-field">Zona
+              <select id="calcZone">
+                <option value="1" selected>Zone 1</option>
+                <option value="2">Zone 2</option>
+                <option value="3">Zone 3</option>
+                <option value="4">Zone 4</option>
+                <option value="5">Zone 5</option>
+                <option value="6">Zone 6</option>
+                <option value="7">Zone 7</option>
+                <option value="8">Zone 8</option>
+                <option value="9">Zone 9</option>
+              </select>
+            </label>
+
+            <fieldset class="ff-shipping-choice">
+              <legend>Etiqueta de envío</legend>
+              <label class="ff-package-option ff-shipping-option">
+                <input id="useSpeegoLabel" type="checkbox" checked>
+                <span>
+                  <b>Usar etiqueta USPS de SpeeGo</b>
+                  <small id="shippingChoiceStatus">En uso</small>
+                </span>
+              </label>
+              <p>Desmarque si el cliente aporta su propio tracking o etiqueta de envío.</p>
+            </fieldset>
+
+            <fieldset class="ff-package-choice">
+              <legend>Embalaje</legend>
+              <div class="ff-package-options">
+                <label class="ff-package-option">
+                  <input type="checkbox" name="estimate-packaging" data-package="poly" value="0" checked>
+                  <span><b>Poly mailer</b><small>Gratis</small></span>
+                </label>
+                <label class="ff-package-option">
+                  <input type="checkbox" name="estimate-packaging" data-package="seller" value="0">
+                  <span><b>Embalaje del seller</b><small>Manejo gratis</small></span>
+                </label>
+                <label class="ff-package-option ff-quantity-package">
+                  <input type="checkbox" name="estimate-packaging" data-package="bubble-wrap" value="0.15">
+                  <span>
+                    <b>Bubble wrap</b><small>$0.15/artículo</small>
+                    <i class="ff-quantity-editor"><em>Cantidad</em>
+                      <input type="number" class="ff-package-quantity" data-quantity-for="bubble-wrap" min="1" step="1" value="1" inputmode="numeric" aria-label="Cantidad de bubble wrap">
+                    </i>
+                  </span>
+                </label>
+                <label class="ff-package-option ff-quantity-package">
+                  <input type="checkbox" name="estimate-packaging" data-package="bubble-mailer" value="0.5">
+                  <span>
+                    <b>Bubble mailer</b><small>$0.50/bolsa</small>
+                    <i class="ff-quantity-editor"><em>Cantidad</em>
+                      <input type="number" class="ff-package-quantity" data-quantity-for="bubble-mailer" min="1" step="1" value="1" inputmode="numeric" aria-label="Cantidad de bubble mailer">
+                    </i>
+                  </span>
+                </label>
+                <label class="ff-package-option">
+                  <input type="checkbox" name="estimate-packaging" data-package="carton" value="1">
+                  <span><b>Caja de cartón</b><small>Desde $1.00</small></span>
+                </label>
+              </div>
+            </fieldset>
+          </form>
+
+          <aside class="ff-estimate-result" aria-live="polite">
+            <small>PESO FACTURABLE</small>
+            <strong id="calcResultWeight">1.00 lbs</strong>
+            <dl>
+              <div><dt>Manejo de salida</dt><dd id="calcResultAio">$7.00</dd></div>
+              <div><dt>Embalaje</dt><dd id="calcResultPkg">Incluido</dd></div>
+              <div><dt>Transportista</dt><dd id="calcResultShip">Incluido</dd></div>
+            </dl>
+            <div class="ff-estimate-total">
+              <span>TOTAL ESTIMADO</span>
+              <b id="calcResultTotal">$7.00</b>
+            </div>
+            <p id="calcEstimateNote">Pedidos de hasta 800g con etiqueta USPS de SpeeGo usan la tarifa all-in-one de $7. Estimación solo de referencia.</p>
+            <div class="ff-estimate-brand" aria-hidden="true">
+              <img src="assets/speego-logo-dark.png" alt="">
+            </div>
+          </aside>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. INSIDE HOUSTON WAREHOUSE -->
+  <section class="ff-warehouse-section">
+    <div class="container">
+      <div class="ff-warehouse-header">
+        <div>
+          <span class="ff-tag-eyebrow">DENTRO DE NUESTRAS INSTALACIONES</span>
+          <h2 class="ff-section-title">Conozca el centro de operaciones en Houston.</h2>
+        </div>
+      </div>
+
+      <div class="ff-warehouse-cards-grid" id="warehouseGallery" role="region" aria-label="Carrusel de fotos del almacén en Houston" aria-roledescription="carousel" tabindex="0">
+        <article class="ff-warehouse-card">
+          <img src="assets/warehouse_hero.jpg" alt="Planta de operaciones del almacén en Houston" class="ff-warehouse-card-img" loading="lazy">
+        </article>
+
+        <article class="ff-warehouse-card">
+          <img src="assets/houston_fulfillment_floor_clean.png" alt="Procesamiento de pedidos en el almacén de fulfillment de Houston" class="ff-warehouse-card-img" loading="lazy">
+        </article>
+
+        <article class="ff-warehouse-card">
+          <img src="assets/warehouse_racks_hero.jpg" alt="Estanterías del almacén en Houston" class="ff-warehouse-card-img" loading="lazy">
+        </article>
+
+        <article class="ff-warehouse-card">
+          <img src="assets/houston_order_staging_clean.png" alt="Área de preparación de pedidos en Houston" class="ff-warehouse-card-img" loading="lazy">
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. POLÍTICAS DEL SERVICIO SECTION -->
+  <section class="ff-policy-section" id="chinh-sach-fulfillment">
+    <div class="container">
+      <header class="ff-policy-heading">
+        <div>
+          <p class="ff-tag-eyebrow">POLÍTICAS DEL SERVICIO</p>
+          <h2 class="ff-section-title">Política de fulfillment</h2>
+        </div>
+        <p>
+          Cada caso se evalúa según el historial del pedido, documentación válida y la conciliación entre el cliente, el almacén SpeeGo y el transportista.
+        </p>
+      </header>
+
+      <div class="ff-policy-list">
+        <details class="ff-policy-item">
+          <summary class="ff-policy-header">
+            <span class="ff-policy-num">01</span>
+            <strong class="ff-policy-title">Mercancías extraviadas en almacén</strong>
+            <i class="ff-policy-icon" aria-hidden="true">+</i>
+          </summary>
+          <div class="ff-policy-content">
+            <p><b>Condiciones:</b> La mercancía se recibió correctamente en inventario pero se extravió durante el almacenamiento.</p>
+            <p><b>Compensación:</b> Si se pierde un lote completo, SpeeGo reembolsa el 100% del costo de la mercancía y los gastos de envío cuando el cliente aporte documentación válida completa.</p>
+          </div>
+        </details>
+
+        <details class="ff-policy-item">
+          <summary class="ff-policy-header">
+            <span class="ff-policy-num">02</span>
+            <strong class="ff-policy-title">Error de embalaje por parte del almacén</strong>
+            <i class="ff-policy-icon" aria-hidden="true">+</i>
+          </summary>
+          <div class="ff-policy-content">
+            <p><b>Error del almacén:</b> El personal empacó un SKU incorrecto. SpeeGo cubre el reenvío al comprador y reembolsa el 100% del costo de la mercancía, hasta <b>20 USD/artículo</b>.</p>
+            <p><b>Error de datos del cliente:</b> Si el SKU incorrecto se debe a un código de barras impreso o aplicado por el cliente, SpeeGo no tiene obligación de compensar.</p>
+          </div>
+        </details>
+
+        <details class="ff-policy-item">
+          <summary class="ff-policy-header">
+            <span class="ff-policy-num">03</span>
+            <strong class="ff-policy-title">Etiquetado erróneo o error de dirección</strong>
+            <i class="ff-policy-icon" aria-hidden="true">+</i>
+          </summary>
+          <div class="ff-policy-content">
+            <p><b>Entrega fallida:</b> Si falta la dirección o el almacén ingresó datos incorrectos / imprimió o aplicó la etiqueta equivocada, SpeeGo cubre el costo de reenvío.</p>
+            <p><b>Entrega a dirección incorrecta:</b> Si el error proviene del almacén, SpeeGo reenvía sin cargo y reembolsa el 100% del costo de la mercancía, hasta <b>3 USD/artículo</b>.</p>
+            <p><b>Cancelación antes del reenvío:</b> Se reembolsan las tarifas de fulfillment y envío del pedido.</p>
+            <p class="ff-policy-exclusion"><b>Nota:</b> Si el seller proporcionó información inexacta, SpeeGo no tiene obligación de compensar.</p>
+          </div>
+        </details>
+
+        <details class="ff-policy-item">
+          <summary class="ff-policy-header">
+            <span class="ff-policy-num">04</span>
+            <strong class="ff-policy-title">Daño durante el empaque o tránsito doméstico</strong>
+            <i class="ff-policy-icon" aria-hidden="true">+</i>
+          </summary>
+          <div class="ff-policy-content">
+            <p><b>Error de empaque del almacén:</b> Si un error de empaque provoca un reembolso, SpeeGo reembolsa el 100% de las tarifas de fulfillment y envío y apoya la compensación del 100% del costo de la mercancía, hasta <b>20 USD/pedido</b>.</p>
+            <p><b>Daño en tránsito:</b> Si el almacén empacó según lo acordado, SpeeGo ayuda al cliente a conciliar con USPS, UPS o FedEx para presentar un reclamo.</p>
+            <p class="ff-policy-exclusion"><b>Exclusión:</b> No hay compensación cuando el cliente solicitó empaque mínimo para reducir costos y aceptó el riesgo.</p>
+          </div>
+        </details>
+
+        <details class="ff-policy-item">
+          <summary class="ff-policy-header">
+            <span class="ff-policy-num">05</span>
+            <strong class="ff-policy-title">Marcado como “Entregado” pero no recibido</strong>
+            <i class="ff-policy-icon" aria-hidden="true">+</i>
+          </summary>
+          <div class="ff-policy-content">
+            <p><b>Condiciones:</b> Aplica a pedidos con firma de recepción. El cliente debe ayudar a recopilar información del comprador y apoyar la conciliación.</p>
+            <p><b>Gestión:</b> SpeeGo concilia con USPS, UPS o FedEx. Si el transportista confirma la pérdida, el reclamo sigue su política.</p>
+            <p class="ff-policy-exclusion"><b>Exclusión:</b> Si el estado sigue siendo “Delivered” y el transportista no confirma la pérdida, SpeeGo no tiene obligación de compensar.</p>
+          </div>
+        </details>
+
+        <details class="ff-policy-item">
+          <summary class="ff-policy-header">
+            <span class="ff-policy-num">06</span>
+            <strong class="ff-policy-title">Despacho posterior al plazo acordado (SLA)</strong>
+            <i class="ff-policy-icon" aria-hidden="true">+</i>
+          </summary>
+          <div class="ff-policy-content">
+            <p><b>Condiciones:</b> Se creó tracking de fulfillment pero el pedido no salió del almacén en <b>3 días hábiles</b>, sin contar fines de semana ni feriados en EE. UU.</p>
+            <p><b>Gestión:</b> Si el procesamiento en almacén supera el SLA en más de 3 días hábiles, SpeeGo reembolsa el 100% de la tarifa de fulfillment de ese pedido.</p>
+            <p class="ff-policy-exclusion"><b>Exclusión:</b> Si el almacén entregó el pedido a USPS, UPS o FedEx dentro del SLA pero el retraso ocurrió en tránsito, SpeeGo no es responsable de la compensación.</p>
+          </div>
+        </details>
+      </div>
+
+      <aside class="ff-claim-policy">
+        <div>
+          <small>PRESENTACIÓN DE RECLAMOS</small>
+          <h3>Plazos para presentar reclamos</h3>
+        </div>
+        <ul>
+          <li><b>Pedidos perdidos:</b> Dentro de 2 meses desde que el transportista aceptó el pedido.</li>
+          <li><b>Daños, tarifas incorrectas o problemas con la mercancía:</b> Dentro de 3 días desde la entrega al destinatario.</li>
+        </ul>
+        <div class="ff-claim-time">
+          <small>TIEMPO DE RESOLUCIÓN</small>
+          <strong>10 días hábiles</strong>
+          <span>Contados desde la recepción del expediente completo de reclamo durante el tránsito.</span>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- 7. FORMULARIO DE CONSULTA -->
+  <div data-component="cta-form" data-variant="band" id="contact-form"></div>
+
+  <!-- 8. FREQUENTLY ASKED QUESTIONS SECTION -->
+  <section class="ff-faq-section">
+    <div class="container">
+      <div class="ff-section-header">
+        <span class="ff-tag-eyebrow">INFORMACIÓN DE VALOR</span>
+        <h2 class="ff-section-title">Preguntas frecuentes</h2>
+      </div>
+
+      <div class="ff-faq-list">
+        <div class="ff-faq-item faq-item">
+          <button class="ff-faq-btn faq-question-btn">
+            <span>¿Cómo creo una solicitud de ingreso (Inbound Request)?</span>
+            <span class="ff-faq-plus">+</span>
+          </button>
+          <div class="ff-faq-answer">
+            <p>Cree la solicitud de ingreso directamente en el portal SpeeGo OMS, seleccione cantidades por SKU y coloque la etiqueta IR generada por el sistema en cada caja antes de enviarla a Houston.</p>
+          </div>
+        </div>
+
+        <div class="ff-faq-item faq-item">
+          <button class="ff-faq-btn faq-question-btn">
+            <span>¿Cómo asiste SpeeGo con los códigos de barras?</span>
+            <span class="ff-faq-plus">+</span>
+          </button>
+          <div class="ff-faq-answer">
+            <p>SpeeGo permite generar códigos de barras internacionales estándar o utilizar los códigos ya existentes de sus productos. Brindamos plantillas PDF y servicio de etiquetado en bodega.</p>
+          </div>
+        </div>
+
+        <div class="ff-faq-item faq-item">
+          <button class="ff-faq-btn faq-question-btn">
+            <span>¿Dónde puedo consultar el inventario y los pedidos?</span>
+            <span class="ff-faq-plus">+</span>
+          </button>
+          <div class="ff-faq-answer">
+            <p>Todos los niveles de existencias, etapas de empaque y números de seguimiento se sincronizan en vivo 24/7 en el portal OMS en línea de SpeeGo.</p>
+          </div>
+        </div>
+
+        <div class="ff-faq-item faq-item">
+          <button class="ff-faq-btn faq-question-btn">
+            <span>¿Puedo revisar cómo se empacó un pedido?</span>
+            <span class="ff-faq-plus">+</span>
+          </button>
+          <div class="ff-faq-answer">
+            <p>Sí. Las estaciones de empaque de SpeeGo cuentan con grabación en video HD indexada por número de seguimiento para una transparencia total.</p>
+          </div>
+        </div>
+
+        <div class="ff-faq-item faq-item">
+          <button class="ff-faq-btn faq-question-btn">
+            <span>¿Qué empresas de transporte entregan los pedidos?</span>
+            <span class="ff-faq-plus">+</span>
+          </button>
+          <div class="ff-faq-answer">
+            <p>SpeeGo colabora directamente con los principales transportistas de EE.UU.: USPS (optimizado mediante Ground Advantage), UPS y FedEx.</p>
+          </div>
+        </div>
+
+        <div class="ff-faq-item faq-item">
+          <button class="ff-faq-btn faq-question-btn">
+            <span>¿Cómo se gestionan las devoluciones?</span>
+            <span class="ff-faq-plus">+</span>
+          </button>
+          <div class="ff-faq-answer">
+            <p>Cuando las devoluciones llegan a Houston, nuestro equipo las revisa, sube fotos al OMS y reintegra los artículos aptos al inventario sin costo de recepción.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 9. TESTIMONIAL SECTION -->
+  <section class="ff-testimonial-section">
+    <div class="container">
+      <div class="ff-section-header">
+        <span class="ff-tag-eyebrow">SPEEGO CUSTOMERS</span>
+        <h2 class="ff-section-title">Acompañando el crecimiento de su empresa</h2>
+      </div>
+
+      <div class="testimonials-2col-grid">
+        <div class="testimonial-card-sourcing">
+          <div>
+            <div class="ff-quote-mark" aria-hidden="true" style="margin-bottom: 16px;"><span></span><span></span></div>
+            <blockquote class="ff-quote-text">
+              “El seguimiento en tiempo real en el OMS y la política de cero cargos ocultos hacen de SpeeGo nuestro socio logístico más confiable.”
+            </blockquote>
+          </div>
+          <div class="ff-author-info">
+            <div class="ff-author-name">Sarah Mitchell</div>
+            <div class="ff-author-title">Directora de Operaciones, EcoLiving Home · Australia</div>
+            <div class="ff-author-ref"><a href="#/es/sourcing" class="ff-ref-link">Publicado en el portal SpeeGo ↗</a></div>
+          </div>
+        </div>
+        <div class="testimonial-card-sourcing">
+          <div>
+            <div class="ff-quote-mark" aria-hidden="true" style="margin-bottom: 16px;"><span></span><span></span></div>
+            <blockquote class="ff-quote-text">
+              “El equipo de control de calidad en planta nos ahorró miles de dólares antes de que el contenedor fuera precintado.”
+            </blockquote>
+          </div>
+          <div class="ff-author-info">
+            <div class="ff-author-name">Kevin Le</div>
+            <div class="ff-author-title">CEO, Glamour Nail Supplies · California, EE.UU.</div>
+            <div class="ff-author-ref"><a href="#/es/sourcing" class="ff-ref-link">Publicado en el portal SpeeGo ↗</a></div>
+            </div>
+          </div>
+      </div>
+    </div>
+  </section>
+
+</div>

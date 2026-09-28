@@ -389,6 +389,45 @@ if (in_array($routeHash, ['#/about-us', '#/en/about-us', '#/es/about-us', '#/abo
     }
 }
 
+// Prerender any other registered SpeeGo page (Fulfillment, Shipping Routes, Import-Export, Knowledge)
+if (strpos($entry, 'data-speego-prerendered-route=') === false) {
+    $defs = function_exists('speego_get_pages_definitions') ? speego_get_pages_definitions() : [];
+    if (isset($defs[$routeHash])) {
+        $pageDef = $defs[$routeHash];
+        $pagePosts = get_posts([
+            'post_type' => 'page',
+            'post_status' => 'publish',
+            'numberposts' => 1,
+            'meta_key' => '_speego_route_hash',
+            'meta_value' => $routeHash,
+        ]);
+        $pageHtml = '';
+        if ($pagePosts && !empty($pagePosts[0]->post_content)) {
+            $pageHtml = trim($pagePosts[0]->post_content);
+            $pageHtml = preg_replace('#<!--\\s*/?wp:html\\s*-->#i', '', $pageHtml);
+        } else {
+            $pageFile = __DIR__ . '/explore/' . $pageDef['file'];
+            if (is_readable($pageFile)) {
+                $pageHtml = trim(file_get_contents($pageFile));
+            }
+        }
+        if ($pageHtml !== '') {
+            if (isset($pageDef['title'])) {
+                $entry = preg_replace('/<title\\b[^>]*>.*?<\\/title>/is', '<title>' . esc_html($pageDef['title']) . '</title>', $entry, 1);
+            }
+            $entry = preg_replace_callback(
+                '/(<main\\b[^>]*\\bid="app-main"[^>]*>).*?(<\\/main>)/is',
+                function ($matches) use ($pageHtml, $routeHash) {
+                    $mainOpen = preg_replace('/>$/', ' data-speego-prerendered-route="' . esc_attr($routeHash) . '">', $matches[1], 1);
+                    return $mainOpen . $pageHtml . $matches[2];
+                },
+                $entry,
+                1
+            );
+        }
+    }
+}
+
 require_once __DIR__ . '/sourcing-seo.php';
 $entry = speego_render_sourcing_seo($entry, $routeHash, $queriedId);
 

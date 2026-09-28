@@ -1,0 +1,161 @@
+<script>
+  // Redirección automática si se abre directamente desde el explorador de archivos
+  if (typeof window !== 'undefined' && !document.getElementById('app-main')) {
+    window.location.replace('../../index.html#/es/import-export');
+  }
+</script>
+
+<div class="page-container page-import-export"
+     data-page="es-import-export"
+     data-nav="import-export"
+     data-breadcrumb='[{"label":"Inicio","href":"#/es/knowledge"},{"label":"Importación y Exportación","href":"#/es/import-export"}]'>
+
+  <!-- 1. HERO SECTION (2 COLUMNS: TEXT LEFT, CARD IMAGE RIGHT) -->
+  <section class="page-hero-2col">
+    <div class="container">
+      <div class="hero-2col-grid">
+        <!-- Left Column: Title, Intro & Actions -->
+        <div class="hero-2col-left">
+          <div class="hero-tag-bar">IMPORTACIÓN Y EXPORTACIÓN</div>
+          <h1 class="hero-h1-clean">
+            Importación y exportación<br>
+            <span class="text-orange">simplificadas y seguras.</span>
+          </h1>
+          <p class="hero-desc-clean">
+            Gestión documental aduanera, declaraciones y cumplimiento normativo en cada etapa de su cadena de comercio internacional. Un único socio confiable desde la preparación hasta el levante final.
+          </p>
+          <div class="hero-actions-row">
+            <a href="#contact-form" class="btn-orange">
+              Consulte sus necesidades ↗
+            </a>
+            <a href="tel:+84906828898" class="hero-phone-label">
+              (+84) 906 828 898
+            </a>
+          </div>
+        </div>
+
+        <!-- Right Column: Card Device Image with SpeeGo Caption -->
+        <div class="hero-2col-right">
+          <div class="hero-img-card-wrap">
+            <img src="assets/import-export-consultation.png" alt="Documentación clara. Proceso fluido." onerror="this.onerror=null; this.src='assets/warehouse_hero.jpg';">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="ff-ticker-orange-wrap" aria-hidden="true">
+    <div class="ff-ticker-orange-inner">
+      <span>GLOBAL SOURCING</span><span class="ff-ticker-symbol">✦</span>
+      <span>QUALITY CONTROL</span><span class="ff-ticker-symbol">✦</span>
+      <span>INTERNATIONAL LOGISTICS</span><span class="ff-ticker-symbol">✦</span>
+      <span>FULFILLMENT</span><span class="ff-ticker-symbol">✦</span>
+      <span>SUPPLY CHAIN SOLUTIONS</span><span class="ff-ticker-symbol">✦</span>
+      <span>GLOBAL SOURCING</span><span class="ff-ticker-symbol">✦</span>
+      <span>QUALITY CONTROL</span><span class="ff-ticker-symbol">✦</span>
+      <span>INTERNATIONAL LOGISTICS</span><span class="ff-ticker-symbol">✦</span>
+      <span>FULFILLMENT</span><span class="ff-ticker-symbol">✦</span>
+      <span>SUPPLY CHAIN SOLUTIONS</span><span class="ff-ticker-symbol">✦</span>
+    </div>
+  </div>
+
+  <!-- 2. CORE SERVICES CARDS -->
+  <section class="ie-services-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">SERVICIOS PRINCIPALES</span>
+        <h2 class="section-title">Soluciones para cada requisito de importación y exportación.</h2>
+        <p class="ie-services-lead">Acompañamiento integral desde la asesoría hasta la certificación para operar con fluidez y cumplir las normas.</p>
+      </div>
+      <div class="ie-service-grid">
+        <article class="ie-service-card-new">
+          <div class="ie-service-card-top">
+            <span class="ie-service-index" aria-hidden="true">01</span>
+            <span class="ie-service-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.4"/><path d="M5.5 20c.4-3.1 2.9-5.2 6.5-5.2 1.2 0 2.2.2 3.1.7"/><path d="M16.5 4.5h5v5h-2l-2 2v-2h-1z"/></svg>
+            </span>
+          </div>
+          <h3 class="ie-service-title">Asesoría aduanera</h3>
+          <p class="ie-service-description">Asesoramiento sobre códigos HS, políticas de productos, aranceles y documentación aduanera.</p>
+          <img class="ie-service-card-image" src="assets/import-export-consultation.png" alt="Asesoría aduanera" loading="lazy">
+        </article>
+        <article class="ie-service-card-new">
+          <div class="ie-service-card-top">
+            <span class="ie-service-index" aria-hidden="true">02</span>
+            <span class="ie-service-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M3 16.5h18l-2.4 3H6z"/><path d="M6 15.5l2.4-5h7.2l2.4 5M12 10V4m0 0L9.5 6.5M12 4l2.5 2.5"/><path d="M4 21h16"/></svg>
+            </span>
+          </div>
+          <h3 class="ie-service-title">Despacho de importación y exportación</h3>
+          <p class="ie-service-description">Gestión integral del despacho aduanero para envíos de importación y exportación.</p>
+          <img class="ie-service-card-image" src="assets/port_sunset_hero.jpg" alt="Buque de carga y puerto" loading="lazy">
+        </article>
+        <article class="ie-service-card-new">
+          <div class="ie-service-card-top">
+            <span class="ie-service-index" aria-hidden="true">03</span>
+            <span class="ie-service-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><rect x="5" y="3.5" width="14" height="17" rx="1.5"/><path d="M9 8h6m-6 4h6m-6 4h3"/><path d="m16.5 14.5 1.3 1.3 2.7-3"/></svg>
+            </span>
+          </div>
+          <h3 class="ie-service-title">Inspección especializada</h3>
+          <p class="ie-service-description">Apoyo con inspecciones especializadas y verificación de calidad según el tipo de carga.</p>
+          <img class="ie-service-card-image" src="assets/factory_packaging_qc.jpg" alt="Inspección especializada de productos" loading="lazy">
+        </article>
+        <article class="ie-service-card-new">
+          <div class="ie-service-card-top">
+            <span class="ie-service-index" aria-hidden="true">04</span>
+            <span class="ie-service-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M7 3h8l4 4v10H7z"/><path d="M15 3v5h4M10 11h6m-6 3h6"/><circle cx="9" cy="18" r="3"/><path d="m7.5 20.5-.5 2 2-1 2 1-.5-2"/></svg>
+            </span>
+          </div>
+          <h3 class="ie-service-title">Certificado de origen (C/O)</h3>
+          <p class="ie-service-description">Apoyo con la emisión del Certificado de Origen y la documentación relacionada.</p>
+          <img class="ie-service-card-image" src="assets/factory_staging_dispatch.jpg" alt="Mercancías preparadas para exportación" loading="lazy">
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. WHY CHOOSE SPEEGO (4 CARDS LIGHT GRAY BACKGROUND) -->
+  <section class="ie-why-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">POR QUÉ ELEGIR SPEEGO</span>
+        <h2 class="section-title">
+          Conocimiento normativo profundo.<br>
+          Control proactivo de riesgos.
+        </h2>
+      </div>
+
+      <div class="ie-why-grid">
+        <div class="ie-service-card">
+          <div class="ie-badge-box">01</div>
+          <h3 class="ie-card-h3">Experiencia Aduanera Especializada</h3>
+          <p class="ie-card-body">SpeeGo ayuda a preparar expedientes impecables, declaraciones correctas y agilizar los procesos de levante aduanero.</p>
+        </div>
+
+        <div class="ie-service-card">
+          <div class="ie-badge-box">02</div>
+          <h3 class="ie-card-h3">Amplia Variedad de Mercancías</h3>
+          <p class="ie-card-body">Conocimiento técnico en regulaciones para cosméticos, productos de belleza, muebles, artesanías y tecnología.</p>
+        </div>
+
+        <div class="ie-service-card">
+          <div class="ie-badge-box">03</div>
+          <h3 class="ie-card-h3">Gestión y Mitigación de Riesgos</h3>
+          <p class="ie-card-body">Auditoría previa de documentación para prevenir retrasos, inspecciones inesperadas o recargos arancelarios no previstos.</p>
+        </div>
+
+        <div class="ie-service-card">
+          <div class="ie-badge-box">04</div>
+          <h3 class="ie-card-h3">Acompañamiento de Extremo a Extremo</h3>
+          <p class="ie-card-body">Desde la asesoría previa al envío hasta la liberación en destino, SpeeGo acompaña a su empresa en cada paso del camino.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. CONSULTATION FORM BAND -->
+  <div data-component="cta-form" data-variant="band" id="contact-form"></div>
+
+</div>
