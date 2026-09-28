@@ -24,7 +24,7 @@
   <link rel="stylesheet" href="/wp-content/themes/logistica/styleb54d.css?ver=6.8.8">
   <link rel="stylesheet" href="/wp-content/themes/logistica/css/speego-custom.css?v=mobile_tracking_20260923">
   <link rel="stylesheet" href="/wp-content/themes/logistica/css/speego-process-tabs.css">
-  <link rel="stylesheet" href="/explore/css/style.css?v=import_export_card_spacing_20260926">
+  <link rel="stylesheet" href="/explore/css/style.css?v=testimonial_type_20260928">
 </head>
 <body class="home wp-theme-logistica elementor-default elementor-template-full-width speego-seo-page" data-seo-language="es">
   <div id="page" class="hfeed site">
@@ -74,20 +74,7 @@
 						<ul class="speego-nav-menu" id="menu-main-menu">
 							<li class="speego-nav-item"><a href="/" class="speego-nav-link" data-i18n="nav_home">Homepage</a></li>
 							<li class="speego-nav-item"><a href="/en/about-us/" class="speego-nav-link" data-i18n="nav_about">About</a></li>
-							<li class="speego-nav-item speego-nav-has-sub" data-nav="sourcing">
-								<a href="/en/sourcing/" class="speego-nav-link" aria-haspopup="true" aria-expanded="false">
-									<span data-i18n="nav_sourcing">Sourcing</span>
-									<svg class="speego-nav-caret" viewBox="0 0 10 6" width="10" height="6" aria-hidden="true" focusable="false">
-										<path d="M1 1.25 L5 4.75 L9 1.25" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
-									</svg>
-								</a>
-								<ul class="speego-nav-dropdown" aria-label="Sourcing sections">
-									<li><a href="/en/sourcing/#industries" class="speego-nav-dropdown-link" data-i18n="nav_sourcing_industries">Industries</a></li>
-									<li><a href="/en/sourcing/#manufacturing-models" class="speego-nav-dropdown-link" data-i18n="nav_sourcing_models">Manufacturing models</a></li>
-									<li><a href="/en/sourcing/#quality-control" class="speego-nav-dropdown-link" data-i18n="nav_sourcing_qc">Quality control</a></li>
-									<li><a href="/en/sourcing/#why-speego" class="speego-nav-dropdown-link" data-i18n="nav_sourcing_why">Why SpeeGo</a></li>
-								</ul>
-							</li>
+							<li class="speego-nav-item" data-nav="sourcing"><a href="/en/sourcing/" class="speego-nav-link" data-i18n="nav_sourcing">Sourcing</a></li>
 							<li class="speego-nav-item speego-nav-has-sub" data-nav="shipping-routes">
 								<a href="/en/logistics/" class="speego-nav-link" aria-haspopup="true" aria-expanded="false">
 									<span data-i18n="nav_routes">Logistics</span>
@@ -104,20 +91,7 @@
 									</li>
 								</ul>
 							</li>
-							<li class="speego-nav-item speego-nav-has-sub" data-nav="fulfillment">
-								<a href="/en/fulfillment/" class="speego-nav-link" aria-haspopup="true" aria-expanded="false">
-									<span data-i18n="nav_fulfillment">Fulfillment</span>
-									<svg class="speego-nav-caret" viewBox="0 0 10 6" width="10" height="6" aria-hidden="true" focusable="false">
-										<path d="M1 1.25 L5 4.75 L9 1.25" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
-									</svg>
-								</a>
-								<ul class="speego-nav-dropdown" aria-label="Fulfillment sections">
-									<li><a href="/en/fulfillment/#bang-gia-fulfillment" class="speego-nav-dropdown-link" data-i18n="nav_ff_pricing">Fulfillment pricing</a></li>
-									<li><a href="/en/fulfillment/#shipping-rates" class="speego-nav-dropdown-link" data-i18n="nav_ff_rates">Shipping rates</a></li>
-									<li><a href="/en/fulfillment/#uoc-tinh-chi-phi" class="speego-nav-dropdown-link" data-i18n="nav_ff_estimate">Cost estimate</a></li>
-									<li><a href="/en/fulfillment/#chinh-sach-fulfillment" class="speego-nav-dropdown-link" data-i18n="nav_ff_policy">Service policy</a></li>
-								</ul>
-							</li>
+							<li class="speego-nav-item" data-nav="fulfillment"><a href="/en/fulfillment/" class="speego-nav-link" data-i18n="nav_fulfillment">Fulfillment</a></li>
 							<li class="speego-nav-item"><a href="/en/import-export/" class="speego-nav-link" data-i18n="nav_import_export">Import &amp; Export</a></li>
 							<li class="speego-nav-item"><a href="/en/knowledge/" class="speego-nav-link" data-i18n="nav_knowledge">Knowledge</a></li>
 							<li class="speego-nav-item speego-nav-cta-item">
@@ -478,6 +452,45 @@
     </div>
   </section>
 
+  
+  <section class="cta-form-band-section" id="contact-form">
+    <div class="container cta-form-band-grid">
+      <div class="cta-band-left">
+        <span class="section-tag">AVANCEMOS JUNTOS</span>
+        <h2 class="section-title section-title-white">Comience con lo que<br>su negocio necesita.</h2>
+        <p class="cta-band-desc">Comparta los detalles de sus productos y planes comerciales. SpeeGo diseñará la solución ideal para usted.</p>
+        <a href="tel:+84906828898" class="cta-hotline-link">(+84) 906 828 898 ↗</a>
+      </div>
+      <div class="cta-band-right">
+        <div class="consult-card-white">
+          <form class="consult-form" onsubmit="handleConsultSubmit(event)">
+            <div class="form-row-2col">
+              <div class="form-group">
+                <label class="form-label" for="band_fullName">Nombre completo</label>
+                <input type="text" id="band_fullName" name="fullName" class="form-control" placeholder="Su nombre y apellido" required>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="band_email">Correo electrónico</label>
+                <input type="email" id="band_email" name="email" class="form-control" placeholder="usted@empresa.com" required>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="band_phone">Número de teléfono</label>
+              <input type="tel" id="band_phone" name="phone" class="form-control" placeholder="Teléfono de contacto" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="band_message">Consulta de servicios</label>
+              <textarea id="band_message" name="message" class="form-control" placeholder="Tipo de producto, volumen estimado, origen y destino..."></textarea>
+            </div>
+            <button type="submit" class="btn-orange btn-submit">Enviar consulta comercial ↗</button>
+            <p class="form-security-note">Abre su aplicación de correo con el mensaje preparado. Sus datos se envían únicamente al hacer clic en Enviar en su cliente de correo.</p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
   <!-- 7. PHOTOS & VIDEO -->
   <section class="prod-floor-section">
     <div class="container">
@@ -667,7 +680,7 @@
             <div class="ff-quote-mark" aria-hidden="true" style="margin-bottom: 16px;">
               <span></span><span></span>
             </div>
-            <blockquote class="ff-quote-text" style="font-size: 1.05rem; margin-bottom: 24px;">
+            <blockquote class="ff-quote-text">
               “El equipo de control de calidad en planta nos ahorró miles de dólares antes de que el contenedor fuera precintado.”
             </blockquote>
           </div>
@@ -685,7 +698,7 @@
             <div class="ff-quote-mark" aria-hidden="true" style="margin-bottom: 16px;">
               <span></span><span></span>
             </div>
-            <blockquote class="ff-quote-text" style="font-size: 1.05rem; margin-bottom: 24px;">
+            <blockquote class="ff-quote-text">
               “El rastreo OMS en tiempo real y la política de cero cargos ocultos hacen de SpeeGo nuestro socio logístico más confiable.”
             </blockquote>
           </div>
@@ -701,45 +714,7 @@
     </div>
   </section>
 
-  <!-- 10. CONSULTATION FORM BAND -->
-
 </div>
-  <section class="cta-form-band-section" id="contact-form">
-    <div class="container cta-form-band-grid">
-      <div class="cta-band-left">
-        <span class="section-tag">AVANCEMOS JUNTOS</span>
-        <h2 class="section-title section-title-white">Comience con lo que<br>su negocio necesita.</h2>
-        <p class="cta-band-desc">Comparta los detalles de sus productos y planes comerciales. SpeeGo diseñará la solución ideal para usted.</p>
-        <a href="tel:+84906828898" class="cta-hotline-link">(+84) 906 828 898 ↗</a>
-      </div>
-      <div class="cta-band-right">
-        <div class="consult-card-white">
-          <form class="consult-form" onsubmit="handleConsultSubmit(event)">
-            <div class="form-row-2col">
-              <div class="form-group">
-                <label class="form-label" for="band_fullName">Nombre completo</label>
-                <input type="text" id="band_fullName" name="fullName" class="form-control" placeholder="Su nombre y apellido" required>
-              </div>
-              <div class="form-group">
-                <label class="form-label" for="band_email">Correo electrónico</label>
-                <input type="email" id="band_email" name="email" class="form-control" placeholder="usted@empresa.com" required>
-              </div>
-            </div>
-            <div class="form-group">
-              <label class="form-label" for="band_phone">Número de teléfono</label>
-              <input type="tel" id="band_phone" name="phone" class="form-control" placeholder="Teléfono de contacto" required>
-            </div>
-            <div class="form-group">
-              <label class="form-label" for="band_message">Consulta de servicios</label>
-              <textarea id="band_message" name="message" class="form-control" placeholder="Tipo de producto, volumen estimado, origen y destino..."></textarea>
-            </div>
-            <button type="submit" class="btn-orange btn-submit">Enviar consulta comercial ↗</button>
-            <p class="form-security-note">Abre su aplicación de correo con el mensaje preparado. Sus datos se envían únicamente al hacer clic en Enviar en su cliente de correo.</p>
-          </form>
-        </div>
-      </div>
-    </div>
-  </section>
 </main>
     <footer id="colophon" class="site-footer speego-site-footer" role="contentinfo">
 			<div class="speego-footer-top">

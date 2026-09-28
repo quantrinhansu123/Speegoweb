@@ -36,28 +36,6 @@ if (!$routeHash) {
         $routeHash = '#/home';
     }
 }
-// On a fresh preview site, open the imported Sourcing page until the
-// homepage content has been migrated. Existing sites keep their homepage.
-if (is_front_page() && $routeHash === '#/home') {
-    $homepageExists = get_posts([
-        'post_type' => 'page',
-        'post_status' => 'publish',
-        'numberposts' => 1,
-        'meta_key' => '_speego_route_hash',
-        'meta_value' => '#/home',
-    ]);
-    $sourcingExists = get_posts([
-        'post_type' => 'page',
-        'post_status' => 'publish',
-        'numberposts' => 1,
-        'meta_key' => '_speego_route_hash',
-        'meta_value' => '#/sourcing',
-    ]);
-    if (!$homepageExists && $sourcingExists) {
-        wp_safe_redirect(home_url('/vi/sourcing/'), 302);
-        exit;
-    }
-}
 $route = wp_json_encode($routeHash ?: '#/home', JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_AMP | JSON_HEX_QUOT);
 
 // Provide unique, language-matched search metadata in the original response.
@@ -211,9 +189,22 @@ if (in_array($routeHash, ['#/home', '#/en/home', '#/es/inicio'], true)) {
         'meta_key' => '_speego_route_hash',
         'meta_value' => $routeHash,
     ]);
+    $homepageHtml = '';
     if ($homepagePosts) {
         $homepageHtml = trim($homepagePosts[0]->post_content);
         $homepageHtml = preg_replace('#<!--\s*/?wp:html\s*-->#i', '', $homepageHtml);
+    } else {
+        $homeFallbackMap = [
+            '#/home' => __DIR__ . '/explore/pages/home/vi-home.html',
+            '#/en/home' => __DIR__ . '/explore/pages/home/en-home.html',
+            '#/es/inicio' => __DIR__ . '/explore/pages/home/es-home.html',
+        ];
+        if (isset($homeFallbackMap[$routeHash]) && is_readable($homeFallbackMap[$routeHash])) {
+            $homepageHtml = trim(file_get_contents($homeFallbackMap[$routeHash]));
+        }
+    }
+
+    if ($homepageHtml !== '') {
 
         $dictionaryPath = __DIR__ . '/explore/js/speego-page-i18n.js';
         $dictionarySource = is_readable($dictionaryPath) ? file_get_contents($dictionaryPath) : false;
