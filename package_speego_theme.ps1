@@ -31,6 +31,11 @@ Copy-Item (Join-Path $workspace 'scratch\es_home_sections.html') (Join-Path $hom
 $themeExplore = Join-Path $themeRoot 'explore'
 New-Item -ItemType Directory -Path (Join-Path $themeExplore 'pages\home') -Force | Out-Null
 Copy-Item (Join-Path $homeTemplates '*') (Join-Path $themeExplore 'pages\home\') -Force
+$aboutTemplates = Join-Path $exploreRoot 'pages\about'
+if (Test-Path -LiteralPath $aboutTemplates) {
+    New-Item -ItemType Directory -Path (Join-Path $themeExplore 'pages\about') -Force | Out-Null
+    Copy-Item (Join-Path $aboutTemplates '*') (Join-Path $themeExplore 'pages\about\') -Force
+}
 Copy-Item (Join-Path $exploreRoot 'index.html') (Join-Path $themeExplore 'index.html') -Force
 
 # 3. Prepare Sourcing reference files

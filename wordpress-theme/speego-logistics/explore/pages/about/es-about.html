@@ -1,0 +1,193 @@
+<script>
+  // Redirigir automáticamente al contenedor de la aplicación completa si se abre directamente desde el explorador
+  if (typeof window !== 'undefined' && !document.getElementById('app-main')) {
+    window.location.replace('../../index.html#/es/about-us');
+  }
+</script>
+
+<div class="page-container page-about" 
+     data-page="about-us" 
+     data-nav="about" 
+     data-breadcrumb='[{"label":"Inicio","href":"#/es/inicio"},{"label":"Sobre SpeeGo","href":"#/es/about-us"}]'>
+
+  <!-- 1. HERO SECTION (2 COLUMNS: TEXT LEFT, CARD IMAGE RIGHT) -->
+  <section class="page-hero-2col">
+    <div class="container">
+      <div class="hero-2col-grid">
+        <!-- Columna izquierda: Título, intro y llamada a la acción -->
+        <div class="hero-2col-left">
+          <div class="hero-tag-bar" data-i18n="about_tag">SOBRE SPEEGO LOGISTICS</div>
+          <h1 class="hero-h1-clean">
+            <span data-i18n="about_hero_title_1">Conectando la cadena de suministro</span><br>
+            <span class="text-orange" data-i18n="about_hero_title_2">transparente y de extremo a extremo.</span>
+          </h1>
+          <p class="hero-desc-clean" data-i18n="about_hero_desc">
+            SpeeGo Logistics conecta fábricas verificadas en Vietnam y China con empresas en EE. UU., Canadá y Australia. Optimizamos cada etapa: abastecimiento de proveedores, control de calidad, flete multimodal y fulfillment en destino.
+          </p>
+          <div class="hero-actions-row">
+            <a href="#consultation-form" class="btn-orange" data-i18n="about_hero_cta">
+              Consulta gratuita ↗
+            </a>
+            <a href="tel:+84906828898" class="hero-phone-label">
+              (+84) 906 828 898
+            </a>
+          </div>
+        </div>
+
+        <!-- Columna derecha: Imagen del equipo SpeeGo -->
+        <div class="hero-2col-right">
+          <div class="hero-img-card-wrap">
+            <img src="assets/speego-team.png" alt="Equipo SpeeGo Logistics" onerror="this.onerror=null; this.src='assets/007-speego-logistics-team-1.png';">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Cinta naranja -->
+  <div class="ff-ticker-orange-wrap" aria-hidden="true">
+    <div class="ff-ticker-orange-inner">
+      <span>GLOBAL SOURCING</span><span class="ff-ticker-symbol">✦</span>
+      <span>QUALITY CONTROL</span><span class="ff-ticker-symbol">✦</span>
+      <span>INTERNATIONAL LOGISTICS</span><span class="ff-ticker-symbol">✦</span>
+      <span>FULFILLMENT</span><span class="ff-ticker-symbol">✦</span>
+      <span>SUPPLY CHAIN SOLUTIONS</span><span class="ff-ticker-symbol">✦</span>
+      <span>GLOBAL SOURCING</span><span class="ff-ticker-symbol">✦</span>
+      <span>QUALITY CONTROL</span><span class="ff-ticker-symbol">✦</span>
+      <span>INTERNATIONAL LOGISTICS</span><span class="ff-ticker-symbol">✦</span>
+      <span>FULFILLMENT</span><span class="ff-ticker-symbol">✦</span>
+      <span>SUPPLY CHAIN SOLUTIONS</span><span class="ff-ticker-symbol">✦</span>
+    </div>
+  </div>
+
+  <!-- 2. WHY SPEEGO (6 PILARES) -->
+  <section class="speego-why-section" id="why-speego">
+    <div class="speego-why-inner">
+      <header class="speego-why-header">
+        <span class="speego-why-accent" aria-hidden="true"></span>
+        <h2 class="speego-why-title" data-i18n="why_title">POR QUÉ ELEGIR SPEEGO LOGISTICS</h2>
+        <p class="speego-why-subtitle" data-i18n="why_subtitle">
+          Valor transparente, infraestructura sincronizada y un equipo experto dedicado.
+        </p>
+      </header>
+
+      <div class="speego-why-container">
+        <div class="speego-why-grid">
+          <article class="speego-why-cell">
+            <span class="speego-why-cell-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9.5 6C6.5 7.6 5 10 5 12.8c0 2 1.2 3.4 3 3.4 1.6 0 2.7-1.1 2.7-2.6 0-1.4-1-2.4-2.3-2.4-.2 0-.4 0-.5.1.3-1.6 1.6-3 3.3-3.9L9.5 6Zm9 0c-3 1.6-4.5 4-4.5 6.8 0 2 1.2 3.4 3 3.4 1.6 0 2.7-1.1 2.7-2.6 0-1.4-1-2.4-2.3-2.4-.2 0-.4 0-.5.1.3-1.6 1.6-3 3.3-3.9L18.5 6Z"/></svg></span>
+            <h3 class="speego-why-cell-title" data-i18n="why1_title">Cadena de suministro multirubro</h3>
+            <p class="speego-why-cell-desc" data-i18n="why1_desc">Cubrimos producción y envío internacional para todo tipo de negocios.</p>
+          </article>
+          <article class="speego-why-cell">
+            <span class="speego-why-cell-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9.5 6C6.5 7.6 5 10 5 12.8c0 2 1.2 3.4 3 3.4 1.6 0 2.7-1.1 2.7-2.6 0-1.4-1-2.4-2.3-2.4-.2 0-.4 0-.5.1.3-1.6 1.6-3 3.3-3.9L9.5 6Zm9 0c-3 1.6-4.5 4-4.5 6.8 0 2 1.2 3.4 3 3.4 1.6 0 2.7-1.1 2.7-2.6 0-1.4-1-2.4-2.3-2.4-.2 0-.4 0-.5.1.3-1.6 1.6-3 3.3-3.9L18.5 6Z"/></svg></span>
+            <h3 class="speego-why-cell-title" data-i18n="why2_title">Red de fábricas en China y Vietnam</h3>
+            <p class="speego-why-cell-desc" data-i18n="why2_desc">Socios, fábricas y talleres directos con negociación de MOQ y precio.</p>
+          </article>
+          <article class="speego-why-cell">
+            <span class="speego-why-cell-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9.5 6C6.5 7.6 5 10 5 12.8c0 2 1.2 3.4 3 3.4 1.6 0 2.7-1.1 2.7-2.6 0-1.4-1-2.4-2.3-2.4-.2 0-.4 0-.5.1.3-1.6 1.6-3 3.3-3.9L9.5 6Zm9 0c-3 1.6-4.5 4-4.5 6.8 0 2 1.2 3.4 3 3.4 1.6 0 2.7-1.1 2.7-2.6 0-1.4-1-2.4-2.3-2.4-.2 0-.4 0-.5.1.3-1.6 1.6-3 3.3-3.9L18.5 6Z"/></svg></span>
+            <h3 class="speego-why-cell-title" data-i18n="why3_title">Múltiples modos de transporte</h3>
+            <p class="speego-why-cell-desc" data-i18n="why3_desc">FCL y LCL marítimo o aéreo exprés desde Vietnam y China a EE.UU., Canadá y Australia.</p>
+          </article>
+          <article class="speego-why-cell">
+            <span class="speego-why-cell-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9.5 6C6.5 7.6 5 10 5 12.8c0 2 1.2 3.4 3 3.4 1.6 0 2.7-1.1 2.7-2.6 0-1.4-1-2.4-2.3-2.4-.2 0-.4 0-.5.1.3-1.6 1.6-3 3.3-3.9L9.5 6Zm9 0c-3 1.6-4.5 4-4.5 6.8 0 2 1.2 3.4 3 3.4 1.6 0 2.7-1.1 2.7-2.6 0-1.4-1-2.4-2.3-2.4-.2 0-.4 0-.5.1.3-1.6 1.6-3 3.3-3.9L18.5 6Z"/></svg></span>
+            <h3 class="speego-why-cell-title" data-i18n="why4_title">Sin costos ocultos</h3>
+            <p class="speego-why-cell-desc" data-i18n="why4_desc">Cotización transparente y detallada partida por partida sin sorpresas.</p>
+          </article>
+          <article class="speego-why-cell">
+            <span class="speego-why-cell-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9.5 6C6.5 7.6 5 10 5 12.8c0 2 1.2 3.4 3 3.4 1.6 0 2.7-1.1 2.7-2.6 0-1.4-1-2.4-2.3-2.4-.2 0-.4 0-.5.1.3-1.6 1.6-3 3.3-3.9L9.5 6Zm9 0c-3 1.6-4.5 4-4.5 6.8 0 2 1.2 3.4 3 3.4 1.6 0 2.7-1.1 2.7-2.6 0-1.4-1-2.4-2.3-2.4-.2 0-.4 0-.5.1.3-1.6 1.6-3 3.3-3.9L18.5 6Z"/></svg></span>
+            <h3 class="speego-why-cell-title" data-i18n="why5_title">Soporte ágil y dedicado</h3>
+            <p class="speego-why-cell-desc" data-i18n="why5_desc">Especialistas disponibles para resolver imprevistos y asesorar en tiempo real.</p>
+          </article>
+          <article class="speego-why-cell">
+            <span class="speego-why-cell-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9.5 6C6.5 7.6 5 10 5 12.8c0 2 1.2 3.4 3 3.4 1.6 0 2.7-1.1 2.7-2.6 0-1.4-1-2.4-2.3-2.4-.2 0-.4 0-.5.1.3-1.6 1.6-3 3.3-3.9L9.5 6Zm9 0c-3 1.6-4.5 4-4.5 6.8 0 2 1.2 3.4 3 3.4 1.6 0 2.7-1.1 2.7-2.6 0-1.4-1-2.4-2.3-2.4-.2 0-.4 0-.5.1.3-1.6 1.6-3 3.3-3.9L18.5 6Z"/></svg></span>
+            <h3 class="speego-why-cell-title" data-i18n="why6_title">Tracking con OMS integrado</h3>
+            <p class="speego-why-cell-desc" data-i18n="why6_desc">Siga el estado y los hitos del pedido en tiempo real de forma cómoda y precisa.</p>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. FORMULARIO DE CONSULTA -->
+  <section class="speego-section speego-consult-section" id="consultation-form">
+    <div class="speego-consult-stage">
+      <div class="speego-consult-video-frame">
+        <video class="speego-consult-video" autoplay muted loop playsinline preload="metadata" poster="assets/anh-nen.png" aria-hidden="true">
+          <source src="assets/consult-video.mp4?v=drive1" type="video/mp4">
+        </video>
+      </div>
+
+      <div class="speego-form-container speego-form-container--featured speego-form-container--overlay">
+        <div class="speego-form-heading">
+          <h3 data-i18n="form_consult_title">Solicita una consulta gratuita</h3>
+          <p data-i18n="form_consult_note">Tu información se utiliza únicamente para fines de asesoría.</p>
+        </div>
+        <div class="speego-form-invite" aria-hidden="true">
+          <span class="speego-form-invite__dot"></span>
+          <span data-i18n="form_invite">Completa el formulario · respuesta en 2 horas</span>
+        </div>
+        <form id="speego-consultation-form">
+          <div class="speego-form-grid">
+            <div class="speego-form-group">
+              <label data-i18n="form_name_lbl">Nombre completo *</label>
+              <input type="text" id="speego-form-name" class="speego-form-input" required placeholder="Juan Pérez">
+            </div>
+
+            <div class="speego-form-group">
+              <label data-i18n="form_phone_lbl">Teléfono / WhatsApp *</label>
+              <input type="tel" id="speego-form-phone" class="speego-form-input" required placeholder="+34 600 000 000">
+            </div>
+
+            <div class="speego-form-group">
+              <label data-i18n="form_email_lbl">Correo corporativo *</label>
+              <input type="email" id="speego-form-email" class="speego-form-input" required placeholder="contacto@empresa.com">
+            </div>
+
+            <div class="speego-form-group">
+              <label data-i18n="form_company_lbl">Nombre de empresa / Marca</label>
+              <input type="text" id="speego-form-company" class="speego-form-input" placeholder="Tu marca / Empresa">
+            </div>
+
+            <div class="speego-form-group">
+              <label data-i18n="form_service_lbl">Servicio de interés *</label>
+              <select id="speego-form-service" class="speego-form-select">
+                <option value="Sourcing & QC" data-i18n="form_service_sourcing">Sourcing y QC (búsqueda e inspección de fábrica)</option>
+                <option value="International Logistics" data-i18n="form_service_logistics">Logística internacional (marítima / aérea)</option>
+                <option value="Fulfillment" data-i18n="form_service_fulfillment">Fulfillment, almacén y preparación de pedidos</option>
+                <option value="Customs" data-i18n="form_service_customs">Aduanas e importación / exportación</option>
+                <option value="All-in-One Package" data-i18n="form_service_all_in_one">Servicio integral de cadena de suministro</option>
+              </select>
+            </div>
+
+            <div class="speego-form-group">
+              <label data-i18n="form_route_lbl">Ruta de envío de interés *</label>
+              <select id="speego-form-route" class="speego-form-select">
+                <option value="Vietnam to USA" data-i18n="form_route_vn_us">Vietnam ➔ Estados Unidos (EE. UU.)</option>
+                <option value="China to USA" data-i18n="form_route_cn_us">China ➔ Estados Unidos (EE. UU.)</option>
+                <option value="Vietnam/China to Canada" data-i18n="form_route_vn_cn_ca">Vietnam / China ➔ Canadá</option>
+                <option value="Vietnam/China to Australia" data-i18n="form_route_vn_cn_au">Vietnam / China ➔ Australia</option>
+                <option value="Other" data-i18n="form_route_other">Otra ruta de envío</option>
+              </select>
+            </div>
+
+            <div class="speego-form-group speego-form-full">
+              <label data-i18n="form_msg_lbl">Detalles de la consulta *</label>
+              <textarea id="speego-form-msg" rows="3" class="speego-form-textarea" required data-i18n-ph="form_msg_ph" placeholder="Describe el producto, volumen estimado (CBM / KG), destino y fecha deseada..."></textarea>
+            </div>
+
+            <div class="speego-form-full">
+              <button type="submit" class="speego-form-submit-btn">
+                <i class="fas fa-paper-plane"></i>
+                <span data-i18n="form_submit_btn">Enviar solicitud de consulta</span>
+              </button>
+              <div class="speego-form-secure-note">
+                <i class="fas fa-shield-alt"></i> <span data-i18n="form_footnote">Tu información está cifrada y se sincroniza de forma segura con el sistema de gestión de SpeeGo.</span>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+</div>
