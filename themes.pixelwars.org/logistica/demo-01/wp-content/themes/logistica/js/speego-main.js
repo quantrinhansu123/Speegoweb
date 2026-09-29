@@ -2152,9 +2152,9 @@ stat_delivery: 'Entrega a Tiempo',
     const activeFlagEl = document.getElementById('speego-current-lang-flag');
     if (activeFlagEl) {
       if (lang === 'vi') {
-        activeFlagEl.innerHTML = '<img src="' + window.speegoLogisticaAssetBase + 'images/flags/vn.png" alt="VN" class="speego-lang-flag" width="18" height="13">';
+        activeFlagEl.innerHTML = '<img src="/wp-content/themes/logistica/images/flags/vn.png" alt="VN" class="speego-lang-flag" width="18" height="13">';
       } else if (lang === 'en') {
-        activeFlagEl.innerHTML = '<img src="' + window.speegoLogisticaAssetBase + 'images/flags/us.png" alt="US" class="speego-lang-flag" width="18" height="13">';
+        activeFlagEl.innerHTML = '<img src="/wp-content/themes/logistica/images/flags/us.png" alt="US" class="speego-lang-flag" width="18" height="13">';
       } else if (lang === 'es') {
         activeFlagEl.innerHTML = '<svg class="speego-lang-flag" viewBox="0 0 3 2" width="18" height="13" aria-hidden="true" style="border-radius:2px;box-shadow:0 1px 2px rgba(0,0,0,0.15);"><rect width="3" height="2" fill="#c60b1e"/><rect y="0.5" width="3" height="1" fill="#ffc400"/></svg>';
       }
