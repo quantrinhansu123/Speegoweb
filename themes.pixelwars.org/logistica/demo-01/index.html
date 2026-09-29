@@ -43,7 +43,7 @@
 	<link rel='stylesheet' id='logistica-style-css' href='wp-content/themes/logistica/styleb54d.css?ver=6.8.8' type='text/css' media='all' />
 
 	<!-- SpeeGo Custom Design System & Interactive Components -->
-<link rel='stylesheet' id='speego-custom-css' href='wp-content/themes/logistica/css/speego-custom.css?v=nav_dropdown_fix_20260926' type='text/css' media='all' />
+<link rel='stylesheet' id='speego-custom-css' href='wp-content/themes/logistica/css/speego-custom.css?v=wp_sync_20260929' type='text/css' media='all' />
 	<link rel='stylesheet' id='speego-process-tabs-css' href='wp-content/themes/logistica/css/speego-process-tabs.css' type='text/css' media='all' />
 	<link rel="stylesheet" href="wp-content/themes/logistica/css/speego-explore.css?v=sourcing_scrollspy_20260924e">
 
@@ -1180,7 +1180,25 @@
 	<script src="wp-includes/js/jquery/jquery.minf43b.js?ver=3.7.1"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-	<script src="wp-content/themes/logistica/js/speego-main.js?v=seo_slugs_20260928"></script>
+	<script src="wp-content/themes/logistica/js/speego-main.js?v=wp_sync_20260929"></script>
 	<script src="wp-content/themes/logistica/js/speego-explore.js?v=sourcing_scrollspy_20260924e"></script>
+	<script>
+		(() => {
+			const video = document.querySelector('.speego-consult-video');
+			if (!video) return;
+			const syncEndCard = () => video.classList.toggle('speego-consult-video--end-card', video.currentTime >= 8.95);
+			video.addEventListener('timeupdate', syncEndCard);
+			video.addEventListener('seeked', syncEndCard);
+			syncEndCard();
+			if (typeof video.requestVideoFrameCallback === 'function') {
+				const onFrame = () => {
+					if (!video.isConnected) return;
+					syncEndCard();
+					video.requestVideoFrameCallback(onFrame);
+				};
+				video.requestVideoFrameCallback(onFrame);
+			}
+		})();
+	</script>
 </body>
 </html>

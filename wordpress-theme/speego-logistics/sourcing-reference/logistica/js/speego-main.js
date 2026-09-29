@@ -527,8 +527,8 @@
 
     vi: {
       // Nav
-      nav_home: 'Homepage',
-      nav_about: 'About',
+      nav_home: 'Trang chủ',
+      nav_about: 'Về SpeeGo',
       nav_services: 'Dịch vụ',
       nav_process: 'Quy trình 8 bước',
       nav_why: 'Vì sao chọn SpeeGo',
@@ -546,11 +546,11 @@
       track_demo_disclaimer: 'Hành trình minh họa · không phải dữ liệu UPS thực tế',
       track_demo_title: 'Hành trình minh họa',
       track_open_ups: 'Tra cứu trên UPS ↗',
-      nav_sourcing: 'Sourcing',
-      nav_routes: 'Logistics',
-      nav_fulfillment: 'Fulfillment',
-      nav_import_export: 'Import & Export',
-      nav_knowledge: 'Knowledge',
+      nav_sourcing: 'Tìm nguồn hàng',
+      nav_routes: 'Vận chuyển',
+      nav_fulfillment: 'Kho vận',
+      nav_import_export: 'Xuất nhập khẩu',
+      nav_knowledge: 'Kiến thức',
       sourcing_eyebrow: 'TÌM NGUỒN HÀNG & KIỂM SOÁT CHẤT LƯỢNG',
       sourcing_title_main: 'Đúng nhà cung cấp.',
       sourcing_title_accent: 'An tâm từng lô hàng.',
@@ -1040,8 +1040,8 @@
 
     es: {
       // Nav
-      nav_home: 'Homepage',
-      nav_about: 'About',
+      nav_home: 'Inicio',
+      nav_about: 'Sobre SpeeGo',
       nav_services: 'Servicios',
       nav_process: 'Proceso 8 Pasos',
       nav_why: 'Por qué SpeeGo',
@@ -1059,11 +1059,11 @@
       track_demo_disclaimer: 'Recorrido de muestra · no son datos en vivo de UPS',
       track_demo_title: 'Recorrido de muestra',
       track_open_ups: 'Consultar en UPS ↗',
-      nav_sourcing: 'Sourcing',
-      nav_routes: 'Logistics',
+      nav_sourcing: 'Abastecimiento',
+      nav_routes: 'Logística',
       nav_fulfillment: 'Fulfillment',
-      nav_import_export: 'Import & Export',
-      nav_knowledge: 'Knowledge',
+      nav_import_export: 'Importación y exportación',
+      nav_knowledge: 'Conocimientos',
       sourcing_eyebrow: 'ABASTECIMIENTO Y CONTROL DE CALIDAD',
       sourcing_title_main: 'El proveedor adecuado.',
       sourcing_title_accent: 'Confianza en cada envío.',
@@ -2232,12 +2232,12 @@ stat_delivery: 'Entrega a Tiempo',
     const localizedExplorePath = (section, locale) => {
       const routes = {
         sourcing: { vi: 'tim-nguon-hang', en: 'sourcing', es: 'abastecimiento' },
-        fulfillment: { vi: 'fulfillment', en: 'fulfillment', es: 'fulfillment' },
-        logistics: { vi: 'logistics', en: 'logistics', es: 'logistics' },
+        fulfillment: { vi: 'kho-van', en: 'fulfillment', es: 'fulfillment' },
+        logistics: { vi: 'tuyen-van-chuyen', en: 'logistics', es: 'logistica' },
         'import-export': { vi: 'xuat-nhap-khau', en: 'import-export', es: 'import-export' },
-        knowledge: { vi: 'knowledge', en: 'knowledge', es: 'knowledge' },
+        knowledge: { vi: 'kien-thuc', en: 'knowledge', es: 'conocimiento' },
         'about-us': { vi: 've-chung-toi', en: 'about-us', es: 'sobre-nosotros' },
-        contact: { vi: 'contact', en: 'contact', es: 'contact' },
+        contact: { vi: 'lien-he', en: 'contact', es: 'contacto' },
         home: { vi: '', en: '', es: '' }
       };
       if (section === 'home') return `/${locale}/`;
@@ -2304,14 +2304,14 @@ stat_delivery: 'Entrega a Tiempo',
     };
     const logisticsChild = {
       china: {
-        vi: '/vi/logistics/china-to-us-ca-au/',
+        vi: '/vi/tuyen-van-chuyen/trung-quoc-di-my-canada-uc/',
         en: '/en/logistics/china-to-us-ca-au/',
-        es: '/es/logistics/china-to-us-ca-au/'
+        es: '/es/logistica/china-a-eeuu-canada-australia/'
       },
       vietnam: {
-        vi: '/vi/logistics/vietnam-to-us-ca-au/',
+        vi: '/vi/tuyen-van-chuyen/viet-nam-di-my-canada-uc/',
         en: '/en/logistics/vietnam-to-us-ca-au/',
-        es: '/es/logistics/vietnam-to-us-ca-au/'
+        es: '/es/logistica/vietnam-a-eeuu-canada-australia/'
       }
     };
     document.querySelectorAll('a[href]').forEach(a => {

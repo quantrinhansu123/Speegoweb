@@ -29,8 +29,19 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,600;1,700;1,800&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
 
   <!-- Shared Stylesheets -->
-  <link rel="stylesheet" href="css/style.css?v=about_vision_fix_20260928">
-  <link rel="stylesheet" href="css/speego-custom.css?v=20260926_sticky_wp_spa_v2">
+  <link rel="stylesheet" href="css/style.css?v=wp_gallery_url_20260929">
+  <link rel="stylesheet" href="css/speego-custom.css?v=20260929_consult_logo_v1">
+  <style id="speego-consult-video-crop">
+    .speego-consult-video-frame > .speego-consult-video {
+      object-fit: cover !important;
+      object-position: 100% 50% !important;
+    }
+    .speego-consult-video-frame > .speego-consult-video.speego-consult-video--end-card {
+      object-fit: contain !important;
+      object-position: center center !important;
+      transform: translateZ(0) scale(1.8) !important;
+    }
+  </style>
   <link rel="stylesheet" href="css/speego-process-tabs.css?v=20260926">
 
   <script src="js/speego-page-i18n.js?v=20260926"></script>
@@ -725,6 +736,7 @@
         if (targetLang === 'en') return '#/en/home';
         return '#/home';
       }
+      window.speegoCounterpartRoute = getCounterpartRoute;
 
 
       // 1c. OFFLINE BUNDLE FOR FILE:/// PROTOCOL & ZERO-LATENCY BROWSING
@@ -737,7 +749,9 @@
         pages: {}
       };
 
-      let currentLang = 'vi';
+      const initialRoute = window.speegoInitialRoute || window.location.hash;
+      let currentLang = initialRoute.startsWith('#/en/') ? 'en'
+        : (initialRoute.startsWith('#/es/') ? 'es' : 'vi');
 
       // 2. HELPER: FETCH EDITABLE CONTENT FROM WORDPRESS REST API
       async function fetchEditableContent(params) {
@@ -794,13 +808,23 @@
           return true;
         }
         try {
-          let header = null;
+          const headerContainer = document.getElementById('header-container');
+          const hasServerHeader = !!(headerContainer
+            && headerContainer.dataset.speegoPrerenderedHeader
+            && headerContainer.querySelector('#masthead'));
+          let header = hasServerHeader ? headerContainer.innerHTML : null;
           let footer = null;
           let ctaForm = null;
 
+          // The server-rendered header can work while the footer and CTA load.
+          if (hasServerHeader) {
+            bindHeaderInteractions();
+            updateShellLanguage(currentLang);
+          }
+
           if (window.SPEEGO_WP_HOME) {
             const [hdrData, ftrData, ctaData] = await Promise.all([
-              fetchEditableContent({ partial: 'header-' + currentLang }),
+              hasServerHeader ? null : fetchEditableContent({ partial: 'header-' + currentLang }),
               fetchEditableContent({ partial: 'footer-' + currentLang }),
               fetchEditableContent({ partial: 'cta-' + currentLang })
             ]);
@@ -818,17 +842,16 @@
           cache.ctaFormHtml = ctaForm;
 
           // Inject into DOM
-          const headerContainer = document.getElementById('header-container');
           const footerContainer = document.getElementById('footer-container');
 
-          if (headerContainer) headerContainer.innerHTML = header;
+          if (headerContainer && !hasServerHeader) headerContainer.innerHTML = header;
           if (footerContainer) footerContainer.innerHTML = footer;
 
           // Parse CTA Form templates into memory
           parseCtaTemplates(ctaForm);
 
           // Bind header and footer global interactions
-          bindHeaderInteractions();
+          if (!hasServerHeader) bindHeaderInteractions();
           bindTrackingAndCookieInteractions();
           return true;
         } catch (err) {
@@ -927,7 +950,7 @@
           navFfRates: 'Cước vận chuyển',
           navFfEstimate: 'Ước tính chi phí',
           navFfPolicy: 'Chính sách dịch vụ',
-          navFulfillment: 'Fulfillment',
+          navFulfillment: 'Kho vận',
           navImportExport: 'Xuất nhập khẩu',
           navKnowledge: 'Kiến thức',
           quoteBtn: 'Nhận báo giá',
@@ -1186,7 +1209,8 @@
         const wpBase = (typeof window !== 'undefined' && window.SPEEGO_WP_HOME)
           ? new URL(window.SPEEGO_WP_HOME).pathname.replace(/\/+$/, '')
           : '';
-        const withBase = (p) => wpBase ? (wpBase + p) : p;
+        const withBase = (p) => (window.SPEEGO_PUBLIC_ROUTES && window.SPEEGO_PUBLIC_ROUTES[p])
+          || (wpBase ? (wpBase + p) : p);
 
         // Navigation links href mapping
         const navItems = [
@@ -1295,7 +1319,13 @@
         const wpBase = (typeof window !== 'undefined' && window.SPEEGO_WP_HOME)
           ? new URL(window.SPEEGO_WP_HOME).pathname.replace(/\/+$/, '')
           : '';
-        const withBase = (p) => wpBase ? (wpBase + p) : p;
+        const withBase = (p) => {
+          if (window.SPEEGO_PUBLIC_ROUTES && window.SPEEGO_PUBLIC_ROUTES[p]) {
+            return window.SPEEGO_PUBLIC_ROUTES[p];
+          }
+          if (/^https?:\/\//i.test(p) || (wpBase && p.startsWith(wpBase + '/'))) return p;
+          return wpBase ? (wpBase + p) : p;
+        };
         const routes = {
           home: { vi: withBase('/vi/'), en: withBase('/en/'), es: withBase('/es/') },
           about: { vi: withBase('/vi/ve-chung-toi/'), en: withBase('/en/about-us/'), es: withBase('/es/sobre-nosotros/') },
@@ -1310,7 +1340,7 @@
           '/': 'home', '/vi/': 'home', '/en/': 'home', '/es/': 'home',
           '/vi/about-us/': 'about', '/vi/ve-chung-toi/': 'about', '/en/about-us/': 'about', '/es/about-us/': 'about', '/es/sobre-nosotros/': 'about',
           '/vi/tim-nguon-hang/': 'sourcing', '/en/sourcing/': 'sourcing', '/es/abastecimiento/': 'sourcing',
-          '/vi/logistics/': 'logistics', '/en/logistics/': 'logistics', '/es/logistics/': 'logistics', '/es/logistica/': 'logistics',
+          '/vi/logistics/': 'logistics', '/vi/tuyen-van-chuyen/': 'logistics', '/en/logistics/': 'logistics', '/es/logistics/': 'logistics', '/es/logistica/': 'logistics',
           '/vi/fulfillment/': 'fulfillment', '/en/fulfillment/': 'fulfillment', '/es/fulfillment/': 'fulfillment', '/vi/kho-van/': 'fulfillment', '/es/almacenamiento/': 'fulfillment',
           '/vi/xuat-nhap-khau/': 'importExport', '/en/import-export/': 'importExport', '/es/import-export/': 'importExport',
           '/vi/knowledge/': 'knowledge', '/en/knowledge/': 'knowledge', '/es/knowledge/': 'knowledge',
@@ -1341,6 +1371,10 @@
             return;
           }
           const cleanHref = wpBase && hrefVal.startsWith(wpBase) ? hrefVal.slice(wpBase.length) : hrefVal;
+          if (window.SPEEGO_PUBLIC_ROUTES && window.SPEEGO_PUBLIC_ROUTES[cleanHref]) {
+            link.setAttribute('href', window.SPEEGO_PUBLIC_ROUTES[cleanHref]);
+            return;
+          }
           const route = routeByPath[cleanHref];
           if (route) link.setAttribute('href', routes[route][lang] || routes[route].en);
         });
@@ -1359,7 +1393,7 @@
             const wpBase = (typeof window !== 'undefined' && window.SPEEGO_WP_HOME)
               ? new URL(window.SPEEGO_WP_HOME).pathname.replace(/\/+$/, '')
               : '';
-            const target = wpBase ? (wpBase + window.SPEEGO_PUBLIC_ROUTES[href]) : window.SPEEGO_PUBLIC_ROUTES[href];
+            const target = window.SPEEGO_PUBLIC_ROUTES[href];
             window.location.assign(target);
           }
         }
@@ -1691,8 +1725,10 @@
         let html = '';
         items.forEach((item, index) => {
           const isLast = index === items.length - 1;
+          const label = /^#\/(?:en\/|es\/)?knowledge$/.test(item.href || '')
+            ? SHELL_I18N[currentLang].navKnowledge : item.label;
           if (isLast) {
-            html += `<span class="breadcrumb-current">${item.label}</span>`;
+            html += `<span class="breadcrumb-current">${label}</span>`;
           } else {
             let targetHref = item.href;
             if (index === 0) {
@@ -1702,7 +1738,7 @@
             } else if (targetHref && targetHref.startsWith('/')) {
               targetHref = withBase(targetHref);
             }
-            html += `<a href="${targetHref}" class="breadcrumb-link">${item.label}</a>`;
+            html += `<a href="${targetHref}" class="breadcrumb-link">${label}</a>`;
             html += `<span class="breadcrumb-sep">/</span>`;
           }
         });
@@ -1723,9 +1759,9 @@
           if (appMain && breadcrumb.parentElement !== appMain) appMain.prepend(breadcrumb);
           return;
         }
-        const sharedHeader = document.querySelector('#header-container #masthead');
-        if (sharedHeader && breadcrumb.parentElement !== sharedHeader.parentElement) {
-          sharedHeader.insertAdjacentElement('afterend', breadcrumb);
+        const headerContainer = document.getElementById('header-container');
+        if (headerContainer && breadcrumb.previousElementSibling !== headerContainer) {
+          headerContainer.insertAdjacentElement('afterend', breadcrumb);
         }
       }
 
@@ -1886,7 +1922,7 @@
           const targetRoute = getCounterpartRoute(currentHash, selectedLang);
           const publicTarget = window.SPEEGO_PUBLIC_ROUTES && window.SPEEGO_PUBLIC_ROUTES[targetRoute];
           if (publicTarget) {
-            window.location.assign(withBase(publicTarget));
+            window.location.assign(publicTarget);
             return;
           }
           if (ROUTES[currentHash] && ROUTES[currentHash].nav === 'home') {
@@ -2631,5 +2667,40 @@
   <script src="js/fulfillment-estimate.js?v=ff_estimate_20260926"></script>
   <script src="js/fulfillment-dock.js"></script>
   <script src="js/about-page.js?v=about_click_slider_20260928"></script>
+  <script>
+    (() => {
+      const selector = '.speego-consult-video';
+      const tracked = new WeakSet();
+      const syncLogoCrop = video => {
+        video.classList.toggle('speego-consult-video--end-card', video.currentTime >= 8.95);
+      };
+      const trackVideo = video => {
+        if (tracked.has(video)) return;
+        tracked.add(video);
+        video.addEventListener('timeupdate', () => syncLogoCrop(video));
+        video.addEventListener('seeked', () => syncLogoCrop(video));
+        syncLogoCrop(video);
+        if (typeof video.requestVideoFrameCallback === 'function') {
+          const onFrame = () => {
+            if (!video.isConnected) return;
+            syncLogoCrop(video);
+            video.requestVideoFrameCallback(onFrame);
+          };
+          video.requestVideoFrameCallback(onFrame);
+        }
+      };
+      document.addEventListener('play', event => {
+        if (event.target.matches?.(selector)) trackVideo(event.target);
+      }, true);
+      document.querySelectorAll(selector).forEach(trackVideo);
+      new MutationObserver(records => {
+        records.forEach(record => record.addedNodes.forEach(node => {
+          if (node.nodeType !== 1) return;
+          if (node.matches?.(selector)) trackVideo(node);
+          node.querySelectorAll?.(selector).forEach(trackVideo);
+        }));
+      }).observe(document.body, { childList: true, subtree: true });
+    })();
+  </script>
 </body>
 </html>

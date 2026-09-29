@@ -35,19 +35,6 @@ if ($referenceSourcing !== false) {
     echo $referenceSourcing;
     return;
 }
-$homepageLanguages = [
-    'vi' => '#/home',
-    'en' => '#/en/home',
-    'es' => '#/es/inicio',
-];
-$requestedLanguage = isset($_GET['lang']) && is_string($_GET['lang'])
-    ? sanitize_key(wp_unslash($_GET['lang']))
-    : '';
-
-if (is_front_page() && isset($homepageLanguages[$requestedLanguage])) {
-    $routeHash = $homepageLanguages[$requestedLanguage];
-}
-
 if (!$routeHash) {
     if (is_front_page() || is_home()) {
         $routeHash = '#/home';
@@ -457,31 +444,30 @@ $entry = speego_render_sourcing_seo($entry, $routeHash, $queriedId);
 require_once __DIR__ . '/page-seo.php';
 $entry = speego_render_generic_page_seo($entry, $routeHash, $queriedId);
 
-$publicRoutes = [];
-if (function_exists('speego_public_route_map')) {
-    $map = speego_public_route_map();
-    if (isset($map['pages'])) {
-        foreach ($map['pages'] as $h => $def) {
-            $u = home_url($def['path']);
-            $publicRoutes[$h] = $u;
-            $publicRoutes[$def['path']] = $u;
-            $publicRoutes[rtrim($def['path'], '/')] = $u;
-            $publicRoutes['#' . rtrim($def['path'], '/')] = $u;
-            $publicRoutes['#' . $def['path']] = $u;
-        }
-    }
-    if (isset($map['aliases'])) {
-        foreach ($map['aliases'] as $aliasPath => $targetPath) {
-            $u = home_url($targetPath);
-            $publicRoutes[$aliasPath] = $u;
-            $publicRoutes[rtrim($aliasPath, '/')] = $u;
-            $publicRoutes['#' . rtrim($aliasPath, '/')] = $u;
-            $publicRoutes['#' . $aliasPath] = $u;
-        }
-    }
+// The page body is already in the first response. Render the editable header
+// there too, so it does not appear only after the REST partials have loaded.
+$headerLanguage = strpos($routeHash, '#/en/') === 0 ? 'en'
+    : (strpos($routeHash, '#/es/') === 0 ? 'es' : 'vi');
+$entry = str_replace('<html lang="vi">', '<html lang="' . $headerLanguage . '">', $entry);
+if (in_array($routeHash, ['#/home', '#/en/home', '#/es/inicio'], true)) {
+    $entry = str_replace('<body>', '<body class="home">', $entry);
 }
+$headerHtml = speego_shared_partial_html('header', $headerLanguage);
+if ($headerHtml !== '') {
+    $entry = str_replace(
+        '<div id="header-container"></div>',
+        '<div id="header-container" data-speego-prerendered-header="1">' . $headerHtml . '</div>',
+        $entry
+    );
+}
+
+$publicRoutes = speego_public_route_urls();
 $publicRoutesJson = wp_json_encode($publicRoutes, JSON_UNESCAPED_SLASHES | JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_AMP | JSON_HEX_QUOT);
 
-$bridge = '<base href="' . $base . '"><script>window.SPEEGO_WP_HOME=' . $home . ';window.SPEEGO_PUBLIC_ROUTES=' . $publicRoutesJson . ';var speegoInitialRoute=' . $route . ';document.addEventListener("click",function(event){const link=event.target.closest&&event.target.closest("a[href]");if(!link)return;const href=link.getAttribute("href");if(!href||href.startsWith("//")||href.startsWith("http://")||href.startsWith("https://")||href.startsWith("tel:")||href.startsWith("mailto:")||href.startsWith("javascript:"))return;if(href==="/"||href==="/index.html"||href==="#home"){event.preventDefault();event.stopImmediatePropagation();var targetHome=(window.SPEEGO_PUBLIC_ROUTES&&window.SPEEGO_PUBLIC_ROUTES[window.speegoInitialRoute||"#/home"])?window.SPEEGO_PUBLIC_ROUTES[window.speegoInitialRoute||"#/home"]:(window.SPEEGO_WP_HOME?window.SPEEGO_WP_HOME+"en/":"/en/");window.location.href=targetHome;return;}if(href.startsWith("/#")){event.preventDefault();const id=href.slice(2);const el=document.getElementById(id);if(el){el.scrollIntoView({behavior:"smooth",block:"start"});}else{try{sessionStorage.setItem("speegoScrollTo",id);}catch(_){}var targetHome=(window.SPEEGO_PUBLIC_ROUTES&&window.SPEEGO_PUBLIC_ROUTES[window.speegoInitialRoute||"#/home"])?window.SPEEGO_PUBLIC_ROUTES[window.speegoInitialRoute||"#/home"]:(window.SPEEGO_WP_HOME?window.SPEEGO_WP_HOME+"en/":"/en/");window.location.href=targetHome;}return;}if(window.SPEEGO_PUBLIC_ROUTES&&window.SPEEGO_PUBLIC_ROUTES[href]){event.preventDefault();event.stopImmediatePropagation();window.location.href=window.SPEEGO_PUBLIC_ROUTES[href];return;}if(window.SPEEGO_WP_HOME&&(href.startsWith("/vi/")||href.startsWith("/en/")||href.startsWith("/es/"))){event.preventDefault();event.stopImmediatePropagation();var cleanHome=window.SPEEGO_WP_HOME.replace(/\/+$/,"");window.location.href=cleanHome+href;return;}if(href.startsWith("#/")){event.preventDefault();event.stopImmediatePropagation();var cleanHash=href.replace(/^#/,"");if(window.SPEEGO_PUBLIC_ROUTES&&window.SPEEGO_PUBLIC_ROUTES[cleanHash]){window.location.href=window.SPEEGO_PUBLIC_ROUTES[cleanHash];return;}if(window.SPEEGO_WP_HOME){var cleanHome=window.SPEEGO_WP_HOME.replace(/\/+$/,"");window.location.href=cleanHome+(cleanHash.startsWith("/")?cleanHash:"/"+cleanHash);}else{window.location.href=cleanHash;}return;}},true);</script>';
+$navigationScript = esc_url(get_template_directory_uri() . '/explore/js/wp-navigation.js?ver=1.2.4');
+$bridge = '<base href="' . $base . '"><script>window.SPEEGO_WP_HOME=' . $home
+    . ';window.SPEEGO_PUBLIC_ROUTES=' . $publicRoutesJson
+    . ';window.speegoInitialRoute=' . $route . ';</script>'
+    . '<script src="' . $navigationScript . '"></script>';
 $entry = preg_replace('/<head>/i', '<head>' . $bridge, $entry, 1);
 echo $entry;

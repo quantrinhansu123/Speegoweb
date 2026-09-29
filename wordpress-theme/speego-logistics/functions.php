@@ -3,6 +3,7 @@
  * SpeeGo Logistics Theme Functions
  */
 require_once __DIR__ . '/sourcing-reference.php';
+require_once __DIR__ . '/post-translations.php';
 
 /**
  * 1. Definitions of all SpeeGo Pages
@@ -242,20 +243,23 @@ function speego_seed_all_pages($force = false)
 
 add_action('after_switch_theme', function () {
     speego_seed_all_pages(false);
+    update_option('speego_theme_content_version', '1.2.0');
 });
 
-// Auto-seed on first admin visit if homepage doesn't exist
+// A theme ZIP replacement does not activate the theme again. Refresh the
+// theme-managed pages once on the first admin request after this upgrade.
 add_action('admin_init', function () {
-    $existing = get_posts([
-        'post_type' => 'page',
-        'post_status' => ['publish', 'draft'],
-        'numberposts' => 1,
-        'meta_key' => '_speego_route_hash',
-        'meta_value' => '#/home',
-    ]);
-    if (!$existing) {
-        speego_seed_all_pages(false);
+    if (get_option('speego_theme_content_version') === '1.2.0') {
+        return;
     }
+    foreach (speego_get_pages_definitions() as $route => $definition) {
+        $page = speego_get_page_by_route($route);
+        if ($page && !metadata_exists('post', $page->ID, '_speego_content_backup_before_1_2_0')) {
+            update_post_meta($page->ID, '_speego_content_backup_before_1_2_0', $page->post_content);
+        }
+    }
+    speego_seed_all_pages(true);
+    update_option('speego_theme_content_version', '1.2.0');
 });
 
 /**
@@ -349,9 +353,9 @@ function speego_render_homepage_manager_page()
     echo '<tbody>';
 
     $languages = [
-        ['name' => 'Tiếng Việt (Mặc định)', 'flag' => '🇻🇳', 'page' => $viHome, 'url' => home_url('/'), 'route' => '#/home'],
-        ['name' => 'English (Tiếng Anh)', 'flag' => '🇺🇸', 'page' => $enHome, 'url' => add_query_arg('lang', 'en', home_url('/')), 'route' => '#/en/home'],
-        ['name' => 'Español (Tiếng Tây Ban Nha)', 'flag' => '🇪🇸', 'page' => $esHome, 'url' => add_query_arg('lang', 'es', home_url('/')), 'route' => '#/es/inicio'],
+        ['name' => 'Tiếng Việt (Mặc định)', 'flag' => '🇻🇳', 'page' => $viHome, 'url' => home_url('/vi/'), 'route' => '#/home'],
+        ['name' => 'English (Tiếng Anh)', 'flag' => '🇺🇸', 'page' => $enHome, 'url' => home_url('/en/'), 'route' => '#/en/home'],
+        ['name' => 'Español (Tiếng Tây Ban Nha)', 'flag' => '🇪🇸', 'page' => $esHome, 'url' => home_url('/es/'), 'route' => '#/es/inicio'],
     ];
 
     foreach ($languages as $lang) {
@@ -378,7 +382,7 @@ function speego_render_homepage_manager_page()
     // Sync button form
     echo '<div style="background:#f0f6fc;border-left:4px solid #72aee6;padding:15px;margin-top:20px;border-radius:0 4px 4px 0;">';
     echo '<h3 style="margin:0 0 8px 0;">🔄 Đồng bộ lại toàn bộ trang từ mã nguồn (1-Click Sync)</h3>';
-    echo '<p style="margin:0 0 12px 0;color:#50575e;">Nếu bạn muốn khởi tạo lại hoặc nạp lại đầy đủ 17+ trang (Trang chủ 3 ngôn ngữ, Sourcing, Logistics, Fulfillment, Knowledge, v.v.) từ các file HTML chuẩn của dự án vào WordPress, bấm nút bên dưới:</p>';
+    echo '<p style="margin:0 0 12px 0;color:#50575e;">Khi cập nhật theme, 21 trang WordPress được đồng bộ một lần từ bản demo mới nhất; nội dung cũ được lưu trong post meta. Nút bên dưới dùng để đồng bộ lại thủ công và sẽ ghi đè các chỉnh sửa mới sau lần đồng bộ tự động.</p>';
     echo '<form method="post" action="' . esc_url(admin_url('admin-post.php')) . '" style="display:inline-block;">';
     wp_nonce_field('speego_sync_pages_action', 'speego_sync_pages_nonce');
     echo '<input type="hidden" name="action" value="speego_sync_all_pages">';
@@ -395,7 +399,7 @@ function speego_render_homepage_manager_page()
     echo '<h2 style="margin-top:0;">2. Quản lý trang Sourcing & QC</h2>';
     echo '<p style="color:#646970;">Trang Sourcing hỗ trợ công cụ thay đổi tiêu đề chữ màu cam và các đoạn văn bản riêng biệt.</p>';
     echo '<p><a href="' . esc_url(admin_url('admin.php?page=speego-sourcing-headline')) . '" class="button button-primary">🛠️ Chuyển đến màn hình Chỉnh Sourcing</a> ';
-    echo '<a href="' . esc_url(home_url('/vi/sourcing/')) . '" target="_blank" class="button">👁️ Mở trang Sourcing</a></p>';
+    echo '<a href="' . esc_url(home_url('/vi/tim-nguon-hang/')) . '" target="_blank" class="button">👁️ Mở trang Sourcing</a></p>';
     echo '</div>';
 
     echo '</div>'; // End wrap
@@ -539,7 +543,7 @@ function speego_render_sourcing_headline_page()
     echo '</tbody></table>';
     echo '<script>document.getElementById("speego_text_search").addEventListener("input",function(){var q=this.value.toLocaleLowerCase();document.querySelectorAll(".speego-text-row").forEach(function(row){row.style.display=row.textContent.toLocaleLowerCase().includes(q)?"":"none";});});</script>';
     submit_button('Lưu thay đổi');
-    echo '<p><a href="' . esc_url(home_url('/vi/sourcing/')) . '" target="_blank" rel="noopener">Mở trang Sourcing để kiểm tra</a></p></form></div>';
+    echo '<p><a href="' . esc_url(home_url('/vi/tim-nguon-hang/')) . '" target="_blank" rel="noopener">Mở trang Sourcing để kiểm tra</a></p></form></div>';
 }
 
 function speego_save_sourcing_headline()
@@ -654,10 +658,7 @@ function speego_route_hash_for_path($requestPath)
     if (isset($aliases[$requestPath])) {
         return $aliases[$requestPath];
     }
-    if (strpos($requestPath, 'vi/') === 0) {
-        $requestPath = substr($requestPath, 3);
-    }
-    return '#/' . $requestPath;
+    return '';
 }
 
 /** Shared public URL definitions for the first multilingual routes. */
@@ -672,6 +673,16 @@ function speego_public_route_map()
     $routeMap = is_array($decoded) && isset($decoded['pages'], $decoded['aliases'])
         ? $decoded
         : ['pages' => [], 'aliases' => []];
+    // Some legacy aliases point at other aliases. Resolve them once so a
+    // request and a generated link both reach the public URL in one step.
+    foreach ($routeMap['aliases'] as $alias => $target) {
+        $visited = [$alias => true];
+        while (isset($routeMap['aliases'][$target]) && !isset($visited[$target])) {
+            $visited[$target] = true;
+            $target = $routeMap['aliases'][$target];
+        }
+        $routeMap['aliases'][$alias] = $target;
+    }
     return $routeMap;
 }
 
@@ -679,6 +690,25 @@ function speego_public_route_path($routeHash)
 {
     $routeMap = speego_public_route_map();
     return isset($routeMap['pages'][$routeHash]['path']) ? $routeMap['pages'][$routeHash]['path'] : '';
+}
+
+/** URLs used by the WordPress navigation bridge, including legacy aliases. */
+function speego_public_route_urls()
+{
+    $urls = [];
+    $map = speego_public_route_map();
+    foreach ($map['pages'] as $hash => $page) {
+        $url = home_url($page['path']);
+        $urls[$hash] = $url;
+        $urls[$page['path']] = $url;
+        $urls[rtrim($page['path'], '/')] = $url;
+    }
+    foreach ($map['aliases'] as $alias => $path) {
+        $url = home_url($path);
+        $urls[$alias] = $url;
+        $urls[rtrim($alias, '/')] = $url;
+    }
+    return $urls;
 }
 
 /** Redirect the old home and page slugs to the language-aware canonical URLs. */
@@ -710,7 +740,15 @@ function speego_redirect_public_route_aliases()
         $destination = $routeMap['aliases'][$normalizedNoSlash];
     }
 
-    if ($destination !== '' && trim($destination, '/') !== $trimmed) {
+    // WordPress can still resolve the pages under their database slugs
+    // (for example /home-en/). Those addresses must not show a second copy.
+    if ($destination === '') {
+        $queriedId = get_queried_object_id();
+        $route = $queriedId ? get_post_meta($queriedId, '_speego_route_hash', true) : '';
+        $destination = $route ? speego_public_route_path($route) : '';
+    }
+
+    if ($destination !== '' && $destination !== $requestPath) {
         wp_safe_redirect(home_url($destination), 301);
         exit;
     }
@@ -824,6 +862,13 @@ add_action('init', function () {
             echo "  <url>\n";
             echo "    <loc>" . esc_url($loc) . "</loc>\n";
             echo "    <changefreq>{$changefreq}</changefreq>\n";
+            echo "  </url>\n";
+        }
+        // Native WordPress Posts are added after the fixed route-map pages.
+        foreach (get_posts(['post_type' => 'post', 'post_status' => 'publish', 'numberposts' => -1]) as $post) {
+            echo "  <url>\n";
+            echo '    <loc>' . esc_url(get_permalink($post->ID)) . "</loc>\n";
+            echo "    <changefreq>monthly</changefreq>\n";
             echo "  </url>\n";
         }
         echo "</urlset>\n";

@@ -9784,12 +9784,20 @@ body.speego-seo-page:has([data-nav="knowledge"]) .cta-form-band-section > .conta
 /* Fulfillment: looped warehouse carousel, always presenting three clean photos. */
 .page-fulfillment .ff-warehouse-cards-grid {
   --ff-warehouse-gap: 18px;
-  display: block;
+  display: flex;
+  gap: var(--ff-warehouse-gap);
   width: 100%;
   overflow: hidden;
   padding: 3px 0 10px;
   cursor: default;
   touch-action: pan-y;
+}
+
+body:not(.home).is-header-scrolled .site-header .speego-header-topbar {
+  margin-top: -38px !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
 }
 
 .page-fulfillment .ff-warehouse-track {

@@ -31,14 +31,15 @@ function speego_render_sourcing_seo($entry, $routeHash, $queriedId)
     }
 
     $post = get_post($queriedId);
-    if (!$post || $post->post_status !== 'publish' || get_post_meta($post->ID, '_speego_route_hash', true) !== $routeHash) {
-        return $entry;
-    }
-    $content = trim($post->post_content);
-    $content = preg_replace('#<script\b[^>]*>.*?window\.location\.replace\(.*?</script>#is', '', $content);
-    $content = preg_replace('#<!--\s*/?wp:html\s*-->#i', '', $content);
-    if (!preg_match('/<h1\b/i', $content)) {
-        return $entry;
+    $content = '';
+    if ($post && $post->post_status === 'publish'
+        && get_post_meta($post->ID, '_speego_route_hash', true) === $routeHash) {
+        $content = trim($post->post_content);
+        $content = preg_replace('#<script\b[^>]*>.*?window\.location\.replace\(.*?</script>#is', '', $content);
+        $content = preg_replace('#<!--\s*/?wp:html\s*-->#i', '', $content);
+        if (!preg_match('/<h1\b/i', $content)) {
+            $content = '';
+        }
     }
 
     $page = $pages[$routeHash];
@@ -94,6 +95,9 @@ function speego_render_sourcing_seo($entry, $routeHash, $queriedId)
         1
     );
     $entry = preg_replace('/<html\b([^>]*\blang=")[^"]*("[^>]*)>/i', '<html$1' . esc_attr($page['htmlLang']) . '$2>', $entry, 1);
+    if ($content === '') {
+        return $entry;
+    }
     return preg_replace_callback(
         '/(<main\b[^>]*\bid="app-main"[^>]*>).*?(<\/main>)/is',
         function ($matches) use ($content, $routeHash) {

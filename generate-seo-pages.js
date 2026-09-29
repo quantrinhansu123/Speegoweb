@@ -32,14 +32,14 @@ function toSeoUrlPath(hash, lang, file) {
   if (publicRouteDefinitions[hash]) return publicRouteDefinitions[hash].path;
   const explicit = {
     // Logistics corridor pages
-    '#/logistics/china-to-us-ca-au': '/vi/logistics/china-to-us-ca-au/',
-    '#/logistics/vietnam-to-us-ca-au': '/vi/logistics/vietnam-to-us-ca-au/',
+    '#/logistics/china-to-us-ca-au': '/vi/tuyen-van-chuyen/trung-quoc-di-my-canada-uc/',
+    '#/logistics/vietnam-to-us-ca-au': '/vi/tuyen-van-chuyen/viet-nam-di-my-canada-uc/',
     '#/en/logistics/china-to-us-ca-au': '/en/logistics/china-to-us-ca-au/',
     '#/en/logistics/vietnam-to-us-ca-au': '/en/logistics/vietnam-to-us-ca-au/',
-    '#/es/logistica/china-a-eeuu-canada-australia': '/es/logistica/china-to-us-ca-au/',
-    '#/es/logistica/vietnam-a-eeuu-canada-australia': '/es/logistica/vietnam-to-us-ca-au/',
+    '#/es/logistica/china-a-eeuu-canada-australia': '/es/logistica/china-a-eeuu-canada-australia/',
+    '#/es/logistica/vietnam-a-eeuu-canada-australia': '/es/logistica/vietnam-a-eeuu-canada-australia/',
     // Logistics parent
-    '#/tuyen-van-chuyen': '/vi/logistics/',
+    '#/tuyen-van-chuyen': '/vi/tuyen-van-chuyen/',
     '#/en/shipping-routes': '/en/logistics/',
     '#/es/rutas-de-envio': '/es/logistica/',
     // Knowledge Hub
@@ -82,7 +82,7 @@ function toSeoUrlPath(hash, lang, file) {
     // Fulfillment
     '#/fulfillment': '/vi/kho-van/',
     '#/en/fulfillment': '/en/fulfillment/',
-    '#/es/fulfillment': '/es/almacenamiento/',
+    '#/es/fulfillment': '/es/fulfillment/',
     // Contact
     '#/contact': '/vi/lien-he/',
     '#/en/contact': '/en/contact/',
@@ -474,9 +474,9 @@ function generate({ root, output }) {
   <link rel="stylesheet" href="/wp-content/themes/logistica/css/bootstrapb54d.css?ver=6.8.8">
   <link rel="stylesheet" href="/wp-content/themes/logistica/css/mainb54d.css?ver=6.8.8">
   <link rel="stylesheet" href="/wp-content/themes/logistica/styleb54d.css?ver=6.8.8">
-  <link rel="stylesheet" href="/wp-content/themes/logistica/css/speego-custom.css?v=mobile_tracking_20260923">
+  <link rel="stylesheet" href="/wp-content/themes/logistica/css/speego-custom.css?v=wp_sync_20260929">
   <link rel="stylesheet" href="/wp-content/themes/logistica/css/speego-process-tabs.css">
-  <link rel="stylesheet" href="/explore/css/style.css?v=about_vision_fix_20260928">
+  <link rel="stylesheet" href="/explore/css/style.css?v=wp_sync_20260929">
 </head>
 <body class="home wp-theme-logistica elementor-default elementor-template-full-width speego-seo-page" data-seo-language="${route.lang}">
   <div id="page" class="hfeed site">
@@ -515,7 +515,7 @@ function generate({ root, output }) {
   ${route.nav === "fulfillment" ? '<script src="/explore/js/fulfillment-estimate.js?v=ff_estimate_20260926"></script>\n  <script src="/explore/js/fulfillment-dock.js?v=ff_dock_fix_20260925e"></script>' : ""}
   ${route.nav === "about" ? '<script src="/explore/js/about-page.js?v=about_click_slider_20260928"></script>' : ""}
   <script src="/explore/js/knowledge-article.js"></script>
-  <script src="/wp-content/themes/logistica/js/speego-main.js?v=seo_slugs_20260928"></script>
+  <script src="/wp-content/themes/logistica/js/speego-main.js?v=wp_sync_20260929"></script>
 </body>
 </html>`;
     fs.writeFileSync(outputFile, localizeKnownSlugs(html, route.lang), "utf8");
@@ -915,9 +915,9 @@ function writeAboutAndContactPages({ homepage, header, footer, origin, output, r
   <link rel="stylesheet" href="/wp-content/themes/logistica/css/bootstrapb54d.css?ver=6.8.8">
   <link rel="stylesheet" href="/wp-content/themes/logistica/css/mainb54d.css?ver=6.8.8">
   <link rel="stylesheet" href="/wp-content/themes/logistica/styleb54d.css?ver=6.8.8">
-  <link rel="stylesheet" href="/wp-content/themes/logistica/css/speego-custom.css?v=mobile_tracking_20260923">
+  <link rel="stylesheet" href="/wp-content/themes/logistica/css/speego-custom.css?v=wp_sync_20260929">
   <link rel="stylesheet" href="/wp-content/themes/logistica/css/speego-process-tabs.css">
-  <link rel="stylesheet" href="/explore/css/style.css?v=about_vision_fix_20260928">
+  <link rel="stylesheet" href="/explore/css/style.css?v=wp_sync_20260929">
 </head>
 <body class="home wp-theme-logistica elementor-default elementor-template-full-width speego-seo-page" data-seo-language="${lang}" data-default-lang="${lang}">
   <div id="page" class="hfeed site">
@@ -946,7 +946,7 @@ function writeAboutAndContactPages({ homepage, header, footer, origin, output, r
       }, true);
     }());
   </script>
-  <script src="/wp-content/themes/logistica/js/speego-main.js?v=seo_slugs_20260928"></script>
+  <script src="/wp-content/themes/logistica/js/speego-main.js?v=wp_sync_20260929"></script>
 </body>
 </html>`;
       const outFile = path.join(output, ...urlPath.replace(/^\//, "").split("/"), "index.html");
