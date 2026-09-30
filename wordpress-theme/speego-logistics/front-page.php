@@ -302,6 +302,23 @@ if (in_array($routeHash, ['#/home', '#/en/home', '#/es/inicio'], true)) {
             }
         }
 
+        // Seeded WordPress page content can retain demo links from older
+        // versions. Bind the homepage CTAs to real public routes on output.
+        $contactRoute = ['vi' => '#/contact', 'en' => '#/en/contact', 'es' => '#/es/contact'][$seoLanguage];
+        $knowledgeRoute = ['vi' => '#/knowledge', 'en' => '#/en/knowledge', 'es' => '#/es/knowledge'][$seoLanguage];
+        $contactPath = speego_public_route_path($contactRoute);
+        $knowledgePath = speego_public_route_path($knowledgeRoute);
+        $homepageHtml = str_replace(
+            ['href="contact/index.html"', 'href="' . $contactPath . '"', 'href="news/index.html"', 'href="' . $knowledgePath . '"'],
+            [
+                'href="' . esc_url(home_url($contactPath)) . '"',
+                'href="' . esc_url(home_url($contactPath)) . '"',
+                'href="' . esc_url(home_url($knowledgePath)) . '"',
+                'href="' . esc_url(home_url($knowledgePath)) . '"',
+            ],
+            $homepageHtml
+        );
+
         $entry = preg_replace_callback(
             '/(<main\b[^>]*\bid="app-main"[^>]*>).*?(<\/main>)/is',
             function ($matches) use ($homepageHtml, $routeHash) {

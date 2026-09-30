@@ -522,7 +522,7 @@
       news2_cat: 'Air Freight', news2_title: 'Fast-Track Cosmetics & E-Commerce Clearance in the US', news2_desc: 'Understanding FDA prior notice, Section 321 exemptions, and expedited air customs declarations for rapid stock turn.',
       news3_cat: 'Factory Sourcing', news3_title: 'Navigating Low MOQs & Production Audits in Vietnam', news3_desc: 'How small and mid-sized e-commerce enterprises can leverage Vietnam’s growing manufacturing hub for high-yield margins.',
       news4_cat: 'Technology', news4_title: 'The Power of Real-time Order Management Systems (OMS)', news4_desc: 'Why end-to-end milestone visibility across maritime cargo and trucking is transforming modern supply chain resilience.',
-      news_read: 'Read Analysis'
+      news_read: 'Explore Knowledge'
     },
 
     vi: {
@@ -1035,7 +1035,7 @@
       news2_cat: 'Hàng không', news2_title: 'Thông quan nhanh mỹ phẩm và hàng e-commerce tại Mỹ', news2_desc: 'Các lưu ý về FDA, miễn trừ Section 321 và quy trình khai báo hàng không nhanh chóng.',
       news3_cat: 'Tìm nguồn nhà máy', news3_title: 'Tối ưu MOQ và kiểm định sản xuất tại Việt Nam', news3_desc: 'Cách doanh nghiệp khai thác năng lực sản xuất Việt Nam với quy trình kiểm định minh bạch.',
       news4_cat: 'Công nghệ', news4_title: 'Sức mạnh của hệ thống quản lý đơn hàng OMS thời gian thực', news4_desc: 'Theo dõi toàn bộ hành trình hàng hóa giúp chuỗi cung ứng vận hành linh hoạt và chính xác hơn.',
-      news_read: 'Xem phân tích'
+      news_read: 'Xem kho kiến thức'
     },
 
     es: {
@@ -1548,7 +1548,7 @@ stat_delivery: 'Entrega a Tiempo',
       news2_cat: 'Carga aérea', news2_title: 'Despacho rápido de cosméticos y e-commerce en EE. UU.', news2_desc: 'Aspectos clave de FDA y despacho aduanero acelerado.',
       news3_cat: 'Abastecimiento', news3_title: 'MOQ y auditorías de producción en Vietnam', news3_desc: 'Cómo aprovechar la producción vietnamita con control de calidad.',
       news4_cat: 'Tecnología', news4_title: 'El poder del OMS en tiempo real', news4_desc: 'Visibilidad integral para una cadena de suministro más ágil.',
-      news_read: 'Leer análisis'
+      news_read: 'Explorar conocimiento'
     }
   };
 
