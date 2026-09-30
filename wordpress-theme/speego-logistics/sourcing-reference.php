@@ -80,8 +80,7 @@ function speego_render_reference_sourcing($routeHash, $queriedId)
 
     $post = get_post($queriedId);
     if (!$post || $post->post_status !== 'publish'
-        || get_post_meta($post->ID, '_speego_route_hash', true) !== $routeHash
-        || get_post_meta($post->ID, '_speego_sourcing_reference', true) !== '1') {
+        || get_post_meta($post->ID, '_speego_route_hash', true) !== $routeHash) {
         return false;
     }
 
@@ -91,7 +90,15 @@ function speego_render_reference_sourcing($routeHash, $queriedId)
     }
     $html = file_get_contents($source);
     $content = trim($post->post_content);
-    if ($html === false || strpos($content, 'page-sourcing') === false) {
+    if ($html === false) {
+        return false;
+    }
+    // The block editor can strip the layout classes from an imported page.
+    // Keep custom intact layouts, but recover broken pages from the theme copy.
+    if (get_post_meta($post->ID, '_speego_sourcing_reference', true) !== '1'
+        && strpos($content, 'page-sourcing') !== false
+        && strpos($content, 'sourcing-hero-section') !== false
+        && strpos($content, 'hero-2col-grid') !== false) {
         return false;
     }
 
@@ -170,7 +177,7 @@ function speego_render_reference_sourcing($routeHash, $queriedId)
     $publicRoutes = wp_json_encode(speego_public_route_urls(), JSON_UNESCAPED_SLASHES | JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_AMP | JSON_HEX_QUOT);
     $home = wp_json_encode(home_url('/'), JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_AMP | JSON_HEX_QUOT);
     $route = wp_json_encode($routeHash, JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_AMP | JSON_HEX_QUOT);
-    $navigationScript = esc_url($themeUrl . '/explore/js/wp-navigation.js?ver=1.2.4');
+    $navigationScript = esc_url($themeUrl . '/explore/js/wp-navigation.js?ver=1.2.6');
     $bridge = '<script>window.speegoLogisticaAssetBase=' . $assetBase
         . ';window.SPEEGO_WP_HOME=' . $home
         . ';window.SPEEGO_PUBLIC_ROUTES=' . $publicRoutes

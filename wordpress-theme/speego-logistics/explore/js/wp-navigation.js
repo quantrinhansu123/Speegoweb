@@ -25,6 +25,7 @@
   // Old theme links can put a second route after a page URL, for example
   // /vi/xuat-nhap-khau/#/es/import-export. The route after # is authoritative.
   function canonicalUrl(raw) {
+    if (raw && raw.startsWith('#') && !raw.startsWith('#/')) return '';
     if (!raw || /^(?:[a-z][a-z\d+.-]*:|\/\/)/i.test(raw)) {
       try {
         const absolute = new URL(raw, window.location.href);
@@ -43,9 +44,9 @@
     if (path === '/contact/index.html') {
       return publicUrl({ vi: '#/contact', en: '#/en/contact', es: '#/es/contact' }[currentLang]);
     }
-    if (path === '/' && url.hash) return homeUrl() + url.hash;
+    if (path === '/' && url.hash) return homeUrl();
     const destination = publicUrl(path) || publicUrl(path.replace(/\/$/, ''));
-    if (destination) return destination + (url.hash && !url.hash.startsWith('#/') ? url.hash : '');
+    if (destination) return destination;
     return '';
   }
 
@@ -101,6 +102,24 @@
     if (!link || link.hasAttribute('download') || (link.target && link.target !== '_self')) return;
     const href = link.getAttribute('href');
     if (!href || href === '#' || /^(?:mailto:|tel:|javascript:)/i.test(href)) return;
+    try {
+      const anchorUrl = new URL(href, window.location.href);
+      if (anchorUrl.origin === window.location.origin && anchorUrl.hash && !anchorUrl.hash.startsWith('#/')
+          && anchorUrl.hash !== '#home') {
+        const anchorId = decodeURIComponent(anchorUrl.hash.slice(1));
+        if (anchorUrl.pathname === window.location.pathname) {
+          const element = document.getElementById(anchorId);
+          if (element) {
+            event.preventDefault();
+            event.stopImmediatePropagation();
+            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            return;
+          }
+        } else {
+          sessionStorage.setItem('speegoScrollTo', anchorId);
+        }
+      }
+    } catch (_) {}
     if (/^\/#(?!\/)/.test(href) && href !== '/#home') {
       try { sessionStorage.setItem('speegoScrollTo', href.slice(2)); } catch (_) {}
     }

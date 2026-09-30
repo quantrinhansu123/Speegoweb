@@ -4051,7 +4051,6 @@ body.speego-seo-page #app-main {
 
 /* Sticky quicklinks: duotone icons with a floating label on hover/focus. */
 .ff-quicklinks-section.is-compact {
-  height: 0 !important;
   padding: 0 !important;
   margin: 0 !important;
   border: 0 !important;
@@ -8778,8 +8777,12 @@ body:has(.page-import-export) .breadcrumb-section {
 
 .page-sourcing .hero-h1-clean .hero-h1-line,
 .page-sourcing .hero-h1-clean .text-orange {
-  display: inline-block;
-  white-space: nowrap;
+  display: inline;
+  white-space: normal;
+}
+
+.page-sourcing .hero-h1-clean {
+  overflow-wrap: anywhere;
 }
 
 .page-shipping-routes .hero-h1-clean {
@@ -9995,5 +9998,35 @@ body:not(.home).is-header-scrolled .site-header .speego-header-topbar {
   .page-shipping-routes .page-hero-2col > .container {
     padding-left: 16px !important;
     padding-right: 16px !important;
+  }
+}
+
+.page-fulfillment #bang-gia-fulfillment,
+.page-fulfillment #fulfillment-cost,
+.page-fulfillment #shipping-rates,
+.page-fulfillment #uoc-tinh-chi-phi,
+.page-fulfillment #chinh-sach-fulfillment {
+  scroll-margin-top: 120px;
+}
+
+@media (min-width: 1025px) and (max-width: 1360px) {
+  body.speego-seo-page .speego-header-navbar-inner {
+    gap: 12px !important;
+    padding-inline: 24px !important;
+  }
+  body.speego-seo-page .speego-branding .speego-logo-img { height: 34px !important; }
+  body.speego-seo-page .speego-nav-menu { gap: 12px !important; }
+  body.speego-seo-page .speego-nav-link {
+    font-size: 13px !important;
+    white-space: nowrap !important;
+  }
+}
+
+@media (min-width: 1025px) and (max-width: 1100px) {
+  body.speego-seo-page .speego-nav-menu { gap: 8px !important; }
+  body.speego-seo-page .speego-nav-link { font-size: 12px !important; }
+  body.speego-seo-page .speego-header-cta-wrap > .speego-header-quote-btn {
+    font-size: 12px !important;
+    padding-inline: 12px !important;
   }
 }
