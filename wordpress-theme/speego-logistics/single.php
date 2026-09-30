@@ -47,7 +47,7 @@ $backLabel = ['vi' => 'Kiến thức', 'en' => 'Knowledge', 'es' => 'Conocimient
     @media (max-width: 767px) { .speego-post-main { padding-top: 32px; } }
   </style>
   <script>window.SPEEGO_WP_HOME=<?php echo $homeJson; ?>;window.SPEEGO_PUBLIC_ROUTES=<?php echo $routesJson; ?>;window.SPEEGO_POST_ALTERNATES=<?php echo $alternatesJson; ?>;window.speegoInitialRoute=<?php echo $routeJson; ?>;</script>
-  <script defer src="<?php echo $themeBase; ?>js/wp-navigation.js?ver=1.2.6"></script>
+  <script defer src="<?php echo $themeBase; ?>js/wp-navigation.js?ver=1.2.7"></script>
   <?php wp_head(); ?>
 </head>
 <body <?php body_class('speego-native-post'); ?>>

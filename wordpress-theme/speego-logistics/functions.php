@@ -848,7 +848,11 @@ add_action('init', function () {
     $requestPath = trim($requestPath, '/');
     if ($requestPath === 'robots.txt') {
         header('Content-Type: text/plain; charset=UTF-8');
-        echo "User-agent: *\nAllow: /\nSitemap: " . esc_url(home_url('/sitemap.xml')) . "\n";
+        if (get_option('blog_public')) {
+            echo "User-agent: *\nAllow: /\nSitemap: " . esc_url(home_url('/sitemap.xml')) . "\n";
+        } else {
+            echo "User-agent: *\nDisallow: /\n";
+        }
         exit;
     }
     if ($requestPath === 'sitemap.xml' || $requestPath === 'wp-sitemap.xml') {

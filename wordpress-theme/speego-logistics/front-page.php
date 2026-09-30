@@ -74,6 +74,7 @@ if (in_array($routeHash, ['#/home', '#/en/home', '#/es/inicio'], true)) {
     $seo = $seoByLanguage[$seoLanguage];
     $seoTitle = $seo['title'];
     $seoDescription = $seo['description'];
+    $robots = get_option('blog_public') ? 'index,follow,max-image-preview:large' : 'noindex,follow';
     $homepagePaths = [
         'vi' => speego_public_route_path('#/home'),
         'en' => speego_public_route_path('#/en/home'),
@@ -153,7 +154,7 @@ if (in_array($routeHash, ['#/home', '#/en/home', '#/es/inicio'], true)) {
 
     $seoHead = sprintf(
         '<meta name="description" content="%1$s">' .
-        '<meta name="robots" content="index,follow,max-image-preview:large">' .
+        '<meta name="robots" content="' . esc_attr($robots) . '">' .
         '<link rel="canonical" href="%2$s">' .
         '%6$s' .
         '<meta property="og:type" content="website">' .
@@ -464,7 +465,7 @@ if ($headerHtml !== '') {
 $publicRoutes = speego_public_route_urls();
 $publicRoutesJson = wp_json_encode($publicRoutes, JSON_UNESCAPED_SLASHES | JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_AMP | JSON_HEX_QUOT);
 
-$navigationScript = esc_url(get_template_directory_uri() . '/explore/js/wp-navigation.js?ver=1.2.6');
+$navigationScript = esc_url(get_template_directory_uri() . '/explore/js/wp-navigation.js?ver=1.2.7');
 $bridge = '<base href="' . $base . '"><script>window.SPEEGO_WP_HOME=' . $home
     . ';window.SPEEGO_PUBLIC_ROUTES=' . $publicRoutesJson
     . ';window.speegoInitialRoute=' . $route . ';</script>'
