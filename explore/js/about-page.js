@@ -105,48 +105,10 @@
       reveals.forEach(function (el) { el.classList.add('is-visible'); });
     }
 
-    // Counters
-    var stats = root.querySelector('#aboutStats');
-    var counters = root.querySelectorAll('.about-counter');
-    var counted = false;
-
-    function animateCounters() {
-      if (counted) return;
-      counted = true;
-      counters.forEach(function (el) {
-        var target = parseFloat(String(el.getAttribute('data-target') || '0').replace(/,/g, '')) || 0;
-        var start = 0;
-        var duration = 1800;
-        var t0 = null;
-        function tick(ts) {
-          if (!t0) t0 = ts;
-          var p = Math.min(1, (ts - t0) / duration);
-          var eased = 1 - Math.pow(1 - p, 3);
-          var val = Math.floor(start + (target - start) * eased);
-          el.textContent = val.toLocaleString('en-US');
-          if (p < 1) requestAnimationFrame(tick);
-          else el.textContent = target.toLocaleString('en-US');
-        }
-        requestAnimationFrame(tick);
-      });
-    }
-
-    if (stats && 'IntersectionObserver' in window) {
-      var statsIo = new IntersectionObserver(
-        function (entries) {
-          entries.forEach(function (entry) {
-            if (entry.isIntersecting) {
-              animateCounters();
-              statsIo.disconnect();
-            }
-          });
-        },
-        { threshold: 0.35 }
-      );
-      statsIo.observe(stats);
-    } else {
-      animateCounters();
-    }
+    root.querySelectorAll('.about-counter').forEach(function (el) {
+      var target = parseFloat(String(el.getAttribute('data-target') || '0').replace(/,/g, '')) || 0;
+      el.textContent = target.toLocaleString('en-US');
+    });
 
     // Gallery lightbox
     var lightbox = root.querySelector('#aboutLightbox');

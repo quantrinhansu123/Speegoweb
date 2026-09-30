@@ -9275,19 +9275,17 @@ body.speego-seo-page:has([data-nav="knowledge"]) .cta-form-band-section > .conta
   line-height: 1.15;
 }
 
-.page-about .about-title {
-  font-size: clamp(36px, 5vw, 56px);
-  margin: 0 0 20px;
-}
-
+.page-about .about-title,
 .page-about .about-section-title {
   font-size: clamp(28px, 3.5vw, 40px);
   margin: 0 0 18px;
 }
 
-.page-about .about-desc {
+.page-about .about-desc,
+.page-about .about-desc p {
   color: #5B6472;
-  font-size: 1.02rem;
+  font-size: 16px;
+  font-weight: 400;
   line-height: 1.7;
 }
 
@@ -9297,6 +9295,43 @@ body.speego-seo-page:has([data-nav="knowledge"]) .cta-form-band-section > .conta
 
 .page-about .about-desc p:last-child {
   margin-bottom: 0;
+}
+
+.page-about .about-history .about-section-title,
+.page-about .about-position .about-section-title {
+  font-size: clamp(28px, 3.5vw, 40px);
+  font-weight: 800;
+  color: #04243D;
+  line-height: 1.15;
+}
+
+.page-about .about-history .about-section-title::after,
+.page-about .about-position .about-section-title::after {
+  content: "";
+  display: block;
+  width: 56px;
+  height: 4px;
+  margin-top: 14px;
+  border-radius: 2px;
+  background: var(--speego-accent);
+}
+
+.page-about .about-history .about-eyebrow,
+.page-about .about-position .about-eyebrow {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--speego-accent);
+}
+
+.page-about .about-history .about-desc,
+.page-about .about-history .about-desc p,
+.page-about .about-position .about-desc,
+.page-about .about-position .about-desc p {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.7;
+  color: #5B6472;
 }
 
 .page-about .about-banner {
@@ -9318,12 +9353,35 @@ body.speego-seo-page:has([data-nav="knowledge"]) .cta-form-band-section > .conta
   padding: 72px 0;
 }
 
+.page-about .about-intro .container,
+.page-about .about-history .container,
+.page-about .about-position .container,
+.page-about .about-vision .container {
+  padding-left: clamp(28px, 5vw, 80px);
+  padding-right: clamp(28px, 5vw, 80px);
+}
+
 .page-about .about-intro-grid,
 .page-about .about-split {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  gap: clamp(28px, 4vw, 56px);
+  gap: clamp(48px, 6vw, 88px);
   align-items: center;
+}
+
+.page-about .about-intro-grid {
+  gap: clamp(80px, 10vw, 160px);
+}
+
+.page-about .about-intro .about-reveal {
+  opacity: 1;
+  transform: none;
+}
+
+.page-about .about-intro-photo {
+  width: 100%;
+  height: auto;
+  display: block;
 }
 
 .page-about .about-intro-frame {
@@ -9431,26 +9489,31 @@ body.speego-seo-page:has([data-nav="knowledge"]) .cta-form-band-section > .conta
 .page-about .about-stats {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 28px 24px;
+  gap: 28px 32px;
   margin-top: 36px;
 }
 
 .page-about .about-stat-num {
   font-family: var(--font-heading);
-  font-size: clamp(28px, 3vw, 40px);
+  font-size: 36px;
   font-weight: 800;
+  font-variant-numeric: tabular-nums;
   color: var(--speego-accent);
   line-height: 1;
   margin-bottom: 8px;
+  white-space: nowrap;
 }
 
 .page-about .about-stat-suffix {
-  margin-left: 2px;
+  font-size: 1em;
+  font-weight: 800;
+  margin-left: 1px;
 }
 
 .page-about .about-stat-label {
   margin: 0;
-  font-size: 0.9rem;
+  max-width: 16em;
+  font-size: 15px;
   line-height: 1.45;
   color: #64748B;
   font-weight: 500;
@@ -9499,23 +9562,21 @@ body.speego-seo-page:has([data-nav="knowledge"]) .cta-form-band-section > .conta
   position: relative;
   z-index: 1;
   display: grid;
-  grid-template-columns: minmax(300px, 380px) minmax(0, 1fr);
-  gap: clamp(24px, 4vw, 48px);
-  align-items: stretch;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: clamp(80px, 10vw, 160px);
+  align-items: center;
 }
 
 .page-about .about-vision-brand-card {
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 20px;
-  padding: clamp(28px, 3.5vw, 44px) clamp(24px, 3vw, 36px);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  padding: clamp(8px, 1vw, 12px) 0;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   justify-content: center;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+  box-shadow: none;
 }
 
 .page-about .about-vision-brand-badge {
@@ -9565,31 +9626,12 @@ body.speego-seo-page:has([data-nav="knowledge"]) .cta-form-band-section > .conta
 }
 
 .page-about .about-vision-card {
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 16px;
-  padding: clamp(24px, 3vw, 32px) clamp(24px, 3vw, 36px);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  padding: 8px 0;
+  box-shadow: none;
   position: relative;
-  overflow: hidden;
-}
-
-.page-about .about-vision-card::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 4px;
-  height: 100%;
-  background: linear-gradient(180deg, #ff6b35, #0056b3);
-}
-
-.page-about .about-vision-card:hover {
-  border-color: rgba(255, 107, 53, 0.35);
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
-  transform: translateY(-2px);
 }
 
 .page-about .about-vision-card-head {
@@ -9625,8 +9667,8 @@ body.speego-seo-page:has([data-nav="knowledge"]) .cta-form-band-section > .conta
 .page-about .about-vision-desc {
   margin: 0;
   color: rgba(255, 255, 255, 0.88);
-  font-size: 15px;
-  line-height: 1.65;
+  font-size: 16px;
+  line-height: 1.7;
   font-weight: 400;
 }
 
@@ -9765,8 +9807,21 @@ body.speego-seo-page:has([data-nav="knowledge"]) .cta-form-band-section > .conta
   cursor: pointer;
 }
 
+@media (min-width: 1025px) {
+  .page-about .about-intro-media {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .page-about .about-intro-frame {
+    margin-left: auto;
+    margin-right: 0;
+  }
+}
+
 @media (max-width: 1024px) {
   .page-about .about-intro-grid,
+  .page-about .about-vision-grid,
   .page-about .about-split,
   .page-about .about-eco-top,
   .page-about .about-vision-inner {
@@ -9940,6 +9995,14 @@ body:not(.home).is-header-scrolled .site-header .speego-header-topbar {
 
   .page-about .about-stats {
     gap: 20px 16px;
+  }
+
+  .page-about .about-stat-num {
+    font-size: 28px;
+  }
+
+  .page-about .about-stat-label {
+    font-size: 14px;
   }
 
   .page-container.page-shipping-routes {

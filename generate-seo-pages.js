@@ -476,7 +476,7 @@ function generate({ root, output }) {
   <link rel="stylesheet" href="/wp-content/themes/logistica/styleb54d.css?ver=6.8.8">
   <link rel="stylesheet" href="/wp-content/themes/logistica/css/speego-custom.css?v=wp_sync_20260929">
   <link rel="stylesheet" href="/wp-content/themes/logistica/css/speego-process-tabs.css">
-  <link rel="stylesheet" href="/explore/css/style.css?v=wp_sync_20260929">
+  <link rel="stylesheet" href="/explore/css/style.css?v=about_truck_full_20260930">
 </head>
 <body class="home wp-theme-logistica elementor-default elementor-template-full-width speego-seo-page" data-seo-language="${route.lang}">
   <div id="page" class="hfeed site">
@@ -832,7 +832,7 @@ function writeAboutAndContactPages({ homepage, header, footer, origin, output, r
         vi: "Tìm hiểu về SpeeGo Logistics — tầm nhìn, sứ mệnh, lịch sử và năng lực chuỗi cung ứng toàn cầu.",
         es: "Conozca SpeeGo Logistics: visión, misión, historia y capacidades de cadena de suministro global."
       },
-      scripts: '<script src="/explore/js/about-page.js?v=about_click_slider_20260928"></script>'
+      scripts: '<script src="/explore/js/about-page.js?v=about_truck_full_20260930"></script>'
     },
     {
       slug: "contact",
@@ -917,7 +917,7 @@ function writeAboutAndContactPages({ homepage, header, footer, origin, output, r
   <link rel="stylesheet" href="/wp-content/themes/logistica/styleb54d.css?ver=6.8.8">
   <link rel="stylesheet" href="/wp-content/themes/logistica/css/speego-custom.css?v=wp_sync_20260929">
   <link rel="stylesheet" href="/wp-content/themes/logistica/css/speego-process-tabs.css">
-  <link rel="stylesheet" href="/explore/css/style.css?v=wp_sync_20260929">
+  <link rel="stylesheet" href="/explore/css/style.css?v=about_truck_full_20260930">
 </head>
 <body class="home wp-theme-logistica elementor-default elementor-template-full-width speego-seo-page" data-seo-language="${lang}" data-default-lang="${lang}">
   <div id="page" class="hfeed site">
