@@ -497,7 +497,7 @@
       "slug": "lien-he",
       "title": "Liên hệ & Nhận báo giá | SpeeGo Logistics",
       "description": "Liên hệ SpeeGo Logistics để nhận tư vấn giải pháp nguồn hàng, logistics và báo giá chi tiết.",
-      "file": "pages/home/vi-home.html"
+      "file": "pages/contact/vi-contact.html"
     },
     "#/en/contact": {
       "language": "en",
@@ -506,7 +506,7 @@
       "slug": "contact-en",
       "title": "Contact & Request a Quote | SpeeGo Logistics",
       "description": "Get in touch with SpeeGo Logistics for tailored global sourcing and international freight inquiries.",
-      "file": "pages/home/en-home.html"
+      "file": "pages/contact/en-contact.html"
     },
     "#/es/contact": {
       "language": "es",
@@ -515,7 +515,7 @@
       "slug": "contacto-es",
       "title": "Contacto & Solicitar Cotización | SpeeGo Logistics",
       "description": "Comuníquese con SpeeGo Logistics para consultas sobre abastecimiento global y cotizaciones de transporte.",
-      "file": "pages/home/es-home.html"
+      "file": "pages/contact/es-contact.html"
     }
   },
   "aliases": {

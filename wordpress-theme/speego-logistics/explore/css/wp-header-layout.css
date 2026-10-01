@@ -1,0 +1,29 @@
+/* Legacy main.css gives .site-branding width:100%. Keep the logo to its
+   intrinsic size in every WordPress shell, including non-home routes. */
+#masthead .site-branding.speego-branding {
+  width: auto !important;
+  flex: 0 0 auto !important;
+}
+
+/* Fit all seven labels, language switcher and quote button on small laptops. */
+@media (min-width: 992px) and (max-width: 1199px) {
+  #masthead .speego-header-navbar-inner {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+    gap: 10px !important;
+  }
+  #masthead .speego-branding .speego-logo-img {
+    width: 140px !important;
+    max-width: 140px !important;
+    height: auto !important;
+  }
+  #masthead .speego-nav-menu { gap: 8px !important; }
+  #masthead .speego-nav-link { font-size: 12px !important; }
+  #masthead .speego-header-cta-wrap { gap: 8px !important; }
+  #masthead .speego-header-quote-btn {
+    padding-left: 14px !important;
+    padding-right: 14px !important;
+    font-size: 12px !important;
+    white-space: nowrap;
+  }
+}

@@ -153,6 +153,7 @@ function speego_render_generic_page_seo($entry, $routeHash, $queriedId)
     }
 
     if ($contentHtml !== '') {
+        $contentHtml = speego_repair_knowledge_markup(speego_align_route_components(speego_prepare_managed_markup($contentHtml), $routeHash));
         $contentHtml = preg_replace('#<script\b[^>]*>.*?window\.location\.replace\(.*?</script>#is', '', $contentHtml);
         $homePath = trim((string) wp_parse_url(home_url('/'), PHP_URL_PATH), '/');
         if ($homePath !== '') {

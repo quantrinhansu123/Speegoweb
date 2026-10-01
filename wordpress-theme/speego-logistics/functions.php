@@ -7,6 +7,17 @@ require_once __DIR__ . '/managed-markup.php';
 require_once __DIR__ . '/post-translations.php';
 require_once __DIR__ . '/vercel-parity.php';
 
+/** Use the packaged SpeeGo icon when no WordPress Site Icon is configured. */
+function speego_site_icon_url($url, $size, $blogId)
+{
+    if (($blogId && (int) $blogId !== get_current_blog_id()) || (int) get_option('site_icon') > 0) {
+        return $url;
+    }
+
+    return add_query_arg('ver', wp_get_theme()->get('Version'), get_template_directory_uri() . '/explore/assets/favicon-speego.png');
+}
+add_filter('get_site_icon_url', 'speego_site_icon_url', 100, 3);
+
 /**
  * 1. Definitions of all SpeeGo Pages
  */
@@ -296,9 +307,21 @@ function speego_enqueue_elementor_assets()
     $themeUri = trailingslashit(get_template_directory_uri());
     $version = wp_get_theme()->get('Version');
 
+    $managedRoute = $GLOBALS['speego_active_route'] ?? get_post_meta(get_queried_object_id(), '_speego_route_hash', true);
+    if (in_array($managedRoute, ['#/sourcing', '#/en/sourcing', '#/es/sourcing'], true)) {
+        wp_enqueue_style('speego-sourcing-bootstrap', $themeUri . 'sourcing-reference/logistica/css/bootstrapb54d.css', [], $version);
+        wp_enqueue_style('speego-sourcing-base', $themeUri . 'sourcing-reference/logistica/css/mainb54d.css', ['speego-sourcing-bootstrap'], $version);
+        wp_enqueue_style('speego-sourcing-parity', $themeUri . 'explore/css/wp-sourcing-parity.css', ['speego-custom-style', 'speego-explore-style'], $version);
+        wp_enqueue_script('speego-sourcing-interactions', $themeUri . 'explore/js/wp-sourcing.js', [], $version, true);
+    }
+
     wp_enqueue_style('speego-explore-style', $themeUri . 'explore/css/style.css', [], $version);
     wp_enqueue_style('speego-custom-style', $themeUri . 'explore/css/speego-custom.css', ['speego-explore-style'], $version);
     wp_enqueue_style('speego-process-tabs', $themeUri . 'explore/css/speego-process-tabs.css', ['speego-custom-style'], $version);
+    wp_enqueue_style('speego-header-layout', $themeUri . 'explore/css/wp-header-layout.css', ['speego-custom-style'], $version);
+    if (in_array($managedRoute, ['#/knowledge', '#/en/knowledge', '#/es/knowledge'], true)) {
+        wp_enqueue_style('speego-knowledge-parity', $themeUri . 'explore/css/wp-knowledge-parity.css', ['speego-custom-style', 'speego-explore-style'], $version);
+    }
 
     wp_enqueue_script('speego-wp-navigation', $themeUri . 'explore/js/wp-navigation.js', [], $version, true);
     wp_enqueue_script('speego-cta-band', $themeUri . 'explore/js/cta-band.js', [], $version, true);
@@ -354,6 +377,16 @@ function speego_enqueue_elementor_assets()
     wp_add_inline_script('speego-wp-navigation', $toggle, 'after');
 }
 add_action('wp_enqueue_scripts', 'speego_enqueue_elementor_assets', 20);
+
+// Vercel's Sourcing shell uses the shared "home" header rules on mobile.
+add_filter('body_class', function ($classes) {
+    $route = $GLOBALS['speego_active_route'] ?? get_post_meta(get_queried_object_id(), '_speego_route_hash', true);
+    if (in_array($route, ['#/sourcing', '#/en/sourcing', '#/es/sourcing'], true)) {
+        $classes[] = 'home';
+        $classes[] = 'speego-seo-page';
+    }
+    return array_unique($classes);
+});
 
 /**
  * Build a language => route-hash map for the page that shares the same
@@ -442,7 +475,7 @@ function speego_render_editable_content($contentPost)
     $post = $previousPost;
 
     $content = preg_replace('#<!--\s*/?wp:html\s*-->#i', '', trim($content));
-    return $isElementor ? $content : speego_prepare_managed_markup($content);
+    return speego_repair_knowledge_markup($isElementor ? $content : speego_prepare_managed_markup($content));
 }
 
 // A theme ZIP replacement does not activate the theme again. Refresh the
@@ -960,6 +993,16 @@ add_action('template_redirect', 'speego_redirect_public_route_aliases', 1);
 function speego_resolve_route_page($wp)
 {
     if (isset($_GET['elementor-preview'])) {
+        // Resolve the preview before Elementor initializes its document.
+        // Virtual VI/ES paths otherwise look like missing attachments until
+        // template_include runs, which is too late for the editor iframe.
+        $previewId = (int) $_GET['elementor-preview'];
+        $previewPost = get_post($previewId);
+        if ($previewPost && current_user_can('edit_post', $previewId)) {
+            $wp->query_vars = $previewPost->post_type === 'page'
+                ? ['page_id' => $previewId]
+                : ['p' => $previewId, 'post_type' => $previewPost->post_type];
+        }
         return;
     }
     $requestPath = rawurldecode((string) wp_parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH));
@@ -1131,12 +1174,14 @@ add_filter('template_include', function ($template) {
     }
     if ($previewId) {
         $previewPost = get_post($previewId);
-        if ($previewPost && in_array($previewPost->post_status, ['publish', 'draft', 'pending', 'private', 'future'], true)) {
+        if ($previewPost && in_array($previewPost->post_status, ['publish', 'draft', 'pending', 'private', 'future'], true)
+            && ($previewPost->post_status === 'publish' || current_user_can('edit_post', $previewId))) {
             global $wp_query, $post;
             $wp_query->is_404 = false;
             $wp_query->is_preview = true;
             $wp_query->is_home = false;
             $wp_query->is_archive = false;
+            $wp_query->is_attachment = false;
             $wp_query->is_singular = true;
             $wp_query->is_page = $previewPost->post_type === 'page';
             $wp_query->is_single = $previewPost->post_type !== 'page';
@@ -1276,7 +1321,9 @@ function speego_editable_content($request)
     $raw = preg_replace('#<!--\s*/?wp:html\s*-->#i', '', $raw);
     $raw = trim($raw);
     if (get_post_meta($posts[0]->ID, '_elementor_edit_mode', true) !== 'builder') {
-        $raw = speego_prepare_managed_markup($raw);
+        $raw = speego_restore_home_consultation(speego_prepare_managed_markup($raw));
+        $raw = speego_align_route_components($raw, (string) get_post_meta($posts[0]->ID, '_speego_route_hash', true));
+        $raw = speego_repair_knowledge_markup($raw);
         if (strpos($raw, 'speego-hero-bg-video') !== false) {
             $raw = speego_restore_home_hero_video($raw);
         }
