@@ -177,7 +177,7 @@ function speego_render_reference_sourcing($routeHash, $queriedId)
     $publicRoutes = wp_json_encode(speego_public_route_urls(), JSON_UNESCAPED_SLASHES | JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_AMP | JSON_HEX_QUOT);
     $home = wp_json_encode(home_url('/'), JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_AMP | JSON_HEX_QUOT);
     $route = wp_json_encode($routeHash, JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_AMP | JSON_HEX_QUOT);
-    $navigationScript = esc_url($themeUrl . '/explore/js/wp-navigation.js?ver=1.2.23');
+    $navigationScript = esc_url($themeUrl . '/explore/js/wp-navigation.js?ver=1.2.24');
     $bridge = '<script>window.speegoLogisticaAssetBase=' . $assetBase
         . ';window.SPEEGO_WP_HOME=' . $home
         . ';window.SPEEGO_PUBLIC_ROUTES=' . $publicRoutes
@@ -185,7 +185,7 @@ function speego_render_reference_sourcing($routeHash, $queriedId)
         . ';window.speegoCounterpartRoute=function(current,lang){return {vi:"#/sourcing",en:"#/en/sourcing",es:"#/es/sourcing"}[lang];};</script>'
         . '<script src="' . $navigationScript . '"></script>';
     $html = preg_replace('/<head>/i', '<head>' . $bridge, $html, 1);
-    $html = str_replace('</head>', '<link rel="stylesheet" href="' . esc_url($themeUrl . '/explore/css/wp-header-layout.css?ver=1.2.23') . '"></head>', $html);
+    $html = str_replace('</head>', '<link rel="stylesheet" href="' . esc_url($themeUrl . '/explore/css/wp-header-layout.css?ver=1.2.24') . '"></head>', $html);
     $html = str_replace('</body>', '<script src="' . esc_url($themeUrl . '/explore/js/wp-sourcing.js?ver=1.2.20') . '"></script></body>', $html);
     if (!get_option('blog_public')) {
         $html = str_replace('content="index,follow,max-image-preview:large"', 'content="noindex,follow"', $html);

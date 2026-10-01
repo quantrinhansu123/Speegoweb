@@ -11,6 +11,36 @@ function speego_prepare_managed_markup($markup)
     $markup = preg_replace('~<p\b[^>]*>\s*(?:<!--.*?-->\s*)+</p>~is', '', $markup);
     $markup = preg_replace('~<p\b[^>]*>\s*</p>~i', '', $markup);
 
+    // Apply the reviewed changes to already-saved pages as well as new installs.
+    // Keep edited copy and Elementor documents in the database untouched.
+    if (preg_match('~class=["\'][^"\']*\bpage-about\b~i', $markup)) {
+        $markup = preg_replace('~<section\b[^>]*class=["\'][^"\']*\babout-banner\b[^"\']*["\'][^>]*>.*?</section>~is', '', $markup, 1);
+    }
+    $markup = preg_replace_callback('~(<section\b[^>]*\bid=["\']news-speego["\'][^>]*>)(.*?)(</section>)~is', function ($section) {
+        $section[2] = preg_replace_callback('~\bhref=(["\'])(.*?)\1~i', function ($link) {
+            $host = wp_parse_url(html_entity_decode($link[2]), PHP_URL_HOST);
+            if ($host && $host !== wp_parse_url(home_url('/'), PHP_URL_HOST)) return $link[0];
+            $path = (string) wp_parse_url(html_entity_decode($link[2]), PHP_URL_PATH);
+            if (preg_match('~(?:^|/)(?:news(?:/index\.html)?|(?:vi/kien-thuc|en/knowledge|es/conocimiento))/?$~i', $path)) {
+                return 'href=' . $link[1] . esc_url(home_url('/news/')) . $link[1];
+            }
+            return $link[0];
+        }, $section[2]);
+        return $section[1] . $section[2] . $section[3];
+    }, $markup);
+
+    // <base> points at the theme assets. Give section links a public page URL
+    // so opening them in another tab also reaches the correct WordPress page.
+    $requestRoute = speego_route_hash_for_path((string) wp_parse_url($_SERVER['REQUEST_URI'] ?? '', PHP_URL_PATH));
+    $publicPath = $requestRoute ? speego_public_route_path($requestRoute) : '';
+    if ($publicPath !== '') {
+        $markup = preg_replace_callback('~<a\b[^>]*>~i', function ($anchor) use ($publicPath) {
+            return preg_replace_callback('~\bhref=(["\'])#(?!home["\'])([a-z][\w-]*)\1~i', function ($href) use ($publicPath) {
+                return 'href=' . $href[1] . esc_url(home_url($publicPath) . '#' . $href[2]) . $href[1];
+            }, $anchor[0]);
+        }, $markup);
+    }
+
     // Vercel serves /explore/assets directly; WordPress keeps them in the theme.
     $assets = esc_url(untrailingslashit(get_template_directory_uri()) . '/explore/assets/');
     return preg_replace_callback('~(["\'])/explore/assets/~i', function ($match) use ($assets) {

@@ -1,0 +1,9 @@
+/* Static equivalent of the reference archive's three-column masonry layout. */
+.blog-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.blog-grid .hentry { position: static !important; width: 100% !important; }
+.blog-grid .hentry-wrap { width: 100%; }
+.blog-grid .hentry .featured-image img { width: 100%; height: auto; }
+@media (max-width: 991px) { .blog-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 600px) { .blog-grid { grid-template-columns: minmax(0, 1fr); } }
+.site-title img { object-fit: contain; }
+.site .site-footer { clear: both; }

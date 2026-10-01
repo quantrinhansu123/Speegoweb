@@ -305,16 +305,12 @@ if (in_array($routeHash, ['#/home', '#/en/home', '#/es/inicio'], true)) {
         // Seeded WordPress page content can retain demo links from older
         // versions. Bind the homepage CTAs to real public routes on output.
         $contactRoute = ['vi' => '#/contact', 'en' => '#/en/contact', 'es' => '#/es/contact'][$seoLanguage];
-        $knowledgeRoute = ['vi' => '#/knowledge', 'en' => '#/en/knowledge', 'es' => '#/es/knowledge'][$seoLanguage];
         $contactPath = speego_public_route_path($contactRoute);
-        $knowledgePath = speego_public_route_path($knowledgeRoute);
         $homepageHtml = str_replace(
-            ['href="contact/index.html"', 'href="' . $contactPath . '"', 'href="news/index.html"', 'href="' . $knowledgePath . '"'],
+            ['href="contact/index.html"', 'href="' . $contactPath . '"'],
             [
                 'href="' . esc_url(home_url($contactPath)) . '"',
                 'href="' . esc_url(home_url($contactPath)) . '"',
-                'href="' . esc_url(home_url($knowledgePath)) . '"',
-                'href="' . esc_url(home_url($knowledgePath)) . '"',
             ],
             $homepageHtml
         );
@@ -490,7 +486,7 @@ if ($footerHtml !== '') {
 $publicRoutes = speego_public_route_urls();
 $publicRoutesJson = wp_json_encode($publicRoutes, JSON_UNESCAPED_SLASHES | JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_AMP | JSON_HEX_QUOT);
 
-$navigationScript = esc_url(get_template_directory_uri() . '/explore/js/wp-navigation.js?ver=1.2.23');
+$navigationScript = esc_url(get_template_directory_uri() . '/explore/js/wp-navigation.js?ver=1.2.24');
 $bridge = '<base href="' . $base . '"><script>window.SPEEGO_WP_HOME=' . $home
     . ';window.SPEEGO_PUBLIC_ROUTES=' . $publicRoutesJson
     . ';window.speegoInitialRoute=' . $route . ';</script>'

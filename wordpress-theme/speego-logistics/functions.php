@@ -6,6 +6,7 @@ require_once __DIR__ . '/sourcing-reference.php';
 require_once __DIR__ . '/managed-markup.php';
 require_once __DIR__ . '/post-translations.php';
 require_once __DIR__ . '/vercel-parity.php';
+require_once __DIR__ . '/news-reference.php';
 
 /** Use the packaged SpeeGo icon when no WordPress Site Icon is configured. */
 function speego_site_icon_url($url, $size, $blogId)
@@ -841,7 +842,7 @@ function speego_route_hash_for_path($requestPath)
     // Check aliases in route-map
     $normalized = '/' . $requestPath . '/';
     if (isset($routeMap['aliases'][$normalized])) {
-        $target = trim($routeMap['aliases'][$normalized], '/');
+        $target = trim(explode('#', $routeMap['aliases'][$normalized], 2)[0], '/');
         foreach ($routeMap['pages'] as $routeHash => $definition) {
             if (trim($definition['path'], '/') === $target) {
                 return $routeHash;
@@ -850,7 +851,7 @@ function speego_route_hash_for_path($requestPath)
     }
     $normalizedNoSlash = '/' . $requestPath;
     if (isset($routeMap['aliases'][$normalizedNoSlash])) {
-        $target = trim($routeMap['aliases'][$normalizedNoSlash], '/');
+        $target = trim(explode('#', $routeMap['aliases'][$normalizedNoSlash], 2)[0], '/');
         foreach ($routeMap['pages'] as $routeHash => $definition) {
             if (trim($definition['path'], '/') === $target) {
                 return $routeHash;
@@ -905,6 +906,15 @@ function speego_public_route_map()
     $routeMap = is_array($decoded) && isset($decoded['pages'], $decoded['aliases'])
         ? $decoded
         : ['pages' => [], 'aliases' => []];
+    // Old Vercel bookmarks encode a section as the final path segment.
+    foreach ($routeMap['pages'] as $definition) {
+        if (($definition['group'] ?? '') !== 'fulfillment') continue;
+        foreach (['bang-gia-fulfillment', 'fulfillment-cost', 'warehouse-handling', 'shipping-rates', 'uoc-tinh-chi-phi', 'chinh-sach-fulfillment'] as $section) {
+            $alias = rtrim($definition['path'], '/') . '/' . $section;
+            $routeMap['aliases'][$alias] = $definition['path'] . '#' . $section;
+            $routeMap['aliases'][$alias . '/'] = $definition['path'] . '#' . $section;
+        }
+    }
     // Some legacy aliases point at other aliases. Resolve them once so a
     // request and a generated link both reach the public URL in one step.
     foreach ($routeMap['aliases'] as $alias => $target) {

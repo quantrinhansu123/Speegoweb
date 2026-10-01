@@ -14,6 +14,19 @@
     return Object.prototype.hasOwnProperty.call(routes, key) ? routes[key] : '';
   }
 
+  function scrollToSection(id, behavior) {
+    const element = document.getElementById(id);
+    if (!element) return false;
+    // Match the reference's scroll margin while accounting for the sticky header.
+    const header = document.getElementById('masthead');
+    const offset = Math.max(parseFloat(getComputedStyle(element).scrollMarginTop) || 0,
+      header ? header.getBoundingClientRect().height : 0);
+    window.scrollTo({ top: window.scrollY + element.getBoundingClientRect().top - offset,
+      behavior: behavior || 'smooth' });
+    return true;
+  }
+  window.speegoScrollToSection = scrollToSection;
+
   function homeUrl() {
     return publicUrl(homeRoutes[currentLang]) || new URL(currentLang + '/', home).href;
   }
@@ -113,7 +126,7 @@
             event.preventDefault();
             event.stopImmediatePropagation();
             window.history.pushState(null, '', anchorUrl.pathname + anchorUrl.search + anchorUrl.hash);
-            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            scrollToSection(anchorId);
             return;
           }
         } else {
@@ -139,7 +152,7 @@
         event.stopImmediatePropagation();
         if (new URL(target).pathname === window.location.pathname) {
           const element = document.getElementById(section);
-          if (element) element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          if (element) scrollToSection(section);
         } else {
           try { sessionStorage.setItem('speegoScrollTo', section); } catch (_) {}
           window.location.assign(target);

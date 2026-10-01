@@ -1,3 +1,6 @@
 /* Preserve the homepage's Vercel base typography inside the explore shell. */
 body.home:has(#home) { font-size: 13px; line-height: 1.9; }
 body.home:has(#home) #colophon { line-height: 1.9; border-top: 0; }
+
+/* Pricing highlights use the same accent as the reviewed Vercel catalog. */
+.ff-pricing-catalog { --speego-accent: #f05828; }

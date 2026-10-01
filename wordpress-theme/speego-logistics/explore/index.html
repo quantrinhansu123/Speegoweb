@@ -31,10 +31,10 @@
   <!-- Shared Stylesheets -->
   <link rel="stylesheet" href="../sourcing-reference/logistica/css/bootstrapb54d.css">
   <link rel="stylesheet" href="../sourcing-reference/logistica/css/mainb54d.css">
-  <link rel="stylesheet" href="css/style.css?v=1.2.23">
-  <link rel="stylesheet" href="css/speego-custom.css?v=1.2.23">
-  <link rel="stylesheet" href="css/wp-home-parity.css?v=1.2.23">
-  <link rel="stylesheet" href="css/wp-header-layout.css?v=1.2.23">
+  <link rel="stylesheet" href="css/style.css?v=1.2.24">
+  <link rel="stylesheet" href="css/speego-custom.css?v=1.2.24">
+  <link rel="stylesheet" href="css/wp-home-parity.css?v=1.2.24">
+  <link rel="stylesheet" href="css/wp-header-layout.css?v=1.2.24">
   <style id="speego-consult-video-crop">
     .speego-consult-video-frame > .speego-consult-video {
       object-fit: cover !important;
@@ -1788,7 +1788,7 @@
       function updateNavHighlights(activeNavKey) {
         // Desktop nav
         document.querySelectorAll('#menu-main-menu .speego-nav-item, #headerNavMenu .speego-nav-item, #headerNavMenu .nav-item').forEach(item => {
-          if (item.getAttribute('data-nav') === activeNavKey) {
+          if (activeNavKey !== 'home' && item.getAttribute('data-nav') === activeNavKey) {
             item.classList.add('active');
           } else {
             item.classList.remove('active');
@@ -1993,21 +1993,7 @@
           });
         });
 
-        // Start closed. Pricing groups are exclusive; policy items expand independently.
-        document.querySelectorAll('details.ff-price-group, details.ff-policy-item').forEach((el) => {
-          el.open = false;
-        });
-        document.querySelectorAll('.ff-pricing-sheet').forEach((sheet) => {
-          const groups = sheet.querySelectorAll('details.ff-price-group');
-          groups.forEach((group) => {
-            group.addEventListener('toggle', () => {
-              if (!group.open) return;
-              groups.forEach((other) => {
-                if (other !== group) other.open = false;
-              });
-            });
-          });
-        });
+        // Native pricing and policy details expand independently, like Vercel.
 
         // Initialize fulfillment cost calculation if present
         if (typeof window.calculateFulfillmentCost === 'function') {
@@ -2267,7 +2253,8 @@
           }
 
           // Inject into main
-          appMain.innerHTML = pageHtml;
+          // Keep the server-rendered video and form nodes alive during startup.
+          if (!hasServerRenderedContent) appMain.innerHTML = pageHtml;
           if (route.nav === 'home') translatePageContent(appMain, currentLang);
           syncLocalizedContentLinks(appMain, currentLang);
 
@@ -2387,7 +2374,9 @@
           } else if (pendingScroll) {
             setTimeout(() => {
               const el = document.getElementById(pendingScroll);
-              if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+              if (el && window.SPEEGO_WP_HOME && window.speegoScrollToSection) {
+                window.speegoScrollToSection(pendingScroll);
+              } else if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
               else window.scrollTo({ top: 0, behavior: 'smooth' });
             }, 80);
           } else {
@@ -2441,7 +2430,11 @@
                 .observe(document.getElementById('app-main'));
             }
           }
-          window.addEventListener('hashchange', router);
+          window.addEventListener('hashchange', () => {
+            // A section jump must not rebuild the form, calculator or accordions.
+            if (window.SPEEGO_WP_HOME && window.location.hash && !window.location.hash.startsWith('#/')) return;
+            router();
+          });
           router();
         }
       }
