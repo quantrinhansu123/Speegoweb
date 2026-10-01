@@ -1668,7 +1668,7 @@ stat_delivery: 'Entrega a Tiempo',
     },
     {
       step: 5,
-      image: 'wp-content/themes/logistica/images/015-speego-logistics-services-1.jpg',
+      image: '/explore/assets/photos/speego-houston-packing.webp',
       progress: '57.1%',
       en: {
         line1: 'QUALITY',
