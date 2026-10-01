@@ -112,6 +112,7 @@
           if (element) {
             event.preventDefault();
             event.stopImmediatePropagation();
+            window.history.pushState(null, '', anchorUrl.pathname + anchorUrl.search + anchorUrl.hash);
             element.scrollIntoView({ behavior: 'smooth', block: 'start' });
             return;
           }

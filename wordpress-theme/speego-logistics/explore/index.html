@@ -1989,12 +1989,12 @@
           });
         });
 
-        // Fulfillment / policy accordions: closed by default; one open at a time per sheet
+        // Start closed. Pricing groups are exclusive; policy items expand independently.
         document.querySelectorAll('details.ff-price-group, details.ff-policy-item').forEach((el) => {
           el.open = false;
         });
-        document.querySelectorAll('.ff-pricing-sheet, .ff-policy-list').forEach((sheet) => {
-          const groups = sheet.querySelectorAll('details.ff-price-group, details.ff-policy-item');
+        document.querySelectorAll('.ff-pricing-sheet').forEach((sheet) => {
+          const groups = sheet.querySelectorAll('details.ff-price-group');
           groups.forEach((group) => {
             group.addEventListener('toggle', () => {
               if (!group.open) return;
@@ -2196,6 +2196,10 @@
       // 11. ROUTE DISPATCHER
       async function router() {
         let hash = window.location.hash;
+        // WordPress uses the path for pages, so a plain hash identifies a section.
+        const sectionHash = window.SPEEGO_WP_HOME && hash && !hash.startsWith('#/') && hash !== '#home'
+          ? decodeURIComponent(hash.slice(1)) : '';
+        if (sectionHash) hash = window.speegoInitialRoute || '#/home';
         
         // Normalize empty or root hashes to default route
         if (!hash || hash === '#' || hash === '#/') {
@@ -2374,6 +2378,7 @@
             pendingScroll = sessionStorage.getItem('speegoScrollTo');
             if (pendingScroll) sessionStorage.removeItem('speegoScrollTo');
           } catch (_) {}
+          if (!pendingScroll && sectionHash) pendingScroll = sectionHash;
 
           if (IS_EMBEDDED) {
             if (pendingScroll) {
