@@ -4756,7 +4756,7 @@ body.speego-track-modal-open {
 /* ==========================================
    FOOTER â offices full detail
    ========================================== */
-.speego-site-footer {
+.site-footer.speego-site-footer {
   background: #041a2d;
   color: #ffffff;
   padding: 72px 24px 28px;
@@ -4818,21 +4818,25 @@ body.speego-track-modal-open {
   font-family: 'Inter', sans-serif;
 }
 
-.speego-footer-links {
+.speego-site-footer .speego-footer-links {
   list-style: none;
   padding: 0;
   margin: 0;
+  display: block;
+  gap: 0;
   font-size: 14px;
   line-height: 2.15;
   color: #94a3b8;
 }
 
-.speego-footer-links a {
+.speego-site-footer .speego-footer-links li a {
   color: inherit;
   text-decoration: none;
+  font-size: 14px;
+  line-height: inherit;
 }
 
-.speego-footer-links a:hover {
+.speego-site-footer .speego-footer-links li a:hover {
   color: #FF6A00;
 }
 

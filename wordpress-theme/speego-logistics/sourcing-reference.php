@@ -177,7 +177,7 @@ function speego_render_reference_sourcing($routeHash, $queriedId)
     $publicRoutes = wp_json_encode(speego_public_route_urls(), JSON_UNESCAPED_SLASHES | JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_AMP | JSON_HEX_QUOT);
     $home = wp_json_encode(home_url('/'), JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_AMP | JSON_HEX_QUOT);
     $route = wp_json_encode($routeHash, JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_AMP | JSON_HEX_QUOT);
-    $navigationScript = esc_url($themeUrl . '/explore/js/wp-navigation.js?ver=1.2.7');
+    $navigationScript = esc_url($themeUrl . '/explore/js/wp-navigation.js?ver=1.2.19');
     $bridge = '<script>window.speegoLogisticaAssetBase=' . $assetBase
         . ';window.SPEEGO_WP_HOME=' . $home
         . ';window.SPEEGO_PUBLIC_ROUTES=' . $publicRoutes

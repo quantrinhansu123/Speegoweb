@@ -3,6 +3,7 @@
  * SpeeGo Logistics Theme Functions
  */
 require_once __DIR__ . '/sourcing-reference.php';
+require_once __DIR__ . '/managed-markup.php';
 require_once __DIR__ . '/post-translations.php';
 require_once __DIR__ . '/vercel-parity.php';
 
@@ -440,7 +441,8 @@ function speego_render_editable_content($contentPost)
     wp_reset_postdata();
     $post = $previousPost;
 
-    return preg_replace('#<!--\s*/?wp:html\s*-->#i', '', trim($content));
+    $content = preg_replace('#<!--\s*/?wp:html\s*-->#i', '', trim($content));
+    return $isElementor ? $content : speego_prepare_managed_markup($content);
 }
 
 // A theme ZIP replacement does not activate the theme again. Refresh the
@@ -1273,6 +1275,12 @@ function speego_editable_content($request)
     // Strip Gutenberg HTML comment markers
     $raw = preg_replace('#<!--\s*/?wp:html\s*-->#i', '', $raw);
     $raw = trim($raw);
+    if (get_post_meta($posts[0]->ID, '_elementor_edit_mode', true) !== 'builder') {
+        $raw = speego_prepare_managed_markup($raw);
+        if (strpos($raw, 'speego-hero-bg-video') !== false) {
+            $raw = speego_restore_home_hero_video($raw);
+        }
+    }
 
     return rest_ensure_response([
         'id' => $posts[0]->ID,

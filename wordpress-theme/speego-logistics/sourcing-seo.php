@@ -37,6 +37,7 @@ function speego_render_sourcing_seo($entry, $routeHash, $queriedId)
         $content = trim($post->post_content);
         $content = preg_replace('#<script\b[^>]*>.*?window\.location\.replace\(.*?</script>#is', '', $content);
         $content = preg_replace('#<!--\s*/?wp:html\s*-->#i', '', $content);
+        $content = speego_prepare_managed_markup($content);
         if (!preg_match('/<h1\b/i', $content)) {
             $content = '';
         }
