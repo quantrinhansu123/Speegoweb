@@ -169,14 +169,16 @@ function speego_localize_footer_html($html, $language)
             'footer_tagline' => 'Đơn vị sản xuất và cung cấp dịch vụ logistics toàn cầu. Chuyên tuyến Trung Quốc và Việt Nam đi Mỹ, Canada, Úc. Tối ưu chi phí, minh bạch hành trình.',
             'footer_services_title' => 'Dịch Vụ Chính',
             'footer_service_sourcing' => 'Sourcing & QC',
-            'footer_service_routes' => 'Tuyến Vận Chuyển Toàn Cầu',
+            'footer_service_routes' => 'Logistics Quốc Tế',
             'footer_service_fulfillment' => 'Fulfillment & Kho Bãi',
-            'footer_service_import_export' => 'Thủ Tục Hải Quan & XNK',
+            'footer_service_import_export' => 'Thủ Tục Hải Quan',
             'footer_service_air' => 'Vận Chuyển Hàng Không',
             'footer_quick_title' => 'Liên Kết Nhanh',
             'footer_quick_process' => 'Quy Trình 8 Bước',
             'footer_quick_why' => 'Vì Sao Chọn SpeeGo',
-            'footer_quick_knowledge' => 'SpeeGo Knowledge Hub',
+            'footer_quick_news' => 'Tin Tức & Thị Trường',
+            'footer_quick_knowledge' => 'SpeeGo Knowledge',
+            'footer_quick_contact' => 'Liên Hệ Trực Tiếp',
             'policy_privacy' => 'Chính Sách Bảo Mật',
             'policy_terms' => 'Điều Khoản & Điều Kiện',
             'footer_offices_title' => 'Văn Phòng Đại Diện',
@@ -189,20 +191,22 @@ function speego_localize_footer_html($html, $language)
         ],
         'en' => [
             'footer_move' => "LET'S MOVE FORWARD",
-            'footer_tagline' => 'Global manufacturer and supply chain logistics provider. Specializing in China & Vietnam routes to US, Canada, and Australia.',
-            'footer_services_title' => 'Core Services',
+            'footer_tagline' => 'Global manufacturing and logistics provider specializing in routes from China and Vietnam to the US, Canada, and Australia. Optimized costs and transparent tracking.',
+            'footer_services_title' => 'Core services',
             'footer_service_sourcing' => 'Sourcing & QC',
-            'footer_service_routes' => 'Global Shipping Routes',
-            'footer_service_fulfillment' => 'Fulfillment & Warehousing',
-            'footer_service_import_export' => 'Customs & Import-Export',
-            'footer_service_air' => 'Air Freight Services',
-            'footer_quick_title' => 'Quick Links',
-            'footer_quick_process' => '8-Step Process',
-            'footer_quick_why' => 'Why SpeeGo',
-            'footer_quick_knowledge' => 'SpeeGo Knowledge Hub',
+            'footer_service_routes' => 'International logistics',
+            'footer_service_fulfillment' => 'Fulfillment & warehousing',
+            'footer_service_import_export' => 'Customs procedures',
+            'footer_service_air' => 'Air freight',
+            'footer_quick_title' => 'Quick links',
+            'footer_quick_process' => '8-step process',
+            'footer_quick_why' => 'Why choose SpeeGo',
+            'footer_quick_news' => 'News & market insights',
+            'footer_quick_knowledge' => 'SpeeGo Knowledge',
+            'footer_quick_contact' => 'Contact us',
             'policy_privacy' => 'Privacy Policy',
             'policy_terms' => 'Terms & Conditions',
-            'footer_offices_title' => 'Representative Offices',
+            'footer_offices_title' => 'Representative offices',
             'office_us_title' => 'United States',
             'office_hanoi_title' => 'Hanoi',
             'office_hcm_title' => 'Ho Chi Minh City',
@@ -222,7 +226,9 @@ function speego_localize_footer_html($html, $language)
             'footer_quick_title' => 'Enlaces Rápidos',
             'footer_quick_process' => 'Proceso de 8 Pasos',
             'footer_quick_why' => 'Por Qué SpeeGo',
-            'footer_quick_knowledge' => 'SpeeGo Knowledge Hub',
+            'footer_quick_news' => 'Noticias y mercados',
+            'footer_quick_knowledge' => 'SpeeGo Knowledge',
+            'footer_quick_contact' => 'Contacto',
             'policy_privacy' => 'Política de Privacidad',
             'policy_terms' => 'Términos y Condiciones',
             'footer_offices_title' => 'Oficinas Representativas',
@@ -251,8 +257,6 @@ function speego_localize_footer_html($html, $language)
                 '<strong>Mã ZIP:</strong>' => '<strong>ZIP code:</strong>',
                 '<strong>Văn phòng:</strong>' => '<strong>Office:</strong>',
                 '<strong>Kho hàng:</strong>' => '<strong>Warehouse:</strong>',
-                '01 Đường số 4, KDC Cityland Park Hills, phường Gò Vấp, TP.HCM' => '01 Street No. 4, Cityland Park Hills, Go Vap Ward, Ho Chi Minh City',
-                '42 Nguyễn Văn Dung, phường An Nhơn, TP.HCM' => '42 Nguyen Van Dung, An Nhon Ward, Ho Chi Minh City',
                 'Khu công nghiệp Shengzhifu, Zhongluotan, quận Bạch Vân, Quảng Châu' => 'Shengzhifu Industrial Park, Zhongluotan, Baiyun District, Guangzhou',
                 'Gửi yêu cầu tư vấn thành công! SpeeGo sẽ liên hệ lại sớm nhất.' => 'Your consultation request was sent. SpeeGo will contact you shortly.',
             ],
@@ -276,6 +280,8 @@ function speego_localize_footer_html($html, $language)
         'fulfillment' => ['vi' => '/vi/kho-van/', 'en' => '/en/fulfillment/', 'es' => '/es/fulfillment/'],
         'import' => ['vi' => '/vi/xuat-nhap-khau/', 'en' => '/en/import-export/', 'es' => '/es/import-export/'],
         'knowledge' => ['vi' => '/vi/kien-thuc/', 'en' => '/en/knowledge/', 'es' => '/es/conocimiento/'],
+        'contact' => ['vi' => '/vi/lien-he/', 'en' => '/en/contact/', 'es' => '/es/contacto/'],
+        'about' => ['vi' => '/vi/ve-chung-toi/', 'en' => '/en/about-us/', 'es' => '/es/sobre-nosotros/'],
     ];
     $aliases = [
         '/vi/' => 'home',
@@ -297,6 +303,12 @@ function speego_localize_footer_html($html, $language)
         '/vi/kien-thuc/' => 'knowledge',
         '/en/knowledge/' => 'knowledge',
         '/es/conocimiento/' => 'knowledge',
+        '/vi/lien-he/' => 'contact',
+        '/en/contact/' => 'contact',
+        '/es/contacto/' => 'contact',
+        '/vi/ve-chung-toi/' => 'about',
+        '/en/about-us/' => 'about',
+        '/es/sobre-nosotros/' => 'about',
     ];
     $html = preg_replace_callback('/\bhref="([^"]*)"/i', function ($matches) use ($aliases, $routes, $language) {
         $path = wp_parse_url($matches[1], PHP_URL_PATH);
@@ -309,6 +321,11 @@ function speego_localize_footer_html($html, $language)
         }
         return 'href="' . esc_url(home_url($routes[$aliases[$path]][$language])) . '"';
     }, $html);
+    $html = preg_replace_callback('/<a\b[^>]*\bdata-page-route="home"[^>]*\bdata-section="([^"]+)"[^>]*>/i', function ($matches) use ($routes, $language) {
+        $section = sanitize_key($matches[1]);
+        $url = esc_url(home_url($routes['home'][$language])) . '#' . $section;
+        return preg_replace('/\bhref="[^"]*"/i', 'href="' . $url . '"', $matches[0], 1);
+    }, $html);
     return $html;
 }
 
@@ -316,7 +333,7 @@ function speego_localize_footer_html($html, $language)
 function speego_localize_post_header($html, $language)
 {
     $labels = [
-        'vi' => ['policy_label' => 'Chính sách', 'policy_privacy' => 'Chính sách bảo mật', 'policy_terms' => 'Điều khoản & Điều kiện', 'nav_home' => 'Trang chủ', 'nav_about' => 'Về SpeeGo', 'nav_sourcing' => 'Tìm nguồn hàng', 'nav_routes' => 'Vận chuyển', 'nav_origin_china' => 'Xuất phát: Trung Quốc', 'nav_origin_vietnam' => 'Xuất phát: Việt Nam', 'nav_fulfillment' => 'Kho vận', 'nav_import_export' => 'Xuất nhập khẩu', 'nav_knowledge' => 'Kiến thức', 'nav_quote_btn' => 'Nhận báo giá'],
+        'vi' => ['policy_label' => 'Chính sách', 'policy_privacy' => 'Chính sách bảo mật', 'policy_terms' => 'Điều khoản & Điều kiện', 'nav_home' => 'Trang chủ', 'nav_about' => 'Về SpeeGo', 'nav_sourcing' => 'Tìm nguồn hàng', 'nav_routes' => 'Vận chuyển', 'nav_origin_china' => 'Origin: China', 'nav_origin_vietnam' => 'Origin: Vietnam', 'nav_fulfillment' => 'Kho vận', 'nav_import_export' => 'Xuất nhập khẩu', 'nav_knowledge' => 'Kiến thức', 'nav_quote_btn' => 'Nhận báo giá'],
         'en' => ['policy_label' => 'Policy', 'policy_privacy' => 'Privacy Policy', 'policy_terms' => 'Terms & Conditions', 'nav_home' => 'Homepage', 'nav_about' => 'About', 'nav_sourcing' => 'Sourcing', 'nav_routes' => 'Logistics', 'nav_origin_china' => 'Origin: China', 'nav_origin_vietnam' => 'Origin: Vietnam', 'nav_fulfillment' => 'Fulfillment', 'nav_import_export' => 'Import & Export', 'nav_knowledge' => 'Knowledge', 'nav_quote_btn' => 'Get a Quote'],
         'es' => ['policy_label' => 'Políticas', 'policy_privacy' => 'Política de Privacidad', 'policy_terms' => 'Términos y Condiciones', 'nav_home' => 'Inicio', 'nav_about' => 'Acerca de', 'nav_sourcing' => 'Abastecimiento', 'nav_routes' => 'Logística', 'nav_origin_china' => 'Origen: China', 'nav_origin_vietnam' => 'Origen: Vietnam', 'nav_fulfillment' => 'Fulfillment', 'nav_import_export' => 'Importación y exportación', 'nav_knowledge' => 'Conocimientos', 'nav_quote_btn' => 'Cotizar'],
     ];

@@ -29,7 +29,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,600;1,700;1,800&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
 
   <!-- Shared Stylesheets -->
-  <link rel="stylesheet" href="css/style.css?v=1.2.17">
+  <link rel="stylesheet" href="css/style.css?v=1.2.18">
   <link rel="stylesheet" href="css/speego-custom.css?v=1.2.7">
   <style id="speego-consult-video-crop">
     .speego-consult-video-frame > .speego-consult-video {
@@ -44,7 +44,7 @@
   </style>
   <link rel="stylesheet" href="css/speego-process-tabs.css?v=20260926">
 
-  <script src="js/speego-page-i18n.js?v=20260930"></script>
+  <script src="js/speego-page-i18n.js?v=20261001"></script>
 
   <script>
     if (new URLSearchParams(window.location.search).has('embedded')) {
@@ -942,8 +942,8 @@
           navProcess: 'Quy trình',
           navSourcing: 'Tìm nguồn hàng',
           navRoutes: 'Vận chuyển',
-          navOriginChina: 'Xuất phát: Trung Quốc',
-          navOriginVietnam: 'Xuất phát: Việt Nam',
+          navOriginChina: 'Origin: China',
+          navOriginVietnam: 'Origin: Vietnam',
           navSourcingIndustries: 'Ngành hàng',
           navSourcingModels: 'Mô hình sản xuất',
           navSourcingQc: 'Kiểm soát chất lượng',
@@ -963,14 +963,16 @@
           footerTagline: 'Đơn vị sản xuất và cung cấp dịch vụ logistics toàn cầu. Chuyên tuyến Trung Quốc và Việt Nam đi Mỹ, Canada, Úc. Tối ưu chi phí, minh bạch hành trình.',
           footerServicesTitle: 'Dịch Vụ Chính',
           footerServiceSourcing: 'Sourcing & QC',
-          footerServiceRoutes: 'Tuyến Vận Chuyển Toàn Cầu',
+          footerServiceRoutes: 'Logistics Quốc Tế',
           footerServiceFulfillment: 'Fulfillment & Kho Bãi',
-          footerServiceImportExport: 'Thủ Tục Hải Quan & XNK',
+          footerServiceImportExport: 'Thủ Tục Hải Quan',
           footerServiceAir: 'Vận Chuyển Hàng Không',
           footerQuickTitle: 'Liên Kết Nhanh',
           footerQuickProcess: 'Quy Trình 8 Bước',
           footerQuickWhy: 'Vì Sao Chọn SpeeGo',
-          footerQuickKnowledge: 'SpeeGo Knowledge Hub',
+          footerQuickNews: 'Tin Tức & Thị Trường',
+          footerQuickKnowledge: 'SpeeGo Knowledge',
+          footerQuickContact: 'Liên Hệ Trực Tiếp',
           footerOfficesTitle: 'Văn Phòng Đại Diện',
           officeUsTitle: 'Hoa Kỳ',
           officeHanoiTitle: 'Hà Nội',
@@ -1025,18 +1027,20 @@
           policyPrivacy: 'Privacy Policy',
           policyTerms: 'Terms & Conditions',
           footerMove: "LET'S MOVE FORWARD",
-          footerTagline: 'Global manufacturer and supply chain logistics provider. Specializing in China & Vietnam routes to US, Canada, and Australia.',
-          footerServicesTitle: 'Core Services',
+          footerTagline: 'Global manufacturing and logistics provider specializing in routes from China and Vietnam to the US, Canada, and Australia. Optimized costs and transparent tracking.',
+          footerServicesTitle: 'Core services',
           footerServiceSourcing: 'Sourcing & QC',
-          footerServiceRoutes: 'Global Shipping Routes',
-          footerServiceFulfillment: 'Fulfillment & Warehousing',
-          footerServiceImportExport: 'Customs & Import-Export',
-          footerServiceAir: 'Air Freight Services',
-          footerQuickTitle: 'Quick Links',
-          footerQuickProcess: '8-Step Process',
-          footerQuickWhy: 'Why SpeeGo',
-          footerQuickKnowledge: 'SpeeGo Knowledge Hub',
-          footerOfficesTitle: 'Representative Offices',
+          footerServiceRoutes: 'International logistics',
+          footerServiceFulfillment: 'Fulfillment & warehousing',
+          footerServiceImportExport: 'Customs procedures',
+          footerServiceAir: 'Air freight',
+          footerQuickTitle: 'Quick links',
+          footerQuickProcess: '8-step process',
+          footerQuickWhy: 'Why choose SpeeGo',
+          footerQuickNews: 'News & market insights',
+          footerQuickKnowledge: 'SpeeGo Knowledge',
+          footerQuickContact: 'Contact us',
+          footerOfficesTitle: 'Representative offices',
           officeUsTitle: 'United States',
           officeHanoiTitle: 'Hanoi',
           officeHcmTitle: 'Ho Chi Minh City',
@@ -1100,7 +1104,9 @@
           footerQuickTitle: 'Enlaces Rápidos',
           footerQuickProcess: 'Proceso de 8 Pasos',
           footerQuickWhy: 'Por Qué SpeeGo',
-          footerQuickKnowledge: 'SpeeGo Knowledge Hub',
+          footerQuickNews: 'Noticias y mercados',
+          footerQuickKnowledge: 'SpeeGo Knowledge',
+          footerQuickContact: 'Contacto',
           footerOfficesTitle: 'Oficinas Representativas',
           officeUsTitle: 'Estados Unidos',
           officeHanoiTitle: 'Hanói',
@@ -1174,7 +1180,9 @@
           footer_quick_title: t.footerQuickTitle,
           footer_quick_process: t.footerQuickProcess,
           footer_quick_why: t.footerQuickWhy,
+          footer_quick_news: t.footerQuickNews,
           footer_quick_knowledge: t.footerQuickKnowledge,
+          footer_quick_contact: t.footerQuickContact,
           footer_offices_title: t.footerOfficesTitle,
           office_us_title: t.officeUsTitle,
           office_hanoi_title: t.officeHanoiTitle,
@@ -2673,7 +2681,7 @@
   <script src="js/cta-band.js"></script>
   <script src="js/fulfillment-estimate.js?v=ff_estimate_20260926"></script>
   <script src="js/fulfillment-dock.js"></script>
-  <script src="js/about-page.js?v=about_click_slider_20260928"></script>
+  <script src="js/about-page.js?v=about_truck_20261001"></script>
   <script>
     (() => {
       const selector = '.speego-consult-video';

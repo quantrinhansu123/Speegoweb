@@ -4,6 +4,7 @@
  */
 require_once __DIR__ . '/sourcing-reference.php';
 require_once __DIR__ . '/post-translations.php';
+require_once __DIR__ . '/vercel-parity.php';
 
 /**
  * 1. Definitions of all SpeeGo Pages
@@ -409,16 +410,15 @@ function speego_elementor_counterpart_js(array $map)
     return 'function(current,lang){var m=' . wp_json_encode($map) . ';return m[lang]||null;}';
 }
 
-/**
- * Render a WordPress page through the normal content filters.
- *
- * This is important for Elementor: its layout is stored in post_content and
- * is rendered by the_content filters. The previous implementation inserted
- * post_content directly, which only worked for raw HTML/Block Editor content.
- */
+/** Render managed HTML as markup while keeping editor filters for other pages. */
 function speego_render_editable_content($contentPost)
 {
-    if (!$contentPost instanceof WP_Post || $contentPost->post_content === '') {
+    if (!$contentPost instanceof WP_Post) {
+        return '';
+    }
+
+    $isElementor = get_post_meta($contentPost->ID, '_elementor_edit_mode', true) === 'builder';
+    if ($contentPost->post_content === '' && !$isElementor) {
         return '';
     }
 
@@ -427,7 +427,15 @@ function speego_render_editable_content($contentPost)
     $post = $contentPost;
     setup_postdata($post);
 
-    $content = apply_filters('the_content', $post->post_content);
+    // HTML imported from the SpeeGo templates is already complete markup.
+    // wpautop adds empty paragraphs inside grids and changes their height.
+    // Elementor and Gutenberg still need the normal content filters.
+    $needsContentFilters = $isElementor
+        || get_post_meta($post->ID, '_speego_content_editable', true) !== '1'
+        || preg_match('/<!--\s*wp:(?!html(?:\s|-->))/i', $post->post_content);
+    $content = $needsContentFilters
+        ? apply_filters('the_content', $post->post_content)
+        : $post->post_content;
 
     wp_reset_postdata();
     $post = $previousPost;
