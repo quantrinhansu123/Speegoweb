@@ -1873,6 +1873,8 @@ textarea.form-control {
   font-family: var(--font-base);
   font-size: 14.5px;
   font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1px;
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -3447,6 +3449,7 @@ body:has(#speego-cookie-consent:not([hidden])) .speego-track-fab {
   font-family: var(--font-heading);
   font-size: 1.02rem;
   font-weight: 700;
+  line-height: 1.4;
   color: var(--text-navy);
   margin-bottom: 4px;
 }
@@ -3493,6 +3496,7 @@ body:has(#speego-cookie-consent:not([hidden])) .speego-track-fab {
   font-family: var(--font-heading);
   font-size: 0.96rem;
   font-weight: 700;
+  line-height: 1.4;
   color: var(--text-navy);
   margin-bottom: 14px;
 }
@@ -3573,11 +3577,11 @@ body.speego-seo-page #app-main {
 }
 
 .post-breadcrumb-slot {
-  margin: -8px 0 14px;
+  margin: 0;
 }
 
 .post-breadcrumb-slot .breadcrumb-section {
-  padding: 0;
+  padding: 16px 0 8px;
 }
 
 .post-share-row {
@@ -9185,6 +9189,10 @@ body:has([data-nav="knowledge"]) #app-main > .breadcrumb-section,
 
 .page-container[data-nav="knowledge"] .knowledge-hero {
   padding: 24px 0 40px;
+}
+
+.page-container[data-nav="knowledge"] .section-title {
+  text-align: center;
 }
 
 .page-container[data-nav="knowledge"] .knowledge-hero-title {
