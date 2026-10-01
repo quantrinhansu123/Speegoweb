@@ -339,7 +339,7 @@ h1, h2, h3, h4, h5, h6,
   border-radius: 12px !important;
   box-shadow: 0 12px 32px rgba(4, 36, 61, 0.14), 0 4px 12px rgba(0, 0, 0, 0.06) !important;
   border: 1px solid #E2E8F0 !important;
-  min-width: 110px !important;
+  min-width: 168px !important;
   padding: 5px !important;
   display: none !important;
   flex-direction: column !important;
@@ -399,10 +399,13 @@ h1, h2, h3, h4, h5, h6,
 }
 
 .speego-lang-option.active::after {
-  content: '✓';
+  content: "\2713";
   margin-left: auto;
-  font-size: 12px;
-  font-weight: 800;
+  padding-left: 16px;
+  font-family: Inter, "Segoe UI Symbol", sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1;
   color: #FF6A00;
 }
 
@@ -487,21 +490,26 @@ h1, h2, h3, h4, h5, h6,
 }
 
 .site-header .speego-lang-btn {
-  height: 44px;
-  padding: 0 14px;
-  border-radius: 10px;
-  font-family: 'Inter', -apple-system, sans-serif;
-  font-size: 14px;
-  font-weight: 600;
-  color: var(--speego-primary);
-  border: 1px solid #E5E7EB;
-  background: #FFFFFF;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
+  width: auto !important;
+  min-width: 64px !important;
+  height: 40px !important;
+  min-height: 40px !important;
+  padding: 0 10px !important;
+  border-radius: 9px !important;
+  gap: 5px !important;
+  font-family: 'Inter', -apple-system, sans-serif !important;
+  font-size: 13px !important;
+  font-weight: 700 !important;
+  line-height: 1 !important;
+  letter-spacing: 0 !important;
+  color: #04243D !important;
+  border: 1.5px solid #E2E8F0 !important;
+  background: #F8FAFC !important;
+  display: inline-flex !important;
+  align-items: center !important;
   cursor: pointer;
   transition: all 0.2s ease;
-  white-space: nowrap;
+  white-space: nowrap !important;
 }
 
 .site-header .speego-lang-btn:hover {

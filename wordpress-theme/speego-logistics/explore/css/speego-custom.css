@@ -339,7 +339,7 @@ h1, h2, h3, h4, h5, h6,
   border-radius: 12px !important;
   box-shadow: 0 12px 32px rgba(4, 36, 61, 0.14), 0 4px 12px rgba(0, 0, 0, 0.06) !important;
   border: 1px solid #E2E8F0 !important;
-  min-width: 110px !important;
+  min-width: 168px !important;
   padding: 5px !important;
   display: none !important;
   flex-direction: column !important;
@@ -399,10 +399,13 @@ h1, h2, h3, h4, h5, h6,
 }
 
 .speego-lang-option.active::after {
-  content: '✓';
+  content: "\2713";
   margin-left: auto;
-  font-size: 12px;
-  font-weight: 800;
+  padding-left: 16px;
+  font-family: Inter, "Segoe UI Symbol", sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1;
   color: #FF6A00;
 }
 
@@ -487,21 +490,26 @@ h1, h2, h3, h4, h5, h6,
 }
 
 .site-header .speego-lang-btn {
-  height: 44px;
-  padding: 0 14px;
-  border-radius: 10px;
-  font-family: 'Inter', -apple-system, sans-serif;
-  font-size: 14px;
-  font-weight: 600;
-  color: var(--speego-primary);
-  border: 1px solid #E5E7EB;
-  background: #FFFFFF;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
+  width: auto !important;
+  min-width: 64px !important;
+  height: 40px !important;
+  min-height: 40px !important;
+  padding: 0 10px !important;
+  border-radius: 9px !important;
+  gap: 5px !important;
+  font-family: 'Inter', -apple-system, sans-serif !important;
+  font-size: 13px !important;
+  font-weight: 700 !important;
+  line-height: 1 !important;
+  letter-spacing: 0 !important;
+  color: #04243D !important;
+  border: 1.5px solid #E2E8F0 !important;
+  background: #F8FAFC !important;
+  display: inline-flex !important;
+  align-items: center !important;
   cursor: pointer;
   transition: all 0.2s ease;
-  white-space: nowrap;
+  white-space: nowrap !important;
 }
 
 .site-header .speego-lang-btn:hover {
@@ -10556,6 +10564,17 @@ body.home .site-header .speego-header-topbar {
   font-variant-caps: normal;
 }
 
+.elementor .e-form-base > .e-form-submit-button-base,
+.cta-form-band-section .btn-submit {
+  text-transform: uppercase;
+}
+
+.elementor .e-form-base > .e-form-submit-button-base + .e-paragraph-base,
+.consult-card-white .form-security-note {
+  font-size: 16px;
+  line-height: 1.45;
+}
+
 /* ==========================================================================
    Knowledge hub — one layout for VI / EN / ES, matched to the sample page
    ========================================================================== */
@@ -10621,6 +10640,53 @@ body.speego-elementor-page main[data-nav="knowledge"] .speego-k-desc {
 body.speego-elementor-page main[data-nav="knowledge"] .speego-k-row {
   min-width: 0;
   align-items: flex-start;
+}
+
+@media (min-width: 1025px) {
+  body.speego-elementor-page main[data-nav="knowledge"] .e-con:has(> .speego-k-card) {
+    display: grid !important;
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  }
+
+  body.speego-elementor-page main[data-nav="knowledge"] .speego-k-head {
+    flex-wrap: nowrap !important;
+    align-items: flex-start !important;
+  }
+
+  body.speego-elementor-page main[data-nav="knowledge"] .speego-k-title {
+    flex: 1 1 auto;
+    min-width: 0;
+    min-height: 2.6em;
+  }
+
+  body.speego-elementor-page main[data-nav="knowledge"] .speego-k-badge {
+    flex: 0 0 auto;
+    white-space: nowrap !important;
+  }
+
+  body.speego-elementor-page main[data-nav="knowledge"] .speego-k-desc {
+    min-height: 6.2em;
+  }
+
+  body.speego-elementor-page main[data-nav="knowledge"] .speego-k-row {
+    flex-wrap: nowrap !important;
+    align-items: center !important;
+    height: 1.45em;
+    min-height: 1.45em;
+  }
+
+  body.speego-elementor-page main[data-nav="knowledge"] .speego-k-dot-on,
+  body.speego-elementor-page main[data-nav="knowledge"] .speego-k-dot-off {
+    margin-top: 0 !important;
+  }
+
+  body.speego-elementor-page main[data-nav="knowledge"] .speego-k-link,
+  body.speego-elementor-page main[data-nav="knowledge"] .speego-k-link a,
+  body.speego-elementor-page main[data-nav="knowledge"] .speego-k-muted {
+    white-space: nowrap !important;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
 }
 
 body.speego-elementor-page main[data-nav="knowledge"] .speego-k-link,
@@ -10941,6 +11007,7 @@ body.speego-elementor-page main[data-nav="knowledge"] form.e-form-base button[ty
   font-family: Inter, var(--speego-font), sans-serif !important;
   font-size: 14.5px !important;
   font-weight: 800 !important;
+  text-transform: uppercase !important;
   cursor: pointer;
   transition: background 0.28s var(--k-ease), transform 0.28s var(--k-ease), box-shadow 0.28s var(--k-ease);
 }
@@ -10952,9 +11019,9 @@ body.speego-elementor-page main[data-nav="knowledge"] form.e-form-base button[ty
   box-shadow: 0 8px 20px rgba(240, 88, 40, 0.35);
 }
 
-body.speego-elementor-page main[data-nav="knowledge"] form.e-form-base p {
+body.speego-elementor-page main[data-nav="knowledge"] form.e-form-base > .e-form-submit-button-base + .e-paragraph-base {
   margin-top: 10px;
-  font-size: 11.5px !important;
+  font-size: 16px !important;
   line-height: 1.45 !important;
   color: #94A3B8 !important;
   text-align: center;
