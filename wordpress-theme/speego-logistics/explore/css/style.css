@@ -950,6 +950,13 @@ img {
   font-weight: 600;
 }
 
+/* WP prerender includes the header partial with an empty breadcrumb slot.
+   Hide it until JS fills the list, so no phantom gap sits under the header
+   (reference pages have no empty breadcrumb). */
+#breadcrumbSection:has(#breadcrumbList:empty) {
+  display: none;
+}
+
 /* --------------------------------------------------------------------------
    5. KNOWLEDGE HUB: HEADER INTRO & TOPIC CARDS GRID
    -------------------------------------------------------------------------- */
@@ -1046,6 +1053,19 @@ img {
   margin-bottom: 20px;
   min-height: 4.8em;
   font-weight: 500;
+}
+
+/* Elementor-migrated card descriptions. Values mirror the EFFECTIVE sample
+   rendering (subpage blanket rule computes desc paragraphs to 16px). Scoped
+   with .elementor to beat atomic defaults regardless of stylesheet order. */
+.elementor .speego-k-desc {
+  font-family: var(--speego-font);
+  font-size: 16px;
+  font-weight: 500;
+  color: #3D5568;
+  line-height: 1.55;
+  margin-top: 0;
+  margin-bottom: 20px;
 }
 
 .topic-article-list {
@@ -1908,6 +1928,18 @@ textarea.form-control {
   height: 38px;
   width: auto;
   display: block;
+}
+
+.speego-footer-move {
+  display: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .speego-footer-move {
+    animation: none;
+    color: #94A3B8;
+    letter-spacing: 0.14em;
+  }
 }
 
 .speego-footer-tagline {

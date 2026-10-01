@@ -4,6 +4,13 @@ if (!have_posts()) {
     exit;
 }
 the_post();
+
+// Let Elementor Pro's Theme Builder own Knowledge single-post templates when
+// one is configured. The existing SpeeGo renderer remains the fallback.
+if (function_exists('elementor_theme_do_location') && elementor_theme_do_location('single')) {
+    return;
+}
+
 $postId = get_the_ID();
 $language = speego_post_language($postId);
 $knowledgeRoutes = ['vi' => '#/knowledge', 'en' => '#/en/knowledge', 'es' => '#/es/knowledge'];

@@ -246,6 +246,195 @@ add_action('after_switch_theme', function () {
     update_option('speego_theme_content_version', '1.2.0');
 });
 
+/**
+ * Enable the theme features needed by Elementor without making Elementor a
+ * hard dependency. The static explore/ fallback continues to work when the
+ * plugin is not installed.
+ */
+add_action('after_setup_theme', function () {
+    add_theme_support('post-thumbnails');
+    add_theme_support('elementor');
+});
+
+function speego_is_elementor_document($postId = 0)
+{
+    if (!class_exists('\Elementor\Plugin')) {
+        return false;
+    }
+
+    $postId = $postId ?: get_queried_object_id();
+    if ($postId) {
+        $document = \Elementor\Plugin::$instance->documents->get($postId);
+        if ($document && $document->is_built_with_elementor()) {
+            return true;
+        }
+    }
+
+    return isset(\Elementor\Plugin::$instance->editor)
+        && \Elementor\Plugin::$instance->editor->is_edit_mode();
+}
+
+/**
+ * Load the SpeeGo design system for Elementor-rendered documents.
+ *
+ * Elementor pages (page.php) render the shared header partial with the
+ * language dropdown, but unlike front-page.php they never received the
+ * navigation bridge (SPEEGO_PUBLIC_ROUTES / speegoInitialRoute /
+ * wp-navigation.js) nor the dropdown toggle handler from speego-main.js.
+ * Without them the VI/EN/ES button renders but does nothing. Enqueue the
+ * same navigation script plus a minimal toggle so the header can switch
+ * languages on Elementor documents too.
+ */
+function speego_enqueue_elementor_assets()
+{
+    if (!speego_is_elementor_document()) {
+        return;
+    }
+
+    $themeUri = trailingslashit(get_template_directory_uri());
+    $version = wp_get_theme()->get('Version');
+
+    wp_enqueue_style('speego-explore-style', $themeUri . 'explore/css/style.css', [], $version);
+    wp_enqueue_style('speego-custom-style', $themeUri . 'explore/css/speego-custom.css', ['speego-explore-style'], $version);
+    wp_enqueue_style('speego-process-tabs', $themeUri . 'explore/css/speego-process-tabs.css', ['speego-custom-style'], $version);
+
+    wp_enqueue_script('speego-wp-navigation', $themeUri . 'explore/js/wp-navigation.js', [], $version, true);
+    wp_enqueue_script('speego-cta-band', $themeUri . 'explore/js/cta-band.js', [], $version, true);
+
+    $routeHash = isset($GLOBALS['speego_active_route']) && is_string($GLOBALS['speego_active_route'])
+        ? $GLOBALS['speego_active_route']
+        : '';
+    if ($routeHash === '') {
+        $requestPath = rawurldecode((string) wp_parse_url($_SERVER['REQUEST_URI'] ?? '', PHP_URL_PATH));
+        $homePath = untrailingslashit((string) wp_parse_url(home_url('/'), PHP_URL_PATH));
+        if ($homePath !== '' && strpos($requestPath, $homePath . '/') === 0) {
+            $requestPath = substr($requestPath, strlen($homePath) + 1);
+        }
+        $routeHash = function_exists('speego_route_hash_for_path')
+            ? speego_route_hash_for_path(trim($requestPath, '/'))
+            : '';
+    }
+    if ($routeHash === '') {
+        $queriedId = get_queried_object_id();
+        $metaRoute = $queriedId ? (string) get_post_meta($queriedId, '_speego_route_hash', true) : '';
+        if ($metaRoute !== '') {
+            $routeHash = $metaRoute;
+        }
+    }
+
+    $publicUrls = function_exists('speego_public_route_urls') ? speego_public_route_urls() : [];
+    $counterpartMap = speego_elementor_counterpart_map($routeHash);
+    $alternates = [];
+    foreach (['vi', 'en', 'es'] as $lang) {
+        if (isset($counterpartMap[$lang], $publicUrls[$counterpartMap[$lang]])) {
+            $alternates[$lang] = $publicUrls[$counterpartMap[$lang]];
+        }
+    }
+
+    $boot = 'window.SPEEGO_WP_HOME=' . wp_json_encode(home_url('/'))
+        . ';window.SPEEGO_PUBLIC_ROUTES=' . wp_json_encode($publicUrls)
+        . ';window.speegoInitialRoute=' . wp_json_encode($routeHash)
+        . ';window.SPEEGO_POST_ALTERNATES=' . wp_json_encode($alternates)
+        . ';window.speegoCounterpartRoute=' . speego_elementor_counterpart_js($counterpartMap) . ';';
+    wp_add_inline_script('speego-wp-navigation', $boot, 'before');
+
+    $toggle = '(function(){function bind(){var btn=document.getElementById("speego-lang-toggle");'
+        . 'var dd=document.getElementById("speego-lang-dropdown");if(!btn||!dd||btn.__speegoLangBound)return;'
+        . 'btn.__speegoLangBound=true;btn.addEventListener("click",function(e){e.stopPropagation();'
+        . 'var open=dd.classList.toggle("active");btn.setAttribute("aria-expanded",String(open));});'
+        . 'document.addEventListener("click",function(e){if(!dd.classList.contains("active"))return;'
+        . 'if(e.target.closest&&e.target.closest("#speegoLangSelector"))return;'
+        . 'dd.classList.remove("active");btn.setAttribute("aria-expanded","false");});'
+        . 'document.addEventListener("keydown",function(e){if(e.key==="Escape"&&dd.classList.contains("active"))'
+        . '{dd.classList.remove("active");btn.setAttribute("aria-expanded","false");}});}'
+        . 'if(document.readyState!=="loading")bind();'
+        . 'else document.addEventListener("DOMContentLoaded",bind);})();';
+    wp_add_inline_script('speego-wp-navigation', $toggle, 'after');
+}
+add_action('wp_enqueue_scripts', 'speego_enqueue_elementor_assets', 20);
+
+/**
+ * Build a language => route-hash map for the page that shares the same
+ * content as the current Elementor route (same group + numeric file key +
+ * china/vietnam keyword so detail routes do not cross-match).
+ */
+function speego_elementor_counterpart_map($routeHash)
+{
+    if (!function_exists('speego_public_route_map') || $routeHash === '') {
+        return [];
+    }
+    $pages = speego_public_route_map();
+    $pages = isset($pages['pages']) && is_array($pages['pages']) ? $pages['pages'] : [];
+    if (!isset($pages[$routeHash])) {
+        return [];
+    }
+    $keyOf = function ($hash, $page) {
+        $file = basename((string) ($page['file'] ?? ''));
+        $number = '';
+        if (preg_match('/-(\d+)-/', $file, $m)) {
+            $number = $m[1];
+        }
+        $hay = strtolower($hash . ' ' . (string) ($page['slug'] ?? '') . ' ' . $file);
+        $keyword = '';
+        if (strpos($hay, 'china') !== false || strpos($hay, 'trung-quoc') !== false) {
+            $keyword = 'china';
+        } elseif (strpos($hay, 'vietnam') !== false || strpos($hay, 'viet-nam') !== false) {
+            $keyword = 'vietnam';
+        }
+        return (string) ($page['group'] ?? '') . '|' . $number . '|' . $keyword;
+    };
+    $targetKey = $keyOf($routeHash, $pages[$routeHash]);
+    $map = [];
+    foreach ($pages as $hash => $page) {
+        if ($keyOf($hash, $page) !== $targetKey) {
+            continue;
+        }
+        $lang = $page['language'] ?? '';
+        if (in_array($lang, ['vi', 'en', 'es'], true) && !isset($map[$lang])) {
+            $map[$lang] = $hash;
+        }
+    }
+    return $map;
+}
+
+/**
+ * Render the counterpart lookup as JS. Returning null lets wp-navigation.js
+ * fall back to the language home route when no same-content page exists.
+ */
+function speego_elementor_counterpart_js(array $map)
+{
+    if (empty($map)) {
+        return 'function(){return null;}';
+    }
+    return 'function(current,lang){var m=' . wp_json_encode($map) . ';return m[lang]||null;}';
+}
+
+/**
+ * Render a WordPress page through the normal content filters.
+ *
+ * This is important for Elementor: its layout is stored in post_content and
+ * is rendered by the_content filters. The previous implementation inserted
+ * post_content directly, which only worked for raw HTML/Block Editor content.
+ */
+function speego_render_editable_content($contentPost)
+{
+    if (!$contentPost instanceof WP_Post || $contentPost->post_content === '') {
+        return '';
+    }
+
+    global $post;
+    $previousPost = $post;
+    $post = $contentPost;
+    setup_postdata($post);
+
+    $content = apply_filters('the_content', $post->post_content);
+
+    wp_reset_postdata();
+    $post = $previousPost;
+
+    return preg_replace('#<!--\s*/?wp:html\s*-->#i', '', trim($content));
+}
+
 // A theme ZIP replacement does not activate the theme again. Refresh the
 // theme-managed pages once on the first admin request after this upgrade.
 add_action('admin_init', function () {
@@ -714,6 +903,9 @@ function speego_public_route_urls()
 /** Redirect the old home and page slugs to the language-aware canonical URLs. */
 function speego_redirect_public_route_aliases()
 {
+    if (isset($_GET['elementor-preview']) || isset($_GET['elementor-preview-type'])) {
+        return;
+    }
     $requestPath = rawurldecode((string) wp_parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH));
     $homePath = untrailingslashit((string) wp_parse_url(home_url('/'), PHP_URL_PATH));
     if ($homePath !== '' && $requestPath === $homePath) {
@@ -757,6 +949,9 @@ add_action('template_redirect', 'speego_redirect_public_route_aliases', 1);
 
 function speego_resolve_route_page($wp)
 {
+    if (isset($_GET['elementor-preview'])) {
+        return;
+    }
     $requestPath = rawurldecode((string) wp_parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH));
     $homePath = untrailingslashit((string) wp_parse_url(home_url('/'), PHP_URL_PATH));
     if ($homePath !== '' && $requestPath === $homePath) {
@@ -781,7 +976,14 @@ function speego_resolve_route_page($wp)
     ]);
     if ($posts) {
         $wp->query_vars = ['page_id' => $posts[0]->ID];
+        return;
     }
+
+    // Language pages such as /vi/ and /en/ make WordPress parse the next
+    // segment (/vi/lien-he/, /en/contact/) as an attachment. These routes have
+    // no media file, so redirect_canonical() calls get_attachment_link() on a
+    // null post and PHP warns. Mark the request as a normal miss instead.
+    $wp->query_vars = ['error' => '404'];
 }
 add_action('parse_request', 'speego_resolve_route_page');
 
@@ -824,6 +1026,76 @@ add_filter('pre_handle_404', function ($preempt, $wp_query) {
     return $preempt;
 }, 10, 2);
 
+function speego_elementor_route_page($routeHash)
+{
+    $titles = [
+        '#/knowledge' => 'SpeeGo Knowledge Hub Elementor VI',
+        '#/en/knowledge' => 'SpeeGo Knowledge Hub Elementor EN',
+        '#/es/knowledge' => 'SpeeGo Knowledge Hub Elementor ES',
+    ];
+    if (!isset($titles[$routeHash])) {
+        return null;
+    }
+
+    // Only published pages may serve public routes. Drafts must never leak
+    // to visitors (Elementor previews use ?elementor-preview= instead).
+    $matches = get_posts([
+        'post_type' => 'page',
+        'post_status' => ['publish'],
+        'numberposts' => 5,
+        's' => $titles[$routeHash],
+    ]);
+    foreach ($matches as $match) {
+        if ($match->post_title === $titles[$routeHash]) {
+            return $match;
+        }
+    }
+
+    return null;
+}
+
+add_filter('pre_get_document_title', function ($title) {
+    $route = $GLOBALS['speego_active_route'] ?? '';
+    if ($route === '' || !function_exists('speego_public_route_map')) {
+        return $title;
+    }
+    $seoTitle = speego_public_route_map()['pages'][$route]['title'] ?? '';
+    return $seoTitle !== '' ? $seoTitle : $title;
+});
+
+add_action('wp_head', function () {
+    $route = $GLOBALS['speego_active_route'] ?? '';
+    if ($route === '' || !function_exists('speego_public_route_map')) {
+        return;
+    }
+    $page = speego_public_route_map()['pages'][$route] ?? null;
+    if (!$page) {
+        return;
+    }
+    if (!empty($page['description'])) {
+        echo '<meta name="description" content="' . esc_attr($page['description']) . '">' . "\n";
+    }
+    if (!empty($page['path'])) {
+        echo '<link rel="canonical" href="' . esc_url(home_url($page['path'])) . '">' . "\n";
+    }
+}, 1);
+
+add_filter('language_attributes', function ($output) {
+    $route = $GLOBALS['speego_active_route'] ?? '';
+    if ($route === '' || !function_exists('speego_public_route_map')) {
+        return $output;
+    }
+    $language = speego_public_route_map()['pages'][$route]['language'] ?? '';
+    $htmlLang = $language === 'vi' ? 'vi-VN' : ($language === 'es' ? 'es-ES' : ($language === 'en' ? 'en' : ''));
+    if ($htmlLang === '') {
+        return $output;
+    }
+    if (preg_match('/\blang="/', $output)) {
+        return preg_replace('/\blang="[^"]*"/', 'lang="' . esc_attr($htmlLang) . '"', $output, 1);
+    }
+    return trim($output) . ' lang="' . esc_attr($htmlLang) . '"';
+});
+
 add_filter('template_include', function ($template) {
     $requestPath = rawurldecode((string) wp_parse_url($_SERVER['REQUEST_URI'] ?? '', PHP_URL_PATH));
     $homePath = untrailingslashit((string) wp_parse_url(home_url('/'), PHP_URL_PATH));
@@ -831,7 +1103,71 @@ add_filter('template_include', function ($template) {
         $requestPath = substr($requestPath, strlen($homePath) + 1);
     }
     $clean = trim($requestPath, '/');
-    if (function_exists('speego_route_hash_for_path') && speego_route_hash_for_path($clean)) {
+    $routeHash = function_exists('speego_route_hash_for_path') ? speego_route_hash_for_path($clean) : '';
+
+    // Elementor / WP preview links use the PUBLIC route URL (rewritten by the
+    // page_link filter), which has no real WP page query behind it, so the
+    // template hierarchy would resolve 404.php and the preview iframe shows
+    // "Not Found 404". Point the main query at the previewed post instead.
+    $previewId = 0;
+    if (isset($_GET['elementor-preview'])) {
+        $previewId = (int) $_GET['elementor-preview'];
+    } elseif (isset($_GET['preview_id'])) {
+        $previewId = (int) $_GET['preview_id'];
+    } elseif (isset($_GET['preview'], $_GET['p'])) {
+        $previewId = (int) $_GET['p'];
+    } elseif (isset($_GET['preview'], $_GET['page_id'])) {
+        $previewId = (int) $_GET['page_id'];
+    }
+    if ($previewId) {
+        $previewPost = get_post($previewId);
+        if ($previewPost && in_array($previewPost->post_status, ['publish', 'draft', 'pending', 'private', 'future'], true)) {
+            global $wp_query, $post;
+            $wp_query->is_404 = false;
+            $wp_query->is_preview = true;
+            $wp_query->is_home = false;
+            $wp_query->is_archive = false;
+            $wp_query->is_singular = true;
+            $wp_query->is_page = $previewPost->post_type === 'page';
+            $wp_query->is_single = $previewPost->post_type !== 'page';
+            $wp_query->is_front_page = ((int) get_option('page_on_front') === (int) $previewPost->ID);
+            $wp_query->queried_object = $previewPost;
+            $wp_query->queried_object_id = (int) $previewPost->ID;
+            $wp_query->posts = [$previewPost];
+            $wp_query->post_count = 1;
+            $wp_query->found_posts = 1;
+            $post = $previewPost;
+            $GLOBALS['speego_active_route'] = $routeHash !== ''
+                ? $routeHash
+                : (string) get_post_meta($previewPost->ID, '_speego_route_hash', true);
+            setup_postdata($previewPost);
+            status_header(200);
+            return get_template_directory() . ($previewPost->post_type === 'page' ? '/page.php' : '/single.php');
+        }
+        return $template;
+    }
+    if ($routeHash) {
+        $page = function_exists('speego_elementor_route_page') ? speego_elementor_route_page($routeHash) : null;
+        if (!$page || !speego_is_elementor_document($page->ID)) {
+            $page = speego_get_page_by_route($routeHash);
+        }
+        if ($page && function_exists('speego_is_elementor_document') && speego_is_elementor_document($page->ID)) {
+            global $wp_query, $post;
+            $wp_query->is_404 = false;
+            $wp_query->is_page = true;
+            $wp_query->is_singular = true;
+            $wp_query->is_home = false;
+            $wp_query->is_front_page = false;
+            $wp_query->queried_object = $page;
+            $wp_query->queried_object_id = (int) $page->ID;
+            $wp_query->posts = [$page];
+            $wp_query->post_count = 1;
+            $wp_query->found_posts = 1;
+            $post = $page;
+            $GLOBALS['speego_active_route'] = $routeHash;
+            setup_postdata($page);
+            return get_template_directory() . '/page.php';
+        }
         return get_template_directory() . '/front-page.php';
     }
     return $template;

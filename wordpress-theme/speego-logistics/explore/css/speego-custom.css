@@ -4772,6 +4772,28 @@ body.speego-track-modal-open {
   width: auto;
 }
 
+.speego-footer-move {
+  display: none !important;
+}
+
+/* Knowledge hub CTA eyebrow is an Elementor span, not .section-tag. */
+.elementor [data-id="273344fb"],
+.elementor [data-id="10f0d7f9"],
+.elementor [data-id="4616e5a7"] {
+  animation: ctaTagPulse 3.2s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .speego-footer-move,
+  .elementor [data-id="273344fb"],
+  .elementor [data-id="10f0d7f9"],
+  .elementor [data-id="4616e5a7"] {
+    animation: none;
+    color: #94A3B8;
+    letter-spacing: 0.14em;
+  }
+}
+
 .speego-footer-tagline {
   color: #94a3b8;
   font-size: 14px;
@@ -10507,4 +10529,473 @@ body.home .site-header .speego-header-topbar {
   font-weight: 400 !important;
   line-height: 1.7 !important;
   margin: 0 !important;
+}
+
+/* Knowledge hub VI: orange second line, CTA line break, sentence-case form labels. */
+.elementor h1[data-id="6c22e049"] {
+  max-width: 24ch;
+}
+
+.elementor h1[data-id="6c22e049"] span {
+  color: #F05828;
+}
+
+.elementor h2[data-id="77aa45a7"] {
+  max-width: none;
+}
+
+.elementor h2[data-id="77aa45a7"] .speego-cta-line {
+  white-space: nowrap;
+}
+
+.elementor label[data-id="2b024060"],
+.elementor label[data-id="4c9e58d5"],
+.elementor label[data-id="599aa2cf"],
+.elementor label[data-id="43a6b10d"] {
+  text-transform: none;
+  font-variant-caps: normal;
+}
+
+/* ==========================================================================
+   Knowledge hub — one layout for VI / EN / ES, matched to the sample page
+   ========================================================================== */
+body.speego-elementor-page main[data-nav="knowledge"] {
+  --k-navy: #04243D;
+  --k-orange: #F05828;
+  --k-orange-hover: #D9481C;
+  --k-ease: cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+body.speego-elementor-page main[data-nav="knowledge"] h1 {
+  margin: 8px 0 20px;
+  font-family: Inter, var(--speego-font), sans-serif;
+  font-size: 3.1rem !important;
+  font-weight: 800 !important;
+  line-height: 1.15 !important;
+  letter-spacing: -0.03em !important;
+  color: #222222 !important;
+}
+
+body.speego-elementor-page main[data-nav="knowledge"] h1 span {
+  color: var(--k-orange) !important;
+}
+
+body.speego-elementor-page main[data-nav="knowledge"] h1 + p,
+body.speego-elementor-page main[data-nav="knowledge"] .knowledge-hero-desc {
+  max-width: 52ch;
+  font-size: 16px !important;
+  font-weight: 400 !important;
+  line-height: 1.6 !important;
+  color: #475569 !important;
+}
+
+body.speego-elementor-page main[data-nav="knowledge"] .speego-k-card {
+  transition: background 0.28s var(--k-ease), border-color 0.28s var(--k-ease), box-shadow 0.28s var(--k-ease), transform 0.28s var(--k-ease) !important;
+}
+
+body.speego-elementor-page main[data-nav="knowledge"] .speego-k-card:hover,
+body.speego-elementor-page main[data-nav="knowledge"] .speego-k-card:focus-visible {
+  border-color: #8FA8BC !important;
+  border-left-color: var(--k-navy) !important;
+  border-bottom-color: var(--k-orange-hover) !important;
+  background: linear-gradient(165deg, #FFFFFF 0%, #EEF4F9 48%, #FFF0E8 100%) !important;
+  box-shadow: 0 12px 28px rgba(4, 36, 61, 0.12) !important;
+  transform: translateY(-3px);
+}
+
+body.speego-elementor-page main[data-nav="knowledge"] .speego-k-title {
+  font-size: 1.28rem !important;
+  font-weight: 800 !important;
+  line-height: 1.3 !important;
+  letter-spacing: -0.02em !important;
+  color: var(--k-navy) !important;
+}
+
+body.speego-elementor-page main[data-nav="knowledge"] .speego-k-desc {
+  font-size: 16px !important;
+  font-weight: 500 !important;
+  line-height: 1.55 !important;
+  color: #3D5568 !important;
+}
+
+body.speego-elementor-page main[data-nav="knowledge"] .speego-k-row {
+  min-width: 0;
+  align-items: flex-start;
+}
+
+body.speego-elementor-page main[data-nav="knowledge"] .speego-k-link,
+body.speego-elementor-page main[data-nav="knowledge"] .speego-k-muted {
+  flex: 1 1 auto;
+  min-width: 0;
+  overflow: hidden;
+}
+
+body.speego-elementor-page main[data-nav="knowledge"] .speego-k-link,
+body.speego-elementor-page main[data-nav="knowledge"] .speego-k-link a,
+body.speego-elementor-page main[data-nav="knowledge"] .speego-k-muted {
+  display: block;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+body.speego-elementor-page main[data-nav="knowledge"] .speego-k-dot-on,
+body.speego-elementor-page main[data-nav="knowledge"] .speego-k-dot-off {
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 15px;
+  width: 15px;
+  height: 15px;
+  font-size: 0 !important;
+  line-height: 0 !important;
+  color: transparent !important;
+}
+
+body.speego-elementor-page main[data-nav="knowledge"] .speego-k-dot-on::after,
+body.speego-elementor-page main[data-nav="knowledge"] .speego-k-dot-off::after {
+  content: "";
+  display: block;
+  flex: 0 0 auto;
+}
+
+body.speego-elementor-page main[data-nav="knowledge"] .speego-k-dot-on::after {
+  width: 5px;
+  height: 5px;
+  background: #FFFFFF;
+  border-radius: 1px;
+}
+
+body.speego-elementor-page main[data-nav="knowledge"] .speego-k-dot-off::after {
+  width: 6px;
+  height: 2px;
+  background: #7A93A8;
+  border-radius: 1px;
+}
+
+body.speego-elementor-page main[data-nav="knowledge"] .speego-k-link {
+  font-size: 0.88rem !important;
+  font-weight: 700 !important;
+  line-height: 1.45 !important;
+  color: var(--k-navy) !important;
+  transition: color 0.28s var(--k-ease);
+}
+
+body.speego-elementor-page main[data-nav="knowledge"] .speego-k-link:hover,
+body.speego-elementor-page main[data-nav="knowledge"] .speego-k-link:focus-visible {
+  color: var(--k-orange) !important;
+}
+
+body.speego-elementor-page main[data-nav="knowledge"] .speego-k-muted {
+  font-size: 0.88rem !important;
+  font-weight: 400 !important;
+  color: #7A93A8 !important;
+}
+
+body.speego-elementor-page main[data-nav="knowledge"] .speego-k-more {
+  font-size: 0.92rem !important;
+  font-weight: 800 !important;
+  color: var(--k-orange) !important;
+  transition: color 0.28s var(--k-ease), transform 0.28s var(--k-ease);
+}
+
+body.speego-elementor-page main[data-nav="knowledge"] .speego-k-more:hover,
+body.speego-elementor-page main[data-nav="knowledge"] .speego-k-more:focus-visible {
+  color: var(--k-orange-hover) !important;
+  transform: translateX(2px);
+}
+
+body.speego-elementor-page main[data-nav="knowledge"] h2:not(.speego-k-cta-title) {
+  font-family: Inter, var(--speego-font), sans-serif;
+  font-size: clamp(24px, 3vw, 32px) !important;
+  font-weight: 800 !important;
+  line-height: 1.25 !important;
+  letter-spacing: -0.02em !important;
+  color: var(--k-navy) !important;
+}
+
+body.speego-elementor-page main[data-nav="knowledge"] summary.e-accordion-item-header-base {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 22px 26px;
+  cursor: pointer;
+}
+
+body.speego-elementor-page main[data-nav="knowledge"] summary.e-accordion-item-header-base .e-paragraph-base {
+  font-size: 1.05rem !important;
+  font-weight: 700 !important;
+  line-height: 1.4 !important;
+  color: var(--k-navy) !important;
+  transition: color 0.28s var(--k-ease);
+}
+
+body.speego-elementor-page main[data-nav="knowledge"] summary.e-accordion-item-header-base:hover .e-paragraph-base,
+body.speego-elementor-page main[data-nav="knowledge"] summary.e-accordion-item-header-base:focus-visible .e-paragraph-base {
+  color: var(--k-orange) !important;
+}
+
+body.speego-elementor-page main[data-nav="knowledge"] summary.e-accordion-item-header-base > :not(.e-accordion-item-title-base),
+body.speego-elementor-page main[data-nav="knowledge"] .e-accordion-item-icon-base {
+  display: none !important;
+}
+
+body.speego-elementor-page main[data-nav="knowledge"] summary.e-accordion-item-header-base::before,
+body.speego-elementor-page main[data-nav="knowledge"] summary.e-accordion-item-header-base::-webkit-details-marker {
+  content: none !important;
+  display: none !important;
+}
+
+body.speego-elementor-page main[data-nav="knowledge"] summary.e-accordion-item-header-base::after {
+  content: "+";
+  flex: 0 0 auto;
+  color: var(--k-orange);
+  font-size: 1.45rem;
+  font-weight: 400;
+  line-height: 1;
+  transition: transform 0.3s ease;
+}
+
+body.speego-elementor-page main[data-nav="knowledge"] details[open] > summary.e-accordion-item-header-base::after {
+  transform: rotate(45deg);
+}
+
+body.speego-elementor-page main[data-nav="knowledge"] details.e-accordion-item-base p {
+  font-size: 16px !important;
+  font-weight: 400 !important;
+  line-height: 1.68 !important;
+  color: #475569 !important;
+}
+
+body.speego-elementor-page main[data-nav="knowledge"] .speego-k-cta {
+  align-items: center;
+  gap: clamp(28px, 4vw, 56px);
+}
+
+body.speego-elementor-page main[data-nav="knowledge"] .speego-k-cta-copy {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+}
+
+body.speego-elementor-page main[data-nav="knowledge"] .speego-k-cta-tag {
+  margin-bottom: 18px;
+  font-size: clamp(0.95rem, 1.2vw, 1.1rem) !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #94A3B8;
+  animation: ctaTagPulse 3.2s ease-in-out infinite;
+}
+
+body.speego-elementor-page main[data-nav="knowledge"] .speego-k-cta-title {
+  margin: 0;
+  font-size: clamp(2.85rem, 5.5vw, 4.25rem) !important;
+  font-weight: 800 !important;
+  line-height: 1.05 !important;
+  letter-spacing: -0.03em !important;
+  color: #FFFFFF !important;
+}
+
+body.speego-elementor-page main[data-nav="knowledge"] .speego-k-cta-desc {
+  max-width: 34ch;
+  margin: 22px 0 36px;
+  font-size: 16px !important;
+  font-weight: 400 !important;
+  line-height: 1.65 !important;
+  color: #A8B8C8 !important;
+}
+
+body.speego-elementor-page main[data-nav="knowledge"] .speego-k-cta-hotline,
+body.speego-elementor-page main[data-nav="knowledge"] .speego-k-cta-hotline strong {
+  font-size: clamp(1.55rem, 2.6vw, 2rem) !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.01em;
+  color: #FFFFFF;
+  text-decoration: none;
+  transition: color 0.25s ease, transform 0.25s ease;
+  animation: ctaHotlineGlow 2.8s ease-in-out infinite;
+}
+
+body.speego-elementor-page main[data-nav="knowledge"] .speego-k-cta-hotline:hover,
+body.speego-elementor-page main[data-nav="knowledge"] .speego-k-cta-hotline:focus-visible,
+body.speego-elementor-page main[data-nav="knowledge"] .speego-k-cta-hotline:hover strong,
+body.speego-elementor-page main[data-nav="knowledge"] .speego-k-cta-hotline:focus-visible strong,
+body.speego-elementor-page main[data-nav="knowledge"] .speego-k-cta.is-inview .speego-k-cta-hotline:hover,
+body.speego-elementor-page main[data-nav="knowledge"] .speego-k-cta.is-inview .speego-k-cta-hotline:focus-visible,
+body.speego-elementor-page main[data-nav="knowledge"] .speego-k-cta.is-inview .speego-k-cta-hotline:hover strong,
+body.speego-elementor-page main[data-nav="knowledge"] .speego-k-cta.is-inview .speego-k-cta-hotline:focus-visible strong {
+  color: var(--k-orange) !important;
+  transform: translateY(-2px);
+  animation: ctaHotlineGlow 2.8s ease-in-out infinite;
+}
+
+body.speego-elementor-page main[data-nav="knowledge"] .speego-k-cta[data-cta-motion]:not(.is-inview) .speego-k-cta-tag,
+body.speego-elementor-page main[data-nav="knowledge"] .speego-k-cta[data-cta-motion]:not(.is-inview) .speego-k-cta-title,
+body.speego-elementor-page main[data-nav="knowledge"] .speego-k-cta[data-cta-motion]:not(.is-inview) .speego-k-cta-desc,
+body.speego-elementor-page main[data-nav="knowledge"] .speego-k-cta[data-cta-motion]:not(.is-inview) .speego-k-cta-hotline {
+  opacity: 0;
+  transform: translateY(24px);
+  animation: none;
+}
+
+body.speego-elementor-page main[data-nav="knowledge"] .speego-k-cta.is-inview .speego-k-cta-tag {
+  animation: ctaCopyIn 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.05s forwards,
+             ctaTagPulse 3.2s ease-in-out 0.9s infinite;
+}
+
+body.speego-elementor-page main[data-nav="knowledge"] .speego-k-cta.is-inview .speego-k-cta-title {
+  animation: ctaCopyIn 0.85s cubic-bezier(0.16, 1, 0.3, 1) 0.18s forwards;
+}
+
+body.speego-elementor-page main[data-nav="knowledge"] .speego-k-cta.is-inview .speego-k-cta-desc {
+  animation: ctaCopyIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.32s forwards;
+}
+
+body.speego-elementor-page main[data-nav="knowledge"] .speego-k-cta.is-inview .speego-k-cta-hotline {
+  animation: ctaCopyIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.46s forwards,
+             ctaHotlineGlow 2.8s ease-in-out 1.2s infinite;
+}
+
+body.speego-elementor-page main[data-nav="knowledge"] .speego-k-cta-card {
+  background: #FFFFFF !important;
+  border: 1px solid #E2E8F0 !important;
+  border-radius: 14px !important;
+  padding: 32px 36px !important;
+  box-shadow: 0 16px 40px rgba(4, 36, 61, 0.18) !important;
+}
+
+body.speego-elementor-page main[data-nav="knowledge"] form.e-form-base {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+body.speego-elementor-page main[data-nav="knowledge"] form.e-form-base > .e-con:first-child {
+  display: grid !important;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px 16px;
+  width: 100%;
+}
+
+body.speego-elementor-page main[data-nav="knowledge"] form.e-form-base label {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 11.5px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.03em !important;
+  text-transform: uppercase !important;
+  color: var(--k-navy) !important;
+}
+
+body.speego-elementor-page main[data-nav="knowledge"] form.e-form-base input,
+body.speego-elementor-page main[data-nav="knowledge"] form.e-form-base textarea {
+  width: 100%;
+  box-sizing: border-box;
+  border: 1.5px solid #CBD5E1 !important;
+  border-radius: 9px !important;
+  padding: 11px 14px !important;
+  background: #F8FAFC !important;
+  color: #1E293B !important;
+  font-family: Inter, var(--speego-font), sans-serif !important;
+  font-size: 13.5px !important;
+  line-height: 1.4 !important;
+  outline: none;
+  transition: border-color 0.28s var(--k-ease), box-shadow 0.28s var(--k-ease), background 0.28s var(--k-ease);
+}
+
+body.speego-elementor-page main[data-nav="knowledge"] form.e-form-base input {
+  height: 46px;
+}
+
+body.speego-elementor-page main[data-nav="knowledge"] form.e-form-base textarea {
+  min-height: 80px;
+  height: auto;
+  resize: vertical;
+}
+
+body.speego-elementor-page main[data-nav="knowledge"] form.e-form-base input::placeholder,
+body.speego-elementor-page main[data-nav="knowledge"] form.e-form-base textarea::placeholder {
+  color: #94A3B8;
+  font-size: 13px;
+}
+
+body.speego-elementor-page main[data-nav="knowledge"] form.e-form-base input:focus,
+body.speego-elementor-page main[data-nav="knowledge"] form.e-form-base textarea:focus {
+  border-color: var(--k-orange) !important;
+  background: #FFFFFF !important;
+  box-shadow: 0 0 0 3px rgba(240, 88, 40, 0.15);
+}
+
+body.speego-elementor-page main[data-nav="knowledge"] form.e-form-base button[type="submit"] {
+  width: 100%;
+  height: 48px;
+  margin-top: 4px;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 10px !important;
+  background: var(--k-orange) !important;
+  color: #FFFFFF !important;
+  font-family: Inter, var(--speego-font), sans-serif !important;
+  font-size: 14.5px !important;
+  font-weight: 800 !important;
+  cursor: pointer;
+  transition: background 0.28s var(--k-ease), transform 0.28s var(--k-ease), box-shadow 0.28s var(--k-ease);
+}
+
+body.speego-elementor-page main[data-nav="knowledge"] form.e-form-base button[type="submit"]:hover,
+body.speego-elementor-page main[data-nav="knowledge"] form.e-form-base button[type="submit"]:focus-visible {
+  background: var(--k-orange-hover) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(240, 88, 40, 0.35);
+}
+
+body.speego-elementor-page main[data-nav="knowledge"] form.e-form-base p {
+  margin-top: 10px;
+  font-size: 11.5px !important;
+  line-height: 1.45 !important;
+  color: #94A3B8 !important;
+  text-align: center;
+}
+
+@media (max-width: 1024px) {
+  body.speego-elementor-page main[data-nav="knowledge"] h1 {
+    font-size: 2.4rem !important;
+  }
+}
+
+@media (max-width: 768px) {
+  body.speego-elementor-page main[data-nav="knowledge"] h1 {
+    font-size: 2rem !important;
+  }
+
+  body.speego-elementor-page main[data-nav="knowledge"] .speego-k-cta {
+    flex-direction: column !important;
+    align-items: stretch;
+  }
+
+  body.speego-elementor-page main[data-nav="knowledge"] form.e-form-base > .e-con:first-child {
+    grid-template-columns: 1fr;
+  }
+
+  body.speego-elementor-page main[data-nav="knowledge"] .speego-k-cta-card {
+    padding: 24px 20px !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body.speego-elementor-page main[data-nav="knowledge"] .speego-k-cta-tag,
+  body.speego-elementor-page main[data-nav="knowledge"] .speego-k-cta-title,
+  body.speego-elementor-page main[data-nav="knowledge"] .speego-k-cta-desc,
+  body.speego-elementor-page main[data-nav="knowledge"] .speego-k-cta-hotline,
+  body.speego-elementor-page main[data-nav="knowledge"] .speego-k-card,
+  body.speego-elementor-page main[data-nav="knowledge"] .speego-k-more,
+  body.speego-elementor-page main[data-nav="knowledge"] summary.e-accordion-item-header-base::after {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+    text-shadow: none;
+  }
 }

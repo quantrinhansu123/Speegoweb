@@ -30,7 +30,7 @@
 
   <!-- Shared Stylesheets -->
   <link rel="stylesheet" href="css/style.css?v=1.2.6">
-  <link rel="stylesheet" href="css/speego-custom.css?v=1.2.6">
+  <link rel="stylesheet" href="css/speego-custom.css?v=1.2.7">
   <style id="speego-consult-video-crop">
     .speego-consult-video-frame > .speego-consult-video {
       object-fit: cover !important;
@@ -809,11 +809,15 @@
         }
         try {
           const headerContainer = document.getElementById('header-container');
+          const footerContainer = document.getElementById('footer-container');
           const hasServerHeader = !!(headerContainer
             && headerContainer.dataset.speegoPrerenderedHeader
             && headerContainer.querySelector('#masthead'));
+          const hasServerFooter = !!(footerContainer
+            && footerContainer.dataset.speegoPrerenderedFooter
+            && footerContainer.querySelector('#colophon'));
           let header = hasServerHeader ? headerContainer.innerHTML : null;
-          let footer = null;
+          let footer = hasServerFooter ? footerContainer.innerHTML : null;
           let ctaForm = null;
 
           // The server-rendered header can work while the footer and CTA load.
@@ -825,7 +829,7 @@
           if (window.SPEEGO_WP_HOME) {
             const [hdrData, ftrData, ctaData] = await Promise.all([
               hasServerHeader ? null : fetchEditableContent({ partial: 'header-' + currentLang }),
-              fetchEditableContent({ partial: 'footer-' + currentLang }),
+              hasServerFooter ? null : fetchEditableContent({ partial: 'footer-' + currentLang }),
               fetchEditableContent({ partial: 'cta-' + currentLang })
             ]);
             if (hdrData && hdrData.content) header = hdrData.content;
@@ -842,10 +846,8 @@
           cache.ctaFormHtml = ctaForm;
 
           // Inject into DOM
-          const footerContainer = document.getElementById('footer-container');
-
           if (headerContainer && !hasServerHeader) headerContainer.innerHTML = header;
-          if (footerContainer) footerContainer.innerHTML = footer;
+          if (footerContainer && !hasServerFooter) footerContainer.innerHTML = footer;
 
           // Parse CTA Form templates into memory
           parseCtaTemplates(ctaForm);
@@ -957,6 +959,7 @@
           policyToggle: 'Chính sách',
           policyPrivacy: 'Chính sách bảo mật',
           policyTerms: 'Điều khoản & Điều kiện',
+          footerMove: "LET'S MOVE FORWARD",
           footerTagline: 'Đơn vị sản xuất và cung cấp dịch vụ logistics toàn cầu. Chuyên tuyến Trung Quốc và Việt Nam đi Mỹ, Canada, Úc. Tối ưu chi phí, minh bạch hành trình.',
           footerServicesTitle: 'Dịch Vụ Chính',
           footerServiceSourcing: 'Sourcing & QC',
@@ -1021,6 +1024,7 @@
           policyToggle: 'Policy',
           policyPrivacy: 'Privacy Policy',
           policyTerms: 'Terms & Conditions',
+          footerMove: "LET'S MOVE FORWARD",
           footerTagline: 'Global manufacturer and supply chain logistics provider. Specializing in China & Vietnam routes to US, Canada, and Australia.',
           footerServicesTitle: 'Core Services',
           footerServiceSourcing: 'Sourcing & QC',
@@ -1085,6 +1089,7 @@
           policyToggle: 'Políticas',
           policyPrivacy: 'Política de Privacidad',
           policyTerms: 'Términos y Condiciones',
+          footerMove: 'AVANCEMOS JUNTOS',
           footerTagline: 'Proveedor global de servicios de manufactura y logística. Especialistas en rutas China y Vietnam a EE.UU., Canadá y Australia.',
           footerServicesTitle: 'Servicios Principales',
           footerServiceSourcing: 'Sourcing y Control de Calidad',
@@ -1158,6 +1163,7 @@
           policy_label: t.policyToggle,
           policy_privacy: t.policyPrivacy,
           policy_terms: t.policyTerms,
+          footer_move: t.footerMove,
           footer_tagline: t.footerTagline,
           footer_services_title: t.footerServicesTitle,
           footer_service_sourcing: t.footerServiceSourcing,

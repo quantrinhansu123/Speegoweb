@@ -33,6 +33,8 @@
       track_open_ups: 'Check on UPS ↗',
       nav_sourcing: 'Sourcing',
       nav_routes: 'Logistics',
+      nav_origin_china: 'Origin: China',
+      nav_origin_vietnam: 'Origin: Vietnam',
       nav_fulfillment: 'Fulfillment',
       nav_import_export: 'Import & Export',
       nav_knowledge: 'Knowledge',
@@ -522,13 +524,13 @@
       news2_cat: 'Air Freight', news2_title: 'Fast-Track Cosmetics & E-Commerce Clearance in the US', news2_desc: 'Understanding FDA prior notice, Section 321 exemptions, and expedited air customs declarations for rapid stock turn.',
       news3_cat: 'Factory Sourcing', news3_title: 'Navigating Low MOQs & Production Audits in Vietnam', news3_desc: 'How small and mid-sized e-commerce enterprises can leverage Vietnam’s growing manufacturing hub for high-yield margins.',
       news4_cat: 'Technology', news4_title: 'The Power of Real-time Order Management Systems (OMS)', news4_desc: 'Why end-to-end milestone visibility across maritime cargo and trucking is transforming modern supply chain resilience.',
-      news_read: 'Explore Knowledge'
+      news_read: 'Read Analysis'
     },
 
     vi: {
       // Nav
-      nav_home: 'Homepage',
-      nav_about: 'About',
+      nav_home: 'Trang chủ',
+      nav_about: 'Về SpeeGo',
       nav_services: 'Dịch vụ',
       nav_process: 'Quy trình 8 bước',
       nav_why: 'Vì sao chọn SpeeGo',
@@ -546,11 +548,13 @@
       track_demo_disclaimer: 'Hành trình minh họa · không phải dữ liệu UPS thực tế',
       track_demo_title: 'Hành trình minh họa',
       track_open_ups: 'Tra cứu trên UPS ↗',
-      nav_sourcing: 'Sourcing',
-      nav_routes: 'Logistics',
-      nav_fulfillment: 'Fulfillment',
-      nav_import_export: 'Import & Export',
-      nav_knowledge: 'Knowledge',
+      nav_sourcing: 'Tìm nguồn hàng',
+      nav_routes: 'Vận chuyển',
+      nav_origin_china: 'Xuất phát: Trung Quốc',
+      nav_origin_vietnam: 'Xuất phát: Việt Nam',
+      nav_fulfillment: 'Kho vận',
+      nav_import_export: 'Xuất nhập khẩu',
+      nav_knowledge: 'Kiến thức',
       sourcing_eyebrow: 'TÌM NGUỒN HÀNG & KIỂM SOÁT CHẤT LƯỢNG',
       sourcing_title_main: 'Đúng nhà cung cấp.',
       sourcing_title_accent: 'An tâm từng lô hàng.',
@@ -1035,13 +1039,13 @@
       news2_cat: 'Hàng không', news2_title: 'Thông quan nhanh mỹ phẩm và hàng e-commerce tại Mỹ', news2_desc: 'Các lưu ý về FDA, miễn trừ Section 321 và quy trình khai báo hàng không nhanh chóng.',
       news3_cat: 'Tìm nguồn nhà máy', news3_title: 'Tối ưu MOQ và kiểm định sản xuất tại Việt Nam', news3_desc: 'Cách doanh nghiệp khai thác năng lực sản xuất Việt Nam với quy trình kiểm định minh bạch.',
       news4_cat: 'Công nghệ', news4_title: 'Sức mạnh của hệ thống quản lý đơn hàng OMS thời gian thực', news4_desc: 'Theo dõi toàn bộ hành trình hàng hóa giúp chuỗi cung ứng vận hành linh hoạt và chính xác hơn.',
-      news_read: 'Xem kho kiến thức'
+      news_read: 'Xem phân tích'
     },
 
     es: {
       // Nav
-      nav_home: 'Homepage',
-      nav_about: 'About',
+      nav_home: 'Inicio',
+      nav_about: 'Acerca de',
       nav_services: 'Servicios',
       nav_process: 'Proceso 8 Pasos',
       nav_why: 'Por qué SpeeGo',
@@ -1059,11 +1063,13 @@
       track_demo_disclaimer: 'Recorrido de muestra · no son datos en vivo de UPS',
       track_demo_title: 'Recorrido de muestra',
       track_open_ups: 'Consultar en UPS ↗',
-      nav_sourcing: 'Sourcing',
-      nav_routes: 'Logistics',
+      nav_sourcing: 'Abastecimiento',
+      nav_routes: 'Logística',
+      nav_origin_china: 'Origen: China',
+      nav_origin_vietnam: 'Origen: Vietnam',
       nav_fulfillment: 'Fulfillment',
-      nav_import_export: 'Import & Export',
-      nav_knowledge: 'Knowledge',
+      nav_import_export: 'Importación y exportación',
+      nav_knowledge: 'Conocimientos',
       sourcing_eyebrow: 'ABASTECIMIENTO Y CONTROL DE CALIDAD',
       sourcing_title_main: 'El proveedor adecuado.',
       sourcing_title_accent: 'Confianza en cada envío.',
@@ -1548,7 +1554,7 @@ stat_delivery: 'Entrega a Tiempo',
       news2_cat: 'Carga aérea', news2_title: 'Despacho rápido de cosméticos y e-commerce en EE. UU.', news2_desc: 'Aspectos clave de FDA y despacho aduanero acelerado.',
       news3_cat: 'Abastecimiento', news3_title: 'MOQ y auditorías de producción en Vietnam', news3_desc: 'Cómo aprovechar la producción vietnamita con control de calidad.',
       news4_cat: 'Tecnología', news4_title: 'El poder del OMS en tiempo real', news4_desc: 'Visibilidad integral para una cadena de suministro más ágil.',
-      news_read: 'Explorar conocimiento'
+      news_read: 'Leer análisis'
     }
   };
 
@@ -1945,11 +1951,18 @@ stat_delivery: 'Entrega a Tiempo',
     cookie_accept: 'Accept all'
   });
 
+  Object.assign(i18nData.vi, {
+    nav_testimonials: 'Đánh giá',
+    policy_label: 'Chính sách',
+    policy_privacy: 'Chính sách bảo mật',
+    policy_terms: 'Điều khoản & Điều kiện'
+  });
+
   Object.assign(i18nData.es, {
     nav_testimonials: 'Opiniones',
     policy_label: 'Políticas',
-    policy_privacy: 'Política de privacidad',
-    policy_terms: 'Términos y condiciones',
+    policy_privacy: 'Política de Privacidad',
+    policy_terms: 'Términos y Condiciones',
     form_consult_title: 'Solicita una consulta gratuita',
     form_consult_note: 'Tu información se utiliza únicamente para fines de asesoría.',
     form_invite: 'Completa el formulario · respuesta en 2 horas',

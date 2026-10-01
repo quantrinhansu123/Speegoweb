@@ -199,8 +199,7 @@ if (in_array($routeHash, ['#/home', '#/en/home', '#/es/inicio'], true)) {
     ]);
     $homepageHtml = '';
     if ($homepagePosts) {
-        $homepageHtml = trim($homepagePosts[0]->post_content);
-        $homepageHtml = preg_replace('#<!--\s*/?wp:html\s*-->#i', '', $homepageHtml);
+        $homepageHtml = speego_render_editable_content($homepagePosts[0]);
     } else {
         $homeFallbackMap = [
             '#/home' => __DIR__ . '/explore/pages/home/vi-home.html',
@@ -398,8 +397,7 @@ if (in_array($routeHash, ['#/about-us', '#/en/about-us', '#/es/about-us', '#/abo
 
     $aboutHtml = '';
     if ($aboutPosts && !empty($aboutPosts[0]->post_content)) {
-        $aboutHtml = trim($aboutPosts[0]->post_content);
-        $aboutHtml = preg_replace('#<!--\s*/?wp:html\s*-->#i', '', $aboutHtml);
+        $aboutHtml = speego_render_editable_content($aboutPosts[0]);
     } elseif (is_readable($currentMeta['file'])) {
         $aboutHtml = trim(file_get_contents($currentMeta['file']));
     }
@@ -431,8 +429,7 @@ if (strpos($entry, 'data-speego-prerendered-route=') === false) {
         ]);
         $pageHtml = '';
         if ($pagePosts && !empty($pagePosts[0]->post_content)) {
-            $pageHtml = trim($pagePosts[0]->post_content);
-            $pageHtml = preg_replace('#<!--\\s*/?wp:html\\s*-->#i', '', $pageHtml);
+            $pageHtml = speego_render_editable_content($pagePosts[0]);
         } else {
             $pageFile = __DIR__ . '/explore/' . $pageDef['file'];
             if (is_readable($pageFile)) {
@@ -478,6 +475,14 @@ if ($headerHtml !== '') {
         $entry
     );
 }
+$footerHtml = speego_shared_partial_html('footer', $headerLanguage);
+if ($footerHtml !== '') {
+    $entry = str_replace(
+        '<div id="footer-container"></div>',
+        '<div id="footer-container" data-speego-prerendered-footer="1">' . $footerHtml . '</div>',
+        $entry
+    );
+}
 
 $publicRoutes = speego_public_route_urls();
 $publicRoutesJson = wp_json_encode($publicRoutes, JSON_UNESCAPED_SLASHES | JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_AMP | JSON_HEX_QUOT);
@@ -488,4 +493,28 @@ $bridge = '<base href="' . $base . '"><script>window.SPEEGO_WP_HOME=' . $home
     . ';window.speegoInitialRoute=' . $route . ';</script>'
     . '<script src="' . $navigationScript . '"></script>';
 $entry = preg_replace('/<head>/i', '<head>' . $bridge, $entry, 1);
+
+// The explore shell is a static HTML document, so it has no native
+// wp_head/wp_footer calls. Inject the WordPress hooks explicitly so Elementor
+// can enqueue its CSS, JavaScript, and frontend settings on editable pages.
+ob_start();
+wp_head();
+$wpHead = ob_get_clean();
+ob_start();
+wp_body_open();
+$wpBodyOpen = ob_get_clean();
+ob_start();
+wp_footer();
+$wpFooter = ob_get_clean();
+
+$entry = str_replace('</head>', $wpHead . '</head>', $entry);
+$entry = preg_replace_callback(
+    '/(<body\b[^>]*>)/i',
+    function ($matches) use ($wpBodyOpen) {
+        return $matches[1] . $wpBodyOpen;
+    },
+    $entry,
+    1
+);
+$entry = str_replace('</body>', $wpFooter . '</body>', $entry);
 echo $entry;

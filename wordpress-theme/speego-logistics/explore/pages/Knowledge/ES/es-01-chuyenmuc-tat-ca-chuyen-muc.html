@@ -5,6 +5,7 @@
      data-nav="knowledge"
      data-breadcrumb='[{"label":"Inicio","href":"#/es/inicio"},{"label":"Centro de Conocimiento","href":"#/es/knowledge"}]'
      ========================================================================== -->
+<nav class="breadcrumb-section" aria-label="Miga de pan"><div class="container"><div class="breadcrumb-list"><a href="/es/" class="breadcrumb-link">Inicio</a><span class="breadcrumb-sep">/</span><span class="breadcrumb-current">Centro de Conocimiento</span></div></div></nav>
 <div class="page-container" 
      data-page="knowledge-es" 
      data-nav="knowledge" 
@@ -280,12 +281,41 @@
   </section>
 
   <!-- 4. CTA FORM BAND -->
-  <div data-component="cta-form" 
-       data-variant="band" 
-       data-tag="AVANCEMOS JUNTOS"
-       data-heading="Comience con lo que<br>su negocio necesita." 
-       data-subtext="Comparta sus planes comerciales y especificaciones de carga. SpeeGo diseñará la solución logística y de abastecimiento óptima para usted." 
-       data-phone="(+84) 906 828 898 ↗">
-  </div>
+  <section class="cta-form-band-section" id="contact-form">
+    <div class="container cta-form-band-grid">
+      <div class="cta-band-left">
+        <span class="section-tag">AVANCEMOS JUNTOS</span>
+        <h2 class="section-title section-title-white">Comience con lo que<br>su negocio necesita.</h2>
+        <p class="cta-band-desc">Comparta los detalles de sus productos y planes comerciales. SpeeGo diseñará la solución ideal para usted.</p>
+        <a href="tel:+84906828898" class="cta-hotline-link">(+84) 906 828 898 ↗</a>
+      </div>
+      <div class="cta-band-right">
+        <div class="consult-card-white">
+          <form class="consult-form" onsubmit="handleConsultSubmit(event)">
+            <div class="form-row-2col">
+              <div class="form-group">
+                <label class="form-label" for="band_fullName">Nombre completo</label>
+                <input type="text" id="band_fullName" name="fullName" class="form-control" placeholder="Su nombre y apellido" required>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="band_email">Correo electrónico</label>
+                <input type="email" id="band_email" name="email" class="form-control" placeholder="usted@empresa.com" required>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="band_phone">Número de teléfono</label>
+              <input type="tel" id="band_phone" name="phone" class="form-control" placeholder="Teléfono de contacto" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="band_message">Consulta de servicios</label>
+              <textarea id="band_message" name="message" class="form-control" placeholder="Tipo de producto, volumen estimado, origen y destino..."></textarea>
+            </div>
+            <button type="submit" class="btn-orange btn-submit">Enviar consulta comercial ↗</button>
+            <p class="form-security-note">Abre su aplicación de correo con el mensaje preparado. Sus datos se envían únicamente al hacer clic en Enviar en su cliente de correo.</p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
 
 </div>

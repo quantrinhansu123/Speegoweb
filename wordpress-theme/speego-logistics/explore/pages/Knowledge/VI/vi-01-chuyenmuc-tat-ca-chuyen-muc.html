@@ -5,6 +5,7 @@
      data-nav="knowledge"
      data-breadcrumb='[{"label":"Trang chủ","href":"#/home"},{"label":"Kho kiến thức","href":"#/knowledge"}]'
      ========================================================================== -->
+<nav class="breadcrumb-section" aria-label="Đường dẫn trang"><div class="container"><div class="breadcrumb-list"><a href="/vi/" class="breadcrumb-link">Trang chủ</a><span class="breadcrumb-sep">/</span><span class="breadcrumb-current">Kho kiến thức</span></div></div></nav>
 <div class="page-container" 
      data-page="knowledge" 
      data-nav="knowledge" 
@@ -284,12 +285,41 @@
   </section>
 
   <!-- 4. CTA FORM CUỐI TRANG: GỌI PARTIAL BIẾN THỂ "band" -->
-  <div data-component="cta-form" 
-       data-variant="band" 
-       data-tag="LET'S MOVE FORWARD"
-       data-heading="Bắt đầu từ nhu cầu<br>của bạn." 
-       data-subtext="Chia sẻ về hàng hóa và kế hoạch của doanh nghiệp. SpeeGo sẽ tư vấn giải pháp phù hợp." 
-       data-phone="(+84) 906 828 898 ↗">
-  </div>
+  <section class="cta-form-band-section" id="contact-form">
+    <div class="container cta-form-band-grid">
+      <div class="cta-band-left">
+        <span class="section-tag">LET'S MOVE FORWARD</span>
+        <h2 class="section-title section-title-white">Bắt đầu từ nhu cầu của bạn.</h2>
+        <p class="cta-band-desc">Chia sẻ về hàng hóa và kế hoạch của doanh nghiệp. SpeeGo sẽ tư vấn giải pháp phù hợp.</p>
+        <a href="tel:+84906828898" class="cta-hotline-link">(+84) 906 828 898 ↗</a>
+      </div>
+      <div class="cta-band-right">
+        <div class="consult-card-white">
+          <form class="consult-form" onsubmit="handleConsultSubmit(event)">
+            <div class="form-row-2col">
+              <div class="form-group">
+                <label class="form-label" for="band_fullName">Họ và tên</label>
+                <input type="text" id="band_fullName" name="fullName" class="form-control" placeholder="Nguyễn Văn An" required>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="band_email">Email</label>
+                <input type="email" id="band_email" name="email" class="form-control" placeholder="ban@congty.com" required>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="band_phone">Số điện thoại</label>
+              <input type="tel" id="band_phone" name="phone" class="form-control" placeholder="Số điện thoại liên hệ" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="band_message">Nhu cầu tư vấn</label>
+              <textarea id="band_message" name="message" class="form-control" placeholder="Loại hàng, số lượng, điểm đi và điểm đến..."></textarea>
+            </div>
+            <button type="submit" class="btn-orange btn-submit">Soạn email tư vấn ↗</button>
+            <p class="form-security-note">Mở ứng dụng email với nội dung đã điền. Thông tin chỉ được gửi đi khi bạn bấm Gửi trong email.</p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
 
 </div>
