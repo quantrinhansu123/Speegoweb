@@ -257,7 +257,7 @@ function speego_seed_all_pages($force = false)
 
 add_action('after_switch_theme', function () {
     speego_seed_all_pages(false);
-    update_option('speego_theme_content_version', '1.2.0');
+    update_option('speego_theme_content_version', '1.2.25');
 });
 
 /**
@@ -482,7 +482,7 @@ function speego_render_editable_content($contentPost)
 // A theme ZIP replacement does not activate the theme again. Refresh the
 // theme-managed pages once on the first admin request after this upgrade.
 add_action('admin_init', function () {
-    if (get_option('speego_theme_content_version') === '1.2.0') {
+    if (get_option('speego_theme_content_version') === '1.2.25') {
         return;
     }
     foreach (speego_get_pages_definitions() as $route => $definition) {
@@ -492,7 +492,7 @@ add_action('admin_init', function () {
         }
     }
     speego_seed_all_pages(true);
-    update_option('speego_theme_content_version', '1.2.0');
+    update_option('speego_theme_content_version', '1.2.25');
 });
 
 /**

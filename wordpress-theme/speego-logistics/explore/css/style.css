@@ -9865,6 +9865,18 @@ body.speego-seo-page:has([data-nav="knowledge"]) .cta-form-band-section > .conta
     margin-left: auto;
     margin-right: 0;
   }
+
+  /* Fixed PC intro artwork with a balanced gap to the copy */
+  .page-about .about-intro-grid {
+    grid-template-columns: 685px minmax(0, 1fr);
+    gap: clamp(40px, 4vw, 64px);
+  }
+
+  .page-about .about-intro-photo {
+    width: 685px;
+    height: 465px;
+    object-fit: cover;
+  }
 }
 
 @media (max-width: 1024px) {
