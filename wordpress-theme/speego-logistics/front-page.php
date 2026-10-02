@@ -486,7 +486,7 @@ if ($footerHtml !== '') {
 $publicRoutes = speego_public_route_urls();
 $publicRoutesJson = wp_json_encode($publicRoutes, JSON_UNESCAPED_SLASHES | JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_AMP | JSON_HEX_QUOT);
 
-$navigationScript = esc_url(get_template_directory_uri() . '/explore/js/wp-navigation.js?ver=1.2.24');
+$navigationScript = esc_url(get_template_directory_uri() . '/explore/js/wp-navigation.js?ver=1.2.25');
 $bridge = '<base href="' . $base . '"><script>window.SPEEGO_WP_HOME=' . $home
     . ';window.SPEEGO_PUBLIC_ROUTES=' . $publicRoutesJson
     . ';window.speegoInitialRoute=' . $route . ';</script>'
