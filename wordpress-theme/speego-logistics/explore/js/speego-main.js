@@ -3793,13 +3793,6 @@ stat_delivery: 'Entrega a Tiempo',
       if (menuToggle) menuToggle.setAttribute('aria-expanded', 'false');
     }
 
-    if (menuToggle && header) {
-      menuToggle.addEventListener('click', function () {
-        var open = header.classList.toggle('is-menu-open');
-        menuToggle.setAttribute('aria-expanded', String(open));
-      });
-    }
-
     navLinks.forEach(function (link) {
       link.addEventListener('click', function (event) {
         var href = link.getAttribute('href');

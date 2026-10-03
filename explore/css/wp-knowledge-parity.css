@@ -1,0 +1,210 @@
+/* Knowledge HTML keeps the reference styles; native Elementor containers use
+   the same geometry without depending on the generated document stylesheet. */
+body.speego-elementor-page main[data-nav="knowledge"] .elementor {
+  display: block !important;
+  width: 100% !important;
+  max-width: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+body.speego-elementor-page main[data-nav="knowledge"] .elementor > .e-con:has(> h1) {
+  display: block !important;
+  width: 100% !important;
+  max-width: 1320px !important;
+  margin: 0 auto !important;
+  padding: clamp(48px, 5vw, 72px) 24px !important;
+}
+
+body.speego-elementor-page main[data-nav="knowledge"] .elementor > .e-con:has(> h1) > span {
+  display: inline-block !important;
+  margin: 0 0 8px !important;
+  font: 700 11.5px/1.6 var(--speego-font) !important;
+  letter-spacing: .08em !important;
+  color: #F05828 !important;
+}
+
+body.speego-elementor-page main[data-nav="knowledge"] .elementor h1 {
+  width: auto !important;
+  max-width: 18ch !important;
+}
+
+body.speego-elementor-page main[data-nav="knowledge"] .elementor h1 + p {
+  margin: 0 0 1.1em !important;
+  max-width: 52ch !important;
+}
+
+body.speego-elementor-page main[data-nav="knowledge"] .elementor :is(.e-con, .e-con-inner):has(> .speego-k-card) {
+  display: grid !important;
+  width: 100% !important;
+  max-width: 1320px !important;
+  margin: 0 auto !important;
+  padding: clamp(48px, 5vw, 72px) 24px calc(clamp(48px, 5vw, 72px) + 56px) !important;
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  grid-template-rows: auto !important;
+  grid-auto-flow: row !important;
+  gap: 24px !important;
+  align-items: stretch !important;
+  justify-items: stretch !important;
+}
+
+body.speego-elementor-page main[data-nav="knowledge"] .speego-k-card {
+  display: flex !important;
+  flex-direction: column !important;
+  width: 100% !important;
+  max-width: none !important;
+  min-width: 0 !important;
+  height: 100% !important;
+  margin: 0 !important;
+  padding: 28px 24px 24px !important;
+  gap: 0 !important;
+  grid-column: auto !important;
+  grid-row: auto !important;
+  align-self: stretch !important;
+}
+
+body.speego-elementor-page main[data-nav="knowledge"] .speego-k-head {
+  display: flex !important;
+  flex-direction: row !important;
+  justify-content: space-between !important;
+  align-items: flex-start !important;
+  gap: 12px !important;
+  margin: 0 0 12px !important;
+}
+
+body.speego-elementor-page main[data-nav="knowledge"] .speego-k-title {
+  flex: 0 1 auto !important;
+  min-width: 0 !important;
+  min-height: 0 !important;
+  margin: 0 0 .5em !important;
+}
+
+body.speego-elementor-page main[data-nav="knowledge"] .speego-k-badge {
+  flex: 0 0 auto !important;
+  margin: 2px 0 0 !important;
+  letter-spacing: .02em !important;
+}
+
+body.speego-elementor-page main[data-nav="knowledge"] .speego-k-desc {
+  min-height: 4.8em !important;
+  margin: 0 0 20px !important;
+}
+
+body.speego-elementor-page main[data-nav="knowledge"] .speego-k-list {
+  display: flex !important;
+  flex-direction: column !important;
+  flex: 1 1 auto !important;
+  gap: 12px !important;
+  min-height: 0 !important;
+  margin: 0 0 24px !important;
+}
+
+body.speego-elementor-page main[data-nav="knowledge"] .speego-k-row {
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: nowrap !important;
+  align-items: flex-start !important;
+  gap: 10px !important;
+  height: auto !important;
+  min-height: 0 !important;
+  font-size: .88rem !important;
+  line-height: 1.45 !important;
+}
+
+body.speego-elementor-page main[data-nav="knowledge"] :is(.speego-k-dot-on, .speego-k-dot-off) {
+  margin-top: 3px !important;
+}
+
+body.speego-elementor-page main[data-nav="knowledge"] .speego-k-footer {
+  display: block !important;
+  margin-top: auto !important;
+  padding-top: 14px !important;
+}
+
+body.speego-elementor-page main[data-nav="knowledge"] .speego-k-more {
+  display: inline-flex !important;
+  align-items: center !important;
+  margin: 3px 0 0 !important;
+}
+
+body.speego-elementor-page main[data-nav="knowledge"] .elementor > .e-con:has(.e-accordion-base) {
+  width: 100% !important;
+  max-width: none !important;
+  padding: clamp(48px, 5vw, 72px) 24px !important;
+  border-top: 1px solid #D5DEE8 !important;
+}
+
+body.speego-elementor-page main[data-nav="knowledge"] .elementor > .e-con:has(.e-accordion-base) > * {
+  width: 100% !important;
+  max-width: 1272px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+body.speego-elementor-page main[data-nav="knowledge"] details.e-accordion-item-base:not(:last-child) {
+  border-bottom: 1px solid #D5DEE8 !important;
+}
+
+body.speego-elementor-page main[data-nav="knowledge"] summary.e-accordion-item-header-base .e-paragraph-base {
+  font-size: 1.05rem !important;
+  line-height: 1.4 !important;
+}
+
+body.speego-elementor-page main[data-nav="knowledge"] .speego-k-cta {
+  width: 100% !important;
+  margin: 0 auto !important;
+  padding: clamp(48px, 5vw, 72px) 24px !important;
+}
+
+body.speego-elementor-page main[data-nav="knowledge"] .speego-k-cta-copy {
+  flex: .95 1 0 !important;
+  min-width: 0 !important;
+}
+
+body.speego-elementor-page main[data-nav="knowledge"] .speego-k-cta-card {
+  flex: 1.05 1 0 !important;
+  min-width: 0 !important;
+}
+
+/* The shared Elementor heading rule also reaches HTML widgets. Keep the
+   imported CTA heading white and at the reference size on its navy surface. */
+body.speego-elementor-page main[data-nav="knowledge"] .cta-band-left .section-title {
+  max-width: 12ch !important;
+  margin: 0 !important;
+  font-size: clamp(2.85rem, 5.5vw, 4.25rem) !important;
+  font-weight: 800 !important;
+  line-height: 1.05 !important;
+  letter-spacing: -.03em !important;
+  color: #fff !important;
+}
+
+body.speego-elementor-page main[data-nav="knowledge"] .speego-k-cta-card :is(input, textarea) {
+  text-align: left !important;
+}
+
+@media (max-width: 1024px) {
+  body.speego-elementor-page main[data-nav="knowledge"] .elementor :is(.e-con, .e-con-inner):has(> .speego-k-card) {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+}
+
+@media (max-width: 768px) {
+  body.speego-elementor-page main[data-nav="knowledge"] .elementor > .e-con:has(> h1),
+  body.speego-elementor-page main[data-nav="knowledge"] .elementor > .e-con:has(.e-accordion-base),
+  body.speego-elementor-page main[data-nav="knowledge"] .speego-k-cta {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+
+  body.speego-elementor-page main[data-nav="knowledge"] .elementor :is(.e-con, .e-con-inner):has(> .speego-k-card) {
+    grid-template-columns: minmax(0, 1fr) !important;
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+
+  body.speego-elementor-page main[data-nav="knowledge"] .speego-k-cta-copy,
+  body.speego-elementor-page main[data-nav="knowledge"] .speego-k-cta-card {
+    flex: 0 1 auto !important;
+    width: 100% !important;
+  }
+}

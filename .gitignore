@@ -39,3 +39,6 @@ scratch/*.jpeg
 scratch/*.html
 scratch/*.py
 scratch/chrome_profile/
+test-*.png
+*.sha256
+

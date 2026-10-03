@@ -1,0 +1,26 @@
+/* The imported Sourcing document owns its gutters; Elementor must not add a
+   second boxed container around it. Scoped to this legacy document only. */
+body:has(.page-sourcing) #app-main > .elementor > .e-con:has(.page-sourcing),
+body:has(.page-sourcing) #app-main .e-con-inner:has(.page-sourcing) {
+  width: 100%;
+  max-width: none;
+  padding: 0;
+  margin: 0;
+}
+body:has(.page-sourcing) .elementor-widget-text-editor:has(.page-sourcing) {
+  margin: 0;
+}
+body:has(.page-sourcing) #app-main .breadcrumb-section { display: none; }
+body:has(.page-sourcing) #colophon {
+  font-size: 13px;
+  line-height: 1.6;
+  padding-top: 64px;
+}
+body:has(.page-sourcing) .speego-footer-tagline {
+  font-size: 13.5px;
+  line-height: 1.7;
+  max-width: 380px;
+}
+body:has(.page-sourcing) .elementor .consult-form .form-security-note {
+  margin: 0;
+}

@@ -825,22 +825,72 @@ img {
     border-bottom: 1px solid #eef2f5;
   }
 
+  .speego-nav-has-sub > .speego-nav-link {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    width: 100% !important;
+    cursor: pointer !important;
+  }
+
+  .speego-nav-caret {
+    display: inline-block !important;
+    flex: 0 0 auto !important;
+    width: 12px !important;
+    height: 8px !important;
+    margin-left: auto !important;
+    opacity: 0.8 !important;
+    transition: transform 0.25s ease !important;
+    transform: rotate(0deg) !important;
+  }
+
+  .speego-nav-has-sub:hover > .speego-nav-link .speego-nav-caret,
+  .speego-nav-has-sub:focus-within > .speego-nav-link .speego-nav-caret {
+    transform: rotate(0deg) !important;
+  }
+
+  .speego-nav-has-sub.is-open > .speego-nav-link .speego-nav-caret,
+  .speego-nav-has-sub > .speego-nav-link[aria-expanded="true"] .speego-nav-caret {
+    transform: rotate(180deg) !important;
+    color: #FF6A00 !important;
+  }
+
   .speego-nav-dropdown {
     position: static !important;
     left: auto !important;
     top: auto !important;
     min-width: 0 !important;
     width: 100% !important;
-    margin: 0 0 8px !important;
-    padding: 0 0 8px 12px !important;
+    max-width: none !important;
+    margin: 0 !important;
+    padding: 0 0 6px 14px !important;
     border: 0 !important;
     border-radius: 0 !important;
     box-shadow: none !important;
     background: transparent !important;
+    display: none !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+    transform: none !important;
+  }
+
+  .speego-nav-has-sub:hover > .speego-nav-dropdown,
+  .speego-nav-has-sub:focus-within > .speego-nav-dropdown {
+    display: none !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+
+  .speego-nav-has-sub.is-open > .speego-nav-dropdown,
+  .speego-nav-has-sub > .speego-nav-link[aria-expanded="true"] + .speego-nav-dropdown,
+  .speego-nav-has-sub.is-open:hover > .speego-nav-dropdown,
+  .speego-nav-has-sub.is-open:focus-within > .speego-nav-dropdown {
+    display: block !important;
     opacity: 1 !important;
     visibility: visible !important;
     pointer-events: auto !important;
-    transform: none !important;
   }
 
   .speego-nav-dropdown::before {
@@ -848,11 +898,8 @@ img {
   }
 
   .speego-nav-dropdown-link {
-    padding: 10px 8px;
-  }
-
-  .speego-nav-caret {
-    display: none;
+    padding: 10px 12px;
+    font-size: 14px;
   }
 
   .speego-nav-item {
@@ -878,19 +925,18 @@ img {
 
   .speego-nav-cta-item {
     display: block !important;
-    margin-top: 12px !important;
-    padding-top: 12px !important;
+    margin-top: 14px !important;
+    padding-top: 14px !important;
     border-top: 1px solid #edf1f4 !important;
-    border-bottom: 0 !important;
+    border-bottom: none !important;
   }
 
   .speego-nav-cta-item .speego-header-quote-btn {
     width: 100% !important;
     min-height: 48px !important;
     height: 48px !important;
-    padding: 0 18px !important;
-    color: #fff !important;
-    justify-content: center;
+    justify-content: center !important;
+    display: inline-flex !important;
   }
 }
 
@@ -1259,7 +1305,7 @@ body:has(.page-about) #breadcrumbSection {
    -------------------------------------------------------------------------- */
 .subcat-grid-4col {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 20px;
   margin-bottom: 50px;
 }
@@ -1270,6 +1316,9 @@ body:has(.page-about) #breadcrumbSection {
   padding: 22px 20px 18px 20px;
   display: flex;
   flex-direction: column;
+  min-width: 0;
+  max-width: 100%;
+  box-sizing: border-box;
   transition: var(--transition);
 }
 
@@ -3159,20 +3208,20 @@ body:has(#speego-cookie-consent:not([hidden])) .speego-track-fab {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
   .subcat-grid-4col {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
   .featured-grid-2col {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
   }
   .cards-grid-3x2 {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
   .qc-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 32px;
   }
   .categories-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
   .footer-grid {
     grid-template-columns: 1fr 1fr;
@@ -3205,19 +3254,19 @@ body:has(#speego-cookie-consent:not([hidden])) .speego-track-fab {
     font-size: 1.65rem;
   }
   .topic-grid-3x2 {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
   }
   .subcat-grid-4col {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
   }
   .cards-grid-3x2 {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
   }
   .qc-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
   }
   .categories-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
   }
   .anchor-inner {
     grid-template-columns: repeat(2, 1fr);
@@ -3535,6 +3584,9 @@ body:has(#speego-cookie-consent:not([hidden])) .speego-track-fab {
   border: 1px solid var(--border-light);
   border-radius: 12px;
   padding: 24px 22px 20px;
+  min-width: 0;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 .subcat-card:hover {
@@ -3689,15 +3741,22 @@ body.speego-seo-page #app-main {
   body.speego-seo-page #app-main {
     padding-top: 92px;
   }
+
+  .subcat-grid-4col {
+    grid-template-columns: minmax(0, 1fr);
+  }
 }
 
 @media (max-width: 560px) {
   .subcat-grid-4col {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
   }
 
   .subcat-card {
     padding: 20px 18px;
+    min-width: 0;
+    max-width: 100%;
+    box-sizing: border-box;
   }
 
   .post-toc {

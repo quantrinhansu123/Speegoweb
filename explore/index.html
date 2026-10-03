@@ -29,8 +29,12 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,600;1,700;1,800&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
 
   <!-- Shared Stylesheets -->
-  <link rel="stylesheet" href="css/style.css?v=about_truck_full_20260930">
-  <link rel="stylesheet" href="css/speego-custom.css?v=20261003_policy_touch">
+  <link rel="stylesheet" href="../sourcing-reference/logistica/css/bootstrapb54d.css">
+  <link rel="stylesheet" href="../sourcing-reference/logistica/css/mainb54d.css">
+  <link rel="stylesheet" href="css/style.css?v=1.2.28">
+  <link rel="stylesheet" href="css/speego-custom.css?v=20261003_mobile_overflow">
+  <link rel="stylesheet" href="css/wp-home-parity.css?v=1.2.24">
+  <link rel="stylesheet" href="css/wp-header-layout.css?v=1.2.24">
   <style id="speego-consult-video-crop">
     .speego-consult-video-frame > .speego-consult-video {
       object-fit: cover !important;
@@ -44,7 +48,7 @@
   </style>
   <link rel="stylesheet" href="css/speego-process-tabs.css?v=20260926">
 
-  <script src="js/speego-page-i18n.js?v=20260926"></script>
+  <script src="js/speego-page-i18n.js?v=20261001"></script>
 
   <script>
     if (new URLSearchParams(window.location.search).has('embedded')) {
@@ -318,7 +322,7 @@
           lang: 'es'
         },
         '#/contact': {
-          file: 'pages/home/vi-home.html',
+          file: 'pages/contact/vi-contact.html',
           title: 'Liên hệ & Nhận báo giá | SpeeGo Logistics',
           nav: 'home',
           lang: 'vi'
@@ -506,7 +510,7 @@
           lang: 'en'
         },
         '#/en/contact': {
-          file: 'pages/home/en-home.html',
+          file: 'pages/contact/en-contact.html',
           title: 'Contact & Request a Quote | SpeeGo Logistics',
           nav: 'home',
           lang: 'en'
@@ -525,6 +529,30 @@
           nav: 'knowledge',
           lang: 'en'
         },
+        '#/en/knowledge/industry-guides': {
+          file: 'pages/Knowledge/EN/en-03-chuyenmuc-industry-guides.html',
+          title: 'Industry Guides | SpeeGo Knowledge',
+          nav: 'knowledge',
+          lang: 'en'
+        },
+        '#/knowledge/industry-guides': {
+          file: 'pages/Knowledge/VI/vi-03-chuyenmuc-industry-guides.html',
+          title: 'Kiến thức ngành hàng | SpeeGo Knowledge',
+          nav: 'knowledge',
+          lang: 'vi'
+        },
+        '#/vi/knowledge/industry-guides': {
+          file: 'pages/Knowledge/VI/vi-03-chuyenmuc-industry-guides.html',
+          title: 'Kiến thức ngành hàng | SpeeGo Knowledge',
+          nav: 'knowledge',
+          lang: 'vi'
+        },
+        '#/es/knowledge/industry-guides': {
+          file: 'pages/Knowledge/ES/es-03-chuyenmuc-industry-guides.html',
+          title: 'Guías por industria | SpeeGo Knowledge',
+          nav: 'knowledge',
+          lang: 'es'
+        },
         '#/en/trade-routes': {
           file: 'pages/Knowledge/EN/en-04-chuyenmuc-trade-route.html',
           title: 'Trade Routes | SpeeGo Knowledge',
@@ -536,6 +564,24 @@
           title: 'Sourcing & QC | SpeeGo Knowledge',
           nav: 'knowledge',
           lang: 'en'
+        },
+        '#/en/knowledge/sourcing-qc': {
+          file: 'pages/Knowledge/EN/en-05-chuyenmuc-sourcing-qc.html',
+          title: 'Sourcing & QC | SpeeGo Knowledge',
+          nav: 'knowledge',
+          lang: 'en'
+        },
+        '#/es/knowledge/sourcing-qc': {
+          file: 'pages/Knowledge/ES/es-05-chuyenmuc-sourcing-qc.html',
+          title: 'Sourcing y Control de Calidad | SpeeGo Knowledge',
+          nav: 'knowledge',
+          lang: 'es'
+        },
+        '#/sourcing-qc': {
+          file: 'pages/Knowledge/VI/vi-05-chuyenmuc-sourcing-qc.html',
+          title: 'Sourcing & QC | SpeeGo Knowledge',
+          nav: 'knowledge',
+          lang: 'vi'
         },
         '#/en/fulfillment-warehouse': {
           file: 'pages/Knowledge/EN/en-06-chuyenmuc-fulfillment-warehouse.html',
@@ -633,7 +679,7 @@
           lang: 'es'
         },
         '#/es/contact': {
-          file: 'pages/home/es-home.html',
+          file: 'pages/contact/es-contact.html',
           title: 'Contacto & Solicitar Cotización | SpeeGo Logistics',
           nav: 'home',
           lang: 'es'
@@ -740,7 +786,7 @@
 
 
       // 1c. OFFLINE BUNDLE FOR FILE:/// PROTOCOL & ZERO-LATENCY BROWSING
-      const OFFLINE_BUNDLE = {"partials/header.html":"<!-- =================================================================\r\n     HEADER & MULTI-LANGUAGE NAVIGATION (Exact Design Spec from Web Tổng)\r\n     ================================================================= -->\r\n<header id=\"masthead\" class=\"site-header speego-site-header\" role=\"banner\">\r\n  <!-- ================================================================\r\n     Top Bar: Hotline & Email\r\n     ================================================================ -->\r\n<div class=\"speego-header-topbar\">\r\n  <div class=\"speego-header-topbar-inner\">\r\n\r\n    <div\r\n      class=\"speego-header-contact\"\r\n      aria-label=\"SpeeGo contact details\"\r\n    >\r\n\r\n      <!-- Phone -->\r\n      <details class=\"speego-header-contact-popover\" name=\"speego-header-contact\">\n        <summary\r\n          class=\"speego-header-contact-item\"\r\n          aria-label=\"Xem số điện thoại SpeeGo\"\r\n        >\r\n          <svg\r\n            class=\"speego-header-contact-icon speego-header-contact-icon-white\"\r\n            viewBox=\"0 0 24 24\"\r\n            fill=\"none\"\r\n            stroke=\"#FFFFFF\"\r\n            stroke-width=\"1.5\"\r\n            stroke-linecap=\"round\"\r\n            stroke-linejoin=\"round\"\r\n            aria-hidden=\"true\"\r\n          >\r\n            <path d=\"M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.12.9.33 1.78.62 2.64a2 2 0 0 1-.45 2.11L8.01 9.74a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.86.29 1.74.5 2.64.62A2 2 0 0 1 22 16.92z\"/>\r\n          </svg>\r\n\r\n          <span class=\"speego-header-contact-val\">\r\n            (024) 6291 8618\r\n          </span>\r\n        </summary>\r\n\r\n        <a\r\n          class=\"speego-header-contact-popover-link\"\r\n          href=\"tel:+842462918618\"\r\n        >\r\n          Gọi (024) 6291 8618\r\n        </a>\r\n      </details>\r\n\r\n      <!-- Separator -->\r\n      <span\r\n        class=\"speego-header-contact-sep\"\r\n        aria-hidden=\"true\"\r\n      >|</span>\r\n\r\n      <!-- Email -->\r\n      <details class=\"speego-header-contact-popover\" name=\"speego-header-contact\">\n        <summary\r\n          class=\"speego-header-contact-item speego-header-contact-email\"\r\n          aria-label=\"Xem email SpeeGo\"\r\n        >\r\n          <svg\r\n            class=\"speego-header-contact-icon speego-header-contact-icon-white\"\r\n            viewBox=\"0 0 24 24\"\r\n            fill=\"none\"\r\n            stroke=\"#FFFFFF\"\r\n            stroke-width=\"1.5\"\r\n            stroke-linecap=\"round\"\r\n            stroke-linejoin=\"round\"\r\n            aria-hidden=\"true\"\r\n          >\r\n            <rect\r\n              x=\"3\"\r\n              y=\"5\"\r\n              width=\"18\"\r\n              height=\"14\"\r\n              rx=\"2\"\r\n            />\r\n            <path d=\"m3 7 9 6 9-6\"/>\r\n          </svg>\r\n\r\n          <span class=\"speego-header-contact-val\">\r\n            info@speegologistic.com\r\n          </span>\r\n        </summary>\r\n\r\n        <a\r\n          class=\"speego-header-contact-popover-link\"\r\n          href=\"mailto:info@speegologistic.com\"\r\n        >\r\n          Gửi email info@speegologistic.com\r\n        </a>\r\n      </details>\r\n\r\n    </div>\r\n\r\n    <!-- Policy -->\r\n    <div class=\"speego-policy-menu speego-topbar-policy\">\r\n\r\n      <button\r\n        type=\"button\"\r\n        class=\"speego-policy-toggle\"\r\n        id=\"speegoPolicyToggle\"\r\n        aria-expanded=\"false\"\r\n        aria-controls=\"speego-policy-dropdown\"\r\n        data-i18n=\"policy_label\"\r\n      >\r\n        Chính sách\r\n      </button>\r\n\r\n      <ul\r\n        id=\"speego-policy-dropdown\"\r\n        class=\"speego-policy-dropdown\"\r\n        aria-label=\"Chính sách\"\r\n      >\r\n        <li>\r\n          <a\r\n            href=\"#privacy-policy\"\r\n            id=\"policyPrivacyLink\"\r\n            data-i18n=\"policy_privacy\"\r\n          >\r\n            Chính sách bảo mật\r\n          </a>\r\n        </li>\r\n\r\n        <li>\r\n          <a\r\n            href=\"#terms-and-conditions\"\r\n            id=\"policyTermsLink\"\r\n            data-i18n=\"policy_terms\"\r\n          >\r\n            Điều khoản &amp; Điều kiện\r\n          </a>\r\n        </li>\r\n      </ul>\r\n\r\n    </div>\r\n\r\n  </div>\r\n</div>\r\n\r\n  <!-- Main Navigation Bar -->\r\n  <div class=\"speego-header-navbar\">\r\n    <div class=\"speego-header-navbar-inner\">\r\n      <!-- Brand Logo -->\r\n      <div class=\"site-branding speego-branding\">\r\n        <a href=\"/vi/\" class=\"speego-brand-logo\" id=\"headerLogoLink\" rel=\"home\" title=\"Trang chủ SpeeGo Logistics\">\r\n          <img src=\"assets/speego-logo-dark.png\" alt=\"SpeeGo Logistics\" class=\"speego-logo-img\">\r\n        </a>\r\n      </div>\r\n\r\n      <!-- Navigation Menu -->\r\n      <nav id=\"site-navigation\" class=\"speego-main-navigation\" role=\"navigation\">\r\n        <ul class=\"speego-nav-menu\" id=\"menu-main-menu\">\r\n          <li class=\"speego-nav-item\" data-nav=\"home\"><a href=\"/vi/\" class=\"speego-nav-link\" id=\"navLinkHome\" data-i18n=\"nav_home\">Homepage</a></li>\r\n          <li class=\"speego-nav-item\" data-nav=\"about\"><a href=\"/vi/ve-chung-toi/\" class=\"speego-nav-link\" id=\"navLinkAbout\" data-i18n=\"nav_about\">About</a></li>\r\n          <li class=\"speego-nav-item\" data-nav=\"sourcing\"><a href=\"/vi/tim-nguon-hang/\" class=\"speego-nav-link\" id=\"navLinkSourcing\" data-i18n=\"nav_sourcing\">Sourcing</a></li>\r\n          <li class=\"speego-nav-item speego-nav-has-sub\" data-nav=\"shipping-routes\">\r\n            <a href=\"/vi/logistics/\" class=\"speego-nav-link\" id=\"navLinkRoutes\" aria-haspopup=\"true\" aria-expanded=\"false\">\r\n              <span data-i18n=\"nav_routes\">Logistics</span>\r\n              <svg class=\"speego-nav-caret\" viewBox=\"0 0 10 6\" width=\"10\" height=\"6\" aria-hidden=\"true\" focusable=\"false\">\r\n                <path d=\"M1 1.25 L5 4.75 L9 1.25\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.7\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\r\n              </svg>\r\n            </a>\r\n            <ul class=\"speego-nav-dropdown\" aria-label=\"Logistics origins\">\r\n              <li>\r\n                <a href=\"/vi/logistics/china-to-us-ca-au/\" class=\"speego-nav-dropdown-link\" id=\"navLinkOriginChina\" data-route-origin=\"china\" data-i18n=\"nav_origin_china\">Origin: China</a>\r\n              </li>\r\n              <li>\r\n                <a href=\"/vi/logistics/vietnam-to-us-ca-au/\" class=\"speego-nav-dropdown-link\" id=\"navLinkOriginVietnam\" data-route-origin=\"vietnam\" data-i18n=\"nav_origin_vietnam\">Origin: Vietnam</a>\r\n              </li>\r\n            </ul>\r\n          </li>\r\n          <li class=\"speego-nav-item\" data-nav=\"fulfillment\"><a href=\"/vi/kho-van/\" class=\"speego-nav-link\" id=\"navLinkFulfillment\" data-i18n=\"nav_fulfillment\">Fulfillment</a></li>\r\n          <li class=\"speego-nav-item\" data-nav=\"import-export\"><a href=\"/vi/xuat-nhap-khau/\" class=\"speego-nav-link\" id=\"navLinkImportExport\" data-i18n=\"nav_import_export\">Import &amp; Export</a></li>\r\n          <li class=\"speego-nav-item\" data-nav=\"knowledge\"><a href=\"/vi/kien-thuc/\" class=\"speego-nav-link\" id=\"navLinkKnowledge\" data-i18n=\"nav_knowledge\">Knowledge</a></li>\r\n          <li class=\"speego-nav-item speego-nav-cta-item\">\r\n            <a href=\"/vi/lien-he/\" class=\"speego-nav-link speego-header-quote-btn\" id=\"mHeaderCtaBtn\">\r\n              <span data-i18n=\"nav_quote_btn\">Nhận báo giá</span>\r\n              <svg class=\"speego-header-quote-arrow\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\">\r\n                <line x1=\"5\" y1=\"12\" x2=\"19\" y2=\"12\"></line>\r\n                <polyline points=\"12 5 19 12 12 19\"></polyline>\r\n              </svg>\r\n            </a>\r\n          </li>\r\n        </ul>\r\n      </nav>\r\n\r\n      <!-- Header CTA & Language Switcher -->\r\n      <div class=\"speego-header-cta-wrap\">\r\n        <!-- Language Dropdown (3 Languages: VN / EN / ES, Default: VN) -->\r\n        <div class=\"speego-lang-selector\" id=\"speegoLangSelector\">\r\n          <button type=\"button\" class=\"speego-lang-btn\" id=\"speego-lang-toggle\" aria-expanded=\"false\" aria-haspopup=\"listbox\" aria-label=\"Chọn ngôn ngữ\">\r\n            <span class=\"speego-lang-flag-current\" id=\"speego-current-lang-flag\" aria-hidden=\"true\">\r\n              <img src=\"assets/flags/vn.png\" alt=\"VN\" class=\"speego-lang-flag\" width=\"18\" height=\"13\">\r\n            </span>\r\n            <span class=\"speego-current-lang-text\" id=\"speego-current-lang-text\">VN</span>\r\n            <svg class=\"speego-lang-chevron\" width=\"12\" height=\"12\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\">\r\n              <polyline points=\"6 9 12 15 18 9\"></polyline>\r\n            </svg>\r\n          </button>\r\n          <div class=\"speego-lang-dropdown\" id=\"speego-lang-dropdown\" role=\"listbox\" aria-label=\"Danh sách ngôn ngữ\">\r\n            <button type=\"button\" class=\"speego-lang-option active\" data-lang=\"vi\" role=\"option\" aria-selected=\"true\">\r\n              <img src=\"assets/flags/vn.png\" alt=\"VN\" class=\"speego-lang-flag\" width=\"18\" height=\"13\">\r\n              <span>VN</span>\r\n            </button>\r\n            <button type=\"button\" class=\"speego-lang-option\" data-lang=\"en\" role=\"option\" aria-selected=\"false\">\r\n              <img src=\"assets/flags/us.png\" alt=\"US\" class=\"speego-lang-flag\" width=\"18\" height=\"13\">\r\n              <span>EN</span>\r\n            </button>\r\n            <button type=\"button\" class=\"speego-lang-option\" data-lang=\"es\" role=\"option\" aria-selected=\"false\">\r\n              <svg class=\"speego-lang-flag\" viewBox=\"0 0 3 2\" width=\"18\" height=\"13\" aria-hidden=\"true\" style=\"border-radius:2px;box-shadow:0 1px 2px rgba(0,0,0,0.15);\"><rect width=\"3\" height=\"2\" fill=\"#c60b1e\"/><rect y=\"0.5\" width=\"3\" height=\"1\" fill=\"#ffc400\"/></svg>\r\n              <span>ES</span>\r\n            </button>\r\n          </div>\r\n        </div>\r\n\r\n        <a href=\"/vi/contact/\" class=\"speego-header-quote-btn\" id=\"headerCtaBtn\">\r\n          <span data-i18n=\"nav_quote_btn\">Nhận báo giá</span>\r\n          <svg class=\"speego-header-quote-arrow\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\">\r\n            <line x1=\"5\" y1=\"12\" x2=\"19\" y2=\"12\"></line>\r\n            <polyline points=\"12 5 19 12 12 19\"></polyline>\r\n          </svg>\r\n        </a>\r\n      </div>\r\n\r\n      <button class=\"speego-menu-toggle\" id=\"mobileMenuOpen\" type=\"button\" aria-controls=\"site-navigation\" aria-expanded=\"false\" aria-label=\"Mở menu điều hướng\">\r\n        <span class=\"speego-menu-toggle-icon\" aria-hidden=\"true\"></span>\r\n      </button>\r\n    </div>\r\n  </div>\r\n</header>\r\n\r\n<!-- Dynamic Breadcrumb Container -->\r\n<nav class=\"breadcrumb-section\" id=\"breadcrumbSection\" aria-label=\"Đường dẫn trang\">\r\n  <div class=\"container\">\r\n    <div class=\"breadcrumb-list\" id=\"breadcrumbList\">\r\n      <!-- Breadcrumb items rendered dynamically via JS -->\r\n    </div>\r\n  </div>\r\n</nav>\r\n","partials/footer.html":"<!-- ==========================================================================\r\n     PARTIAL: FOOTER (SpeeGo Logistics - Synchronized Frame)\r\n     ========================================================================== -->\r\n<footer id=\"colophon\" class=\"site-footer speego-site-footer\" role=\"contentinfo\">\r\n  <div class=\"speego-footer-top\">\r\n    <!-- Cột 1: Logo trắng & Tagline -->\r\n    <div class=\"speego-footer-brand\">\r\n      <a href=\"/vi/\" class=\"speego-brand-logo\" id=\"footerLogoLink\" title=\"SpeeGo Logistics\">\r\n        <img src=\"assets/speego-logo-white.png\" alt=\"SpeeGo Logistics\" class=\"speego-logo-img\">\r\n      </a>\r\n      <p class=\"speego-footer-tagline\" id=\"footerTagline\" data-i18n=\"footer_tagline\">\r\n        Đơn vị sản xuất và cung cấp dịch vụ logistics toàn cầu. Chuyên tuyến Trung Quốc và Việt Nam đi Mỹ, Canada, Úc. Tối ưu chi phí, minh bạch hành trình.\r\n      </p>\r\n    </div>\r\n\r\n    <!-- Cột 2: Dịch Vụ Chính -->\r\n    <div>\r\n      <h4 class=\"speego-footer-heading\" id=\"footerServicesTitle\" data-i18n=\"footer_services_title\">Dịch Vụ Chính</h4>\r\n      <ul class=\"speego-footer-links\" id=\"footerServicesLinks\">\r\n        <li><a href=\"/vi/tim-nguon-hang/\" data-i18n=\"footer_service_sourcing\">Sourcing &amp; QC</a></li>\r\n        <li><a href=\"/vi/logistics/\" data-i18n=\"footer_service_routes\">Tuyến Vận Chuyển Toàn Cầu</a></li>\r\n        <li><a href=\"/vi/kho-van/\" data-i18n=\"footer_service_fulfillment\">Fulfillment &amp; Kho Bãi</a></li>\r\n        <li><a href=\"/vi/xuat-nhap-khau/\" data-i18n=\"footer_service_import_export\">Thủ Tục Hải Quan &amp; XNK</a></li>\r\n        <li><a href=\"#services-speego\" data-page-route=\"home\" data-section=\"services-speego\" data-i18n=\"footer_service_air\">Vận Chuyển Hàng Không</a></li>\r\n      </ul>\r\n    </div>\r\n\r\n    <!-- Cột 3: Liên Kết Nhanh -->\r\n    <div>\r\n      <h4 class=\"speego-footer-heading\" id=\"footerQuickLinksTitle\" data-i18n=\"footer_quick_title\">Liên Kết Nhanh</h4>\r\n      <ul class=\"speego-footer-links\" id=\"footerQuickLinks\">\r\n        <li><a href=\"#process-speego\" data-page-route=\"home\" data-section=\"process-speego\" data-i18n=\"footer_quick_process\">Quy Trình 8 Bước</a></li>\r\n        <li><a href=\"/vi/ve-chung-toi/\" data-i18n=\"footer_quick_why\">Vì Sao Chọn SpeeGo</a></li>\r\n        <li><a href=\"#news-speego\" data-page-route=\"home\" data-section=\"news-speego\" data-i18n=\"footer_quick_news\">Tin Tức &amp; Thị Trường</a></li>\r\n        <li><a href=\"/vi/kien-thuc/\" data-i18n=\"footer_quick_knowledge\">SpeeGo Knowledge</a></li>\r\n        <li><a href=\"/vi/lien-he/\" data-i18n=\"footer_quick_contact\">Liên Hệ Trực Tiếp</a></li>\r\n      </ul>\r\n    </div>\r\n  </div>\r\n\r\n  <!-- Khối Văn Phòng Đại Diện Toàn Cầu (5 Offices) -->\r\n  <div class=\"speego-footer-offices\">\r\n    <h4 class=\"speego-footer-heading\" id=\"footerOfficesTitle\" data-i18n=\"footer_offices_title\">Văn Phòng Đại Diện</h4>\r\n    <div class=\"speego-footer-office-grid\">\r\n      <article class=\"speego-footer-office\">\r\n        <h5 data-i18n=\"office_us_title\">Hoa Kỳ</h5>\r\n        <p><a href=\"tel:+18322985789\">(+1) 832 298 5789</a></p>\r\n        <p>7303 Breen Dr, Suite D2, Houston, TX 77086</p>\r\n        <p><strong>Hotline:</strong> <a href=\"tel:+18005501496\">1-800-550-1496</a></p>\r\n        <p><strong>ZIP Code:</strong> 77075</p>\r\n      </article>\r\n      <article class=\"speego-footer-office\">\r\n        <h5 data-i18n=\"office_hanoi_title\">Hà Nội</h5>\r\n        <p>Leadvisors Tower, 643 Phạm Văn Đồng, Phường Nghĩa Đô, Hà Nội</p>\r\n        <p><strong>Hotline:</strong> <a href=\"tel:+842462918618\">(024) 6291 8618</a></p>\r\n        <p><strong>Mã ZIP:</strong> 100000</p>\r\n      </article>\r\n      <article class=\"speego-footer-office\">\r\n        <h5 data-i18n=\"office_hcm_title\">Hồ Chí Minh</h5>\r\n        <p><strong>Văn phòng:</strong> 01 Đường số 4, KDC Cityland Park Hills, phường Gò Vấp, Thành phố Hồ Chí Minh</p>\r\n        <p><strong>Kho hàng:</strong> 42 Nguyễn Văn Dung, phường An Nhơn, Thành phố Hồ Chí Minh</p>\r\n        <p><strong>Hotline:</strong> <a href=\"tel:+84335966996\">033 596 6996</a></p>\r\n        <p><strong>Mã ZIP:</strong> 700000</p>\r\n      </article>\r\n      <article class=\"speego-footer-office\">\r\n        <h5 data-i18n=\"office_canada_title\">Canada</h5>\r\n        <p>4450 Juneau Street, Burnaby, British Columbia</p>\r\n        <p><strong>Hotline:</strong> <a href=\"tel:+17144775200\">1-714 477 5200</a></p>\r\n        <p><strong>Postal Code:</strong> V5C 4C8</p>\r\n      </article>\r\n      <article class=\"speego-footer-office\">\r\n        <h5 data-i18n=\"office_china_title\">Trung Quốc</h5>\r\n        <p>Khu công nghiệp Shengzhifu, Zhongluotan, quận Bạch Vân, Quảng Châu</p>\r\n        <p><strong>Postal Code:</strong> 510540</p>\r\n      </article>\r\n    </div>\r\n  </div>\r\n\r\n  <!-- Thanh Copyright dưới cùng -->\r\n  <div class=\"speego-footer-bottom\">\r\n    <p data-i18n=\"footer_copyright\">© 2026 SpeeGo Logistics. All rights reserved. Designed for Global Supply Chain Excellence.</p>\r\n  </div>\r\n</footer>\r\n\r\n<!-- Toast Message Popup (Thông báo tương tác) -->\r\n<div class=\"toast-popup\" id=\"toastPopup\">\r\n  <svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"#F2661C\">\r\n    <path d=\"M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z\"/>\r\n  </svg>\r\n  <span id=\"toastText\">Gửi yêu cầu tư vấn thành công! SpeeGo sẽ liên hệ lại sớm nhất.</span>\r\n</div>\r\n","partials/cta-form.html":"<!-- ==========================================================================\r\n     PARTIAL: CTA FORM COMPONENT (SpeeGo Logistics)\r\n     Supports two variants: 'band' (full-width 2-column) and 'sidebar' (1-column card)\r\n     ========================================================================== -->\r\n\r\n<!-- TEMPLATE: VARIANT \"band\" (Dải ngang Full-width 2 cột nền Navy) -->\r\n<template id=\"tmpl-cta-band\">\r\n  <section class=\"cta-form-band-section\" id=\"contact-form\">\r\n    <div class=\"container cta-form-band-grid\">\r\n      <!-- Heading & hotline (trái) -->\r\n      <div class=\"cta-band-copy\">\r\n        <span class=\"section-tag\">{{TAG}}</span>\r\n        <h2 class=\"section-title section-title-white\">\r\n          {{HEADING}}\r\n        </h2>\r\n        <p class=\"cta-band-desc\">\r\n          {{SUBTEXT}}\r\n        </p>\r\n        <a href=\"tel:+84906828898\" class=\"cta-hotline-link\">\r\n          {{PHONE}}\r\n        </a>\r\n      </div>\r\n\r\n      <!-- Form trắng (phải) -->\r\n      <div class=\"cta-band-form\">\r\n        <div class=\"consult-card-white\">\r\n          <form class=\"consult-form\" onsubmit=\"handleConsultSubmit(event)\">\r\n            <div class=\"form-row-2col\">\r\n              <div class=\"form-group\">\r\n                <label class=\"form-label\" for=\"band_fullName\">{{LABEL_NAME}}</label>\r\n                <input type=\"text\" id=\"band_fullName\" class=\"form-control\" placeholder=\"{{PLACEHOLDER_NAME}}\" required>\r\n              </div>\r\n              <div class=\"form-group\">\r\n                <label class=\"form-label\" for=\"band_email\">{{LABEL_EMAIL}}</label>\r\n                <input type=\"email\" id=\"band_email\" class=\"form-control\" placeholder=\"{{PLACEHOLDER_EMAIL}}\" required>\r\n              </div>\r\n            </div>\r\n            <div class=\"form-group\">\r\n              <label class=\"form-label\" for=\"band_phone\">{{LABEL_PHONE}}</label>\r\n              <input type=\"tel\" id=\"band_phone\" class=\"form-control\" placeholder=\"{{PLACEHOLDER_PHONE}}\" required>\r\n            </div>\r\n            <div class=\"form-group\">\r\n              <label class=\"form-label\" for=\"band_message\">{{LABEL_MESSAGE}}</label>\r\n              <textarea id=\"band_message\" class=\"form-control\" placeholder=\"{{PLACEHOLDER_MESSAGE}}\"></textarea>\r\n            </div>\r\n            <button type=\"submit\" class=\"btn-orange btn-submit\">\r\n              {{BTN_SUBMIT}}\r\n            </button>\r\n            <p class=\"form-security-note\">\r\n              {{SECURITY_NOTE}}\r\n            </p>\r\n          </form>\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </section>\r\n</template>\r\n\r\n<!-- TEMPLATE: VARIANT \"sidebar\" (Card hẹp 1 cột xếp chồng dọc nền Navy) -->\r\n<template id=\"tmpl-cta-sidebar\">\r\n  <div class=\"consult-card-sidebar\" id=\"contact-form\">\r\n    <span class=\"section-tag\">{{TAG}}</span>\r\n    <h3 class=\"sidebar-title\">{{HEADING}}</h3>\r\n    <p class=\"sidebar-desc\">{{SUBTEXT}}</p>\r\n    <div>\r\n      <a href=\"tel:+84906828898\" class=\"sidebar-hotline\">{{PHONE}}</a>\r\n    </div>\r\n\r\n    <form class=\"consult-form\" onsubmit=\"handleConsultSubmit(event)\">\r\n      <div class=\"form-group\">\r\n        <label class=\"form-label\" for=\"sidebar_fullName\">{{LABEL_NAME}}</label>\r\n        <input type=\"text\" id=\"sidebar_fullName\" class=\"form-control\" placeholder=\"{{PLACEHOLDER_NAME}}\" required>\r\n      </div>\r\n      <div class=\"form-group\">\r\n        <label class=\"form-label\" for=\"sidebar_email\">{{LABEL_EMAIL}}</label>\r\n        <input type=\"email\" id=\"sidebar_email\" class=\"form-control\" placeholder=\"{{PLACEHOLDER_EMAIL}}\" required>\r\n      </div>\r\n      <div class=\"form-group\">\r\n        <label class=\"form-label\" for=\"sidebar_phone\">{{LABEL_PHONE}}</label>\r\n        <input type=\"tel\" id=\"sidebar_phone\" class=\"form-control\" placeholder=\"{{PLACEHOLDER_PHONE}}\" required>\r\n      </div>\r\n      <div class=\"form-group\">\r\n        <label class=\"form-label\" for=\"sidebar_message\">{{LABEL_MESSAGE}}</label>\r\n        <textarea id=\"sidebar_message\" class=\"form-control\" placeholder=\"{{PLACEHOLDER_MESSAGE}}\"></textarea>\r\n      </div>\r\n      <button type=\"submit\" class=\"btn-orange btn-submit\">\r\n        {{BTN_SUBMIT}}\r\n      </button>\r\n      <p class=\"form-security-note\">\r\n        {{SECURITY_NOTE}}\r\n      </p>\r\n    </form>\r\n  </div>\r\n</template>\r\n"};
+      const OFFLINE_BUNDLE = {"partials/header.html": "<!-- =================================================================\n     HEADER & MULTI-LANGUAGE NAVIGATION (Exact Design Spec from Web T\u1ed5ng)\n     ================================================================= -->\n<header id=\"masthead\" class=\"site-header speego-site-header\" role=\"banner\">\n  <!-- ================================================================\n     Top Bar: Hotline & Email\n     ================================================================ -->\n<div class=\"speego-header-topbar\">\n  <div class=\"speego-header-topbar-inner\">\n\n    <div\n      class=\"speego-header-contact\"\n      aria-label=\"SpeeGo contact details\"\n    >\n\n      <!-- Phone -->\n      <details class=\"speego-header-contact-popover\" name=\"speego-header-contact\">\n        <summary\n          class=\"speego-header-contact-item\"\n          aria-label=\"Xem s\u1ed1 \u0111i\u1ec7n tho\u1ea1i SpeeGo\"\n        >\n          <svg\n            class=\"speego-header-contact-icon speego-header-contact-icon-white\"\n            viewBox=\"0 0 24 24\"\n            fill=\"none\"\n            stroke=\"#FFFFFF\"\n            stroke-width=\"1.5\"\n            stroke-linecap=\"round\"\n            stroke-linejoin=\"round\"\n            aria-hidden=\"true\"\n          >\n            <path d=\"M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.12.9.33 1.78.62 2.64a2 2 0 0 1-.45 2.11L8.01 9.74a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.86.29 1.74.5 2.64.62A2 2 0 0 1 22 16.92z\"/>\n          </svg>\n\n          <span class=\"speego-header-contact-val\">\n            (024) 6291 8618\n          </span>\n        </summary>\n\n        <a\n          class=\"speego-header-contact-popover-link\"\n          href=\"tel:+842462918618\"\n        >\n          G\u1ecdi (024) 6291 8618\n        </a>\n      </details>\n\n      <!-- Separator -->\n      <span\n        class=\"speego-header-contact-sep\"\n        aria-hidden=\"true\"\n      >|</span>\n\n      <!-- Email -->\n      <details class=\"speego-header-contact-popover\" name=\"speego-header-contact\">\n        <summary\n          class=\"speego-header-contact-item speego-header-contact-email\"\n          aria-label=\"Xem email SpeeGo\"\n        >\n          <svg\n            class=\"speego-header-contact-icon speego-header-contact-icon-white\"\n            viewBox=\"0 0 24 24\"\n            fill=\"none\"\n            stroke=\"#FFFFFF\"\n            stroke-width=\"1.5\"\n            stroke-linecap=\"round\"\n            stroke-linejoin=\"round\"\n            aria-hidden=\"true\"\n          >\n            <rect\n              x=\"3\"\n              y=\"5\"\n              width=\"18\"\n              height=\"14\"\n              rx=\"2\"\n            />\n            <path d=\"m3 7 9 6 9-6\"/>\n          </svg>\n\n          <span class=\"speego-header-contact-val\">\n            info@speegologistic.com\n          </span>\n        </summary>\n\n        <a\n          class=\"speego-header-contact-popover-link\"\n          href=\"mailto:info@speegologistic.com\"\n        >\n          G\u1eedi email info@speegologistic.com\n        </a>\n      </details>\n\n    </div>\n\n    <!-- Policy -->\n    <div class=\"speego-policy-menu speego-topbar-policy\">\n\n      <button\n        type=\"button\"\n        class=\"speego-policy-toggle\"\n        id=\"speegoPolicyToggle\"\n        aria-expanded=\"false\"\n        aria-controls=\"speego-policy-dropdown\"\n        data-i18n=\"policy_label\"\n      >\n        Ch\u00ednh s\u00e1ch\n      </button>\n\n      <ul\n        id=\"speego-policy-dropdown\"\n        class=\"speego-policy-dropdown\"\n        aria-label=\"Ch\u00ednh s\u00e1ch\"\n      >\n        <li>\n          <a\n            href=\"#privacy-policy\"\n            id=\"policyPrivacyLink\"\n            data-i18n=\"policy_privacy\"\n          >\n            Ch\u00ednh s\u00e1ch b\u1ea3o m\u1eadt\n          </a>\n        </li>\n\n        <li>\n          <a\n            href=\"#terms-and-conditions\"\n            id=\"policyTermsLink\"\n            data-i18n=\"policy_terms\"\n          >\n            \u0110i\u1ec1u kho\u1ea3n &amp; \u0110i\u1ec1u ki\u1ec7n\n          </a>\n        </li>\n      </ul>\n\n    </div>\n\n  </div>\n</div>\n\n  <!-- Main Navigation Bar -->\n  <div class=\"speego-header-navbar\">\n    <div class=\"speego-header-navbar-inner\">\n      <!-- Brand Logo -->\n      <div class=\"site-branding speego-branding\">\n        <a href=\"/vi/\" class=\"speego-brand-logo\" id=\"headerLogoLink\" rel=\"home\" title=\"Trang ch\u1ee7 SpeeGo Logistics\">\n          <img src=\"assets/speego-logo-dark.png\" alt=\"SpeeGo Logistics\" class=\"speego-logo-img\">\n        </a>\n      </div>\n\n      <!-- Navigation Menu -->\n      <nav id=\"site-navigation\" class=\"speego-main-navigation\" role=\"navigation\">\n        <ul class=\"speego-nav-menu\" id=\"menu-main-menu\">\n          <li class=\"speego-nav-item\" data-nav=\"home\"><a href=\"/vi/\" class=\"speego-nav-link\" id=\"navLinkHome\" data-i18n=\"nav_home\">Homepage</a></li>\n          <li class=\"speego-nav-item\" data-nav=\"about\"><a href=\"/vi/ve-chung-toi/\" class=\"speego-nav-link\" id=\"navLinkAbout\" data-i18n=\"nav_about\">About</a></li>\n          <li class=\"speego-nav-item\" data-nav=\"sourcing\"><a href=\"/vi/tim-nguon-hang/\" class=\"speego-nav-link\" id=\"navLinkSourcing\" data-i18n=\"nav_sourcing\">Sourcing</a></li>\n          <li class=\"speego-nav-item speego-nav-has-sub\" data-nav=\"shipping-routes\">\n            <a href=\"/vi/logistics/\" class=\"speego-nav-link\" id=\"navLinkRoutes\" aria-haspopup=\"true\" aria-expanded=\"false\">\n              <span data-i18n=\"nav_routes\">Logistics</span>\n              <svg class=\"speego-nav-caret\" viewBox=\"0 0 10 6\" width=\"10\" height=\"6\" aria-hidden=\"true\" focusable=\"false\">\n                <path d=\"M1 1.25 L5 4.75 L9 1.25\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.7\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n              </svg>\n            </a>\n            <ul class=\"speego-nav-dropdown\" aria-label=\"Logistics origins\">\n              <li>\n                <a href=\"/vi/logistics/china-to-us-ca-au/\" class=\"speego-nav-dropdown-link\" id=\"navLinkOriginChina\" data-route-origin=\"china\" data-i18n=\"nav_origin_china\">Origin: China</a>\n              </li>\n              <li>\n                <a href=\"/vi/logistics/vietnam-to-us-ca-au/\" class=\"speego-nav-dropdown-link\" id=\"navLinkOriginVietnam\" data-route-origin=\"vietnam\" data-i18n=\"nav_origin_vietnam\">Origin: Vietnam</a>\n              </li>\n            </ul>\n          </li>\n          <li class=\"speego-nav-item\" data-nav=\"fulfillment\"><a href=\"/vi/kho-van/\" class=\"speego-nav-link\" id=\"navLinkFulfillment\" data-i18n=\"nav_fulfillment\">Fulfillment</a></li>\n          <li class=\"speego-nav-item\" data-nav=\"import-export\"><a href=\"/vi/xuat-nhap-khau/\" class=\"speego-nav-link\" id=\"navLinkImportExport\" data-i18n=\"nav_import_export\">Import &amp; Export</a></li>\n          <li class=\"speego-nav-item\" data-nav=\"knowledge\"><a href=\"/vi/kien-thuc/\" class=\"speego-nav-link\" id=\"navLinkKnowledge\" data-i18n=\"nav_knowledge\">Knowledge</a></li>\n          <li class=\"speego-nav-item speego-nav-cta-item\">\n            <a href=\"/vi/lien-he/\" class=\"speego-nav-link speego-header-quote-btn\" id=\"mHeaderCtaBtn\">\n              <span data-i18n=\"nav_quote_btn\">Nh\u1eadn b\u00e1o gi\u00e1</span>\n              <svg class=\"speego-header-quote-arrow\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\">\n                <line x1=\"5\" y1=\"12\" x2=\"19\" y2=\"12\"></line>\n                <polyline points=\"12 5 19 12 12 19\"></polyline>\n              </svg>\n            </a>\n          </li>\n        </ul>\n      </nav>\n\n      <!-- Header CTA & Language Switcher -->\n      <div class=\"speego-header-cta-wrap\">\n        <!-- Language Dropdown (3 Languages: VN / EN / ES, Default: VN) -->\n        <div class=\"speego-lang-selector\" id=\"speegoLangSelector\">\n          <button type=\"button\" class=\"speego-lang-btn\" id=\"speego-lang-toggle\" aria-expanded=\"false\" aria-haspopup=\"listbox\" aria-label=\"Ch\u1ecdn ng\u00f4n ng\u1eef\">\n            <span class=\"speego-lang-flag-current\" id=\"speego-current-lang-flag\" aria-hidden=\"true\">\n              <img src=\"assets/flags/vn.png\" alt=\"VN\" class=\"speego-lang-flag\" width=\"18\" height=\"13\">\n            </span>\n            <span class=\"speego-current-lang-text\" id=\"speego-current-lang-text\">VN</span>\n            <svg class=\"speego-lang-chevron\" width=\"12\" height=\"12\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\">\n              <polyline points=\"6 9 12 15 18 9\"></polyline>\n            </svg>\n          </button>\n          <div class=\"speego-lang-dropdown\" id=\"speego-lang-dropdown\" role=\"listbox\" aria-label=\"Danh s\u00e1ch ng\u00f4n ng\u1eef\">\n            <button type=\"button\" class=\"speego-lang-option active\" data-lang=\"vi\" role=\"option\" aria-selected=\"true\">\n              <img src=\"assets/flags/vn.png\" alt=\"VN\" class=\"speego-lang-flag\" width=\"18\" height=\"13\">\n              <span>VN</span>\n            </button>\n            <button type=\"button\" class=\"speego-lang-option\" data-lang=\"en\" role=\"option\" aria-selected=\"false\">\n              <img src=\"assets/flags/us.png\" alt=\"US\" class=\"speego-lang-flag\" width=\"18\" height=\"13\">\n              <span>EN</span>\n            </button>\n            <button type=\"button\" class=\"speego-lang-option\" data-lang=\"es\" role=\"option\" aria-selected=\"false\">\n              <svg class=\"speego-lang-flag\" viewBox=\"0 0 3 2\" width=\"18\" height=\"13\" aria-hidden=\"true\" style=\"border-radius:2px;box-shadow:0 1px 2px rgba(0,0,0,0.15);\"><rect width=\"3\" height=\"2\" fill=\"#c60b1e\"/><rect y=\"0.5\" width=\"3\" height=\"1\" fill=\"#ffc400\"/></svg>\n              <span>ES</span>\n            </button>\n          </div>\n        </div>\n\n        <a href=\"/vi/contact/\" class=\"speego-header-quote-btn\" id=\"headerCtaBtn\">\n          <span data-i18n=\"nav_quote_btn\">Nh\u1eadn b\u00e1o gi\u00e1</span>\n          <svg class=\"speego-header-quote-arrow\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\">\n            <line x1=\"5\" y1=\"12\" x2=\"19\" y2=\"12\"></line>\n            <polyline points=\"12 5 19 12 12 19\"></polyline>\n          </svg>\n        </a>\n      </div>\n\n      <button class=\"speego-menu-toggle\" id=\"mobileMenuOpen\" type=\"button\" aria-controls=\"site-navigation\" aria-expanded=\"false\" aria-label=\"M\u1edf menu \u0111i\u1ec1u h\u01b0\u1edbng\">\n        <span class=\"speego-menu-toggle-icon\" aria-hidden=\"true\"></span>\n      </button>\n    </div>\n  </div>\n</header>\n\n<!-- Dynamic Breadcrumb Container -->\n<nav class=\"breadcrumb-section\" id=\"breadcrumbSection\" aria-label=\"\u0110\u01b0\u1eddng d\u1eabn trang\">\n  <div class=\"container\">\n    <div class=\"breadcrumb-list\" id=\"breadcrumbList\">\n      <!-- Breadcrumb items rendered dynamically via JS -->\n    </div>\n  </div>\n</nav>\n", "partials/footer.html": "<!-- ==========================================================================\n     PARTIAL: FOOTER (SpeeGo Logistics - Synchronized Frame)\n     ========================================================================== -->\n<footer id=\"colophon\" class=\"site-footer speego-site-footer\" role=\"contentinfo\">\n  <div class=\"speego-footer-top\">\n    <!-- C\u1ed9t 1: Logo tr\u1eafng & Tagline -->\n    <div class=\"speego-footer-brand\">\n      <a href=\"/vi/\" class=\"speego-brand-logo\" id=\"footerLogoLink\" title=\"SpeeGo Logistics\">\n        <img src=\"assets/speego-logo-white.png\" alt=\"SpeeGo Logistics\" class=\"speego-logo-img\">\n      </a>\n      <p class=\"speego-footer-tagline\" id=\"footerTagline\" data-i18n=\"footer_tagline\">\n        \u0110\u01a1n v\u1ecb s\u1ea3n xu\u1ea5t v\u00e0 cung c\u1ea5p d\u1ecbch v\u1ee5 logistics to\u00e0n c\u1ea7u. Chuy\u00ean tuy\u1ebfn Trung Qu\u1ed1c v\u00e0 Vi\u1ec7t Nam \u0111i M\u1ef9, Canada, \u00dac. T\u1ed1i \u01b0u chi ph\u00ed, minh b\u1ea1ch h\u00e0nh tr\u00ecnh.\n      </p>\n    </div>\n\n    <!-- C\u1ed9t 2: D\u1ecbch V\u1ee5 Ch\u00ednh -->\n    <div>\n      <h4 class=\"speego-footer-heading\" id=\"footerServicesTitle\" data-i18n=\"footer_services_title\">D\u1ecbch V\u1ee5 Ch\u00ednh</h4>\n      <ul class=\"speego-footer-links\" id=\"footerServicesLinks\">\n        <li><a href=\"/vi/tim-nguon-hang/\" data-i18n=\"footer_service_sourcing\">Sourcing &amp; QC</a></li>\n        <li><a href=\"/vi/logistics/\" data-i18n=\"footer_service_routes\">Tuy\u1ebfn V\u1eadn Chuy\u1ec3n To\u00e0n C\u1ea7u</a></li>\n        <li><a href=\"/vi/kho-van/\" data-i18n=\"footer_service_fulfillment\">Fulfillment &amp; Kho B\u00e3i</a></li>\n        <li><a href=\"/vi/xuat-nhap-khau/\" data-i18n=\"footer_service_import_export\">Th\u1ee7 T\u1ee5c H\u1ea3i Quan &amp; XNK</a></li>\n        <li><a href=\"#services-speego\" data-page-route=\"home\" data-section=\"services-speego\" data-i18n=\"footer_service_air\">V\u1eadn Chuy\u1ec3n H\u00e0ng Kh\u00f4ng</a></li>\n      </ul>\n    </div>\n\n    <!-- C\u1ed9t 3: Li\u00ean K\u1ebft Nhanh -->\n    <div>\n      <h4 class=\"speego-footer-heading\" id=\"footerQuickLinksTitle\" data-i18n=\"footer_quick_title\">Li\u00ean K\u1ebft Nhanh</h4>\n      <ul class=\"speego-footer-links\" id=\"footerQuickLinks\">\n        <li><a href=\"#process-speego\" data-page-route=\"home\" data-section=\"process-speego\" data-i18n=\"footer_quick_process\">Quy Tr\u00ecnh 8 B\u01b0\u1edbc</a></li>\n        <li><a href=\"/vi/ve-chung-toi/\" data-i18n=\"footer_quick_why\">V\u00ec Sao Ch\u1ecdn SpeeGo</a></li>\n        <li><a href=\"#news-speego\" data-page-route=\"home\" data-section=\"news-speego\" data-i18n=\"footer_quick_news\">Tin T\u1ee9c &amp; Th\u1ecb Tr\u01b0\u1eddng</a></li>\n        <li><a href=\"/vi/kien-thuc/\" data-i18n=\"footer_quick_knowledge\">SpeeGo Knowledge</a></li>\n        <li><a href=\"/vi/lien-he/\" data-i18n=\"footer_quick_contact\">Li\u00ean H\u1ec7 Tr\u1ef1c Ti\u1ebfp</a></li>\n      </ul>\n    </div>\n  </div>\n\n  <!-- Kh\u1ed1i V\u0103n Ph\u00f2ng \u0110\u1ea1i Di\u1ec7n To\u00e0n C\u1ea7u (5 Offices) -->\n  <div class=\"speego-footer-offices\">\n    <h4 class=\"speego-footer-heading\" id=\"footerOfficesTitle\" data-i18n=\"footer_offices_title\">V\u0103n Ph\u00f2ng \u0110\u1ea1i Di\u1ec7n</h4>\n    <div class=\"speego-footer-office-grid\">\n      <article class=\"speego-footer-office\">\n        <h5 data-i18n=\"office_us_title\">Hoa K\u1ef3</h5>\n        <p><a href=\"tel:+18322985789\">(+1) 832 298 5789</a></p>\n        <p>7303 Breen Dr, Suite D2, Houston, TX 77086</p>\n        <p><strong>Hotline:</strong> <a href=\"tel:+18005501496\">1-800-550-1496</a></p>\n        <p><strong>ZIP Code:</strong> 77075</p>\n      </article>\n      <article class=\"speego-footer-office\">\n        <h5 data-i18n=\"office_hanoi_title\">H\u00e0 N\u1ed9i</h5>\n        <p>Leadvisors Tower, 643 Ph\u1ea1m V\u0103n \u0110\u1ed3ng, Ph\u01b0\u1eddng Ngh\u0129a \u0110\u00f4, H\u00e0 N\u1ed9i</p>\n        <p><strong>Hotline:</strong> <a href=\"tel:+842462918618\">(024) 6291 8618</a></p>\n        <p><strong>M\u00e3 ZIP:</strong> 100000</p>\n      </article>\n      <article class=\"speego-footer-office\">\n        <h5 data-i18n=\"office_hcm_title\">H\u1ed3 Ch\u00ed Minh</h5>\n        <p><strong>V\u0103n ph\u00f2ng:</strong> 01 \u0110\u01b0\u1eddng s\u1ed1 4, KDC Cityland Park Hills, ph\u01b0\u1eddng G\u00f2 V\u1ea5p, Th\u00e0nh ph\u1ed1 H\u1ed3 Ch\u00ed Minh</p>\n        <p><strong>Kho h\u00e0ng:</strong> 42 Nguy\u1ec5n V\u0103n Dung, ph\u01b0\u1eddng An Nh\u01a1n, Th\u00e0nh ph\u1ed1 H\u1ed3 Ch\u00ed Minh</p>\n        <p><strong>Hotline:</strong> <a href=\"tel:+84335966996\">033 596 6996</a></p>\n        <p><strong>M\u00e3 ZIP:</strong> 700000</p>\n      </article>\n      <article class=\"speego-footer-office\">\n        <h5 data-i18n=\"office_canada_title\">Canada</h5>\n        <p>4450 Juneau Street, Burnaby, British Columbia</p>\n        <p><strong>Hotline:</strong> <a href=\"tel:+17144775200\">1-714 477 5200</a></p>\n        <p><strong>Postal Code:</strong> V5C 4C8</p>\n      </article>\n      <article class=\"speego-footer-office\">\n        <h5 data-i18n=\"office_china_title\">Trung Qu\u1ed1c</h5>\n        <p>Khu c\u00f4ng nghi\u1ec7p Shengzhifu, Zhongluotan, qu\u1eadn B\u1ea1ch V\u00e2n, Qu\u1ea3ng Ch\u00e2u</p>\n        <p><strong>Postal Code:</strong> 510540</p>\n      </article>\n    </div>\n  </div>\n\n  <!-- Thanh Copyright d\u01b0\u1edbi c\u00f9ng -->\n  <div class=\"speego-footer-bottom\">\n    <p data-i18n=\"footer_copyright\">\u00a9 2026 SpeeGo Logistics. All rights reserved. Designed for Global Supply Chain Excellence.</p>\n  </div>\n</footer>\n\n<!-- Toast Message Popup (Th\u00f4ng b\u00e1o t\u01b0\u01a1ng t\u00e1c) -->\n<div class=\"toast-popup\" id=\"toastPopup\">\n  <svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"#F2661C\">\n    <path d=\"M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z\"/>\n  </svg>\n  <span id=\"toastText\">G\u1eedi y\u00eau c\u1ea7u t\u01b0 v\u1ea5n th\u00e0nh c\u00f4ng! SpeeGo s\u1ebd li\u00ean h\u1ec7 l\u1ea1i s\u1edbm nh\u1ea5t.</span>\n</div>\n", "partials/cta-form.html": "<!-- ==========================================================================\n     PARTIAL: CTA FORM COMPONENT (SpeeGo Logistics)\n     Supports two variants: 'band' (full-width 2-column) and 'sidebar' (1-column card)\n     ========================================================================== -->\n\n<!-- TEMPLATE: VARIANT \"band\" (D\u1ea3i ngang Full-width 2 c\u1ed9t n\u1ec1n Navy) -->\n<template id=\"tmpl-cta-band\">\n  <section class=\"cta-form-band-section\" id=\"contact-form\">\n    <div class=\"container cta-form-band-grid\">\n      <!-- Heading & hotline (tr\u00e1i) -->\n      <div class=\"cta-band-copy\">\n        <span class=\"section-tag\">{{TAG}}</span>\n        <h2 class=\"section-title section-title-white\">\n          {{HEADING}}\n        </h2>\n        <p class=\"cta-band-desc\">\n          {{SUBTEXT}}\n        </p>\n        <a href=\"tel:+84906828898\" class=\"cta-hotline-link\">\n          {{PHONE}}\n        </a>\n      </div>\n\n      <!-- Form tr\u1eafng (ph\u1ea3i) -->\n      <div class=\"cta-band-form\">\n        <div class=\"consult-card-white\">\n          <form class=\"consult-form\" onsubmit=\"handleConsultSubmit(event)\">\n            <div class=\"form-row-2col\">\n              <div class=\"form-group\">\n                <label class=\"form-label\" for=\"band_fullName\">{{LABEL_NAME}}</label>\n                <input type=\"text\" id=\"band_fullName\" class=\"form-control\" placeholder=\"{{PLACEHOLDER_NAME}}\" required>\n              </div>\n              <div class=\"form-group\">\n                <label class=\"form-label\" for=\"band_email\">{{LABEL_EMAIL}}</label>\n                <input type=\"email\" id=\"band_email\" class=\"form-control\" placeholder=\"{{PLACEHOLDER_EMAIL}}\" required>\n              </div>\n            </div>\n            <div class=\"form-group\">\n              <label class=\"form-label\" for=\"band_phone\">{{LABEL_PHONE}}</label>\n              <input type=\"tel\" id=\"band_phone\" class=\"form-control\" placeholder=\"{{PLACEHOLDER_PHONE}}\" required>\n            </div>\n            <div class=\"form-group\">\n              <label class=\"form-label\" for=\"band_message\">{{LABEL_MESSAGE}}</label>\n              <textarea id=\"band_message\" class=\"form-control\" placeholder=\"{{PLACEHOLDER_MESSAGE}}\"></textarea>\n            </div>\n            <button type=\"submit\" class=\"btn-orange btn-submit\">\n              {{BTN_SUBMIT}}\n            </button>\n            <p class=\"form-security-note\">\n              {{SECURITY_NOTE}}\n            </p>\n          </form>\n        </div>\n      </div>\n    </div>\n  </section>\n</template>\n\n<!-- TEMPLATE: VARIANT \"sidebar\" (Card h\u1eb9p 1 c\u1ed9t x\u1ebfp ch\u1ed3ng d\u1ecdc n\u1ec1n Navy) -->\n<template id=\"tmpl-cta-sidebar\">\n  <div class=\"consult-card-sidebar\" id=\"contact-form\">\n    <span class=\"section-tag\">{{TAG}}</span>\n    <h3 class=\"sidebar-title\">{{HEADING}}</h3>\n    <p class=\"sidebar-desc\">{{SUBTEXT}}</p>\n    <div>\n      <a href=\"tel:+84906828898\" class=\"sidebar-hotline\">{{PHONE}}</a>\n    </div>\n\n    <form class=\"consult-form\" onsubmit=\"handleConsultSubmit(event)\">\n      <div class=\"form-group\">\n        <label class=\"form-label\" for=\"sidebar_fullName\">{{LABEL_NAME}}</label>\n        <input type=\"text\" id=\"sidebar_fullName\" class=\"form-control\" placeholder=\"{{PLACEHOLDER_NAME}}\" required>\n      </div>\n      <div class=\"form-group\">\n        <label class=\"form-label\" for=\"sidebar_email\">{{LABEL_EMAIL}}</label>\n        <input type=\"email\" id=\"sidebar_email\" class=\"form-control\" placeholder=\"{{PLACEHOLDER_EMAIL}}\" required>\n      </div>\n      <div class=\"form-group\">\n        <label class=\"form-label\" for=\"sidebar_phone\">{{LABEL_PHONE}}</label>\n        <input type=\"tel\" id=\"sidebar_phone\" class=\"form-control\" placeholder=\"{{PLACEHOLDER_PHONE}}\" required>\n      </div>\n      <div class=\"form-group\">\n        <label class=\"form-label\" for=\"sidebar_message\">{{LABEL_MESSAGE}}</label>\n        <textarea id=\"sidebar_message\" class=\"form-control\" placeholder=\"{{PLACEHOLDER_MESSAGE}}\"></textarea>\n      </div>\n      <button type=\"submit\" class=\"btn-orange btn-submit\">\n        {{BTN_SUBMIT}}\n      </button>\n      <p class=\"form-security-note\">\n        {{SECURITY_NOTE}}\n      </p>\n    </form>\n  </div>\n</template>\n"};
       // In-memory cache for loaded partials and pages
       const cache = {
         headerHtml: null,
@@ -781,7 +827,7 @@
         }
 
         try {
-          const response = await fetch(url);
+          const response = await fetch(url, { cache: 'no-cache' });
           if (!response.ok) {
             throw new Error(`HTTP ${response.status}: ${response.statusText}`);
           }
@@ -809,11 +855,15 @@
         }
         try {
           const headerContainer = document.getElementById('header-container');
+          const footerContainer = document.getElementById('footer-container');
           const hasServerHeader = !!(headerContainer
             && headerContainer.dataset.speegoPrerenderedHeader
             && headerContainer.querySelector('#masthead'));
+          const hasServerFooter = !!(footerContainer
+            && footerContainer.dataset.speegoPrerenderedFooter
+            && footerContainer.querySelector('#colophon'));
           let header = hasServerHeader ? headerContainer.innerHTML : null;
-          let footer = null;
+          let footer = hasServerFooter ? footerContainer.innerHTML : null;
           let ctaForm = null;
 
           // The server-rendered header can work while the footer and CTA load.
@@ -825,7 +875,7 @@
           if (window.SPEEGO_WP_HOME) {
             const [hdrData, ftrData, ctaData] = await Promise.all([
               hasServerHeader ? null : fetchEditableContent({ partial: 'header-' + currentLang }),
-              fetchEditableContent({ partial: 'footer-' + currentLang }),
+              hasServerFooter ? null : fetchEditableContent({ partial: 'footer-' + currentLang }),
               fetchEditableContent({ partial: 'cta-' + currentLang })
             ]);
             if (hdrData && hdrData.content) header = hdrData.content;
@@ -842,10 +892,8 @@
           cache.ctaFormHtml = ctaForm;
 
           // Inject into DOM
-          const footerContainer = document.getElementById('footer-container');
-
           if (headerContainer && !hasServerHeader) headerContainer.innerHTML = header;
-          if (footerContainer) footerContainer.innerHTML = footer;
+          if (footerContainer && !hasServerFooter) footerContainer.innerHTML = footer;
 
           // Parse CTA Form templates into memory
           parseCtaTemplates(ctaForm);
@@ -957,6 +1005,7 @@
           policyToggle: 'Chính sách',
           policyPrivacy: 'Chính sách bảo mật',
           policyTerms: 'Điều khoản & Điều kiện',
+          footerMove: "LET'S MOVE FORWARD",
           footerTagline: 'Đơn vị sản xuất và cung cấp dịch vụ logistics toàn cầu. Chuyên tuyến Trung Quốc và Việt Nam đi Mỹ, Canada, Úc. Tối ưu chi phí, minh bạch hành trình.',
           footerServicesTitle: 'Dịch Vụ Chính',
           footerServiceSourcing: 'Sourcing & QC',
@@ -1023,6 +1072,7 @@
           policyToggle: 'Policy',
           policyPrivacy: 'Privacy Policy',
           policyTerms: 'Terms & Conditions',
+          footerMove: "LET'S MOVE FORWARD",
           footerTagline: 'Global manufacturing and logistics provider specializing in routes from China and Vietnam to the US, Canada, and Australia. Optimized costs and transparent tracking.',
           footerServicesTitle: 'Core services',
           footerServiceSourcing: 'Sourcing & QC',
@@ -1089,6 +1139,7 @@
           policyToggle: 'Políticas',
           policyPrivacy: 'Política de Privacidad',
           policyTerms: 'Términos y Condiciones',
+          footerMove: 'AVANCEMOS JUNTOS',
           footerTagline: 'Proveedor global de servicios de manufactura y logística. Especialistas en rutas China y Vietnam a EE.UU., Canadá y Australia.',
           footerServicesTitle: 'Servicios Principales',
           footerServiceSourcing: 'Sourcing y Control de Calidad',
@@ -1164,6 +1215,7 @@
           policy_label: t.policyToggle,
           policy_privacy: t.policyPrivacy,
           policy_terms: t.policyTerms,
+          footer_move: t.footerMove,
           footer_tagline: t.footerTagline,
           footer_services_title: t.footerServicesTitle,
           footer_service_sourcing: t.footerServiceSourcing,
@@ -1227,10 +1279,10 @@
           { id: 'headerLogoLink', href: withBase(isVi ? '/vi/' : (isEs ? '/es/' : '/en/')) },
           { id: 'footerLogoLink', href: withBase(isVi ? '/vi/' : (isEs ? '/es/' : '/en/')) },
           { id: 'navLinkSourcing', mId: 'mNavLinkSourcing', href: withBase(isVi ? '/vi/tim-nguon-hang/' : (isEs ? '/es/abastecimiento/' : '/en/sourcing/')) },
-          { id: 'navLinkRoutes', mId: 'mNavLinkRoutes', href: withBase(isVi ? '/vi/tuyen-van-chuyen/' : (isEs ? '/es/logistica/' : '/en/logistics/')) },
-          { id: 'navLinkOriginChina', href: withBase(isVi ? '/vi/tuyen-van-chuyen/trung-quoc-di-my-canada-uc/' : (isEs ? '/es/logistica/china-a-eeuu-canada-australia/' : '/en/logistics/china-to-us-ca-au/')) },
-          { id: 'navLinkOriginVietnam', href: withBase(isVi ? '/vi/tuyen-van-chuyen/viet-nam-di-my-canada-uc/' : (isEs ? '/es/logistica/vietnam-a-eeuu-canada-australia/' : '/en/logistics/vietnam-to-us-ca-au/')) },
-          { id: 'navLinkFulfillment', mId: 'mNavLinkFulfillment', href: withBase(isVi ? '/vi/kho-van/' : (isEs ? '/es/fulfillment/' : '/en/fulfillment/')) },
+          { id: 'navLinkRoutes', mId: 'mNavLinkRoutes', href: withBase(isVi ? '/vi/logistics/' : (isEs ? '/es/logistica/' : '/en/logistics/')) },
+          { id: 'navLinkOriginChina', href: withBase(isVi ? '/vi/logistics/china-to-us-ca-au/' : (isEs ? '/es/logistica/china-to-us-ca-au/' : '/en/logistics/china-to-us-ca-au/')) },
+          { id: 'navLinkOriginVietnam', href: withBase(isVi ? '/vi/logistics/vietnam-to-us-ca-au/' : (isEs ? '/es/logistica/vietnam-to-us-ca-au/' : '/en/logistics/vietnam-to-us-ca-au/')) },
+          { id: 'navLinkFulfillment', mId: 'mNavLinkFulfillment', href: withBase(isVi ? '/vi/kho-van/' : (isEs ? '/es/almacenamiento/' : '/en/fulfillment/')) },
           { id: 'navLinkImportExport', mId: 'mNavLinkImportExport', href: withBase(isVi ? '/vi/xuat-nhap-khau/' : (isEs ? '/es/import-export/' : '/en/import-export/')) },
           { id: 'navLinkKnowledge', mId: 'mNavLinkKnowledge', href: withBase(isVi ? '/vi/kien-thuc/' : (isEs ? '/es/conocimiento/' : '/en/knowledge/')) },
           { id: 'mHeaderCtaBtn', href: withBase(isVi ? '/vi/lien-he/' : (isEs ? '/es/contacto/' : '/en/contact/')) },
@@ -1259,8 +1311,8 @@
         const footerLinks = document.querySelectorAll('#footerServicesLinks a');
         if (footerLinks.length >= 4) {
           footerLinks[0].setAttribute('href', withBase(isVi ? '/vi/tim-nguon-hang/' : (isEs ? '/es/abastecimiento/' : '/en/sourcing/')));
-          footerLinks[1].setAttribute('href', withBase(isVi ? '/vi/tuyen-van-chuyen/' : (isEs ? '/es/logistica/' : '/en/logistics/')));
-          footerLinks[2].setAttribute('href', withBase(isVi ? '/vi/kho-van/' : (isEs ? '/es/fulfillment/' : '/en/fulfillment/')));
+          footerLinks[1].setAttribute('href', withBase(isVi ? '/vi/logistics/' : (isEs ? '/es/logistica/' : '/en/logistics/')));
+          footerLinks[2].setAttribute('href', withBase(isVi ? '/vi/kho-van/' : (isEs ? '/es/almacenamiento/' : '/en/fulfillment/')));
           footerLinks[3].setAttribute('href', withBase(isVi ? '/vi/xuat-nhap-khau/' : (isEs ? '/es/import-export/' : '/en/import-export/')));
         }
         const footerKnowledgeLink = document.querySelector('#footerQuickLinks a[href*="knowledge"], #footerQuickLinks a[href*="kien-thuc"], #footerQuickLinks a[href*="conocimiento"]');
@@ -1338,8 +1390,8 @@
           home: { vi: withBase('/vi/'), en: withBase('/en/'), es: withBase('/es/') },
           about: { vi: withBase('/vi/ve-chung-toi/'), en: withBase('/en/about-us/'), es: withBase('/es/sobre-nosotros/') },
           sourcing: { vi: withBase('/vi/tim-nguon-hang/'), en: withBase('/en/sourcing/'), es: withBase('/es/abastecimiento/') },
-          logistics: { vi: withBase('/vi/tuyen-van-chuyen/'), en: withBase('/en/logistics/'), es: withBase('/es/logistica/') },
-          fulfillment: { vi: withBase('/vi/kho-van/'), en: withBase('/en/fulfillment/'), es: withBase('/es/fulfillment/') },
+          logistics: { vi: withBase('/vi/logistics/'), en: withBase('/en/logistics/'), es: withBase('/es/logistica/') },
+          fulfillment: { vi: withBase('/vi/kho-van/'), en: withBase('/en/fulfillment/'), es: withBase('/es/almacenamiento/') },
           importExport: { vi: withBase('/vi/xuat-nhap-khau/'), en: withBase('/en/import-export/'), es: withBase('/es/import-export/') },
           knowledge: { vi: withBase('/vi/kien-thuc/'), en: withBase('/en/knowledge/'), es: withBase('/es/conocimiento/') },
           contact: { vi: withBase('/vi/lien-he/'), en: withBase('/en/contact/'), es: withBase('/es/contacto/') }
@@ -1348,8 +1400,8 @@
           '/': 'home', '/vi/': 'home', '/en/': 'home', '/es/': 'home',
           '/vi/about-us/': 'about', '/vi/ve-chung-toi/': 'about', '/en/about-us/': 'about', '/es/about-us/': 'about', '/es/sobre-nosotros/': 'about',
           '/vi/tim-nguon-hang/': 'sourcing', '/en/sourcing/': 'sourcing', '/es/abastecimiento/': 'sourcing',
-          '/vi/tuyen-van-chuyen/': 'logistics', '/vi/tuyen-van-chuyen/': 'logistics', '/en/logistics/': 'logistics', '/es/logistics/': 'logistics', '/es/logistica/': 'logistics',
-          '/vi/fulfillment/': 'fulfillment', '/en/fulfillment/': 'fulfillment', '/es/fulfillment/': 'fulfillment', '/vi/kho-van/': 'fulfillment', '/es/fulfillment/': 'fulfillment',
+          '/vi/logistics/': 'logistics', '/vi/tuyen-van-chuyen/': 'logistics', '/en/logistics/': 'logistics', '/es/logistics/': 'logistics', '/es/logistica/': 'logistics',
+          '/vi/fulfillment/': 'fulfillment', '/en/fulfillment/': 'fulfillment', '/es/fulfillment/': 'fulfillment', '/vi/kho-van/': 'fulfillment', '/es/almacenamiento/': 'fulfillment',
           '/vi/xuat-nhap-khau/': 'importExport', '/en/import-export/': 'importExport', '/es/import-export/': 'importExport',
           '/vi/knowledge/': 'knowledge', '/en/knowledge/': 'knowledge', '/es/knowledge/': 'knowledge',
           '/vi/kien-thuc/': 'knowledge', '/es/conocimiento/': 'knowledge',
@@ -1390,6 +1442,18 @@
 
       // Global click handler to intercept any hash routes and navigate cleanly
       document.addEventListener('click', function (event) {
+        const subLink = event.target.closest('.speego-nav-has-sub > .speego-nav-link');
+        if (subLink && (window.innerWidth <= 991 || (document.getElementById('masthead') && document.getElementById('masthead').classList.contains('is-menu-open')))) {
+          event.preventDefault();
+          event.stopImmediatePropagation();
+          const parent = subLink.closest('.speego-nav-has-sub');
+          if (parent) {
+            const isOpen = parent.classList.toggle('is-open');
+            subLink.setAttribute('aria-expanded', String(isOpen));
+          }
+          return;
+        }
+
         const link = event.target.closest('a[href]');
         if (!link) return;
         const href = link.getAttribute('href');
@@ -1731,10 +1795,11 @@
           : '';
         const withBase = (p) => wpBase ? (wpBase + p) : p;
         let html = '';
+        const KNOWLEDGE_CRUMB_LABEL = { vi: 'Kho kiến thức', en: 'Knowledge Hub', es: 'Centro de Conocimiento' };
         items.forEach((item, index) => {
           const isLast = index === items.length - 1;
           const label = /^#\/(?:en\/|es\/)?knowledge$/.test(item.href || '')
-            ? SHELL_I18N[currentLang].navKnowledge : item.label;
+            ? (KNOWLEDGE_CRUMB_LABEL[currentLang] || SHELL_I18N[currentLang].navKnowledge) : item.label;
           if (isLast) {
             html += `<span class="breadcrumb-current">${label}</span>`;
           } else {
@@ -1777,7 +1842,7 @@
       function updateNavHighlights(activeNavKey) {
         // Desktop nav
         document.querySelectorAll('#menu-main-menu .speego-nav-item, #headerNavMenu .speego-nav-item, #headerNavMenu .nav-item').forEach(item => {
-          if (item.getAttribute('data-nav') === activeNavKey) {
+          if (activeNavKey !== 'home' && item.getAttribute('data-nav') === activeNavKey) {
             item.classList.add('active');
           } else {
             item.classList.remove('active');
@@ -1830,8 +1895,23 @@
           });
         });
 
-        // Auto close mobile menu when clicking any nav link
-        document.querySelectorAll('.speego-nav-menu a, #menu-main-menu a').forEach(a => {
+        // Sub-menu accordion toggle on mobile (Logistics and other submenus)
+        document.querySelectorAll('.speego-nav-has-sub > .speego-nav-link').forEach(link => {
+          link.addEventListener('click', function (e) {
+            if (window.innerWidth <= 991 || (header && header.classList.contains('is-menu-open'))) {
+              e.preventDefault();
+              e.stopPropagation();
+              e.stopImmediatePropagation();
+              const parent = link.closest('.speego-nav-has-sub');
+              if (!parent) return;
+              const isOpen = parent.classList.toggle('is-open');
+              link.setAttribute('aria-expanded', String(isOpen));
+            }
+          }, true);
+        });
+
+        // Auto close mobile menu when clicking any leaf nav link
+        document.querySelectorAll('.speego-nav-menu a:not(.speego-nav-has-sub > a), #menu-main-menu a:not(.speego-nav-has-sub > a), .speego-nav-dropdown a').forEach(a => {
           a.addEventListener('click', closeMobileMenu);
         });
 
@@ -2001,21 +2081,7 @@
           });
         });
 
-        // Start closed. Pricing groups are exclusive; policy items expand independently.
-        document.querySelectorAll('details.ff-price-group, details.ff-policy-item').forEach((el) => {
-          el.open = false;
-        });
-        document.querySelectorAll('.ff-pricing-sheet').forEach((sheet) => {
-          const groups = sheet.querySelectorAll('details.ff-price-group');
-          groups.forEach((group) => {
-            group.addEventListener('toggle', () => {
-              if (!group.open) return;
-              groups.forEach((other) => {
-                if (other !== group) other.open = false;
-              });
-            });
-          });
-        });
+        // Native pricing and policy details expand independently, like Vercel.
 
         // Initialize fulfillment cost calculation if present
         if (typeof window.calculateFulfillmentCost === 'function') {
@@ -2118,24 +2184,12 @@
           });
         }
 
-        const heroForm = document.getElementById('speego-hero-consult-form');
-        if (heroForm) {
-          heroForm.onsubmit = function (e) {
-            e.preventDefault();
-            const toast = document.getElementById('toastPopup');
-            const toastText = document.getElementById('toastText');
-            if (toast && toastText) {
-              toastText.textContent = (currentLang === 'en')
-                ? 'Thank you! SpeeGo team will contact you shortly.'
-                : (currentLang === 'es')
-                  ? '¡Gracias! El equipo de SpeeGo se pondrá en contacto pronto.'
-                  : 'Gửi yêu cầu tư vấn thành công! SpeeGo sẽ liên hệ lại sớm nhất.';
-              toast.classList.add('show');
-              setTimeout(() => toast.classList.remove('show'), 3500);
-            }
-            heroForm.reset();
-          };
-        }
+        ['speego-hero-consult-form', 'speego-consultation-form'].forEach(id => {
+          const form = document.getElementById(id);
+          if (!form) return;
+          form.removeAttribute('novalidate');
+          form.onsubmit = handleConsultSubmit;
+        });
 
         const trackBtn = document.getElementById('speego-track-btn');
         const trackInput = document.getElementById('speego-track-input');
@@ -2287,7 +2341,8 @@
           }
 
           // Inject into main
-          appMain.innerHTML = pageHtml;
+          // Keep the server-rendered video and form nodes alive during startup.
+          if (!hasServerRenderedContent) appMain.innerHTML = pageHtml;
           if (route.nav === 'home') translatePageContent(appMain, currentLang);
           syncLocalizedContentLinks(appMain, currentLang);
 
@@ -2407,7 +2462,9 @@
           } else if (pendingScroll) {
             setTimeout(() => {
               const el = document.getElementById(pendingScroll);
-              if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+              if (el && window.SPEEGO_WP_HOME && window.speegoScrollToSection) {
+                window.speegoScrollToSection(pendingScroll);
+              } else if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
               else window.scrollTo({ top: 0, behavior: 'smooth' });
             }, 80);
           } else {
@@ -2461,7 +2518,46 @@
                 .observe(document.getElementById('app-main'));
             }
           }
-          window.addEventListener('hashchange', router);
+          window.addEventListener('hashchange', () => {
+            // A section jump must not rebuild the form, calculator or accordions.
+            if (window.SPEEGO_WP_HOME && window.location.hash && !window.location.hash.startsWith('#/')) return;
+            router();
+          });
+          // Local link click interceptor to map clean URLs to SPA hash routes
+          if (!window.SPEEGO_WP_HOME) {
+            document.addEventListener('click', (event) => {
+              const link = event.target.closest('a[href]');
+              if (!link) return;
+              const href = link.getAttribute('href') || '';
+              if (!href || href.startsWith('http:') || href.startsWith('https:') || href.startsWith('mailto:') || href.startsWith('tel:') || href.startsWith('#')) return;
+              
+              const clean = href.replace(/^\/+/, '').replace(/\/+$/, '');
+              let mappedHash = '';
+              if (clean === '' || clean === 'vi') mappedHash = '#/home';
+              else if (clean === 'en') mappedHash = '#/en/home';
+              else if (clean === 'es') mappedHash = '#/es/inicio';
+              else if (clean.includes('sourcing-qc')) {
+                if (clean.includes('quality-control') || clean.includes('kiem-soat-chat-luong') || clean.includes('control-de-calidad')) {
+                  mappedHash = clean.startsWith('en') ? '#/en/post/quality-control' : (clean.startsWith('es') ? '#/es/post/control-de-calidad' : '#/knowledge/kiem-soat-chat-luong');
+                } else {
+                  mappedHash = clean.startsWith('en') ? '#/en/sourcing-qc' : (clean.startsWith('es') ? '#/es/sourcing-qc' : '#/knowledge/sourcing-qc');
+                }
+              } else if (ROUTES['#/' + clean]) {
+                mappedHash = '#/' + clean;
+              } else if (clean.startsWith('vi/kien-thuc/')) {
+                mappedHash = '#/knowledge/' + clean.replace('vi/kien-thuc/', '');
+              } else if (clean.startsWith('en/knowledge/')) {
+                mappedHash = '#/en/' + clean.replace('en/knowledge/', '');
+              } else if (clean.startsWith('es/conocimiento/')) {
+                mappedHash = '#/es/' + clean.replace('es/conocimiento/', '');
+              }
+              
+              if (mappedHash) {
+                event.preventDefault();
+                window.location.hash = mappedHash;
+              }
+            });
+          }
           router();
         }
       }
@@ -2479,6 +2575,15 @@
     let toastTimeout;
     function handleConsultSubmit(event) {
       event.preventDefault();
+      const form = event.target;
+      if (form.matches('.consult-form') && form.querySelector('[name="fullName"]')) {
+        const fields = new FormData(form);
+        const subject = 'SpeeGo inquiry — ' + (fields.get('fullName') || '');
+        const body = 'Full name: ' + (fields.get('fullName') || '') + '\nEmail: ' + (fields.get('email') || '')
+          + '\nPhone: ' + (fields.get('phone') || '') + '\n\nMessage:\n' + (fields.get('message') || '');
+        window.location.href = 'mailto:info@speegologistic.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+        return;
+      }
       const isEn = (document.documentElement.lang === 'en');
       const isEs = (document.documentElement.lang === 'es');
 
@@ -2698,7 +2803,7 @@
   <script src="js/cta-band.js"></script>
   <script src="js/fulfillment-estimate.js?v=ff_estimate_20260926"></script>
   <script src="js/fulfillment-dock.js"></script>
-  <script src="js/about-page.js?v=about_truck_full_20260930"></script>
+  <script src="js/about-page.js?v=about_truck_20261001"></script>
   <script>
     (() => {
       const selector = '.speego-consult-video';

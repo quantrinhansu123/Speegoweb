@@ -58,6 +58,7 @@ function speego_repair_knowledge_markup($markup)
     }
 
     $markup = speego_prepare_managed_markup($markup);
+    $markup = preg_replace('~<nav\b[^>]*class=["\'][^"\']*\bbreadcrumb-section\b[^"\']*["\'][^>]*>.*?</nav>~is', '', $markup);
     $markup = preg_replace('~<p\b[^>]*>[\s\x{FEFF}]*(?:<!--.*?-->[\s\x{FEFF}]*)*</p>~isu', '', $markup);
     $previous = libxml_use_internal_errors(true);
     $document = new DOMDocument();

@@ -7711,7 +7711,41 @@ body.home .speego-route-logo-card:hover {
     gap: 12px !important;
   }
   .speego-nav-link {
-    font-size: 13px !important;
+    font-size: 15px !important;
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    width: 100% !important;
+  }
+
+  .speego-nav-has-sub > .speego-nav-link {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    width: 100% !important;
+    cursor: pointer !important;
+  }
+
+  .speego-nav-caret {
+    display: inline-block !important;
+    flex: 0 0 auto !important;
+    width: 12px !important;
+    height: 8px !important;
+    margin-left: auto !important;
+    opacity: 0.8 !important;
+    transition: transform 0.25s ease !important;
+    transform: rotate(0deg) !important;
+  }
+
+  .speego-nav-has-sub:hover > .speego-nav-link .speego-nav-caret,
+  .speego-nav-has-sub:focus-within > .speego-nav-link .speego-nav-caret {
+    transform: rotate(0deg) !important;
+  }
+
+  .speego-nav-has-sub.is-open > .speego-nav-link .speego-nav-caret,
+  .speego-nav-has-sub > .speego-nav-link[aria-expanded="true"] .speego-nav-caret {
+    transform: rotate(180deg) !important;
+    color: #FF6A00 !important;
   }
 
   .speego-nav-dropdown {
@@ -7721,16 +7755,36 @@ body.home .speego-route-logo-card:hover {
     min-width: 0 !important;
     width: 100% !important;
     max-width: none !important;
-    margin: 0 0 8px !important;
-    padding: 0 0 8px 12px !important;
+    margin: 0 !important;
+    padding: 0 0 6px 14px !important;
     border: 0 !important;
     border-radius: 0 !important;
     box-shadow: none !important;
     background: transparent !important;
+    display: none !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+    transform: none !important;
+    transition: opacity 0.2s ease !important;
+  }
+
+  .speego-nav-has-sub:hover > .speego-nav-dropdown,
+  .speego-nav-has-sub:focus-within > .speego-nav-dropdown {
+    display: none !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+
+  .speego-nav-has-sub.is-open > .speego-nav-dropdown,
+  .speego-nav-has-sub > .speego-nav-link[aria-expanded="true"] + .speego-nav-dropdown,
+  .speego-nav-has-sub.is-open:hover > .speego-nav-dropdown,
+  .speego-nav-has-sub.is-open:focus-within > .speego-nav-dropdown {
+    display: block !important;
     opacity: 1 !important;
     visibility: visible !important;
     pointer-events: auto !important;
-    transform: none !important;
   }
 
   .speego-nav-dropdown::before {
@@ -7738,11 +7792,9 @@ body.home .speego-route-logo-card:hover {
   }
 
   .speego-nav-dropdown-link {
-    padding: 10px 8px !important;
-  }
-
-  .speego-nav-caret {
-    display: none !important;
+    padding: 10px 12px !important;
+    font-size: 14px !important;
+    color: #334155 !important;
   }
 }
 
@@ -9066,8 +9118,10 @@ body.home .speego-intro-list,
    touch target. These rules intentionally come last so legacy theme rules
    cannot reintroduce desktop spacing at mobile breakpoints.
    ======================================================================== */
-.speego-nav-cta-item {
-  display: none !important;
+@media (min-width: 992px) {
+  .speego-nav-cta-item {
+    display: none !important;
+  }
 }
 
 body.home.is-header-scrolled .site-header .speego-header-topbar,
@@ -9146,20 +9200,22 @@ body.home .site-header.is-scrolled .speego-header-topbar {
     overscroll-behavior: contain;
   }
 
-  body.home .speego-nav-cta-item {
+  body.home .speego-nav-cta-item,
+  .speego-nav-cta-item {
     display: block !important;
-    margin-top: 12px !important;
-    padding-top: 12px !important;
+    margin-top: 14px !important;
+    padding-top: 14px !important;
     border-top: 1px solid #edf1f4 !important;
-    border-bottom: 0 !important;
+    border-bottom: none !important;
   }
 
-  body.home .speego-nav-cta-item .speego-header-quote-btn {
+  body.home .speego-nav-cta-item .speego-header-quote-btn,
+  .speego-nav-cta-item .speego-header-quote-btn {
     width: 100% !important;
     min-height: 48px !important;
     height: 48px !important;
-    padding: 0 18px !important;
-    color: #fff !important;
+    justify-content: center !important;
+    display: inline-flex !important;
   }
 
   body.home .speego-hero-buttons-group {
@@ -11079,3 +11135,277 @@ body.speego-elementor-page main[data-nav="knowledge"] form.e-form-base > .e-form
     display: block;
   }
 }
+
+/* Knowledge layout mobile overflow protection */
+.subcat-grid-4col {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.subcat-card,
+.topic-card,
+.featured-article-card {
+  min-width: 0 !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+.subcat-item,
+.topic-grid-3x2 .topic-article-item {
+  min-width: 0 !important;
+  max-width: 100% !important;
+}
+
+.subcat-item .topic-article-link,
+.topic-grid-3x2 .topic-article-link {
+  display: block;
+  flex: 1 1 auto;
+  min-width: 0 !important;
+  max-width: 100% !important;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.core-docs-box,
+.core-docs-link {
+  word-break: break-word;
+  overflow-wrap: break-word;
+  max-width: 100%;
+}
+
+@media (max-width: 1024px) {
+  .subcat-grid-4col {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+  .featured-grid-2col {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .subcat-grid-4col {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+  .featured-cards-list,
+  .featured-cards-list.single-card,
+  .featured-cards-single,
+  .featured-cards-list:has(> .featured-article-card:only-child) {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+  .featured-grid-2col {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+}
+
+/* ==========================================================================
+   GLOBAL SUB-HEADER (TOPBAR) SYNCHRONIZATION WITH HOMEPAGE
+   ========================================================================== */
+.site-header .speego-header-topbar {
+  width: 100% !important;
+  background: var(--speego-primary, #04243D) !important;
+  color: #fff !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+}
+
+.site-header .speego-header-topbar-inner {
+  width: 100% !important;
+  max-width: 1440px !important;
+  margin: 0 auto !important;
+  padding: 0 32px !important;
+  box-sizing: border-box !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+}
+
+.site-header .speego-header-contact {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 14px !important;
+}
+
+.site-header .speego-header-contact-item {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  color: #FFFFFF !important;
+  font-family: 'Inter', sans-serif !important;
+  font-size: 13px !important;
+  text-decoration: none !important;
+  transition: opacity 0.2s ease !important;
+}
+
+.site-header .speego-topbar-policy {
+  margin-left: auto !important;
+}
+
+@media (max-width: 767px) {
+  .site-header .speego-header-topbar {
+    height: 46px !important;
+  }
+
+  .site-header.is-scrolled .speego-header-topbar,
+  .site-header.is-header-scrolled .speego-header-topbar {
+    margin-top: -46px !important;
+  }
+
+  .site-header .speego-header-topbar-inner {
+    height: 100% !important;
+    box-sizing: border-box !important;
+    align-items: center !important;
+    gap: 10px !important;
+    padding: 4px 16px !important;
+  }
+
+  .site-header .speego-header-contact {
+    flex-direction: row !important;
+    align-items: center !important;
+    gap: 12px !important;
+    line-height: 1.1 !important;
+  }
+
+  .site-header .speego-header-contact-item {
+    font-size: 10px !important;
+    line-height: 1.1 !important;
+    gap: 5px !important;
+    letter-spacing: 0.01em !important;
+  }
+
+  .site-header .speego-header-contact-icon {
+    width: 15px !important;
+    height: 15px !important;
+  }
+
+  .site-header .speego-header-contact-val {
+    display: none !important;
+  }
+
+  .site-header .speego-header-contact-email {
+    display: inline-flex !important;
+    padding-left: 0 !important;
+    border-left: 0 !important;
+  }
+
+  .site-header .speego-header-contact-sep {
+    display: none !important;
+  }
+
+  .site-header .speego-topbar-policy {
+    align-self: center !important;
+    margin-left: auto !important;
+    margin-top: 0 !important;
+  }
+
+  .site-header .speego-topbar-policy .speego-policy-toggle {
+    min-height: 32px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    padding: 4px 0 !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    background: transparent !important;
+    font-size: 10px !important;
+    font-weight: 600 !important;
+    color: rgba(255, 255, 255, 0.92) !important;
+  }
+}
+
+@media (max-width: 380px) {
+  .site-header .speego-header-topbar-inner {
+    padding-left: 12px !important;
+    padding-right: 12px !important;
+  }
+}
+
+/* Mobile navigation accordion: collapsed by default, expanded on is-open with caret flip */
+@media (max-width: 991px) {
+  #masthead .speego-nav-has-sub > .speego-nav-link {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    width: 100% !important;
+    cursor: pointer !important;
+  }
+
+  #masthead .speego-nav-has-sub > .speego-nav-link .speego-nav-caret {
+    display: inline-block !important;
+    flex: 0 0 auto !important;
+    width: 12px !important;
+    height: 8px !important;
+    margin-left: auto !important;
+    opacity: 0.8 !important;
+    transition: transform 0.25s ease !important;
+    transform: rotate(0deg) !important;
+  }
+
+  #masthead .speego-nav-has-sub:hover > .speego-nav-link .speego-nav-caret,
+  #masthead .speego-nav-has-sub:focus-within > .speego-nav-link .speego-nav-caret {
+    transform: rotate(0deg) !important;
+  }
+
+  #masthead .speego-nav-has-sub.is-open > .speego-nav-link .speego-nav-caret,
+  #masthead .speego-nav-has-sub > .speego-nav-link[aria-expanded="true"] .speego-nav-caret {
+    transform: rotate(180deg) !important;
+    color: #FF6A00 !important;
+  }
+
+  #masthead .speego-nav-has-sub > .speego-nav-dropdown {
+    position: static !important;
+    inset: auto !important;
+    display: none !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: none !important;
+    margin: 0 !important;
+    padding: 0 0 8px 14px !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    background: transparent !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+    transform: none !important;
+    transition: opacity 0.2s ease !important;
+  }
+
+  #masthead .speego-nav-has-sub:hover > .speego-nav-dropdown,
+  #masthead .speego-nav-has-sub:focus-within > .speego-nav-dropdown {
+    display: none !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+
+  #masthead .speego-nav-has-sub.is-open > .speego-nav-dropdown,
+  #masthead .speego-nav-has-sub > .speego-nav-link[aria-expanded="true"] + .speego-nav-dropdown,
+  #masthead .speego-nav-has-sub.is-open:hover > .speego-nav-dropdown,
+  #masthead .speego-nav-has-sub.is-open:focus-within > .speego-nav-dropdown {
+    display: block !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    pointer-events: auto !important;
+  }
+
+  #masthead .speego-nav-dropdown li {
+    display: block;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  #masthead .speego-nav-dropdown-link {
+    display: flex !important;
+    width: 100%;
+    min-height: 44px;
+    align-items: center;
+    padding: 10px 12px !important;
+    color: #334155 !important;
+    font-size: 14px !important;
+    white-space: normal !important;
+  }
+}
+
+
