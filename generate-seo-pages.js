@@ -515,7 +515,7 @@ function generate({ root, output }) {
   ${route.nav === "fulfillment" ? '<script src="/explore/js/fulfillment-estimate.js?v=ff_estimate_20260926"></script>\n  <script src="/explore/js/fulfillment-dock.js?v=ff_dock_fix_20260925e"></script>' : ""}
   ${route.nav === "about" ? '<script src="/explore/js/about-page.js?v=about_click_slider_20260928"></script>' : ""}
   <script src="/explore/js/knowledge-article.js"></script>
-  <script src="/wp-content/themes/logistica/js/speego-main.js?v=wp_sync_20260929"></script>
+  <script src="/wp-content/themes/logistica/js/speego-main.js?v=quote_console_testimonial_dots_20261003"></script>
 </body>
 </html>`;
     fs.writeFileSync(outputFile, localizeKnownSlugs(html, route.lang), "utf8");
@@ -946,7 +946,7 @@ function writeAboutAndContactPages({ homepage, header, footer, origin, output, r
       }, true);
     }());
   </script>
-  <script src="/wp-content/themes/logistica/js/speego-main.js?v=wp_sync_20260929"></script>
+  <script src="/wp-content/themes/logistica/js/speego-main.js?v=quote_console_testimonial_dots_20261003"></script>
 </body>
 </html>`;
       const outFile = path.join(output, ...urlPath.replace(/^\//, "").split("/"), "index.html");

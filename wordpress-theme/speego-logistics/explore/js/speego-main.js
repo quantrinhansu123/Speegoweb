@@ -2366,6 +2366,32 @@ stat_delivery: 'Entrega a Tiempo',
       });
     });
 
+    const quoteFormTab = document.querySelector('.speego-console-tab[data-target="console-form"]');
+    const heroConsole = document.getElementById('speego-hero-console');
+    document.querySelectorAll('.speego-hero-btn-primary, .speego-header-quote-btn').forEach(button => {
+      button.addEventListener('click', function (event) {
+        if (!quoteFormTab || !heroConsole) return;
+        event.preventDefault();
+        quoteFormTab.click();
+        const header = document.getElementById('masthead');
+        const menuToggle = document.querySelector('.speego-menu-toggle');
+        if (header) header.classList.remove('is-menu-open');
+        if (menuToggle) menuToggle.setAttribute('aria-expanded', 'false');
+
+        const rect = heroConsole.getBoundingClientRect();
+        const firstField = heroConsole.querySelector('#speego-hero-form-name');
+        const fieldRect = firstField ? firstField.getBoundingClientRect() : rect;
+        const headerOffset = header ? header.getBoundingClientRect().height : 0;
+        if (fieldRect.top < headerOffset || fieldRect.bottom > window.innerHeight) {
+          const root = document.documentElement;
+          const previousScrollBehavior = root.style.scrollBehavior;
+          root.style.scrollBehavior = 'auto';
+          window.scrollTo(window.scrollX, window.scrollY + rect.top - headerOffset);
+          root.style.scrollBehavior = previousScrollBehavior;
+        }
+      });
+    });
+
     // Tracking → SpeeGo journey timeline + UPS link
     const trackBtn = document.getElementById('speego-track-btn');
     const trackInput = document.getElementById('speego-track-input');
@@ -3816,16 +3842,24 @@ stat_delivery: 'Entrega a Tiempo',
 
   function initTestimonialCarousel() {
     var grid = document.querySelector('#testimonials-speego .speego-testimonial-grid');
+    var cards = grid ? Array.prototype.slice.call(grid.querySelectorAll('.speego-testimonial-card')) : [];
     var dots = Array.prototype.slice.call(
       document.querySelectorAll('#testimonials-speego .speego-testimonial-dot')
     );
-    if (!grid || !dots.length) return;
+    if (!grid || !cards.length || !dots.length) return;
 
     function syncDots() {
-      var card = grid.querySelector('.speego-testimonial-card');
-      var gap = parseFloat(window.getComputedStyle(grid).columnGap) || 0;
-      var step = card ? card.getBoundingClientRect().width + gap : grid.clientWidth;
-      var active = step ? Math.round(grid.scrollLeft / step) : 0;
+      var gridLeft = grid.getBoundingClientRect().left + grid.clientLeft;
+      var active = 0;
+      var nearestDistance = Infinity;
+
+      cards.forEach(function (card, index) {
+        var distance = Math.abs(card.getBoundingClientRect().left - gridLeft);
+        if (distance < nearestDistance) {
+          nearestDistance = distance;
+          active = index;
+        }
+      });
       active = Math.max(0, Math.min(dots.length - 1, active));
 
       dots.forEach(function (dot, index) {

@@ -11072,3 +11072,10 @@ body.speego-elementor-page main[data-nav="knowledge"] form.e-form-base > .e-form
     text-shadow: none;
   }
 }
+
+/* Let the open Policy menu win over mobile's sticky :hover state. */
+@media (max-width: 991px) {
+  .speego-header-topbar .speego-policy-menu:hover .speego-policy-dropdown.is-open {
+    display: block;
+  }
+}

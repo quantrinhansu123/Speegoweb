@@ -32,7 +32,7 @@
   <link rel="stylesheet" href="../sourcing-reference/logistica/css/bootstrapb54d.css">
   <link rel="stylesheet" href="../sourcing-reference/logistica/css/mainb54d.css">
   <link rel="stylesheet" href="css/style.css?v=1.2.24">
-  <link rel="stylesheet" href="css/speego-custom.css?v=1.2.24">
+  <link rel="stylesheet" href="css/speego-custom.css?v=20261003_policy_touch">
   <link rel="stylesheet" href="css/wp-home-parity.css?v=1.2.24">
   <link rel="stylesheet" href="css/wp-header-layout.css?v=1.2.24">
   <style id="speego-consult-video-crop">
@@ -1823,6 +1823,24 @@
           };
         }
 
+        // Keep phone and email popovers mutually exclusive on touch devices.
+        const contactPopovers = Array.from(document.querySelectorAll('.speego-header-contact-popover'));
+        contactPopovers.forEach((popover) => {
+          popover.addEventListener('toggle', () => {
+            if (!popover.open) return;
+            contactPopovers.forEach((other) => {
+              if (other !== popover) other.open = false;
+            });
+          });
+        });
+
+        document.addEventListener('click', (event) => {
+          if (event.target.closest('.speego-header-contact-popover')) return;
+          contactPopovers.forEach((popover) => {
+            if (popover.open) popover.open = false;
+          });
+        });
+
         // Auto close mobile menu when clicking any nav link
         document.querySelectorAll('.speego-nav-menu a, #menu-main-menu a').forEach(a => {
           a.addEventListener('click', closeMobileMenu);
@@ -1886,6 +1904,7 @@
             e.stopPropagation();
             const isOpen = policyDropdown.classList.toggle('is-open');
             policyToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+            if (isOpen) contactPopovers.forEach((popover) => { popover.open = false; });
             if (langDropdown) {
               langDropdown.classList.remove('active');
               if (langToggleBtn) langToggleBtn.setAttribute('aria-expanded', 'false');
